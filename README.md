@@ -5,7 +5,7 @@ Web image of ebmonfhir
 ```bash
 > mkdir ebmonfhir
 > cd ebmonfhir
-> curl https://raw.githubusercontent.com/ebmonfhir/publish/inline_datatypes/Docker/Dockerfile > Dockerfile
+> curl https://raw.githubusercontent.com/ebmonfhir/publish/master/Docker/Dockerfile > Dockerfile
 > docker build . -t ebmonfhir
 > docker run  -d -p ${PORT}:80 --name ebmonfhir ebmonfhir
 ```
