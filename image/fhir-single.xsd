@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Feb 20, 2019 14:11-0600 for FHIR v4.0.0 
+  Generated on Fri, Mar 1, 2019 07:26-0600 for FHIR v4.0.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.0.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -18081,9 +18081,14 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">Human-readable summary of the population or subpopulation.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="population" type="Evidence.Population" minOccurs="1" maxOccurs="1">
+          <xs:element name="population" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">A reference to a Group that defines the population or subpopulation.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="populationSampleSize" type="Evidence.PopulationSampleSize" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Population Sample Size.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="exposureVariant" type="Evidence.ExposureVariant" minOccurs="0" maxOccurs="unbounded">
@@ -18094,22 +18099,6 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:element name="comparativeStatistic" type="Evidence.ComparativeStatistic" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">TBD.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Evidence.Population">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="populationSampleSize" type="Evidence.PopulationSampleSize" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Population Sample Size.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -22100,6 +22089,11 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates a category the goal falls within.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="continuous" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">After meeting the goal, ongoing activity is needed to sustain the goal objective.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">

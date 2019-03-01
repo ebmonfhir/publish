@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="CarePlan"/>
+  <meta>
+    <lastUpdated value="2019-03-01T07:26:01.444-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -1174,9 +1177,6 @@
       </table>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-category">
-    <valueString value="Clinical.Care Provision"/>
-  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="trial-use"/>
   </extension>
@@ -1193,7 +1193,7 @@
   <version value="4.0.0"/>
   <name value="CarePlan"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <contact>
     <telecom>
@@ -1220,14 +1220,14 @@
     <name value="RIM Mapping"/>
   </mapping>
   <mapping>
-    <identity value="v2"/>
-    <uri value="http://hl7.org/v2"/>
-    <name value="HL7 v2 Mapping"/>
-  </mapping>
-  <mapping>
     <identity value="w5"/>
     <uri value="http://hl7.org/fhir/fivews"/>
     <name value="FiveWs Pattern Mapping"/>
+  </mapping>
+  <mapping>
+    <identity value="v2"/>
+    <uri value="http://hl7.org/v2"/>
+    <name value="HL7 v2 Mapping"/>
   </mapping>
   <kind value="resource"/>
   <abstract value="false"/>
@@ -1518,16 +1518,16 @@
         <map value="Request.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PTH-3"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="CarePlan.instantiatesCanonical">
@@ -1695,16 +1695,16 @@
         <map value="Request.status {uses different ValueSet}"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PTH-5"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode planned = new active = active completed = completed"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="CarePlan.intent">
@@ -1833,6 +1833,10 @@
         <map value="Request.subject"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-3"/>
       </mapping>
@@ -1868,16 +1872,16 @@
         <map value="Request.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="Associated PV1"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="."/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="CarePlan.period">
@@ -1904,16 +1908,16 @@
         <map value="Request.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.planned"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-7 / GOL-8"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.planned"/>
       </mapping>
     </element>
     <element id="CarePlan.created">
@@ -1938,12 +1942,12 @@
         <map value="Request.authoredOn"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].time"/>
       </mapping>
     </element>
     <element id="CarePlan.author">
@@ -2054,16 +2058,16 @@
         <map value="Request.reasonCode"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PRB-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="CarePlan.addressesReference">
@@ -2090,16 +2094,16 @@
         <map value="Request.reasonReference"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PRB-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="CarePlan.supportingInfo">
@@ -2883,12 +2887,12 @@
         <map value="Request.reported[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=RPT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=RPT].role"/>
       </mapping>
     </element>
     <element id="CarePlan.activity.detail.performer">
@@ -3112,16 +3116,16 @@
         <map value="Request.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PTH-3"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="CarePlan.instantiatesCanonical">
@@ -3254,16 +3258,16 @@
         <map value="Request.status {uses different ValueSet}"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PTH-5"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode planned = new active = active completed = completed"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="CarePlan.intent">
@@ -3363,6 +3367,10 @@
         <map value="Request.subject"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-3"/>
       </mapping>
@@ -3392,16 +3400,16 @@
         <map value="Request.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="Associated PV1"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="."/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="CarePlan.period">
@@ -3422,16 +3430,16 @@
         <map value="Request.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.planned"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-7 / GOL-8"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.planned"/>
       </mapping>
     </element>
     <element id="CarePlan.created">
@@ -3450,12 +3458,12 @@
         <map value="Request.authoredOn"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].time"/>
       </mapping>
     </element>
     <element id="CarePlan.author">
@@ -3540,16 +3548,16 @@
         <map value="Request.reasonCode"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PRB-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="CarePlan.addressesReference">
@@ -3570,16 +3578,16 @@
         <map value="Request.reasonReference"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PRB-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="CarePlan.supportingInfo">
@@ -4056,12 +4064,12 @@
         <map value="Request.reported[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=RPT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=RPT].role"/>
       </mapping>
     </element>
     <element id="CarePlan.activity.detail.performer">

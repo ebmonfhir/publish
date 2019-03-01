@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="MedicationStatement"/>
+  <meta>
+    <lastUpdated value="2019-03-01T07:26:01.444-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -477,9 +480,6 @@
       </table>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-category">
-    <valueString value="Clinical.Medications"/>
-  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="trial-use"/>
   </extension>
@@ -496,7 +496,7 @@
   <version value="4.0.0"/>
   <name value="MedicationStatement"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Pharmacy)"/>
   <contact>
     <telecom>
@@ -820,12 +820,12 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="MedicationStatement.basedOn">
@@ -919,12 +919,12 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".statusCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".statusCode"/>
       </mapping>
     </element>
     <element id="MedicationStatement.statusReason">
@@ -986,12 +986,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/medication-statement-category"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=&quot;type of medication usage&quot;].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=&quot;type of medication usage&quot;].value"/>
       </mapping>
     </element>
     <element id="MedicationStatement.medication[x]">
@@ -1028,12 +1028,12 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=CSM].role[classCode=ADMM or MANU]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=CSM].role[classCode=ADMM or MANU]"/>
       </mapping>
     </element>
     <element id="MedicationStatement.subject">
@@ -1057,6 +1057,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -1123,12 +1127,12 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".effectiveTime"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dateAsserted">
@@ -1148,12 +1152,12 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].time"/>
       </mapping>
     </element>
     <element id="MedicationStatement.informationSource">
@@ -1178,12 +1182,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person (if PAT is the informer, then syntax for self-reported =true)"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person (if PAT is the informer, then syntax for self-reported =true)"/>
       </mapping>
     </element>
     <element id="MedicationStatement.derivedFrom">
@@ -1239,12 +1243,12 @@
         <map value="Event.reasonCode"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="MedicationStatement.reasonReference">
@@ -1272,12 +1276,12 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use&quot;].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use&quot;].value"/>
       </mapping>
     </element>
     <element id="MedicationStatement.note">
@@ -1361,12 +1365,12 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="MedicationStatement.basedOn">
@@ -1443,12 +1447,12 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".statusCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".statusCode"/>
       </mapping>
     </element>
     <element id="MedicationStatement.statusReason">
@@ -1497,12 +1501,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/medication-statement-category"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=&quot;type of medication usage&quot;].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=&quot;type of medication usage&quot;].value"/>
       </mapping>
     </element>
     <element id="MedicationStatement.medication[x]">
@@ -1533,12 +1537,12 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=CSM].role[classCode=ADMM or MANU]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=CSM].role[classCode=ADMM or MANU]"/>
       </mapping>
     </element>
     <element id="MedicationStatement.subject">
@@ -1556,6 +1560,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -1610,12 +1618,12 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".effectiveTime"/>
       </mapping>
     </element>
     <element id="MedicationStatement.dateAsserted">
@@ -1629,12 +1637,12 @@
       </type>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].time"/>
       </mapping>
     </element>
     <element id="MedicationStatement.informationSource">
@@ -1652,12 +1660,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person (if PAT is the informer, then syntax for self-reported =true)"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person (if PAT is the informer, then syntax for self-reported =true)"/>
       </mapping>
     </element>
     <element id="MedicationStatement.derivedFrom">
@@ -1699,12 +1707,12 @@
         <map value="Event.reasonCode"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="MedicationStatement.reasonReference">
@@ -1725,12 +1733,12 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use&quot;].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use&quot;].value"/>
       </mapping>
     </element>
     <element id="MedicationStatement.note">

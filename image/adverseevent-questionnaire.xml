@@ -2,12 +2,64 @@
 
 <Questionnaire xmlns="http://hl7.org/fhir">
   <id value="qs1"/>
+  <contained>
+    <ValueSet>
+      <id value="vs2"/>
+      <name value="Type options for AdverseEvent.suspectEntity.instance[x]"/>
+      <status value="active"/>
+      <description value="Type options for AdverseEvent.suspectEntity.instance[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:15d7afb2-77a7-4e61-930d-e51b98e14d2a"/>
+        <timestamp value="2019-03-01T07:27:59-06:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Immunization"/>
+          <display value="Immunization"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Procedure"/>
+          <display value="Procedure"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Substance"/>
+          <display value="Substance"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Medication"/>
+          <display value="Medication"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="MedicationAdministration"/>
+          <display value="MedicationAdministration"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="MedicationStatement"/>
+          <display value="MedicationStatement"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Device"/>
+          <display value="Device"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="AdverseEvent"/>
@@ -231,9 +283,6 @@
       </item>
     </item>
     <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="Identifier"/>
       </extension>
@@ -831,6 +880,41 @@
       </item>
     </item>
     <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="AdverseEvent.detector"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Who or what identified a change in physiological state or condition."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="Patient, RelatedPerson, Practitioner, PractitionerRole, Device"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+        </extension>
+        <linkId value="AdverseEvent.detector.value"/>
+        <text value="Who or what identified a change in physiological state or condition"/>
+        <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
       <linkId value="AdverseEvent.suspectEntity"/>
       <text value="The suspected agent causing the adverse event"/>
       <type value="group"/>
@@ -928,10 +1012,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Reference"/>
-        </extension>
-        <linkId value="AdverseEvent.suspectEntity.instance"/>
+        <linkId value="AdverseEvent.suspectEntity.instance[x]"/>
+        <text value="Refers to the specific entity that caused the adverse event"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -949,17 +1031,52 @@
           <type value="display"/>
         </item>
         <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-            <valueCode value="Immunization, Procedure, Substance, Medication, MedicationAdministration, MedicationStatement, Device"/>
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
-            <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
-          </extension>
-          <linkId value="AdverseEvent.suspectEntity.instance.value"/>
-          <text value="Refers to the specific entity that caused the adverse event"/>
-          <type value="reference"/>
+          <linkId value="AdverseEvent.suspectEntity.instance[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
+          <answerValueSet value="#vs2"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="CodeableConcept"/>
+            </extension>
+            <linkId value="AdverseEvent.suspectEntity.instance[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="AdverseEvent.suspectEntity.instance[x]._null.coding"/>
+              <text value="code:"/>
+              <type value="open-choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="AdverseEvent.suspectEntity.instance[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Reference"/>
+            </extension>
+            <linkId value="AdverseEvent.suspectEntity.instance[x]._null"/>
+            <type value="group"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="Immunization, Procedure, Substance, Medication, MedicationAdministration, MedicationStatement, Device"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+                <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+              </extension>
+              <linkId value="AdverseEvent.suspectEntity.instance[x]._null.value"/>
+              <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
       <item>

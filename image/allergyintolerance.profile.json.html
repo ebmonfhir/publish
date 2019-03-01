@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -119,15 +117,14 @@
 {
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;AllergyIntolerance&quot;,
+  &quot;meta&quot; : {
+    &quot;lastUpdated&quot; : &quot;2019-03-01T07:26:01.444-06:00&quot;
+  },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
     &quot;div&quot; : &quot;&lt;div&gt;!-- Snipped for Brevity --&gt;&lt;/div&gt;&quot;
   },
   &quot;extension&quot; : [{
-    &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot;,
-    &quot;valueString&quot; : &quot;Clinical.Summary&quot;
-  },
-  {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
     &quot;valueCode&quot; : &quot;trial-use&quot;
   },
@@ -147,7 +144,7 @@
   &quot;version&quot; : &quot;4.0.0&quot;,
   &quot;name&quot; : &quot;AllergyIntolerance&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-20T09:53:45-06:00&quot;,
+  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -170,14 +167,14 @@
     &quot;name&quot; : &quot;RIM Mapping&quot;
   },
   {
-    &quot;identity&quot; : &quot;v2&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
-    &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;w5&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/fhir/fivews&quot;,
     &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;v2&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
+    &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -492,16 +489,16 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-7&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;id&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.identifier&quot;
       }]
     },
     {
@@ -535,12 +532,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-clinical|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot;
       }]
     },
     {
@@ -574,12 +571,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-verification|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot;
       }]
     },
     {
@@ -612,16 +609,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-type|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-9&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;code&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.class&quot;
       }]
     },
     {
@@ -656,16 +653,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-2&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;value &lt; IntoleranceValue (Agent)&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.class&quot;
       }]
     },
     {
@@ -700,16 +697,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-4&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.grade&quot;
       }]
     },
     {
@@ -741,16 +738,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-code&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-3 / IAM-3&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;substance/product:\r\r.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rnegated/excluded substance/product:\r\r.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rpositive or negated/excluded condition/situation:\r\rObservation.code=ASSERTION; Observation.value&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -773,6 +770,10 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;(PID-3)&quot;
       },
@@ -804,12 +805,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot;
       }]
     },
     {
@@ -842,12 +843,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;effectiveTime.low&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.init&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;effectiveTime.low&quot;
       }]
     },
     {
@@ -868,16 +869,16 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-13&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=AUT].time&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
     },
     {
@@ -903,12 +904,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.author&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
       }]
     },
     {
@@ -936,16 +937,16 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.source&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-14 (if patient) / IAM-18 (if practitioner)&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=INF].role&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.source&quot;
       }]
     },
     {
@@ -1354,16 +1355,16 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-7&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;id&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.identifier&quot;
       }]
     },
     {
@@ -1392,12 +1393,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-clinical|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot;
       }]
     },
     {
@@ -1426,12 +1427,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-verification|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot;
       }]
     },
     {
@@ -1458,16 +1459,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-type|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-9&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;code&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.class&quot;
       }]
     },
     {
@@ -1496,16 +1497,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-2&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;value &lt; IntoleranceValue (Agent)&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.class&quot;
       }]
     },
     {
@@ -1534,16 +1535,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-4&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.grade&quot;
       }]
     },
     {
@@ -1569,16 +1570,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/allergyintolerance-code&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;AL1-3 / IAM-3&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;substance/product:\r\r.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rnegated/excluded substance/product:\r\r.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rpositive or negated/excluded condition/situation:\r\rObservation.code=ASSERTION; Observation.value&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -1595,6 +1596,10 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;(PID-3)&quot;
       },
@@ -1619,12 +1624,12 @@
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;]
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot;
       }]
     },
     {
@@ -1650,12 +1655,12 @@
         &quot;code&quot; : &quot;string&quot;
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;effectiveTime.low&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.init&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;effectiveTime.low&quot;
       }]
     },
     {
@@ -1669,16 +1674,16 @@
         &quot;code&quot; : &quot;dateTime&quot;
       }],
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-13&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=AUT].time&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
     },
     {
@@ -1697,12 +1702,12 @@
         &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;]
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.author&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
       }]
     },
     {
@@ -1724,16 +1729,16 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.source&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;IAM-14 (if patient) / IAM-18 (if practitioner)&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=INF].role&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.source&quot;
       }]
     },
     {
@@ -1968,7 +1973,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

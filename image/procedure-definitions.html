@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -114,11 +112,13 @@
 
 <table class="dict">
   <tr><td colspan="2" class="structure"><a name="Procedure"> </a><b>Procedure</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure</td></tr>
   <tr><td>Definition</td><td><p>An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="domainresource.html">DomainResource</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.identifier"> </a><b>Procedure.identifier</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.identifier</td></tr>
   <tr><td>Definition</td><td><p>Business identifiers assigned to this procedure by the performer or other systems which remain constant as the resource is updated and is propagated from server to server.</p>
 </td></tr>
   <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>)</td></tr>
@@ -130,12 +130,14 @@
   <tr><td>Comments</td><td><p>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and Person resource instances might share the same social insurance number.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.instantiatesCanonical"> </a><b>Procedure.instantiatesCanonical</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.instantiatesCanonical</td></tr>
   <tr><td>Definition</td><td><p>The URL pointing to a FHIR-defined protocol, guideline, order set or other definition that is adhered to in whole or in part by this Procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#canonical">canonical</a>(<a href="plandefinition.html">PlanDefinition</a> | <a href="activitydefinition.html">ActivityDefinition</a> | <a href="measure.html">Measure</a> | <a href="operationdefinition.html">OperationDefinition</a> | <a href="questionnaire.html">Questionnaire</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.instantiatesUri"> </a><b>Procedure.instantiatesUri</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.instantiatesUri</td></tr>
   <tr><td>Definition</td><td><p>The URL pointing to an externally maintained protocol, guideline, order set or other definition that is adhered to in whole or in part by this Procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -144,6 +146,7 @@
   <tr><td>Comments</td><td><p>This might be an HTML page, PDF, etc. or could just be a non-resolvable URI identifier.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.basedOn"> </a><b>Procedure.basedOn</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.basedOn</td></tr>
   <tr><td>Definition</td><td><p>A reference to a resource that contains details of the request for this procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -151,6 +154,7 @@
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>fulfills</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.partOf"> </a><b>Procedure.partOf</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.partOf</td></tr>
   <tr><td>Definition</td><td><p>A larger event of which this particular procedure is a component or step.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -160,6 +164,7 @@
   <tr><td>Comments</td><td><p>The MedicationAdministration resource has a partOf reference to Procedure, but this is not a circular reference.   For example, the anesthesia MedicationAdministration is part of the surgical Procedure (MedicationAdministration.partOf = Procedure).  For example, the procedure to insert the IV port for an IV medication administration is part of the medication administration (Procedure.partOf = MedicationAdministration).</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.status"> </a><b>Procedure.status</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.status</td></tr>
   <tr><td>Definition</td><td><p>A code specifying the state of the procedure. Generally, this will be the in-progress or completed state.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -171,6 +176,7 @@
 <p>This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.statusReason"> </a><b>Procedure.statusReason</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.statusReason</td></tr>
   <tr><td>Definition</td><td><p>Captures the reason for the current state of the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -181,6 +187,7 @@
   <tr><td>Comments</td><td><p>This is generally only used for "exception" statuses such as "not-done", "suspended" or "aborted". The reason for performing the event at all is captured in reasonCode, not here.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.category"> </a><b>Procedure.category</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.category</td></tr>
   <tr><td>Definition</td><td><p>A code that classifies the procedure for searching, sorting and display purposes (e.g. "Surgical Procedure").</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -188,6 +195,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.code"> </a><b>Procedure.code</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.code</td></tr>
   <tr><td>Definition</td><td><p>The specific procedure that is performed. Use text if the exact nature of the procedure cannot be coded (e.g. "Laparoscopic Appendectomy").</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -198,6 +206,7 @@
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>type</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.subject"> </a><b>Procedure.subject</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.subject</td></tr>
   <tr><td>Definition</td><td><p>The person, animal or group on which the procedure was performed.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -205,6 +214,7 @@
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>patient</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.encounter"> </a><b>Procedure.encounter</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.encounter</td></tr>
   <tr><td>Definition</td><td><p>The Encounter during which this Procedure was created or performed or to which the creation of this record is tightly associated.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -213,6 +223,7 @@
   <tr><td>Comments</td><td><p>This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.performed_x_"> </a><b>Procedure.performed[x]</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.performed[x]</td></tr>
   <tr><td>Definition</td><td><p>Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -222,12 +233,14 @@
   <tr><td>Comments</td><td><p>Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.recorder"> </a><b>Procedure.recorder</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.recorder</td></tr>
   <tr><td>Definition</td><td><p>Individual who recorded the record and takes responsibility for its content.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="patient.html">Patient</a> | <a href="relatedperson.html">RelatedPerson</a> | <a href="practitioner.html">Practitioner</a> | <a href="practitionerrole.html">PractitionerRole</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.reported_x_"> </a><b>Procedure.reported[x]</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.reported[x]</td></tr>
   <tr><td>Definition</td><td><p>Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -238,11 +251,13 @@
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>informer</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.performer"> </a><b>Procedure.performer</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.performer</td></tr>
   <tr><td>Definition</td><td><p>Limited to "real" people rather than equipment.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.performer.function"> </a><b>Procedure.performer.function</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.performer.function</td></tr>
   <tr><td>Definition</td><td><p>Distinguishes the type of involvement of the performer in the procedure. For example, surgeon, anaesthetist, endoscopist.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -252,6 +267,7 @@
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.performer.actor"> </a><b>Procedure.performer.actor</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.performer.actor</td></tr>
   <tr><td>Definition</td><td><p>The practitioner who was involved in the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -260,6 +276,7 @@
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.performer.onBehalfOf"> </a><b>Procedure.performer.onBehalfOf</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.performer.onBehalfOf</td></tr>
   <tr><td>Definition</td><td><p>The organization the device or practitioner was acting on behalf of.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -267,6 +284,7 @@
   <tr><td>Requirements</td><td><p>Practitioners and Devices can be associated with multiple organizations.  This element indicates which organization they were acting on behalf of when performing the action.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.location"> </a><b>Procedure.location</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.location</td></tr>
   <tr><td>Definition</td><td><p>The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -275,6 +293,7 @@
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.reasonCode"> </a><b>Procedure.reasonCode</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.reasonCode</td></tr>
   <tr><td>Definition</td><td><p>The coded reason why the procedure was performed. This may be a coded entity of some type, or may simply be present as text.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -284,6 +303,7 @@
   <tr><td>Comments</td><td><p>Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Procedure.reasonReference when referencing a resource, which allows more information to be conveyed, such as onset date. Procedure.reasonCode and Procedure.reasonReference are not meant to be duplicative.  For a single reason, either Procedure.reasonCode or Procedure.reasonReference can be used.  Procedure.reasonCode may be a summary code, or Procedure.reasonReference may be used to reference a very precise definition of the reason using Condition | Observation | Procedure | DiagnosticReport | DocumentReference.  Both Procedure.reasonCode and Procedure.reasonReference can be used if they are describing different reasons for the procedure.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.reasonReference"> </a><b>Procedure.reasonReference</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.reasonReference</td></tr>
   <tr><td>Definition</td><td><p>The justification of why the procedure was performed.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -293,6 +313,7 @@
 Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Procedure.reasonReference when referencing a resource, which allows more information to be conveyed, such as onset date. Procedure.reasonCode and Procedure.reasonReference are not meant to be duplicative.  For a single reason, either Procedure.reasonCode or Procedure.reasonReference can be used.  Procedure.reasonCode may be a summary code, or Procedure.reasonReference may be used to reference a very precise definition of the reason using Condition | Observation | Procedure | DiagnosticReport | DocumentReference.  Both Procedure.reasonCode and Procedure.reasonReference can be used if they are describing different reasons for the procedure.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.bodySite"> </a><b>Procedure.bodySite</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.bodySite</td></tr>
   <tr><td>Definition</td><td><p>Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -302,6 +323,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Comments</td><td><p>If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension <a href="extension-procedure-targetbodystructure.html">procedure-targetbodystructure</a>.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.outcome"> </a><b>Procedure.outcome</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.outcome</td></tr>
   <tr><td>Definition</td><td><p>The outcome of the procedure - did it resolve the reasons for the procedure being performed?</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -311,6 +333,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Comments</td><td><p>If outcome contains narrative text only, it can be captured using the CodeableConcept.text.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.report"> </a><b>Procedure.report</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.report</td></tr>
   <tr><td>Definition</td><td><p>This could be a histology result, pathology report, surgical report, etc.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -318,6 +341,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Comments</td><td><p>There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.complication"> </a><b>Procedure.complication</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.complication</td></tr>
   <tr><td>Definition</td><td><p>Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any 'post procedure' issues.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -326,6 +350,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Comments</td><td><p>If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.complicationDetail"> </a><b>Procedure.complicationDetail</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.complicationDetail</td></tr>
   <tr><td>Definition</td><td><p>Any complications that occurred during the procedure, or in the immediate post-performance period.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -333,32 +358,38 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Requirements</td><td><p>This is used to document a condition that is a result of the procedure, not the condition that was the reason for the procedure.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.followUp"> </a><b>Procedure.followUp</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.followUp</td></tr>
   <tr><td>Definition</td><td><p>If the procedure required specific follow up - e.g. removal of sutures. The follow up may be represented as a simple note or could potentially be more complex, in which case the CarePlan resource can be used.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-procedure-followup.html">Procedure Follow up Codes (SNOMED CT)</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.note"> </a><b>Procedure.note</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.note</td></tr>
   <tr><td>Definition</td><td><p>Any other notes and comments about the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.focalDevice"> </a><b>Procedure.focalDevice</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.focalDevice</td></tr>
   <tr><td>Definition</td><td><p>A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.focalDevice.action"> </a><b>Procedure.focalDevice.action</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.focalDevice.action</td></tr>
   <tr><td>Definition</td><td><p>The kind of change that happened to the device during the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-device-action.html">Procedure Device Action Codes</a> (<a href="terminologies.html#preferred">Preferred</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.focalDevice.manipulated"> </a><b>Procedure.focalDevice.manipulated</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.focalDevice.manipulated</td></tr>
   <tr><td>Definition</td><td><p>The device that was manipulated (changed) during the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="device.html">Device</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.usedReference"> </a><b>Procedure.usedReference</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.usedReference</td></tr>
   <tr><td>Definition</td><td><p>Identifies medications, devices and any other substance used as part of the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -368,6 +399,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
   <tr><td>Comments</td><td><p>For devices actually implanted or removed, use Procedure.device.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Procedure.usedCode"> </a><b>Procedure.usedCode</b></td></tr>
+  <tr><td>Element Id</td><td>Procedure.usedCode</td></tr>
   <tr><td>Definition</td><td><p>Identifies coded items that were used as part of the procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -393,7 +425,7 @@ Use Procedure.reasonCode when a code sufficiently describes the reason.  Use Pro
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -124,27 +122,26 @@
 
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;CareTeam&quot;];
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+  ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
-     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
-     fhir:Extension.value [ fhir:value &quot;Clinical.Care Provision&quot; ]
-  ], [
-     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;2&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 4;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;pc&quot; ]
   ];
@@ -152,7 +149,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;CareTeam&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-20T09:53:45-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Patient Care)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -652,6 +649,10 @@
        fhir:ElementDefinition.mapping [
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
      ], [
@@ -933,16 +934,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;REL.5 (or PRT-5 : ( PRV-4 {provider participations} ) / PRT-5 : ( PRV-4  {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8?)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.role&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
        ]
      ], [
        fhir:index 22;
@@ -1246,6 +1247,10 @@
        fhir:ElementDefinition.mapping [
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
      ], [
@@ -1391,16 +1396,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;REL.5 (or PRT-5 : ( PRV-4 {provider participations} ) / PRT-5 : ( PRV-4  {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8?)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.role&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
        ]
      ], [
        fhir:index 11;
@@ -1553,7 +1558,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

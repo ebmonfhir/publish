@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="AllergyIntolerance"/>
+  <meta>
+    <lastUpdated value="2019-03-01T07:26:01.444-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -606,9 +609,6 @@
       </table>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-category">
-    <valueString value="Clinical.Summary"/>
-  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="trial-use"/>
   </extension>
@@ -625,7 +625,7 @@
   <version value="4.0.0"/>
   <name value="AllergyIntolerance"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <contact>
     <telecom>
@@ -648,14 +648,14 @@
     <name value="RIM Mapping"/>
   </mapping>
   <mapping>
-    <identity value="v2"/>
-    <uri value="http://hl7.org/v2"/>
-    <name value="HL7 v2 Mapping"/>
-  </mapping>
-  <mapping>
     <identity value="w5"/>
     <uri value="http://hl7.org/fhir/fivews"/>
     <name value="FiveWs Pattern Mapping"/>
+  </mapping>
+  <mapping>
+    <identity value="v2"/>
+    <uri value="http://hl7.org/v2"/>
+    <name value="HL7 v2 Mapping"/>
   </mapping>
   <kind value="resource"/>
   <abstract value="false"/>
@@ -955,16 +955,16 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-7"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.clinicalStatus">
@@ -996,12 +996,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-clinical|4.0.0"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;clinicalStatus&quot;, moodCode=EVN].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;clinicalStatus&quot;, moodCode=EVN].value"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.verificationStatus">
@@ -1033,12 +1033,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-verification|4.0.0"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;verificationStatus&quot;, moodCode=EVN].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;verificationStatus&quot;, moodCode=EVN].value"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.type">
@@ -1069,16 +1069,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-type|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-9"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="code"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.category">
@@ -1111,16 +1111,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-2"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="value &lt; IntoleranceValue (Agent)"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.criticality">
@@ -1153,16 +1153,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.grade"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.grade"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.code">
@@ -1192,16 +1192,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-code"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-3 / IAM-3"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="substance/product:&#xD;&#xD;.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]&#xD;&#xD;negated/excluded substance/product:&#xD;&#xD;.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]&#xD;&#xD;positive or negated/excluded condition/situation:&#xD;&#xD;Observation.code=ASSERTION; Observation.value"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.patient">
@@ -1222,6 +1222,10 @@
       </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
       <mapping>
         <identity value="v2"/>
         <map value="(PID-3)"/>
@@ -1253,12 +1257,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.onset[x]">
@@ -1290,12 +1294,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value="effectiveTime.low"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.init"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="effectiveTime.low"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.recordedDate">
@@ -1315,16 +1319,16 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-13"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.recorded"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.recorder">
@@ -1349,12 +1353,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.author"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].role"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.asserter">
@@ -1381,16 +1385,16 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-14 (if patient) / IAM-18 (if practitioner)"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=INF].role"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.source"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.lastOccurrence">
@@ -1780,16 +1784,16 @@
       </type>
       <isSummary value="true"/>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-7"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.clinicalStatus">
@@ -1816,12 +1820,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-clinical|4.0.0"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;clinicalStatus&quot;, moodCode=EVN].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;clinicalStatus&quot;, moodCode=EVN].value"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.verificationStatus">
@@ -1848,12 +1852,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-verification|4.0.0"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;verificationStatus&quot;, moodCode=EVN].value"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=&quot;verificationStatus&quot;, moodCode=EVN].value"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.type">
@@ -1878,16 +1882,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-type|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-9"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="code"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.category">
@@ -1914,16 +1918,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-2"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="value &lt; IntoleranceValue (Agent)"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.criticality">
@@ -1950,16 +1954,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.grade"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.grade"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.code">
@@ -1983,16 +1987,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/allergyintolerance-code"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="AL1-3 / IAM-3"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value="substance/product:&#xD;&#xD;.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]&#xD;&#xD;negated/excluded substance/product:&#xD;&#xD;.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]&#xD;&#xD;positive or negated/excluded condition/situation:&#xD;&#xD;Observation.code=ASSERTION; Observation.value"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.patient">
@@ -2007,6 +2011,10 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient"/>
       </type>
       <isSummary value="true"/>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
       <mapping>
         <identity value="v2"/>
         <map value="(PID-3)"/>
@@ -2031,12 +2039,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.onset[x]">
@@ -2061,12 +2069,12 @@
         <code value="string"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value="effectiveTime.low"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.init"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="effectiveTime.low"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.recordedDate">
@@ -2079,16 +2087,16 @@
         <code value="dateTime"/>
       </type>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.recorded"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-13"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=AUT].time"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.recorded"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.recorder">
@@ -2106,12 +2114,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.author"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].role"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.asserter">
@@ -2132,16 +2140,16 @@
       </type>
       <isSummary value="true"/>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="IAM-14 (if patient) / IAM-18 (if practitioner)"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=INF].role"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.source"/>
       </mapping>
     </element>
     <element id="AllergyIntolerance.lastOccurrence">

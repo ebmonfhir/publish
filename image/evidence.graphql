@@ -35,19 +35,13 @@ type EvidenceExposureBackground {
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  population: EvidenceExposureBackgroundPopulation!
+  population: Reference!
+  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   exposureVariant: [EvidenceExposureBackgroundExposureVariant]
   comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
 }
 
-type EvidenceExposureBackgroundPopulation {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  populationSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-}
-
-type EvidenceExposureBackgroundPopulationPopulationSampleSize {
+type EvidenceExposureBackgroundPopulationSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
@@ -65,7 +59,7 @@ type EvidenceExposureBackgroundExposureVariant {
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
   covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
   note: [Annotation]
@@ -88,7 +82,7 @@ type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisti
   description: String  _description: ElementBase
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
   note: [Annotation]
@@ -174,7 +168,7 @@ type EvidenceExposureBackgroundComparativeStatistic {
   measuredVariable: Reference!
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
   note: [Annotation]
@@ -215,19 +209,13 @@ input EvidenceExposureBackground {
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  population: EvidenceExposureBackgroundPopulation!
+  population: Reference!
+  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   exposureVariant: [EvidenceExposureBackgroundExposureVariant]
   comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
 }
 
-input EvidenceExposureBackgroundPopulation {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  populationSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-}
-
-input EvidenceExposureBackgroundPopulationPopulationSampleSize {
+input EvidenceExposureBackgroundPopulationSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
@@ -245,7 +233,7 @@ input EvidenceExposureBackgroundExposureVariant {
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
   covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
   note: [Annotation]
@@ -268,7 +256,7 @@ input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatist
   description: String  _description: ElementBase
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
   note: [Annotation]
@@ -354,7 +342,7 @@ input EvidenceExposureBackgroundComparativeStatistic {
   measuredVariable: Reference!
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
   note: [Annotation]

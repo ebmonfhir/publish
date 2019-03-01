@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -126,8 +124,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for Procedure.performed[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:7688c256-3dd5-4733-afd9-1ad99c350e6c&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-04T09:29:05-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:cf43e0e5-f9d2-4a60-8df2-e59a5ad4ab9e&quot;,
+      &quot;timestamp&quot; : &quot;2019-03-01T07:28:58-06:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;dateTime&quot;,
@@ -154,13 +152,54 @@
         &quot;display&quot; : &quot;Range&quot;
       }]
     }
+  },
+  {
+    &quot;resourceType&quot; : &quot;ValueSet&quot;,
+    &quot;id&quot; : &quot;vs3&quot;,
+    &quot;name&quot; : &quot;Type options for Procedure.reported[x]&quot;,
+    &quot;status&quot; : &quot;active&quot;,
+    &quot;description&quot; : &quot;Type options for Procedure.reported[x]&quot;,
+    &quot;expansion&quot; : {
+      &quot;identifier&quot; : &quot;urn:uuid:de188db7-6f6d-4c24-8a2f-7582959012a0&quot;,
+      &quot;timestamp&quot; : &quot;2019-03-01T07:28:58-06:00&quot;,
+      &quot;contains&quot; : [{
+        &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
+        &quot;code&quot; : &quot;boolean&quot;,
+        &quot;display&quot; : &quot;boolean&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
+        &quot;code&quot; : &quot;Patient&quot;,
+        &quot;display&quot; : &quot;Patient&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
+        &quot;code&quot; : &quot;RelatedPerson&quot;,
+        &quot;display&quot; : &quot;RelatedPerson&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
+        &quot;code&quot; : &quot;Practitioner&quot;,
+        &quot;display&quot; : &quot;Practitioner&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
+        &quot;code&quot; : &quot;PractitionerRole&quot;,
+        &quot;display&quot; : &quot;PractitionerRole&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
+        &quot;code&quot; : &quot;Organization&quot;,
+        &quot;display&quot; : &quot;Organization&quot;
+      }]
+    }
   }],
   &quot;identifier&quot; : [{
     &quot;system&quot; : &quot;urn:ietf:rfc:3986&quot;
   }],
   &quot;version&quot; : &quot;4.0.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-04T09:26:06-06:00&quot;,
+  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;Procedure&quot;,
@@ -1046,12 +1085,9 @@
       &quot;extension&quot; : [{
         &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;,
         &quot;valueInteger&quot; : 1
-      },
-      {
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
-        &quot;valueString&quot; : &quot;Reference&quot;
       }],
-      &quot;linkId&quot; : &quot;Procedure.asserter&quot;,
+      &quot;linkId&quot; : &quot;Procedure.reported[x]&quot;,
+      &quot;text&quot; : &quot;Reported rather than primary record&quot;,
       &quot;type&quot; : &quot;group&quot;,
       &quot;required&quot; : false,
       &quot;repeats&quot; : true,
@@ -1066,23 +1102,52 @@
             }]
           }
         }],
-        &quot;text&quot; : &quot;Individual who is making the procedure statement.&quot;,
+        &quot;text&quot; : &quot;Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.&quot;,
         &quot;type&quot; : &quot;display&quot;
       },
       {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-          &quot;valueCode&quot; : &quot;Patient, RelatedPerson, Practitioner, PractitionerRole&quot;
+        &quot;linkId&quot; : &quot;Procedure.reported[x]._type&quot;,
+        &quot;text&quot; : &quot;type&quot;,
+        &quot;type&quot; : &quot;choice&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false,
+        &quot;answerValueSet&quot; : &quot;#vs3&quot;,
+        &quot;item&quot; : [{
+          &quot;extension&quot; : [{
+            &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+            &quot;valueString&quot; : &quot;boolean&quot;
+          }],
+          &quot;linkId&quot; : &quot;Procedure.reported[x]._null&quot;,
+          &quot;type&quot; : &quot;group&quot;,
+          &quot;item&quot; : [{
+            &quot;linkId&quot; : &quot;Procedure.reported[x]._null.value&quot;,
+            &quot;type&quot; : &quot;boolean&quot;,
+            &quot;required&quot; : false,
+            &quot;repeats&quot; : false
+          }]
         },
         {
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
-          &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
-        }],
-        &quot;linkId&quot; : &quot;Procedure.asserter.value&quot;,
-        &quot;text&quot; : &quot;Person who asserts this procedure&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;required&quot; : false,
-        &quot;repeats&quot; : false
+          &quot;extension&quot; : [{
+            &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+            &quot;valueString&quot; : &quot;Reference&quot;
+          }],
+          &quot;linkId&quot; : &quot;Procedure.reported[x]._null&quot;,
+          &quot;type&quot; : &quot;group&quot;,
+          &quot;item&quot; : [{
+            &quot;extension&quot; : [{
+              &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
+              &quot;valueCode&quot; : &quot;Patient, RelatedPerson, Practitioner, PractitionerRole, Organization&quot;
+            },
+            {
+              &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
+              &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
+            }],
+            &quot;linkId&quot; : &quot;Procedure.reported[x]._null.value&quot;,
+            &quot;type&quot; : &quot;reference&quot;,
+            &quot;required&quot; : false,
+            &quot;repeats&quot; : false
+          }]
+        }]
       }]
     },
     {
@@ -1992,7 +2057,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:29-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

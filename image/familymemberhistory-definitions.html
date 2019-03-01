@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -114,6 +112,7 @@
 
 <table class="dict">
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory"> </a><b>FamilyMemberHistory</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory</td></tr>
   <tr><td>Definition</td><td><p>Significant health conditions for a person related to the patient relevant in the context of care for the patient.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -123,6 +122,7 @@
 <tr><td width="60px"><b title="Formal Invariant Identifier">fhs-1</b></td><td><a style="color: Maroon" href="conformance-rules.html#rule">Rule</a> </td><td>Can have age[x] or born[x], but not both</td><td><span style="font-family: Courier New, monospace">age.empty() or born.empty()</span></td></tr><tr><td width="60px"><b title="Formal Invariant Identifier">fhs-2</b></td><td><a style="color: Maroon" href="conformance-rules.html#rule">Rule</a> </td><td>Can only have estimatedAge if age[x] is present</td><td><span style="font-family: Courier New, monospace">age.exists() or estimatedAge.empty()</span></td></tr></table>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.identifier"> </a><b>FamilyMemberHistory.identifier</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.identifier</td></tr>
   <tr><td>Definition</td><td><p>Business identifiers assigned to this family member history by the performer or other systems which remain constant as the resource is updated and propagates from server to server.</p>
 </td></tr>
   <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>)</td></tr>
@@ -134,12 +134,14 @@
   <tr><td>Comments</td><td><p>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.instantiatesCanonical"> </a><b>FamilyMemberHistory.instantiatesCanonical</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.instantiatesCanonical</td></tr>
   <tr><td>Definition</td><td><p>The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this FamilyMemberHistory.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#canonical">canonical</a>(<a href="plandefinition.html">PlanDefinition</a> | <a href="questionnaire.html">Questionnaire</a> | <a href="activitydefinition.html">ActivityDefinition</a> | <a href="measure.html">Measure</a> | <a href="operationdefinition.html">OperationDefinition</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.instantiatesUri"> </a><b>FamilyMemberHistory.instantiatesUri</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.instantiatesUri</td></tr>
   <tr><td>Definition</td><td><p>The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this FamilyMemberHistory.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -148,6 +150,7 @@
   <tr><td>Comments</td><td><p>This might be an HTML page, PDF, etc. or could just be a non-resolvable URI identifier.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.status"> </a><b>FamilyMemberHistory.status</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.status</td></tr>
   <tr><td>Definition</td><td><p>A code specifying the status of the record of the family history of a specific family member.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -158,6 +161,7 @@
   <tr><td>Comments</td><td><p>This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.dataAbsentReason"> </a><b>FamilyMemberHistory.dataAbsentReason</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.dataAbsentReason</td></tr>
   <tr><td>Definition</td><td><p>Describes why the family member's history is not available.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -167,6 +171,7 @@
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.patient"> </a><b>FamilyMemberHistory.patient</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.patient</td></tr>
   <tr><td>Definition</td><td><p>The person who this history concerns.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -174,6 +179,7 @@
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Proband</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.date"> </a><b>FamilyMemberHistory.date</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.date</td></tr>
   <tr><td>Definition</td><td><p>The date (and possibly time) when the family member history was recorded or last updated.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -184,6 +190,7 @@
   <tr><td>Comments</td><td><p>This should be captured even if the same as the date on the List aggregating the full family history.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.name"> </a><b>FamilyMemberHistory.name</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.name</td></tr>
   <tr><td>Definition</td><td><p>This will either be a name or a description; e.g. "Aunt Susan", "my cousin with the red hair".</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -192,6 +199,7 @@
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.relationship"> </a><b>FamilyMemberHistory.relationship</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.relationship</td></tr>
   <tr><td>Definition</td><td><p>The type of relationship this person has to the patient (father, mother, brother etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -199,6 +207,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.sex"> </a><b>FamilyMemberHistory.sex</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.sex</td></tr>
   <tr><td>Definition</td><td><p>The birth sex of the family member.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -210,6 +219,7 @@
   <tr><td>Comments</td><td><p>This element should ideally reflect whether the individual is genetically male or female.  However, as reported information based on the knowledge of the patient or reporting friend/relative, there may be situations where the reported sex might not be totally accurate.  E.g. 'Aunt Sue' might be XY rather than XX.  Questions soliciting this information should be phrased to encourage capture of genetic sex where known.  However, systems performing analysis should also allow for the possibility of imprecision with this element.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.born_x_"> </a><b>FamilyMemberHistory.born[x]</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.born[x]</td></tr>
   <tr><td>Definition</td><td><p>The actual or approximate date of birth of the relative.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -222,6 +232,7 @@
 <tr><td width="60px"><b title="Formal Invariant Identifier">fhs-1</b></td><td><a style="color: Maroon" href="conformance-rules.html#rule">Rule</a> </td><td>Can have age[x] or born[x], but not both</td><td><span style="font-family: Courier New, monospace">age.empty() or born.empty()</span></td></tr></table>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.age_x_"> </a><b>FamilyMemberHistory.age[x]</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.age[x]</td></tr>
   <tr><td>Definition</td><td><p>The age of the relative at the time the family member history is recorded.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -237,6 +248,7 @@
 <tr><td width="60px"><b title="Formal Invariant Identifier">fhs-1</b></td><td><a style="color: Maroon" href="conformance-rules.html#rule">Rule</a> </td><td>Can have age[x] or born[x], but not both</td><td><span style="font-family: Courier New, monospace">age.empty() or born.empty()</span></td></tr></table>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.estimatedAge"> </a><b>FamilyMemberHistory.estimatedAge</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.estimatedAge</td></tr>
   <tr><td>Definition</td><td><p>If true, indicates that the age value specified is an estimated value.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -252,6 +264,7 @@
 <tr><td width="60px"><b title="Formal Invariant Identifier">fhs-2</b></td><td><a style="color: Maroon" href="conformance-rules.html#rule">Rule</a> </td><td>Can only have estimatedAge if age[x] is present</td><td><span style="font-family: Courier New, monospace">age.exists() or estimatedAge.empty()</span></td></tr></table>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.deceased_x_"> </a><b>FamilyMemberHistory.deceased[x]</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.deceased[x]</td></tr>
   <tr><td>Definition</td><td><p>Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -259,6 +272,7 @@
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.reasonCode"> </a><b>FamilyMemberHistory.reasonCode</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.reasonCode</td></tr>
   <tr><td>Definition</td><td><p>Describes why the family member history occurred in coded or textual form.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -268,38 +282,45 @@
   <tr><td>Comments</td><td><p>Textual reasons can be captured using reasonCode.text.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.reasonReference"> </a><b>FamilyMemberHistory.reasonReference</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.reasonReference</td></tr>
   <tr><td>Definition</td><td><p>Indicates a Condition, Observation, AllergyIntolerance, or QuestionnaireResponse that justifies this family member history event.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="condition.html">Condition</a> | <a href="observation.html">Observation</a> | <a href="allergyintolerance.html">AllergyIntolerance</a> | <a href="questionnaireresponse.html">QuestionnaireResponse</a> | <a href="diagnosticreport.html">DiagnosticReport</a> | <a href="documentreference.html">DocumentReference</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.note"> </a><b>FamilyMemberHistory.note</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.note</td></tr>
   <tr><td>Definition</td><td><p>This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition"> </a><b>FamilyMemberHistory.condition</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition</td></tr>
   <tr><td>Definition</td><td><p>The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition.code"> </a><b>FamilyMemberHistory.condition.code</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition.code</td></tr>
   <tr><td>Definition</td><td><p>The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-condition-code.html">Condition/Problem/Diagnosis Codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition.outcome"> </a><b>FamilyMemberHistory.condition.outcome</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition.outcome</td></tr>
   <tr><td>Definition</td><td><p>Indicates what happened following the condition.  If the condition resulted in death, deceased date is captured on the relation.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-condition-outcome.html">Condition Outcome Codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition.contributedToDeath"> </a><b>FamilyMemberHistory.condition.contributedToDeath</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition.contributedToDeath</td></tr>
   <tr><td>Definition</td><td><p>This condition contributed to the cause of death of the related person. If contributedToDeath is not populated, then it is unknown.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#boolean">boolean</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition.onset_x_"> </a><b>FamilyMemberHistory.condition.onset[x]</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition.onset[x]</td></tr>
   <tr><td>Definition</td><td><p>Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -308,38 +329,45 @@
   <tr><td>Requirements</td><td><p>Age of onset of a condition in relatives is predictive of risk for the patient.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.condition.note"> </a><b>FamilyMemberHistory.condition.note</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.condition.note</td></tr>
   <tr><td>Definition</td><td><p>An area where general notes can be placed about this specific condition.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure"> </a><b>FamilyMemberHistory.procedure</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure</td></tr>
   <tr><td>Definition</td><td><p>The significant Procedures (or procedure) that the family member had. This is a repeating section to allow a system to represent more than one procedure per resource, though there is nothing stopping multiple resources - one per procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure.code"> </a><b>FamilyMemberHistory.procedure.code</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure.code</td></tr>
   <tr><td>Definition</td><td><p>The actual procedure specified. Could be a coded procedure or a less specific string depending on how much is known about the procedure and the capabilities of the creating system.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-procedure-code.html">Procedure Codes (SNOMED CT)</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure.outcome"> </a><b>FamilyMemberHistory.procedure.outcome</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure.outcome</td></tr>
   <tr><td>Definition</td><td><p>Indicates what happened following the procedure. If the procedure resulted in death, deceased date is captured on the relation.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-clinical-findings.html">SNOMED CT Clinical Findings</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure.contributedToDeath"> </a><b>FamilyMemberHistory.procedure.contributedToDeath</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure.contributedToDeath</td></tr>
   <tr><td>Definition</td><td><p>This procedure contributed to the cause of death of the related person. If contributedToDeath is not populated, then it is unknown.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#boolean">boolean</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure.performed_x_"> </a><b>FamilyMemberHistory.procedure.performed[x]</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure.performed[x]</td></tr>
   <tr><td>Definition</td><td><p>Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Age">Age</a>|<a href="datatypes.html#Range">Range</a>|<a href="datatypes.html#Period">Period</a>|<a href="datatypes.html#string">string</a>|<a href="datatypes.html#dateTime">dateTime</a></td></tr>
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td colspan="2" class="structure"><a name="FamilyMemberHistory.procedure.note"> </a><b>FamilyMemberHistory.procedure.note</b></td></tr>
+  <tr><td>Element Id</td><td>FamilyMemberHistory.procedure.note</td></tr>
   <tr><td>Definition</td><td><p>An area where general notes can be placed about this specific procedure.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -362,7 +390,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

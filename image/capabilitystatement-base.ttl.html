@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -132,7 +130,7 @@
   fhir:CapabilityStatement.name [ fhir:value &quot;Base FHIR Capability Statement (Full)&quot;];
   fhir:CapabilityStatement.status [ fhir:value &quot;draft&quot;];
   fhir:CapabilityStatement.experimental [ fhir:value &quot;true&quot;];
-  fhir:CapabilityStatement.date [ fhir:value &quot;2019-02-20T14:11:18-06:00&quot;];
+  fhir:CapabilityStatement.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
   fhir:CapabilityStatement.publisher [ fhir:value &quot;FHIR Project Team&quot;];
   fhir:CapabilityStatement.contact [
      fhir:index 0;
@@ -228,6 +226,16 @@
          fhir:index 1
        ], [
          fhir:value &quot;Account.patient&quot;;
+         fhir:index 2
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.account&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Encounter.account&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Invoice.account&quot;;
          fhir:index 2
        ];
        fhir:CapabilityStatement.searchParam [
@@ -341,6 +349,34 @@
        ], [
          fhir:value &quot;ActivityDefinition.depends-on&quot;;
          fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.instantiates-canonical&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Communication.instantiates-canonical&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;DeviceRequest.instantiates-canonical&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;FamilyMemberHistory.instantiates-canonical&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;MessageDefinition.parent&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;NutritionOrder.instantiates-canonical&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;PlanDefinition.definition&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Procedure.instantiates-canonical&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;ServiceRequest.instantiates-canonical&quot;;
+         fhir:index 8
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -671,6 +707,10 @@
          fhir:value &quot;AllergyIntolerance.patient&quot;;
          fhir:index 2
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ClinicalImpression.problem&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;severity&quot; ];
@@ -840,6 +880,19 @@
          fhir:value &quot;Appointment.location&quot;;
          fhir:index 7
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AppointmentResponse.appointment&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Encounter.appointment&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ImagingStudy.basedon&quot;;
+         fhir:index 3
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -1005,6 +1058,10 @@
        ], [
          fhir:value &quot;AppointmentResponse.location&quot;;
          fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ImagingStudy.basedon&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -1847,6 +1904,37 @@
          fhir:value &quot;CarePlan.patient&quot;;
          fhir:index 11
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.replaces&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.part-of&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;CarePlan.based-on&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;DiagnosticReport.based-on&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;ImagingStudy.basedon&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Media.based-on&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Procedure.based-on&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;QuestionnaireResponse.based-on&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;ServiceRequest.based-on&quot;;
+         fhir:index 9
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -2027,6 +2115,55 @@
        ], [
          fhir:value &quot;CareTeam.participant&quot;;
          fhir:index 3
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.care-team&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;DiagnosticReport.performer&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;DiagnosticReport.results-interpreter&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 15
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -2524,6 +2661,13 @@
          fhir:value &quot;Claim.item-udi&quot;;
          fhir:index 11
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ClaimResponse.request&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.claim&quot;;
+         fhir:index 1
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;care-team&quot; ];
@@ -2687,6 +2831,10 @@
          fhir:value &quot;ClaimResponse.requestor&quot;;
          fhir:index 3
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;DeviceRequest.insurance&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -2826,6 +2974,10 @@
          fhir:value &quot;ClinicalImpression.finding-ref&quot;;
          fhir:index 7
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ClinicalImpression.previous&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -2947,6 +3099,10 @@
          fhir:index 1
        ];
        fhir:CapabilityStatement.searchInclude [
+         fhir:value &quot;CodeSystem.supplements&quot;;
+         fhir:index 0
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
          fhir:value &quot;CodeSystem.supplements&quot;;
          fhir:index 0
        ];
@@ -3306,6 +3462,13 @@
          fhir:value &quot;CommunicationRequest.recipient&quot;;
          fhir:index 7
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CommunicationRequest.replaces&quot;;
+         fhir:index 1
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;requester&quot; ];
@@ -3604,6 +3767,10 @@
          fhir:value &quot;Composition.patient&quot;;
          fhir:index 6
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Composition.related-ref&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -3775,6 +3942,10 @@
        ], [
          fhir:value &quot;ConceptMap.target&quot;;
          fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ConceptMap.other&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -3996,6 +4167,40 @@
          fhir:value &quot;Condition.patient&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.resultingcondition&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Appointment.reason-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;CarePlan.condition&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ClinicalImpression.problem&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;ClinicalImpression.finding-ref&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Encounter.diagnosis&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Encounter.reason-reference&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;EpisodeOfCare.condition&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Immunization.reason-reference&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Procedure.reason-reference&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;RiskAssessment.condition&quot;;
+         fhir:index 10
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;severity&quot; ];
@@ -4189,6 +4394,10 @@
          fhir:value &quot;Consent.consentor&quot;;
          fhir:index 5
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Consent.source-reference&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -4343,6 +4552,10 @@
          fhir:value &quot;Contract.signer&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Consent.source-reference&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -4466,6 +4679,13 @@
        ], [
          fhir:value &quot;Coverage.policy-holder&quot;;
          fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;DeviceRequest.insurance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.coverage&quot;;
+         fhir:index 1
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -4593,6 +4813,10 @@
        ], [
          fhir:value &quot;CoverageEligibilityRequest.facility&quot;;
          fhir:index 3
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CoverageEligibilityResponse.request&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -4903,6 +5127,274 @@
          fhir:value &quot;Device.location&quot;;
          fhir:index 2
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;Claim.detail-udi&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;Claim.procedure-udi&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;Claim.subdetail-udi&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;Claim.item-udi&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;DetectedIssue.author&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;DeviceMetric.parent&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;DeviceMetric.source&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;DeviceRequest.requester&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;DeviceRequest.subject&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;DeviceRequest.patient&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;DeviceRequest.device&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;DeviceUseStatement.device&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;DiagnosticReport.subject&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;DiagnosticReport.patient&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;DocumentManifest.subject&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;DocumentManifest.patient&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;DocumentReference.subject&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;DocumentReference.patient&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.detail-udi&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.procedure-udi&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.subdetail-udi&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.item-udi&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;Flag.author&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;ImagingStudy.subject&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;ImagingStudy.patient&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;List.subject&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;List.patient&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;List.source&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;Media.device&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;MedicationAdministration.performer&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;MedicationAdministration.device&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;MessageHeader.target&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;Observation.subject&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;Observation.patient&quot;;
+         fhir:index 71
+       ], [
+         fhir:value &quot;Observation.device&quot;;
+         fhir:index 72
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 73
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 74
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 75
+       ], [
+         fhir:value &quot;RequestGroup.author&quot;;
+         fhir:index 76
+       ], [
+         fhir:value &quot;RequestGroup.participant&quot;;
+         fhir:index 77
+       ], [
+         fhir:value &quot;RiskAssessment.performer&quot;;
+         fhir:index 78
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 79
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 80
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 81
+       ], [
+         fhir:value &quot;ServiceRequest.subject&quot;;
+         fhir:index 82
+       ], [
+         fhir:value &quot;ServiceRequest.patient&quot;;
+         fhir:index 83
+       ], [
+         fhir:value &quot;Specimen.subject&quot;;
+         fhir:index 84
+       ], [
+         fhir:value &quot;Specimen.patient&quot;;
+         fhir:index 85
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 86
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 87
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 88
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;udi-di&quot; ];
@@ -5027,6 +5519,10 @@
          fhir:value &quot;DeviceDefinition.parent&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;DeviceDefinition.parent&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;parent&quot; ];
@@ -5098,6 +5594,13 @@
          fhir:index 0
        ], [
          fhir:value &quot;DeviceMetric.source&quot;;
+         fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Media.device&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Observation.device&quot;;
          fhir:index 1
        ];
        fhir:CapabilityStatement.searchParam [
@@ -5208,6 +5711,13 @@
        ], [
          fhir:value &quot;DeviceRequest.device&quot;;
          fhir:index 9
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 1
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -5474,6 +5984,16 @@
        ], [
          fhir:value &quot;DiagnosticReport.results-interpreter&quot;;
          fhir:index 8
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Immunization.reason-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Procedure.reason-reference&quot;;
+         fhir:index 2
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -5788,6 +6308,22 @@
        ], [
          fhir:value &quot;DocumentReference.relatesto&quot;;
          fhir:index 7
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Consent.source-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;DocumentReference.relatesto&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;MedicationKnowledge.monograph&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Procedure.reason-reference&quot;;
+         fhir:index 4
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -6171,6 +6707,100 @@
          fhir:value &quot;Encounter.account&quot;;
          fhir:index 12
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.encounter&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CareTeam.encounter&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ChargeItem.context&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Claim.encounter&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;ClinicalImpression.encounter&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Communication.encounter&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;CommunicationRequest.encounter&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Composition.encounter&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Condition.encounter&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;DeviceRequest.encounter&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;DiagnosticReport.encounter&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;DocumentReference.encounter&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;Encounter.part-of&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.encounter&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;Flag.encounter&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;ImagingStudy.encounter&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;List.encounter&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;Media.encounter&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;MedicationAdministration.context&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;MedicationDispense.context&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;MedicationRequest.encounter&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;MedicationStatement.context&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;NutritionOrder.encounter&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;Observation.encounter&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;Procedure.encounter&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;QuestionnaireResponse.encounter&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;RequestGroup.encounter&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;RiskAssessment.encounter&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;ServiceRequest.encounter&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;Task.encounter&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;VisionPrescription.encounter&quot;;
+         fhir:index 30
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -6361,6 +6991,28 @@
          fhir:value &quot;Endpoint.organization&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;HealthcareService.endpoint&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ImagingStudy.endpoint&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;InsurancePlan.endpoint&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Location.endpoint&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Organization.endpoint&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;OrganizationAffiliation.endpoint&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;PractitionerRole.endpoint&quot;;
+         fhir:index 6
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;payload-type&quot; ];
@@ -6451,6 +7103,10 @@
        ], [
          fhir:value &quot;EnrollmentRequest.patient&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;EnrollmentResponse.request&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -6609,6 +7265,25 @@
        ], [
          fhir:value &quot;EpisodeOfCare.incoming-referral&quot;;
          fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.context&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;DocumentReference.encounter&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Encounter.episode-of-care&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;MedicationAdministration.context&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;MedicationDispense.context&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;MedicationStatement.context&quot;;
+         fhir:index 5
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -7777,6 +8452,10 @@
          fhir:value &quot;Goal.subject&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.goal&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -8012,6 +8691,208 @@
          fhir:value &quot;Group.member&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;CarePlan.patient&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;CareTeam.patient&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;CareTeam.subject&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;ChargeItem.subject&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;ChargeItem.patient&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;ClinicalImpression.patient&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;ClinicalImpression.subject&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Communication.subject&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;Communication.patient&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;CommunicationRequest.subject&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;CommunicationRequest.patient&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;Condition.subject&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;Condition.patient&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;DeviceRequest.subject&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;DeviceRequest.patient&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;DeviceUseStatement.subject&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;DeviceUseStatement.patient&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;DiagnosticReport.subject&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;DiagnosticReport.patient&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;DocumentManifest.subject&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;DocumentManifest.patient&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;DocumentReference.subject&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;DocumentReference.patient&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Encounter.subject&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;Encounter.patient&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;Goal.patient&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;Goal.subject&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;GuidanceResponse.patient&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;GuidanceResponse.subject&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;ImagingStudy.subject&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;ImagingStudy.patient&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;Invoice.subject&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;Invoice.patient&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;List.subject&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;List.patient&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;MedicationAdministration.subject&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;MedicationAdministration.patient&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;MedicationDispense.subject&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;MedicationDispense.patient&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;MedicationRequest.subject&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;MedicationRequest.patient&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;MedicationStatement.subject&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;MedicationStatement.patient&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;Observation.subject&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;Observation.patient&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;Procedure.subject&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;Procedure.patient&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;RequestGroup.subject&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;RequestGroup.patient&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;RiskAssessment.subject&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;RiskAssessment.patient&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;ServiceRequest.subject&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;ServiceRequest.patient&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;Specimen.subject&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;Specimen.patient&quot;;
+         fhir:index 66
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;actual&quot; ];
@@ -8212,6 +9093,73 @@
          fhir:value &quot;HealthcareService.location&quot;;
          fhir:index 3
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;OrganizationAffiliation.service&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;PractitionerRole.service&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;SupplyRequest.supplier&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 21
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -8356,6 +9304,16 @@
        ], [
          fhir:value &quot;ImagingStudy.basedon&quot;;
          fhir:index 7
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 2
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -8526,6 +9484,22 @@
          fhir:value &quot;Immunization.location&quot;;
          fhir:index 5
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ImmunizationEvaluation.immunization-event&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ImmunizationRecommendation.support&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 4
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -8677,6 +9651,10 @@
          fhir:value &quot;ImmunizationEvaluation.immunization-event&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ImmunizationRecommendation.support&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -8776,6 +9754,22 @@
        ], [
          fhir:value &quot;ImmunizationRecommendation.support&quot;;
          fhir:index 2
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Appointment.reason-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;DiagnosticReport.based-on&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Encounter.reason-reference&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 4
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -8882,6 +9876,13 @@
        ], [
          fhir:value &quot;ImplementationGuide.depends-on&quot;;
          fhir:index 2
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CapabilityStatement.guide&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ImplementationGuide.depends-on&quot;;
+         fhir:index 1
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -9342,6 +10343,22 @@
          fhir:value &quot;Library.depends-on&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ActivityDefinition.depends-on&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Measure.depends-on&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;PlanDefinition.depends-on&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ResearchDefinition.depends-on&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;ResearchElementDefinition.depends-on&quot;;
+         fhir:index 4
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -9756,6 +10773,154 @@
          fhir:value &quot;Location.organization&quot;;
          fhir:index 2
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AdverseEvent.location&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;Claim.facility&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;Contract.domain&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.facility&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;Device.location&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;DeviceRequest.subject&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;DeviceRequest.patient&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;DiagnosticReport.subject&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;DiagnosticReport.patient&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;Encounter.location&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.facility&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;HealthcareService.coverage-area&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;HealthcareService.location&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;Immunization.location&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;List.subject&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;List.patient&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Location.partof&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;MeasureReport.reporter&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;MedicationDispense.receiver&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;MedicationDispense.destination&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;Observation.subject&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;Observation.patient&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;OrganizationAffiliation.location&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;PractitionerRole.location&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;Procedure.location&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;Provenance.location&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;ResearchStudy.site&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;ServiceRequest.subject&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;ServiceRequest.patient&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;Specimen.subject&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;Specimen.patient&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;SupplyRequest.subject&quot;;
+         fhir:index 48
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -9908,6 +11073,22 @@
          fhir:index 3
        ], [
          fhir:value &quot;Measure.depends-on&quot;;
+         fhir:index 4
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.instantiates-canonical&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Communication.instantiates-canonical&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;FamilyMemberHistory.instantiates-canonical&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;MeasureReport.measure&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Procedure.instantiates-canonical&quot;;
          fhir:index 4
        ];
        fhir:CapabilityStatement.searchParam [
@@ -10227,6 +11408,19 @@
          fhir:value &quot;Media.device&quot;;
          fhir:index 5
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ClinicalImpression.finding-ref&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;DiagnosticReport.media&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;MedicationKnowledge.monograph&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 3
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -10360,6 +11554,46 @@
          fhir:value &quot;Medication.manufacturer&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Medication.ingredient&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;MedicationAdministration.medication&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;MedicationDispense.medication&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;MedicationRequest.medication&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;MedicationStatement.medication&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;MedicinalProductContraindication.subject&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;MedicinalProductIndication.subject&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;MedicinalProductInteraction.subject&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;MedicinalProductUndesirableEffect.subject&quot;;
+         fhir:index 12
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;ingredient-code&quot; ];
@@ -10483,6 +11717,22 @@
        ], [
          fhir:value &quot;MedicationAdministration.device&quot;;
          fhir:index 6
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;MedicationStatement.part-of&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Procedure.part-of&quot;;
+         fhir:index 4
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -10637,6 +11887,16 @@
        ], [
          fhir:value &quot;MedicationDispense.context&quot;;
          fhir:index 8
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;MedicationStatement.part-of&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 2
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -10934,6 +12194,25 @@
          fhir:value &quot;MedicationRequest.intended-performer&quot;;
          fhir:index 6
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;DiagnosticReport.based-on&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;MedicationAdministration.request&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;MedicationDispense.prescription&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;ServiceRequest.based-on&quot;;
+         fhir:index 5
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;requester&quot; ];
@@ -11097,6 +12376,16 @@
          fhir:value &quot;MedicationStatement.source&quot;;
          fhir:index 5
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;MedicationStatement.part-of&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 2
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -11210,6 +12499,28 @@
        ], [
          fhir:value &quot;logical&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;MedicinalProductAuthorization.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;MedicinalProductContraindication.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;MedicinalProductIndication.subject&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;MedicinalProductInteraction.subject&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;MedicinalProductPackaged.subject&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;MedicinalProductPharmaceutical.subject&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;MedicinalProductUndesirableEffect.subject&quot;;
+         fhir:index 6
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -11477,6 +12788,10 @@
        ], [
          fhir:value &quot;logical&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;MedicationKnowledge.ingredient&quot;;
+         fhir:index 0
        ]
      ], [
        fhir:index 85;
@@ -11632,6 +12947,10 @@
        ];
        fhir:CapabilityStatement.searchInclude [
          fhir:value &quot;MedicinalProductPackaged.subject&quot;;
+         fhir:index 0
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;MedicinalProductAuthorization.subject&quot;;
          fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
@@ -12152,6 +13471,13 @@
          fhir:value &quot;MolecularSequence.patient&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Observation.has-member&quot;;
+         fhir:index 1
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -12453,6 +13779,16 @@
          fhir:value &quot;NutritionOrder.encounter&quot;;
          fhir:index 3
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;DiagnosticReport.based-on&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 2
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -12606,6 +13942,46 @@
        ], [
          fhir:value &quot;Observation.device&quot;;
          fhir:index 10
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Appointment.reason-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ClinicalImpression.finding-ref&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;DiagnosticReport.result&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Encounter.reason-reference&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Immunization.reaction&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Immunization.reason-reference&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;MedicationStatement.part-of&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Observation.has-member&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;Procedure.part-of&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;Procedure.reason-reference&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;QuestionnaireResponse.part-of&quot;;
+         fhir:index 12
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -12940,6 +14316,22 @@
          fhir:value &quot;OperationDefinition.base&quot;;
          fhir:index 2
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.instantiates-canonical&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Communication.instantiates-canonical&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;FamilyMemberHistory.instantiates-canonical&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;OperationDefinition.base&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Procedure.instantiates-canonical&quot;;
+         fhir:index 4
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -13173,6 +14565,328 @@
        ], [
          fhir:value &quot;Organization.endpoint&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.owner&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Basic.author&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;ChargeItem.performing-organization&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;ChargeItem.requesting-organization&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;Claim.care-team&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;Claim.payee&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;Claim.provider&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;Claim.insurer&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;ClaimResponse.insurer&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;ClaimResponse.requestor&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;Composition.attester&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;Consent.organization&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Consent.consentor&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;Contract.authority&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;Contract.signer&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;Coverage.payor&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;Coverage.policy-holder&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.provider&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;CoverageEligibilityResponse.insurer&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;CoverageEligibilityResponse.requestor&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;Device.organization&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;DeviceRequest.requester&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;DiagnosticReport.performer&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;DiagnosticReport.results-interpreter&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;DocumentManifest.recipient&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;DocumentReference.authenticator&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;DocumentReference.custodian&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;Encounter.service-provider&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;Endpoint.organization&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;EpisodeOfCare.organization&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.care-team&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.payee&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.provider&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;Flag.author&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;Goal.patient&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;Goal.subject&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;Group.managing-entity&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;HealthcareService.organization&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;Immunization.performer&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;Immunization.manufacturer&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;InsurancePlan.owned-by&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;InsurancePlan.administered-by&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;Invoice.issuer&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;Invoice.recipient&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;Linkage.author&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;Location.organization&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;MeasureReport.reporter&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;Medication.manufacturer&quot;;
+         fhir:index 71
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 72
+       ], [
+         fhir:value &quot;MedicationDispense.responsibleparty&quot;;
+         fhir:index 73
+       ], [
+         fhir:value &quot;MedicationKnowledge.manufacturer&quot;;
+         fhir:index 74
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 75
+       ], [
+         fhir:value &quot;MedicationRequest.intended-dispenser&quot;;
+         fhir:index 76
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 77
+       ], [
+         fhir:value &quot;MedicationStatement.source&quot;;
+         fhir:index 78
+       ], [
+         fhir:value &quot;MedicinalProductAuthorization.holder&quot;;
+         fhir:index 79
+       ], [
+         fhir:value &quot;MessageHeader.receiver&quot;;
+         fhir:index 80
+       ], [
+         fhir:value &quot;MessageHeader.sender&quot;;
+         fhir:index 81
+       ], [
+         fhir:value &quot;MessageHeader.responsible&quot;;
+         fhir:index 82
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 83
+       ], [
+         fhir:value &quot;Organization.partof&quot;;
+         fhir:index 84
+       ], [
+         fhir:value &quot;OrganizationAffiliation.primary-organization&quot;;
+         fhir:index 85
+       ], [
+         fhir:value &quot;OrganizationAffiliation.network&quot;;
+         fhir:index 86
+       ], [
+         fhir:value &quot;OrganizationAffiliation.participating-organization&quot;;
+         fhir:index 87
+       ], [
+         fhir:value &quot;Patient.general-practitioner&quot;;
+         fhir:index 88
+       ], [
+         fhir:value &quot;Patient.organization&quot;;
+         fhir:index 89
+       ], [
+         fhir:value &quot;PaymentNotice.provider&quot;;
+         fhir:index 90
+       ], [
+         fhir:value &quot;PaymentReconciliation.payment-issuer&quot;;
+         fhir:index 91
+       ], [
+         fhir:value &quot;PaymentReconciliation.requestor&quot;;
+         fhir:index 92
+       ], [
+         fhir:value &quot;Person.organization&quot;;
+         fhir:index 93
+       ], [
+         fhir:value &quot;PractitionerRole.organization&quot;;
+         fhir:index 94
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 95
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 96
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 97
+       ], [
+         fhir:value &quot;ResearchStudy.sponsor&quot;;
+         fhir:index 98
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 99
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 100
+       ], [
+         fhir:value &quot;SupplyDelivery.supplier&quot;;
+         fhir:index 101
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 102
+       ], [
+         fhir:value &quot;SupplyRequest.subject&quot;;
+         fhir:index 103
+       ], [
+         fhir:value &quot;SupplyRequest.supplier&quot;;
+         fhir:index 104
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 105
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 106
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -13460,6 +15174,490 @@
        ], [
          fhir:value &quot;Patient.organization&quot;;
          fhir:index 2
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AdverseEvent.recorder&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;AdverseEvent.subject&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;AllergyIntolerance.recorder&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;AllergyIntolerance.asserter&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;AllergyIntolerance.patient&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;Basic.author&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;BodyStructure.patient&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;CarePlan.subject&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;CarePlan.patient&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;CareTeam.patient&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;CareTeam.subject&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;ChargeItem.subject&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;ChargeItem.patient&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;Claim.payee&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;Claim.patient&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;ClaimResponse.patient&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;ClinicalImpression.patient&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;ClinicalImpression.subject&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;Communication.subject&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;Communication.patient&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;CommunicationRequest.subject&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;CommunicationRequest.patient&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;Composition.attester&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;Condition.subject&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;Condition.asserter&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;Condition.patient&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;Consent.patient&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;Consent.consentor&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;Contract.signer&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;Coverage.payor&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;Coverage.subscriber&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;Coverage.beneficiary&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;Coverage.patient&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;Coverage.policy-holder&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.patient&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;CoverageEligibilityResponse.patient&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;DetectedIssue.patient&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;Device.patient&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;DeviceRequest.subject&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;DeviceRequest.patient&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;DeviceUseStatement.subject&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;DeviceUseStatement.patient&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;DiagnosticReport.subject&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;DiagnosticReport.patient&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;DocumentManifest.subject&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;DocumentManifest.patient&quot;;
+         fhir:index 71
+       ], [
+         fhir:value &quot;DocumentManifest.recipient&quot;;
+         fhir:index 72
+       ], [
+         fhir:value &quot;DocumentReference.subject&quot;;
+         fhir:index 73
+       ], [
+         fhir:value &quot;DocumentReference.patient&quot;;
+         fhir:index 74
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 75
+       ], [
+         fhir:value &quot;Encounter.subject&quot;;
+         fhir:index 76
+       ], [
+         fhir:value &quot;Encounter.patient&quot;;
+         fhir:index 77
+       ], [
+         fhir:value &quot;EnrollmentRequest.subject&quot;;
+         fhir:index 78
+       ], [
+         fhir:value &quot;EnrollmentRequest.patient&quot;;
+         fhir:index 79
+       ], [
+         fhir:value &quot;EpisodeOfCare.patient&quot;;
+         fhir:index 80
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.payee&quot;;
+         fhir:index 81
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.patient&quot;;
+         fhir:index 82
+       ], [
+         fhir:value &quot;FamilyMemberHistory.patient&quot;;
+         fhir:index 83
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 84
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 85
+       ], [
+         fhir:value &quot;Flag.author&quot;;
+         fhir:index 86
+       ], [
+         fhir:value &quot;Goal.patient&quot;;
+         fhir:index 87
+       ], [
+         fhir:value &quot;Goal.subject&quot;;
+         fhir:index 88
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 89
+       ], [
+         fhir:value &quot;GuidanceResponse.patient&quot;;
+         fhir:index 90
+       ], [
+         fhir:value &quot;GuidanceResponse.subject&quot;;
+         fhir:index 91
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 92
+       ], [
+         fhir:value &quot;ImagingStudy.subject&quot;;
+         fhir:index 93
+       ], [
+         fhir:value &quot;ImagingStudy.patient&quot;;
+         fhir:index 94
+       ], [
+         fhir:value &quot;Immunization.patient&quot;;
+         fhir:index 95
+       ], [
+         fhir:value &quot;ImmunizationEvaluation.patient&quot;;
+         fhir:index 96
+       ], [
+         fhir:value &quot;ImmunizationRecommendation.patient&quot;;
+         fhir:index 97
+       ], [
+         fhir:value &quot;Invoice.subject&quot;;
+         fhir:index 98
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 99
+       ], [
+         fhir:value &quot;Invoice.patient&quot;;
+         fhir:index 100
+       ], [
+         fhir:value &quot;Invoice.recipient&quot;;
+         fhir:index 101
+       ], [
+         fhir:value &quot;List.subject&quot;;
+         fhir:index 102
+       ], [
+         fhir:value &quot;List.patient&quot;;
+         fhir:index 103
+       ], [
+         fhir:value &quot;List.source&quot;;
+         fhir:index 104
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 105
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 106
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 107
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 108
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 109
+       ], [
+         fhir:value &quot;MedicationAdministration.performer&quot;;
+         fhir:index 110
+       ], [
+         fhir:value &quot;MedicationAdministration.subject&quot;;
+         fhir:index 111
+       ], [
+         fhir:value &quot;MedicationAdministration.patient&quot;;
+         fhir:index 112
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 113
+       ], [
+         fhir:value &quot;MedicationDispense.receiver&quot;;
+         fhir:index 114
+       ], [
+         fhir:value &quot;MedicationDispense.subject&quot;;
+         fhir:index 115
+       ], [
+         fhir:value &quot;MedicationDispense.patient&quot;;
+         fhir:index 116
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 117
+       ], [
+         fhir:value &quot;MedicationRequest.subject&quot;;
+         fhir:index 118
+       ], [
+         fhir:value &quot;MedicationRequest.patient&quot;;
+         fhir:index 119
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 120
+       ], [
+         fhir:value &quot;MedicationStatement.subject&quot;;
+         fhir:index 121
+       ], [
+         fhir:value &quot;MedicationStatement.patient&quot;;
+         fhir:index 122
+       ], [
+         fhir:value &quot;MedicationStatement.source&quot;;
+         fhir:index 123
+       ], [
+         fhir:value &quot;MolecularSequence.patient&quot;;
+         fhir:index 124
+       ], [
+         fhir:value &quot;NutritionOrder.patient&quot;;
+         fhir:index 125
+       ], [
+         fhir:value &quot;Observation.subject&quot;;
+         fhir:index 126
+       ], [
+         fhir:value &quot;Observation.patient&quot;;
+         fhir:index 127
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 128
+       ], [
+         fhir:value &quot;Patient.link&quot;;
+         fhir:index 129
+       ], [
+         fhir:value &quot;Person.practitioner&quot;;
+         fhir:index 130
+       ], [
+         fhir:value &quot;Person.link&quot;;
+         fhir:index 131
+       ], [
+         fhir:value &quot;Person.relatedperson&quot;;
+         fhir:index 132
+       ], [
+         fhir:value &quot;Person.patient&quot;;
+         fhir:index 133
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 134
+       ], [
+         fhir:value &quot;Procedure.subject&quot;;
+         fhir:index 135
+       ], [
+         fhir:value &quot;Procedure.patient&quot;;
+         fhir:index 136
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 137
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 138
+       ], [
+         fhir:value &quot;QuestionnaireResponse.source&quot;;
+         fhir:index 139
+       ], [
+         fhir:value &quot;RelatedPerson.patient&quot;;
+         fhir:index 140
+       ], [
+         fhir:value &quot;RequestGroup.subject&quot;;
+         fhir:index 141
+       ], [
+         fhir:value &quot;RequestGroup.participant&quot;;
+         fhir:index 142
+       ], [
+         fhir:value &quot;RequestGroup.patient&quot;;
+         fhir:index 143
+       ], [
+         fhir:value &quot;ResearchSubject.individual&quot;;
+         fhir:index 144
+       ], [
+         fhir:value &quot;ResearchSubject.patient&quot;;
+         fhir:index 145
+       ], [
+         fhir:value &quot;RiskAssessment.subject&quot;;
+         fhir:index 146
+       ], [
+         fhir:value &quot;RiskAssessment.patient&quot;;
+         fhir:index 147
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 148
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 149
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 150
+       ], [
+         fhir:value &quot;ServiceRequest.subject&quot;;
+         fhir:index 151
+       ], [
+         fhir:value &quot;ServiceRequest.patient&quot;;
+         fhir:index 152
+       ], [
+         fhir:value &quot;Specimen.subject&quot;;
+         fhir:index 153
+       ], [
+         fhir:value &quot;Specimen.patient&quot;;
+         fhir:index 154
+       ], [
+         fhir:value &quot;SupplyDelivery.patient&quot;;
+         fhir:index 155
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 156
+       ], [
+         fhir:value &quot;SupplyRequest.subject&quot;;
+         fhir:index 157
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 158
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 159
+       ], [
+         fhir:value &quot;VisionPrescription.patient&quot;;
+         fhir:index 160
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -13869,6 +16067,19 @@
          fhir:value &quot;Person.organization&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Person.practitioner&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Person.link&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Person.relatedperson&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Person.patient&quot;;
+         fhir:index 3
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -14049,6 +16260,43 @@
        ], [
          fhir:value &quot;PlanDefinition.definition&quot;;
          fhir:index 5
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.instantiates-canonical&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Communication.instantiates-canonical&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;DeviceRequest.instantiates-canonical&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;FamilyMemberHistory.instantiates-canonical&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;MessageDefinition.parent&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;NutritionOrder.instantiates-canonical&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;PlanDefinition.definition&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Procedure.instantiates-canonical&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;ResearchStudy.protocol&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;ServiceRequest.instantiates-canonical&quot;;
+         fhir:index 11
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -14242,6 +16490,367 @@
          fhir:value &quot;logical&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AdverseEvent.recorder&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;AdverseEvent.subject&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;AllergyIntolerance.recorder&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;AllergyIntolerance.asserter&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;Basic.author&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;Claim.care-team&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;Claim.payee&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;Claim.provider&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;Claim.enterer&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;ClaimResponse.requestor&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;ClinicalImpression.performer&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;Composition.attester&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;Condition.asserter&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;Consent.consentor&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;Contract.signer&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.provider&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.enterer&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;CoverageEligibilityResponse.requestor&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;DetectedIssue.author&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;DeviceRequest.requester&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;DiagnosticReport.performer&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;DiagnosticReport.results-interpreter&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;DocumentManifest.subject&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;DocumentManifest.patient&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;DocumentManifest.recipient&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;DocumentReference.subject&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;DocumentReference.patient&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;DocumentReference.authenticator&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;Encounter.practitioner&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;Encounter.participant&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;EpisodeOfCare.care-manager&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.care-team&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.payee&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.provider&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.enterer&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;Flag.author&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;Group.managing-entity&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;ImagingStudy.interpreter&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;ImagingStudy.referrer&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;Immunization.performer&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 71
+       ], [
+         fhir:value &quot;Linkage.author&quot;;
+         fhir:index 72
+       ], [
+         fhir:value &quot;List.source&quot;;
+         fhir:index 73
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 74
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 75
+       ], [
+         fhir:value &quot;MeasureReport.reporter&quot;;
+         fhir:index 76
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 77
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 78
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 79
+       ], [
+         fhir:value &quot;MedicationAdministration.performer&quot;;
+         fhir:index 80
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 81
+       ], [
+         fhir:value &quot;MedicationDispense.receiver&quot;;
+         fhir:index 82
+       ], [
+         fhir:value &quot;MedicationDispense.responsibleparty&quot;;
+         fhir:index 83
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 84
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 85
+       ], [
+         fhir:value &quot;MedicationStatement.source&quot;;
+         fhir:index 86
+       ], [
+         fhir:value &quot;MessageHeader.receiver&quot;;
+         fhir:index 87
+       ], [
+         fhir:value &quot;MessageHeader.author&quot;;
+         fhir:index 88
+       ], [
+         fhir:value &quot;MessageHeader.sender&quot;;
+         fhir:index 89
+       ], [
+         fhir:value &quot;MessageHeader.responsible&quot;;
+         fhir:index 90
+       ], [
+         fhir:value &quot;MessageHeader.enterer&quot;;
+         fhir:index 91
+       ], [
+         fhir:value &quot;NutritionOrder.provider&quot;;
+         fhir:index 92
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 93
+       ], [
+         fhir:value &quot;Patient.general-practitioner&quot;;
+         fhir:index 94
+       ], [
+         fhir:value &quot;PaymentNotice.provider&quot;;
+         fhir:index 95
+       ], [
+         fhir:value &quot;PaymentReconciliation.requestor&quot;;
+         fhir:index 96
+       ], [
+         fhir:value &quot;Person.practitioner&quot;;
+         fhir:index 97
+       ], [
+         fhir:value &quot;Person.link&quot;;
+         fhir:index 98
+       ], [
+         fhir:value &quot;Person.relatedperson&quot;;
+         fhir:index 99
+       ], [
+         fhir:value &quot;Person.patient&quot;;
+         fhir:index 100
+       ], [
+         fhir:value &quot;PractitionerRole.practitioner&quot;;
+         fhir:index 101
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 102
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 103
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 104
+       ], [
+         fhir:value &quot;QuestionnaireResponse.source&quot;;
+         fhir:index 105
+       ], [
+         fhir:value &quot;RequestGroup.author&quot;;
+         fhir:index 106
+       ], [
+         fhir:value &quot;RequestGroup.participant&quot;;
+         fhir:index 107
+       ], [
+         fhir:value &quot;ResearchStudy.principalinvestigator&quot;;
+         fhir:index 108
+       ], [
+         fhir:value &quot;RiskAssessment.performer&quot;;
+         fhir:index 109
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 110
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 111
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 112
+       ], [
+         fhir:value &quot;Specimen.collector&quot;;
+         fhir:index 113
+       ], [
+         fhir:value &quot;SupplyDelivery.receiver&quot;;
+         fhir:index 114
+       ], [
+         fhir:value &quot;SupplyDelivery.supplier&quot;;
+         fhir:index 115
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 116
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 117
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 118
+       ], [
+         fhir:value &quot;VisionPrescription.prescriber&quot;;
+         fhir:index 119
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -14408,6 +17017,334 @@
          fhir:value &quot;PractitionerRole.location&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Account.subject&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Account.patient&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AdverseEvent.recorder&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;AllergyIntolerance.recorder&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;AllergyIntolerance.asserter&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;Basic.author&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;Claim.care-team&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;Claim.payee&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;Claim.provider&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;Claim.enterer&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;ClaimResponse.requestor&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;ClinicalImpression.performer&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;Composition.attester&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;Condition.asserter&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;Consent.consentor&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;Contract.signer&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.provider&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;CoverageEligibilityRequest.enterer&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;CoverageEligibilityResponse.requestor&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;DetectedIssue.author&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;DeviceRequest.requester&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;DiagnosticReport.performer&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;DiagnosticReport.results-interpreter&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;DocumentManifest.recipient&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;DocumentReference.authenticator&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;Encounter.practitioner&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;Encounter.participant&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;EpisodeOfCare.care-manager&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.care-team&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.payee&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.provider&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.enterer&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;Flag.author&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;Group.managing-entity&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;ImagingStudy.interpreter&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;ImagingStudy.referrer&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;Immunization.performer&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;Linkage.author&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;List.source&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;MeasureReport.reporter&quot;;
+         fhir:index 71
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 72
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 73
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 74
+       ], [
+         fhir:value &quot;MedicationAdministration.performer&quot;;
+         fhir:index 75
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 76
+       ], [
+         fhir:value &quot;MedicationDispense.responsibleparty&quot;;
+         fhir:index 77
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 78
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 79
+       ], [
+         fhir:value &quot;MedicationStatement.source&quot;;
+         fhir:index 80
+       ], [
+         fhir:value &quot;MessageHeader.receiver&quot;;
+         fhir:index 81
+       ], [
+         fhir:value &quot;MessageHeader.author&quot;;
+         fhir:index 82
+       ], [
+         fhir:value &quot;MessageHeader.sender&quot;;
+         fhir:index 83
+       ], [
+         fhir:value &quot;MessageHeader.responsible&quot;;
+         fhir:index 84
+       ], [
+         fhir:value &quot;MessageHeader.enterer&quot;;
+         fhir:index 85
+       ], [
+         fhir:value &quot;NutritionOrder.provider&quot;;
+         fhir:index 86
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 87
+       ], [
+         fhir:value &quot;Patient.general-practitioner&quot;;
+         fhir:index 88
+       ], [
+         fhir:value &quot;PaymentNotice.provider&quot;;
+         fhir:index 89
+       ], [
+         fhir:value &quot;PaymentReconciliation.requestor&quot;;
+         fhir:index 90
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 91
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 92
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 93
+       ], [
+         fhir:value &quot;QuestionnaireResponse.source&quot;;
+         fhir:index 94
+       ], [
+         fhir:value &quot;RequestGroup.author&quot;;
+         fhir:index 95
+       ], [
+         fhir:value &quot;RequestGroup.participant&quot;;
+         fhir:index 96
+       ], [
+         fhir:value &quot;ResearchStudy.principalinvestigator&quot;;
+         fhir:index 97
+       ], [
+         fhir:value &quot;RiskAssessment.performer&quot;;
+         fhir:index 98
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 99
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 100
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 101
+       ], [
+         fhir:value &quot;Specimen.collector&quot;;
+         fhir:index 102
+       ], [
+         fhir:value &quot;SupplyDelivery.receiver&quot;;
+         fhir:index 103
+       ], [
+         fhir:value &quot;SupplyDelivery.supplier&quot;;
+         fhir:index 104
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 105
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 106
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 107
+       ], [
+         fhir:value &quot;VisionPrescription.prescriber&quot;;
+         fhir:index 108
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -14561,6 +17498,43 @@
        ], [
          fhir:value &quot;Procedure.location&quot;;
          fhir:index 8
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Appointment.reason-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Encounter.diagnosis&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Encounter.reason-reference&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Flag.subject&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Flag.patient&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;MedicationStatement.part-of&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Observation.part-of&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;Procedure.part-of&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;Procedure.reason-reference&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;QuestionnaireResponse.part-of&quot;;
+         fhir:index 11
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -14830,6 +17804,25 @@
          fhir:value &quot;logical&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.instantiates-canonical&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Communication.instantiates-canonical&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;FamilyMemberHistory.instantiates-canonical&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;PlanDefinition.definition&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Procedure.instantiates-canonical&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;QuestionnaireResponse.questionnaire&quot;;
+         fhir:index 5
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -15017,6 +18010,16 @@
          fhir:value &quot;QuestionnaireResponse.source&quot;;
          fhir:index 7
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Consent.source-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Observation.derived-from&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Observation.has-member&quot;;
+         fhir:index 2
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;authored&quot; ];
@@ -15134,6 +18137,223 @@
        fhir:CapabilityStatement.searchInclude [
          fhir:value &quot;RelatedPerson.patient&quot;;
          fhir:index 0
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.recorder&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;AdverseEvent.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;AllergyIntolerance.recorder&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;AllergyIntolerance.asserter&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Appointment.practitioner&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Appointment.actor&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Appointment.patient&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Appointment.location&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;AppointmentResponse.actor&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;AppointmentResponse.practitioner&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;AppointmentResponse.patient&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;AppointmentResponse.location&quot;;
+         fhir:index 11
+       ], [
+         fhir:value &quot;AuditEvent.agent&quot;;
+         fhir:index 12
+       ], [
+         fhir:value &quot;AuditEvent.source&quot;;
+         fhir:index 13
+       ], [
+         fhir:value &quot;AuditEvent.patient&quot;;
+         fhir:index 14
+       ], [
+         fhir:value &quot;Basic.author&quot;;
+         fhir:index 15
+       ], [
+         fhir:value &quot;CarePlan.performer&quot;;
+         fhir:index 16
+       ], [
+         fhir:value &quot;CareTeam.participant&quot;;
+         fhir:index 17
+       ], [
+         fhir:value &quot;ChargeItem.enterer&quot;;
+         fhir:index 18
+       ], [
+         fhir:value &quot;ChargeItem.performer-actor&quot;;
+         fhir:index 19
+       ], [
+         fhir:value &quot;Claim.payee&quot;;
+         fhir:index 20
+       ], [
+         fhir:value &quot;Communication.sender&quot;;
+         fhir:index 21
+       ], [
+         fhir:value &quot;Communication.recipient&quot;;
+         fhir:index 22
+       ], [
+         fhir:value &quot;CommunicationRequest.requester&quot;;
+         fhir:index 23
+       ], [
+         fhir:value &quot;CommunicationRequest.sender&quot;;
+         fhir:index 24
+       ], [
+         fhir:value &quot;CommunicationRequest.recipient&quot;;
+         fhir:index 25
+       ], [
+         fhir:value &quot;Composition.author&quot;;
+         fhir:index 26
+       ], [
+         fhir:value &quot;Composition.attester&quot;;
+         fhir:index 27
+       ], [
+         fhir:value &quot;Condition.asserter&quot;;
+         fhir:index 28
+       ], [
+         fhir:value &quot;Consent.actor&quot;;
+         fhir:index 29
+       ], [
+         fhir:value &quot;Consent.consentor&quot;;
+         fhir:index 30
+       ], [
+         fhir:value &quot;Contract.signer&quot;;
+         fhir:index 31
+       ], [
+         fhir:value &quot;Coverage.payor&quot;;
+         fhir:index 32
+       ], [
+         fhir:value &quot;Coverage.subscriber&quot;;
+         fhir:index 33
+       ], [
+         fhir:value &quot;Coverage.policy-holder&quot;;
+         fhir:index 34
+       ], [
+         fhir:value &quot;DeviceRequest.performer&quot;;
+         fhir:index 35
+       ], [
+         fhir:value &quot;DocumentManifest.author&quot;;
+         fhir:index 36
+       ], [
+         fhir:value &quot;DocumentManifest.recipient&quot;;
+         fhir:index 37
+       ], [
+         fhir:value &quot;DocumentReference.author&quot;;
+         fhir:index 38
+       ], [
+         fhir:value &quot;Encounter.practitioner&quot;;
+         fhir:index 39
+       ], [
+         fhir:value &quot;Encounter.participant&quot;;
+         fhir:index 40
+       ], [
+         fhir:value &quot;ExplanationOfBenefit.payee&quot;;
+         fhir:index 41
+       ], [
+         fhir:value &quot;Group.managing-entity&quot;;
+         fhir:index 42
+       ], [
+         fhir:value &quot;ImagingStudy.performer&quot;;
+         fhir:index 43
+       ], [
+         fhir:value &quot;Invoice.participant&quot;;
+         fhir:index 44
+       ], [
+         fhir:value &quot;Invoice.recipient&quot;;
+         fhir:index 45
+       ], [
+         fhir:value &quot;MeasureReport.patient&quot;;
+         fhir:index 46
+       ], [
+         fhir:value &quot;MeasureReport.subject&quot;;
+         fhir:index 47
+       ], [
+         fhir:value &quot;Media.operator&quot;;
+         fhir:index 48
+       ], [
+         fhir:value &quot;MedicationAdministration.performer&quot;;
+         fhir:index 49
+       ], [
+         fhir:value &quot;MedicationDispense.performer&quot;;
+         fhir:index 50
+       ], [
+         fhir:value &quot;MedicationDispense.receiver&quot;;
+         fhir:index 51
+       ], [
+         fhir:value &quot;MedicationRequest.requester&quot;;
+         fhir:index 52
+       ], [
+         fhir:value &quot;MedicationRequest.intended-performer&quot;;
+         fhir:index 53
+       ], [
+         fhir:value &quot;MedicationStatement.source&quot;;
+         fhir:index 54
+       ], [
+         fhir:value &quot;Observation.performer&quot;;
+         fhir:index 55
+       ], [
+         fhir:value &quot;Patient.link&quot;;
+         fhir:index 56
+       ], [
+         fhir:value &quot;Person.practitioner&quot;;
+         fhir:index 57
+       ], [
+         fhir:value &quot;Person.link&quot;;
+         fhir:index 58
+       ], [
+         fhir:value &quot;Person.relatedperson&quot;;
+         fhir:index 59
+       ], [
+         fhir:value &quot;Person.patient&quot;;
+         fhir:index 60
+       ], [
+         fhir:value &quot;Procedure.performer&quot;;
+         fhir:index 61
+       ], [
+         fhir:value &quot;Provenance.agent&quot;;
+         fhir:index 62
+       ], [
+         fhir:value &quot;QuestionnaireResponse.author&quot;;
+         fhir:index 63
+       ], [
+         fhir:value &quot;QuestionnaireResponse.source&quot;;
+         fhir:index 64
+       ], [
+         fhir:value &quot;RequestGroup.participant&quot;;
+         fhir:index 65
+       ], [
+         fhir:value &quot;Schedule.actor&quot;;
+         fhir:index 66
+       ], [
+         fhir:value &quot;ServiceRequest.requester&quot;;
+         fhir:index 67
+       ], [
+         fhir:value &quot;ServiceRequest.performer&quot;;
+         fhir:index 68
+       ], [
+         fhir:value &quot;SupplyRequest.requester&quot;;
+         fhir:index 69
+       ], [
+         fhir:value &quot;Task.owner&quot;;
+         fhir:index 70
+       ], [
+         fhir:value &quot;Task.requester&quot;;
+         fhir:index 71
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -15303,6 +18523,10 @@
        ], [
          fhir:value &quot;RequestGroup.patient&quot;;
          fhir:index 5
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -15844,6 +19068,16 @@
          fhir:value &quot;ResearchStudy.site&quot;;
          fhir:index 4
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.study&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ResearchStudy.partof&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ResearchSubject.study&quot;;
+         fhir:index 2
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -16336,6 +19570,10 @@
          fhir:value &quot;Schedule.actor&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Slot.schedule&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;actor&quot; ];
@@ -16427,6 +19665,13 @@
          fhir:index 1
        ];
        fhir:CapabilityStatement.searchInclude [
+         fhir:value &quot;SearchParameter.derived-from&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;SearchParameter.component&quot;;
+         fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
          fhir:value &quot;SearchParameter.derived-from&quot;;
          fhir:index 0
        ], [
@@ -16623,6 +19868,43 @@
          fhir:value &quot;ServiceRequest.specimen&quot;;
          fhir:index 8
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Appointment.based-on&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;DiagnosticReport.based-on&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Encounter.based-on&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;EpisodeOfCare.incoming-referral&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;ImagingStudy.basedon&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Media.based-on&quot;;
+         fhir:index 6
+       ], [
+         fhir:value &quot;Observation.based-on&quot;;
+         fhir:index 7
+       ], [
+         fhir:value &quot;Procedure.based-on&quot;;
+         fhir:index 8
+       ], [
+         fhir:value &quot;QuestionnaireResponse.based-on&quot;;
+         fhir:index 9
+       ], [
+         fhir:value &quot;ServiceRequest.replaces&quot;;
+         fhir:index 10
+       ], [
+         fhir:value &quot;ServiceRequest.based-on&quot;;
+         fhir:index 11
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;authored&quot; ];
@@ -16801,6 +20083,10 @@
          fhir:value &quot;Slot.schedule&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;Appointment.slot&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;schedule&quot; ];
@@ -16909,6 +20195,25 @@
        ], [
          fhir:value &quot;Specimen.collector&quot;;
          fhir:index 3
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;DiagnosticReport.specimen&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Media.subject&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Media.patient&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Observation.specimen&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;ServiceRequest.specimen&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Specimen.parent&quot;;
+         fhir:index 5
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -17102,6 +20407,25 @@
        ], [
          fhir:value &quot;StructureDefinition.base&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CapabilityStatement.resource-profile&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;CapabilityStatement.supported-profile&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ImplementationGuide.global&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;OperationDefinition.input-profile&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;OperationDefinition.output-profile&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;StructureDefinition.base&quot;;
+         fhir:index 5
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -17533,6 +20857,28 @@
          fhir:value &quot;Substance.substance-reference&quot;;
          fhir:index 0
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;AdverseEvent.substance&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;Group.member&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;Medication.ingredient&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;MedicinalProductInteraction.subject&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;Specimen.subject&quot;;
+         fhir:index 4
+       ], [
+         fhir:value &quot;Specimen.patient&quot;;
+         fhir:index 5
+       ], [
+         fhir:value &quot;Substance.substance-reference&quot;;
+         fhir:index 6
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -17928,6 +21274,10 @@
          fhir:value &quot;SupplyDelivery.supplier&quot;;
          fhir:index 2
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ChargeItem.service&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;identifier&quot; ];
@@ -18130,6 +21480,19 @@
        ], [
          fhir:value &quot;Task.patient&quot;;
          fhir:index 7
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ImagingStudy.basedon&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;PaymentReconciliation.request&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;Task.part-of&quot;;
+         fhir:index 3
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -18513,6 +21876,10 @@
          fhir:value &quot;logical&quot;;
          fhir:index 1
        ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;TestReport.testscript&quot;;
+         fhir:index 0
+       ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
          fhir:CapabilityStatement.name [ fhir:value &quot;date&quot; ];
@@ -18656,6 +22023,22 @@
        ], [
          fhir:value &quot;logical&quot;;
          fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;ConceptMap.source&quot;;
+         fhir:index 0
+       ], [
+         fhir:value &quot;ConceptMap.source-uri&quot;;
+         fhir:index 1
+       ], [
+         fhir:value &quot;ConceptMap.target-uri&quot;;
+         fhir:index 2
+       ], [
+         fhir:value &quot;ConceptMap.target&quot;;
+         fhir:index 3
+       ], [
+         fhir:value &quot;StructureDefinition.valueset&quot;;
+         fhir:index 4
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -18880,6 +22263,10 @@
        ], [
          fhir:value &quot;VisionPrescription.encounter&quot;;
          fhir:index 2
+       ];
+       fhir:CapabilityStatement.searchRevInclude [
+         fhir:value &quot;CarePlan.activity-reference&quot;;
+         fhir:index 0
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -19421,7 +22808,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 14:12-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:27-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

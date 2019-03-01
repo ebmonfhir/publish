@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.ingredient.item[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:a2163867-a5f9-4b42-87bd-3c06bcdb1239",
-      "timestamp" : "2019-02-04T09:28:47-06:00",
+      "identifier" : "urn:uuid:e63c2a87-f7cf-4ecb-a79e-9af7a9cea92d",
+      "timestamp" : "2019-03-01T07:28:39-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -17,8 +17,8 @@
       },
       {
         "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Substance",
-        "display" : "Substance"
+        "code" : "MedicinalProductIngredient",
+        "display" : "MedicinalProductIngredient"
       }]
     }
   },
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.administrationGuidelines.indication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:3fe55937-a976-415a-89e4-d1336aa38759",
-      "timestamp" : "2019-02-04T09:28:47-06:00",
+      "identifier" : "urn:uuid:a82bf778-24a1-42fb-bea7-36483227f0a3",
+      "timestamp" : "2019-03-01T07:28:39-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -38,8 +38,8 @@
       },
       {
         "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "ObservationDefinition",
-        "display" : "ObservationDefinition"
+        "code" : "MedicinalProductIndication",
+        "display" : "MedicinalProductIndication"
       }]
     }
   },
@@ -50,8 +50,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:4710c415-5cd9-4d27-b92f-ef804fc036ee",
-      "timestamp" : "2019-02-04T09:28:47-06:00",
+      "identifier" : "urn:uuid:a018265e-c59f-4c8d-9cb8-343fa69a2f07",
+      "timestamp" : "2019-03-01T07:28:39-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -71,8 +71,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.drugCharacteristic.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:5e8bd6e2-0ac3-42f1-9bbf-72adbfe4b1cd",
-      "timestamp" : "2019-02-04T09:28:47-06:00",
+      "identifier" : "urn:uuid:ca2f048f-958b-4d26-8be3-5d5ad08321af",
+      "timestamp" : "2019-03-01T07:28:39-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -94,13 +94,34 @@
         "display" : "base64Binary"
       }]
     }
+  },
+  {
+    "resourceType" : "ValueSet",
+    "id" : "vs6",
+    "name" : "Type options for MedicationKnowledge.kinetics.value[x]",
+    "status" : "active",
+    "description" : "Type options for MedicationKnowledge.kinetics.value[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:84b6ec84-a5d3-479c-867e-0f0013e0bb00",
+      "timestamp" : "2019-03-01T07:28:39-06:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "http://hl7.org/fhir/StructureDefinition/SimpleQuantity",
+        "display" : "Quantity"
+      },
+      {
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "Duration",
+        "display" : "Duration"
+      }]
+    }
   }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
   "version" : "4.0.0",
   "status" : "draft",
-  "date" : "2019-02-04T09:26:06-06:00",
+  "date" : "2019-03-01T07:26:01-06:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationKnowledge",
@@ -1156,7 +1177,7 @@
           "valueInteger" : 1
         }],
         "linkId" : "MedicationKnowledge.ingredient.item[x]",
-        "text" : "Medication(s) or substance(s) contained in the medication",
+        "text" : "Medication(s) or MedicinalProductIngredient(s) contained in the medication",
         "type" : "group",
         "required" : true,
         "repeats" : true,
@@ -1213,7 +1234,7 @@
             "item" : [{
               "extension" : [{
                 "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                "valueCode" : "Substance"
+                "valueCode" : "MedicinalProductIngredient"
               },
               {
                 "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -1311,6 +1332,45 @@
           "required" : false,
           "repeats" : false
         }]
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "MedicationKnowledge.device",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing).",
+        "type" : "display"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Device"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "MedicationKnowledge.device.value",
+        "text" : "A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing)",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
       }]
     },
     {
@@ -2141,7 +2201,7 @@
             "item" : [{
               "extension" : [{
                 "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                "valueCode" : "ObservationDefinition"
+                "valueCode" : "MedicinalProductIndication"
               },
               {
                 "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -2778,6 +2838,113 @@
           "required" : false,
           "repeats" : false
         }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "Reference"
+        }],
+        "linkId" : "MedicationKnowledge.packaging.device",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "The device used to administer the medication (e.g. scoop, applicator, syringe).",
+          "type" : "display"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+            "valueCode" : "Device"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+            "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+          }],
+          "linkId" : "MedicationKnowledge.packaging.device.value",
+          "text" : "The device used to administer the medication (e.g. scoop, applicator, syringe)",
+          "type" : "reference",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "CodeableConcept"
+        }],
+        "linkId" : "MedicationKnowledge.packaging.material",
+        "text" : "Material type of the package item",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Material type of the package item.",
+          "type" : "display"
+        },
+        {
+          "linkId" : "MedicationKnowledge.packaging.material.coding",
+          "text" : "code:",
+          "type" : "open-choice",
+          "required" : false,
+          "repeats" : false
+        },
+        {
+          "linkId" : "MedicationKnowledge.packaging.material.text",
+          "text" : "text:",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "linkId" : "MedicationKnowledge.packaging.packaging",
+        "text" : "Allows packages within packages",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Allows packages within packages (e.g. blister packages within a box or vials of medications within a box).",
+          "type" : "display"
+        }]
       }]
     },
     {
@@ -3067,7 +3234,7 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "DetectedIssue"
+          "valueCode" : "MedicinalProductContraindication"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -3075,6 +3242,84 @@
         }],
         "linkId" : "MedicationKnowledge.contraindication.value",
         "text" : "Potential clinical issue with or between medication(s)",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "MedicationKnowledge.interaction",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Interactions associated with the medication (e.g. drug-drug interactions).",
+        "type" : "display"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "MedicinalProductInteraction"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "MedicationKnowledge.interaction.value",
+        "text" : "Interactions associated with the medication",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "MedicationKnowledge.undesirableEffect",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Side effects or adverse effects associated with the medication (e.g. nausea, vomiting).",
+        "type" : "display"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "MedicinalProductUndesirableEffect"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "MedicationKnowledge.undesirableEffect.value",
+        "text" : "Side effects or adverse effects associated with the medication",
         "type" : "reference",
         "required" : false,
         "repeats" : false
@@ -3887,11 +4132,15 @@
       },
       {
         "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Quantity"
+          "valueString" : "CodeableConcept"
         }],
-        "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve",
-        "text" : "The drug concentration measured at certain discrete points in time",
+        "linkId" : "MedicationKnowledge.kinetics.type",
+        "text" : "Code specifying the type of kinetics",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -3906,100 +4155,19 @@
               }]
             }
           }],
-          "text" : "The drug concentration measured at certain discrete points in time.",
+          "text" : "Code specifying the type of kinetics (e.g. area under the curve, half life period, lethal dose 50.).",
           "type" : "display"
         },
         {
-          "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve.comparator",
-          "text" : "comp:",
-          "type" : "choice",
+          "linkId" : "MedicationKnowledge.kinetics.type.coding",
+          "text" : "code:",
+          "type" : "open-choice",
           "required" : false,
           "repeats" : false
         },
         {
-          "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve.value",
-          "text" : "value:",
-          "type" : "decimal",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve.units",
-          "text" : "units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve.code",
-          "text" : "coded units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.areaUnderCurve.system",
-          "text" : "units system:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        }]
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Quantity"
-        }],
-        "linkId" : "MedicationKnowledge.kinetics.lethalDose50",
-        "text" : "The median lethal dose of a drug",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "The median lethal dose of a drug.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.lethalDose50.comparator",
-          "text" : "comp:",
-          "type" : "choice",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.lethalDose50.value",
-          "text" : "value:",
-          "type" : "decimal",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.lethalDose50.units",
-          "text" : "units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.lethalDose50.code",
-          "text" : "coded units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.lethalDose50.system",
-          "text" : "units system:",
+          "linkId" : "MedicationKnowledge.kinetics.type.text",
+          "text" : "text:",
           "type" : "string",
           "required" : false,
           "repeats" : false
@@ -4009,13 +4177,9 @@
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
           "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Quantity"
         }],
-        "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod",
-        "text" : "Time required for concentration in the body to decrease by half",
+        "linkId" : "MedicationKnowledge.kinetics.value[x]",
+        "text" : "Description of the characteristic",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -4030,43 +4194,102 @@
               }]
             }
           }],
-          "text" : "The time required for any specified property (e.g., the concentration of a substance in the body) to decrease by half.",
+          "text" : "Description of the characteristic.",
           "type" : "display"
         },
         {
-          "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod.comparator",
-          "text" : "comp:",
+          "linkId" : "MedicationKnowledge.kinetics.value[x]._type",
+          "text" : "type",
           "type" : "choice",
           "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod.value",
-          "text" : "value:",
-          "type" : "decimal",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod.units",
-          "text" : "units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod.code",
-          "text" : "coded units:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "MedicationKnowledge.kinetics.halfLifePeriod.system",
-          "text" : "units system:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
+          "repeats" : false,
+          "answerValueSet" : "#vs6",
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "Quantity"
+            }],
+            "linkId" : "MedicationKnowledge.kinetics.value[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.comparator",
+              "text" : "comp:",
+              "type" : "choice",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.value",
+              "text" : "value:",
+              "type" : "decimal",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.units",
+              "text" : "units:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.code",
+              "text" : "coded units:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.system",
+              "text" : "units system:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            }]
+          },
+          {
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "Quantity"
+            }],
+            "linkId" : "MedicationKnowledge.kinetics.value[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.comparator",
+              "text" : "comp:",
+              "type" : "choice",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.value",
+              "text" : "value:",
+              "type" : "decimal",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.units",
+              "text" : "units:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.code",
+              "text" : "coded units:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "MedicationKnowledge.kinetics.value[x]._null.system",
+              "text" : "units system:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            }]
+          }]
         }]
       }]
     }]

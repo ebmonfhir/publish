@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for Goal.start[x]"/>
       <expansion>
-        <identifier value="urn:uuid:23f8399a-ef55-443f-ba46-545ff4a06688"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:8f683d51-8290-48a5-9902-784e023daf2a"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="date"/>
@@ -31,8 +31,8 @@
       <status value="active"/>
       <description value="Type options for Goal.target.detail[x]"/>
       <expansion>
-        <identifier value="urn:uuid:e2b38870-76c4-4db2-be3d-2d53b5bed18c"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:e0a145bd-dd84-4a65-a42a-0e830079c00e"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Quantity"/>
@@ -78,8 +78,8 @@
       <status value="active"/>
       <description value="Type options for Goal.target.due[x]"/>
       <expansion>
-        <identifier value="urn:uuid:ff180277-6cdc-4668-ab9a-93d7ee90ebff"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:154d1235-8394-4189-a8aa-bcb554aa6328"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="date"/>
@@ -98,7 +98,7 @@
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="Goal"/>
@@ -477,6 +477,38 @@
         <linkId value="Goal.category.text"/>
         <text value="text:"/>
         <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="boolean"/>
+      </extension>
+      <linkId value="Goal.continuous"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="After meeting the goal, ongoing activity is needed to sustain the goal objective. For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true)."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="Goal.continuous.value"/>
+        <text value="After meeting the goal, ongoing activity is needed to sustain the goal objective"/>
+        <type value="boolean"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
@@ -1206,7 +1238,7 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Condition, Observation, MedicationStatement, NutritionOrder, ServiceRequest, RiskAssessment"/>
+          <valueCode value="Condition, Observation, MedicationStatement, MedicationRequest, NutritionOrder, ServiceRequest, RiskAssessment"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>

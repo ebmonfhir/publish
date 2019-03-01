@@ -40,10 +40,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -129,8 +127,8 @@
       &lt;status value=&quot;active&quot;/&gt;
       &lt;description value=&quot;Type options for ClinicalImpression.effective[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:165e0753-b819-43e3-bfed-8a9cf1f068fc&quot;/&gt;
-        &lt;timestamp value=&quot;2019-02-04T09:28:17-06:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:86ca530d-1cfa-4a88-a4ab-6c330cabbe3a&quot;/&gt;
+        &lt;timestamp value=&quot;2019-03-01T07:28:09-06:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;dateTime&quot;/&gt;
@@ -149,7 +147,7 @@
   &lt;/identifier&gt;
   &lt;version value=&quot;4.0.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-02-04T09:26:06-06:00&quot;/&gt;
+  &lt;date value=&quot;2019-03-01T07:26:01-06:00&quot;/&gt;
   &lt;publisher value=&quot;Health Level Seven International (Patient Care)&quot;/&gt;
   &lt;item&gt;
     &lt;linkId value=&quot;ClinicalImpression&quot;/&gt;
@@ -746,7 +744,7 @@
       &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
         &lt;valueString value=&quot;Reference&quot;/&gt;
       &lt;/extension&gt;
-      &lt;linkId value=&quot;ClinicalImpression.assessor&quot;/&gt;
+      &lt;linkId value=&quot;ClinicalImpression.performer&quot;/&gt;
       &lt;type value=&quot;group&quot;/&gt;
       &lt;required value=&quot;false&quot;/&gt;
       &lt;repeats value=&quot;true&quot;/&gt;
@@ -770,7 +768,7 @@
         &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
           &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
         &lt;/extension&gt;
-        &lt;linkId value=&quot;ClinicalImpression.assessor.value&quot;/&gt;
+        &lt;linkId value=&quot;ClinicalImpression.performer.value&quot;/&gt;
         &lt;text value=&quot;The clinician performing the assessment&quot;/&gt;
         &lt;type value=&quot;reference&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
@@ -848,176 +846,6 @@
         &lt;type value=&quot;reference&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
         &lt;repeats value=&quot;false&quot;/&gt;
-      &lt;/item&gt;
-    &lt;/item&gt;
-    &lt;item&gt;
-      &lt;linkId value=&quot;ClinicalImpression.investigation&quot;/&gt;
-      &lt;text value=&quot;One or more sets of investigations (signs, symptoms, etc.)&quot;/&gt;
-      &lt;type value=&quot;group&quot;/&gt;
-      &lt;required value=&quot;false&quot;/&gt;
-      &lt;repeats value=&quot;true&quot;/&gt;
-      &lt;item&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-          &lt;valueCodeableConcept&gt;
-            &lt;coding&gt;
-              &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-              &lt;code value=&quot;flyover&quot;/&gt;
-              &lt;display value=&quot;Fly-over&quot;/&gt;
-            &lt;/coding&gt;
-          &lt;/valueCodeableConcept&gt;
-        &lt;/extension&gt;
-        &lt;text value=&quot;One or more sets of investigations (signs, symptoms, etc.). The actual grouping of investigations varies greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.&quot;/&gt;
-        &lt;type value=&quot;display&quot;/&gt;
-      &lt;/item&gt;
-      &lt;item&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
-          &lt;valueInteger value=&quot;1&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
-          &lt;valueString value=&quot;string&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;linkId value=&quot;ClinicalImpression.investigation.id&quot;/&gt;
-        &lt;type value=&quot;group&quot;/&gt;
-        &lt;required value=&quot;false&quot;/&gt;
-        &lt;repeats value=&quot;true&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-            &lt;valueCodeableConcept&gt;
-              &lt;coding&gt;
-                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-                &lt;code value=&quot;flyover&quot;/&gt;
-                &lt;display value=&quot;Fly-over&quot;/&gt;
-              &lt;/coding&gt;
-            &lt;/valueCodeableConcept&gt;
-          &lt;/extension&gt;
-          &lt;text value=&quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;/&gt;
-          &lt;type value=&quot;display&quot;/&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-          &lt;linkId value=&quot;ClinicalImpression.investigation.id.value&quot;/&gt;
-          &lt;text value=&quot;Unique id for inter-element referencing&quot;/&gt;
-          &lt;type value=&quot;string&quot;/&gt;
-          &lt;required value=&quot;false&quot;/&gt;
-          &lt;repeats value=&quot;false&quot;/&gt;
-        &lt;/item&gt;
-      &lt;/item&gt;
-      &lt;item&gt;
-        &lt;linkId value=&quot;ClinicalImpression.investigation.extension&quot;/&gt;
-        &lt;text value=&quot;Additional content defined by implementations&quot;/&gt;
-        &lt;type value=&quot;group&quot;/&gt;
-        &lt;required value=&quot;false&quot;/&gt;
-        &lt;repeats value=&quot;true&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-            &lt;valueCodeableConcept&gt;
-              &lt;coding&gt;
-                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-                &lt;code value=&quot;flyover&quot;/&gt;
-                &lt;display value=&quot;Fly-over&quot;/&gt;
-              &lt;/coding&gt;
-            &lt;/valueCodeableConcept&gt;
-          &lt;/extension&gt;
-          &lt;text value=&quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;/&gt;
-          &lt;type value=&quot;display&quot;/&gt;
-        &lt;/item&gt;
-      &lt;/item&gt;
-      &lt;item&gt;
-        &lt;linkId value=&quot;ClinicalImpression.investigation.modifierExtension&quot;/&gt;
-        &lt;text value=&quot;Extensions that cannot be ignored even if unrecognized&quot;/&gt;
-        &lt;type value=&quot;group&quot;/&gt;
-        &lt;required value=&quot;false&quot;/&gt;
-        &lt;repeats value=&quot;true&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-            &lt;valueCodeableConcept&gt;
-              &lt;coding&gt;
-                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-                &lt;code value=&quot;flyover&quot;/&gt;
-                &lt;display value=&quot;Fly-over&quot;/&gt;
-              &lt;/coding&gt;
-            &lt;/valueCodeableConcept&gt;
-          &lt;/extension&gt;
-          &lt;text value=&quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element&amp;#39;s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&amp;#xA;&amp;#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;/&gt;
-          &lt;type value=&quot;display&quot;/&gt;
-        &lt;/item&gt;
-      &lt;/item&gt;
-      &lt;item&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs&quot;&gt;
-          &lt;valueInteger value=&quot;1&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
-          &lt;valueInteger value=&quot;1&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
-          &lt;valueString value=&quot;CodeableConcept&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;linkId value=&quot;ClinicalImpression.investigation.code&quot;/&gt;
-        &lt;text value=&quot;A name/code for the set&quot;/&gt;
-        &lt;type value=&quot;group&quot;/&gt;
-        &lt;required value=&quot;true&quot;/&gt;
-        &lt;repeats value=&quot;true&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-            &lt;valueCodeableConcept&gt;
-              &lt;coding&gt;
-                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-                &lt;code value=&quot;flyover&quot;/&gt;
-                &lt;display value=&quot;Fly-over&quot;/&gt;
-              &lt;/coding&gt;
-            &lt;/valueCodeableConcept&gt;
-          &lt;/extension&gt;
-          &lt;text value=&quot;A name/code for the group (&amp;quot;set&amp;quot;) of investigations. Typically, this will be something like &amp;quot;signs&amp;quot;, &amp;quot;symptoms&amp;quot;, &amp;quot;clinical&amp;quot;, &amp;quot;diagnostic&amp;quot;, but the list is not constrained, and others such groups such as (exposure|family|travel|nutritional) history may be used.&quot;/&gt;
-          &lt;type value=&quot;display&quot;/&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-          &lt;linkId value=&quot;ClinicalImpression.investigation.code.coding&quot;/&gt;
-          &lt;text value=&quot;code:&quot;/&gt;
-          &lt;type value=&quot;open-choice&quot;/&gt;
-          &lt;required value=&quot;false&quot;/&gt;
-          &lt;repeats value=&quot;false&quot;/&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-          &lt;linkId value=&quot;ClinicalImpression.investigation.code.text&quot;/&gt;
-          &lt;text value=&quot;text:&quot;/&gt;
-          &lt;type value=&quot;string&quot;/&gt;
-          &lt;required value=&quot;false&quot;/&gt;
-          &lt;repeats value=&quot;false&quot;/&gt;
-        &lt;/item&gt;
-      &lt;/item&gt;
-      &lt;item&gt;
-        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
-          &lt;valueString value=&quot;Reference&quot;/&gt;
-        &lt;/extension&gt;
-        &lt;linkId value=&quot;ClinicalImpression.investigation.item&quot;/&gt;
-        &lt;type value=&quot;group&quot;/&gt;
-        &lt;required value=&quot;false&quot;/&gt;
-        &lt;repeats value=&quot;true&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
-            &lt;valueCodeableConcept&gt;
-              &lt;coding&gt;
-                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
-                &lt;code value=&quot;flyover&quot;/&gt;
-                &lt;display value=&quot;Fly-over&quot;/&gt;
-              &lt;/coding&gt;
-            &lt;/valueCodeableConcept&gt;
-          &lt;/extension&gt;
-          &lt;text value=&quot;A record of a specific investigation that was undertaken. Most investigations are observations of one kind or another but some other specific types of data collection resources can also be used.&quot;/&gt;
-          &lt;type value=&quot;display&quot;/&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
-            &lt;valueCode value=&quot;Observation, QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, RiskAssessment, ImagingStudy, Media&quot;/&gt;
-          &lt;/extension&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
-            &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
-          &lt;/extension&gt;
-          &lt;linkId value=&quot;ClinicalImpression.investigation.item.value&quot;/&gt;
-          &lt;text value=&quot;Record of a specific investigation&quot;/&gt;
-          &lt;type value=&quot;reference&quot;/&gt;
-          &lt;required value=&quot;false&quot;/&gt;
-          &lt;repeats value=&quot;false&quot;/&gt;
-        &lt;/item&gt;
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -1373,7 +1201,7 @@
             &lt;/coding&gt;
           &lt;/valueCodeableConcept&gt;
         &lt;/extension&gt;
-        &lt;text value=&quot;Information supporting the clinical impression.&quot;/&gt;
+        &lt;text value=&quot;Information supporting the clinical impression, which can contain investigation results.&quot;/&gt;
         &lt;type value=&quot;display&quot;/&gt;
       &lt;/item&gt;
       &lt;item&gt;
@@ -1439,7 +1267,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

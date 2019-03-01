@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="MedicationAdministration"/>
+  <meta>
+    <lastUpdated value="2019-03-01T07:26:01.444-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -694,9 +697,6 @@
       </table>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-category">
-    <valueString value="Clinical.Medications"/>
-  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="trial-use"/>
   </extension>
@@ -713,7 +713,7 @@
   <version value="4.0.0"/>
   <name value="MedicationAdministration"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Pharmacy)"/>
   <contact>
     <telecom>
@@ -1041,12 +1041,12 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.instantiates">
@@ -1132,16 +1132,16 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-20-Completion Status"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.statusReason">
@@ -1244,16 +1244,16 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-5-Administered Code"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=CSM].role[classCode=ADMM]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.subject">
@@ -1277,6 +1277,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -1314,16 +1318,16 @@
         <map value="Event.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PV1-19-Visit Number"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=&quot;type of encounter or episode&quot;]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.supportingInformation">
@@ -1344,12 +1348,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.effective[x]">
@@ -1376,16 +1380,16 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-3-Date/Time Start of Administration / RXA-4-Date/Time End of Administration"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.done[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.performer">
@@ -1417,16 +1421,16 @@
         <map value="Event.performer"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.actor"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-10-Administering Provider / PRT-5-Participation Person: PRT-4-Participation=&#39;AP&#39; (RXA-10 is deprecated)"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=PRF]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.actor"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.performer.id">
@@ -1627,16 +1631,16 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use ASSERTION&quot;].value"/>
       </mapping>
       <mapping>
         <identity value="w3c.prov"/>
         <map value="no mapping"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.request">
@@ -2064,12 +2068,12 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.instantiates">
@@ -2138,16 +2142,16 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-20-Completion Status"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.statusReason">
@@ -2230,16 +2234,16 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-5-Administered Code"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=CSM].role[classCode=ADMM]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.subject">
@@ -2257,6 +2261,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -2287,16 +2295,16 @@
         <map value="Event.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PV1-19-Visit Number"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=&quot;type of encounter or episode&quot;]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.supportingInformation">
@@ -2310,12 +2318,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Resource"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.effective[x]">
@@ -2336,16 +2344,16 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-3-Date/Time Start of Administration / RXA-4-Date/Time End of Administration"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.done[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.performer">
@@ -2363,16 +2371,16 @@
         <map value="Event.performer"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.actor"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXA-10-Administering Provider / PRT-5-Participation Person: PRT-4-Participation=&#39;AP&#39; (RXA-10 is deprecated)"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".participation[typeCode=PRF]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.actor"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.performer.function">
@@ -2473,16 +2481,16 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=&quot;reason for use ASSERTION&quot;].value"/>
       </mapping>
       <mapping>
         <identity value="w3c.prov"/>
         <map value="no mapping"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.why[x]"/>
       </mapping>
     </element>
     <element id="MedicationAdministration.request">

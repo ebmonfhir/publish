@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for Goal.start[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:23f8399a-ef55-443f-ba46-545ff4a06688",
-      "timestamp" : "2019-02-04T09:28:35-06:00",
+      "identifier" : "urn:uuid:8f683d51-8290-48a5-9902-784e023daf2a",
+      "timestamp" : "2019-03-01T07:28:26-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "date",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for Goal.target.detail[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:e2b38870-76c4-4db2-be3d-2d53b5bed18c",
-      "timestamp" : "2019-02-04T09:28:35-06:00",
+      "identifier" : "urn:uuid:e0a145bd-dd84-4a65-a42a-0e830079c00e",
+      "timestamp" : "2019-03-01T07:28:26-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Quantity",
@@ -75,8 +75,8 @@
     "status" : "active",
     "description" : "Type options for Goal.target.due[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:ff180277-6cdc-4668-ab9a-93d7ee90ebff",
-      "timestamp" : "2019-02-04T09:28:35-06:00",
+      "identifier" : "urn:uuid:154d1235-8394-4189-a8aa-bcb554aa6328",
+      "timestamp" : "2019-03-01T07:28:26-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "date",
@@ -94,7 +94,7 @@
   }],
   "version" : "4.0.0",
   "status" : "draft",
-  "date" : "2019-02-04T09:26:06-06:00",
+  "date" : "2019-03-01T07:26:01-06:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "Goal",
@@ -501,6 +501,41 @@
         "linkId" : "Goal.category.text",
         "text" : "text:",
         "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "boolean"
+      }],
+      "linkId" : "Goal.continuous",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "After meeting the goal, ongoing activity is needed to sustain the goal objective. For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true).",
+        "type" : "display"
+      },
+      {
+        "linkId" : "Goal.continuous.value",
+        "text" : "After meeting the goal, ongoing activity is needed to sustain the goal objective",
+        "type" : "boolean",
         "required" : false,
         "repeats" : false
       }]
@@ -1283,7 +1318,7 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Condition, Observation, MedicationStatement, NutritionOrder, ServiceRequest, RiskAssessment"
+          "valueCode" : "Condition, Observation, MedicationStatement, MedicationRequest, NutritionOrder, ServiceRequest, RiskAssessment"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",

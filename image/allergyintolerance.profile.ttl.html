@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -124,27 +122,26 @@
 
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;AllergyIntolerance&quot;];
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+  ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
-     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
-     fhir:Extension.value [ fhir:value &quot;Clinical.Summary&quot; ]
-  ], [
-     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;3&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 4;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;pc&quot; ]
   ];
@@ -152,7 +149,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;AllergyIntolerance&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-20T09:53:45-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Patient Care)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -179,14 +176,14 @@
      fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
   ], [
      fhir:index 1;
-     fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
-     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
-     fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
-  ], [
-     fhir:index 2;
      fhir:StructureDefinition.identity [ fhir:value &quot;w5&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/fhir/fivews&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;FiveWs Pattern Mapping&quot; ]
+  ], [
+     fhir:index 2;
+     fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
+     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
+     fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
   ];
   fhir:StructureDefinition.kind [ fhir:value &quot;resource&quot;];
   fhir:StructureDefinition.abstract [ fhir:value &quot;false&quot;];
@@ -553,16 +550,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-7&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;id&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -604,12 +601,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
        fhir:index 11;
@@ -651,12 +648,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
        fhir:index 12;
@@ -697,16 +694,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-9&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;code&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
        ]
      ], [
        fhir:index 13;
@@ -753,16 +750,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-2&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;value &lt; IntoleranceValue (Agent)&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
        ]
      ], [
        fhir:index 14;
@@ -809,16 +806,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-4&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
        ]
      ], [
        fhir:index 15;
@@ -856,16 +853,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-3 / IAM-3&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;substance/product:\r\r.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rnegated/excluded substance/product:\r\r.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rpositive or negated/excluded condition/situation:\r\rObservation.code=ASSERTION; Observation.value&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
        ]
      ], [
        fhir:index 16;
@@ -896,14 +893,18 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;(PID-3)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=SBJ].role[classCode=PAT]&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
@@ -932,12 +933,12 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot; ]
        ]
      ], [
        fhir:index 18;
@@ -972,12 +973,12 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime.low&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.init&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime.low&quot; ]
        ]
      ], [
        fhir:index 19;
@@ -1000,16 +1001,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-13&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
        ]
      ], [
        fhir:index 20;
@@ -1049,12 +1050,12 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.author&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
        fhir:index 21;
@@ -1098,16 +1099,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-14 (if patient) / IAM-18 (if practitioner)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ]
      ], [
        fhir:index 22;
@@ -1584,16 +1585,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-7&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;id&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
        ]
      ], [
        fhir:index 2;
@@ -1630,12 +1631,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;clinicalStatus\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
        fhir:index 3;
@@ -1672,12 +1673,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Observation ACT .inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\&quot;verificationStatus\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
        fhir:index 4;
@@ -1712,16 +1713,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-9&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;code&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
        ]
      ], [
        fhir:index 5;
@@ -1762,16 +1763,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-2&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;value &lt; IntoleranceValue (Agent)&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
        ]
      ], [
        fhir:index 6;
@@ -1812,16 +1813,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-4&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value &lt;= SeverityObservation (Severity Level)]&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
        ]
      ], [
        fhir:index 7;
@@ -1853,16 +1854,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;AL1-3 / IAM-3&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;substance/product:\r\r.participation[typeCode=CAGNT].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rnegated/excluded substance/product:\r\r.participation[typeCode=CAGNT, negationInd=true].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code &lt;= ExposureAgentEntityType]\r\rpositive or negated/excluded condition/situation:\r\rObservation.code=ASSERTION; Observation.value&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
        ]
      ], [
        fhir:index 8;
@@ -1887,14 +1888,18 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;(PID-3)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=SBJ].role[classCode=PAT]&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
@@ -1916,12 +1921,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -1949,12 +1954,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime.low&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.init&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime.low&quot; ]
        ]
      ], [
        fhir:index 11;
@@ -1970,16 +1975,16 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-13&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
        ]
      ], [
        fhir:index 12;
@@ -2012,12 +2017,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.author&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
        fhir:index 13;
@@ -2055,16 +2060,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;IAM-14 (if patient) / IAM-18 (if practitioner)&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
-       ], [
-         fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ]
      ], [
        fhir:index 14;
@@ -2336,7 +2341,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

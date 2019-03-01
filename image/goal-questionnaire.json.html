@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -126,8 +124,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for Goal.start[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:23f8399a-ef55-443f-ba46-545ff4a06688&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-04T09:28:35-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:8f683d51-8290-48a5-9902-784e023daf2a&quot;,
+      &quot;timestamp&quot; : &quot;2019-03-01T07:28:26-06:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;date&quot;,
@@ -147,8 +145,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for Goal.target.detail[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:e2b38870-76c4-4db2-be3d-2d53b5bed18c&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-04T09:28:35-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:e0a145bd-dd84-4a65-a42a-0e830079c00e&quot;,
+      &quot;timestamp&quot; : &quot;2019-03-01T07:28:26-06:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;Quantity&quot;,
@@ -193,8 +191,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for Goal.target.due[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:ff180277-6cdc-4668-ab9a-93d7ee90ebff&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-04T09:28:35-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:154d1235-8394-4189-a8aa-bcb554aa6328&quot;,
+      &quot;timestamp&quot; : &quot;2019-03-01T07:28:26-06:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;date&quot;,
@@ -212,7 +210,7 @@
   }],
   &quot;version&quot; : &quot;4.0.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-04T09:26:06-06:00&quot;,
+  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;Goal&quot;,
@@ -619,6 +617,41 @@
         &quot;linkId&quot; : &quot;Goal.category.text&quot;,
         &quot;text&quot; : &quot;text:&quot;,
         &quot;type&quot; : &quot;string&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      }]
+    },
+    {
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;,
+        &quot;valueInteger&quot; : 1
+      },
+      {
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+        &quot;valueString&quot; : &quot;boolean&quot;
+      }],
+      &quot;linkId&quot; : &quot;Goal.continuous&quot;,
+      &quot;type&quot; : &quot;group&quot;,
+      &quot;required&quot; : false,
+      &quot;repeats&quot; : true,
+      &quot;item&quot; : [{
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+          &quot;valueCodeableConcept&quot; : {
+            &quot;coding&quot; : [{
+              &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+              &quot;code&quot; : &quot;flyover&quot;,
+              &quot;display&quot; : &quot;Fly-over&quot;
+            }]
+          }
+        }],
+        &quot;text&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective. For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true).&quot;,
+        &quot;type&quot; : &quot;display&quot;
+      },
+      {
+        &quot;linkId&quot; : &quot;Goal.continuous.value&quot;,
+        &quot;text&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective&quot;,
+        &quot;type&quot; : &quot;boolean&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : false
       }]
@@ -1401,7 +1434,7 @@
       {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-          &quot;valueCode&quot; : &quot;Condition, Observation, MedicationStatement, NutritionOrder, ServiceRequest, RiskAssessment&quot;
+          &quot;valueCode&quot; : &quot;Condition, Observation, MedicationStatement, MedicationRequest, NutritionOrder, ServiceRequest, RiskAssessment&quot;
         },
         {
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
@@ -1543,7 +1576,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

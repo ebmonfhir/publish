@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for FamilyMemberHistory.born[x]"/>
       <expansion>
-        <identifier value="urn:uuid:7ae3cdba-8c0a-41fa-8495-e9d73f6aefad"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:877df88d-833d-49a3-b841-b81b1b88423d"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Period"/>
@@ -36,8 +36,8 @@
       <status value="active"/>
       <description value="Type options for FamilyMemberHistory.age[x]"/>
       <expansion>
-        <identifier value="urn:uuid:59cd2529-55c3-4f1d-af93-c7a4cc4e2eef"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:df544e7f-1c56-48c4-b4cb-f42983c34b9f"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Age"/>
@@ -63,8 +63,8 @@
       <status value="active"/>
       <description value="Type options for FamilyMemberHistory.deceased[x]"/>
       <expansion>
-        <identifier value="urn:uuid:27f76913-cb12-4b3a-b57e-c0f911171bc6"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:0e1685bb-e0f3-4c8f-a9bc-3253f8f4c57d"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="boolean"/>
@@ -100,8 +100,8 @@
       <status value="active"/>
       <description value="Type options for FamilyMemberHistory.condition.onset[x]"/>
       <expansion>
-        <identifier value="urn:uuid:12d014ce-77f1-4c96-bdf8-fd280170d81b"/>
-        <timestamp value="2019-02-04T09:28:35-06:00"/>
+        <identifier value="urn:uuid:e8ef97b2-84fc-45e0-8ebf-1036883685d2"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Age"/>
@@ -125,12 +125,49 @@
       </expansion>
     </ValueSet>
   </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs6"/>
+      <name value="Type options for FamilyMemberHistory.procedure.performed[x]"/>
+      <status value="active"/>
+      <description value="Type options for FamilyMemberHistory.procedure.performed[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:05c67e61-5144-41cb-9920-1c18ba0cfe8e"/>
+        <timestamp value="2019-03-01T07:28:26-06:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Age"/>
+          <display value="Age"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Range"/>
+          <display value="Range"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Period"/>
+          <display value="Period"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="string"/>
+          <display value="string"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="dateTime"/>
+          <display value="dateTime"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-03-01T07:26:01-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="FamilyMemberHistory"/>
@@ -1538,6 +1575,384 @@
             </valueCodeableConcept>
           </extension>
           <text value="An area where general notes can be placed about this specific condition."/>
+          <type value="display"/>
+        </item>
+      </item>
+    </item>
+    <item>
+      <linkId value="FamilyMemberHistory.procedure"/>
+      <text value="Procedures that the related person had"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="The significant Procedures (or procedure) that the family member had. This is a repeating section to allow a system to represent more than one procedure per resource, though there is nothing stopping multiple resources - one per procedure."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="string"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.id"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.id.value"/>
+          <text value="Unique id for inter-element referencing"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <linkId value="FamilyMemberHistory.procedure.extension"/>
+        <text value="Additional content defined by implementations"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+          <type value="display"/>
+        </item>
+      </item>
+      <item>
+        <linkId value="FamilyMemberHistory.procedure.modifierExtension"/>
+        <text value="Extensions that cannot be ignored even if unrecognized"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element&#39;s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+          <type value="display"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.code"/>
+        <text value="Procedures performed on the related person"/>
+        <type value="group"/>
+        <required value="true"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="The actual procedure specified. Could be a coded procedure or a less specific string depending on how much is known about the procedure and the capabilities of the creating system."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.code.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.code.text"/>
+          <text value="text:"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.outcome"/>
+        <text value="What happened following the procedure"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Indicates what happened following the procedure. If the procedure resulted in death, deceased date is captured on the relation."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.outcome.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.outcome.text"/>
+          <text value="text:"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="boolean"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.contributedToDeath"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="This procedure contributed to the cause of death of the related person. If contributedToDeath is not populated, then it is unknown."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.contributedToDeath.value"/>
+          <text value="Whether the procedure contributed to the cause of death"/>
+          <type value="boolean"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.performed[x]"/>
+        <text value="When the procedure was performed"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="FamilyMemberHistory.procedure.performed[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+          <answerValueSet value="#vs6"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Quantity"/>
+            </extension>
+            <linkId value="FamilyMemberHistory.procedure.performed[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.comparator"/>
+              <text value="comp:"/>
+              <type value="choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.value"/>
+              <text value="value:"/>
+              <type value="decimal"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.units"/>
+              <text value="units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.code"/>
+              <text value="coded units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.system"/>
+              <text value="units system:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Range"/>
+            </extension>
+            <linkId value="FamilyMemberHistory.procedure.performed[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.low"/>
+              <text value="low:"/>
+              <type value="decimal"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.high"/>
+              <text value="high:"/>
+              <type value="decimal"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.units"/>
+              <text value="units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Period"/>
+            </extension>
+            <linkId value="FamilyMemberHistory.procedure.performed[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.low"/>
+              <text value="start:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.end"/>
+              <text value="end:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="string"/>
+            </extension>
+            <linkId value="FamilyMemberHistory.procedure.performed[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.value"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="datetime"/>
+            </extension>
+            <linkId value="FamilyMemberHistory.procedure.performed[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="FamilyMemberHistory.procedure.performed[x]._null.value"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="Annotation"/>
+        </extension>
+        <linkId value="FamilyMemberHistory.procedure.note"/>
+        <text value="Extra information about the procedure"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="An area where general notes can be placed about this specific procedure."/>
           <type value="display"/>
         </item>
       </item>
