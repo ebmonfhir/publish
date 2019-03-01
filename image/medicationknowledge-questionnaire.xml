@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for MedicationKnowledge.ingredient.item[x]"/>
       <expansion>
-        <identifier value="urn:uuid:a2163867-a5f9-4b42-87bd-3c06bcdb1239"/>
-        <timestamp value="2019-02-04T09:28:47-06:00"/>
+        <identifier value="urn:uuid:91d5bc28-8fd1-40f7-b04e-157ecd43bf91"/>
+        <timestamp value="2019-02-28T12:35:15-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -18,8 +18,8 @@
         </contains>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
-          <code value="Substance"/>
-          <display value="Substance"/>
+          <code value="MedicinalProductIngredient"/>
+          <display value="MedicinalProductIngredient"/>
         </contains>
       </expansion>
     </ValueSet>
@@ -31,8 +31,8 @@
       <status value="active"/>
       <description value="Type options for MedicationKnowledge.administrationGuidelines.indication[x]"/>
       <expansion>
-        <identifier value="urn:uuid:3fe55937-a976-415a-89e4-d1336aa38759"/>
-        <timestamp value="2019-02-04T09:28:47-06:00"/>
+        <identifier value="urn:uuid:733a00ac-9b7e-410d-bdfb-f8e8f7678663"/>
+        <timestamp value="2019-02-28T12:35:15-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -40,8 +40,8 @@
         </contains>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
-          <code value="ObservationDefinition"/>
-          <display value="ObservationDefinition"/>
+          <code value="MedicinalProductIndication"/>
+          <display value="MedicinalProductIndication"/>
         </contains>
       </expansion>
     </ValueSet>
@@ -53,8 +53,8 @@
       <status value="active"/>
       <description value="Type options for MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]"/>
       <expansion>
-        <identifier value="urn:uuid:4710c415-5cd9-4d27-b92f-ef804fc036ee"/>
-        <timestamp value="2019-02-04T09:28:47-06:00"/>
+        <identifier value="urn:uuid:932049ec-5f40-47c7-8301-91916e5e3811"/>
+        <timestamp value="2019-02-28T12:35:15-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -75,8 +75,8 @@
       <status value="active"/>
       <description value="Type options for MedicationKnowledge.drugCharacteristic.value[x]"/>
       <expansion>
-        <identifier value="urn:uuid:5e8bd6e2-0ac3-42f1-9bbf-72adbfe4b1cd"/>
-        <timestamp value="2019-02-04T09:28:47-06:00"/>
+        <identifier value="urn:uuid:7589216c-dee9-4dcc-860d-334c94e47208"/>
+        <timestamp value="2019-02-28T12:35:15-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -100,12 +100,34 @@
       </expansion>
     </ValueSet>
   </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs6"/>
+      <name value="Type options for MedicationKnowledge.kinetics.value[x]"/>
+      <status value="active"/>
+      <description value="Type options for MedicationKnowledge.kinetics.value[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:7c696b6c-47ad-4cd2-965f-a120401c31e5"/>
+        <timestamp value="2019-02-28T12:35:15-06:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity"/>
+          <display value="Quantity"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Duration"/>
+          <display value="Duration"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Pharmacy)"/>
   <item>
     <linkId value="MedicationKnowledge"/>
@@ -1082,7 +1104,7 @@
           <valueInteger value="1"/>
         </extension>
         <linkId value="MedicationKnowledge.ingredient.item[x]"/>
-        <text value="Medication(s) or substance(s) contained in the medication"/>
+        <text value="Medication(s) or MedicinalProductIngredient(s) contained in the medication"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -1135,7 +1157,7 @@
             <type value="group"/>
             <item>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-                <valueCode value="Substance"/>
+                <valueCode value="MedicinalProductIngredient"/>
               </extension>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
                 <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -1226,6 +1248,41 @@
           <required value="false"/>
           <repeats value="false"/>
         </item>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="MedicationKnowledge.device"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing)."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="Device"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+        </extension>
+        <linkId value="MedicationKnowledge.device.value"/>
+        <text value="A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing)"/>
+        <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
       </item>
     </item>
     <item>
@@ -1999,7 +2056,7 @@
             <type value="group"/>
             <item>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-                <valueCode value="ObservationDefinition"/>
+                <valueCode value="MedicinalProductIndication"/>
               </extension>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
                 <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -2598,6 +2655,104 @@
           <repeats value="false"/>
         </item>
       </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="Reference"/>
+        </extension>
+        <linkId value="MedicationKnowledge.packaging.device"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="The device used to administer the medication (e.g. scoop, applicator, syringe)."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+            <valueCode value="Device"/>
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+            <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+          </extension>
+          <linkId value="MedicationKnowledge.packaging.device.value"/>
+          <text value="The device used to administer the medication (e.g. scoop, applicator, syringe)"/>
+          <type value="reference"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="MedicationKnowledge.packaging.material"/>
+        <text value="Material type of the package item"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Material type of the package item."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="MedicationKnowledge.packaging.material.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+        <item>
+          <linkId value="MedicationKnowledge.packaging.material.text"/>
+          <text value="text:"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <linkId value="MedicationKnowledge.packaging.packaging"/>
+        <text value="Allows packages within packages"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Allows packages within packages (e.g. blister packages within a box or vials of medications within a box)."/>
+          <type value="display"/>
+        </item>
+      </item>
     </item>
     <item>
       <linkId value="MedicationKnowledge.drugCharacteristic"/>
@@ -2868,13 +3023,83 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="DetectedIssue"/>
+          <valueCode value="MedicinalProductContraindication"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="MedicationKnowledge.contraindication.value"/>
         <text value="Potential clinical issue with or between medication(s)"/>
+        <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="MedicationKnowledge.interaction"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Interactions associated with the medication (e.g. drug-drug interactions)."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="MedicinalProductInteraction"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+        </extension>
+        <linkId value="MedicationKnowledge.interaction.value"/>
+        <text value="Interactions associated with the medication"/>
+        <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="MedicationKnowledge.undesirableEffect"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Side effects or adverse effects associated with the medication (e.g. nausea, vomiting)."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="MedicinalProductUndesirableEffect"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+        </extension>
+        <linkId value="MedicationKnowledge.undesirableEffect.value"/>
+        <text value="Side effects or adverse effects associated with the medication"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -3630,11 +3855,14 @@
         </item>
       </item>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Quantity"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
         </extension>
-        <linkId value="MedicationKnowledge.kinetics.areaUnderCurve"/>
-        <text value="The drug concentration measured at certain discrete points in time"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="MedicationKnowledge.kinetics.type"/>
+        <text value="Code specifying the type of kinetics"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -3648,98 +3876,19 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The drug concentration measured at certain discrete points in time."/>
+          <text value="Code specifying the type of kinetics (e.g. area under the curve, half life period, lethal dose 50.)."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="MedicationKnowledge.kinetics.areaUnderCurve.comparator"/>
-          <text value="comp:"/>
-          <type value="choice"/>
+          <linkId value="MedicationKnowledge.kinetics.type.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
         <item>
-          <linkId value="MedicationKnowledge.kinetics.areaUnderCurve.value"/>
-          <text value="value:"/>
-          <type value="decimal"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.areaUnderCurve.units"/>
-          <text value="units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.areaUnderCurve.code"/>
-          <text value="coded units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.areaUnderCurve.system"/>
-          <text value="units system:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-      </item>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Quantity"/>
-        </extension>
-        <linkId value="MedicationKnowledge.kinetics.lethalDose50"/>
-        <text value="The median lethal dose of a drug"/>
-        <type value="group"/>
-        <required value="false"/>
-        <repeats value="true"/>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-            <valueCodeableConcept>
-              <coding>
-                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-                <code value="flyover"/>
-                <display value="Fly-over"/>
-              </coding>
-            </valueCodeableConcept>
-          </extension>
-          <text value="The median lethal dose of a drug."/>
-          <type value="display"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.lethalDose50.comparator"/>
-          <text value="comp:"/>
-          <type value="choice"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.lethalDose50.value"/>
-          <text value="value:"/>
-          <type value="decimal"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.lethalDose50.units"/>
-          <text value="units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.lethalDose50.code"/>
-          <text value="coded units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.lethalDose50.system"/>
-          <text value="units system:"/>
+          <linkId value="MedicationKnowledge.kinetics.type.text"/>
+          <text value="text:"/>
           <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -3749,11 +3898,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Quantity"/>
-        </extension>
-        <linkId value="MedicationKnowledge.kinetics.halfLifePeriod"/>
-        <text value="Time required for concentration in the body to decrease by half"/>
+        <linkId value="MedicationKnowledge.kinetics.value[x]"/>
+        <text value="Description of the characteristic"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -3767,43 +3913,100 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The time required for any specified property (e.g., the concentration of a substance in the body) to decrease by half."/>
+          <text value="Description of the characteristic."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="MedicationKnowledge.kinetics.halfLifePeriod.comparator"/>
-          <text value="comp:"/>
+          <linkId value="MedicationKnowledge.kinetics.value[x]._type"/>
+          <text value="type"/>
           <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.halfLifePeriod.value"/>
-          <text value="value:"/>
-          <type value="decimal"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.halfLifePeriod.units"/>
-          <text value="units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.halfLifePeriod.code"/>
-          <text value="coded units:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="MedicationKnowledge.kinetics.halfLifePeriod.system"/>
-          <text value="units system:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
+          <answerValueSet value="#vs6"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Quantity"/>
+            </extension>
+            <linkId value="MedicationKnowledge.kinetics.value[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.comparator"/>
+              <text value="comp:"/>
+              <type value="choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.value"/>
+              <text value="value:"/>
+              <type value="decimal"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.units"/>
+              <text value="units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.code"/>
+              <text value="coded units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.system"/>
+              <text value="units system:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Quantity"/>
+            </extension>
+            <linkId value="MedicationKnowledge.kinetics.value[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.comparator"/>
+              <text value="comp:"/>
+              <type value="choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.value"/>
+              <text value="value:"/>
+              <type value="decimal"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.units"/>
+              <text value="units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.code"/>
+              <text value="coded units:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="MedicationKnowledge.kinetics.value[x]._null.system"/>
+              <text value="units system:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
     </item>

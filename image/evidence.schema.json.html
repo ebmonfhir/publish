@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -360,7 +358,11 @@ This is a representation of the json schema for Evidence, which is just a part o
         },
         "population": {
           "description": "A reference to a Group that defines the population or subpopulation.",
-          "$ref": "#/definitions/Evidence_Population"
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "populationSampleSize": {
+          "description": "Population Sample Size.",
+          "$ref": "#/definitions/Evidence_PopulationSampleSize"
         },
         "exposureVariant": {
           "description": "The exposure details. Which could be intervention or comparison/control states.",
@@ -381,34 +383,6 @@ This is a representation of the json schema for Evidence, which is just a part o
       "required": [
         "population"
       ]
-    },
-    "Evidence_Population": {
-      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.json#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "populationSampleSize": {
-          "description": "Population Sample Size.",
-          "$ref": "#/definitions/Evidence_PopulationSampleSize"
-        }
-      },
-      "additionalProperties": false
     },
     "Evidence_PopulationSampleSize": {
       "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
@@ -455,22 +429,6 @@ This is a representation of the json schema for Evidence, which is just a part o
           "description": "Extensions for numberOfParticipants",
           "$ref": "Element.schema.json#/definitions/Element"
         },
-        "knownDataCount": {
-          "description": "TBD.",
-          "$ref": "#/definitions/integer"
-        },
-        "_knownDataCount": {
-          "description": "Extensions for knownDataCount",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "numeratorCount": {
-          "description": "TBD.",
-          "$ref": "#/definitions/integer"
-        },
-        "_numeratorCount": {
-          "description": "Extensions for numeratorCount",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
         "note": {
           "description": "A human-readable string to clarify or explain concepts about the sample size.",
           "items": {
@@ -515,8 +473,8 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "exposureSubsetSampleSize": {
-          "description": "Sample Size limited to this exposure state.",
-          "$ref": "#/definitions/Evidence_PopulationSampleSize"
+          "description": "Population Sample Size.",
+          "$ref": "#/definitions/Evidence_ExposureSubsetSampleSize"
         },
         "measuredVariable": {
           "description": "Outcome or Characteristic that is Measured.",
@@ -544,6 +502,61 @@ This is a representation of the json schema for Evidence, which is just a part o
       "required": [
         "groupByExposure"
       ]
+    },
+    "Evidence_ExposureSubsetSampleSize": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Human-readable summary of population sample size.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfStudies": {
+          "description": "Number of studies contributing to this Evidence summary.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfStudies": {
+          "description": "Extensions for numberOfStudies",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfParticipants": {
+          "description": "Number of participants in the population.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfParticipants": {
+          "description": "Extensions for numberOfParticipants",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the sample size.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
     },
     "Evidence_MeasuredVariable": {
       "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
@@ -636,8 +649,8 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "sampleSize": {
-          "description": "Sample Size for of the univariate statistic.",
-          "$ref": "#/definitions/Evidence_PopulationSampleSize"
+          "description": "Population Sample Size.",
+          "$ref": "#/definitions/Evidence_SampleSize"
         },
         "statistic": {
           "description": "TBD.",
@@ -655,6 +668,77 @@ This is a representation of the json schema for Evidence, which is just a part o
         },
         "note": {
           "description": "Footnote or esplanatory note about the statistic itself.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_SampleSize": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Human-readable summary of population sample size.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfStudies": {
+          "description": "Number of studies contributing to this Evidence summary.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfStudies": {
+          "description": "Extensions for numberOfStudies",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfParticipants": {
+          "description": "Number of participants in the population.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfParticipants": {
+          "description": "Extensions for numberOfParticipants",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "knownDataCount": {
+          "description": "TBD.",
+          "$ref": "#/definitions/integer"
+        },
+        "_knownDataCount": {
+          "description": "Extensions for knownDataCount",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numeratorCount": {
+          "description": "TBD.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numeratorCount": {
+          "description": "Extensions for numeratorCount",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the sample size.",
           "items": {
             "$ref": "Annotation.schema.json#/definitions/Annotation"
           },
@@ -704,13 +788,6 @@ This is a representation of the json schema for Evidence, which is just a part o
           "description": "TBD.",
           "items": {
             "$ref": "#/definitions/Evidence_PrecisionEstimate"
-          },
-          "type": "array"
-        },
-        "pValue": {
-          "description": "TBD.",
-          "items": {
-            "$ref": "#/definitions/Evidence_PValue"
           },
           "type": "array"
         },
@@ -772,46 +849,6 @@ This is a representation of the json schema for Evidence, which is just a part o
         "_to": {
           "description": "Extensions for to",
           "$ref": "Element.schema.json#/definitions/Element"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Evidence_PValue": {
-      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.json#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "type": {
-          "description": "TBD.",
-          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-        },
-        "value": {
-          "description": "TBD.",
-          "$ref": "#/definitions/decimal"
-        },
-        "_value": {
-          "description": "Extensions for value",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "range": {
-          "description": "TBD.",
-          "$ref": "Range.schema.json#/definitions/Range"
         }
       },
       "additionalProperties": false
@@ -949,13 +986,13 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "sampleSize": {
-          "description": "Sample size.",
-          "$ref": "#/definitions/Evidence_SampleSize"
+          "description": "Population Sample Size.",
+          "$ref": "#/definitions/Evidence_SampleSize1"
         },
-        "certainty": {
-          "description": "A description of the certainty of the effect estimate.",
+        "statistic": {
+          "description": "TBD.",
           "items": {
-            "$ref": "#/definitions/Evidence_Certainty"
+            "$ref": "#/definitions/Evidence_Statistic1"
           },
           "type": "array"
         },
@@ -973,7 +1010,7 @@ This is a representation of the json schema for Evidence, which is just a part o
         "measuredVariable1"
       ]
     },
-    "Evidence_SampleSize": {
+    "Evidence_SampleSize1": {
       "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
       "properties": {
         "id": {
@@ -994,10 +1031,281 @@ This is a representation of the json schema for Evidence, which is just a part o
           },
           "type": "array"
         },
-        "statistic": {
-          "description": "Sample size statistic.",
+        "description": {
+          "description": "Human-readable summary of population sample size.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfStudies": {
+          "description": "Number of studies contributing to this Evidence summary.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfStudies": {
+          "description": "Extensions for numberOfStudies",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfParticipants": {
+          "description": "Number of participants in the population.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfParticipants": {
+          "description": "Extensions for numberOfParticipants",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the sample size.",
           "items": {
-            "$ref": "#/definitions/Evidence_Statistic"
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_Statistic1": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "TBD.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "TBD.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "quantity": {
+          "description": "TBD.",
+          "$ref": "Quantity.schema.json#/definitions/Quantity"
+        },
+        "precisionEstimate": {
+          "description": "TBD.",
+          "items": {
+            "$ref": "#/definitions/Evidence_PrecisionEstimate1"
+          },
+          "type": "array"
+        },
+        "pValue": {
+          "description": "TBD.",
+          "items": {
+            "$ref": "#/definitions/Evidence_PValue"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Footnote or explanatory note about the univariate statistic.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "certainty": {
+          "description": "A description of the certainty of the effect estimate.",
+          "items": {
+            "$ref": "#/definitions/Evidence_Certainty1"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_PrecisionEstimate1": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Examples include confidence interval and interquartile range.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "level": {
+          "description": "Use 95 for a 95% confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_level": {
+          "description": "Extensions for level",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "from": {
+          "description": "Lower bound of confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_from": {
+          "description": "Extensions for from",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "to": {
+          "description": "Upper bound of confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_to": {
+          "description": "Extensions for to",
+          "$ref": "Element.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_PValue": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "TBD.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "value": {
+          "description": "TBD.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "range": {
+          "description": "TBD.",
+          "$ref": "Range.schema.json#/definitions/Range"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_Certainty1": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "rating": {
+          "description": "A rating of the certainty of the effect estimate.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the resource.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "certaintySubcomponent": {
+          "description": "A description of a component of the overall certainty.",
+          "items": {
+            "$ref": "#/definitions/Evidence_CertaintySubcomponent1"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_CertaintySubcomponent1": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Type of subcomponent of certainty rating.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "rating": {
+          "description": "A rating of a subcomponent of rating certainty.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the resource.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
           },
           "type": "array"
         }
@@ -1054,20 +1362,20 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "sampleSize": {
-          "description": "TBD.",
-          "$ref": "#/definitions/Evidence_PopulationSampleSize"
+          "description": "Population Sample Size.",
+          "$ref": "#/definitions/Evidence_SampleSize2"
         },
         "statistic": {
           "description": "TBD.",
           "items": {
-            "$ref": "#/definitions/Evidence_Statistic"
+            "$ref": "#/definitions/Evidence_Statistic2"
           },
           "type": "array"
         },
         "certainty": {
           "description": "A description of the certainty of the effect estimate.",
           "items": {
-            "$ref": "#/definitions/Evidence_Certainty"
+            "$ref": "#/definitions/Evidence_Certainty2"
           },
           "type": "array"
         },
@@ -1085,6 +1393,301 @@ This is a representation of the json schema for Evidence, which is just a part o
         "exposure",
         "measuredVariable"
       ]
+    },
+    "Evidence_SampleSize2": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Human-readable summary of population sample size.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfStudies": {
+          "description": "Number of studies contributing to this Evidence summary.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfStudies": {
+          "description": "Extensions for numberOfStudies",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "numberOfParticipants": {
+          "description": "Number of participants in the population.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfParticipants": {
+          "description": "Extensions for numberOfParticipants",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the sample size.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_Statistic2": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "TBD.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "TBD.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "quantity": {
+          "description": "TBD.",
+          "$ref": "Quantity.schema.json#/definitions/Quantity"
+        },
+        "precisionEstimate": {
+          "description": "TBD.",
+          "items": {
+            "$ref": "#/definitions/Evidence_PrecisionEstimate2"
+          },
+          "type": "array"
+        },
+        "pValue": {
+          "description": "TBD.",
+          "items": {
+            "$ref": "#/definitions/Evidence_PValue1"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Footnote or explanatory note about the univariate statistic.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_PrecisionEstimate2": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Examples include confidence interval and interquartile range.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "level": {
+          "description": "Use 95 for a 95% confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_level": {
+          "description": "Extensions for level",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "from": {
+          "description": "Lower bound of confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_from": {
+          "description": "Extensions for from",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "to": {
+          "description": "Upper bound of confidence interval.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_to": {
+          "description": "Extensions for to",
+          "$ref": "Element.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_PValue1": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "TBD.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "value": {
+          "description": "TBD.",
+          "$ref": "#/definitions/decimal"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "range": {
+          "description": "TBD.",
+          "$ref": "Range.schema.json#/definitions/Range"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_Certainty2": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "rating": {
+          "description": "A rating of the certainty of the effect estimate.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the resource.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "certaintySubcomponent": {
+          "description": "A description of a component of the overall certainty.",
+          "items": {
+            "$ref": "#/definitions/Evidence_CertaintySubcomponent2"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Evidence_CertaintySubcomponent2": {
+      "description": "The Evidence resource codifies defintions of the evidence variables, the statistical measures and the certainty of those statistics.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Type of subcomponent of certainty rating.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "rating": {
+          "description": "A rating of a subcomponent of rating certainty.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "A human-readable string to clarify or explain concepts about the resource.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
@@ -1105,7 +1708,7 @@ This is a representation of the json schema for Evidence, which is just a part o
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 14:12-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 17:04-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

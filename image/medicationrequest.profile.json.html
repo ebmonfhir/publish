@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -119,6 +117,9 @@
 {
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;MedicationRequest&quot;,
+  &quot;meta&quot; : {
+    &quot;lastUpdated&quot; : &quot;2019-02-28T12:32:32.955-06:00&quot;
+  },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
     &quot;div&quot; : &quot;&lt;div&gt;!-- Snipped for Brevity --&gt;&lt;/div&gt;&quot;
@@ -147,7 +148,7 @@
   &quot;version&quot; : &quot;4.0.0&quot;,
   &quot;name&quot; : &quot;MedicationRequest&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-20T09:53:45-06:00&quot;,
+  &quot;date&quot; : &quot;2019-02-28T12:32:32-06:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Pharmacy)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -179,14 +180,14 @@
     &quot;name&quot; : &quot;RIM Mapping&quot;
   },
   {
-    &quot;identity&quot; : &quot;v2&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
-    &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;w5&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/fhir/fivews&quot;,
     &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;v2&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
+    &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -500,16 +501,16 @@
         &quot;map&quot; : &quot;Message/Header/PrescriberOrderNumber&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;ORC-2-Placer Order Number / ORC-3-Filler Order Number&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.id&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.identifier&quot;
       }]
     },
     {
@@ -549,12 +550,12 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.statusCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.statusCode&quot;
       }]
     },
     {
@@ -626,12 +627,12 @@
         &quot;map&quot; : &quot;Request.intent&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot;
       }]
     },
     {
@@ -666,12 +667,12 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/Directions\r\ror \r\rMessage/Body/NewRx/MedicationPrescribed/StructuredSIG&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot;
       }]
     },
     {
@@ -705,12 +706,12 @@
         &quot;map&quot; : &quot;Request.priority&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.priorityCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.priorityCode&quot;
       }]
     },
     {
@@ -807,16 +808,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed\r\rMedication.code.coding.code = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCode\r\rMedication.code.coding.system = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCodeQualifier\r\rMedication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDescription&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;RXE-2-Give Code / RXO-1-Requested Give Code / RXC-2-Component Code&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;consumable.administrableMedication&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -846,6 +847,10 @@
       {
         &quot;identity&quot; : &quot;script10.6&quot;,
         &quot;map&quot; : &quot;Message/Body/NewRx/Patient\r\r(need detail to link to specific patient … Patient.Identification in SCRIPT)&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
@@ -888,16 +893,16 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;PV1-19-Visit Number&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.context&quot;
       }]
     },
     {
@@ -924,12 +929,12 @@
         &quot;map&quot; : &quot;Request.supportingInfo&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot;
       }]
     },
     {
@@ -958,16 +963,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/WrittenDate&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;author.time&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
     },
     {
@@ -998,12 +1003,12 @@
         &quot;map&quot; : &quot;Request.requester&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.author&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
       }]
     },
     {
@@ -1035,12 +1040,12 @@
         &quot;map&quot; : &quot;Request.performer&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
       }]
     },
     {
@@ -1099,12 +1104,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.who&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot;
       }]
     },
     {
@@ -1143,16 +1148,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/Diagnosis/Primary/Value&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;reason.observation.reasonCode&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.why[x]&quot;
       }]
     },
     {
@@ -1184,12 +1189,12 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;reason.observation[code=ASSERTION].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;reason.observation[code=ASSERTION].value&quot;
       }]
     },
     {
@@ -1834,12 +1839,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.who&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
       }]
     },
     {
@@ -2164,16 +2169,16 @@
         &quot;map&quot; : &quot;Message/Header/PrescriberOrderNumber&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;ORC-2-Placer Order Number / ORC-3-Filler Order Number&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.id&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.identifier&quot;
       }]
     },
     {
@@ -2208,12 +2213,12 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.statusCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.statusCode&quot;
       }]
     },
     {
@@ -2273,12 +2278,12 @@
         &quot;map&quot; : &quot;Request.intent&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot;
       }]
     },
     {
@@ -2306,12 +2311,12 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/Directions\r\ror \r\rMessage/Body/NewRx/MedicationPrescribed/StructuredSIG&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.class&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot;
       }]
     },
     {
@@ -2339,12 +2344,12 @@
         &quot;map&quot; : &quot;Request.priority&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.priorityCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.priorityCode&quot;
       }]
     },
     {
@@ -2424,16 +2429,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed\r\rMedication.code.coding.code = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCode\r\rMedication.code.coding.system = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCodeQualifier\r\rMedication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDescription&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;RXE-2-Give Code / RXO-1-Requested Give Code / RXC-2-Component Code&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;consumable.administrableMedication&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -2457,6 +2462,10 @@
       {
         &quot;identity&quot; : &quot;script10.6&quot;,
         &quot;map&quot; : &quot;Message/Body/NewRx/Patient\r\r(need detail to link to specific patient … Patient.Identification in SCRIPT)&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
@@ -2492,16 +2501,16 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;PV1-19-Visit Number&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.context&quot;
       }]
     },
     {
@@ -2521,12 +2530,12 @@
         &quot;map&quot; : &quot;Request.supportingInfo&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot;
       }]
     },
     {
@@ -2549,16 +2558,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/WrittenDate&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;author.time&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
     },
     {
@@ -2583,12 +2592,12 @@
         &quot;map&quot; : &quot;Request.requester&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.author&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=AUT].role&quot;
       }]
     },
     {
@@ -2613,12 +2622,12 @@
         &quot;map&quot; : &quot;Request.performer&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
       }]
     },
     {
@@ -2664,12 +2673,12 @@
         &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;]
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.who&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot;
       }]
     },
     {
@@ -2701,16 +2710,16 @@
         &quot;map&quot; : &quot;Message/Body/NewRx/MedicationPrescribed/Diagnosis/Primary/Value&quot;
       },
       {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;reason.observation.reasonCode&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.why[x]&quot;
       }]
     },
     {
@@ -2735,12 +2744,12 @@
         &quot;map&quot; : &quot;no mapping&quot;
       },
       {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;reason.observation[code=ASSERTION].value&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;reason.observation[code=ASSERTION].value&quot;
       }]
     },
     {
@@ -3095,12 +3104,12 @@
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;]
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.who&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
       }]
     },
     {
@@ -3281,7 +3290,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

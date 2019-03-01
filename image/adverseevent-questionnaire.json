@@ -1,12 +1,63 @@
 {
   "resourceType" : "Questionnaire",
   "id" : "qs1",
+  "contained" : [{
+    "resourceType" : "ValueSet",
+    "id" : "vs2",
+    "name" : "Type options for AdverseEvent.suspectEntity.instance[x]",
+    "status" : "active",
+    "description" : "Type options for AdverseEvent.suspectEntity.instance[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:1b989088-d8bd-4a0e-bef1-7f800bc703fd",
+      "timestamp" : "2019-02-28T12:34:35-06:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "CodeableConcept",
+        "display" : "CodeableConcept"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Immunization",
+        "display" : "Immunization"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Procedure",
+        "display" : "Procedure"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Substance",
+        "display" : "Substance"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Medication",
+        "display" : "Medication"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "MedicationAdministration",
+        "display" : "MedicationAdministration"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "MedicationStatement",
+        "display" : "MedicationStatement"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Device",
+        "display" : "Device"
+      }]
+    }
+  }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
   "version" : "4.0.0",
   "status" : "draft",
-  "date" : "2019-02-04T09:26:06-06:00",
+  "date" : "2019-02-28T12:32:32-06:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "AdverseEvent",
@@ -248,10 +299,6 @@
     },
     {
       "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "Identifier"
       }],
@@ -906,6 +953,45 @@
       }]
     },
     {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "AdverseEvent.detector",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Who or what identified a change in physiological state or condition.",
+        "type" : "display"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Patient, RelatedPerson, Practitioner, PractitionerRole, Device"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "AdverseEvent.detector.value",
+        "text" : "Who or what identified a change in physiological state or condition",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
       "linkId" : "AdverseEvent.suspectEntity",
       "text" : "The suspected agent causing the adverse event",
       "type" : "group",
@@ -1010,12 +1096,9 @@
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
           "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Reference"
         }],
-        "linkId" : "AdverseEvent.suspectEntity.instance",
+        "linkId" : "AdverseEvent.suspectEntity.instance[x]",
+        "text" : "Refers to the specific entity that caused the adverse event",
         "type" : "group",
         "required" : true,
         "repeats" : true,
@@ -1034,19 +1117,56 @@
           "type" : "display"
         },
         {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-            "valueCode" : "Immunization, Procedure, Substance, Medication, MedicationAdministration, MedicationStatement, Device"
+          "linkId" : "AdverseEvent.suspectEntity.instance[x]._type",
+          "text" : "type",
+          "type" : "choice",
+          "required" : false,
+          "repeats" : false,
+          "answerValueSet" : "#vs2",
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "CodeableConcept"
+            }],
+            "linkId" : "AdverseEvent.suspectEntity.instance[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "AdverseEvent.suspectEntity.instance[x]._null.coding",
+              "text" : "code:",
+              "type" : "open-choice",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "AdverseEvent.suspectEntity.instance[x]._null.text",
+              "text" : "text:",
+              "type" : "string",
+              "required" : false,
+              "repeats" : false
+            }]
           },
           {
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-            "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-          }],
-          "linkId" : "AdverseEvent.suspectEntity.instance.value",
-          "text" : "Refers to the specific entity that caused the adverse event",
-          "type" : "reference",
-          "required" : false,
-          "repeats" : false
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "Reference"
+            }],
+            "linkId" : "AdverseEvent.suspectEntity.instance[x]._null",
+            "type" : "group",
+            "item" : [{
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+                "valueCode" : "Immunization, Procedure, Substance, Medication, MedicationAdministration, MedicationStatement, Device"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+                "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+              }],
+              "linkId" : "AdverseEvent.suspectEntity.instance[x]._null.value",
+              "type" : "reference",
+              "required" : false,
+              "repeats" : false
+            }]
+          }]
         }]
       },
       {

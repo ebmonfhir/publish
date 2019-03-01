@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="Procedure"/>
+  <meta>
+    <lastUpdated value="2019-02-28T12:32:32.955-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -890,7 +893,7 @@
   <version value="4.0.0"/>
   <name value="Procedure"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <contact>
     <telecom>
@@ -917,14 +920,14 @@
     <name value="RIM Mapping"/>
   </mapping>
   <mapping>
-    <identity value="v2"/>
-    <uri value="http://hl7.org/v2"/>
-    <name value="HL7 v2 Mapping"/>
-  </mapping>
-  <mapping>
     <identity value="w5"/>
     <uri value="http://hl7.org/fhir/fivews"/>
     <name value="FiveWs Pattern Mapping"/>
+  </mapping>
+  <mapping>
+    <identity value="v2"/>
+    <uri value="http://hl7.org/v2"/>
+    <name value="HL7 v2 Mapping"/>
   </mapping>
   <kind value="resource"/>
   <abstract value="false"/>
@@ -1214,16 +1217,16 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="Some combination of ORC-2 / ORC-3 / OBR-2 / OBR-3 / IPC-1 / IPC-2 / IPC-3 / IPC-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="Procedure.instantiatesCanonical">
@@ -1371,12 +1374,12 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value="statusCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="statusCode"/>
       </mapping>
     </element>
     <element id="Procedure.statusReason">
@@ -1440,12 +1443,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/procedure-category"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code"/>
       </mapping>
     </element>
     <element id="Procedure.code">
@@ -1479,16 +1482,16 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="OBR-44/OBR-45"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".code"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="Procedure.subject">
@@ -1513,6 +1516,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -1550,16 +1557,16 @@
         <map value="Event.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PV1-19"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="Procedure.performed[x]">
@@ -1596,16 +1603,16 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="OBR-7"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.done[x]"/>
       </mapping>
     </element>
     <element id="Procedure.recorder">
@@ -1629,12 +1636,12 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.author"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].role"/>
       </mapping>
     </element>
     <element id="Procedure.reported[x]">
@@ -1668,12 +1675,12 @@
         <map value="Event.reported[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=RPT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=RPT].role"/>
       </mapping>
     </element>
     <element id="Procedure.performer">
@@ -1848,16 +1855,16 @@
         <map value="Event.performer.actor"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.actor"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="ORC-19/PRT-5"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".role"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.actor"/>
       </mapping>
     </element>
     <element id="Procedure.performer.onBehalfOf">
@@ -1902,12 +1909,12 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=LOC].role[classCode=SDLOC]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.where[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=LOC].role[classCode=SDLOC]"/>
       </mapping>
     </element>
     <element id="Procedure.reasonCode">
@@ -1940,12 +1947,12 @@
         <map value="Event.reasonCode"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="Procedure.reasonReference">
@@ -1975,12 +1982,12 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="Procedure.bodySite">
@@ -2426,16 +2433,16 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="Some combination of ORC-2 / ORC-3 / OBR-2 / OBR-3 / IPC-1 / IPC-2 / IPC-3 / IPC-4"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="Procedure.instantiatesCanonical">
@@ -2554,12 +2561,12 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value="statusCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="statusCode"/>
       </mapping>
     </element>
     <element id="Procedure.statusReason">
@@ -2611,12 +2618,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/procedure-category"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.class"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code"/>
       </mapping>
     </element>
     <element id="Procedure.code">
@@ -2644,16 +2651,16 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="OBR-44/OBR-45"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".code"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="Procedure.subject">
@@ -2672,6 +2679,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -2703,16 +2714,16 @@
         <map value="Event.context"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PV1-19"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.context"/>
       </mapping>
     </element>
     <element id="Procedure.performed[x]">
@@ -2743,16 +2754,16 @@
         <map value="Event.occurrence[x]"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.done[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="OBR-7"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".effectiveTime"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.done[x]"/>
       </mapping>
     </element>
     <element id="Procedure.recorder">
@@ -2770,12 +2781,12 @@
       </type>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=AUT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.author"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=AUT].role"/>
       </mapping>
     </element>
     <element id="Procedure.reported[x]">
@@ -2803,12 +2814,12 @@
         <map value="Event.reported[x]"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=RPT].role"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.source"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=RPT].role"/>
       </mapping>
     </element>
     <element id="Procedure.performer">
@@ -2884,16 +2895,16 @@
         <map value="Event.performer.actor"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.actor"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="ORC-19/PRT-5"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".role"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.actor"/>
       </mapping>
     </element>
     <element id="Procedure.performer.onBehalfOf">
@@ -2925,12 +2936,12 @@
       </type>
       <isSummary value="true"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".participation[typeCode=LOC].role[classCode=SDLOC]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.where[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".participation[typeCode=LOC].role[classCode=SDLOC]"/>
       </mapping>
     </element>
     <element id="Procedure.reasonCode">
@@ -2957,12 +2968,12 @@
         <map value="Event.reasonCode"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="Procedure.reasonReference">
@@ -2986,12 +2997,12 @@
         <map value="Event.reasonReference"/>
       </mapping>
       <mapping>
-        <identity value="rim"/>
-        <map value=".reasonCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".reasonCode"/>
       </mapping>
     </element>
     <element id="Procedure.bodySite">

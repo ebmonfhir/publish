@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for Procedure.performed[x]"/>
       <expansion>
-        <identifier value="urn:uuid:7688c256-3dd5-4733-afd9-1ad99c350e6c"/>
-        <timestamp value="2019-02-04T09:29:05-06:00"/>
+        <identifier value="urn:uuid:b67c0f57-3cf8-4da6-8bb5-7ab7ab278ae0"/>
+        <timestamp value="2019-02-28T12:35:35-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -39,12 +39,54 @@
       </expansion>
     </ValueSet>
   </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs3"/>
+      <name value="Type options for Procedure.reported[x]"/>
+      <status value="active"/>
+      <description value="Type options for Procedure.reported[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:a43d0439-69c0-48ed-8d83-9e6297f1ced9"/>
+        <timestamp value="2019-02-28T12:35:35-06:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="boolean"/>
+          <display value="boolean"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Patient"/>
+          <display value="Patient"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="RelatedPerson"/>
+          <display value="RelatedPerson"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Practitioner"/>
+          <display value="Practitioner"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="PractitionerRole"/>
+          <display value="PractitionerRole"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Organization"/>
+          <display value="Organization"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="Procedure"/>
@@ -863,10 +905,8 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
         <valueInteger value="1"/>
       </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="Reference"/>
-      </extension>
-      <linkId value="Procedure.asserter"/>
+      <linkId value="Procedure.reported[x]"/>
+      <text value="Reported rather than primary record"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -880,21 +920,48 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Individual who is making the procedure statement."/>
+        <text value="Indicates if this record was captured as a secondary &#39;reported&#39; record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."/>
         <type value="display"/>
       </item>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Patient, RelatedPerson, Practitioner, PractitionerRole"/>
-        </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
-          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
-        </extension>
-        <linkId value="Procedure.asserter.value"/>
-        <text value="Person who asserts this procedure"/>
-        <type value="reference"/>
+        <linkId value="Procedure.reported[x]._type"/>
+        <text value="type"/>
+        <type value="choice"/>
         <required value="false"/>
         <repeats value="false"/>
+        <answerValueSet value="#vs3"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+            <valueString value="boolean"/>
+          </extension>
+          <linkId value="Procedure.reported[x]._null"/>
+          <type value="group"/>
+          <item>
+            <linkId value="Procedure.reported[x]._null.value"/>
+            <type value="boolean"/>
+            <required value="false"/>
+            <repeats value="false"/>
+          </item>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+            <valueString value="Reference"/>
+          </extension>
+          <linkId value="Procedure.reported[x]._null"/>
+          <type value="group"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+              <valueCode value="Patient, RelatedPerson, Practitioner, PractitionerRole, Organization"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+              <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+            </extension>
+            <linkId value="Procedure.reported[x]._null.value"/>
+            <type value="reference"/>
+            <required value="false"/>
+            <repeats value="false"/>
+          </item>
+        </item>
       </item>
     </item>
     <item>

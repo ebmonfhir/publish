@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -175,7 +173,7 @@ Note that these value sets are available as FHIR resources - see the <a href="do
  <tr><td><a href="valueset-allergy-intolerance-type.html">allergy-intolerance-type</a></td><td>Identification of the underlying physiological mechanism for a Reaction Risk.</td><td>Internal</td><td>131</td></tr>
  <tr><td><a href="valueset-allergyintolerance-clinical.html">allergyintolerance-clinical</a></td><td>Preferred value set for AllergyIntolerance Clinical Status.</td><td>Other</td><td>1372</td></tr>
  <tr><td><a href="valueset-allergyintolerance-code.html">allergyintolerance-code</a></td><td>This value set includes concept codes for specific substances/pharmaceutical products, allergy or intolerance conditions, and negation/exclusion codes to specify the absence of specific types of allergies or intolerances.</td><td>Other, SNOMED CT</td><td>137</td></tr>
- <tr><td><a href="valueset-allergyintolerance-verification.html">allergyintolerance-verification</a></td><td>Preferred value set for AllergyIntolerance Verification Status.</td><td>Other</td><td>1370</td></tr>
+ <tr><td><a href="valueset-allergyintolerance-verification.html">allergyintolerance-verification</a></td><td>The verification status to support or decline the clinical status of the allergy or intolerance.</td><td>Other</td><td>1370</td></tr>
  <tr><td><a href="valueset-animal-breeds.html">animal-breeds</a></td><td>This example value set defines a set of codes that can be used to indicate breeds of species.</td><td>SNOMED CT</td><td>422</td></tr>
  <tr><td><a href="valueset-animal-genderstatus.html">animal-genderstatus</a></td><td>This example value set defines a set of codes that can be used to indicate the current state of the animal's reproductive organs.</td><td>Internal</td><td>418</td></tr>
  <tr><td><a href="valueset-animal-species.html">animal-species</a></td><td>This example value set defines a set of codes that can be used to indicate species of animal patients.</td><td>SNOMED CT</td><td>420</td></tr>
@@ -254,6 +252,7 @@ Note that these value sets are available as FHIR resources - see the <a href="do
  <tr><td><a href="valueset-condition-cause.html">condition-cause</a></td><td>Example value set for Cause of Condition codes</td><td>SNOMED CT</td><td>965</td></tr>
  <tr><td><a href="valueset-condition-clinical.html">condition-clinical</a></td><td>Preferred value set for Condition Clinical Status.</td><td>Other</td><td>164</td></tr>
  <tr><td><a href="valueset-condition-code.html">condition-code</a></td><td>Example value set for Condition/Problem/Diagnosis codes.</td><td>SNOMED CT</td><td>161</td></tr>
+ <tr><td><a href="valueset-condition-course.html">condition-course</a></td><td>Value set for clinical course of a disease (how the disease behaves over time).</td><td>SNOMED CT</td><td>0</td></tr>
  <tr><td><a href="valueset-condition-outcome.html">condition-outcome</a></td><td>Example value set for condition outcomes.</td><td>SNOMED CT</td><td>967</td></tr>
  <tr><td><a href="valueset-condition-predecessor.html">condition-predecessor</a></td><td>Example value set for condition predecessor codes.</td><td>SNOMED CT</td><td>966</td></tr>
  <tr><td><a href="valueset-condition-severity.html">condition-severity</a></td><td>Preferred value set for Condition/Diagnosis severity grading.</td><td>SNOMED CT</td><td>168</td></tr>
@@ -387,6 +386,7 @@ Note that these value sets are available as FHIR resources - see the <a href="do
  <tr><td><a href="valueset-event-resource-types.html">event-resource-types</a></td><td>A list of all the event resource types defined in this version of the FHIR specification.</td><td>Internal</td><td>1060</td></tr>
  <tr><td><a href="valueset-event-status.html">event-status</a></td><td>Codes identifying the lifecycle stage of an event.</td><td>Internal</td><td>109</td></tr>
  <tr><td><a href="valueset-event-timing.html">event-timing</a> <a href="versions.html#std-process" title="Normative Content" class="normative-flag">N</a></td><td>Real world event relating to the schedule.</td><td>Internal, V3</td><td>75</td></tr>
+ <tr><td><a href="valueset-evidence-exposure-state.html">evidence-exposure-state</a></td><td>Whether the results by exposure is describing the results for the primary exposure of interest (exposure) or the alternative state (exposureAlternative).</td><td>Other</td><td>0</td></tr>
  <tr><td><a href="valueset-evidence-quality.html">evidence-quality</a></td><td>A rating system that describes the quality of evidence such as the GRADE, DynaMed, or Oxford CEBM systems.</td><td>Other</td><td>1020</td></tr>
  <tr><td><a href="valueset-evidence-variant-state.html">evidence-variant-state</a></td><td>Used for results by exposure in variant states such as low-risk, medium-risk and high-risk states.</td><td>Other</td><td>1353</td></tr>
  <tr><td><a href="valueset-ex-benefitcategory.html">ex-benefitcategory</a></td><td>This value set includes examples of Benefit Category codes.</td><td>Other</td><td>1174</td></tr>
@@ -536,7 +536,7 @@ Note that these value sets are available as FHIR resources - see the <a href="do
  <tr><td><a href="valueset-medication-codes.html">medication-codes</a></td><td>This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from SNOMED CT - provided as an exemplar value set.</td><td>SNOMED CT</td><td>375</td></tr>
  <tr><td><a href="valueset-medication-form-codes.html">medication-form-codes</a></td><td>This value set includes all dose form codes from SNOMED CT - provided as an exemplar.</td><td>SNOMED CT</td><td>374</td></tr>
  <tr><td><a href="valueset-medication-statement-category.html">medication-statement-category</a></td><td>Medication Status Codes</td><td>Other</td><td>370</td></tr>
- <tr><td><a href="valueset-medication-statement-status.html">medication-statement-status</a></td><td>Medication Status Codes</td><td>Internal</td><td>367</td></tr>
+ <tr><td><a href="valueset-medication-statement-status.html">medication-statement-status</a></td><td>MedicationStatement Status Codes</td><td>Internal</td><td>367</td></tr>
  <tr><td><a href="valueset-medication-status.html">medication-status</a></td><td>Medication Status Codes</td><td>Internal</td><td>376</td></tr>
  <tr><td><a href="valueset-medicationdispense-category.html">medicationdispense-category</a></td><td>MedicationDispense Category Codes</td><td>Other</td><td>1314</td></tr>
  <tr><td><a href="valueset-medicationdispense-performer-function.html">medicationdispense-performer-function</a></td><td>MedicationDispense Performer Function Codes</td><td>Other</td><td>1318</td></tr>
@@ -1576,7 +1576,7 @@ x_BasicConfidentialityKind is a subset of Confidentiality codes that are used as
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:29-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

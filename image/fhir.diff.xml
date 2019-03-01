@@ -622,6 +622,7 @@
       <element path="ActivityDefinition.dynamicValue.language" status="deleted"/>
    </type>
    <type name="AdverseEvent" status="changed">
+      <element new-max="*" old-max="1" path="AdverseEvent.identifier"/>
       <element path="AdverseEvent.actuality" status="new"/>
       <element binding-status="changed"
                binding-strength-changed="true"
@@ -658,9 +659,9 @@
          <added-type name="Reference(Patient | Practitioner | PractitionerRole | RelatedPerson)"/>
       </element>
       <element path="AdverseEvent.contributor" status="new"/>
-      <element path="AdverseEvent.suspectEntity.instance">
-         <removed-type name="Reference(Substance | Medication | MedicationAdministration | MedicationStatement | Device)"/>
-         <added-type name="Reference(Immunization | Procedure | Substance | Medication | MedicationAdministration | MedicationStatement | Device)"/>
+      <element path="AdverseEvent.detector" status="new"/>
+      <element old-name="instance" path="AdverseEvent.suspectEntity.instance[x]">
+         <added-type name="CodeableConcept"/>
       </element>
       <element binding-status="removed"
                new-max="*"
@@ -1144,9 +1145,11 @@
          <added-type name="Reference(Patient | Practitioner | PractitionerRole | Device | RelatedPerson | Organization | CareTeam)"/>
       </element>
       <element path="CarePlan.contributor" status="new"/>
+      <element path="CarePlan.addressesCode" status="new"/>
+      <element path="CarePlan.addressesReference" status="new"/>
       <element path="CarePlan.activity.reference">
          <removed-type name="Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ProcedureRequest | ReferralRequest | VisionPrescription | RequestGroup)"/>
-         <added-type name="Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription | RequestGroup)"/>
+         <added-type name="Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription | RequestGroup | ImmunizationRecommendation)"/>
       </element>
       <element binding-status="added"
                old-name="category"
@@ -1178,12 +1181,14 @@
                old-default="&#34;false&#34;"
                old-name="prohibited"
                path="CarePlan.activity.detail.doNotPerform"/>
+      <element path="CarePlan.activity.detail.reported[x]" status="new"/>
       <element path="CarePlan.activity.detail.performer">
          <removed-type name="Reference(Practitioner | Organization | RelatedPerson | Patient | CareTeam)"/>
          <added-type name="Reference(Practitioner | PractitionerRole | Organization | RelatedPerson | Patient | CareTeam | HealthcareService | Device)"/>
       </element>
       <element path="CarePlan.definition" status="deleted"/>
       <element path="CarePlan.context" status="deleted"/>
+      <element path="CarePlan.addresses" status="deleted"/>
       <element path="CarePlan.activity.detail.definition" status="deleted"/>
    </type>
    <type name="CareTeam" status="changed">
@@ -1469,18 +1474,13 @@
       </element>
       <element path="ClinicalImpression.statusReason" status="new"/>
       <element path="ClinicalImpression.encounter" status="new"/>
-      <element path="ClinicalImpression.assessor">
-         <removed-type name="Reference(Practitioner)"/>
-         <added-type name="Reference(Practitioner | PractitionerRole)"/>
-      </element>
-      <element path="ClinicalImpression.investigation.item">
-         <removed-type name="Reference(Observation | QuestionnaireResponse | FamilyMemberHistory | DiagnosticReport | RiskAssessment | ImagingStudy)"/>
-         <added-type name="Reference(Observation | QuestionnaireResponse | FamilyMemberHistory | DiagnosticReport | RiskAssessment | ImagingStudy | Media)"/>
-      </element>
+      <element path="ClinicalImpression.performer" status="new"/>
       <element path="ClinicalImpression.finding.itemCodeableConcept" status="new"/>
       <element path="ClinicalImpression.finding.itemReference" status="new"/>
       <element path="ClinicalImpression.supportingInfo" status="new"/>
       <element path="ClinicalImpression.context" status="deleted"/>
+      <element path="ClinicalImpression.assessor" status="deleted"/>
+      <element path="ClinicalImpression.investigation" status="deleted"/>
       <element path="ClinicalImpression.finding.item[x]" status="deleted"/>
       <element path="ClinicalImpression.action" status="deleted"/>
    </type>
@@ -2716,6 +2716,12 @@
          <added-type name="Reference(Condition | Observation | AllergyIntolerance | QuestionnaireResponse | DiagnosticReport | DocumentReference)"/>
       </element>
       <element path="FamilyMemberHistory.condition.contributedToDeath" status="new"/>
+      <element path="FamilyMemberHistory.procedure" status="new"/>
+      <element path="FamilyMemberHistory.procedure.code" status="new"/>
+      <element path="FamilyMemberHistory.procedure.outcome" status="new"/>
+      <element path="FamilyMemberHistory.procedure.contributedToDeath" status="new"/>
+      <element path="FamilyMemberHistory.procedure.performed[x]" status="new"/>
+      <element path="FamilyMemberHistory.procedure.note" status="new"/>
       <element path="FamilyMemberHistory.definition" status="deleted"/>
       <element path="FamilyMemberHistory.notDone" status="deleted"/>
       <element path="FamilyMemberHistory.notDoneReason" status="deleted"/>
@@ -2731,6 +2737,10 @@
                       strength="required"/>
       </element>
       <element new-max="*" old-max="1" path="Flag.category"/>
+      <element path="Flag.subject">
+         <removed-type name="Reference(Patient | Location | Group | Organization | Practitioner | PlanDefinition | Medication | Procedure)"/>
+         <added-type name="Reference(Patient | Location | Group | Organization | Practitioner | PractitionerRole | PlanDefinition | Medication | Procedure)"/>
+      </element>
       <element path="Flag.author">
          <removed-type name="Reference(Device | Organization | Patient | Practitioner)"/>
          <added-type name="Reference(Device | Organization | Patient | Practitioner | PractitionerRole)"/>
@@ -2739,6 +2749,7 @@
    <type name="Goal" status="changed">
       <element path="Goal.lifecycleStatus" status="new"/>
       <element path="Goal.achievementStatus" status="new"/>
+      <element path="Goal.continuous" status="new"/>
       <element new-min="1" old-min="0" path="Goal.subject"/>
       <element new-max="*" old-max="1" path="Goal.target"/>
       <element path="Goal.target.detail[x]">
@@ -2753,7 +2764,7 @@
       </element>
       <element path="Goal.addresses">
          <removed-type name="Reference(Condition | Observation | MedicationStatement | NutritionOrder | ProcedureRequest | RiskAssessment)"/>
-         <added-type name="Reference(Condition | Observation | MedicationStatement | NutritionOrder | ServiceRequest | RiskAssessment)"/>
+         <added-type name="Reference(Condition | Observation | MedicationStatement | MedicationRequest | NutritionOrder | ServiceRequest | RiskAssessment)"/>
       </element>
       <element path="Goal.status" status="deleted"/>
    </type>
@@ -3436,6 +3447,7 @@
                       strength="required"/>
       </element>
       <element path="MedicationAdministration.statusReason" status="new"/>
+      <element new-max="*" old-max="1" path="MedicationAdministration.category"/>
       <element path="MedicationAdministration.performer.function" status="new"/>
       <element path="MedicationAdministration.performer.actor">
          <removed-type name="Reference(Practitioner | Patient | RelatedPerson | Device)"/>
@@ -3468,15 +3480,22 @@
                       strength="required"/>
       </element>
       <element path="MedicationDispense.statusReason[x]" status="new"/>
+      <element new-max="*" old-max="1" path="MedicationDispense.category"/>
       <element path="MedicationDispense.performer.function" status="new"/>
       <element path="MedicationDispense.performer.actor">
          <removed-type name="Reference(Practitioner | Organization | Patient | Device | RelatedPerson)"/>
          <added-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson)"/>
       </element>
       <element path="MedicationDispense.location" status="new"/>
-      <element path="MedicationDispense.substitution.responsibleParty">
+      <element path="MedicationDispense.receiver">
+         <removed-type name="Reference(Patient | Practitioner)"/>
+         <added-type name="Reference(Patient | Practitioner | RelatedPerson | Location)"/>
+      </element>
+      <element new-max="1"
+               old-max="*"
+               path="MedicationDispense.substitution.responsibleParty">
          <removed-type name="Reference(Practitioner)"/>
-         <added-type name="Reference(Practitioner | PractitionerRole)"/>
+         <added-type name="Reference(Practitioner | PractitionerRole | Organization)"/>
       </element>
       <element path="MedicationDispense.performer.onBehalfOf" status="deleted"/>
       <element path="MedicationDispense.notDone" status="deleted"/>
@@ -3567,6 +3586,7 @@
                       strength="required"/>
       </element>
       <element path="MedicationStatement.statusReason" status="new"/>
+      <element new-max="*" old-max="1" path="MedicationStatement.category"/>
       <element path="MedicationStatement.informationSource">
          <removed-type name="Reference(Patient | Practitioner | RelatedPerson | Organization)"/>
          <added-type name="Reference(Patient | Practitioner | PractitionerRole | RelatedPerson | Organization)"/>
@@ -4291,7 +4311,7 @@
          <added-type name="Range"/>
       </element>
       <element path="Procedure.recorder" status="new"/>
-      <element path="Procedure.asserter" status="new"/>
+      <element path="Procedure.reported[x]" status="new"/>
       <element path="Procedure.performer.function" status="new"/>
       <element path="Procedure.performer.actor">
          <removed-type name="Reference(Practitioner | Organization | Patient | RelatedPerson | Device)"/>

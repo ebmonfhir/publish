@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -251,13 +249,13 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td>created</td>
  <td>author</td>
- <td></td>
+ <td>reported[x]</td>
  <td>careTeam*</td>
  <td></td>
  <td></td>
  <td></td>
  <td></td>
- <td>addresses*</td>
+ <td>addressesCode*<br/>addressesReference*</td>
 </tr>
 <tr>
  <td>CareTeam (2)</td>
@@ -296,9 +294,9 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td>effective[x]</td>
  <td>date</td>
- <td>assessor</td>
  <td></td>
  <td></td>
+ <td>performer</td>
  <td></td>
  <td></td>
  <td></td>
@@ -425,7 +423,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>url<br/>identifier*</td>
  <td>version</td>
  <td>status</td>
- <td></td>
+ <td>experimental</td>
  <td></td>
  <td></td>
  <td></td>
@@ -441,7 +439,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>publisher</td>
  <td></td>
  <td></td>
- <td></td>
+ <td>purpose</td>
 </tr>
 <tr>
  <td>EvidenceVariable (0)</td>
@@ -816,7 +814,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>identifier*</td>
  <td></td>
  <td>status</td>
- <td>category</td>
+ <td>category*</td>
  <td></td>
  <td>medication[x]</td>
  <td>subject</td>
@@ -1194,7 +1192,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>performed[x]</td>
  <td></td>
  <td>recorder</td>
- <td>asserter</td>
+ <td>reported[x]</td>
  <td>actor</td>
  <td></td>
  <td></td>
@@ -3600,13 +3598,13 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td>created : dateTime</td>
  <td>author : Patient|Practitioner|PractitionerRole|Device|RelatedPerson|Organization|CareTeam</td>
- <td></td>
+ <td>reported[x] : boolean|Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)</td>
  <td>careTeam* : CareTeam</td>
  <td></td>
  <td></td>
  <td></td>
  <td></td>
- <td>addresses* : Condition</td>
+ <td>addressesCode* : CodeableConcept<br/>addressesReference* : Condition</td>
 </tr>
 <tr>
  <td>CareTeam (2)</td>
@@ -3645,9 +3643,9 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td>effective[x] : dateTime|Period</td>
  <td>date : dateTime</td>
- <td>assessor : Practitioner|PractitionerRole</td>
  <td></td>
  <td></td>
+ <td>performer : Practitioner|PractitionerRole</td>
  <td></td>
  <td></td>
  <td></td>
@@ -3774,7 +3772,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>url : uri<br/>identifier* : Identifier</td>
  <td>version : string</td>
  <td>status : code</td>
- <td></td>
+ <td>experimental : boolean</td>
  <td></td>
  <td></td>
  <td></td>
@@ -3790,7 +3788,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>publisher : string</td>
  <td></td>
  <td></td>
- <td></td>
+ <td>purpose : markdown</td>
 </tr>
 <tr>
  <td>EvidenceVariable (0)</td>
@@ -3859,7 +3857,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td></td>
  <td></td>
- <td>addresses* : Condition|Observation|MedicationStatement|NutritionOrder|ServiceRequest|RiskAssessment</td>
+ <td>addresses* : Condition|Observation|MedicationStatement|MedicationRequest|NutritionOrder|ServiceRequest|RiskAssessment</td>
 </tr>
 <tr>
  <td>GuidanceResponse (2)</td>
@@ -4165,7 +4163,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>identifier* : Identifier</td>
  <td></td>
  <td>status : code</td>
- <td>category : CodeableConcept</td>
+ <td>category* : CodeableConcept</td>
  <td></td>
  <td>medication[x] : CodeableConcept|Reference(Medication)</td>
  <td>subject : Patient|Group</td>
@@ -4543,7 +4541,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>performed[x] : dateTime|Period|string|Age|Range</td>
  <td></td>
  <td>recorder : Patient|RelatedPerson|Practitioner|PractitionerRole</td>
- <td>asserter : Patient|RelatedPerson|Practitioner|PractitionerRole</td>
+ <td>reported[x] : boolean|Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)</td>
  <td>actor : Practitioner|PractitionerRole|Organization|Patient|RelatedPerson|Device</td>
  <td></td>
  <td></td>
@@ -5504,7 +5502,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>category* : CodeableConcept</td>
  <td></td>
  <td>code : CodeableConcept</td>
- <td>subject : Patient|Location|Group|Organization|Practitioner|PlanDefinition|Medication|Procedure</td>
+ <td>subject : Patient|Location|Group|Organization|Practitioner|PractitionerRole|PlanDefinition|Medication|Procedure</td>
  <td>period : Period<br/>encounter : Encounter</td>
  <td></td>
  <td></td>
@@ -6827,7 +6825,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:29-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

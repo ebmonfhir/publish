@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="Goal"/>
+  <meta>
+    <lastUpdated value="2019-02-28T12:32:32.955-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -139,6 +142,22 @@
             <a href="terminologies.html#example" title="Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.">Example</a>)
             <br/>
           </td>
+        </tr>
+
+        <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white;">
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAACCAYAAACg/LjIAAAALUlEQVR4Xu3IoREAIAwEwfT6/ddA0GBAxO3NrLlKUj9263wAAAAvrgEAADClAVWFQIBRHMicAAAAAElFTkSuQmCC)" class="hierarchy">
+            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzIs1vtcMQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAE0lEQVQI12P4//8/AxMDAwNdCABMPwMo2ctnoQAAAABJRU5ErkJggg==" alt="." style="background-color: inherit" class="hierarchy"/>
+            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzI3XJ6V3QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+2RsQ0AIAzDav7/2VzQwoCY4iWbZSmo1QGoUgNMghvWaIejPQW/CrrNCylIwcOCDYfLNRcNer4SAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
+            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARklEQVQ4y2P8//8/AyWAhYFCMAgMuHjx4n+KXaCv+I0szW8WpCG8kFO1lGFKW/SIjAUYgxz/MzAwMDC+nqhDUTQyjuYFBgCNmhP4OvTRgwAAAABJRU5ErkJggg==" alt="." style="background-color: white; background-color: inherit" title="Primitive Data Type" class="hierarchy"/> 
+            <span title="Goal.continuous : After meeting the goal, ongoing activity is needed to sustain the goal objective.">continuous</span>
+            <a name="Goal.continuous"> </a>
+          </td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
+            <a href="datatypes.html#boolean">boolean</a>
+          </td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">After meeting the goal, ongoing activity is needed to sustain the goal objective</td>
         </tr>
 
         <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white;">
@@ -661,7 +680,7 @@
   <version value="4.0.0"/>
   <name value="Goal"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <contact>
     <telecom>
@@ -977,12 +996,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="Goal.lifecycleStatus">
@@ -1013,16 +1032,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/goal-status|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-18-goal life cycle status"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode in-progress = active (classCode = OBJ) cancelled = aborted"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="Goal.achievementStatus">
@@ -1084,6 +1103,25 @@
         <map value="FiveWs.class"/>
       </mapping>
     </element>
+    <element id="Goal.continuous">
+      <path value="Goal.continuous"/>
+      <short value="After meeting the goal, ongoing activity is needed to sustain the goal objective"/>
+      <definition value="After meeting the goal, ongoing activity is needed to sustain the goal objective."/>
+      <comment value="For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true)."/>
+      <requirements value="Allows for a system to programmatically update achievementStatus upon finding evidence the goal has been met."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Goal.continuous"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="boolean"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+    </element>
     <element id="Goal.priority">
       <path value="Goal.priority"/>
       <short value="high-priority | medium-priority | low-priority"/>
@@ -1111,12 +1149,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/goal-priority"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".priorityCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.grade"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".priorityCode"/>
       </mapping>
     </element>
     <element id="Goal.description">
@@ -1146,16 +1184,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/clinical-findings"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-3.2-goal ID.text"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".text"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="Goal.subject">
@@ -1178,6 +1216,10 @@
       </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
       <mapping>
         <identity value="v2"/>
         <map value="PID-3-patient ID list"/>
@@ -1518,12 +1560,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=SUBJ].target[classCode=CONC]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=SUBJ].target[classCode=CONC]"/>
       </mapping>
     </element>
     <element id="Goal.note">
@@ -1630,12 +1672,12 @@
         <code value="Identifier"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".id"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".id"/>
       </mapping>
     </element>
     <element id="Goal.lifecycleStatus">
@@ -1661,16 +1703,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/goal-status|4.0.0"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-18-goal life cycle status"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".statusCode in-progress = active (classCode = OBJ) cancelled = aborted"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="Goal.achievementStatus">
@@ -1720,6 +1762,18 @@
         <map value="FiveWs.class"/>
       </mapping>
     </element>
+    <element id="Goal.continuous">
+      <path value="Goal.continuous"/>
+      <short value="After meeting the goal, ongoing activity is needed to sustain the goal objective"/>
+      <definition value="After meeting the goal, ongoing activity is needed to sustain the goal objective."/>
+      <comment value="For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true)."/>
+      <requirements value="Allows for a system to programmatically update achievementStatus upon finding evidence the goal has been met."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="boolean"/>
+      </type>
+    </element>
     <element id="Goal.priority">
       <path value="Goal.priority"/>
       <short value="high-priority | medium-priority | low-priority"/>
@@ -1741,12 +1795,12 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/goal-priority"/>
       </binding>
       <mapping>
-        <identity value="rim"/>
-        <map value=".priorityCode"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.grade"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".priorityCode"/>
       </mapping>
     </element>
     <element id="Goal.description">
@@ -1770,16 +1824,16 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/clinical-findings"/>
       </binding>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="GOL-3.2-goal ID.text"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
         <map value=".text"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="Goal.subject">
@@ -1796,6 +1850,10 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization"/>
       </type>
       <isSummary value="true"/>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
+      </mapping>
       <mapping>
         <identity value="v2"/>
         <map value="PID-3-patient ID list"/>
@@ -1998,12 +2056,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/RiskAssessment"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=SUBJ].target[classCode=CONC]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.why[x]"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=SUBJ].target[classCode=CONC]"/>
       </mapping>
     </element>
     <element id="Goal.note">

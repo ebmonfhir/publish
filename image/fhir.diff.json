@@ -1402,6 +1402,10 @@
   },
   "AdverseEvent": {
     "elements": {
+      "AdverseEvent.identifier": {
+        "old-max": "1",
+        "new-max": "*"
+      },
       "AdverseEvent.actuality": {
         "status": "new"
       },
@@ -1476,12 +1480,13 @@
       "AdverseEvent.contributor": {
         "status": "new"
       },
-      "AdverseEvent.suspectEntity.instance": {
-        "removed-types": [
-          "Reference(Substance | Medication | MedicationAdministration | MedicationStatement | Device)"
-        ],
+      "AdverseEvent.detector": {
+        "status": "new"
+      },
+      "AdverseEvent.suspectEntity.instance[x]": {
+        "old-name": "instance",
         "added-types": [
-          "Reference(Immunization | Procedure | Substance | Medication | MedicationAdministration | MedicationStatement | Device)"
+          "CodeableConcept"
         ]
       },
       "AdverseEvent.suspectEntity.causality": {
@@ -2373,12 +2378,18 @@
       "CarePlan.contributor": {
         "status": "new"
       },
+      "CarePlan.addressesCode": {
+        "status": "new"
+      },
+      "CarePlan.addressesReference": {
+        "status": "new"
+      },
       "CarePlan.activity.reference": {
         "removed-types": [
           "Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ProcedureRequest | ReferralRequest | VisionPrescription | RequestGroup)"
         ],
         "added-types": [
-          "Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription | RequestGroup)"
+          "Reference(Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription | RequestGroup | ImmunizationRecommendation)"
         ]
       },
       "CarePlan.activity.detail.kind": {
@@ -2434,6 +2445,9 @@
         "default": "removed",
         "old-default": "\"false\""
       },
+      "CarePlan.activity.detail.reported[x]": {
+        "status": "new"
+      },
       "CarePlan.activity.detail.performer": {
         "removed-types": [
           "Reference(Practitioner | Organization | RelatedPerson | Patient | CareTeam)"
@@ -2446,6 +2460,9 @@
         "status": "deleted"
       },
       "CarePlan.context": {
+        "status": "deleted"
+      },
+      "CarePlan.addresses": {
         "status": "deleted"
       },
       "CarePlan.activity.detail.definition": {
@@ -3069,21 +3086,8 @@
       "ClinicalImpression.encounter": {
         "status": "new"
       },
-      "ClinicalImpression.assessor": {
-        "removed-types": [
-          "Reference(Practitioner)"
-        ],
-        "added-types": [
-          "Reference(Practitioner | PractitionerRole)"
-        ]
-      },
-      "ClinicalImpression.investigation.item": {
-        "removed-types": [
-          "Reference(Observation | QuestionnaireResponse | FamilyMemberHistory | DiagnosticReport | RiskAssessment | ImagingStudy)"
-        ],
-        "added-types": [
-          "Reference(Observation | QuestionnaireResponse | FamilyMemberHistory | DiagnosticReport | RiskAssessment | ImagingStudy | Media)"
-        ]
+      "ClinicalImpression.performer": {
+        "status": "new"
       },
       "ClinicalImpression.finding.itemCodeableConcept": {
         "status": "new"
@@ -3095,6 +3099,12 @@
         "status": "new"
       },
       "ClinicalImpression.context": {
+        "status": "deleted"
+      },
+      "ClinicalImpression.assessor": {
+        "status": "deleted"
+      },
+      "ClinicalImpression.investigation": {
         "status": "deleted"
       },
       "ClinicalImpression.finding.item[x]": {
@@ -5672,6 +5682,24 @@
       "FamilyMemberHistory.condition.contributedToDeath": {
         "status": "new"
       },
+      "FamilyMemberHistory.procedure": {
+        "status": "new"
+      },
+      "FamilyMemberHistory.procedure.code": {
+        "status": "new"
+      },
+      "FamilyMemberHistory.procedure.outcome": {
+        "status": "new"
+      },
+      "FamilyMemberHistory.procedure.contributedToDeath": {
+        "status": "new"
+      },
+      "FamilyMemberHistory.procedure.performed[x]": {
+        "status": "new"
+      },
+      "FamilyMemberHistory.procedure.note": {
+        "status": "new"
+      },
       "FamilyMemberHistory.definition": {
         "status": "deleted"
       },
@@ -5705,6 +5733,14 @@
         "old-max": "1",
         "new-max": "*"
       },
+      "Flag.subject": {
+        "removed-types": [
+          "Reference(Patient | Location | Group | Organization | Practitioner | PlanDefinition | Medication | Procedure)"
+        ],
+        "added-types": [
+          "Reference(Patient | Location | Group | Organization | Practitioner | PractitionerRole | PlanDefinition | Medication | Procedure)"
+        ]
+      },
       "Flag.author": {
         "removed-types": [
           "Reference(Device | Organization | Patient | Practitioner)"
@@ -5722,6 +5758,9 @@
         "status": "new"
       },
       "Goal.achievementStatus": {
+        "status": "new"
+      },
+      "Goal.continuous": {
         "status": "new"
       },
       "Goal.subject": {
@@ -5753,7 +5792,7 @@
           "Reference(Condition | Observation | MedicationStatement | NutritionOrder | ProcedureRequest | RiskAssessment)"
         ],
         "added-types": [
-          "Reference(Condition | Observation | MedicationStatement | NutritionOrder | ServiceRequest | RiskAssessment)"
+          "Reference(Condition | Observation | MedicationStatement | MedicationRequest | NutritionOrder | ServiceRequest | RiskAssessment)"
         ]
       },
       "Goal.status": {
@@ -7179,6 +7218,10 @@
       "MedicationAdministration.statusReason": {
         "status": "new"
       },
+      "MedicationAdministration.category": {
+        "old-max": "1",
+        "new-max": "*"
+      },
       "MedicationAdministration.performer.function": {
         "status": "new"
       },
@@ -7246,6 +7289,10 @@
       "MedicationDispense.statusReason[x]": {
         "status": "new"
       },
+      "MedicationDispense.category": {
+        "old-max": "1",
+        "new-max": "*"
+      },
       "MedicationDispense.performer.function": {
         "status": "new"
       },
@@ -7260,12 +7307,22 @@
       "MedicationDispense.location": {
         "status": "new"
       },
+      "MedicationDispense.receiver": {
+        "removed-types": [
+          "Reference(Patient | Practitioner)"
+        ],
+        "added-types": [
+          "Reference(Patient | Practitioner | RelatedPerson | Location)"
+        ]
+      },
       "MedicationDispense.substitution.responsibleParty": {
+        "old-max": "*",
+        "new-max": "1",
         "removed-types": [
           "Reference(Practitioner)"
         ],
         "added-types": [
-          "Reference(Practitioner | PractitionerRole)"
+          "Reference(Practitioner | PractitionerRole | Organization)"
         ]
       },
       "MedicationDispense.performer.onBehalfOf": {
@@ -7447,6 +7504,10 @@
       },
       "MedicationStatement.statusReason": {
         "status": "new"
+      },
+      "MedicationStatement.category": {
+        "old-max": "1",
+        "new-max": "*"
       },
       "MedicationStatement.informationSource": {
         "removed-types": [
@@ -8779,7 +8840,7 @@
       "Procedure.recorder": {
         "status": "new"
       },
-      "Procedure.asserter": {
+      "Procedure.reported[x]": {
         "status": "new"
       },
       "Procedure.performer.function": {

@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -124,6 +122,9 @@
 
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;MedicationRequest&quot;];
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-02-28T12:32:32.955-06:00&quot; ]
+  ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
@@ -152,7 +153,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;MedicationRequest&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-20T09:53:45-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-28T12:32:32-06:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Pharmacy)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -188,14 +189,14 @@
      fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
   ], [
      fhir:index 3;
-     fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
-     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
-     fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
-  ], [
-     fhir:index 4;
      fhir:StructureDefinition.identity [ fhir:value &quot;w5&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/fhir/fivews&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;FiveWs Pattern Mapping&quot; ]
+  ], [
+     fhir:index 4;
+     fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
+     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
+     fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
   ];
   fhir:StructureDefinition.kind [ fhir:value &quot;resource&quot;];
   fhir:StructureDefinition.abstract [ fhir:value &quot;false&quot;];
@@ -559,16 +560,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Header/PrescriberOrderNumber&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;ORC-2-Placer Order Number / ORC-3-Filler Order Number&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.id&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -611,12 +612,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
-       ], [
-         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
        ]
      ], [
        fhir:index 11;
@@ -694,12 +695,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.intent&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot; ]
        ]
      ], [
        fhir:index 13;
@@ -737,12 +738,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/Directions\r\ror \r\rMessage/Body/NewRx/MedicationPrescribed/StructuredSIG&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot; ]
        ]
      ], [
        fhir:index 14;
@@ -779,12 +780,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.priority&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.priorityCode&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.priorityCode&quot; ]
        ]
      ], [
        fhir:index 15;
@@ -902,16 +903,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed\r\rMedication.code.coding.code = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCode\r\rMedication.code.coding.system = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCodeQualifier\r\rMedication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDescription&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXE-2-Give Code / RXO-1-Requested Give Code / RXC-2-Component Code&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;consumable.administrableMedication&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
        ]
      ], [
        fhir:index 18;
@@ -950,14 +951,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/Patient\r\r(need detail to link to specific patient … Patient.Identification in SCRIPT)&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;PID-3-Patient ID List&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ], [
-         fhir:index 4;
+         fhir:index 5;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
@@ -995,16 +1000,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;PV1-19-Visit Number&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
        ]
      ], [
        fhir:index 20;
@@ -1036,12 +1041,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.supportingInfo&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
        ]
      ], [
        fhir:index 21;
@@ -1072,16 +1077,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/WrittenDate&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;author.time&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
        ]
      ], [
        fhir:index 22;
@@ -1127,12 +1132,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.requester&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.author&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
        fhir:index 23;
@@ -1181,12 +1186,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.performer&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
        fhir:index 24;
@@ -1255,12 +1260,12 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.who&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
        ]
      ], [
        fhir:index 26;
@@ -1302,16 +1307,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/Diagnosis/Primary/Value&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation.reasonCode&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
        ]
      ], [
        fhir:index 27;
@@ -1350,12 +1355,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
-       ], [
-         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
        ]
      ], [
        fhir:index 28;
@@ -2104,12 +2109,12 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.who&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
        fhir:index 52;
@@ -2495,16 +2500,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Header/PrescriberOrderNumber&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;ORC-2-Placer Order Number / ORC-3-Filler Order Number&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.id&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
        ]
      ], [
        fhir:index 2;
@@ -2542,12 +2547,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
-       ], [
-         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.status&quot; ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
        ]
      ], [
        fhir:index 3;
@@ -2613,12 +2618,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.intent&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)&quot; ]
        ]
      ], [
        fhir:index 5;
@@ -2649,12 +2654,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/Directions\r\ror \r\rMessage/Body/NewRx/MedicationPrescribed/StructuredSIG&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.class&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\&quot;type of medication usage\&quot;].value&quot; ]
        ]
      ], [
        fhir:index 6;
@@ -2685,12 +2690,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.priority&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.priorityCode&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.grade&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.priorityCode&quot; ]
        ]
      ], [
        fhir:index 7;
@@ -2791,16 +2796,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed\r\rMedication.code.coding.code = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCode\r\rMedication.code.coding.system = Message/Body/NewRx/MedicationPrescribed/DrugCoded/ProductCodeQualifier\r\rMedication.code.coding.display = Message/Body/NewRx/MedicationPrescribed/DrugDescription&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXE-2-Give Code / RXO-1-Requested Give Code / RXC-2-Component Code&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;consumable.administrableMedication&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.what[x]&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -2833,14 +2838,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/Patient\r\r(need detail to link to specific patient … Patient.Identification in SCRIPT)&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;PID-3-Patient ID List&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ], [
-         fhir:index 4;
+         fhir:index 5;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
@@ -2871,16 +2880,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;PV1-19-Visit Number&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
        ]
      ], [
        fhir:index 12;
@@ -2905,12 +2914,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.supportingInfo&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.context&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
        ]
      ], [
        fhir:index 13;
@@ -2935,16 +2944,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/WrittenDate&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;author.time&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
        ]
      ], [
        fhir:index 14;
@@ -2984,12 +2993,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.requester&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.author&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
        fhir:index 15;
@@ -3031,12 +3040,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Request.performer&quot; ]
        ], [
          fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
-       ], [
-         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.actor&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
        fhir:index 16;
@@ -3092,12 +3101,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.who&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
        ]
      ], [
        fhir:index 18;
@@ -3132,16 +3141,16 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Message/Body/NewRx/MedicationPrescribed/Diagnosis/Primary/Value&quot; ]
        ], [
          fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
+       ], [
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication&quot; ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation.reasonCode&quot; ]
-       ], [
-         fhir:index 4;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
        ]
      ], [
        fhir:index 19;
@@ -3173,12 +3182,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;no mapping&quot; ]
        ], [
          fhir:index 2;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
-       ], [
-         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.why[x]&quot; ]
+       ], [
+         fhir:index 3;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
        ]
      ], [
        fhir:index 20;
@@ -3593,12 +3602,12 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.who&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
        fhir:index 38;
@@ -3812,7 +3821,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

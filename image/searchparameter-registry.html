@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -751,7 +749,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-subject</td><td><p>Subject impacted by event</p>
 </td><td>AdverseEvent.​subject</td></tr>
 <tr><td>substance</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-substance</td><td><p>Refers to the specific entity that caused the adverse event</p>
-</td><td>AdverseEvent.​suspectEntity.​instance</td></tr>
+</td><td>(AdverseEvent.​suspectEntity.​instance as Reference)</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="allergyintolerance.html">AllergyIntolerance</a><a name="allergyintolerance"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>asserter</td><td><a href="search.html#reference">reference</a></td><td>AllergyIntolerance-asserter</td><td><p>Source of the information about the allergy</p>
 </td><td>AllergyIntolerance.​asserter</td></tr>
@@ -783,7 +781,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>AllergyIntolerance.​reaction.​severity</td></tr>
 <tr><td>type</td><td><a href="search.html#token">token</a></td><td>clinical-type</td><td><p>allergy | intolerance - Underlying mechanism (if known)</p>
 </td><td>AllergyIntolerance.​type</td></tr>
-<tr><td>verification-status</td><td><a href="search.html#token">token</a></td><td>AllergyIntolerance-verification-status</td><td><p>unconfirmed | confirmed | refuted | entered-in-error</p>
+<tr><td>verification-status</td><td><a href="search.html#token">token</a></td><td>AllergyIntolerance-verification-status</td><td><p>unconfirmed | presumed | confirmed | refuted | entered-in-error</p>
 </td><td>AllergyIntolerance.​verificationStatus</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="appointment.html">Appointment</a><a name="appointment"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>actor</td><td><a href="search.html#reference">reference</a></td><td>Appointment-actor</td><td><p>Any one of the individuals participating in the appointment</p>
@@ -966,7 +964,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>category</td><td><a href="search.html#token">token</a></td><td>CarePlan-category</td><td><p>Type of plan</p>
 </td><td>CarePlan.​category</td></tr>
 <tr><td>condition</td><td><a href="search.html#reference">reference</a></td><td>CarePlan-condition</td><td><p>Health issues this plan addresses</p>
-</td><td>CarePlan.​addresses</td></tr>
+</td><td>CarePlan.​addressesReference</td></tr>
 <tr><td>date</td><td><a href="search.html#date">date</a></td><td>clinical-date</td><td><p>Time period plan covers</p>
 </td><td>CarePlan.​period</td></tr>
 <tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>CarePlan-encounter</td><td><p>Encounter created as part of</p>
@@ -1135,8 +1133,6 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>use</td><td><a href="search.html#token">token</a></td><td>ClaimResponse-use</td><td><p>The type of claim</p>
 </td><td>ClaimResponse.​use</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="clinicalimpression.html">ClinicalImpression</a><a name="clinicalimpression"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>assessor</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-assessor</td><td><p>The clinician performing the assessment</p>
-</td><td>ClinicalImpression.​assessor</td></tr>
 <tr><td>date</td><td><a href="search.html#date">date</a></td><td>clinical-date</td><td><p>When the assessment was documented</p>
 </td><td>ClinicalImpression.​date</td></tr>
 <tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-encounter</td><td><p>Encounter created as part of</p>
@@ -1147,10 +1143,10 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>ClinicalImpression.​finding.​itemReference</td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>ClinicalImpression-identifier</td><td><p>Business identifier</p>
 </td><td>ClinicalImpression.​identifier</td></tr>
-<tr><td>investigation</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-investigation</td><td><p>Record of a specific investigation</p>
-</td><td>ClinicalImpression.​investigation.​item</td></tr>
 <tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>clinical-patient</td><td><p>Patient or group assessed</p>
 </td><td>ClinicalImpression.​subject.​where(resolve() is Patient)</td></tr>
+<tr><td>performer</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-performer</td><td><p>The clinician performing the assessment</p>
+</td><td>ClinicalImpression.​performer</td></tr>
 <tr><td>previous</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-previous</td><td><p>Reference to last assessment</p>
 </td><td>ClinicalImpression.​previous</td></tr>
 <tr><td>problem</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-problem</td><td><p>Relevant impressions of patient state</p>
@@ -1217,7 +1213,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Communication.​instantiatesUri</td></tr>
 <tr><td>medium</td><td><a href="search.html#token">token</a></td><td>Communication-medium</td><td><p>A channel of communication</p>
 </td><td>Communication.​medium</td></tr>
-<tr><td>part-of</td><td><a href="search.html#reference">reference</a></td><td>Communication-part-of</td><td><p>Part of this action</p>
+<tr><td>part-of</td><td><a href="search.html#reference">reference</a></td><td>Communication-part-of</td><td><p>Part of referenced event (e.g. Communication, Procedure)</p>
 </td><td>Communication.​partOf</td></tr>
 <tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>Communication-patient</td><td><p>Focus of message</p>
 </td><td>Communication.​subject.​where(resolve() is Patient)</td></tr>
@@ -1924,8 +1920,6 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>EventDefinition-version</td><td><p>The business version of the event definition</p>
 </td><td>EventDefinition.​version</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="evidence.html">Evidence</a><a name="evidence"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>composed-of</td><td><a href="search.html#reference">reference</a></td><td>Evidence-composed-of</td><td><p>What resource is being referenced</p>
-</td><td>Evidence.​relatedArtifact.​where(type='composed-of').​resource</td></tr>
 <tr><td>context</td><td><a href="search.html#token">token</a></td><td>Evidence-context</td><td><p>A use context assigned to the evidence</p>
 </td><td>(Evidence.​useContext.​value as CodeableConcept)</td></tr>
 <tr><td>context-quantity</td><td><a href="search.html#quantity">quantity</a></td><td>Evidence-context-quantity</td><td><p>A quantity- or range-valued use context assigned to the evidence</p>
@@ -1938,10 +1932,6 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Evidence.​useContext</td></tr>
 <tr><td>date</td><td><a href="search.html#date">date</a></td><td>Evidence-date</td><td><p>The evidence publication date</p>
 </td><td>Evidence.​date</td></tr>
-<tr><td>depends-on</td><td><a href="search.html#reference">reference</a></td><td>Evidence-depends-on</td><td><p>What resource is being referenced</p>
-</td><td>Evidence.​relatedArtifact.​where(type='depends-on').​resource</td></tr>
-<tr><td>derived-from</td><td><a href="search.html#reference">reference</a></td><td>Evidence-derived-from</td><td><p>What resource is being referenced</p>
-</td><td>Evidence.​relatedArtifact.​where(type='derived-from').​resource</td></tr>
 <tr><td>description</td><td><a href="search.html#string">string</a></td><td>Evidence-description</td><td><p>The description of the evidence</p>
 </td><td>Evidence.​description</td></tr>
 <tr><td>effective</td><td><a href="search.html#date">date</a></td><td>Evidence-effective</td><td><p>The time during which the evidence is intended to be in use</p>
@@ -1952,18 +1942,12 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Evidence.​jurisdiction</td></tr>
 <tr><td>name</td><td><a href="search.html#string">string</a></td><td>Evidence-name</td><td><p>Computationally friendly name of the evidence</p>
 </td><td>Evidence.​name</td></tr>
-<tr><td>predecessor</td><td><a href="search.html#reference">reference</a></td><td>Evidence-predecessor</td><td><p>What resource is being referenced</p>
-</td><td>Evidence.​relatedArtifact.​where(type='predecessor').​resource</td></tr>
 <tr><td>publisher</td><td><a href="search.html#string">string</a></td><td>Evidence-publisher</td><td><p>Name of the publisher of the evidence</p>
 </td><td>Evidence.​publisher</td></tr>
 <tr><td>status</td><td><a href="search.html#token">token</a></td><td>Evidence-status</td><td><p>The current status of the evidence</p>
 </td><td>Evidence.​status</td></tr>
-<tr><td>successor</td><td><a href="search.html#reference">reference</a></td><td>Evidence-successor</td><td><p>What resource is being referenced</p>
-</td><td>Evidence.​relatedArtifact.​where(type='successor').​resource</td></tr>
 <tr><td>title</td><td><a href="search.html#string">string</a></td><td>Evidence-title</td><td><p>The human-friendly name of the evidence</p>
 </td><td>Evidence.​title</td></tr>
-<tr><td>topic</td><td><a href="search.html#token">token</a></td><td>Evidence-topic</td><td><p>Topics associated with the Evidence</p>
-</td><td>Evidence.​topic</td></tr>
 <tr><td>url</td><td><a href="search.html#uri">uri</a></td><td>Evidence-url</td><td><p>The uri that identifies the evidence</p>
 </td><td>Evidence.​url</td></tr>
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>Evidence-version</td><td><p>The business version of the evidence</p>
@@ -2696,9 +2680,9 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>MedicationKnowledge.​code</td></tr>
 <tr><td>doseform</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-doseform</td><td><p>powder | tablets | capsule +</p>
 </td><td>MedicationKnowledge.​doseForm</td></tr>
-<tr><td>ingredient</td><td><a href="search.html#reference">reference</a></td><td>MedicationKnowledge-ingredient</td><td><p>Medication(s) or substance(s) contained in the medication</p>
+<tr><td>ingredient</td><td><a href="search.html#reference">reference</a></td><td>MedicationKnowledge-ingredient</td><td><p>Medication(s) or MedicinalProductIngredient(s) contained in the medication</p>
 </td><td>(MedicationKnowledge.​ingredient.​item as Reference)</td></tr>
-<tr><td>ingredient-code</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-ingredient-code</td><td><p>Medication(s) or substance(s) contained in the medication</p>
+<tr><td>ingredient-code</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-ingredient-code</td><td><p>Medication(s) or MedicinalProductIngredient(s) contained in the medication</p>
 </td><td>(MedicationKnowledge.​ingredient.​item as CodeableConcept)</td></tr>
 <tr><td>manufacturer</td><td><a href="search.html#reference">reference</a></td><td>MedicationKnowledge-manufacturer</td><td><p>Manufacturer of the item</p>
 </td><td>MedicationKnowledge.​manufacturer</td></tr>
@@ -4225,7 +4209,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-0ca8ae5698) generated on Mon, Feb 4, 2019 09:29-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

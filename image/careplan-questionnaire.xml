@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for CarePlan.activity.detail.scheduled[x]"/>
       <expansion>
-        <identifier value="urn:uuid:2e7bb43a-48f1-4ff0-98c2-c17a7c85cd59"/>
-        <timestamp value="2019-02-04T09:28:12-06:00"/>
+        <identifier value="urn:uuid:aa92a4c7-886f-4bb2-9847-6b2017b6475f"/>
+        <timestamp value="2019-02-28T12:34:40-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Timing"/>
@@ -32,12 +32,54 @@
   <contained>
     <ValueSet>
       <id value="vs3"/>
+      <name value="Type options for CarePlan.activity.detail.reported[x]"/>
+      <status value="active"/>
+      <description value="Type options for CarePlan.activity.detail.reported[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:2dc4b546-5e84-479e-ad67-3d1fbbfed0ac"/>
+        <timestamp value="2019-02-28T12:34:40-06:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="boolean"/>
+          <display value="boolean"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Patient"/>
+          <display value="Patient"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="RelatedPerson"/>
+          <display value="RelatedPerson"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Practitioner"/>
+          <display value="Practitioner"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="PractitionerRole"/>
+          <display value="PractitionerRole"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Organization"/>
+          <display value="Organization"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs4"/>
       <name value="Type options for CarePlan.activity.detail.product[x]"/>
       <status value="active"/>
       <description value="Type options for CarePlan.activity.detail.product[x]"/>
       <expansion>
-        <identifier value="urn:uuid:3a041000-8b1e-4bb9-9a91-fa911eacabaa"/>
-        <timestamp value="2019-02-04T09:28:12-06:00"/>
+        <identifier value="urn:uuid:6c78a34d-8805-4f6b-9690-da0e5697c2d9"/>
+        <timestamp value="2019-02-28T12:34:40-06:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -61,7 +103,7 @@
   </identifier>
   <version value="4.0.0"/>
   <status value="draft"/>
-  <date value="2019-02-04T09:26:06-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="CarePlan"/>
@@ -923,9 +965,10 @@
     </item>
     <item>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="Reference"/>
+        <valueString value="CodeableConcept"/>
       </extension>
-      <linkId value="CarePlan.addresses"/>
+      <linkId value="CarePlan.addressesCode"/>
+      <text value="Health issues this plan addresses"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -939,7 +982,43 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. When the diagnosis is related to an allergy or intolerance, the Condition and AllergyIntolerance resources can both be used. However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an AllergyIntolerance."/>
+        <text value="Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. Use CarePlan.addressesCode when a code sufficiently describes the concern (e.g. condition, problem, diagnosis, risk). Use CarePlan.addressesReference when referencing a resource, which allows more information to be conveyed, such as onset date. CarePlan.addressesCode and CarePlan.addressesReference are not meant to be duplicative. For a single concern, either CarePlan.addressesCode or CarePlan.addressesReference can be used. CarePlan.addressesCode may be a summary code, or CarePlan.addressesReference may be used to reference a very precise definition of the concern using Condition. Both CarePlan.addressesCode and CarePlan.addressesReference can be used if they are describing different concerns for the care plan."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CarePlan.addressesCode.coding"/>
+        <text value="code:"/>
+        <type value="open-choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+      <item>
+        <linkId value="CarePlan.addressesCode.text"/>
+        <text value="text:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="CarePlan.addressesReference"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. When the diagnosis is related to an allergy or intolerance, the Condition and AllergyIntolerance resources can both be used. However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an AllergyIntolerance.  Use CarePlan.addressesCode when a code sufficiently describes the concern (e.g. condition, problem, diagnosis, risk). Use CarePlan.addressesReference when referencing a resource, which allows more information to be conveyed, such as onset date. CarePlan.addressesCode and CarePlan.addressesReference are not meant to be duplicative. For a single concern, either CarePlan.addressesCode or CarePlan.addressesReference can be used. CarePlan.addressesCode may be a summary code, or CarePlan.addressesReference may be used to reference a very precise definition of the concern using Condition. Both CarePlan.addressesCode and CarePlan.addressesReference can be used if they are describing different concerns for the care plan."/>
         <type value="display"/>
       </item>
       <item>
@@ -949,7 +1028,7 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
-        <linkId value="CarePlan.addresses.value"/>
+        <linkId value="CarePlan.addressesReference.value"/>
         <text value="Health issues this plan addresses"/>
         <type value="reference"/>
         <required value="false"/>
@@ -1238,7 +1317,7 @@
         </item>
         <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-            <valueCode value="Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup"/>
+            <valueCode value="Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup, ImmunizationRecommendation"/>
           </extension>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -1829,6 +1908,69 @@
           </item>
         </item>
         <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+            <valueInteger value="1"/>
+          </extension>
+          <linkId value="CarePlan.activity.detail.reported[x]"/>
+          <text value="Reported rather than primary record"/>
+          <type value="group"/>
+          <required value="false"/>
+          <repeats value="true"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+              <valueCodeableConcept>
+                <coding>
+                  <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                  <code value="flyover"/>
+                  <display value="Fly-over"/>
+                </coding>
+              </valueCodeableConcept>
+            </extension>
+            <text value="Indicates if this record was captured as a secondary &#39;reported&#39; record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."/>
+            <type value="display"/>
+          </item>
+          <item>
+            <linkId value="CarePlan.activity.detail.reported[x]._type"/>
+            <text value="type"/>
+            <type value="choice"/>
+            <required value="false"/>
+            <repeats value="false"/>
+            <answerValueSet value="#vs3"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+                <valueString value="boolean"/>
+              </extension>
+              <linkId value="CarePlan.activity.detail.reported[x]._null"/>
+              <type value="group"/>
+              <item>
+                <linkId value="CarePlan.activity.detail.reported[x]._null.value"/>
+                <type value="boolean"/>
+                <required value="false"/>
+                <repeats value="false"/>
+              </item>
+            </item>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+                <valueString value="Reference"/>
+              </extension>
+              <linkId value="CarePlan.activity.detail.reported[x]._null"/>
+              <type value="group"/>
+              <item>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                  <valueCode value="Patient, RelatedPerson, Practitioner, PractitionerRole, Organization"/>
+                </extension>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+                  <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+                </extension>
+                <linkId value="CarePlan.activity.detail.reported[x]._null.value"/>
+                <type value="reference"/>
+                <required value="false"/>
+                <repeats value="false"/>
+              </item>
+            </item>
+          </item>
+        </item>
+        <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
             <valueString value="Reference"/>
           </extension>
@@ -1891,7 +2033,7 @@
             <type value="choice"/>
             <required value="false"/>
             <repeats value="false"/>
-            <answerValueSet value="#vs3"/>
+            <answerValueSet value="#vs4"/>
             <item>
               <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
                 <valueString value="CodeableConcept"/>

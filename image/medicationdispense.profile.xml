@@ -2,6 +2,9 @@
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="MedicationDispense"/>
+  <meta>
+    <lastUpdated value="2019-02-28T12:32:32.955-06:00"/>
+  </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
@@ -721,7 +724,7 @@
   <version value="4.0.0"/>
   <name value="MedicationDispense"/>
   <status value="draft"/>
-  <date value="2019-02-20T09:53:45-06:00"/>
+  <date value="2019-02-28T12:32:32-06:00"/>
   <publisher value="Health Level Seven International (Pharmacy)"/>
   <contact>
     <telecom>
@@ -748,14 +751,14 @@
     <name value="RIM Mapping"/>
   </mapping>
   <mapping>
-    <identity value="rx-dispense-rmim"/>
-    <uri value="http://www.hl7.org/v3/PORX_RM020070UV"/>
-    <name value="V3 Pharmacy Dispense RMIM"/>
-  </mapping>
-  <mapping>
     <identity value="w5"/>
     <uri value="http://hl7.org/fhir/fivews"/>
     <name value="FiveWs Pattern Mapping"/>
+  </mapping>
+  <mapping>
+    <identity value="rx-dispense-rmim"/>
+    <uri value="http://www.hl7.org/v3/PORX_RM020070UV"/>
+    <name value="V3 Pharmacy Dispense RMIM"/>
   </mapping>
   <mapping>
     <identity value="v2"/>
@@ -1056,16 +1059,16 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".id"/>
       </mapping>
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationDispense.id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="MedicationDispense.partOf">
@@ -1125,16 +1128,16 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".statusCode"/>
       </mapping>
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationDispense.SupplyEvent.statusCode"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="MedicationDispense.statusReason[x]">
@@ -1238,6 +1241,10 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXD-2-Dispense/Give Code"/>
       </mapping>
@@ -1248,10 +1255,6 @@
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationRequest.component1.AdministrationRequest.consumable"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="MedicationDispense.subject">
@@ -1276,6 +1279,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -1335,12 +1342,12 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
       </mapping>
     </element>
     <element id="MedicationDispense.performer">
@@ -2145,16 +2152,16 @@
         <map value="Event.identifier"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.identifier"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".id"/>
       </mapping>
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationDispense.id"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.identifier"/>
       </mapping>
     </element>
     <element id="MedicationDispense.partOf">
@@ -2202,16 +2209,16 @@
         <map value="Event.status"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.status"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value=".statusCode"/>
       </mapping>
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationDispense.SupplyEvent.statusCode"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.status"/>
       </mapping>
     </element>
     <element id="MedicationDispense.statusReason[x]">
@@ -2295,6 +2302,10 @@
         <map value="Event.code"/>
       </mapping>
       <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.what[x]"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="RXD-2-Dispense/Give Code"/>
       </mapping>
@@ -2305,10 +2316,6 @@
       <mapping>
         <identity value="rx-dispense-rmim"/>
         <map value="CombinedMedicationRequest.component1.AdministrationRequest.consumable"/>
-      </mapping>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.what[x]"/>
       </mapping>
     </element>
     <element id="MedicationDispense.subject">
@@ -2327,6 +2334,10 @@
       <mapping>
         <identity value="workflow"/>
         <map value="Event.subject"/>
+      </mapping>
+      <mapping>
+        <identity value="w5"/>
+        <map value="FiveWs.subject[x]"/>
       </mapping>
       <mapping>
         <identity value="v2"/>
@@ -2372,12 +2383,12 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Resource"/>
       </type>
       <mapping>
-        <identity value="rim"/>
-        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
-      </mapping>
-      <mapping>
         <identity value="w5"/>
         <map value="FiveWs.context"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]"/>
       </mapping>
     </element>
     <element id="MedicationDispense.performer">

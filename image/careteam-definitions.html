@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -114,11 +112,13 @@
 
 <table class="dict">
   <tr><td colspan="2" class="structure"><a name="CareTeam"> </a><b>CareTeam</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam</td></tr>
   <tr><td>Definition</td><td><p>The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="domainresource.html">DomainResource</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.identifier"> </a><b>CareTeam.identifier</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.identifier</td></tr>
   <tr><td>Definition</td><td><p>Business identifiers assigned to this care team by the performer or other systems which remain constant as the resource is updated and propagates from server to server.</p>
 </td></tr>
   <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>)</td></tr>
@@ -130,6 +130,7 @@
   <tr><td>Comments</td><td><p>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.status"> </a><b>CareTeam.status</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.status</td></tr>
   <tr><td>Definition</td><td><p>Indicates the current state of the care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -140,6 +141,7 @@
   <tr><td>Comments</td><td><p>This element is labeled as a modifier because the status contains the code entered-in-error that marks the care team as not currently valid.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.category"> </a><b>CareTeam.category</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.category</td></tr>
   <tr><td>Definition</td><td><p>Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -151,6 +153,7 @@
   <tr><td>Comments</td><td><p>There may be multiple axis of categorization and one team may serve multiple purposes.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.name"> </a><b>CareTeam.name</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.name</td></tr>
   <tr><td>Definition</td><td><p>A label for human use intended to distinguish like teams.  E.g. the "red" vs. "green" trauma teams.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -159,6 +162,7 @@
   <tr><td>Comments</td><td><p>The meaning/purpose of the team is conveyed in CareTeam.category.  This element may also convey semantics of the team (e.g. "Red trauma team"), but its primary purpose is to distinguish between identical teams in a human-friendly way.  ("Team 18735" isn't as friendly.).</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.subject"> </a><b>CareTeam.subject</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.subject</td></tr>
   <tr><td>Definition</td><td><p>Identifies the patient or group whose intended care is handled by the team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -169,6 +173,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>patient</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.encounter"> </a><b>CareTeam.encounter</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.encounter</td></tr>
   <tr><td>Definition</td><td><p>The Encounter during which this CareTeam was created or to which the creation of this record is tightly associated.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -177,6 +182,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td>Comments</td><td><p>This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.period"> </a><b>CareTeam.period</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.period</td></tr>
   <tr><td>Definition</td><td><p>Indicates when the team did (or is intended to) come into effect and end.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -185,6 +191,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant"> </a><b>CareTeam.participant</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant</td></tr>
   <tr><td>Definition</td><td><p>Identifies all people and organizations who are expected to be involved in the care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -194,6 +201,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 </table>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant.role"> </a><b>CareTeam.participant.role</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant.role</td></tr>
   <tr><td>Definition</td><td><p>Indicates specific responsibility of an individual within the care team, such as "Primary care physician", "Trained social worker counselor", "Caregiver", etc.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -203,6 +211,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td>Comments</td><td><p>Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant.member"> </a><b>CareTeam.participant.member</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant.member</td></tr>
   <tr><td>Definition</td><td><p>The specific person or organization who is participating/expected to participate in the care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -212,6 +221,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 <p>Member is optional because some participants may be known only by their role, particularly in draft plans.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant.onBehalfOf"> </a><b>CareTeam.participant.onBehalfOf</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant.onBehalfOf</td></tr>
   <tr><td>Definition</td><td><p>The organization of the practitioner.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -220,22 +230,26 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant.period"> </a><b>CareTeam.participant.period</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant.period</td></tr>
   <tr><td>Definition</td><td><p>Indicates when the specific member or organization did (or is intended to) come into effect and end.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Period">Period</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.reasonCode"> </a><b>CareTeam.reasonCode</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.reasonCode</td></tr>
   <tr><td>Definition</td><td><p>Describes why the care team exists.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-clinical-findings.html">SNOMED CT Clinical Findings</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.reasonReference"> </a><b>CareTeam.reasonReference</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.reasonReference</td></tr>
   <tr><td>Definition</td><td><p>Condition(s) that this care team addresses.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="condition.html">Condition</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.managingOrganization"> </a><b>CareTeam.managingOrganization</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.managingOrganization</td></tr>
   <tr><td>Definition</td><td><p>The organization responsible for the care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -244,6 +258,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.telecom"> </a><b>CareTeam.telecom</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.telecom</td></tr>
   <tr><td>Definition</td><td><p>A central contact detail for the care team (that applies to all members).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -251,6 +266,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td>Comments</td><td><p>The ContactPoint.use code of home is not appropriate to use. These contacts are not the contact details of individual care team members.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.note"> </a><b>CareTeam.note</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.note</td></tr>
   <tr><td>Definition</td><td><p>Comments made about the CareTeam.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -273,7 +289,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:34-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

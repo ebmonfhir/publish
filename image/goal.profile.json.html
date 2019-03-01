@@ -39,10 +39,8 @@
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -119,6 +117,9 @@
 {
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Goal&quot;,
+  &quot;meta&quot; : {
+    &quot;lastUpdated&quot; : &quot;2019-02-28T12:32:32.955-06:00&quot;
+  },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
     &quot;div&quot; : &quot;&lt;div&gt;!-- Snipped for Brevity --&gt;&lt;/div&gt;&quot;
@@ -147,7 +148,7 @@
   &quot;version&quot; : &quot;4.0.0&quot;,
   &quot;name&quot; : &quot;Goal&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-20T09:53:45-06:00&quot;,
+  &quot;date&quot; : &quot;2019-02-28T12:32:32-06:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -478,12 +479,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.id&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.id&quot;
       }]
     },
     {
@@ -516,16 +517,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/goal-status|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;GOL-18-goal life cycle status&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.statusCode in-progress = active (classCode = OBJ) cancelled = aborted&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.status&quot;
       }]
     },
     {
@@ -592,6 +593,26 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;Goal.continuous&quot;,
+      &quot;path&quot; : &quot;Goal.continuous&quot;,
+      &quot;short&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective&quot;,
+      &quot;definition&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective.&quot;,
+      &quot;comment&quot; : &quot;For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true).&quot;,
+      &quot;requirements&quot; : &quot;Allows for a system to programmatically update achievementStatus upon finding evidence the goal has been met.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Goal.continuous&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;boolean&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
       &quot;id&quot; : &quot;Goal.priority&quot;,
       &quot;path&quot; : &quot;Goal.priority&quot;,
       &quot;short&quot; : &quot;high-priority | medium-priority | low-priority&quot;,
@@ -620,12 +641,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/goal-priority&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.priorityCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.priorityCode&quot;
       }]
     },
     {
@@ -657,16 +678,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/clinical-findings&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;GOL-3.2-goal ID.text&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.text&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -691,6 +712,10 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;PID-3-patient ID list&quot;
       },
@@ -1045,12 +1070,12 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=SUBJ].target[classCode=CONC]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=SUBJ].target[classCode=CONC]&quot;
       }]
     },
     {
@@ -1163,12 +1188,12 @@
         &quot;code&quot; : &quot;Identifier&quot;
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.id&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.id&quot;
       }]
     },
     {
@@ -1196,16 +1221,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/goal-status|4.0.0&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.status&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;GOL-18-goal life cycle status&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.statusCode in-progress = active (classCode = OBJ) cancelled = aborted&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.status&quot;
       }]
     },
     {
@@ -1260,6 +1285,19 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;Goal.continuous&quot;,
+      &quot;path&quot; : &quot;Goal.continuous&quot;,
+      &quot;short&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective&quot;,
+      &quot;definition&quot; : &quot;After meeting the goal, ongoing activity is needed to sustain the goal objective.&quot;,
+      &quot;comment&quot; : &quot;For example, getting a yellow fever vaccination for a planned trip is a goal that is designed to be completed (continuous = false).  A goal to sustain HbA1c levels would not be a one-time goal (continuous = true).&quot;,
+      &quot;requirements&quot; : &quot;Allows for a system to programmatically update achievementStatus upon finding evidence the goal has been met.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;boolean&quot;
+      }]
+    },
+    {
       &quot;id&quot; : &quot;Goal.priority&quot;,
       &quot;path&quot; : &quot;Goal.priority&quot;,
       &quot;short&quot; : &quot;high-priority | medium-priority | low-priority&quot;,
@@ -1282,12 +1320,12 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/goal-priority&quot;
       },
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.priorityCode&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.grade&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.priorityCode&quot;
       }]
     },
     {
@@ -1313,16 +1351,16 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/clinical-findings&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;GOL-3.2-goal ID.text&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.text&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
     },
     {
@@ -1341,6 +1379,10 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;PID-3-patient ID list&quot;
       },
@@ -1554,12 +1596,12 @@
         &quot;http://hl7.org/fhir/StructureDefinition/RiskAssessment&quot;]
       }],
       &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=SUBJ].target[classCode=CONC]&quot;
-      },
-      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=SUBJ].target[classCode=CONC]&quot;
       }]
     },
     {
@@ -1645,7 +1687,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

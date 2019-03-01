@@ -35,27 +35,19 @@ type EvidenceExposureBackground {
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  population: EvidenceExposureBackgroundPopulation!
+  population: Reference!
+  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   exposureVariant: [EvidenceExposureBackgroundExposureVariant]
   comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
 }
 
-type EvidenceExposureBackgroundPopulation {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  populationSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-}
-
-type EvidenceExposureBackgroundPopulationPopulationSampleSize {
+type EvidenceExposureBackgroundPopulationSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   numberOfStudies: Int  _numberOfStudies: ElementBase
   numberOfParticipants: Int  _numberOfParticipants: ElementBase
-  knownDataCount: Int  _knownDataCount: ElementBase
-  numeratorCount: Int  _numeratorCount: ElementBase
   note: [Annotation]
 }
 
@@ -65,9 +57,19 @@ type EvidenceExposureBackgroundExposureVariant {
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  exposureSubsetSampleSize: EvidenceExposureBackgroundExposureVariantExposureSubsetSampleSize
   measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
   covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundExposureVariantExposureSubsetSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
   note: [Annotation]
 }
 
@@ -88,9 +90,21 @@ type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisti
   description: String  _description: ElementBase
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  knownDataCount: Int  _knownDataCount: ElementBase
+  numeratorCount: Int  _numeratorCount: ElementBase
   note: [Annotation]
 }
 
@@ -102,7 +116,6 @@ type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisti
   type: CodeableConcept
   quantity: Quantity
   precisionEstimate: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate]
-  pValue: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue]
   note: [Annotation]
 }
 
@@ -114,15 +127,6 @@ type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisti
   level: decimal  _level: ElementBase
   from: decimal  _from: ElementBase
   to: decimal  _to: ElementBase
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  value: decimal  _value: ElementBase
-  range: Range
 }
 
 type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty {
@@ -153,7 +157,7 @@ type EvidenceExposureBackgroundExposureVariantCovariantStatistic {
   synthesisType: CodeableConcept
   studyType: CodeableConcept
   sampleSize: EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  statistic: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatistic]
   note: [Annotation]
 }
 
@@ -161,7 +165,60 @@ type EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundExposureVariantCovariantStatisticStatistic {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  type: CodeableConcept
+  quantity: Quantity
+  precisionEstimate: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPrecisionEstimate]
+  pValue: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPValue]
+  note: [Annotation]
+  certainty: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertainty]
+}
+
+type EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPrecisionEstimate {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  level: decimal  _level: ElementBase
+  from: decimal  _from: ElementBase
+  to: decimal  _to: ElementBase
+}
+
+type EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPValue {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  value: decimal  _value: ElementBase
+  range: Range
+}
+
+type EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertainty {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  rating: [CodeableConcept]
+  note: [Annotation]
+  certaintySubcomponent: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertaintyCertaintySubcomponent]
+}
+
+type EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertaintyCertaintySubcomponent {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  rating: [CodeableConcept]
+  note: [Annotation]
 }
 
 type EvidenceExposureBackgroundComparativeStatistic {
@@ -174,9 +231,68 @@ type EvidenceExposureBackgroundComparativeStatistic {
   measuredVariable: Reference!
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  sampleSize: EvidenceExposureBackgroundComparativeStatisticSampleSize
+  statistic: [EvidenceExposureBackgroundComparativeStatisticStatistic]
+  certainty: [EvidenceExposureBackgroundComparativeStatisticCertainty]
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundComparativeStatisticSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundComparativeStatisticStatistic {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  type: CodeableConcept
+  quantity: Quantity
+  precisionEstimate: [EvidenceExposureBackgroundComparativeStatisticStatisticPrecisionEstimate]
+  pValue: [EvidenceExposureBackgroundComparativeStatisticStatisticPValue]
+  note: [Annotation]
+}
+
+type EvidenceExposureBackgroundComparativeStatisticStatisticPrecisionEstimate {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  level: decimal  _level: ElementBase
+  from: decimal  _from: ElementBase
+  to: decimal  _to: ElementBase
+}
+
+type EvidenceExposureBackgroundComparativeStatisticStatisticPValue {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  value: decimal  _value: ElementBase
+  range: Range
+}
+
+type EvidenceExposureBackgroundComparativeStatisticCertainty {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  rating: [CodeableConcept]
+  note: [Annotation]
+  certaintySubcomponent: [EvidenceExposureBackgroundComparativeStatisticCertaintyCertaintySubcomponent]
+}
+
+type EvidenceExposureBackgroundComparativeStatisticCertaintyCertaintySubcomponent {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  rating: [CodeableConcept]
   note: [Annotation]
 }
 
@@ -215,27 +331,19 @@ input EvidenceExposureBackground {
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  population: EvidenceExposureBackgroundPopulation!
+  population: Reference!
+  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
   exposureVariant: [EvidenceExposureBackgroundExposureVariant]
   comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
 }
 
-input EvidenceExposureBackgroundPopulation {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  populationSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-}
-
-input EvidenceExposureBackgroundPopulationPopulationSampleSize {
+input EvidenceExposureBackgroundPopulationSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   numberOfStudies: Int  _numberOfStudies: ElementBase
   numberOfParticipants: Int  _numberOfParticipants: ElementBase
-  knownDataCount: Int  _knownDataCount: ElementBase
-  numeratorCount: Int  _numeratorCount: ElementBase
   note: [Annotation]
 }
 
@@ -245,9 +353,19 @@ input EvidenceExposureBackgroundExposureVariant {
   modifierExtension: [Extension]
   description: String  _description: ElementBase
   groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  exposureSubsetSampleSize: EvidenceExposureBackgroundExposureVariantExposureSubsetSampleSize
   measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
   covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundExposureVariantExposureSubsetSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
   note: [Annotation]
 }
 
@@ -268,9 +386,21 @@ input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatist
   description: String  _description: ElementBase
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
+  sampleSize: EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticSampleSize
   statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
   certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  knownDataCount: Int  _knownDataCount: ElementBase
+  numeratorCount: Int  _numeratorCount: ElementBase
   note: [Annotation]
 }
 
@@ -282,7 +412,6 @@ input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatist
   type: CodeableConcept
   quantity: Quantity
   precisionEstimate: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate]
-  pValue: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue]
   note: [Annotation]
 }
 
@@ -294,15 +423,6 @@ input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatist
   level: decimal  _level: ElementBase
   from: decimal  _from: ElementBase
   to: decimal  _to: ElementBase
-}
-
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  value: decimal  _value: ElementBase
-  range: Range
 }
 
 input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty {
@@ -333,7 +453,7 @@ input EvidenceExposureBackgroundExposureVariantCovariantStatistic {
   synthesisType: CodeableConcept
   studyType: CodeableConcept
   sampleSize: EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  statistic: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatistic]
   note: [Annotation]
 }
 
@@ -341,7 +461,60 @@ input EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundExposureVariantCovariantStatisticStatistic {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  type: CodeableConcept
+  quantity: Quantity
+  precisionEstimate: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPrecisionEstimate]
+  pValue: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPValue]
+  note: [Annotation]
+  certainty: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertainty]
+}
+
+input EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPrecisionEstimate {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  level: decimal  _level: ElementBase
+  from: decimal  _from: ElementBase
+  to: decimal  _to: ElementBase
+}
+
+input EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticPValue {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  value: decimal  _value: ElementBase
+  range: Range
+}
+
+input EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertainty {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  rating: [CodeableConcept]
+  note: [Annotation]
+  certaintySubcomponent: [EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertaintyCertaintySubcomponent]
+}
+
+input EvidenceExposureBackgroundExposureVariantCovariantStatisticStatisticCertaintyCertaintySubcomponent {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  rating: [CodeableConcept]
+  note: [Annotation]
 }
 
 input EvidenceExposureBackgroundComparativeStatistic {
@@ -354,9 +527,68 @@ input EvidenceExposureBackgroundComparativeStatistic {
   measuredVariable: Reference!
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  sampleSize: EvidenceExposureBackgroundComparativeStatisticSampleSize
+  statistic: [EvidenceExposureBackgroundComparativeStatisticStatistic]
+  certainty: [EvidenceExposureBackgroundComparativeStatisticCertainty]
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundComparativeStatisticSampleSize {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundComparativeStatisticStatistic {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  type: CodeableConcept
+  quantity: Quantity
+  precisionEstimate: [EvidenceExposureBackgroundComparativeStatisticStatisticPrecisionEstimate]
+  pValue: [EvidenceExposureBackgroundComparativeStatisticStatisticPValue]
+  note: [Annotation]
+}
+
+input EvidenceExposureBackgroundComparativeStatisticStatisticPrecisionEstimate {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  level: decimal  _level: ElementBase
+  from: decimal  _from: ElementBase
+  to: decimal  _to: ElementBase
+}
+
+input EvidenceExposureBackgroundComparativeStatisticStatisticPValue {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  value: decimal  _value: ElementBase
+  range: Range
+}
+
+input EvidenceExposureBackgroundComparativeStatisticCertainty {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  rating: [CodeableConcept]
+  note: [Annotation]
+  certaintySubcomponent: [EvidenceExposureBackgroundComparativeStatisticCertaintyCertaintySubcomponent]
+}
+
+input EvidenceExposureBackgroundComparativeStatisticCertaintyCertaintySubcomponent {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept
+  rating: [CodeableConcept]
   note: [Annotation]
 }
 

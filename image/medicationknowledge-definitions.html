@@ -37,10 +37,8 @@
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<div id="hl7-status">
-				<b>Current Build</b>
-			</div>       	
-			
+			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -114,11 +112,13 @@
 
 <table class="dict">
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge"> </a><b>MedicationKnowledge</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge</td></tr>
   <tr><td>Definition</td><td><p>Information about a medication that is used to support knowledge.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="domainresource.html">DomainResource</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.code"> </a><b>MedicationKnowledge.code</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.code</td></tr>
   <tr><td>Definition</td><td><p>A code that specifies this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -128,6 +128,7 @@
   <tr><td>Comments</td><td><p>Depending on the context of use, the code that was actually selected by the user (prescriber, dispenser, etc.) will have the coding.userSelected set to true.  As described in the coding datatype: "A coding may be marked as a "userSelected" if a user selected the particular coded value in a user interface (e.g. the user selects an item in a pick-list). If a user selected coding exists, it is the preferred choice for performing translations etc. Other codes can only be literal translations to alternative code systems, or codes at a lower level of granularity (e.g. a generic code for a vendor-specific primary one).</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.status"> </a><b>MedicationKnowledge.status</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.status</td></tr>
   <tr><td>Definition</td><td><p>A code to indicate if the medication is in active use.  The status refers to the validity about the information of the medication and not to its medicinal properties.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -138,12 +139,14 @@
   <tr><td>Comments</td><td><p>This status is intended to identify if the medication in a local system is in active use within a drug database or inventory.  For example, a pharmacy system may create a new drug file record for a compounded product "ABC Hospital Special Cream" with an active status.  At some point in the future, it may be determined that the drug record was created with an error and the status is changed to "entered in error".   This status is not intended to specify if a medication is part of a particular formulary.  It is possible that the drug record may be referenced by multiple formularies or catalogues and each of those entries would have a separate status.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.manufacturer"> </a><b>MedicationKnowledge.manufacturer</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.manufacturer</td></tr>
   <tr><td>Definition</td><td><p>Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="organization.html">Organization</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.doseForm"> </a><b>MedicationKnowledge.doseForm</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.doseForm</td></tr>
   <tr><td>Definition</td><td><p>Describes the form of the item.  Powder; tablets; capsule.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -152,6 +155,7 @@
   <tr><td>Comments</td><td><p>When Medication is referenced from MedicationRequest, this is the ordered form.  When Medication is referenced within MedicationDispense, this is the dispensed form.  When Medication is referenced within MedicationAdministration, this is administered form.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.amount"> </a><b>MedicationKnowledge.amount</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.amount</td></tr>
   <tr><td>Definition</td><td><p>Specific amount of the drug in the packaged product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -160,55 +164,66 @@
   <tr><td>Comments</td><td><p>This is the quantity of medication in a package.  To specify the strength of the medication, the Ingredient.strength attribute is used.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.synonym"> </a><b>MedicationKnowledge.synonym</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.synonym</td></tr>
   <tr><td>Definition</td><td><p>Additional names for a medication, for example, the name(s) given to a medication in different countries.  For example, acetaminophen and paracetamol or salbutamol and albuterol.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.relatedMedicationKnowledge"> </a><b>MedicationKnowledge.relatedMedicationKnowledge</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.relatedMedicationKnowledge</td></tr>
   <tr><td>Definition</td><td><p>Associated or related knowledge about a medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.relatedMedicationKnowledge.type"> </a><b>MedicationKnowledge.relatedMedicationKnowledge.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.relatedMedicationKnowledge.type</td></tr>
   <tr><td>Definition</td><td><p>The category of the associated medication knowledge reference.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.relatedMedicationKnowledge.reference"> </a><b>MedicationKnowledge.relatedMedicationKnowledge.reference</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.relatedMedicationKnowledge.reference</td></tr>
   <tr><td>Definition</td><td><p>Associated documentation about the associated medication knowledge.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="medicationknowledge.html">MedicationKnowledge</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.associatedMedication"> </a><b>MedicationKnowledge.associatedMedication</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.associatedMedication</td></tr>
   <tr><td>Definition</td><td><p>Associated or related medications.  For example, if the medication is a branded product (e.g. Crestor), this is the Therapeutic Moeity (e.g. Rosuvastatin) or if this is a generic medication (e.g. Rosuvastatin), this would link to a branded product (e.g. Crestor).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="medication.html">Medication</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.productType"> </a><b>MedicationKnowledge.productType</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.productType</td></tr>
   <tr><td>Definition</td><td><p>Category of the medication or product (e.g. branded product, therapeutic moeity, generic product, innovator product, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monograph"> </a><b>MedicationKnowledge.monograph</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monograph</td></tr>
   <tr><td>Definition</td><td><p>Associated documentation about the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monograph.type"> </a><b>MedicationKnowledge.monograph.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monograph.type</td></tr>
   <tr><td>Definition</td><td><p>The category of documentation about the medication. (e.g. professional monograph, patient education monograph).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monograph.source"> </a><b>MedicationKnowledge.monograph.source</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monograph.source</td></tr>
   <tr><td>Definition</td><td><p>Associated documentation about the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="documentreference.html">DocumentReference</a> | <a href="media.html">Media</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.ingredient"> </a><b>MedicationKnowledge.ingredient</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.ingredient</td></tr>
   <tr><td>Definition</td><td><p>Identifies a particular constituent of interest in the product.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.ingredient.item_x_"> </a><b>MedicationKnowledge.ingredient.item[x]</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.ingredient.item[x]</td></tr>
   <tr><td>Definition</td><td><p>The actual ingredient - either a substance (simple ingredient) or another medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
@@ -216,6 +231,7 @@
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.ingredient.isActive"> </a><b>MedicationKnowledge.ingredient.isActive</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.ingredient.isActive</td></tr>
   <tr><td>Definition</td><td><p>Indication of whether this ingredient affects the therapeutic action of the drug.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -224,11 +240,13 @@
 False indicates that the ingredient does not affect the therapeutic action of the drug (i.e. inactive).</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.ingredient.strength"> </a><b>MedicationKnowledge.ingredient.strength</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.ingredient.strength</td></tr>
   <tr><td>Definition</td><td><p>Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Ratio">Ratio</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.device"> </a><b>MedicationKnowledge.device</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.device</td></tr>
   <tr><td>Definition</td><td><p>A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
@@ -236,119 +254,143 @@ False indicates that the ingredient does not affect the therapeutic action of th
   <tr><td>Requirements</td><td><p>This attribute should only be populated for those devices that have the drug incorporated in them.  If a device used to administer a medication, for example an applicator or a syringe, needs to be specified, use MedicationKnowledge.packaging.device.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.preparationInstruction"> </a><b>MedicationKnowledge.preparationInstruction</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.preparationInstruction</td></tr>
   <tr><td>Definition</td><td><p>The instructions for preparing the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#markdown">markdown</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.intendedRoute"> </a><b>MedicationKnowledge.intendedRoute</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.intendedRoute</td></tr>
   <tr><td>Definition</td><td><p>The intended or approved route of administration.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-route-codes.html">SNOMED CT Route Codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.cost"> </a><b>MedicationKnowledge.cost</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.cost</td></tr>
   <tr><td>Definition</td><td><p>The price of the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.cost.type"> </a><b>MedicationKnowledge.cost.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.cost.type</td></tr>
   <tr><td>Definition</td><td><p>The category of the cost information.  For example, manufacturers' cost, patient cost, claim reimbursement cost, actual acquisition cost.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.cost.source"> </a><b>MedicationKnowledge.cost.source</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.cost.source</td></tr>
   <tr><td>Definition</td><td><p>The source or owner that assigns the price to the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.cost.cost"> </a><b>MedicationKnowledge.cost.cost</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.cost.cost</td></tr>
   <tr><td>Definition</td><td><p>The price of the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Money">Money</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monitoringProgram"> </a><b>MedicationKnowledge.monitoringProgram</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monitoringProgram</td></tr>
   <tr><td>Definition</td><td><p>The program under which the medication is reviewed.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monitoringProgram.type"> </a><b>MedicationKnowledge.monitoringProgram.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monitoringProgram.type</td></tr>
   <tr><td>Definition</td><td><p>Type of program under which the medication is monitored.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.monitoringProgram.name"> </a><b>MedicationKnowledge.monitoringProgram.name</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.monitoringProgram.name</td></tr>
   <tr><td>Definition</td><td><p>Name of the reviewing program.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines"> </a><b>MedicationKnowledge.administrationGuidelines</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines</td></tr>
   <tr><td>Definition</td><td><p>Guidelines for the administration of the medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.dosage"> </a><b>MedicationKnowledge.administrationGuidelines.dosage</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.dosage</td></tr>
   <tr><td>Definition</td><td><p>Dosage for the medication for the specific guidelines.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.dosage.type"> </a><b>MedicationKnowledge.administrationGuidelines.dosage.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.dosage.type</td></tr>
   <tr><td>Definition</td><td><p>The type of dosage (for example, prophylaxis, maintenance, therapeutic, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.dosage.dosage"> </a><b>MedicationKnowledge.administrationGuidelines.dosage.dosage</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.dosage.dosage</td></tr>
   <tr><td>Definition</td><td><p>Dosage for the medication for the specific guidelines.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="dosage.html">Dosage</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.indication_x_"> </a><b>MedicationKnowledge.administrationGuidelines.indication[x]</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.indication[x]</td></tr>
   <tr><td>Definition</td><td><p>Indication for use that apply to the specific administration guidelines.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a>|<a href="references.html#Reference">Reference</a>(<a href="medicinalproductindication.html">MedicinalProductIndication</a>)</td></tr>
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.patientCharacteristics"> </a><b>MedicationKnowledge.administrationGuidelines.patientCharacteristics</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.patientCharacteristics</td></tr>
   <tr><td>Definition</td><td><p>Characteristics of the patient that are relevant to the administration guidelines (for example, height, weight, gender, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic_x_"> </a><b>MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]</td></tr>
   <tr><td>Definition</td><td><p>Specific characteristic that is relevant to the administration guideline (e.g. height, weight, gender).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a>|<a href="datatypes.html#SimpleQuantity">SimpleQuantity</a></td></tr>
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.administrationGuidelines.patientCharacteristics.value"> </a><b>MedicationKnowledge.administrationGuidelines.patientCharacteristics.value</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.administrationGuidelines.patientCharacteristics.value</td></tr>
   <tr><td>Definition</td><td><p>The specific characteristic (e.g. height, weight, gender, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.medicineClassification"> </a><b>MedicationKnowledge.medicineClassification</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.medicineClassification</td></tr>
   <tr><td>Definition</td><td><p>Categorization of the medication within a formulary or classification system.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.medicineClassification.type"> </a><b>MedicationKnowledge.medicineClassification.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.medicineClassification.type</td></tr>
   <tr><td>Definition</td><td><p>The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.medicineClassification.classification"> </a><b>MedicationKnowledge.medicineClassification.classification</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.medicineClassification.classification</td></tr>
   <tr><td>Definition</td><td><p>Specific category assigned to the medication (e.g. anti-infective, anti-hypertensive, antibiotic, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging"> </a><b>MedicationKnowledge.packaging</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging</td></tr>
   <tr><td>Definition</td><td><p>Information that only applies to packages (not products).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging.type"> </a><b>MedicationKnowledge.packaging.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging.type</td></tr>
   <tr><td>Definition</td><td><p>A code that defines the specific type of packaging that the medication can be found in (e.g. blister sleeve, tube, bottle).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-medicationknowledge-package-type.html">Medication knowledge  package  type  codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging.quantity"> </a><b>MedicationKnowledge.packaging.quantity</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging.quantity</td></tr>
   <tr><td>Definition</td><td><p>The number of product units the package would contain if fully loaded.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#SimpleQuantity">SimpleQuantity</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging.device"> </a><b>MedicationKnowledge.packaging.device</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging.device</td></tr>
   <tr><td>Definition</td><td><p>The device used to administer the medication (e.g. scoop, applicator, syringe).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -356,26 +398,31 @@ False indicates that the ingredient does not affect the therapeutic action of th
   <tr><td>Requirements</td><td><p>If specifying devices impregnated with medication, use MedicationKnowledge.device.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging.material"> </a><b>MedicationKnowledge.packaging.material</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging.material</td></tr>
   <tr><td>Definition</td><td><p>Material type of the package item.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.packaging.packaging"> </a><b>MedicationKnowledge.packaging.packaging</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.packaging.packaging</td></tr>
   <tr><td>Definition</td><td><p>Allows packages within packages (e.g. blister packages within a box or vials of medications within a box).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="#MedicationKnowledge.packaging">See MedicationKnowledge.packaging</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.drugCharacteristic"> </a><b>MedicationKnowledge.drugCharacteristic</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.drugCharacteristic</td></tr>
   <tr><td>Definition</td><td><p>Specifies descriptive properties of the medicine, such as color, shape, imprints, etc.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.drugCharacteristic.type"> </a><b>MedicationKnowledge.drugCharacteristic.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.drugCharacteristic.type</td></tr>
   <tr><td>Definition</td><td><p>A code specifying which characteristic of the medicine is being described (for example, colour, shape, imprint).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-medicationknowledge-characteristic.html">Medication knowledge  characteristic  codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.drugCharacteristic.value_x_"> </a><b>MedicationKnowledge.drugCharacteristic.value[x]</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.drugCharacteristic.value[x]</td></tr>
   <tr><td>Definition</td><td><p>Description of the characteristic.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -384,76 +431,92 @@ False indicates that the ingredient does not affect the therapeutic action of th
   <tr><td>Comments</td><td><p>The description should be provided as a CodeableConcept, SimpleQuantity or an image.  The description can be a string only when these others are not available.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.contraindication"> </a><b>MedicationKnowledge.contraindication</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.contraindication</td></tr>
   <tr><td>Definition</td><td><p>Potential clinical issue with or between medication(s) (for example, drug-drug interaction, drug-disease contraindication, drug-allergy interaction, etc.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="medicinalproductcontraindication.html">MedicinalProductContraindication</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.interaction"> </a><b>MedicationKnowledge.interaction</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.interaction</td></tr>
   <tr><td>Definition</td><td><p>Interactions associated with the medication (e.g. drug-drug interactions).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="medicinalproductinteraction.html">MedicinalProductInteraction</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.undesirableEffect"> </a><b>MedicationKnowledge.undesirableEffect</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.undesirableEffect</td></tr>
   <tr><td>Definition</td><td><p>Side effects or adverse effects associated with the medication (e.g. nausea, vomiting).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="medicinalproductundesirableeffect.html">MedicinalProductUndesirableEffect</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory"> </a><b>MedicationKnowledge.regulatory</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory</td></tr>
   <tr><td>Definition</td><td><p>Regulatory information about a medication.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.regulatoryAuthority"> </a><b>MedicationKnowledge.regulatory.regulatoryAuthority</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.regulatoryAuthority</td></tr>
   <tr><td>Definition</td><td><p>The authority that is specifying the regulations.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="organization.html">Organization</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.substitution"> </a><b>MedicationKnowledge.regulatory.substitution</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.substitution</td></tr>
   <tr><td>Definition</td><td><p>Specifies if changes are allowed when dispensing a medication from a regulatory perspective.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.substitution.type"> </a><b>MedicationKnowledge.regulatory.substitution.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.substitution.type</td></tr>
   <tr><td>Definition</td><td><p>Specifies the type of substitution allowed.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.substitution.allowed"> </a><b>MedicationKnowledge.regulatory.substitution.allowed</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.substitution.allowed</td></tr>
   <tr><td>Definition</td><td><p>Specifies if regulation allows for changes in the medication when dispensing.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#boolean">boolean</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.schedule"> </a><b>MedicationKnowledge.regulatory.schedule</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.schedule</td></tr>
   <tr><td>Definition</td><td><p>Specifies the schedule of a medication in jurisdiction.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.schedule.schedule"> </a><b>MedicationKnowledge.regulatory.schedule.schedule</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.schedule.schedule</td></tr>
   <tr><td>Definition</td><td><p>Specifies the specific drug schedule.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.maxDispense"> </a><b>MedicationKnowledge.regulatory.maxDispense</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.maxDispense</td></tr>
   <tr><td>Definition</td><td><p>The maximum number of units of the medication that can be dispensed in a period.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.maxDispense.quantity"> </a><b>MedicationKnowledge.regulatory.maxDispense.quantity</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.maxDispense.quantity</td></tr>
   <tr><td>Definition</td><td><p>The maximum number of units of the medication that can be dispensed.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#SimpleQuantity">SimpleQuantity</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.regulatory.maxDispense.period"> </a><b>MedicationKnowledge.regulatory.maxDispense.period</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.regulatory.maxDispense.period</td></tr>
   <tr><td>Definition</td><td><p>The period that applies to the maximum number of units.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Duration">Duration</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.kinetics"> </a><b>MedicationKnowledge.kinetics</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.kinetics</td></tr>
   <tr><td>Definition</td><td><p>The time course of drug absorption, distribution, metabolism and excretion of a medication from the body.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.kinetics.type"> </a><b>MedicationKnowledge.kinetics.type</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.kinetics.type</td></tr>
   <tr><td>Definition</td><td><p>Code specifying the type of kinetics (e.g. area under the curve, half life period, lethal dose 50.).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="MedicationKnowledge.kinetics.value_x_"> </a><b>MedicationKnowledge.kinetics.value[x]</b></td></tr>
+  <tr><td>Element Id</td><td>MedicationKnowledge.kinetics.value[x]</td></tr>
   <tr><td>Definition</td><td><p>Description of the characteristic.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
@@ -477,7 +540,7 @@ False indicates that the ingredient does not affect the therapeutic action of th
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-9a0754375f) generated on Wed, Feb 20, 2019 09:55-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

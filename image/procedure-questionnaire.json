@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for Procedure.performed[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:7688c256-3dd5-4733-afd9-1ad99c350e6c",
-      "timestamp" : "2019-02-04T09:29:05-06:00",
+      "identifier" : "urn:uuid:b67c0f57-3cf8-4da6-8bb5-7ab7ab278ae0",
+      "timestamp" : "2019-02-28T12:35:35-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -36,13 +36,54 @@
         "display" : "Range"
       }]
     }
+  },
+  {
+    "resourceType" : "ValueSet",
+    "id" : "vs3",
+    "name" : "Type options for Procedure.reported[x]",
+    "status" : "active",
+    "description" : "Type options for Procedure.reported[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:a43d0439-69c0-48ed-8d83-9e6297f1ced9",
+      "timestamp" : "2019-02-28T12:35:35-06:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "boolean",
+        "display" : "boolean"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Patient",
+        "display" : "Patient"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "RelatedPerson",
+        "display" : "RelatedPerson"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Practitioner",
+        "display" : "Practitioner"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "PractitionerRole",
+        "display" : "PractitionerRole"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Organization",
+        "display" : "Organization"
+      }]
+    }
   }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
   "version" : "4.0.0",
   "status" : "draft",
-  "date" : "2019-02-04T09:26:06-06:00",
+  "date" : "2019-02-28T12:32:32-06:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "Procedure",
@@ -928,12 +969,9 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Reference"
       }],
-      "linkId" : "Procedure.asserter",
+      "linkId" : "Procedure.reported[x]",
+      "text" : "Reported rather than primary record",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -948,23 +986,52 @@
             }]
           }
         }],
-        "text" : "Individual who is making the procedure statement.",
+        "text" : "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.",
         "type" : "display"
       },
       {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Patient, RelatedPerson, Practitioner, PractitionerRole"
+        "linkId" : "Procedure.reported[x]._type",
+        "text" : "type",
+        "type" : "choice",
+        "required" : false,
+        "repeats" : false,
+        "answerValueSet" : "#vs3",
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+            "valueString" : "boolean"
+          }],
+          "linkId" : "Procedure.reported[x]._null",
+          "type" : "group",
+          "item" : [{
+            "linkId" : "Procedure.reported[x]._null.value",
+            "type" : "boolean",
+            "required" : false,
+            "repeats" : false
+          }]
         },
         {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-        }],
-        "linkId" : "Procedure.asserter.value",
-        "text" : "Person who asserts this procedure",
-        "type" : "reference",
-        "required" : false,
-        "repeats" : false
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+            "valueString" : "Reference"
+          }],
+          "linkId" : "Procedure.reported[x]._null",
+          "type" : "group",
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+              "valueCode" : "Patient, RelatedPerson, Practitioner, PractitionerRole, Organization"
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+              "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+            }],
+            "linkId" : "Procedure.reported[x]._null.value",
+            "type" : "reference",
+            "required" : false,
+            "repeats" : false
+          }]
+        }]
       }]
     },
     {

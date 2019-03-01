@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for CarePlan.activity.detail.scheduled[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:2e7bb43a-48f1-4ff0-98c2-c17a7c85cd59",
-      "timestamp" : "2019-02-04T09:28:12-06:00",
+      "identifier" : "urn:uuid:aa92a4c7-886f-4bb2-9847-6b2017b6475f",
+      "timestamp" : "2019-02-28T12:34:40-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Timing",
@@ -30,12 +30,53 @@
   {
     "resourceType" : "ValueSet",
     "id" : "vs3",
+    "name" : "Type options for CarePlan.activity.detail.reported[x]",
+    "status" : "active",
+    "description" : "Type options for CarePlan.activity.detail.reported[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:2dc4b546-5e84-479e-ad67-3d1fbbfed0ac",
+      "timestamp" : "2019-02-28T12:34:40-06:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "boolean",
+        "display" : "boolean"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Patient",
+        "display" : "Patient"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "RelatedPerson",
+        "display" : "RelatedPerson"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Practitioner",
+        "display" : "Practitioner"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "PractitionerRole",
+        "display" : "PractitionerRole"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Organization",
+        "display" : "Organization"
+      }]
+    }
+  },
+  {
+    "resourceType" : "ValueSet",
+    "id" : "vs4",
     "name" : "Type options for CarePlan.activity.detail.product[x]",
     "status" : "active",
     "description" : "Type options for CarePlan.activity.detail.product[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:3a041000-8b1e-4bb9-9a91-fa911eacabaa",
-      "timestamp" : "2019-02-04T09:28:12-06:00",
+      "identifier" : "urn:uuid:6c78a34d-8805-4f6b-9690-da0e5697c2d9",
+      "timestamp" : "2019-02-28T12:34:40-06:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -58,7 +99,7 @@
   }],
   "version" : "4.0.0",
   "status" : "draft",
-  "date" : "2019-02-04T09:26:06-06:00",
+  "date" : "2019-02-28T12:32:32-06:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "CarePlan",
@@ -1002,9 +1043,10 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Reference"
+        "valueString" : "CodeableConcept"
       }],
-      "linkId" : "CarePlan.addresses",
+      "linkId" : "CarePlan.addressesCode",
+      "text" : "Health issues this plan addresses",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -1019,7 +1061,45 @@
             }]
           }
         }],
-        "text" : "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. When the diagnosis is related to an allergy or intolerance, the Condition and AllergyIntolerance resources can both be used. However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an AllergyIntolerance.",
+        "text" : "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. Use CarePlan.addressesCode when a code sufficiently describes the concern (e.g. condition, problem, diagnosis, risk). Use CarePlan.addressesReference when referencing a resource, which allows more information to be conveyed, such as onset date. CarePlan.addressesCode and CarePlan.addressesReference are not meant to be duplicative. For a single concern, either CarePlan.addressesCode or CarePlan.addressesReference can be used. CarePlan.addressesCode may be a summary code, or CarePlan.addressesReference may be used to reference a very precise definition of the concern using Condition. Both CarePlan.addressesCode and CarePlan.addressesReference can be used if they are describing different concerns for the care plan.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CarePlan.addressesCode.coding",
+        "text" : "code:",
+        "type" : "open-choice",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "CarePlan.addressesCode.text",
+        "text" : "text:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "CarePlan.addressesReference",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan. When the diagnosis is related to an allergy or intolerance, the Condition and AllergyIntolerance resources can both be used. However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an AllergyIntolerance.  Use CarePlan.addressesCode when a code sufficiently describes the concern (e.g. condition, problem, diagnosis, risk). Use CarePlan.addressesReference when referencing a resource, which allows more information to be conveyed, such as onset date. CarePlan.addressesCode and CarePlan.addressesReference are not meant to be duplicative. For a single concern, either CarePlan.addressesCode or CarePlan.addressesReference can be used. CarePlan.addressesCode may be a summary code, or CarePlan.addressesReference may be used to reference a very precise definition of the concern using Condition. Both CarePlan.addressesCode and CarePlan.addressesReference can be used if they are describing different concerns for the care plan.",
         "type" : "display"
       },
       {
@@ -1031,7 +1111,7 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "CarePlan.addresses.value",
+        "linkId" : "CarePlan.addressesReference.value",
         "text" : "Health issues this plan addresses",
         "type" : "reference",
         "required" : false,
@@ -1346,7 +1426,7 @@
         {
           "extension" : [{
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-            "valueCode" : "Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup"
+            "valueCode" : "Appointment, CommunicationRequest, DeviceRequest, MedicationRequest, NutritionOrder, Task, ServiceRequest, VisionPrescription, RequestGroup, ImmunizationRecommendation"
           },
           {
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -1989,6 +2069,75 @@
         },
         {
           "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+            "valueInteger" : 1
+          }],
+          "linkId" : "CarePlan.activity.detail.reported[x]",
+          "text" : "Reported rather than primary record",
+          "type" : "group",
+          "required" : false,
+          "repeats" : true,
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept" : {
+                "coding" : [{
+                  "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                  "code" : "flyover",
+                  "display" : "Fly-over"
+                }]
+              }
+            }],
+            "text" : "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.",
+            "type" : "display"
+          },
+          {
+            "linkId" : "CarePlan.activity.detail.reported[x]._type",
+            "text" : "type",
+            "type" : "choice",
+            "required" : false,
+            "repeats" : false,
+            "answerValueSet" : "#vs3",
+            "item" : [{
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+                "valueString" : "boolean"
+              }],
+              "linkId" : "CarePlan.activity.detail.reported[x]._null",
+              "type" : "group",
+              "item" : [{
+                "linkId" : "CarePlan.activity.detail.reported[x]._null.value",
+                "type" : "boolean",
+                "required" : false,
+                "repeats" : false
+              }]
+            },
+            {
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+                "valueString" : "Reference"
+              }],
+              "linkId" : "CarePlan.activity.detail.reported[x]._null",
+              "type" : "group",
+              "item" : [{
+                "extension" : [{
+                  "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+                  "valueCode" : "Patient, RelatedPerson, Practitioner, PractitionerRole, Organization"
+                },
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+                  "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+                }],
+                "linkId" : "CarePlan.activity.detail.reported[x]._null.value",
+                "type" : "reference",
+                "required" : false,
+                "repeats" : false
+              }]
+            }]
+          }]
+        },
+        {
+          "extension" : [{
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
             "valueString" : "Reference"
           }],
@@ -2056,7 +2205,7 @@
             "type" : "choice",
             "required" : false,
             "repeats" : false,
-            "answerValueSet" : "#vs3",
+            "answerValueSet" : "#vs4",
             "item" : [{
               "extension" : [{
                 "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
