@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationknowledge.profile.json - FHIR v4.0.0</title>
+  <title>Medicationknowledge.profile.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -118,7 +118,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;MedicationKnowledge&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-02-28T12:32:32.955-06:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-04-09T02:13:58.189+01:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -145,10 +145,10 @@
     &quot;valueCode&quot; : &quot;phx&quot;
   }],
   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;,
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;MedicationKnowledge&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-28T12:32:32-06:00&quot;,
+  &quot;date&quot; : &quot;2019-04-09T02:13:58+01:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Pharmacy)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -163,13 +163,8 @@
     }]
   }],
   &quot;description&quot; : &quot;Information about a medication that is used to support knowledge.&quot;,
-  &quot;fhirVersion&quot; : &quot;4.0.0&quot;,
+  &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
-    &quot;identity&quot; : &quot;rim&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
-    &quot;name&quot; : &quot;RIM Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;script10.6&quot;,
     &quot;uri&quot; : &quot;http://ncpdp.org/SCRIPT10_6&quot;,
     &quot;name&quot; : &quot;Mapping to NCPDP SCRIPT 10.6&quot;
@@ -183,6 +178,11 @@
     &quot;identity&quot; : &quot;v2&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
     &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;rim&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
+    &quot;name&quot; : &quot;RIM Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -255,10 +255,6 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Entity. Role, or Act&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Todo&quot;
       }]
     },
     {
@@ -460,6 +456,25 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;MedicationKnowledge.identifier&quot;,
+      &quot;path&quot; : &quot;MedicationKnowledge.identifier&quot;,
+      &quot;short&quot; : &quot;Business identifier for this medication&quot;,
+      &quot;definition&quot; : &quot;Business identifier for this medication.&quot;,
+      &quot;comment&quot; : &quot;This is a business identifier, not a resource identifier (see discussion).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;MedicationKnowledge.identifier&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Identifier&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
       &quot;id&quot; : &quot;MedicationKnowledge.code&quot;,
       &quot;path&quot; : &quot;MedicationKnowledge.code&quot;,
       &quot;short&quot; : &quot;Code that identifies this medication&quot;,
@@ -529,7 +544,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;A coded concept defining if the medication is in active use.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
@@ -3144,11 +3159,20 @@
       &quot;short&quot; : &quot;Definition of Medication Knowledge&quot;,
       &quot;definition&quot; : &quot;Information about a medication that is used to support knowledge.&quot;,
       &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;
+    },
+    {
+      &quot;id&quot; : &quot;MedicationKnowledge.identifier&quot;,
+      &quot;path&quot; : &quot;MedicationKnowledge.identifier&quot;,
+      &quot;short&quot; : &quot;Business identifier for this medication&quot;,
+      &quot;definition&quot; : &quot;Business identifier for this medication.&quot;,
+      &quot;comment&quot; : &quot;This is a business identifier, not a resource identifier (see discussion).&quot;,
+      &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Todo&quot;
-      }]
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Identifier&quot;
+      }],
+      &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;MedicationKnowledge.code&quot;,
@@ -3209,7 +3233,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;A coded concept defining if the medication is in active use.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
@@ -4070,7 +4094,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationstatement.profile.ttl - FHIR v4.0.0</title>
+  <title>Medicationstatement.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -105,7 +105,7 @@
 <div class="col-12">
 
 <h1>Medicationstatement.profile.ttl</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 </tbody></table>
 <p>
@@ -123,7 +123,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;MedicationStatement&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-02-28T12:32:32.955-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-04-09T02:13:58.189+01:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -150,10 +150,10 @@
      fhir:Extension.value [ fhir:value &quot;phx&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;MedicationStatement&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-28T12:32:32-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-04-09T02:13:58+01:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Pharmacy)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -171,7 +171,7 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \n\nThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -661,7 +661,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept indicating the current status of a MedicationStatement.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -852,14 +852,14 @@
        ]
      ], [
        fhir:index 17;
-       fhir:Element.id [ fhir:value &quot;MedicationStatement.context&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.context&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter / Episode associated with MedicationStatement&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot; ];
+       fhir:Element.id [ fhir:value &quot;MedicationStatement.encounter&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.encounter&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Encounter associated with MedicationStatement&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The encounter that establishes the context for this MedicationStatement.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.context&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.encounter&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -869,9 +869,6 @@
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;;
            fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/EpisodeOfCare&quot;;
-           fhir:index 1
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1305,7 +1302,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept indicating the current status of a MedicationStatement.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1471,10 +1468,10 @@
        ]
      ], [
        fhir:index 9;
-       fhir:Element.id [ fhir:value &quot;MedicationStatement.context&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.context&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter / Episode associated with MedicationStatement&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot; ];
+       fhir:Element.id [ fhir:value &quot;MedicationStatement.encounter&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationStatement.encounter&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Encounter associated with MedicationStatement&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The encounter that establishes the context for this MedicationStatement.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1483,9 +1480,6 @@
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;;
            fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/EpisodeOfCare&quot;;
-           fhir:index 1
          ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
@@ -1750,7 +1744,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

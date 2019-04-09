@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MedicinalProductInteraction {
   id: ID
@@ -26,111 +26,111 @@ type MedicinalProductInteractionInteractant {
   itemCodeableConcept: CodeableConcept
 }
 
-input MedicinalProductInteraction {
+input MedicinalProductInteractionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  subject: [Reference]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  subject: [ReferenceInput]
   description: String  _description: ElementBase
-  interactant: [MedicinalProductInteractionInteractant]
-  type: CodeableConcept
-  effect: CodeableConcept
-  incidence: CodeableConcept
-  management: CodeableConcept
+  interactant: [MedicinalProductInteractionInteractantInput]
+  type: CodeableConceptInput
+  effect: CodeableConceptInput
+  incidence: CodeableConceptInput
+  management: CodeableConceptInput
 }
 
-input MedicinalProductInteractionInteractant {
+input MedicinalProductInteractionInteractantInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  itemReference: Reference
-  itemCodeableConcept: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  itemReference: ReferenceInput
+  itemCodeableConcept: CodeableConceptInput
 }
 
 type MedicinalProductInteractionReadType {
-  MedicinalProductInteraction(id : ID!) : MedicinalProductInteraction
+  MedicinalProductInteraction(id: ID!): MedicinalProductInteraction
 }
 
 type MedicinalProductInteractionListType {
-  MedicinalProductInteractionList(_filter : String
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MedicinalProductInteraction]
+  MedicinalProductInteractionList(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MedicinalProductInteraction]
 }
 
 type MedicinalProductInteractionConnectionType {
-  MedicinalProductInteractionConection(_filter : String
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicinalProductInteractionConnection
+  MedicinalProductInteractionConection(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicinalProductInteractionConnection
 }
 
 type MedicinalProductInteractionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicinalProductInteractionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicinalProductInteractionEdge]
 }
 
 type MedicinalProductInteractionEdge {
-  mode : String
-  score : Float
-  resource : MedicinalProductInteraction
+  mode: String
+  score: Float
+  resource: MedicinalProductInteraction
 }
 
 type MedicinalProductInteractionCreateType {
-  MedicinalProductInteractionCreate(resource : MedicinalProductInteraction) : MedicinalProductInteractionCreation
+  MedicinalProductInteractionCreate(resource: MedicinalProductInteractionInput): MedicinalProductInteractionCreation
 }
 
 type MedicinalProductInteractionCreation {
-  location : String
-  resource : MedicinalProductInteraction
-  information : OperationOutcome
+  location: String
+  resource: MedicinalProductInteraction
+  information: OperationOutcome
 }
 
 type MedicinalProductInteractionUpdateType {
-  MedicinalProductInteractionUpdate(id : IDresource : MedicinalProductInteraction) : MedicinalProductInteractionUpdate
+  MedicinalProductInteractionUpdate(id: ID, resource: MedicinalProductInteractionInput): MedicinalProductInteractionUpdate
 }
 
 type MedicinalProductInteractionUpdate {
-  resource : MedicinalProductInteraction
-  information : OperationOutcome
+  resource: MedicinalProductInteraction
+  information: OperationOutcome
 }
 
 type MedicinalProductInteractionDeleteType {
-  MedicinalProductInteractionDelete(id : ID) : MedicinalProductInteractionDelete
+  MedicinalProductInteractionDelete(id: ID): MedicinalProductInteractionDelete
 }
 
 type MedicinalProductInteractionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

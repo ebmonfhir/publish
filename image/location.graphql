@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Location {
   id: ID
@@ -47,47 +47,47 @@ type LocationHoursOfOperation {
   closingTime: time  _closingTime: ElementBase
 }
 
-input Location {
+input LocationInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  operationalStatus: Coding
+  operationalStatus: CodingInput
   name: String  _name: ElementBase
   alias: String  _alias: [ElementBase]
   description: String  _description: ElementBase
   mode: code  _mode: ElementBase
-  type: [CodeableConcept]
-  telecom: [ContactPoint]
-  address: Address
-  physicalType: CodeableConcept
-  position: LocationPosition
-  managingOrganization: Reference
-  partOf: Reference
-  hoursOfOperation: [LocationHoursOfOperation]
+  type: [CodeableConceptInput]
+  telecom: [ContactPointInput]
+  address: AddressInput
+  physicalType: CodeableConceptInput
+  position: LocationPositionInput
+  managingOrganization: ReferenceInput
+  partOf: ReferenceInput
+  hoursOfOperation: [LocationHoursOfOperationInput]
   availabilityExceptions: String  _availabilityExceptions: ElementBase
-  endpoint: [Reference]
+  endpoint: [ReferenceInput]
 }
 
-input LocationPosition {
+input LocationPositionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   longitude: decimal  _longitude: ElementBase
   latitude: decimal  _latitude: ElementBase
   altitude: decimal  _altitude: ElementBase
 }
 
-input LocationHoursOfOperation {
+input LocationHoursOfOperationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   daysOfWeek: code  _daysOfWeek: [ElementBase]
   allDay: Boolean  _allDay: ElementBase
   openingTime: time  _openingTime: ElementBase
@@ -95,112 +95,112 @@ input LocationHoursOfOperation {
 }
 
 type LocationReadType {
-  Location(id : ID!) : Location
+  Location(id: ID!): Location
 }
 
 type LocationListType {
-  LocationList(_filter : String
-    address : [String]
-    address_city : [String]
-    address_country : [String]
-    address_postalcode : [String]
-    address_state : [String]
-    address_use : [token]
-    endpoint : [reference]
-    identifier : [token]
-    name : [String]
-    near : [special]
-    operational_status : [token]
-    organization : [reference]
-    partof : [reference]
-    status : [token]
-    type : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Location]
+  LocationList(_filter: String
+    address: [String]
+    address_city: [String]
+    address_country: [String]
+    address_postalcode: [String]
+    address_state: [String]
+    address_use: [token]
+    endpoint: [reference]
+    identifier: [token]
+    name: [String]
+    near: [special]
+    operational_status: [token]
+    organization: [reference]
+    partof: [reference]
+    status: [token]
+    type: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Location]
 }
 
 type LocationConnectionType {
-  LocationConection(_filter : String
-    address : [String]
-    address_city : [String]
-    address_country : [String]
-    address_postalcode : [String]
-    address_state : [String]
-    address_use : [token]
-    endpoint : [reference]
-    identifier : [token]
-    name : [String]
-    near : [special]
-    operational_status : [token]
-    organization : [reference]
-    partof : [reference]
-    status : [token]
-    type : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : LocationConnection
+  LocationConection(_filter: String
+    address: [String]
+    address_city: [String]
+    address_country: [String]
+    address_postalcode: [String]
+    address_state: [String]
+    address_use: [token]
+    endpoint: [reference]
+    identifier: [token]
+    name: [String]
+    near: [special]
+    operational_status: [token]
+    organization: [reference]
+    partof: [reference]
+    status: [token]
+    type: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): LocationConnection
 }
 
 type LocationConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [LocationEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [LocationEdge]
 }
 
 type LocationEdge {
-  mode : String
-  score : Float
-  resource : Location
+  mode: String
+  score: Float
+  resource: Location
 }
 
 type LocationCreateType {
-  LocationCreate(resource : Location) : LocationCreation
+  LocationCreate(resource: LocationInput): LocationCreation
 }
 
 type LocationCreation {
-  location : String
-  resource : Location
-  information : OperationOutcome
+  location: String
+  resource: Location
+  information: OperationOutcome
 }
 
 type LocationUpdateType {
-  LocationUpdate(id : IDresource : Location) : LocationUpdate
+  LocationUpdate(id: ID, resource: LocationInput): LocationUpdate
 }
 
 type LocationUpdate {
-  resource : Location
-  information : OperationOutcome
+  resource: Location
+  information: OperationOutcome
 }
 
 type LocationDeleteType {
-  LocationDelete(id : ID) : LocationDelete
+  LocationDelete(id: ID): LocationDelete
 }
 
 type LocationDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

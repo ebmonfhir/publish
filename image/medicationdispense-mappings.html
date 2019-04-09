@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
   <!-- template-mappings.html --><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>MedicationDispense - FHIR v4.0.0</title>
+  <title>MedicationDispense - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -105,7 +105,7 @@
 <ul class="nav nav-tabs"><li><a href="medicationdispense.html">Content</a></li><li><a href="medicationdispense-examples.html">Examples</a></li><li><a href="medicationdispense-definitions.html">Detailed Descriptions</a></li><li class="active"><a href="#">Mappings</a></li><li><a href="medicationdispense-profiles.html">Profiles &amp; Extensions</a></li><li><a href="medicationdispense-version-maps.html">R3 Conversions</a></li></ul>
 
 <h2 class="self-link-parent"><span class="sectioncount">11.3.8<a name="11.3.8"> </a></span> Resource MedicationDispense - Mappings <a href="medicationdispense-mappings.html#11.3.8" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy <img src="external.png" style="text-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Patient</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy <img src="external.png" style="text-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Patient</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a></td></tr></table>
 
 <div class="itoc">
 <p>Mappings:</p>
@@ -130,7 +130,7 @@
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;statusReason[x]</td><td>Event.statusReason</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;medication[x]</td><td>Event.code</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;subject</td><td>Event.subject</td></tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;context</td><td>Event.context</td></tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;encounter</td><td>Event.context</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;performer</td><td>Event.performer</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actor</td><td>Event.performer.actor</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;authorizingPrescription</td><td>Event.basedOn</td></tr>
@@ -146,7 +146,7 @@
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;category</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;medication[x]</td><td>RXD-2-Dispense/Give Code</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;subject</td><td>PID-3-Patient ID List</td></tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;context</td><td></td></tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;encounter</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;supportingInformation</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;performer</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function</td><td></td></tr>
@@ -179,7 +179,7 @@
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;category</td><td>.inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code="type of medication dispense"].value</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;medication[x]</td><td>.participation[typeCode=PRD].role</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;subject</td><td>.participation[typeCode=SBJ].role[classCode=PAT]</td></tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;context</td><td>.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code="type of encounter or episode"]</td></tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;encounter</td><td>.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code="type of encounter or episode"]</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;supportingInformation</td><td>.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;performer</td><td>.participation[typeCode=PRF]</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function</td><td>participation[typeCode=PRF].functionCode</td></tr>
@@ -212,7 +212,7 @@
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;category</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;medication[x]</td><td>CombinedMedicationRequest.component1.AdministrationRequest.consumable</td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;subject</td><td></td></tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;context</td><td></td></tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;encounter</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;supportingInformation</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;performer</td><td></td></tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function</td><td></td></tr>
@@ -252,7 +252,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

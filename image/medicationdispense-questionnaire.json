@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationDispense.statusReason[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:1785754c-acee-46ad-861c-1596f5f5f660",
-      "timestamp" : "2019-02-28T12:35:14-06:00",
+      "identifier" : "urn:uuid:e52f2e5c-1ef4-4c52-af7f-b43ca7fb1b31",
+      "timestamp" : "2019-04-09T02:16:49+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationDispense.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:787972a4-f5ea-4f54-b953-462c3765ee50",
-      "timestamp" : "2019-02-28T12:35:14-06:00",
+      "identifier" : "urn:uuid:99505385-df4b-4378-8079-a8d97693eb1f",
+      "timestamp" : "2019-04-09T02:16:49+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -46,9 +46,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-02-28T12:32:32-06:00",
+  "date" : "2019-04-09T02:13:58+01:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationDispense",
@@ -661,7 +661,7 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "Reference"
       }],
-      "linkId" : "MedicationDispense.context",
+      "linkId" : "MedicationDispense.encounter",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -676,20 +676,20 @@
             }]
           }
         }],
-        "text" : "The encounter or episode of care that establishes the context for this event.",
+        "text" : "The encounter that establishes the context for this event.",
         "type" : "display"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Encounter, EpisodeOfCare"
+          "valueCode" : "Encounter"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "MedicationDispense.context.value",
-        "text" : "Encounter / Episode associated with event",
+        "linkId" : "MedicationDispense.encounter.value",
+        "text" : "Encounter associated with event",
         "type" : "reference",
         "required" : false,
         "repeats" : false

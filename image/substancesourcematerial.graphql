@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type SubstanceSourceMaterial {
   id: ID
@@ -83,166 +83,166 @@ type SubstanceSourceMaterialPartDescription {
   partLocation: CodeableConcept
 }
 
-input SubstanceSourceMaterial {
+input SubstanceSourceMaterialInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  sourceMaterialClass: CodeableConcept
-  sourceMaterialType: CodeableConcept
-  sourceMaterialState: CodeableConcept
-  organismId: Identifier
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  sourceMaterialClass: CodeableConceptInput
+  sourceMaterialType: CodeableConceptInput
+  sourceMaterialState: CodeableConceptInput
+  organismId: IdentifierInput
   organismName: String  _organismName: ElementBase
-  parentSubstanceId: [Identifier]
+  parentSubstanceId: [IdentifierInput]
   parentSubstanceName: String  _parentSubstanceName: [ElementBase]
-  countryOfOrigin: [CodeableConcept]
+  countryOfOrigin: [CodeableConceptInput]
   geographicalLocation: String  _geographicalLocation: [ElementBase]
-  developmentStage: CodeableConcept
-  fractionDescription: [SubstanceSourceMaterialFractionDescription]
-  organism: SubstanceSourceMaterialOrganism
-  partDescription: [SubstanceSourceMaterialPartDescription]
+  developmentStage: CodeableConceptInput
+  fractionDescription: [SubstanceSourceMaterialFractionDescriptionInput]
+  organism: SubstanceSourceMaterialOrganismInput
+  partDescription: [SubstanceSourceMaterialPartDescriptionInput]
 }
 
-input SubstanceSourceMaterialFractionDescription {
+input SubstanceSourceMaterialFractionDescriptionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   fraction: String  _fraction: ElementBase
-  materialType: CodeableConcept
+  materialType: CodeableConceptInput
 }
 
-input SubstanceSourceMaterialOrganism {
+input SubstanceSourceMaterialOrganismInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  family: CodeableConcept
-  genus: CodeableConcept
-  species: CodeableConcept
-  intraspecificType: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  family: CodeableConceptInput
+  genus: CodeableConceptInput
+  species: CodeableConceptInput
+  intraspecificType: CodeableConceptInput
   intraspecificDescription: String  _intraspecificDescription: ElementBase
-  author: [SubstanceSourceMaterialOrganismAuthor]
-  hybrid: SubstanceSourceMaterialOrganismHybrid
-  organismGeneral: SubstanceSourceMaterialOrganismOrganismGeneral
+  author: [SubstanceSourceMaterialOrganismAuthorInput]
+  hybrid: SubstanceSourceMaterialOrganismHybridInput
+  organismGeneral: SubstanceSourceMaterialOrganismOrganismGeneralInput
 }
 
-input SubstanceSourceMaterialOrganismAuthor {
+input SubstanceSourceMaterialOrganismAuthorInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  authorType: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  authorType: CodeableConceptInput
   authorDescription: String  _authorDescription: ElementBase
 }
 
-input SubstanceSourceMaterialOrganismHybrid {
+input SubstanceSourceMaterialOrganismHybridInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   maternalOrganismId: String  _maternalOrganismId: ElementBase
   maternalOrganismName: String  _maternalOrganismName: ElementBase
   paternalOrganismId: String  _paternalOrganismId: ElementBase
   paternalOrganismName: String  _paternalOrganismName: ElementBase
-  hybridType: CodeableConcept
+  hybridType: CodeableConceptInput
 }
 
-input SubstanceSourceMaterialOrganismOrganismGeneral {
+input SubstanceSourceMaterialOrganismOrganismGeneralInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  kingdom: CodeableConcept
-  phylum: CodeableConcept
-  class: CodeableConcept
-  order: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  kingdom: CodeableConceptInput
+  phylum: CodeableConceptInput
+  class: CodeableConceptInput
+  order: CodeableConceptInput
 }
 
-input SubstanceSourceMaterialPartDescription {
+input SubstanceSourceMaterialPartDescriptionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  part: CodeableConcept
-  partLocation: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  part: CodeableConceptInput
+  partLocation: CodeableConceptInput
 }
 
 type SubstanceSourceMaterialReadType {
-  SubstanceSourceMaterial(id : ID!) : SubstanceSourceMaterial
+  SubstanceSourceMaterial(id: ID!): SubstanceSourceMaterial
 }
 
 type SubstanceSourceMaterialListType {
-  SubstanceSourceMaterialList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [SubstanceSourceMaterial]
+  SubstanceSourceMaterialList(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [SubstanceSourceMaterial]
 }
 
 type SubstanceSourceMaterialConnectionType {
-  SubstanceSourceMaterialConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : SubstanceSourceMaterialConnection
+  SubstanceSourceMaterialConection(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): SubstanceSourceMaterialConnection
 }
 
 type SubstanceSourceMaterialConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [SubstanceSourceMaterialEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [SubstanceSourceMaterialEdge]
 }
 
 type SubstanceSourceMaterialEdge {
-  mode : String
-  score : Float
-  resource : SubstanceSourceMaterial
+  mode: String
+  score: Float
+  resource: SubstanceSourceMaterial
 }
 
 type SubstanceSourceMaterialCreateType {
-  SubstanceSourceMaterialCreate(resource : SubstanceSourceMaterial) : SubstanceSourceMaterialCreation
+  SubstanceSourceMaterialCreate(resource: SubstanceSourceMaterialInput): SubstanceSourceMaterialCreation
 }
 
 type SubstanceSourceMaterialCreation {
-  location : String
-  resource : SubstanceSourceMaterial
-  information : OperationOutcome
+  location: String
+  resource: SubstanceSourceMaterial
+  information: OperationOutcome
 }
 
 type SubstanceSourceMaterialUpdateType {
-  SubstanceSourceMaterialUpdate(id : IDresource : SubstanceSourceMaterial) : SubstanceSourceMaterialUpdate
+  SubstanceSourceMaterialUpdate(id: ID, resource: SubstanceSourceMaterialInput): SubstanceSourceMaterialUpdate
 }
 
 type SubstanceSourceMaterialUpdate {
-  resource : SubstanceSourceMaterial
-  information : OperationOutcome
+  resource: SubstanceSourceMaterial
+  information: OperationOutcome
 }
 
 type SubstanceSourceMaterialDeleteType {
-  SubstanceSourceMaterialDelete(id : ID) : SubstanceSourceMaterialDelete
+  SubstanceSourceMaterialDelete(id: ID): SubstanceSourceMaterialDelete
 }
 
 type SubstanceSourceMaterialDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

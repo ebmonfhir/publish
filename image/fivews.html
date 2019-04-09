@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
   <!-- template-logical.html --><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>fivews - FHIR v4.0.0</title>
+  <title>fivews - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -2026,7 +2026,7 @@ Todo
   <td style="background-color: #f2f2f2" title="null"> </td>
   <td style="background-color: #e6ffff" title="FiveWs.what[x] : CodeableConcept|Reference(Any) [0..1] =&gt; MedicationAdministration.medication[x] : CodeableConcept, Reference [1..1]">1 N</td>
   <td style="background-color: #ffffff" title="FiveWs.subject : Reference(Patient|Practitioner|RelatedPerson|Organization) [0..*] =&gt; MedicationAdministration.subject : Reference [1..1]">1 </td>
-  <td style="background-color: #ffebe6" title="FiveWs.context : Reference(Encounter|EpisodeOfCare) [0..1] =&gt; MedicationAdministration.context : Reference [0..1]; FiveWs.context : Reference(Encounter|EpisodeOfCare) [0..1] =&gt; MedicationAdministration.supportingInformation : Reference [0..*] Maximum Cardinality Violation (pattern = 1, resource = *)">2 NC</td>
+  <td style="background-color: #ffebe6" title="FiveWs.context : Reference(Encounter|EpisodeOfCare) [0..1] =&gt; MedicationAdministration.encounter : Reference [0..1]; FiveWs.context : Reference(Encounter|EpisodeOfCare) [0..1] =&gt; MedicationAdministration.supportingInformation : Reference [0..*] Maximum Cardinality Violation (pattern = 1, resource = *)">2 NC</td>
   <td style="background-color: #f2f2f2" title="null"> </td>
   <td style="background-color: #f2f2f2" title="null"> </td>
   <td style="background-color: #e6ffff" title="FiveWs.done[x] : dateTime|Period [0..1] =&gt; MedicationAdministration.effective[x] : dateTime, Period [1..1]">1 N</td>
@@ -2915,6 +2915,29 @@ Todo
   <td style="background-color: #e6ffff" title="FiveWs.why[x] : CodeableConcept|Reference(Any) [0..*] =&gt; Specimen.request : Reference [0..*]">1 N</td>
  </tr>
  <tr>
+  <td><a href="statistic.html">Statistic</a></td>
+  <td style="background-color: #ffebe6" title="FiveWs.identifier : Identifier [0..*] =&gt; Statistic.url : uri [0..1] The type 'uri' is not legal according to the pattern (uri vs Identifier) ; FiveWs.identifier : Identifier [0..*] =&gt; Statistic.identifier : Identifier [0..*]">2 NT</td>
+  <td style="background-color: #ffffff" title="FiveWs.version : string [0..1] =&gt; Statistic.version : string [0..1]">1 </td>
+  <td style="background-color: #ffffff" title="FiveWs.status : code [0..1] =&gt; Statistic.status : code [1..1]">1 </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #ffebe6" title="FiveWs.recorded : instant [0..1] =&gt; Statistic.date : dateTime [0..1] The type 'dateTime' is not legal according to the pattern (dateTime vs instant) ">1 NT</td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #ffebe6" title="FiveWs.witness : Reference(Patient|Practitioner|RelatedPerson) [0..*] =&gt; Statistic.publisher : BackboneElement [0..*] The type 'BackboneElement' is not legal according to the pattern (BackboneElement vs Reference(Patient|Practitioner|RelatedPerson)) ">1 NT</td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+  <td style="background-color: #f2f2f2" title="null"> </td>
+ </tr>
+ <tr>
   <td><a href="structuredefinition.html">StructureDefinition</a></td>
   <td style="background-color: #ffebe6" title="FiveWs.identifier : Identifier [0..*] =&gt; StructureDefinition.url : uri [1..1] The type 'uri' is not legal according to the pattern (uri vs Identifier) ; FiveWs.identifier : Identifier [0..*] =&gt; StructureDefinition.identifier : Identifier [0..*]">2 NT</td>
   <td style="background-color: #ffffff" title="FiveWs.version : string [0..1] =&gt; StructureDefinition.version : string [0..1]">1 </td>
@@ -3230,7 +3253,7 @@ Todo
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 17:03-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:15+0100. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

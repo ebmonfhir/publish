@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type CatalogEntry {
   id: ID
@@ -10,137 +10,155 @@ type CatalogEntry {
   extension: [Extension]
   modifierExtension: [Extension]
   identifier: [Identifier]
-  type: CodeableConcept
+  name: String  _name: ElementBase
+  type: code  _type: ElementBase
+  status: code  _status: ElementBase
+  effectivePeriod: Period
   orderable: Boolean  _orderable: ElementBase
   referencedItem: Reference!
-  additionalIdentifier: [Identifier]
-  classification: [CodeableConcept]
-  status: code  _status: ElementBase
-  validityPeriod: Period
-  validTo: dateTime  _validTo: ElementBase
-  lastUpdated: dateTime  _lastUpdated: ElementBase
-  additionalCharacteristic: [CodeableConcept]
-  additionalClassification: [CodeableConcept]
   relatedEntry: [CatalogEntryRelatedEntry]
+  updatedBy: Reference
+  note: [Annotation]
+  billingCode: [CodeableConcept]
+  billingSummary: String  _billingSummary: ElementBase
+  scheduleSummary: String  _scheduleSummary: ElementBase
+  limitationSummary: String  _limitationSummary: ElementBase
+  regulatorySummary: String  _regulatorySummary: ElementBase
 }
 
 type CatalogEntryRelatedEntry {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  relationtype: code  _relationtype: ElementBase
-  item: Reference!
+  relationship: code  _relationship: ElementBase
+  target: Reference!
 }
 
-input CatalogEntry {
+input CatalogEntryInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  type: CodeableConcept
-  orderable: Boolean  _orderable: ElementBase
-  referencedItem: Reference!
-  additionalIdentifier: [Identifier]
-  classification: [CodeableConcept]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  name: String  _name: ElementBase
+  type: code  _type: ElementBase
   status: code  _status: ElementBase
-  validityPeriod: Period
-  validTo: dateTime  _validTo: ElementBase
-  lastUpdated: dateTime  _lastUpdated: ElementBase
-  additionalCharacteristic: [CodeableConcept]
-  additionalClassification: [CodeableConcept]
-  relatedEntry: [CatalogEntryRelatedEntry]
+  effectivePeriod: PeriodInput
+  orderable: Boolean  _orderable: ElementBase
+  referencedItem: ReferenceInput!
+  relatedEntry: [CatalogEntryRelatedEntryInput]
+  updatedBy: ReferenceInput
+  note: [AnnotationInput]
+  billingCode: [CodeableConceptInput]
+  billingSummary: String  _billingSummary: ElementBase
+  scheduleSummary: String  _scheduleSummary: ElementBase
+  limitationSummary: String  _limitationSummary: ElementBase
+  regulatorySummary: String  _regulatorySummary: ElementBase
 }
 
-input CatalogEntryRelatedEntry {
+input CatalogEntryRelatedEntryInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  relationtype: code  _relationtype: ElementBase
-  item: Reference!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  relationship: code  _relationship: ElementBase
+  target: ReferenceInput!
 }
 
 type CatalogEntryReadType {
-  CatalogEntry(id : ID!) : CatalogEntry
+  CatalogEntry(id: ID!): CatalogEntry
 }
 
 type CatalogEntryListType {
-  CatalogEntryList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [CatalogEntry]
+  CatalogEntryList(_filter: String
+    identifier: [token]
+    name: [String]
+    orderable: [token]
+    referenced_item: [reference]
+    related_entry: [reference]
+    status: [token]
+    type: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [CatalogEntry]
 }
 
 type CatalogEntryConnectionType {
-  CatalogEntryConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : CatalogEntryConnection
+  CatalogEntryConection(_filter: String
+    identifier: [token]
+    name: [String]
+    orderable: [token]
+    referenced_item: [reference]
+    related_entry: [reference]
+    status: [token]
+    type: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): CatalogEntryConnection
 }
 
 type CatalogEntryConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [CatalogEntryEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [CatalogEntryEdge]
 }
 
 type CatalogEntryEdge {
-  mode : String
-  score : Float
-  resource : CatalogEntry
+  mode: String
+  score: Float
+  resource: CatalogEntry
 }
 
 type CatalogEntryCreateType {
-  CatalogEntryCreate(resource : CatalogEntry) : CatalogEntryCreation
+  CatalogEntryCreate(resource: CatalogEntryInput): CatalogEntryCreation
 }
 
 type CatalogEntryCreation {
-  location : String
-  resource : CatalogEntry
-  information : OperationOutcome
+  location: String
+  resource: CatalogEntry
+  information: OperationOutcome
 }
 
 type CatalogEntryUpdateType {
-  CatalogEntryUpdate(id : IDresource : CatalogEntry) : CatalogEntryUpdate
+  CatalogEntryUpdate(id: ID, resource: CatalogEntryInput): CatalogEntryUpdate
 }
 
 type CatalogEntryUpdate {
-  resource : CatalogEntry
-  information : OperationOutcome
+  resource: CatalogEntry
+  information: OperationOutcome
 }
 
 type CatalogEntryDeleteType {
-  CatalogEntryDelete(id : ID) : CatalogEntryDelete
+  CatalogEntryDelete(id: ID): CatalogEntryDelete
 }
 
 type CatalogEntryDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

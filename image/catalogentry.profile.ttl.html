@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Catalogentry.profile.ttl - FHIR v4.0.0</title>
+  <title>Catalogentry.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -123,7 +123,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;CatalogEntry&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-02-28T12:32:32.955-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-04-09T02:13:58.189+01:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -150,10 +150,10 @@
      fhir:Extension.value [ fhir:value &quot;oo&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CatalogEntry&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;CatalogEntry&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-28T12:32:32-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-04-09T02:13:58+01:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Orders and Observations)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -171,9 +171,14 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;Catalog entries are wrappers that contextualize items included in a catalog.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
+     fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
+     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
+     fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
+  ], [
+     fhir:index 1;
      fhir:StructureDefinition.identity [ fhir:value &quot;rim&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v3&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
@@ -253,6 +258,10 @@
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;Entity. Role, or Act&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE&quot; ]
        ]
      ], [
        fhir:index 1;
@@ -495,8 +504,8 @@
        fhir:index 9;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.identifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Unique identifier of the catalog item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Business identifier of the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Business identifier uniquely assigned to the catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -509,13 +518,42 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-4&quot; ]
+       ]
      ], [
        fhir:index 10;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.name&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.name&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Displayable name assigned to the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The name of this catalog entry announces the item that is represented by the entry.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.name&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;urinalysis panel for lab Z&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.type&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of item - medication, device, service, protocol or other&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of item - medication, device, service, protocol or other.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;ActivityDefinition | PlanDefinition | SpecimenDefinition | ObservationDefinition | DeviceDefinition | Organization | Practitioner | PractitionerRole | HealthcareService | MedicationKnowledge | Medication | Substance | Location&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The type of resource that is represented by this catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -525,126 +563,31 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
        ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
-     ], [
-       fhir:index 11;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.orderable&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Whether the entry represents an orderable item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Whether the entry represents an orderable item.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
+       fhir:ElementDefinition.example [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;ActivityDefinition&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryType&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Types of resources that can be attached to catalog entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0&quot; ]
+       ]
      ], [
        fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The item that is being defined&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The item in a catalog or definition.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
-         fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;;
-           fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
-           fhir:index 1
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
-           fhir:index 2
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
-           fhir:index 3
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
-           fhir:index 4
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
-           fhir:index 5
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
-           fhir:index 6
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
-           fhir:index 7
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;;
-           fhir:index 8
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;;
-           fhir:index 9
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Binary&quot;;
-           fhir:index 10
-         ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 13;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalIdentifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalIdentifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Any additional identifier(s) for the catalog item, in the same granularity or concept&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used in supporting related concepts, e.g. NDC to RxNorm.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalIdentifier&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
-     ], [
-       fhir:index 14;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.classification&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.classification&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Classification (category or class) of the item entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Classes of devices, or ATC for medication.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.classification&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
-     ], [
-       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired | unknown&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates whether this catalog entry is open to public usage (active) or not (draft or retired).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -656,32 +599,34 @@
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
        ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;active&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value &quot;Not known why this is labelled a modifier&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.binding [
          fhir:Element.extension [
            fhir:index 0;
            fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
-           fhir:Extension.value [ fhir:value &quot;PublicationStatus&quot; ]
-         ], [
-           fhir:index 1;
-           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding&quot; ];
-           fhir:Extension.value [ fhir:value &quot;true&quot; ]
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryStatus&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;The lifecycle status of an artifact.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/publication-status|4.0.0&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Public usability statuses for catalog entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-status|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 16;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.validityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The time period in which this catalog entry is expected to be active&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The time period in which this catalog entry is expected to be active.&quot; ];
+       fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.effectivePeriod&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.effectivePeriod&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When this catalog entry is expected to be active&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Period of usability of the catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validityPeriod&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.effectivePeriod&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -690,89 +635,98 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-3&quot; ]
+       ]
      ], [
-       fhir:index 17;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.validTo&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validTo&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date until which this catalog entry is expected to be active&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date until which this catalog entry is expected to be active.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:index 14;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.orderable&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Is orderable&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates whether or not the entry represents an item that is orderable.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validTo&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
        ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;true&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value &quot;Not known why this is labelled a modifier&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 18;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.lastUpdated&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.lastUpdated&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;When was this catalog last updated&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Perhaps not needed - if we use fhir resource metadata.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:index 15;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Item attached to this entry of the catalog&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The item (resource) that this entry of the catalog represents.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.lastUpdated&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
+           fhir:index 4
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 5
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 6
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;;
+           fhir:index 7
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;;
+           fhir:index 8
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;;
+           fhir:index 9
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;;
+           fhir:index 10
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;;
+           fhir:index 11
+         ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 19;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalCharacteristic&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalCharacteristic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional characteristics of the catalog entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used for examplefor Out of Formulary, or any specifics.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalCharacteristic&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
-     ], [
-       fhir:index 20;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalClassification&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalClassification&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional classification of the catalog entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;User for example for ATC classification, or.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalClassification&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
-     ], [
-       fhir:index 21;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;An item that this catalog entry is related to&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Another entry of the catalog related to this one&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Used for example, to point to a substance, or to a device used to administer a medication.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -797,7 +751,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 22;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -825,7 +779,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -857,7 +811,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -894,15 +848,15 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 25;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.relationtype&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationtype&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;triggers | is-replaced-by&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.&quot; ];
+       fhir:index 20;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.relationship&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationship&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;triggers | is-replaced-by | excludes | includes&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The type of relationship to the related entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationtype&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationship&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -919,19 +873,19 @@
            fhir:Extension.value [ fhir:value &quot;CatalogEntryRelationType&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;The type of relations between entries.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/relation-type|4.0.0&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Types of relationships between entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-relation-type|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 26;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.item&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.item&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The reference to the related item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The reference to the related item.&quot; ];
+       fhir:index 21;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.target&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.target&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The reference to the related entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The reference to the related entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.item&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.target&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -945,6 +899,176 @@
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+     ], [
+       fhir:index 22;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.updatedBy&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.updatedBy&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Last updater of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Last actor who recorded (created or updated) this catalog entry.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.updatedBy&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Person&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:index 1
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-7&quot; ]
+       ]
+     ], [
+       fhir:index 23;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.note&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.note&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Notes and comments about this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Notes and comments about this catalog entry.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.note&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Annotation&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+     ], [
+       fhir:index 24;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.billingCode&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingCode&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Billing code in the context of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Billing code associated to the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingCode&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryBilling&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Billing codes for entries of catalogs of orderable items.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;CDM-7&quot; ]
+       ]
+     ], [
+       fhir:index 25;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.billingSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Billing summary in the context of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Billing summary attached to the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingSummary&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;CDM-4&quot; ]
+       ]
+     ], [
+       fhir:index 26;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.scheduleSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.scheduleSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Schedule summary for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Schedule summary for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.scheduleSummary&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;OM1-40&quot; ]
+       ]
+     ], [
+       fhir:index 27;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.limitationSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.limitationSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Summary of limitations for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Summary of limitations for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.limitationSummary&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+     ], [
+       fhir:index 28;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.regulatorySummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.regulatorySummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Regulatory  summary for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Regulatory summary for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.regulatorySummary&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ]
   ];
   fhir:StructureDefinition.differential [
@@ -955,208 +1079,198 @@
        fhir:ElementDefinition.short [ fhir:value &quot;An entry in a catalog&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Catalog entries are wrappers that contextualize items included in a catalog.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE&quot; ]
+       ]
      ], [
        fhir:index 1;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.identifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Unique identifier of the catalog item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Business identifier of the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Business identifier uniquely assigned to the catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
        ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-4&quot; ]
+       ]
      ], [
        fhir:index 2;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.type&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.type&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of item - medication, device, service, protocol or other&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of item - medication, device, service, protocol or other.&quot; ];
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.name&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.name&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Displayable name assigned to the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The name of this catalog entry announces the item that is represented by the entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ]
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;urinalysis panel for lab Z&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 3;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.orderable&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Whether the entry represents an orderable item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Whether the entry represents an orderable item.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 4;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The item that is being defined&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The item in a catalog or definition.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
-         fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;;
-           fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
-           fhir:index 1
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
-           fhir:index 2
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
-           fhir:index 3
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
-           fhir:index 4
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
-           fhir:index 5
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
-           fhir:index 6
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
-           fhir:index 7
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;;
-           fhir:index 8
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;;
-           fhir:index 9
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Binary&quot;;
-           fhir:index 10
-         ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 5;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalIdentifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalIdentifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Any additional identifier(s) for the catalog item, in the same granularity or concept&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used in supporting related concepts, e.g. NDC to RxNorm.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
-       ]
-     ], [
-       fhir:index 6;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.classification&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.classification&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Classification (category or class) of the item entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Classes of devices, or ATC for medication.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ]
-     ], [
-       fhir:index 7;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.status&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired | unknown&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.&quot; ];
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;ActivityDefinition | PlanDefinition | SpecimenDefinition | ObservationDefinition | DeviceDefinition | Organization | Practitioner | PractitionerRole | HealthcareService | MedicationKnowledge | Medication | Substance | Location&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The type of resource that is represented by this catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
        ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;ActivityDefinition&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.binding [
          fhir:Element.extension [
            fhir:index 0;
            fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
-           fhir:Extension.value [ fhir:value &quot;PublicationStatus&quot; ]
-         ], [
-           fhir:index 1;
-           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding&quot; ];
-           fhir:Extension.value [ fhir:value &quot;true&quot; ]
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryType&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;The lifecycle status of an artifact.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/publication-status|4.0.0&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Types of resources that can be attached to catalog entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 8;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.validityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The time period in which this catalog entry is expected to be active&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The time period in which this catalog entry is expected to be active.&quot; ];
+       fhir:index 4;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.status&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.status&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates whether this catalog entry is open to public usage (active) or not (draft or retired).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
+       ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;active&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value &quot;Not known why this is labelled a modifier&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryStatus&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Public usability statuses for catalog entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-status|4.1.0&quot; ]
+       ]
+     ], [
+       fhir:index 5;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.effectivePeriod&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.effectivePeriod&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When this catalog entry is expected to be active&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Period of usability of the catalog entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-3&quot; ]
        ]
      ], [
-       fhir:index 9;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.validTo&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.validTo&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date until which this catalog entry is expected to be active&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date until which this catalog entry is expected to be active.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:index 6;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.orderable&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.orderable&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Is orderable&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates whether or not the entry represents an item that is orderable.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ]
+         fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
+       ];
+       fhir:ElementDefinition.example [
+         fhir:index 0;
+         fhir:ElementDefinition.label [ fhir:value &quot;General&quot; ];
+         fhir:ElementDefinition.value [ fhir:value &quot;true&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.isModifierReason [ fhir:value &quot;Not known why this is labelled a modifier&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 10;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.lastUpdated&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.lastUpdated&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;When was this catalog last updated&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Perhaps not needed - if we use fhir resource metadata.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:index 7;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.referencedItem&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Item attached to this entry of the catalog&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The item (resource) that this entry of the catalog represents.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ]
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
+           fhir:index 4
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 5
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 6
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;;
+           fhir:index 7
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;;
+           fhir:index 8
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;;
+           fhir:index 9
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;;
+           fhir:index 10
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;;
+           fhir:index 11
+         ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 11;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalCharacteristic&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalCharacteristic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional characteristics of the catalog entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Used for examplefor Out of Formulary, or any specifics.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ]
-     ], [
-       fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.additionalClassification&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.additionalClassification&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional classification of the catalog entry&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;User for example for ATC classification, or.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ]
-     ], [
-       fhir:index 13;
+       fhir:index 8;
        fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;An item that this catalog entry is related to&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Another entry of the catalog related to this one&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Used for example, to point to a substance, or to a device used to administer a medication.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -1165,11 +1279,11 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 14;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.relationtype&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationtype&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;triggers | is-replaced-by&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.&quot; ];
+       fhir:index 9;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.relationship&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.relationship&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;triggers | is-replaced-by | excludes | includes&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The type of relationship to the related entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1183,15 +1297,15 @@
            fhir:Extension.value [ fhir:value &quot;CatalogEntryRelationType&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;The type of relations between entries.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/relation-type|4.0.0&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Types of relationships between entries.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/catalogentry-relation-type|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 15;
-       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.item&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.item&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The reference to the related item&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The reference to the related item.&quot; ];
+       fhir:index 10;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.relatedEntry.target&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.relatedEntry.target&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The reference to the related entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The reference to the related entry.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1201,6 +1315,129 @@
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CatalogEntry&quot;;
            fhir:index 0
          ]
+       ]
+     ], [
+       fhir:index 11;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.updatedBy&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.updatedBy&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Last updater of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Last actor who recorded (created or updated) this catalog entry.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Person&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:index 1
+         ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;MFE-7&quot; ]
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.note&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.note&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Notes and comments about this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Notes and comments about this catalog entry.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Annotation&quot; ]
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.billingCode&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingCode&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Billing code in the context of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Billing code associated to the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CatalogEntryBilling&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Billing codes for entries of catalogs of orderable items.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;CDM-7&quot; ]
+       ]
+     ], [
+       fhir:index 14;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.billingSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.billingSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Billing summary in the context of this catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Billing summary attached to the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;CDM-4&quot; ]
+       ]
+     ], [
+       fhir:index 15;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.scheduleSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.scheduleSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Schedule summary for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Schedule summary for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;OM1-40&quot; ]
+       ]
+     ], [
+       fhir:index 16;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.limitationSummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.limitationSummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Summary of limitations for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Summary of limitations for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ]
+     ], [
+       fhir:index 17;
+       fhir:Element.id [ fhir:value &quot;CatalogEntry.regulatorySummary&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;CatalogEntry.regulatorySummary&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Regulatory  summary for the catalog entry&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Regulatory summary for the  item in the context of this  entry of the catalog.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
        ]
      ]
   ] .
@@ -1232,7 +1469,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:34-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type SubstancePolymer {
   id: ID
@@ -73,156 +73,156 @@ type SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
   attachment: Attachment
 }
 
-input SubstancePolymer {
+input SubstancePolymerInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  class: CodeableConcept
-  geometry: CodeableConcept
-  copolymerConnectivity: [CodeableConcept]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  class: CodeableConceptInput
+  geometry: CodeableConceptInput
+  copolymerConnectivity: [CodeableConceptInput]
   modification: String  _modification: [ElementBase]
-  monomerSet: [SubstancePolymerMonomerSet]
-  repeat: [SubstancePolymerRepeat]
+  monomerSet: [SubstancePolymerMonomerSetInput]
+  repeat: [SubstancePolymerRepeatInput]
 }
 
-input SubstancePolymerMonomerSet {
+input SubstancePolymerMonomerSetInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  ratioType: CodeableConcept
-  startingMaterial: [SubstancePolymerMonomerSetStartingMaterial]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  ratioType: CodeableConceptInput
+  startingMaterial: [SubstancePolymerMonomerSetStartingMaterialInput]
 }
 
-input SubstancePolymerMonomerSetStartingMaterial {
+input SubstancePolymerMonomerSetStartingMaterialInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  material: CodeableConcept
-  type: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  material: CodeableConceptInput
+  type: CodeableConceptInput
   isDefining: Boolean  _isDefining: ElementBase
-  amount: SubstanceAmount
+  amount: SubstanceAmountInput
 }
 
-input SubstancePolymerRepeat {
+input SubstancePolymerRepeatInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   numberOfUnits: Int  _numberOfUnits: ElementBase
   averageMolecularFormula: String  _averageMolecularFormula: ElementBase
-  repeatUnitAmountType: CodeableConcept
-  repeatUnit: [SubstancePolymerRepeatRepeatUnit]
+  repeatUnitAmountType: CodeableConceptInput
+  repeatUnit: [SubstancePolymerRepeatRepeatUnitInput]
 }
 
-input SubstancePolymerRepeatRepeatUnit {
+input SubstancePolymerRepeatRepeatUnitInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  orientationOfPolymerisation: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  orientationOfPolymerisation: CodeableConceptInput
   repeatUnit: String  _repeatUnit: ElementBase
-  amount: SubstanceAmount
-  degreeOfPolymerisation: [SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation]
-  structuralRepresentation: [SubstancePolymerRepeatRepeatUnitStructuralRepresentation]
+  amount: SubstanceAmountInput
+  degreeOfPolymerisation: [SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationInput]
+  structuralRepresentation: [SubstancePolymerRepeatRepeatUnitStructuralRepresentationInput]
 }
 
-input SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
+input SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  degree: CodeableConcept
-  amount: SubstanceAmount
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  degree: CodeableConceptInput
+  amount: SubstanceAmountInput
 }
 
-input SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
+input SubstancePolymerRepeatRepeatUnitStructuralRepresentationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
   representation: String  _representation: ElementBase
-  attachment: Attachment
+  attachment: AttachmentInput
 }
 
 type SubstancePolymerReadType {
-  SubstancePolymer(id : ID!) : SubstancePolymer
+  SubstancePolymer(id: ID!): SubstancePolymer
 }
 
 type SubstancePolymerListType {
-  SubstancePolymerList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [SubstancePolymer]
+  SubstancePolymerList(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [SubstancePolymer]
 }
 
 type SubstancePolymerConnectionType {
-  SubstancePolymerConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : SubstancePolymerConnection
+  SubstancePolymerConection(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): SubstancePolymerConnection
 }
 
 type SubstancePolymerConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [SubstancePolymerEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [SubstancePolymerEdge]
 }
 
 type SubstancePolymerEdge {
-  mode : String
-  score : Float
-  resource : SubstancePolymer
+  mode: String
+  score: Float
+  resource: SubstancePolymer
 }
 
 type SubstancePolymerCreateType {
-  SubstancePolymerCreate(resource : SubstancePolymer) : SubstancePolymerCreation
+  SubstancePolymerCreate(resource: SubstancePolymerInput): SubstancePolymerCreation
 }
 
 type SubstancePolymerCreation {
-  location : String
-  resource : SubstancePolymer
-  information : OperationOutcome
+  location: String
+  resource: SubstancePolymer
+  information: OperationOutcome
 }
 
 type SubstancePolymerUpdateType {
-  SubstancePolymerUpdate(id : IDresource : SubstancePolymer) : SubstancePolymerUpdate
+  SubstancePolymerUpdate(id: ID, resource: SubstancePolymerInput): SubstancePolymerUpdate
 }
 
 type SubstancePolymerUpdate {
-  resource : SubstancePolymer
-  information : OperationOutcome
+  resource: SubstancePolymer
+  information: OperationOutcome
 }
 
 type SubstancePolymerDeleteType {
-  SubstancePolymerDelete(id : ID) : SubstancePolymerDelete
+  SubstancePolymerDelete(id: ID): SubstancePolymerDelete
 }
 
 type SubstancePolymerDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

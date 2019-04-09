@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Catalogentry-example.ttl - FHIR v4.0.0</title>
+  <title>Catalogentry-example.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -127,23 +127,37 @@
   fhir:Resource.id [ fhir:value &quot;example&quot;];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ];
-     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;[Put rendering here]&lt;/div&gt;&quot;
+     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt; &lt;/div&gt;&quot;
   ];
   fhir:CatalogEntry.identifier [
      fhir:index 0;
      fhir:Identifier.system [ fhir:value &quot;http://example.com/identifier&quot; ];
-     fhir:Identifier.value [ fhir:value &quot;123&quot; ]
+     fhir:Identifier.value [ fhir:value &quot;456&quot; ]
   ];
-  fhir:CatalogEntry.type [
-     fhir:CodeableConcept.text [ fhir:value &quot;Medication&quot; ]
+  fhir:CatalogEntry.name [ fhir:value &quot;Serum electrolyte panel&quot;];
+  fhir:CatalogEntry.type [ fhir:value &quot;ActivityDefinition&quot;];
+  fhir:CatalogEntry.status [ fhir:value &quot;active&quot;];
+  fhir:CatalogEntry.effectivePeriod [
+     fhir:Period.start [ fhir:value &quot;2018-12-16&quot;^^xsd:date ]
   ];
   fhir:CatalogEntry.orderable [ fhir:value &quot;true&quot;^^xsd:boolean];
   fhir:CatalogEntry.referencedItem [
-     fhir:link &lt;http://hl7.org/fhir/Medication/123&gt;;
-     fhir:Reference.reference [ fhir:value &quot;Medication/123&quot; ]
+     fhir:link &lt;http://hl7.org/fhir/ActivityDefinition/789&gt;;
+     fhir:Reference.reference [ fhir:value &quot;ActivityDefinition/789&quot; ]
+  ];
+  fhir:CatalogEntry.updatedBy [
+     fhir:link &lt;http://hl7.org/fhir/Person/2&gt;;
+     fhir:Reference.reference [ fhir:value &quot;Person/2&quot; ]
+  ];
+  fhir:CatalogEntry.note [
+     fhir:index 0;
+     fhir:Annotation.authorString [ fhir:value &quot;Adam Man&quot; ];
+     fhir:Annotation.text [ fhir:value &quot;created as an example&quot; ]
   ] .
 
-&lt;http://hl7.org/fhir/Medication/123&gt; a fhir:Medication .
+&lt;http://hl7.org/fhir/ActivityDefinition/789&gt; a fhir:ActivityDefinition .
+
+&lt;http://hl7.org/fhir/Person/2&gt; a fhir:Person .
 
 # - ontology header ------------------------------------------------------------
 
@@ -178,7 +192,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:34-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

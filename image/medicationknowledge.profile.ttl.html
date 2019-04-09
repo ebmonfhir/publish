@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationknowledge.profile.ttl - FHIR v4.0.0</title>
+  <title>Medicationknowledge.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -123,7 +123,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;MedicationKnowledge&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-02-28T12:32:32.955-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-04-09T02:13:58.189+01:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -150,10 +150,10 @@
      fhir:Extension.value [ fhir:value &quot;phx&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;MedicationKnowledge&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-02-28T12:32:32-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-04-09T02:13:58+01:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Pharmacy)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -171,27 +171,27 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;Information about a medication that is used to support knowledge.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
-     fhir:StructureDefinition.identity [ fhir:value &quot;rim&quot; ];
-     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v3&quot; ];
-     fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
-  ], [
-     fhir:index 1;
      fhir:StructureDefinition.identity [ fhir:value &quot;script10.6&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://ncpdp.org/SCRIPT10_6&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;Mapping to NCPDP SCRIPT 10.6&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 1;
      fhir:StructureDefinition.identity [ fhir:value &quot;w5&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/fhir/fivews&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;FiveWs Pattern Mapping&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 2;
      fhir:StructureDefinition.identity [ fhir:value &quot;v2&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v2&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;HL7 v2 Mapping&quot; ]
+  ], [
+     fhir:index 3;
+     fhir:StructureDefinition.identity [ fhir:value &quot;rim&quot; ];
+     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/v3&quot; ];
+     fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
   ];
   fhir:StructureDefinition.kind [ fhir:value &quot;resource&quot;];
   fhir:StructureDefinition.abstract [ fhir:value &quot;false&quot;];
@@ -268,10 +268,6 @@
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;Entity. Role, or Act&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Todo&quot; ]
        ]
      ], [
        fhir:index 1;
@@ -512,6 +508,26 @@
        ]
      ], [
        fhir:index 9;
+       fhir:Element.id [ fhir:value &quot;MedicationKnowledge.identifier&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.identifier&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Business identifier for this medication&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Business identifier for this medication.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is a business identifier, not a resource identifier (see discussion).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.identifier&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code that identifies this medication&quot; ];
@@ -558,7 +574,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.code&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;active | inactive | entered-in-error&quot; ];
@@ -586,7 +602,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept defining if the medication is in active use.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -594,7 +610,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.manufacturer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.manufacturer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Manufacturer of the item&quot; ];
@@ -634,7 +650,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.player.scopingRole[typeCode=MANU].scoper&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.doseForm&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.doseForm&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;powder | tablets | capsule +&quot; ];
@@ -677,7 +693,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.formCode&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.amount&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.amount&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Amount of drug in package&quot; ];
@@ -706,7 +722,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.quantity&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.synonym&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.synonym&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional names for a medication&quot; ];
@@ -725,7 +741,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated or related medication information&quot; ];
@@ -753,7 +769,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -781,7 +797,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -813,7 +829,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -850,7 +866,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Category of medicationKnowledge&quot; ];
@@ -869,7 +885,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.reference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.reference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the associated medication knowledge&quot; ];
@@ -892,7 +908,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.associatedMedication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.associatedMedication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A medication resource that is associated with this medication&quot; ];
@@ -915,7 +931,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.productType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.productType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Category of the medication or product&quot; ];
@@ -934,7 +950,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the medication&quot; ];
@@ -962,7 +978,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -990,7 +1006,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1022,7 +1038,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1059,7 +1075,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The category of medication document&quot; ];
@@ -1078,7 +1094,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.source&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.source&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the medication&quot; ];
@@ -1104,7 +1120,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Active or inactive ingredient&quot; ];
@@ -1132,7 +1148,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1160,7 +1176,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1192,7 +1208,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1229,7 +1245,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.item[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.item[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication(s) or MedicinalProductIngredient(s) contained in the medication&quot; ];
@@ -1268,7 +1284,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.player&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.isActive&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.isActive&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Active ingredient indicator&quot; ];
@@ -1293,7 +1309,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;NA&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.strength&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.strength&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Quantity of ingredient present&quot; ];
@@ -1325,7 +1341,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.quantity&quot; ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.device&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.device&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing)&quot; ];
@@ -1349,7 +1365,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 37;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.preparationInstruction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.preparationInstruction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The instructions for preparing the medication&quot; ];
@@ -1368,7 +1384,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 38;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.intendedRoute&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.intendedRoute&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The intended or approved route of administration&quot; ];
@@ -1397,7 +1413,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/route-codes&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The pricing of the medication&quot; ];
@@ -1425,7 +1441,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 40;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1453,7 +1469,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1485,7 +1501,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1522,7 +1538,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The category of the cost information&quot; ];
@@ -1541,7 +1557,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 44;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.source&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.source&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The source or owner for the price information&quot; ];
@@ -1560,7 +1576,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 45;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.cost&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.cost&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The price of the medication&quot; ];
@@ -1579,7 +1595,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 46;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Program under which a medication is reviewed&quot; ];
@@ -1607,7 +1623,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 47;
+       fhir:index 48;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1635,7 +1651,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 48;
+       fhir:index 49;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1667,7 +1683,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 49;
+       fhir:index 50;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1704,7 +1720,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 50;
+       fhir:index 51;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of program under which the medication is monitored&quot; ];
@@ -1723,7 +1739,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 51;
+       fhir:index 52;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Name of the reviewing program&quot; ];
@@ -1742,7 +1758,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 52;
+       fhir:index 53;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Guidelines for administration of the medication&quot; ];
@@ -1770,7 +1786,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 53;
+       fhir:index 54;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1798,7 +1814,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 54;
+       fhir:index 55;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1830,7 +1846,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 55;
+       fhir:index 56;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1867,7 +1883,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 56;
+       fhir:index 57;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Dosage for the medication for the specific guidelines&quot; ];
@@ -1895,7 +1911,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 57;
+       fhir:index 58;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1923,7 +1939,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 58;
+       fhir:index 59;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1955,7 +1971,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 59;
+       fhir:index 60;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1992,7 +2008,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 60;
+       fhir:index 61;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of dosage&quot; ];
@@ -2011,7 +2027,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 61;
+       fhir:index 62;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.dosage&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.dosage&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Dosage for the medication for the specific guidelines&quot; ];
@@ -2030,7 +2046,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 62;
+       fhir:index 63;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.indication[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.indication[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Indication for use that apply to the specific administration guidelines&quot; ];
@@ -2056,7 +2072,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 63;
+       fhir:index 64;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Characteristics of the patient that are relevant to the administration guidelines&quot; ];
@@ -2084,7 +2100,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 64;
+       fhir:index 65;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2112,7 +2128,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 65;
+       fhir:index 66;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2144,7 +2160,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 66;
+       fhir:index 67;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -2181,7 +2197,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 67;
+       fhir:index 68;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specific characteristic that is relevant to the administration guideline&quot; ];
@@ -2207,7 +2223,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 68;
+       fhir:index 69;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.value&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.value&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The specific characteristic&quot; ];
@@ -2226,7 +2242,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 69;
+       fhir:index 70;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Categorization of the medication within a formulary or classification system&quot; ];
@@ -2254,7 +2270,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 70;
+       fhir:index 71;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2282,7 +2298,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 71;
+       fhir:index 72;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2314,7 +2330,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 72;
+       fhir:index 73;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -2351,7 +2367,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 73;
+       fhir:index 74;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)&quot; ];
@@ -2370,7 +2386,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 74;
+       fhir:index 75;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.classification&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.classification&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specific category assigned to the medication&quot; ];
@@ -2389,7 +2405,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 75;
+       fhir:index 76;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Details about packaged medications&quot; ];
@@ -2417,7 +2433,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 76;
+       fhir:index 77;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2445,7 +2461,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 77;
+       fhir:index 78;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2477,7 +2493,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 78;
+       fhir:index 79;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -2514,7 +2530,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 79;
+       fhir:index 80;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A code that defines the specific type of packaging that the medication can be found in&quot; ];
@@ -2543,7 +2559,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-package-type&quot; ]
        ]
      ], [
-       fhir:index 80;
+       fhir:index 81;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The number of product units the package would contain if fully loaded&quot; ];
@@ -2566,7 +2582,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 81;
+       fhir:index 82;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.device&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.device&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The device used to administer the medication (e.g. scoop, applicator, syringe)&quot; ];
@@ -2590,7 +2606,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 82;
+       fhir:index 83;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.material&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.material&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Material type of the package item&quot; ];
@@ -2609,7 +2625,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 83;
+       fhir:index 84;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.packaging&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.packaging&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Allows packages within packages&quot; ];
@@ -2625,7 +2641,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 84;
+       fhir:index 85;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies descriptive properties of the medicine&quot; ];
@@ -2653,7 +2669,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 85;
+       fhir:index 86;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2681,7 +2697,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 86;
+       fhir:index 87;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2713,7 +2729,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 87;
+       fhir:index 88;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -2750,7 +2766,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 88;
+       fhir:index 89;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code specifying the type of characteristic of medication&quot; ];
@@ -2779,7 +2795,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic&quot; ]
        ]
      ], [
-       fhir:index 89;
+       fhir:index 90;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Description of the characteristic&quot; ];
@@ -2812,7 +2828,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 90;
+       fhir:index 91;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.contraindication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.contraindication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Potential clinical issue with or between medication(s)&quot; ];
@@ -2835,7 +2851,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 91;
+       fhir:index 92;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.interaction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.interaction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Interactions associated with the medication&quot; ];
@@ -2858,7 +2874,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 92;
+       fhir:index 93;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.undesirableEffect&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.undesirableEffect&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Side effects or adverse effects associated with the medication&quot; ];
@@ -2881,7 +2897,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 93;
+       fhir:index 94;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Regulatory information about a medication&quot; ];
@@ -2909,7 +2925,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 94;
+       fhir:index 95;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2937,7 +2953,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 95;
+       fhir:index 96;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2969,7 +2985,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 96;
+       fhir:index 97;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -3006,7 +3022,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 97;
+       fhir:index 98;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.regulatoryAuthority&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.regulatoryAuthority&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the authority of the regulation&quot; ];
@@ -3029,7 +3045,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 98;
+       fhir:index 99;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies if changes are allowed when dispensing a medication from a regulatory perspective&quot; ];
@@ -3057,7 +3073,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 99;
+       fhir:index 100;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -3085,7 +3101,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 100;
+       fhir:index 101;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -3117,7 +3133,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 101;
+       fhir:index 102;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -3154,7 +3170,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 102;
+       fhir:index 103;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the type of substitution allowed&quot; ];
@@ -3173,7 +3189,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 103;
+       fhir:index 104;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.allowed&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.allowed&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies if regulation allows for changes in the medication when dispensing&quot; ];
@@ -3192,7 +3208,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 104;
+       fhir:index 105;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the schedule of a medication in jurisdiction&quot; ];
@@ -3220,7 +3236,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 105;
+       fhir:index 106;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -3248,7 +3264,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 106;
+       fhir:index 107;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -3280,7 +3296,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 107;
+       fhir:index 108;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -3317,7 +3333,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 108;
+       fhir:index 109;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.schedule&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.schedule&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the specific drug schedule&quot; ];
@@ -3336,7 +3352,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 109;
+       fhir:index 110;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The maximum number of units of the medication that can be dispensed in a period&quot; ];
@@ -3364,7 +3380,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 110;
+       fhir:index 111;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -3392,7 +3408,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 111;
+       fhir:index 112;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -3424,7 +3440,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 112;
+       fhir:index 113;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -3461,7 +3477,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 113;
+       fhir:index 114;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The maximum number of units of the medication that can be dispensed&quot; ];
@@ -3484,7 +3500,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 114;
+       fhir:index 115;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The period that applies to the maximum number of units&quot; ];
@@ -3503,7 +3519,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 115;
+       fhir:index 116;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The time course of drug absorption, distribution, metabolism and excretion of a medication from the body&quot; ];
@@ -3531,7 +3547,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 116;
+       fhir:index 117;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -3559,7 +3575,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 117;
+       fhir:index 118;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -3591,7 +3607,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 118;
+       fhir:index 119;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -3628,7 +3644,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 119;
+       fhir:index 120;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code specifying the type of kinetics&quot; ];
@@ -3647,7 +3663,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 120;
+       fhir:index 121;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Description of the characteristic&quot; ];
@@ -3682,14 +3698,23 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Definition of Medication Knowledge&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Information about a medication that is used to support knowledge.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.mapping [
-         fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Todo&quot; ]
-       ]
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
      ], [
        fhir:index 1;
+       fhir:Element.id [ fhir:value &quot;MedicationKnowledge.identifier&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.identifier&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Business identifier for this medication&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Business identifier for this medication.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is a business identifier, not a resource identifier (see discussion).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 2;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code that identifies this medication&quot; ];
@@ -3730,7 +3755,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.code&quot; ]
        ]
      ], [
-       fhir:index 2;
+       fhir:index 3;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;active | inactive | entered-in-error&quot; ];
@@ -3753,7 +3778,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept defining if the medication is in active use.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -3761,7 +3786,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.statusCode&quot; ]
        ]
      ], [
-       fhir:index 3;
+       fhir:index 4;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.manufacturer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.manufacturer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Manufacturer of the item&quot; ];
@@ -3795,7 +3820,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.player.scopingRole[typeCode=MANU].scoper&quot; ]
        ]
      ], [
-       fhir:index 4;
+       fhir:index 5;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.doseForm&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.doseForm&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;powder | tablets | capsule +&quot; ];
@@ -3831,7 +3856,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.formCode&quot; ]
        ]
      ], [
-       fhir:index 5;
+       fhir:index 6;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.amount&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.amount&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Amount of drug in package&quot; ];
@@ -3854,7 +3879,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.quantity&quot; ]
        ]
      ], [
-       fhir:index 6;
+       fhir:index 7;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.synonym&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.synonym&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional names for a medication&quot; ];
@@ -3867,7 +3892,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 7;
+       fhir:index 8;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated or related medication information&quot; ];
@@ -3879,7 +3904,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 8;
+       fhir:index 9;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Category of medicationKnowledge&quot; ];
@@ -3891,7 +3916,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 9;
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.reference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.relatedMedicationKnowledge.reference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the associated medication knowledge&quot; ];
@@ -3907,7 +3932,7 @@
          ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.associatedMedication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.associatedMedication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A medication resource that is associated with this medication&quot; ];
@@ -3923,7 +3948,7 @@
          ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.productType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.productType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Category of the medication or product&quot; ];
@@ -3935,7 +3960,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the medication&quot; ];
@@ -3947,7 +3972,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The category of medication document&quot; ];
@@ -3959,7 +3984,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monograph.source&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monograph.source&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated documentation about the medication&quot; ];
@@ -3978,7 +4003,7 @@
          ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Active or inactive ingredient&quot; ];
@@ -3991,7 +4016,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.item[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.item[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication(s) or MedicinalProductIngredient(s) contained in the medication&quot; ];
@@ -4024,7 +4049,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.player&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.isActive&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.isActive&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Active ingredient indicator&quot; ];
@@ -4042,7 +4067,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;NA&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.ingredient.strength&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.ingredient.strength&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Quantity of ingredient present&quot; ];
@@ -4067,7 +4092,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.quantity&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.device&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.device&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A device associated with the medication (for example, a drug coated catheter or a drug impregnated dressing)&quot; ];
@@ -4084,7 +4109,7 @@
          ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.preparationInstruction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.preparationInstruction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The instructions for preparing the medication&quot; ];
@@ -4096,7 +4121,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;markdown&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.intendedRoute&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.intendedRoute&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The intended or approved route of administration&quot; ];
@@ -4118,7 +4143,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/route-codes&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The pricing of the medication&quot; ];
@@ -4130,7 +4155,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The category of the cost information&quot; ];
@@ -4142,7 +4167,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.source&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.source&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The source or owner for the price information&quot; ];
@@ -4154,7 +4179,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.cost.cost&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.cost.cost&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The price of the medication&quot; ];
@@ -4166,7 +4191,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Money&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Program under which a medication is reviewed&quot; ];
@@ -4179,7 +4204,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of program under which the medication is monitored&quot; ];
@@ -4191,7 +4216,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.monitoringProgram.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.monitoringProgram.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Name of the reviewing program&quot; ];
@@ -4203,7 +4228,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Guidelines for administration of the medication&quot; ];
@@ -4215,7 +4240,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Dosage for the medication for the specific guidelines&quot; ];
@@ -4227,7 +4252,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of dosage&quot; ];
@@ -4239,7 +4264,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.dosage&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.dosage.dosage&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Dosage for the medication for the specific guidelines&quot; ];
@@ -4251,7 +4276,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Dosage&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.indication[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.indication[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Indication for use that apply to the specific administration guidelines&quot; ];
@@ -4270,7 +4295,7 @@
          ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Characteristics of the patient that are relevant to the administration guidelines&quot; ];
@@ -4282,7 +4307,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specific characteristic that is relevant to the administration guideline&quot; ];
@@ -4301,7 +4326,7 @@
          ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.value&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.administrationGuidelines.patientCharacteristics.value&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The specific characteristic&quot; ];
@@ -4313,7 +4338,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
        ]
      ], [
-       fhir:index 37;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Categorization of the medication within a formulary or classification system&quot; ];
@@ -4325,7 +4350,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)&quot; ];
@@ -4337,7 +4362,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.medicineClassification.classification&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.medicineClassification.classification&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specific category assigned to the medication&quot; ];
@@ -4349,7 +4374,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Details about packaged medications&quot; ];
@@ -4361,7 +4386,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A code that defines the specific type of packaging that the medication can be found in&quot; ];
@@ -4383,7 +4408,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-package-type&quot; ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The number of product units the package would contain if fully loaded&quot; ];
@@ -4399,7 +4424,7 @@
          ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.device&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.device&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The device used to administer the medication (e.g. scoop, applicator, syringe)&quot; ];
@@ -4416,7 +4441,7 @@
          ]
        ]
      ], [
-       fhir:index 44;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.material&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.material&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Material type of the package item&quot; ];
@@ -4428,7 +4453,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 45;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.packaging.packaging&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.packaging.packaging&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Allows packages within packages&quot; ];
@@ -4437,7 +4462,7 @@
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.contentReference [ fhir:value &quot;#MedicationKnowledge.packaging&quot; ]
      ], [
-       fhir:index 46;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies descriptive properties of the medicine&quot; ];
@@ -4449,7 +4474,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 47;
+       fhir:index 48;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code specifying the type of characteristic of medication&quot; ];
@@ -4471,7 +4496,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic&quot; ]
        ]
      ], [
-       fhir:index 48;
+       fhir:index 49;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.drugCharacteristic.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Description of the characteristic&quot; ];
@@ -4497,7 +4522,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;base64Binary&quot; ]
        ]
      ], [
-       fhir:index 49;
+       fhir:index 50;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.contraindication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.contraindication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Potential clinical issue with or between medication(s)&quot; ];
@@ -4513,7 +4538,7 @@
          ]
        ]
      ], [
-       fhir:index 50;
+       fhir:index 51;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.interaction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.interaction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Interactions associated with the medication&quot; ];
@@ -4529,7 +4554,7 @@
          ]
        ]
      ], [
-       fhir:index 51;
+       fhir:index 52;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.undesirableEffect&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.undesirableEffect&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Side effects or adverse effects associated with the medication&quot; ];
@@ -4545,7 +4570,7 @@
          ]
        ]
      ], [
-       fhir:index 52;
+       fhir:index 53;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Regulatory information about a medication&quot; ];
@@ -4557,7 +4582,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 53;
+       fhir:index 54;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.regulatoryAuthority&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.regulatoryAuthority&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the authority of the regulation&quot; ];
@@ -4573,7 +4598,7 @@
          ]
        ]
      ], [
-       fhir:index 54;
+       fhir:index 55;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies if changes are allowed when dispensing a medication from a regulatory perspective&quot; ];
@@ -4585,7 +4610,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 55;
+       fhir:index 56;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the type of substitution allowed&quot; ];
@@ -4597,7 +4622,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 56;
+       fhir:index 57;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.allowed&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.substitution.allowed&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies if regulation allows for changes in the medication when dispensing&quot; ];
@@ -4609,7 +4634,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
        ]
      ], [
-       fhir:index 57;
+       fhir:index 58;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the schedule of a medication in jurisdiction&quot; ];
@@ -4621,7 +4646,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 58;
+       fhir:index 59;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.schedule&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.schedule.schedule&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Specifies the specific drug schedule&quot; ];
@@ -4633,7 +4658,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 59;
+       fhir:index 60;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The maximum number of units of the medication that can be dispensed in a period&quot; ];
@@ -4645,7 +4670,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 60;
+       fhir:index 61;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The maximum number of units of the medication that can be dispensed&quot; ];
@@ -4661,7 +4686,7 @@
          ]
        ]
      ], [
-       fhir:index 61;
+       fhir:index 62;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.regulatory.maxDispense.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The period that applies to the maximum number of units&quot; ];
@@ -4673,7 +4698,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Duration&quot; ]
        ]
      ], [
-       fhir:index 62;
+       fhir:index 63;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The time course of drug absorption, distribution, metabolism and excretion of a medication from the body&quot; ];
@@ -4685,7 +4710,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ]
      ], [
-       fhir:index 63;
+       fhir:index 64;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Code specifying the type of kinetics&quot; ];
@@ -4697,7 +4722,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
-       fhir:index 64;
+       fhir:index 65;
        fhir:Element.id [ fhir:value &quot;MedicationKnowledge.kinetics.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationKnowledge.kinetics.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Description of the characteristic&quot; ];
@@ -4745,7 +4770,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

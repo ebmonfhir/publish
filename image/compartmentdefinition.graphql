@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type CompartmentDefinition {
   id: ID
@@ -34,15 +34,15 @@ type CompartmentDefinitionResource {
   documentation: String  _documentation: ElementBase
 }
 
-input CompartmentDefinition {
+input CompartmentDefinitionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
   version: String  _version: ElementBase
   name: String  _name: ElementBase
@@ -50,129 +50,129 @@ input CompartmentDefinition {
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
+  useContext: [UsageContextInput]
   purpose: markdown  _purpose: ElementBase
   code: code  _code: ElementBase
   search: Boolean  _search: ElementBase
-  resource: [CompartmentDefinitionResource]
+  resource: [CompartmentDefinitionResourceInput]
 }
 
-input CompartmentDefinitionResource {
+input CompartmentDefinitionResourceInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   code: code  _code: ElementBase
   param: String  _param: [ElementBase]
   documentation: String  _documentation: ElementBase
 }
 
 type CompartmentDefinitionReadType {
-  CompartmentDefinition(id : ID!) : CompartmentDefinition
+  CompartmentDefinition(id: ID!): CompartmentDefinition
 }
 
 type CompartmentDefinitionListType {
-  CompartmentDefinitionList(_filter : String
-    code : [token]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    name : [String]
-    publisher : [String]
-    resource : [token]
-    status : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [CompartmentDefinition]
+  CompartmentDefinitionList(_filter: String
+    code: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    name: [String]
+    publisher: [String]
+    resource: [token]
+    status: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [CompartmentDefinition]
 }
 
 type CompartmentDefinitionConnectionType {
-  CompartmentDefinitionConection(_filter : String
-    code : [token]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    name : [String]
-    publisher : [String]
-    resource : [token]
-    status : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : CompartmentDefinitionConnection
+  CompartmentDefinitionConection(_filter: String
+    code: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    name: [String]
+    publisher: [String]
+    resource: [token]
+    status: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): CompartmentDefinitionConnection
 }
 
 type CompartmentDefinitionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [CompartmentDefinitionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [CompartmentDefinitionEdge]
 }
 
 type CompartmentDefinitionEdge {
-  mode : String
-  score : Float
-  resource : CompartmentDefinition
+  mode: String
+  score: Float
+  resource: CompartmentDefinition
 }
 
 type CompartmentDefinitionCreateType {
-  CompartmentDefinitionCreate(resource : CompartmentDefinition) : CompartmentDefinitionCreation
+  CompartmentDefinitionCreate(resource: CompartmentDefinitionInput): CompartmentDefinitionCreation
 }
 
 type CompartmentDefinitionCreation {
-  location : String
-  resource : CompartmentDefinition
-  information : OperationOutcome
+  location: String
+  resource: CompartmentDefinition
+  information: OperationOutcome
 }
 
 type CompartmentDefinitionUpdateType {
-  CompartmentDefinitionUpdate(id : IDresource : CompartmentDefinition) : CompartmentDefinitionUpdate
+  CompartmentDefinitionUpdate(id: ID, resource: CompartmentDefinitionInput): CompartmentDefinitionUpdate
 }
 
 type CompartmentDefinitionUpdate {
-  resource : CompartmentDefinition
-  information : OperationOutcome
+  resource: CompartmentDefinition
+  information: OperationOutcome
 }
 
 type CompartmentDefinitionDeleteType {
-  CompartmentDefinitionDelete(id : ID) : CompartmentDefinitionDelete
+  CompartmentDefinitionDelete(id: ID): CompartmentDefinitionDelete
 }
 
 type CompartmentDefinitionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

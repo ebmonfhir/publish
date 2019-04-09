@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Parameters {
   id: ID
@@ -65,18 +65,18 @@ type ParametersParameter {
   part: [ParametersParameter]
 }
 
-input Parameters {
+input ParametersInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  parameter: [ParametersParameter]
+  parameter: [ParametersParameterInput]
 }
 
-input ParametersParameter {
+input ParametersParameterInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: String  _name: ElementBase
   valueBase64Binary: base64Binary  _valueBase64Binary: ElementBase
   valueBoolean: Boolean  _valueBoolean: ElementBase
@@ -97,114 +97,114 @@ input ParametersParameter {
   valueUri: uri  _valueUri: ElementBase
   valueUrl: url  _valueUrl: ElementBase
   valueUuid: uuid  _valueUuid: ElementBase
-  valueAddress: Address
-  valueAge: Age
-  valueAnnotation: Annotation
-  valueAttachment: Attachment
-  valueCodeableConcept: CodeableConcept
-  valueCoding: Coding
-  valueContactPoint: ContactPoint
-  valueCount: Count
-  valueDistance: Distance
-  valueDuration: Duration
-  valueHumanName: HumanName
-  valueIdentifier: Identifier
-  valueMoney: Money
-  valuePeriod: Period
-  valueQuantity: Quantity
-  valueRange: Range
-  valueRatio: Ratio
-  valueSampledData: SampledData
-  valueSignature: Signature
-  valueTiming: Timing
-  valueContactDetail: ContactDetail
-  valueContributor: Contributor
-  valueDataRequirement: DataRequirement
-  valueExpression: Expression
-  valueParameterDefinition: ParameterDefinition
-  valueRelatedArtifact: RelatedArtifact
-  valueTriggerDefinition: TriggerDefinition
-  valueUsageContext: UsageContext
-  valueDosage: Dosage
-  resource: Resource
+  valueAddress: AddressInput
+  valueAge: AgeInput
+  valueAnnotation: AnnotationInput
+  valueAttachment: AttachmentInput
+  valueCodeableConcept: CodeableConceptInput
+  valueCoding: CodingInput
+  valueContactPoint: ContactPointInput
+  valueCount: CountInput
+  valueDistance: DistanceInput
+  valueDuration: DurationInput
+  valueHumanName: HumanNameInput
+  valueIdentifier: IdentifierInput
+  valueMoney: MoneyInput
+  valuePeriod: PeriodInput
+  valueQuantity: QuantityInput
+  valueRange: RangeInput
+  valueRatio: RatioInput
+  valueSampledData: SampledDataInput
+  valueSignature: SignatureInput
+  valueTiming: TimingInput
+  valueContactDetail: ContactDetailInput
+  valueContributor: ContributorInput
+  valueDataRequirement: DataRequirementInput
+  valueExpression: ExpressionInput
+  valueParameterDefinition: ParameterDefinitionInput
+  valueRelatedArtifact: RelatedArtifactInput
+  valueTriggerDefinition: TriggerDefinitionInput
+  valueUsageContext: UsageContextInput
+  valueDosage: DosageInput
+  resource: ResourceInput
   part: [ParametersParameter]
 }
 
 type ParametersReadType {
-  Parameters(id : ID!) : Parameters
+  Parameters(id: ID!): Parameters
 }
 
 type ParametersListType {
-  ParametersList(_filter : String
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Parameters]
+  ParametersList(_filter: String
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Parameters]
 }
 
 type ParametersConnectionType {
-  ParametersConection(_filter : String
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ParametersConnection
+  ParametersConection(_filter: String
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ParametersConnection
 }
 
 type ParametersConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ParametersEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ParametersEdge]
 }
 
 type ParametersEdge {
-  mode : String
-  score : Float
-  resource : Parameters
+  mode: String
+  score: Float
+  resource: Parameters
 }
 
 type ParametersCreateType {
-  ParametersCreate(resource : Parameters) : ParametersCreation
+  ParametersCreate(resource: ParametersInput): ParametersCreation
 }
 
 type ParametersCreation {
-  location : String
-  resource : Parameters
-  information : OperationOutcome
+  location: String
+  resource: Parameters
+  information: OperationOutcome
 }
 
 type ParametersUpdateType {
-  ParametersUpdate(id : IDresource : Parameters) : ParametersUpdate
+  ParametersUpdate(id: ID, resource: ParametersInput): ParametersUpdate
 }
 
 type ParametersUpdate {
-  resource : Parameters
-  information : OperationOutcome
+  resource: Parameters
+  information: OperationOutcome
 }
 
 type ParametersDeleteType {
-  ParametersDelete(id : ID) : ParametersDelete
+  ParametersDelete(id: ID): ParametersDelete
 }
 
 type ParametersDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Catalogentry.profile.json - FHIR v4.0.0</title>
+  <title>Catalogentry.profile.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -118,7 +118,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;CatalogEntry&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-02-28T12:32:32.955-06:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-04-09T02:13:58.189+01:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -145,10 +145,10 @@
     &quot;valueCode&quot; : &quot;oo&quot;
   }],
   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/CatalogEntry&quot;,
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;CatalogEntry&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-28T12:32:32-06:00&quot;,
+  &quot;date&quot; : &quot;2019-04-09T02:13:58+01:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Orders and Observations)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -163,8 +163,13 @@
     }]
   }],
   &quot;description&quot; : &quot;Catalog entries are wrappers that contextualize items included in a catalog.&quot;,
-  &quot;fhirVersion&quot; : &quot;4.0.0&quot;,
+  &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
+    &quot;identity&quot; : &quot;v2&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v2&quot;,
+    &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
+  },
+  {
     &quot;identity&quot; : &quot;rim&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
     &quot;name&quot; : &quot;RIM Mapping&quot;
@@ -240,6 +245,10 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Entity. Role, or Act&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE&quot;
       }]
     },
     {
@@ -443,8 +452,8 @@
     {
       &quot;id&quot; : &quot;CatalogEntry.identifier&quot;,
       &quot;path&quot; : &quot;CatalogEntry.identifier&quot;,
-      &quot;short&quot; : &quot;Unique identifier of the catalog item&quot;,
-      &quot;definition&quot; : &quot;Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.&quot;,
+      &quot;short&quot; : &quot;Business identifier of the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Business identifier uniquely assigned to the catalog entry.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -456,13 +465,39 @@
         &quot;code&quot; : &quot;Identifier&quot;
       }],
       &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-4&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.name&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.name&quot;,
+      &quot;short&quot; : &quot;Displayable name assigned to the catalog entry&quot;,
+      &quot;definition&quot; : &quot;The name of this catalog entry announces the item that is represented by the entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.name&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueString&quot; : &quot;urinalysis panel for lab Z&quot;
+      }],
+      &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.type&quot;,
       &quot;path&quot; : &quot;CatalogEntry.type&quot;,
-      &quot;short&quot; : &quot;The type of item - medication, device, service, protocol or other&quot;,
-      &quot;definition&quot; : &quot;The type of item - medication, device, service, protocol or other.&quot;,
+      &quot;short&quot; : &quot;ActivityDefinition | PlanDefinition | SpecimenDefinition | ObservationDefinition | DeviceDefinition | Organization | Practitioner | PractitionerRole | HealthcareService | MedicationKnowledge | Medication | Substance | Location&quot;,
+      &quot;definition&quot; : &quot;The type of resource that is represented by this catalog entry.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -471,99 +506,29 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueCode&quot; : &quot;ActivityDefinition&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.orderable&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.orderable&quot;,
-      &quot;short&quot; : &quot;Whether the entry represents an orderable item&quot;,
-      &quot;definition&quot; : &quot;Whether the entry represents an orderable item.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.orderable&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;boolean&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.referencedItem&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.referencedItem&quot;,
-      &quot;short&quot; : &quot;The item that is being defined&quot;,
-      &quot;definition&quot; : &quot;The item in a catalog or definition.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.referencedItem&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Binary&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.additionalIdentifier&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalIdentifier&quot;,
-      &quot;short&quot; : &quot;Any additional identifier(s) for the catalog item, in the same granularity or concept&quot;,
-      &quot;definition&quot; : &quot;Used in supporting related concepts, e.g. NDC to RxNorm.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.additionalIdentifier&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Identifier&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.classification&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.classification&quot;,
-      &quot;short&quot; : &quot;Classification (category or class) of the item entry&quot;,
-      &quot;definition&quot; : &quot;Classes of devices, or ATC for medication.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.classification&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;CatalogEntryType&quot;
+        }],
+        &quot;strength&quot; : &quot;required&quot;,
+        &quot;description&quot; : &quot;Types of resources that can be attached to catalog entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0&quot;
+      }
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.status&quot;,
       &quot;path&quot; : &quot;CatalogEntry.status&quot;,
-      &quot;short&quot; : &quot;draft | active | retired | unknown&quot;,
-      &quot;definition&quot; : &quot;Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.&quot;,
+      &quot;short&quot; : &quot;draft | active | retired&quot;,
+      &quot;definition&quot; : &quot;Indicates whether this catalog entry is open to public usage (active) or not (draft or retired).&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -574,31 +539,32 @@
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;code&quot;
       }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueCode&quot; : &quot;active&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Not known why this is labelled a modifier&quot;,
+      &quot;isSummary&quot; : true,
       &quot;binding&quot; : {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;PublicationStatus&quot;
-        },
-        {
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding&quot;,
-          &quot;valueBoolean&quot; : true
+          &quot;valueString&quot; : &quot;CatalogEntryStatus&quot;
         }],
         &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The lifecycle status of an artifact.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/publication-status|4.0.0&quot;
+        &quot;description&quot; : &quot;Public usability statuses for catalog entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-status|4.1.0&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.validityPeriod&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.validityPeriod&quot;,
-      &quot;short&quot; : &quot;The time period in which this catalog entry is expected to be active&quot;,
-      &quot;definition&quot; : &quot;The time period in which this catalog entry is expected to be active.&quot;,
+      &quot;id&quot; : &quot;CatalogEntry.effectivePeriod&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.effectivePeriod&quot;,
+      &quot;short&quot; : &quot;When this catalog entry is expected to be active&quot;,
+      &quot;definition&quot; : &quot;Period of usability of the catalog entry.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.validityPeriod&quot;,
+        &quot;path&quot; : &quot;CatalogEntry.effectivePeriod&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -606,85 +572,69 @@
         &quot;code&quot; : &quot;Period&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-3&quot;
+      }]
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.validTo&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.validTo&quot;,
-      &quot;short&quot; : &quot;The date until which this catalog entry is expected to be active&quot;,
-      &quot;definition&quot; : &quot;The date until which this catalog entry is expected to be active.&quot;,
-      &quot;min&quot; : 0,
+      &quot;id&quot; : &quot;CatalogEntry.orderable&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.orderable&quot;,
+      &quot;short&quot; : &quot;Is orderable&quot;,
+      &quot;definition&quot; : &quot;Indicates whether or not the entry represents an item that is orderable.&quot;,
+      &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.validTo&quot;,
-        &quot;min&quot; : 0,
+        &quot;path&quot; : &quot;CatalogEntry.orderable&quot;,
+        &quot;min&quot; : 1,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
+        &quot;code&quot; : &quot;boolean&quot;
       }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueBoolean&quot; : true
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Not known why this is labelled a modifier&quot;,
+      &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.lastUpdated&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.lastUpdated&quot;,
-      &quot;short&quot; : &quot;When was this catalog last updated&quot;,
-      &quot;definition&quot; : &quot;Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.&quot;,
-      &quot;comment&quot; : &quot;Perhaps not needed - if we use fhir resource metadata.&quot;,
-      &quot;min&quot; : 0,
+      &quot;id&quot; : &quot;CatalogEntry.referencedItem&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.referencedItem&quot;,
+      &quot;short&quot; : &quot;Item attached to this entry of the catalog&quot;,
+      &quot;definition&quot; : &quot;The item (resource) that this entry of the catalog represents.&quot;,
+      &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.lastUpdated&quot;,
-        &quot;min&quot; : 0,
+        &quot;path&quot; : &quot;CatalogEntry.referencedItem&quot;,
+        &quot;min&quot; : 1,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.additionalCharacteristic&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalCharacteristic&quot;,
-      &quot;short&quot; : &quot;Additional characteristics of the catalog entry&quot;,
-      &quot;definition&quot; : &quot;Used for examplefor Out of Formulary, or any specifics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.additionalCharacteristic&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.additionalClassification&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalClassification&quot;,
-      &quot;short&quot; : &quot;Additional classification of the catalog entry&quot;,
-      &quot;definition&quot; : &quot;User for example for ATC classification, or.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.additionalClassification&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
+      &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.relatedEntry&quot;,
       &quot;path&quot; : &quot;CatalogEntry.relatedEntry&quot;,
-      &quot;short&quot; : &quot;An item that this catalog entry is related to&quot;,
+      &quot;short&quot; : &quot;Another entry of the catalog related to this one&quot;,
       &quot;definition&quot; : &quot;Used for example, to point to a substance, or to a device used to administer a medication.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -784,14 +734,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.relationtype&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationtype&quot;,
-      &quot;short&quot; : &quot;triggers | is-replaced-by&quot;,
-      &quot;definition&quot; : &quot;The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.&quot;,
+      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.relationship&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationship&quot;,
+      &quot;short&quot; : &quot;triggers | is-replaced-by | excludes | includes&quot;,
+      &quot;definition&quot; : &quot;The type of relationship to the related entry.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationtype&quot;,
+        &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationship&quot;,
         &quot;min&quot; : 1,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -806,25 +756,178 @@
           &quot;valueString&quot; : &quot;CatalogEntryRelationType&quot;
         }],
         &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The type of relations between entries.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/relation-type|4.0.0&quot;
+        &quot;description&quot; : &quot;Types of relationships between entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-relation-type|4.1.0&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.item&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.item&quot;,
-      &quot;short&quot; : &quot;The reference to the related item&quot;,
-      &quot;definition&quot; : &quot;The reference to the related item.&quot;,
+      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.target&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.target&quot;,
+      &quot;short&quot; : &quot;The reference to the related entry&quot;,
+      &quot;definition&quot; : &quot;The reference to the related entry.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CatalogEntry.relatedEntry.item&quot;,
+        &quot;path&quot; : &quot;CatalogEntry.relatedEntry.target&quot;,
         &quot;min&quot; : 1,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/CatalogEntry&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.updatedBy&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.updatedBy&quot;,
+      &quot;short&quot; : &quot;Last updater of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Last actor who recorded (created or updated) this catalog entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.updatedBy&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Person&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-7&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.note&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.note&quot;,
+      &quot;short&quot; : &quot;Notes and comments about this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Notes and comments about this catalog entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.note&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.billingCode&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.billingCode&quot;,
+      &quot;short&quot; : &quot;Billing code in the context of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Billing code associated to the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.billingCode&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;CatalogEntryBilling&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Billing codes for entries of catalogs of orderable items.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot;
+      },
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;CDM-7&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.billingSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.billingSummary&quot;,
+      &quot;short&quot; : &quot;Billing summary in the context of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Billing summary attached to the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.billingSummary&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;CDM-4&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.scheduleSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.scheduleSummary&quot;,
+      &quot;short&quot; : &quot;Schedule summary for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Schedule summary for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.scheduleSummary&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;OM1-40&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.limitationSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.limitationSummary&quot;,
+      &quot;short&quot; : &quot;Summary of limitations for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Summary of limitations for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.limitationSummary&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.regulatorySummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.regulatorySummary&quot;,
+      &quot;short&quot; : &quot;Regulatory  summary for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Regulatory summary for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;CatalogEntry.regulatorySummary&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false
@@ -837,54 +940,139 @@
       &quot;short&quot; : &quot;An entry in a catalog&quot;,
       &quot;definition&quot; : &quot;Catalog entries are wrappers that contextualize items included in a catalog.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.identifier&quot;,
       &quot;path&quot; : &quot;CatalogEntry.identifier&quot;,
-      &quot;short&quot; : &quot;Unique identifier of the catalog item&quot;,
-      &quot;definition&quot; : &quot;Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.&quot;,
+      &quot;short&quot; : &quot;Business identifier of the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Business identifier uniquely assigned to the catalog entry.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Identifier&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-4&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.name&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.name&quot;,
+      &quot;short&quot; : &quot;Displayable name assigned to the catalog entry&quot;,
+      &quot;definition&quot; : &quot;The name of this catalog entry announces the item that is represented by the entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueString&quot; : &quot;urinalysis panel for lab Z&quot;
       }],
       &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.type&quot;,
       &quot;path&quot; : &quot;CatalogEntry.type&quot;,
-      &quot;short&quot; : &quot;The type of item - medication, device, service, protocol or other&quot;,
-      &quot;definition&quot; : &quot;The type of item - medication, device, service, protocol or other.&quot;,
+      &quot;short&quot; : &quot;ActivityDefinition | PlanDefinition | SpecimenDefinition | ObservationDefinition | DeviceDefinition | Organization | Practitioner | PractitionerRole | HealthcareService | MedicationKnowledge | Medication | Substance | Location&quot;,
+      &quot;definition&quot; : &quot;The type of resource that is represented by this catalog entry.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueCode&quot; : &quot;ActivityDefinition&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;CatalogEntryType&quot;
+        }],
+        &quot;strength&quot; : &quot;required&quot;,
+        &quot;description&quot; : &quot;Types of resources that can be attached to catalog entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.status&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.status&quot;,
+      &quot;short&quot; : &quot;draft | active | retired&quot;,
+      &quot;definition&quot; : &quot;Indicates whether this catalog entry is open to public usage (active) or not (draft or retired).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueCode&quot; : &quot;active&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Not known why this is labelled a modifier&quot;,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;CatalogEntryStatus&quot;
+        }],
+        &quot;strength&quot; : &quot;required&quot;,
+        &quot;description&quot; : &quot;Public usability statuses for catalog entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-status|4.1.0&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.effectivePeriod&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.effectivePeriod&quot;,
+      &quot;short&quot; : &quot;When this catalog entry is expected to be active&quot;,
+      &quot;definition&quot; : &quot;Period of usability of the catalog entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Period&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-3&quot;
       }]
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.orderable&quot;,
       &quot;path&quot; : &quot;CatalogEntry.orderable&quot;,
-      &quot;short&quot; : &quot;Whether the entry represents an orderable item&quot;,
-      &quot;definition&quot; : &quot;Whether the entry represents an orderable item.&quot;,
+      &quot;short&quot; : &quot;Is orderable&quot;,
+      &quot;definition&quot; : &quot;Indicates whether or not the entry represents an item that is orderable.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;boolean&quot;
       }],
+      &quot;example&quot; : [{
+        &quot;label&quot; : &quot;General&quot;,
+        &quot;valueBoolean&quot; : true
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Not known why this is labelled a modifier&quot;,
       &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;CatalogEntry.referencedItem&quot;,
       &quot;path&quot; : &quot;CatalogEntry.referencedItem&quot;,
-      &quot;short&quot; : &quot;The item that is being defined&quot;,
-      &quot;definition&quot; : &quot;The item in a catalog or definition.&quot;,
+      &quot;short&quot; : &quot;Item attached to this entry of the catalog&quot;,
+      &quot;definition&quot; : &quot;The item (resource) that this entry of the catalog represents.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
@@ -893,116 +1081,16 @@
         &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/SpecimenDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Binary&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/MedicationKnowledge&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
       }],
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.additionalIdentifier&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalIdentifier&quot;,
-      &quot;short&quot; : &quot;Any additional identifier(s) for the catalog item, in the same granularity or concept&quot;,
-      &quot;definition&quot; : &quot;Used in supporting related concepts, e.g. NDC to RxNorm.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Identifier&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.classification&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.classification&quot;,
-      &quot;short&quot; : &quot;Classification (category or class) of the item entry&quot;,
-      &quot;definition&quot; : &quot;Classes of devices, or ATC for medication.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.status&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.status&quot;,
-      &quot;short&quot; : &quot;draft | active | retired | unknown&quot;,
-      &quot;definition&quot; : &quot;Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;PublicationStatus&quot;
-        },
-        {
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding&quot;,
-          &quot;valueBoolean&quot; : true
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The lifecycle status of an artifact.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/publication-status|4.0.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.validityPeriod&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.validityPeriod&quot;,
-      &quot;short&quot; : &quot;The time period in which this catalog entry is expected to be active&quot;,
-      &quot;definition&quot; : &quot;The time period in which this catalog entry is expected to be active.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Period&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.validTo&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.validTo&quot;,
-      &quot;short&quot; : &quot;The date until which this catalog entry is expected to be active&quot;,
-      &quot;definition&quot; : &quot;The date until which this catalog entry is expected to be active.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.lastUpdated&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.lastUpdated&quot;,
-      &quot;short&quot; : &quot;When was this catalog last updated&quot;,
-      &quot;definition&quot; : &quot;Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated.&quot;,
-      &quot;comment&quot; : &quot;Perhaps not needed - if we use fhir resource metadata.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.additionalCharacteristic&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalCharacteristic&quot;,
-      &quot;short&quot; : &quot;Additional characteristics of the catalog entry&quot;,
-      &quot;definition&quot; : &quot;Used for examplefor Out of Formulary, or any specifics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;CatalogEntry.additionalClassification&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.additionalClassification&quot;,
-      &quot;short&quot; : &quot;Additional classification of the catalog entry&quot;,
-      &quot;definition&quot; : &quot;User for example for ATC classification, or.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }]
-    },
-    {
       &quot;id&quot; : &quot;CatalogEntry.relatedEntry&quot;,
       &quot;path&quot; : &quot;CatalogEntry.relatedEntry&quot;,
-      &quot;short&quot; : &quot;An item that this catalog entry is related to&quot;,
+      &quot;short&quot; : &quot;Another entry of the catalog related to this one&quot;,
       &quot;definition&quot; : &quot;Used for example, to point to a substance, or to a device used to administer a medication.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -1011,10 +1099,10 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.relationtype&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationtype&quot;,
-      &quot;short&quot; : &quot;triggers | is-replaced-by&quot;,
-      &quot;definition&quot; : &quot;The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.&quot;,
+      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.relationship&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.relationship&quot;,
+      &quot;short&quot; : &quot;triggers | is-replaced-by | excludes | includes&quot;,
+      &quot;definition&quot; : &quot;The type of relationship to the related entry.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1026,20 +1114,126 @@
           &quot;valueString&quot; : &quot;CatalogEntryRelationType&quot;
         }],
         &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The type of relations between entries.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/relation-type|4.0.0&quot;
+        &quot;description&quot; : &quot;Types of relationships between entries.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/catalogentry-relation-type|4.1.0&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.item&quot;,
-      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.item&quot;,
-      &quot;short&quot; : &quot;The reference to the related item&quot;,
-      &quot;definition&quot; : &quot;The reference to the related item.&quot;,
+      &quot;id&quot; : &quot;CatalogEntry.relatedEntry.target&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.relatedEntry.target&quot;,
+      &quot;short&quot; : &quot;The reference to the related entry&quot;,
+      &quot;definition&quot; : &quot;The reference to the related entry.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/CatalogEntry&quot;]
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.updatedBy&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.updatedBy&quot;,
+      &quot;short&quot; : &quot;Last updater of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Last actor who recorded (created or updated) this catalog entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Person&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;MFE-7&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.note&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.note&quot;,
+      &quot;short&quot; : &quot;Notes and comments about this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Notes and comments about this catalog entry.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.billingCode&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.billingCode&quot;,
+      &quot;short&quot; : &quot;Billing code in the context of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Billing code associated to the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;CatalogEntryBilling&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Billing codes for entries of catalogs of orderable items.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot;
+      },
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;CDM-7&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.billingSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.billingSummary&quot;,
+      &quot;short&quot; : &quot;Billing summary in the context of this catalog entry&quot;,
+      &quot;definition&quot; : &quot;Billing summary attached to the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;CDM-4&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.scheduleSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.scheduleSummary&quot;,
+      &quot;short&quot; : &quot;Schedule summary for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Schedule summary for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;OM1-40&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.limitationSummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.limitationSummary&quot;,
+      &quot;short&quot; : &quot;Summary of limitations for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Summary of limitations for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;CatalogEntry.regulatorySummary&quot;,
+      &quot;path&quot; : &quot;CatalogEntry.regulatorySummary&quot;,
+      &quot;short&quot; : &quot;Regulatory  summary for the catalog entry&quot;,
+      &quot;definition&quot; : &quot;Regulatory summary for the  item in the context of this  entry of the catalog.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
       }]
     }]
   }
@@ -1068,7 +1262,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:34-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

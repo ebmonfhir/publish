@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type FamilyMemberHistory {
   id: ID
@@ -67,168 +67,168 @@ type FamilyMemberHistoryProcedure {
   note: [Annotation]
 }
 
-input FamilyMemberHistory {
+input FamilyMemberHistoryInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   instantiatesCanonical: canonical  _instantiatesCanonical: [ElementBase]
   instantiatesUri: uri  _instantiatesUri: [ElementBase]
   status: code  _status: ElementBase
-  dataAbsentReason: CodeableConcept
-  patient: Reference!
+  dataAbsentReason: CodeableConceptInput
+  patient: ReferenceInput!
   date: dateTime  _date: ElementBase
   name: String  _name: ElementBase
-  relationship: CodeableConcept!
-  sex: CodeableConcept
-  bornPeriod: Period
+  relationship: CodeableConceptInput!
+  sex: CodeableConceptInput
+  bornPeriod: PeriodInput
   bornDate: date  _bornDate: ElementBase
   bornString: String  _bornString: ElementBase
-  ageAge: Age
-  ageRange: Range
+  ageAge: AgeInput
+  ageRange: RangeInput
   ageString: String  _ageString: ElementBase
   estimatedAge: Boolean  _estimatedAge: ElementBase
   deceasedBoolean: Boolean  _deceasedBoolean: ElementBase
-  deceasedAge: Age
-  deceasedRange: Range
+  deceasedAge: AgeInput
+  deceasedRange: RangeInput
   deceasedDate: date  _deceasedDate: ElementBase
   deceasedString: String  _deceasedString: ElementBase
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  note: [Annotation]
-  condition: [FamilyMemberHistoryCondition]
-  procedure: [FamilyMemberHistoryProcedure]
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  note: [AnnotationInput]
+  condition: [FamilyMemberHistoryConditionInput]
+  procedure: [FamilyMemberHistoryProcedureInput]
 }
 
-input FamilyMemberHistoryCondition {
+input FamilyMemberHistoryConditionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept!
-  outcome: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput!
+  outcome: CodeableConceptInput
   contributedToDeath: Boolean  _contributedToDeath: ElementBase
-  onsetAge: Age
-  onsetRange: Range
-  onsetPeriod: Period
+  onsetAge: AgeInput
+  onsetRange: RangeInput
+  onsetPeriod: PeriodInput
   onsetString: String  _onsetString: ElementBase
-  note: [Annotation]
+  note: [AnnotationInput]
 }
 
-input FamilyMemberHistoryProcedure {
+input FamilyMemberHistoryProcedureInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept!
-  outcome: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput!
+  outcome: CodeableConceptInput
   contributedToDeath: Boolean  _contributedToDeath: ElementBase
-  performedAge: Age
-  performedRange: Range
-  performedPeriod: Period
+  performedAge: AgeInput
+  performedRange: RangeInput
+  performedPeriod: PeriodInput
   performedString: String  _performedString: ElementBase
   performedDateTime: dateTime  _performedDateTime: ElementBase
-  note: [Annotation]
+  note: [AnnotationInput]
 }
 
 type FamilyMemberHistoryReadType {
-  FamilyMemberHistory(id : ID!) : FamilyMemberHistory
+  FamilyMemberHistory(id: ID!): FamilyMemberHistory
 }
 
 type FamilyMemberHistoryListType {
-  FamilyMemberHistoryList(_filter : String
-    code : [token]
-    date : [date]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    patient : [reference]
-    relationship : [token]
-    sex : [token]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [FamilyMemberHistory]
+  FamilyMemberHistoryList(_filter: String
+    code: [token]
+    date: [date]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    patient: [reference]
+    relationship: [token]
+    sex: [token]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [FamilyMemberHistory]
 }
 
 type FamilyMemberHistoryConnectionType {
-  FamilyMemberHistoryConection(_filter : String
-    code : [token]
-    date : [date]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    patient : [reference]
-    relationship : [token]
-    sex : [token]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : FamilyMemberHistoryConnection
+  FamilyMemberHistoryConection(_filter: String
+    code: [token]
+    date: [date]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    patient: [reference]
+    relationship: [token]
+    sex: [token]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): FamilyMemberHistoryConnection
 }
 
 type FamilyMemberHistoryConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [FamilyMemberHistoryEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [FamilyMemberHistoryEdge]
 }
 
 type FamilyMemberHistoryEdge {
-  mode : String
-  score : Float
-  resource : FamilyMemberHistory
+  mode: String
+  score: Float
+  resource: FamilyMemberHistory
 }
 
 type FamilyMemberHistoryCreateType {
-  FamilyMemberHistoryCreate(resource : FamilyMemberHistory) : FamilyMemberHistoryCreation
+  FamilyMemberHistoryCreate(resource: FamilyMemberHistoryInput): FamilyMemberHistoryCreation
 }
 
 type FamilyMemberHistoryCreation {
-  location : String
-  resource : FamilyMemberHistory
-  information : OperationOutcome
+  location: String
+  resource: FamilyMemberHistory
+  information: OperationOutcome
 }
 
 type FamilyMemberHistoryUpdateType {
-  FamilyMemberHistoryUpdate(id : IDresource : FamilyMemberHistory) : FamilyMemberHistoryUpdate
+  FamilyMemberHistoryUpdate(id: ID, resource: FamilyMemberHistoryInput): FamilyMemberHistoryUpdate
 }
 
 type FamilyMemberHistoryUpdate {
-  resource : FamilyMemberHistory
-  information : OperationOutcome
+  resource: FamilyMemberHistory
+  information: OperationOutcome
 }
 
 type FamilyMemberHistoryDeleteType {
-  FamilyMemberHistoryDelete(id : ID) : FamilyMemberHistoryDelete
+  FamilyMemberHistoryDelete(id: ID): FamilyMemberHistoryDelete
 }
 
 type FamilyMemberHistoryDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

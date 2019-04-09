@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationstatement-questionnaire.json - FHIR v4.0.0</title>
+  <title>Medicationstatement-questionnaire.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -105,7 +105,7 @@
 <div class="col-12">
 
 <h1>Medicationstatement-questionnaire.json</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 <p>
 <a href="medicationstatement-questionnaire.json">Raw JSON</a> (<a href="medicationstatement-questionnaire.canonical.json">canonical form</a> + also see <a href="json.html">JSON Format Specification</a>)
@@ -124,8 +124,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for MedicationStatement.medication[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:bb6a6ca3-6d2e-4c81-bb5b-63283126be04&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-28T12:35:17-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:8987192d-b8ad-47a3-b384-dcbb1f904d4f&quot;,
+      &quot;timestamp&quot; : &quot;2019-04-09T02:16:52+01:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;CodeableConcept&quot;,
@@ -145,8 +145,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for MedicationStatement.effective[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:f6a6d22c-cd99-4668-90fd-bca13e6e137a&quot;,
-      &quot;timestamp&quot; : &quot;2019-02-28T12:35:17-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:282405c5-a215-4cf9-9a9c-8963df9d6125&quot;,
+      &quot;timestamp&quot; : &quot;2019-04-09T02:16:52+01:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;dateTime&quot;,
@@ -162,9 +162,9 @@
   &quot;identifier&quot; : [{
     &quot;system&quot; : &quot;urn:ietf:rfc:3986&quot;
   }],
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-02-28T12:32:32-06:00&quot;,
+  &quot;date&quot; : &quot;2019-04-09T02:13:58+01:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Pharmacy)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;MedicationStatement&quot;,
@@ -786,7 +786,7 @@
         &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
         &quot;valueString&quot; : &quot;Reference&quot;
       }],
-      &quot;linkId&quot; : &quot;MedicationStatement.context&quot;,
+      &quot;linkId&quot; : &quot;MedicationStatement.encounter&quot;,
       &quot;type&quot; : &quot;group&quot;,
       &quot;required&quot; : false,
       &quot;repeats&quot; : true,
@@ -801,20 +801,20 @@
             }]
           }
         }],
-        &quot;text&quot; : &quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot;,
+        &quot;text&quot; : &quot;The encounter that establishes the context for this MedicationStatement.&quot;,
         &quot;type&quot; : &quot;display&quot;
       },
       {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-          &quot;valueCode&quot; : &quot;Encounter, EpisodeOfCare&quot;
+          &quot;valueCode&quot; : &quot;Encounter&quot;
         },
         {
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
           &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
         }],
-        &quot;linkId&quot; : &quot;MedicationStatement.context.value&quot;,
-        &quot;text&quot; : &quot;Encounter / Episode associated with MedicationStatement&quot;,
+        &quot;linkId&quot; : &quot;MedicationStatement.encounter.value&quot;,
+        &quot;text&quot; : &quot;Encounter associated with MedicationStatement&quot;,
         &quot;type&quot; : &quot;reference&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : false
@@ -1160,7 +1160,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

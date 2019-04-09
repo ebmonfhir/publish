@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MedicationKnowledge {
   id: ID
@@ -9,6 +9,7 @@ type MedicationKnowledge {
   contained: [Resource]
   extension: [Extension]
   modifierExtension: [Extension]
+  identifier: [Identifier]
   code: CodeableConcept
   status: code  _status: ElementBase
   manufacturer: Reference
@@ -178,287 +179,288 @@ type MedicationKnowledgeKinetics {
   valueDuration: Duration
 }
 
-input MedicationKnowledge {
+input MedicationKnowledgeInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  code: CodeableConceptInput
   status: code  _status: ElementBase
-  manufacturer: Reference
-  doseForm: CodeableConcept
-  amount: Quantity
+  manufacturer: ReferenceInput
+  doseForm: CodeableConceptInput
+  amount: QuantityInput
   synonym: String  _synonym: [ElementBase]
-  relatedMedicationKnowledge: [MedicationKnowledgeRelatedMedicationKnowledge]
-  associatedMedication: [Reference]
-  productType: [CodeableConcept]
-  monograph: [MedicationKnowledgeMonograph]
-  ingredient: [MedicationKnowledgeIngredient]
-  device: [Reference]
+  relatedMedicationKnowledge: [MedicationKnowledgeRelatedMedicationKnowledgeInput]
+  associatedMedication: [ReferenceInput]
+  productType: [CodeableConceptInput]
+  monograph: [MedicationKnowledgeMonographInput]
+  ingredient: [MedicationKnowledgeIngredientInput]
+  device: [ReferenceInput]
   preparationInstruction: markdown  _preparationInstruction: ElementBase
-  intendedRoute: [CodeableConcept]
-  cost: [MedicationKnowledgeCost]
-  monitoringProgram: [MedicationKnowledgeMonitoringProgram]
-  administrationGuidelines: [MedicationKnowledgeAdministrationGuidelines]
-  medicineClassification: [MedicationKnowledgeMedicineClassification]
-  packaging: MedicationKnowledgePackaging
-  drugCharacteristic: [MedicationKnowledgeDrugCharacteristic]
-  contraindication: [Reference]
-  interaction: [Reference]
-  undesirableEffect: [Reference]
-  regulatory: [MedicationKnowledgeRegulatory]
-  kinetics: [MedicationKnowledgeKinetics]
+  intendedRoute: [CodeableConceptInput]
+  cost: [MedicationKnowledgeCostInput]
+  monitoringProgram: [MedicationKnowledgeMonitoringProgramInput]
+  administrationGuidelines: [MedicationKnowledgeAdministrationGuidelinesInput]
+  medicineClassification: [MedicationKnowledgeMedicineClassificationInput]
+  packaging: MedicationKnowledgePackagingInput
+  drugCharacteristic: [MedicationKnowledgeDrugCharacteristicInput]
+  contraindication: [ReferenceInput]
+  interaction: [ReferenceInput]
+  undesirableEffect: [ReferenceInput]
+  regulatory: [MedicationKnowledgeRegulatoryInput]
+  kinetics: [MedicationKnowledgeKineticsInput]
 }
 
-input MedicationKnowledgeRelatedMedicationKnowledge {
+input MedicationKnowledgeRelatedMedicationKnowledgeInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
-  reference: [Reference]!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
+  reference: [ReferenceInput]!
 }
 
-input MedicationKnowledgeMonograph {
+input MedicationKnowledgeMonographInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  source: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  source: ReferenceInput
 }
 
-input MedicationKnowledgeIngredient {
+input MedicationKnowledgeIngredientInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  itemCodeableConcept: CodeableConcept
-  itemReference: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  itemCodeableConcept: CodeableConceptInput
+  itemReference: ReferenceInput
   isActive: Boolean  _isActive: ElementBase
-  strength: Ratio
+  strength: RatioInput
 }
 
-input MedicationKnowledgeCost {
+input MedicationKnowledgeCostInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
   source: String  _source: ElementBase
-  cost: Money!
+  cost: MoneyInput!
 }
 
-input MedicationKnowledgeMonitoringProgram {
+input MedicationKnowledgeMonitoringProgramInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
   name: String  _name: ElementBase
 }
 
-input MedicationKnowledgeAdministrationGuidelines {
+input MedicationKnowledgeAdministrationGuidelinesInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  dosage: [MedicationKnowledgeAdministrationGuidelinesDosage]
-  indicationCodeableConcept: CodeableConcept
-  indicationReference: Reference
-  patientCharacteristics: [MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  dosage: [MedicationKnowledgeAdministrationGuidelinesDosageInput]
+  indicationCodeableConcept: CodeableConceptInput
+  indicationReference: ReferenceInput
+  patientCharacteristics: [MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsInput]
 }
 
-input MedicationKnowledgeAdministrationGuidelinesDosage {
+input MedicationKnowledgeAdministrationGuidelinesDosageInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
-  dosage: [Dosage]!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
+  dosage: [DosageInput]!
 }
 
-input MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
+input MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  characteristicCodeableConcept: CodeableConcept
-  characteristicQuantity: Quantity
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  characteristicCodeableConcept: CodeableConceptInput
+  characteristicQuantity: QuantityInput
   value: String  _value: [ElementBase]
 }
 
-input MedicationKnowledgeMedicineClassification {
+input MedicationKnowledgeMedicineClassificationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
-  classification: [CodeableConcept]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
+  classification: [CodeableConceptInput]
 }
 
-input MedicationKnowledgePackaging {
+input MedicationKnowledgePackagingInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  quantity: Quantity
-  device: Reference
-  material: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  quantity: QuantityInput
+  device: ReferenceInput
+  material: CodeableConceptInput
   packaging: [MedicationKnowledgePackaging]
 }
 
-input MedicationKnowledgeDrugCharacteristic {
+input MedicationKnowledgeDrugCharacteristicInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  valueCodeableConcept: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  valueCodeableConcept: CodeableConceptInput
   valueString: String  _valueString: ElementBase
-  valueQuantity: Quantity
+  valueQuantity: QuantityInput
   valueBase64Binary: base64Binary  _valueBase64Binary: ElementBase
 }
 
-input MedicationKnowledgeRegulatory {
+input MedicationKnowledgeRegulatoryInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  regulatoryAuthority: Reference!
-  substitution: [MedicationKnowledgeRegulatorySubstitution]
-  schedule: [MedicationKnowledgeRegulatorySchedule]
-  maxDispense: MedicationKnowledgeRegulatoryMaxDispense
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  regulatoryAuthority: ReferenceInput!
+  substitution: [MedicationKnowledgeRegulatorySubstitutionInput]
+  schedule: [MedicationKnowledgeRegulatoryScheduleInput]
+  maxDispense: MedicationKnowledgeRegulatoryMaxDispenseInput
 }
 
-input MedicationKnowledgeRegulatorySubstitution {
+input MedicationKnowledgeRegulatorySubstitutionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
   allowed: Boolean  _allowed: ElementBase
 }
 
-input MedicationKnowledgeRegulatorySchedule {
+input MedicationKnowledgeRegulatoryScheduleInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  schedule: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  schedule: CodeableConceptInput!
 }
 
-input MedicationKnowledgeRegulatoryMaxDispense {
+input MedicationKnowledgeRegulatoryMaxDispenseInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  quantity: Quantity!
-  period: Duration
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  quantity: QuantityInput!
+  period: DurationInput
 }
 
-input MedicationKnowledgeKinetics {
+input MedicationKnowledgeKineticsInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  valueQuantity: Quantity
-  valueDuration: Duration
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  valueQuantity: QuantityInput
+  valueDuration: DurationInput
 }
 
 type MedicationKnowledgeReadType {
-  MedicationKnowledge(id : ID!) : MedicationKnowledge
+  MedicationKnowledge(id: ID!): MedicationKnowledge
 }
 
 type MedicationKnowledgeListType {
-  MedicationKnowledgeList(_filter : String
-    classification : [token]
-    classification_type : [token]
-    code : [token]
-    doseform : [token]
-    ingredient : [reference]
-    ingredient_code : [token]
-    manufacturer : [reference]
-    monitoring_program_name : [token]
-    monitoring_program_type : [token]
-    monograph : [reference]
-    monograph_type : [token]
-    source_cost : [token]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MedicationKnowledge]
+  MedicationKnowledgeList(_filter: String
+    classification: [token]
+    classification_type: [token]
+    code: [token]
+    doseform: [token]
+    ingredient: [reference]
+    ingredient_code: [token]
+    manufacturer: [reference]
+    monitoring_program_name: [token]
+    monitoring_program_type: [token]
+    monograph: [reference]
+    monograph_type: [token]
+    source_cost: [token]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MedicationKnowledge]
 }
 
 type MedicationKnowledgeConnectionType {
-  MedicationKnowledgeConection(_filter : String
-    classification : [token]
-    classification_type : [token]
-    code : [token]
-    doseform : [token]
-    ingredient : [reference]
-    ingredient_code : [token]
-    manufacturer : [reference]
-    monitoring_program_name : [token]
-    monitoring_program_type : [token]
-    monograph : [reference]
-    monograph_type : [token]
-    source_cost : [token]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicationKnowledgeConnection
+  MedicationKnowledgeConection(_filter: String
+    classification: [token]
+    classification_type: [token]
+    code: [token]
+    doseform: [token]
+    ingredient: [reference]
+    ingredient_code: [token]
+    manufacturer: [reference]
+    monitoring_program_name: [token]
+    monitoring_program_type: [token]
+    monograph: [reference]
+    monograph_type: [token]
+    source_cost: [token]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicationKnowledgeConnection
 }
 
 type MedicationKnowledgeConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicationKnowledgeEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicationKnowledgeEdge]
 }
 
 type MedicationKnowledgeEdge {
-  mode : String
-  score : Float
-  resource : MedicationKnowledge
+  mode: String
+  score: Float
+  resource: MedicationKnowledge
 }
 
 type MedicationKnowledgeCreateType {
-  MedicationKnowledgeCreate(resource : MedicationKnowledge) : MedicationKnowledgeCreation
+  MedicationKnowledgeCreate(resource: MedicationKnowledgeInput): MedicationKnowledgeCreation
 }
 
 type MedicationKnowledgeCreation {
-  location : String
-  resource : MedicationKnowledge
-  information : OperationOutcome
+  location: String
+  resource: MedicationKnowledge
+  information: OperationOutcome
 }
 
 type MedicationKnowledgeUpdateType {
-  MedicationKnowledgeUpdate(id : IDresource : MedicationKnowledge) : MedicationKnowledgeUpdate
+  MedicationKnowledgeUpdate(id: ID, resource: MedicationKnowledgeInput): MedicationKnowledgeUpdate
 }
 
 type MedicationKnowledgeUpdate {
-  resource : MedicationKnowledge
-  information : OperationOutcome
+  resource: MedicationKnowledge
+  information: OperationOutcome
 }
 
 type MedicationKnowledgeDeleteType {
-  MedicationKnowledgeDelete(id : ID) : MedicationKnowledgeDelete
+  MedicationKnowledgeDelete(id: ID): MedicationKnowledgeDelete
 }
 
 type MedicationKnowledgeDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

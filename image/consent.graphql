@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Consent {
   id: ID
@@ -75,188 +75,188 @@ type ConsentProvisionData {
   reference: Reference!
 }
 
-input Consent {
+input ConsentInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  scope: CodeableConcept!
-  category: [CodeableConcept]!
-  patient: Reference
+  scope: CodeableConceptInput!
+  category: [CodeableConceptInput]!
+  patient: ReferenceInput
   dateTime: dateTime  _dateTime: ElementBase
-  performer: [Reference]
-  organization: [Reference]
-  sourceAttachment: Attachment
-  sourceReference: Reference
-  policy: [ConsentPolicy]
-  policyRule: CodeableConcept
-  verification: [ConsentVerification]
-  provision: ConsentProvision
+  performer: [ReferenceInput]
+  organization: [ReferenceInput]
+  sourceAttachment: AttachmentInput
+  sourceReference: ReferenceInput
+  policy: [ConsentPolicyInput]
+  policyRule: CodeableConceptInput
+  verification: [ConsentVerificationInput]
+  provision: ConsentProvisionInput
 }
 
-input ConsentPolicy {
+input ConsentPolicyInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   authority: uri  _authority: ElementBase
   uri: uri  _uri: ElementBase
 }
 
-input ConsentVerification {
+input ConsentVerificationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   verified: Boolean  _verified: ElementBase
-  verifiedWith: Reference
+  verifiedWith: ReferenceInput
   verificationDate: dateTime  _verificationDate: ElementBase
 }
 
-input ConsentProvision {
+input ConsentProvisionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
-  period: Period
-  actor: [ConsentProvisionActor]
-  action: [CodeableConcept]
-  securityLabel: [Coding]
-  purpose: [Coding]
-  class: [Coding]
-  code: [CodeableConcept]
-  dataPeriod: Period
-  data: [ConsentProvisionData]
+  period: PeriodInput
+  actor: [ConsentProvisionActorInput]
+  action: [CodeableConceptInput]
+  securityLabel: [CodingInput]
+  purpose: [CodingInput]
+  class: [CodingInput]
+  code: [CodeableConceptInput]
+  dataPeriod: PeriodInput
+  data: [ConsentProvisionDataInput]
   provision: [ConsentProvision]
 }
 
-input ConsentProvisionActor {
+input ConsentProvisionActorInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  role: CodeableConcept!
-  reference: Reference!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  role: CodeableConceptInput!
+  reference: ReferenceInput!
 }
 
-input ConsentProvisionData {
+input ConsentProvisionDataInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   meaning: code  _meaning: ElementBase
-  reference: Reference!
+  reference: ReferenceInput!
 }
 
 type ConsentReadType {
-  Consent(id : ID!) : Consent
+  Consent(id: ID!): Consent
 }
 
 type ConsentListType {
-  ConsentList(_filter : String
-    action : [token]
-    actor : [reference]
-    category : [token]
-    consentor : [reference]
-    data : [reference]
-    date : [date]
-    identifier : [token]
-    organization : [reference]
-    patient : [reference]
-    period : [date]
-    purpose : [token]
-    scope : [token]
-    security_label : [token]
-    source_reference : [reference]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Consent]
+  ConsentList(_filter: String
+    action: [token]
+    actor: [reference]
+    category: [token]
+    consentor: [reference]
+    data: [reference]
+    date: [date]
+    identifier: [token]
+    organization: [reference]
+    patient: [reference]
+    period: [date]
+    purpose: [token]
+    scope: [token]
+    security_label: [token]
+    source_reference: [reference]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Consent]
 }
 
 type ConsentConnectionType {
-  ConsentConection(_filter : String
-    action : [token]
-    actor : [reference]
-    category : [token]
-    consentor : [reference]
-    data : [reference]
-    date : [date]
-    identifier : [token]
-    organization : [reference]
-    patient : [reference]
-    period : [date]
-    purpose : [token]
-    scope : [token]
-    security_label : [token]
-    source_reference : [reference]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ConsentConnection
+  ConsentConection(_filter: String
+    action: [token]
+    actor: [reference]
+    category: [token]
+    consentor: [reference]
+    data: [reference]
+    date: [date]
+    identifier: [token]
+    organization: [reference]
+    patient: [reference]
+    period: [date]
+    purpose: [token]
+    scope: [token]
+    security_label: [token]
+    source_reference: [reference]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ConsentConnection
 }
 
 type ConsentConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ConsentEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ConsentEdge]
 }
 
 type ConsentEdge {
-  mode : String
-  score : Float
-  resource : Consent
+  mode: String
+  score: Float
+  resource: Consent
 }
 
 type ConsentCreateType {
-  ConsentCreate(resource : Consent) : ConsentCreation
+  ConsentCreate(resource: ConsentInput): ConsentCreation
 }
 
 type ConsentCreation {
-  location : String
-  resource : Consent
-  information : OperationOutcome
+  location: String
+  resource: Consent
+  information: OperationOutcome
 }
 
 type ConsentUpdateType {
-  ConsentUpdate(id : IDresource : Consent) : ConsentUpdate
+  ConsentUpdate(id: ID, resource: ConsentInput): ConsentUpdate
 }
 
 type ConsentUpdate {
-  resource : Consent
-  information : OperationOutcome
+  resource: Consent
+  information: OperationOutcome
 }
 
 type ConsentDeleteType {
-  ConsentDelete(id : ID) : ConsentDelete
+  ConsentDelete(id: ID): ConsentDelete
 }
 
 type ConsentDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

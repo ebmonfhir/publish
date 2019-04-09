@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type CarePlan {
   id: ID
@@ -74,197 +74,197 @@ type CarePlanActivityDetail {
   description: String  _description: ElementBase
 }
 
-input CarePlan {
+input CarePlanInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   instantiatesCanonical: canonical  _instantiatesCanonical: [ElementBase]
   instantiatesUri: uri  _instantiatesUri: [ElementBase]
-  basedOn: [Reference]
-  replaces: [Reference]
-  partOf: [Reference]
+  basedOn: [ReferenceInput]
+  replaces: [ReferenceInput]
+  partOf: [ReferenceInput]
   status: code  _status: ElementBase
   intent: code  _intent: ElementBase
-  category: [CodeableConcept]
+  category: [CodeableConceptInput]
   title: String  _title: ElementBase
   description: String  _description: ElementBase
-  subject: Reference!
-  encounter: Reference
-  period: Period
+  subject: ReferenceInput!
+  encounter: ReferenceInput
+  period: PeriodInput
   created: dateTime  _created: ElementBase
-  author: Reference
-  contributor: [Reference]
-  careTeam: [Reference]
-  addressesCode: [CodeableConcept]
-  addressesReference: [Reference]
-  supportingInfo: [Reference]
-  goal: [Reference]
-  activity: [CarePlanActivity]
-  note: [Annotation]
+  author: ReferenceInput
+  contributor: [ReferenceInput]
+  careTeam: [ReferenceInput]
+  addressesCode: [CodeableConceptInput]
+  addressesReference: [ReferenceInput]
+  supportingInfo: [ReferenceInput]
+  goal: [ReferenceInput]
+  activity: [CarePlanActivityInput]
+  note: [AnnotationInput]
 }
 
-input CarePlanActivity {
+input CarePlanActivityInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  outcomeCodeableConcept: [CodeableConcept]
-  outcomeReference: [Reference]
-  progress: [Annotation]
-  reference: Reference
-  detail: CarePlanActivityDetail
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  outcomeCodeableConcept: [CodeableConceptInput]
+  outcomeReference: [ReferenceInput]
+  progress: [AnnotationInput]
+  reference: ReferenceInput
+  detail: CarePlanActivityDetailInput
 }
 
-input CarePlanActivityDetail {
+input CarePlanActivityDetailInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   kind: code  _kind: ElementBase
   instantiatesCanonical: canonical  _instantiatesCanonical: [ElementBase]
   instantiatesUri: uri  _instantiatesUri: [ElementBase]
-  code: CodeableConcept
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  goal: [Reference]
+  code: CodeableConceptInput
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  goal: [ReferenceInput]
   status: code  _status: ElementBase
-  statusReason: CodeableConcept
+  statusReason: CodeableConceptInput
   doNotPerform: Boolean  _doNotPerform: ElementBase
-  scheduledTiming: Timing
-  scheduledPeriod: Period
+  scheduledTiming: TimingInput
+  scheduledPeriod: PeriodInput
   scheduledString: String  _scheduledString: ElementBase
-  location: Reference
+  location: ReferenceInput
   reportedBoolean: Boolean  _reportedBoolean: ElementBase
-  reportedReference: Reference
-  performer: [Reference]
-  productCodeableConcept: CodeableConcept
-  productReference: Reference
-  dailyAmount: Quantity
-  quantity: Quantity
+  reportedReference: ReferenceInput
+  performer: [ReferenceInput]
+  productCodeableConcept: CodeableConceptInput
+  productReference: ReferenceInput
+  dailyAmount: QuantityInput
+  quantity: QuantityInput
   description: String  _description: ElementBase
 }
 
 type CarePlanReadType {
-  CarePlan(id : ID!) : CarePlan
+  CarePlan(id: ID!): CarePlan
 }
 
 type CarePlanListType {
-  CarePlanList(_filter : String
-    activity_code : [token]
-    activity_date : [date]
-    activity_reference : [reference]
-    based_on : [reference]
-    care_team : [reference]
-    category : [token]
-    condition : [reference]
-    date : [date]
-    encounter : [reference]
-    goal : [reference]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    intent : [token]
-    part_of : [reference]
-    patient : [reference]
-    performer : [reference]
-    replaces : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [CarePlan]
+  CarePlanList(_filter: String
+    activity_code: [token]
+    activity_date: [date]
+    activity_reference: [reference]
+    based_on: [reference]
+    care_team: [reference]
+    category: [token]
+    condition: [reference]
+    date: [date]
+    encounter: [reference]
+    goal: [reference]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    intent: [token]
+    part_of: [reference]
+    patient: [reference]
+    performer: [reference]
+    replaces: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [CarePlan]
 }
 
 type CarePlanConnectionType {
-  CarePlanConection(_filter : String
-    activity_code : [token]
-    activity_date : [date]
-    activity_reference : [reference]
-    based_on : [reference]
-    care_team : [reference]
-    category : [token]
-    condition : [reference]
-    date : [date]
-    encounter : [reference]
-    goal : [reference]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    intent : [token]
-    part_of : [reference]
-    patient : [reference]
-    performer : [reference]
-    replaces : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : CarePlanConnection
+  CarePlanConection(_filter: String
+    activity_code: [token]
+    activity_date: [date]
+    activity_reference: [reference]
+    based_on: [reference]
+    care_team: [reference]
+    category: [token]
+    condition: [reference]
+    date: [date]
+    encounter: [reference]
+    goal: [reference]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    intent: [token]
+    part_of: [reference]
+    patient: [reference]
+    performer: [reference]
+    replaces: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): CarePlanConnection
 }
 
 type CarePlanConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [CarePlanEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [CarePlanEdge]
 }
 
 type CarePlanEdge {
-  mode : String
-  score : Float
-  resource : CarePlan
+  mode: String
+  score: Float
+  resource: CarePlan
 }
 
 type CarePlanCreateType {
-  CarePlanCreate(resource : CarePlan) : CarePlanCreation
+  CarePlanCreate(resource: CarePlanInput): CarePlanCreation
 }
 
 type CarePlanCreation {
-  location : String
-  resource : CarePlan
-  information : OperationOutcome
+  location: String
+  resource: CarePlan
+  information: OperationOutcome
 }
 
 type CarePlanUpdateType {
-  CarePlanUpdate(id : IDresource : CarePlan) : CarePlanUpdate
+  CarePlanUpdate(id: ID, resource: CarePlanInput): CarePlanUpdate
 }
 
 type CarePlanUpdate {
-  resource : CarePlan
-  information : OperationOutcome
+  resource: CarePlan
+  information: OperationOutcome
 }
 
 type CarePlanDeleteType {
-  CarePlanDelete(id : ID) : CarePlanDelete
+  CarePlanDelete(id: ID): CarePlanDelete
 }
 
 type CarePlanDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>MedicationRequest - FHIR v4.0.0</title>
+  <title>MedicationRequest - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -151,7 +151,7 @@ These instances can be linked in different ways, depending on the needs of the w
         <td>When a patient actually consumes a medicine, or it is otherwise administered to them</td>
     </tr>
     <tr>
-        <td><a href="medicationstatement.html">MedicationStatement</a></td>
+        <td><a href="medicationStatement.html">MedicationStatement</a></td>
         <td>This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician.
           A medication statement is not a part of the prescribe-&gt;dispense-&gt;administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication.
         </td>
@@ -487,16 +487,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.status</td>
     <td class="diff-right">
       <ul>
-        <li>Min Cardinality changed from 0 to 1</li>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-status to http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.statusReason</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0 to http://hl7.org/fhir/ValueSet/medicationrequest-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -504,15 +495,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.intent</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-intent to http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.category</td>
-    <td class="diff-right">
-      <ul>
-        <li>Max Cardinality changed from 1 to *</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0 to http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -520,186 +503,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.priority</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-priority to http://hl7.org/fhir/ValueSet/request-priority|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.doNotPerform</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.reported[x]</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.encounter</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.requester</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from BackboneElement to Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device)</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.performer</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.performerType</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.recorder</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.instantiatesCanonical</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.instantiatesUri</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.basedOn</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Types ServiceRequest, ImmunizationRecommendation</li>
-        <li>Type Reference: Removed Target Types ProcedureRequest, ReferralRequest</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.courseOfTherapyType</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.insurance</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill.quantity</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill.duration</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.dispenseInterval</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.dispenseRequest.numberOfRepeatsAllowed</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from positiveInt to unsignedInt</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-changed-item">
-    <td class="diff-left">MedicationRequest.substitution.allowed[x]</td>
-    <td class="diff-right">
-      <ul>
-        <li>Renamed from allowed to allowed[x]</li>
-        <li>Add Type CodeableConcept</li>
-        <li>No longer marked as Modifier</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.definition</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.context</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.requester.agent</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.requester.onBehalfOf</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/request-priority|4.0.0 to http://hl7.org/fhir/ValueSet/request-priority|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1014,16 +818,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.status</td>
     <td class="diff-right">
       <ul>
-        <li>Min Cardinality changed from 0 to 1</li>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-status to http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.statusReason</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0 to http://hl7.org/fhir/ValueSet/medicationrequest-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1031,15 +826,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.intent</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-intent to http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.category</td>
-    <td class="diff-right">
-      <ul>
-        <li>Max Cardinality changed from 1 to *</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0 to http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1047,186 +834,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">MedicationRequest.priority</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/medication-request-priority to http://hl7.org/fhir/ValueSet/request-priority|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.doNotPerform</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.reported[x]</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.encounter</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.requester</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from BackboneElement to Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device)</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.performer</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.performerType</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.recorder</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.instantiatesCanonical</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.instantiatesUri</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.basedOn</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Types ServiceRequest, ImmunizationRecommendation</li>
-        <li>Type Reference: Removed Target Types ProcedureRequest, ReferralRequest</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.courseOfTherapyType</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.insurance</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill.quantity</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.initialFill.duration</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">MedicationRequest.dispenseRequest.dispenseInterval</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">MedicationRequest.dispenseRequest.numberOfRepeatsAllowed</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from positiveInt to unsignedInt</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-changed-item">
-    <td class="diff-left">MedicationRequest.substitution.allowed[x]</td>
-    <td class="diff-right">
-      <ul>
-        <li>Renamed from allowed to allowed[x]</li>
-        <li>Add Type CodeableConcept</li>
-        <li>No longer marked as Modifier</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.definition</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.context</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.requester.agent</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">MedicationRequest.requester.onBehalfOf</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/request-priority|4.0.0 to http://hl7.org/fhir/ValueSet/request-priority|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1316,7 +924,7 @@ Terminology Bindings
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

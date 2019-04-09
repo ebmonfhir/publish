@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Bundle {
   id: ID
@@ -65,52 +65,52 @@ type BundleEntryResponse {
   outcome: Resource
 }
 
-input Bundle {
+input BundleInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  identifier: Identifier
+  identifier: IdentifierInput
   type: code  _type: ElementBase
   timestamp: instant  _timestamp: ElementBase
   total: unsignedInt  _total: ElementBase
-  link: [BundleLink]
-  entry: [BundleEntry]
-  signature: Signature
+  link: [BundleLinkInput]
+  entry: [BundleEntryInput]
+  signature: SignatureInput
 }
 
-input BundleLink {
+input BundleLinkInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   relation: String  _relation: ElementBase
   url: uri  _url: ElementBase
 }
 
-input BundleEntry {
+input BundleEntryInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   link: [BundleLink]
   fullUrl: uri  _fullUrl: ElementBase
-  resource: Resource
-  search: BundleEntrySearch
-  request: BundleEntryRequest
-  response: BundleEntryResponse
+  resource: ResourceInput
+  search: BundleEntrySearchInput
+  request: BundleEntryRequestInput
+  response: BundleEntryResponseInput
 }
 
-input BundleEntrySearch {
+input BundleEntrySearchInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   mode: code  _mode: ElementBase
   score: decimal  _score: ElementBase
 }
 
-input BundleEntryRequest {
+input BundleEntryRequestInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   method: code  _method: ElementBase
   url: uri  _url: ElementBase
   ifNoneMatch: String  _ifNoneMatch: ElementBase
@@ -119,102 +119,102 @@ input BundleEntryRequest {
   ifNoneExist: String  _ifNoneExist: ElementBase
 }
 
-input BundleEntryResponse {
+input BundleEntryResponseInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   status: String  _status: ElementBase
   location: uri  _location: ElementBase
   etag: String  _etag: ElementBase
   lastModified: instant  _lastModified: ElementBase
-  outcome: Resource
+  outcome: ResourceInput
 }
 
 type BundleReadType {
-  Bundle(id : ID!) : Bundle
+  Bundle(id: ID!): Bundle
 }
 
 type BundleListType {
-  BundleList(_filter : String
-    composition : [reference]
-    identifier : [token]
-    message : [reference]
-    timestamp : [date]
-    type : [token]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Bundle]
+  BundleList(_filter: String
+    composition: [reference]
+    identifier: [token]
+    message: [reference]
+    timestamp: [date]
+    type: [token]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Bundle]
 }
 
 type BundleConnectionType {
-  BundleConection(_filter : String
-    composition : [reference]
-    identifier : [token]
-    message : [reference]
-    timestamp : [date]
-    type : [token]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : BundleConnection
+  BundleConection(_filter: String
+    composition: [reference]
+    identifier: [token]
+    message: [reference]
+    timestamp: [date]
+    type: [token]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): BundleConnection
 }
 
 type BundleConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [BundleEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [BundleEdge]
 }
 
 type BundleEdge {
-  mode : String
-  score : Float
-  resource : Bundle
+  mode: String
+  score: Float
+  resource: Bundle
 }
 
 type BundleCreateType {
-  BundleCreate(resource : Bundle) : BundleCreation
+  BundleCreate(resource: BundleInput): BundleCreation
 }
 
 type BundleCreation {
-  location : String
-  resource : Bundle
-  information : OperationOutcome
+  location: String
+  resource: Bundle
+  information: OperationOutcome
 }
 
 type BundleUpdateType {
-  BundleUpdate(id : IDresource : Bundle) : BundleUpdate
+  BundleUpdate(id: ID, resource: BundleInput): BundleUpdate
 }
 
 type BundleUpdate {
-  resource : Bundle
-  information : OperationOutcome
+  resource: Bundle
+  information: OperationOutcome
 }
 
 type BundleDeleteType {
-  BundleDelete(id : ID) : BundleDelete
+  BundleDelete(id: ID): BundleDelete
 }
 
 type BundleDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

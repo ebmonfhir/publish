@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type EnrollmentRequest {
   id: ID
@@ -18,109 +18,109 @@ type EnrollmentRequest {
   coverage: Reference
 }
 
-input EnrollmentRequest {
+input EnrollmentRequestInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
   created: dateTime  _created: ElementBase
-  insurer: Reference
-  provider: Reference
-  candidate: Reference
-  coverage: Reference
+  insurer: ReferenceInput
+  provider: ReferenceInput
+  candidate: ReferenceInput
+  coverage: ReferenceInput
 }
 
 type EnrollmentRequestReadType {
-  EnrollmentRequest(id : ID!) : EnrollmentRequest
+  EnrollmentRequest(id: ID!): EnrollmentRequest
 }
 
 type EnrollmentRequestListType {
-  EnrollmentRequestList(_filter : String
-    identifier : [token]
-    patient : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [EnrollmentRequest]
+  EnrollmentRequestList(_filter: String
+    identifier: [token]
+    patient: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [EnrollmentRequest]
 }
 
 type EnrollmentRequestConnectionType {
-  EnrollmentRequestConection(_filter : String
-    identifier : [token]
-    patient : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : EnrollmentRequestConnection
+  EnrollmentRequestConection(_filter: String
+    identifier: [token]
+    patient: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): EnrollmentRequestConnection
 }
 
 type EnrollmentRequestConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [EnrollmentRequestEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [EnrollmentRequestEdge]
 }
 
 type EnrollmentRequestEdge {
-  mode : String
-  score : Float
-  resource : EnrollmentRequest
+  mode: String
+  score: Float
+  resource: EnrollmentRequest
 }
 
 type EnrollmentRequestCreateType {
-  EnrollmentRequestCreate(resource : EnrollmentRequest) : EnrollmentRequestCreation
+  EnrollmentRequestCreate(resource: EnrollmentRequestInput): EnrollmentRequestCreation
 }
 
 type EnrollmentRequestCreation {
-  location : String
-  resource : EnrollmentRequest
-  information : OperationOutcome
+  location: String
+  resource: EnrollmentRequest
+  information: OperationOutcome
 }
 
 type EnrollmentRequestUpdateType {
-  EnrollmentRequestUpdate(id : IDresource : EnrollmentRequest) : EnrollmentRequestUpdate
+  EnrollmentRequestUpdate(id: ID, resource: EnrollmentRequestInput): EnrollmentRequestUpdate
 }
 
 type EnrollmentRequestUpdate {
-  resource : EnrollmentRequest
-  information : OperationOutcome
+  resource: EnrollmentRequest
+  information: OperationOutcome
 }
 
 type EnrollmentRequestDeleteType {
-  EnrollmentRequestDelete(id : ID) : EnrollmentRequestDelete
+  EnrollmentRequestDelete(id: ID): EnrollmentRequestDelete
 }
 
 type EnrollmentRequestDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

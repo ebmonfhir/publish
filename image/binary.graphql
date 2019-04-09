@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Binary {
   id: ID
@@ -10,91 +10,91 @@ type Binary {
   data: base64Binary  _data: ElementBase
 }
 
-input Binary {
+input BinaryInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
   contentType: code  _contentType: ElementBase
-  securityContext: Reference
+  securityContext: ReferenceInput
   data: base64Binary  _data: ElementBase
 }
 
 type BinaryReadType {
-  Binary(id : ID!) : Binary
+  Binary(id: ID!): Binary
 }
 
 type BinaryListType {
-  BinaryList(_filter : String
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Binary]
+  BinaryList(_filter: String
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Binary]
 }
 
 type BinaryConnectionType {
-  BinaryConection(_filter : String
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : BinaryConnection
+  BinaryConection(_filter: String
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): BinaryConnection
 }
 
 type BinaryConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [BinaryEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [BinaryEdge]
 }
 
 type BinaryEdge {
-  mode : String
-  score : Float
-  resource : Binary
+  mode: String
+  score: Float
+  resource: Binary
 }
 
 type BinaryCreateType {
-  BinaryCreate(resource : Binary) : BinaryCreation
+  BinaryCreate(resource: BinaryInput): BinaryCreation
 }
 
 type BinaryCreation {
-  location : String
-  resource : Binary
-  information : OperationOutcome
+  location: String
+  resource: Binary
+  information: OperationOutcome
 }
 
 type BinaryUpdateType {
-  BinaryUpdate(id : IDresource : Binary) : BinaryUpdate
+  BinaryUpdate(id: ID, resource: BinaryInput): BinaryUpdate
 }
 
 type BinaryUpdate {
-  resource : Binary
-  information : OperationOutcome
+  resource: Binary
+  information: OperationOutcome
 }
 
 type BinaryDeleteType {
-  BinaryDelete(id : ID) : BinaryDelete
+  BinaryDelete(id: ID): BinaryDelete
 }
 
 type BinaryDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type PlanDefinition {
   id: ID
@@ -141,101 +141,101 @@ type PlanDefinitionActionDynamicValue {
   expression: Expression
 }
 
-input PlanDefinition {
+input PlanDefinitionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
-  identifier: [Identifier]
+  identifier: [IdentifierInput]
   version: String  _version: ElementBase
   name: String  _name: ElementBase
   title: String  _title: ElementBase
   subtitle: String  _subtitle: ElementBase
-  type: CodeableConcept
+  type: CodeableConceptInput
   status: code  _status: ElementBase
   experimental: Boolean  _experimental: ElementBase
-  subjectCodeableConcept: CodeableConcept
-  subjectReference: Reference
+  subjectCodeableConcept: CodeableConceptInput
+  subjectReference: ReferenceInput
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   purpose: markdown  _purpose: ElementBase
   usage: String  _usage: ElementBase
   copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  effectivePeriod: Period
-  topic: [CodeableConcept]
-  author: [ContactDetail]
-  editor: [ContactDetail]
-  reviewer: [ContactDetail]
-  endorser: [ContactDetail]
-  relatedArtifact: [RelatedArtifact]
+  effectivePeriod: PeriodInput
+  topic: [CodeableConceptInput]
+  author: [ContactDetailInput]
+  editor: [ContactDetailInput]
+  reviewer: [ContactDetailInput]
+  endorser: [ContactDetailInput]
+  relatedArtifact: [RelatedArtifactInput]
   library: canonical  _library: [ElementBase]
-  goal: [PlanDefinitionGoal]
-  action: [PlanDefinitionAction]
+  goal: [PlanDefinitionGoalInput]
+  action: [PlanDefinitionActionInput]
 }
 
-input PlanDefinitionGoal {
+input PlanDefinitionGoalInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  category: CodeableConcept
-  description: CodeableConcept!
-  priority: CodeableConcept
-  start: CodeableConcept
-  addresses: [CodeableConcept]
-  documentation: [RelatedArtifact]
-  target: [PlanDefinitionGoalTarget]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  category: CodeableConceptInput
+  description: CodeableConceptInput!
+  priority: CodeableConceptInput
+  start: CodeableConceptInput
+  addresses: [CodeableConceptInput]
+  documentation: [RelatedArtifactInput]
+  target: [PlanDefinitionGoalTargetInput]
 }
 
-input PlanDefinitionGoalTarget {
+input PlanDefinitionGoalTargetInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  measure: CodeableConcept
-  detailQuantity: Quantity
-  detailRange: Range
-  detailCodeableConcept: CodeableConcept
-  due: Duration
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  measure: CodeableConceptInput
+  detailQuantity: QuantityInput
+  detailRange: RangeInput
+  detailCodeableConcept: CodeableConceptInput
+  due: DurationInput
 }
 
-input PlanDefinitionAction {
+input PlanDefinitionActionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   prefix: String  _prefix: ElementBase
   title: String  _title: ElementBase
   description: String  _description: ElementBase
   textEquivalent: String  _textEquivalent: ElementBase
   priority: code  _priority: ElementBase
-  code: [CodeableConcept]
-  reason: [CodeableConcept]
-  documentation: [RelatedArtifact]
+  code: [CodeableConceptInput]
+  reason: [CodeableConceptInput]
+  documentation: [RelatedArtifactInput]
   goalId: ID  _goalId: [ElementBase]
-  subjectCodeableConcept: CodeableConcept
-  subjectReference: Reference
-  trigger: [TriggerDefinition]
-  condition: [PlanDefinitionActionCondition]
-  input: [DataRequirement]
-  output: [DataRequirement]
-  relatedAction: [PlanDefinitionActionRelatedAction]
+  subjectCodeableConcept: CodeableConceptInput
+  subjectReference: ReferenceInput
+  trigger: [TriggerDefinitionInput]
+  condition: [PlanDefinitionActionConditionInput]
+  input: [DataRequirementInput]
+  output: [DataRequirementInput]
+  relatedAction: [PlanDefinitionActionRelatedActionInput]
   timingDateTime: dateTime  _timingDateTime: ElementBase
-  timingAge: Age
-  timingPeriod: Period
-  timingDuration: Duration
-  timingRange: Range
-  timingTiming: Timing
-  participant: [PlanDefinitionActionParticipant]
-  type: CodeableConcept
+  timingAge: AgeInput
+  timingPeriod: PeriodInput
+  timingDuration: DurationInput
+  timingRange: RangeInput
+  timingTiming: TimingInput
+  participant: [PlanDefinitionActionParticipantInput]
+  type: CodeableConceptInput
   groupingBehavior: code  _groupingBehavior: ElementBase
   selectionBehavior: code  _selectionBehavior: ElementBase
   requiredBehavior: code  _requiredBehavior: ElementBase
@@ -244,169 +244,169 @@ input PlanDefinitionAction {
   definitionCanonical: canonical  _definitionCanonical: ElementBase
   definitionUri: uri  _definitionUri: ElementBase
   transform: canonical  _transform: ElementBase
-  dynamicValue: [PlanDefinitionActionDynamicValue]
+  dynamicValue: [PlanDefinitionActionDynamicValueInput]
   action: [PlanDefinitionAction]
 }
 
-input PlanDefinitionActionCondition {
+input PlanDefinitionActionConditionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   kind: code  _kind: ElementBase
-  expression: Expression
+  expression: ExpressionInput
 }
 
-input PlanDefinitionActionRelatedAction {
+input PlanDefinitionActionRelatedActionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   actionId: ID  _actionId: ElementBase
   relationship: code  _relationship: ElementBase
-  offsetDuration: Duration
-  offsetRange: Range
+  offsetDuration: DurationInput
+  offsetRange: RangeInput
 }
 
-input PlanDefinitionActionParticipant {
+input PlanDefinitionActionParticipantInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
-  role: CodeableConcept
+  role: CodeableConceptInput
 }
 
-input PlanDefinitionActionDynamicValue {
+input PlanDefinitionActionDynamicValueInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   path: String  _path: ElementBase
-  expression: Expression
+  expression: ExpressionInput
 }
 
 type PlanDefinitionReadType {
-  PlanDefinition(id : ID!) : PlanDefinition
+  PlanDefinition(id: ID!): PlanDefinition
 }
 
 type PlanDefinitionListType {
-  PlanDefinitionList(_filter : String
-    composed_of : [reference]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    definition : [reference]
-    depends_on : [reference]
-    derived_from : [reference]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    predecessor : [reference]
-    publisher : [String]
-    status : [token]
-    successor : [reference]
-    title : [String]
-    topic : [token]
-    type : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [PlanDefinition]
+  PlanDefinitionList(_filter: String
+    composed_of: [reference]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    definition: [reference]
+    depends_on: [reference]
+    derived_from: [reference]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    predecessor: [reference]
+    publisher: [String]
+    status: [token]
+    successor: [reference]
+    title: [String]
+    topic: [token]
+    type: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [PlanDefinition]
 }
 
 type PlanDefinitionConnectionType {
-  PlanDefinitionConection(_filter : String
-    composed_of : [reference]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    definition : [reference]
-    depends_on : [reference]
-    derived_from : [reference]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    predecessor : [reference]
-    publisher : [String]
-    status : [token]
-    successor : [reference]
-    title : [String]
-    topic : [token]
-    type : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : PlanDefinitionConnection
+  PlanDefinitionConection(_filter: String
+    composed_of: [reference]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    definition: [reference]
+    depends_on: [reference]
+    derived_from: [reference]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    predecessor: [reference]
+    publisher: [String]
+    status: [token]
+    successor: [reference]
+    title: [String]
+    topic: [token]
+    type: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): PlanDefinitionConnection
 }
 
 type PlanDefinitionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [PlanDefinitionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [PlanDefinitionEdge]
 }
 
 type PlanDefinitionEdge {
-  mode : String
-  score : Float
-  resource : PlanDefinition
+  mode: String
+  score: Float
+  resource: PlanDefinition
 }
 
 type PlanDefinitionCreateType {
-  PlanDefinitionCreate(resource : PlanDefinition) : PlanDefinitionCreation
+  PlanDefinitionCreate(resource: PlanDefinitionInput): PlanDefinitionCreation
 }
 
 type PlanDefinitionCreation {
-  location : String
-  resource : PlanDefinition
-  information : OperationOutcome
+  location: String
+  resource: PlanDefinition
+  information: OperationOutcome
 }
 
 type PlanDefinitionUpdateType {
-  PlanDefinitionUpdate(id : IDresource : PlanDefinition) : PlanDefinitionUpdate
+  PlanDefinitionUpdate(id: ID, resource: PlanDefinitionInput): PlanDefinitionUpdate
 }
 
 type PlanDefinitionUpdate {
-  resource : PlanDefinition
-  information : OperationOutcome
+  resource: PlanDefinition
+  information: OperationOutcome
 }
 
 type PlanDefinitionDeleteType {
-  PlanDefinitionDelete(id : ID) : PlanDefinitionDelete
+  PlanDefinitionDelete(id: ID): PlanDefinitionDelete
 }
 
 type PlanDefinitionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

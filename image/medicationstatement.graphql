@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MedicationStatement {
   id: ID
@@ -18,7 +18,7 @@ type MedicationStatement {
   medicationCodeableConcept: CodeableConcept
   medicationReference: Reference
   subject: Reference!
-  context: Reference
+  encounter: Reference
   effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
   effectivePeriod: Period
   dateAsserted: dateTime  _dateAsserted: ElementBase
@@ -30,135 +30,135 @@ type MedicationStatement {
   dosage: [Dosage]
 }
 
-input MedicationStatement {
+input MedicationStatementInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  basedOn: [Reference]
-  partOf: [Reference]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
+  partOf: [ReferenceInput]
   status: code  _status: ElementBase
-  statusReason: [CodeableConcept]
-  category: [CodeableConcept]
-  medicationCodeableConcept: CodeableConcept
-  medicationReference: Reference
-  subject: Reference!
-  context: Reference
+  statusReason: [CodeableConceptInput]
+  category: [CodeableConceptInput]
+  medicationCodeableConcept: CodeableConceptInput
+  medicationReference: ReferenceInput
+  subject: ReferenceInput!
+  encounter: ReferenceInput
   effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
-  effectivePeriod: Period
+  effectivePeriod: PeriodInput
   dateAsserted: dateTime  _dateAsserted: ElementBase
-  informationSource: Reference
-  derivedFrom: [Reference]
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  note: [Annotation]
-  dosage: [Dosage]
+  informationSource: ReferenceInput
+  derivedFrom: [ReferenceInput]
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  note: [AnnotationInput]
+  dosage: [DosageInput]
 }
 
 type MedicationStatementReadType {
-  MedicationStatement(id : ID!) : MedicationStatement
+  MedicationStatement(id: ID!): MedicationStatement
 }
 
 type MedicationStatementListType {
-  MedicationStatementList(_filter : String
-    category : [token]
-    code : [token]
-    context : [reference]
-    effective : [date]
-    identifier : [token]
-    medication : [reference]
-    part_of : [reference]
-    patient : [reference]
-    source : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MedicationStatement]
+  MedicationStatementList(_filter: String
+    category: [token]
+    code: [token]
+    effective: [date]
+    encounter: [reference]
+    identifier: [token]
+    medication: [reference]
+    part_of: [reference]
+    patient: [reference]
+    source: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MedicationStatement]
 }
 
 type MedicationStatementConnectionType {
-  MedicationStatementConection(_filter : String
-    category : [token]
-    code : [token]
-    context : [reference]
-    effective : [date]
-    identifier : [token]
-    medication : [reference]
-    part_of : [reference]
-    patient : [reference]
-    source : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicationStatementConnection
+  MedicationStatementConection(_filter: String
+    category: [token]
+    code: [token]
+    effective: [date]
+    encounter: [reference]
+    identifier: [token]
+    medication: [reference]
+    part_of: [reference]
+    patient: [reference]
+    source: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicationStatementConnection
 }
 
 type MedicationStatementConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicationStatementEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicationStatementEdge]
 }
 
 type MedicationStatementEdge {
-  mode : String
-  score : Float
-  resource : MedicationStatement
+  mode: String
+  score: Float
+  resource: MedicationStatement
 }
 
 type MedicationStatementCreateType {
-  MedicationStatementCreate(resource : MedicationStatement) : MedicationStatementCreation
+  MedicationStatementCreate(resource: MedicationStatementInput): MedicationStatementCreation
 }
 
 type MedicationStatementCreation {
-  location : String
-  resource : MedicationStatement
-  information : OperationOutcome
+  location: String
+  resource: MedicationStatement
+  information: OperationOutcome
 }
 
 type MedicationStatementUpdateType {
-  MedicationStatementUpdate(id : IDresource : MedicationStatement) : MedicationStatementUpdate
+  MedicationStatementUpdate(id: ID, resource: MedicationStatementInput): MedicationStatementUpdate
 }
 
 type MedicationStatementUpdate {
-  resource : MedicationStatement
-  information : OperationOutcome
+  resource: MedicationStatement
+  information: OperationOutcome
 }
 
 type MedicationStatementDeleteType {
-  MedicationStatementDelete(id : ID) : MedicationStatementDelete
+  MedicationStatementDelete(id: ID): MedicationStatementDelete
 }
 
 type MedicationStatementDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.ingredient.item[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:91d5bc28-8fd1-40f7-b04e-157ecd43bf91",
-      "timestamp" : "2019-02-28T12:35:15-06:00",
+      "identifier" : "urn:uuid:8891114c-47af-462e-b1c1-0ee14498887d",
+      "timestamp" : "2019-04-09T02:16:51+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.administrationGuidelines.indication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:733a00ac-9b7e-410d-bdfb-f8e8f7678663",
-      "timestamp" : "2019-02-28T12:35:15-06:00",
+      "identifier" : "urn:uuid:09bad7a8-bac4-467c-aa49-d5dfde5f0d50",
+      "timestamp" : "2019-04-09T02:16:51+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -50,8 +50,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.administrationGuidelines.patientCharacteristics.characteristic[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:932049ec-5f40-47c7-8301-91916e5e3811",
-      "timestamp" : "2019-02-28T12:35:15-06:00",
+      "identifier" : "urn:uuid:65b636bc-d688-40a6-b3c0-0e55bf59d270",
+      "timestamp" : "2019-04-09T02:16:51+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -71,8 +71,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.drugCharacteristic.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:7589216c-dee9-4dcc-860d-334c94e47208",
-      "timestamp" : "2019-02-28T12:35:15-06:00",
+      "identifier" : "urn:uuid:1de816e3-f74e-4ee0-8f08-c827867b0a9e",
+      "timestamp" : "2019-04-09T02:16:51+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -102,8 +102,8 @@
     "status" : "active",
     "description" : "Type options for MedicationKnowledge.kinetics.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:7c696b6c-47ad-4cd2-965f-a120401c31e5",
-      "timestamp" : "2019-02-28T12:35:15-06:00",
+      "identifier" : "urn:uuid:5145c362-fe13-4052-8124-36303f83e1ba",
+      "timestamp" : "2019-04-09T02:16:51+01:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "http://hl7.org/fhir/StructureDefinition/SimpleQuantity",
@@ -119,9 +119,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-02-28T12:32:32-06:00",
+  "date" : "2019-04-09T02:13:58+01:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationKnowledge",
@@ -359,6 +359,52 @@
         }],
         "text" : "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
         "type" : "display"
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Identifier"
+      }],
+      "linkId" : "MedicationKnowledge.identifier",
+      "text" : "Business identifier for this medication",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Business identifier for this medication. This is a business identifier, not a resource identifier (see discussion).",
+        "type" : "display"
+      },
+      {
+        "linkId" : "MedicationKnowledge.identifier.label",
+        "text" : "label:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "MedicationKnowledge.identifier.system",
+        "text" : "system:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "MedicationKnowledge.identifier.value",
+        "text" : "value:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
       }]
     },
     {

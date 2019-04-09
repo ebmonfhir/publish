@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type EffectEvidenceSynthesis {
   id: ID
@@ -103,218 +103,218 @@ type EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
   note: [Annotation]
 }
 
-input EffectEvidenceSynthesis {
+input EffectEvidenceSynthesisInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
-  identifier: [Identifier]
+  identifier: [IdentifierInput]
   version: String  _version: ElementBase
   name: String  _name: ElementBase
   title: String  _title: ElementBase
   status: code  _status: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  note: [Annotation]
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  note: [AnnotationInput]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  effectivePeriod: Period
-  topic: [CodeableConcept]
-  author: [ContactDetail]
-  editor: [ContactDetail]
-  reviewer: [ContactDetail]
-  endorser: [ContactDetail]
-  relatedArtifact: [RelatedArtifact]
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  population: Reference!
-  exposure: Reference!
-  exposureAlternative: Reference!
-  outcome: Reference!
-  sampleSize: EffectEvidenceSynthesisSampleSize
-  resultsByExposure: [EffectEvidenceSynthesisResultsByExposure]
-  effectEstimate: [EffectEvidenceSynthesisEffectEstimate]
-  certainty: [EffectEvidenceSynthesisCertainty]
+  effectivePeriod: PeriodInput
+  topic: [CodeableConceptInput]
+  author: [ContactDetailInput]
+  editor: [ContactDetailInput]
+  reviewer: [ContactDetailInput]
+  endorser: [ContactDetailInput]
+  relatedArtifact: [RelatedArtifactInput]
+  synthesisType: CodeableConceptInput
+  studyType: CodeableConceptInput
+  population: ReferenceInput!
+  exposure: ReferenceInput!
+  exposureAlternative: ReferenceInput!
+  outcome: ReferenceInput!
+  sampleSize: EffectEvidenceSynthesisSampleSizeInput
+  resultsByExposure: [EffectEvidenceSynthesisResultsByExposureInput]
+  effectEstimate: [EffectEvidenceSynthesisEffectEstimateInput]
+  certainty: [EffectEvidenceSynthesisCertaintyInput]
 }
 
-input EffectEvidenceSynthesisSampleSize {
+input EffectEvidenceSynthesisSampleSizeInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
   numberOfStudies: Int  _numberOfStudies: ElementBase
   numberOfParticipants: Int  _numberOfParticipants: ElementBase
 }
 
-input EffectEvidenceSynthesisResultsByExposure {
+input EffectEvidenceSynthesisResultsByExposureInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
   exposureState: code  _exposureState: ElementBase
-  variantState: CodeableConcept
-  riskEvidenceSynthesis: Reference!
+  variantState: CodeableConceptInput
+  riskEvidenceSynthesis: ReferenceInput!
 }
 
-input EffectEvidenceSynthesisEffectEstimate {
+input EffectEvidenceSynthesisEffectEstimateInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
-  type: CodeableConcept
-  variantState: CodeableConcept
+  type: CodeableConceptInput
+  variantState: CodeableConceptInput
   value: decimal  _value: ElementBase
-  unitOfMeasure: CodeableConcept
-  precisionEstimate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate]
+  unitOfMeasure: CodeableConceptInput
+  precisionEstimate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimateInput]
 }
 
-input EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
+input EffectEvidenceSynthesisEffectEstimatePrecisionEstimateInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
   level: decimal  _level: ElementBase
   from: decimal  _from: ElementBase
   to: decimal  _to: ElementBase
 }
 
-input EffectEvidenceSynthesisCertainty {
+input EffectEvidenceSynthesisCertaintyInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  rating: [CodeableConcept]
-  note: [Annotation]
-  certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  rating: [CodeableConceptInput]
+  note: [AnnotationInput]
+  certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponentInput]
 }
 
-input EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
+input EffectEvidenceSynthesisCertaintyCertaintySubcomponentInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  rating: [CodeableConcept]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  rating: [CodeableConceptInput]
+  note: [AnnotationInput]
 }
 
 type EffectEvidenceSynthesisReadType {
-  EffectEvidenceSynthesis(id : ID!) : EffectEvidenceSynthesis
+  EffectEvidenceSynthesis(id: ID!): EffectEvidenceSynthesis
 }
 
 type EffectEvidenceSynthesisListType {
-  EffectEvidenceSynthesisList(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [EffectEvidenceSynthesis]
+  EffectEvidenceSynthesisList(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [EffectEvidenceSynthesis]
 }
 
 type EffectEvidenceSynthesisConnectionType {
-  EffectEvidenceSynthesisConection(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : EffectEvidenceSynthesisConnection
+  EffectEvidenceSynthesisConection(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): EffectEvidenceSynthesisConnection
 }
 
 type EffectEvidenceSynthesisConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [EffectEvidenceSynthesisEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [EffectEvidenceSynthesisEdge]
 }
 
 type EffectEvidenceSynthesisEdge {
-  mode : String
-  score : Float
-  resource : EffectEvidenceSynthesis
+  mode: String
+  score: Float
+  resource: EffectEvidenceSynthesis
 }
 
 type EffectEvidenceSynthesisCreateType {
-  EffectEvidenceSynthesisCreate(resource : EffectEvidenceSynthesis) : EffectEvidenceSynthesisCreation
+  EffectEvidenceSynthesisCreate(resource: EffectEvidenceSynthesisInput): EffectEvidenceSynthesisCreation
 }
 
 type EffectEvidenceSynthesisCreation {
-  location : String
-  resource : EffectEvidenceSynthesis
-  information : OperationOutcome
+  location: String
+  resource: EffectEvidenceSynthesis
+  information: OperationOutcome
 }
 
 type EffectEvidenceSynthesisUpdateType {
-  EffectEvidenceSynthesisUpdate(id : IDresource : EffectEvidenceSynthesis) : EffectEvidenceSynthesisUpdate
+  EffectEvidenceSynthesisUpdate(id: ID, resource: EffectEvidenceSynthesisInput): EffectEvidenceSynthesisUpdate
 }
 
 type EffectEvidenceSynthesisUpdate {
-  resource : EffectEvidenceSynthesis
-  information : OperationOutcome
+  resource: EffectEvidenceSynthesis
+  information: OperationOutcome
 }
 
 type EffectEvidenceSynthesisDeleteType {
-  EffectEvidenceSynthesisDelete(id : ID) : EffectEvidenceSynthesisDelete
+  EffectEvidenceSynthesisDelete(id: ID): EffectEvidenceSynthesisDelete
 }
 
 type EffectEvidenceSynthesisDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

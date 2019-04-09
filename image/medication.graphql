@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Medication {
   id: ID
@@ -37,138 +37,138 @@ type MedicationBatch {
   expirationDate: dateTime  _expirationDate: ElementBase
 }
 
-input Medication {
+input MedicationInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  code: CodeableConcept
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  code: CodeableConceptInput
   status: code  _status: ElementBase
-  manufacturer: Reference
-  form: CodeableConcept
-  amount: Ratio
-  ingredient: [MedicationIngredient]
-  batch: MedicationBatch
+  manufacturer: ReferenceInput
+  form: CodeableConceptInput
+  amount: RatioInput
+  ingredient: [MedicationIngredientInput]
+  batch: MedicationBatchInput
 }
 
-input MedicationIngredient {
+input MedicationIngredientInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  itemCodeableConcept: CodeableConcept
-  itemReference: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  itemCodeableConcept: CodeableConceptInput
+  itemReference: ReferenceInput
   isActive: Boolean  _isActive: ElementBase
-  strength: Ratio
+  strength: RatioInput
 }
 
-input MedicationBatch {
+input MedicationBatchInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   lotNumber: String  _lotNumber: ElementBase
   expirationDate: dateTime  _expirationDate: ElementBase
 }
 
 type MedicationReadType {
-  Medication(id : ID!) : Medication
+  Medication(id: ID!): Medication
 }
 
 type MedicationListType {
-  MedicationList(_filter : String
-    code : [token]
-    expiration_date : [date]
-    form : [token]
-    identifier : [token]
-    ingredient : [reference]
-    ingredient_code : [token]
-    lot_number : [token]
-    manufacturer : [reference]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Medication]
+  MedicationList(_filter: String
+    code: [token]
+    expiration_date: [date]
+    form: [token]
+    identifier: [token]
+    ingredient: [reference]
+    ingredient_code: [token]
+    lot_number: [token]
+    manufacturer: [reference]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Medication]
 }
 
 type MedicationConnectionType {
-  MedicationConection(_filter : String
-    code : [token]
-    expiration_date : [date]
-    form : [token]
-    identifier : [token]
-    ingredient : [reference]
-    ingredient_code : [token]
-    lot_number : [token]
-    manufacturer : [reference]
-    status : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicationConnection
+  MedicationConection(_filter: String
+    code: [token]
+    expiration_date: [date]
+    form: [token]
+    identifier: [token]
+    ingredient: [reference]
+    ingredient_code: [token]
+    lot_number: [token]
+    manufacturer: [reference]
+    status: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicationConnection
 }
 
 type MedicationConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicationEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicationEdge]
 }
 
 type MedicationEdge {
-  mode : String
-  score : Float
-  resource : Medication
+  mode: String
+  score: Float
+  resource: Medication
 }
 
 type MedicationCreateType {
-  MedicationCreate(resource : Medication) : MedicationCreation
+  MedicationCreate(resource: MedicationInput): MedicationCreation
 }
 
 type MedicationCreation {
-  location : String
-  resource : Medication
-  information : OperationOutcome
+  location: String
+  resource: Medication
+  information: OperationOutcome
 }
 
 type MedicationUpdateType {
-  MedicationUpdate(id : IDresource : Medication) : MedicationUpdate
+  MedicationUpdate(id: ID, resource: MedicationInput): MedicationUpdate
 }
 
 type MedicationUpdate {
-  resource : Medication
-  information : OperationOutcome
+  resource: Medication
+  information: OperationOutcome
 }
 
 type MedicationDeleteType {
-  MedicationDelete(id : ID) : MedicationDelete
+  MedicationDelete(id: ID): MedicationDelete
 }
 
 type MedicationDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

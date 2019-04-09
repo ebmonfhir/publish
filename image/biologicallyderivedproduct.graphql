@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type BiologicallyDerivedProduct {
   id: ID
@@ -62,145 +62,145 @@ type BiologicallyDerivedProductStorage {
   duration: Period
 }
 
-input BiologicallyDerivedProduct {
+input BiologicallyDerivedProductInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   productCategory: code  _productCategory: ElementBase
-  productCode: CodeableConcept
+  productCode: CodeableConceptInput
   status: code  _status: ElementBase
-  request: [Reference]
+  request: [ReferenceInput]
   quantity: Int  _quantity: ElementBase
-  parent: [Reference]
-  collection: BiologicallyDerivedProductCollection
-  processing: [BiologicallyDerivedProductProcessing]
-  manipulation: BiologicallyDerivedProductManipulation
-  storage: [BiologicallyDerivedProductStorage]
+  parent: [ReferenceInput]
+  collection: BiologicallyDerivedProductCollectionInput
+  processing: [BiologicallyDerivedProductProcessingInput]
+  manipulation: BiologicallyDerivedProductManipulationInput
+  storage: [BiologicallyDerivedProductStorageInput]
 }
 
-input BiologicallyDerivedProductCollection {
+input BiologicallyDerivedProductCollectionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  collector: Reference
-  source: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  collector: ReferenceInput
+  source: ReferenceInput
   collectedDateTime: dateTime  _collectedDateTime: ElementBase
-  collectedPeriod: Period
+  collectedPeriod: PeriodInput
 }
 
-input BiologicallyDerivedProductProcessing {
+input BiologicallyDerivedProductProcessingInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
-  procedure: CodeableConcept
-  additive: Reference
+  procedure: CodeableConceptInput
+  additive: ReferenceInput
   timeDateTime: dateTime  _timeDateTime: ElementBase
-  timePeriod: Period
+  timePeriod: PeriodInput
 }
 
-input BiologicallyDerivedProductManipulation {
+input BiologicallyDerivedProductManipulationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
   timeDateTime: dateTime  _timeDateTime: ElementBase
-  timePeriod: Period
+  timePeriod: PeriodInput
 }
 
-input BiologicallyDerivedProductStorage {
+input BiologicallyDerivedProductStorageInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
   temperature: decimal  _temperature: ElementBase
   scale: code  _scale: ElementBase
-  duration: Period
+  duration: PeriodInput
 }
 
 type BiologicallyDerivedProductReadType {
-  BiologicallyDerivedProduct(id : ID!) : BiologicallyDerivedProduct
+  BiologicallyDerivedProduct(id: ID!): BiologicallyDerivedProduct
 }
 
 type BiologicallyDerivedProductListType {
-  BiologicallyDerivedProductList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [BiologicallyDerivedProduct]
+  BiologicallyDerivedProductList(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [BiologicallyDerivedProduct]
 }
 
 type BiologicallyDerivedProductConnectionType {
-  BiologicallyDerivedProductConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : BiologicallyDerivedProductConnection
+  BiologicallyDerivedProductConection(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): BiologicallyDerivedProductConnection
 }
 
 type BiologicallyDerivedProductConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [BiologicallyDerivedProductEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [BiologicallyDerivedProductEdge]
 }
 
 type BiologicallyDerivedProductEdge {
-  mode : String
-  score : Float
-  resource : BiologicallyDerivedProduct
+  mode: String
+  score: Float
+  resource: BiologicallyDerivedProduct
 }
 
 type BiologicallyDerivedProductCreateType {
-  BiologicallyDerivedProductCreate(resource : BiologicallyDerivedProduct) : BiologicallyDerivedProductCreation
+  BiologicallyDerivedProductCreate(resource: BiologicallyDerivedProductInput): BiologicallyDerivedProductCreation
 }
 
 type BiologicallyDerivedProductCreation {
-  location : String
-  resource : BiologicallyDerivedProduct
-  information : OperationOutcome
+  location: String
+  resource: BiologicallyDerivedProduct
+  information: OperationOutcome
 }
 
 type BiologicallyDerivedProductUpdateType {
-  BiologicallyDerivedProductUpdate(id : IDresource : BiologicallyDerivedProduct) : BiologicallyDerivedProductUpdate
+  BiologicallyDerivedProductUpdate(id: ID, resource: BiologicallyDerivedProductInput): BiologicallyDerivedProductUpdate
 }
 
 type BiologicallyDerivedProductUpdate {
-  resource : BiologicallyDerivedProduct
-  information : OperationOutcome
+  resource: BiologicallyDerivedProduct
+  information: OperationOutcome
 }
 
 type BiologicallyDerivedProductDeleteType {
-  BiologicallyDerivedProductDelete(id : ID) : BiologicallyDerivedProductDelete
+  BiologicallyDerivedProductDelete(id: ID): BiologicallyDerivedProductDelete
 }
 
 type BiologicallyDerivedProductDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

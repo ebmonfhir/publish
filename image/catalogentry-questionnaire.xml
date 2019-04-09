@@ -5,9 +5,9 @@
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
-  <version value="4.0.0"/>
+  <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-02-28T12:32:32-06:00"/>
+  <date value="2019-04-09T02:13:58+01:00"/>
   <publisher value="Health Level Seven International (Orders and Observations)"/>
   <item>
     <linkId value="CatalogEntry"/>
@@ -235,7 +235,7 @@
         <valueString value="Identifier"/>
       </extension>
       <linkId value="CatalogEntry.identifier"/>
-      <text value="Unique identifier of the catalog item"/>
+      <text value="Business identifier of the catalog entry"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -249,7 +249,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code."/>
+        <text value="Business identifier uniquely assigned to the catalog entry."/>
         <type value="display"/>
       </item>
       <item>
@@ -279,10 +279,9 @@
         <valueInteger value="1"/>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="CodeableConcept"/>
+        <valueString value="string"/>
       </extension>
-      <linkId value="CatalogEntry.type"/>
-      <text value="The type of item - medication, device, service, protocol or other"/>
+      <linkId value="CatalogEntry.name"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -296,20 +295,117 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The type of item - medication, device, service, protocol or other."/>
+        <text value="The name of this catalog entry announces the item that is represented by the entry."/>
         <type value="display"/>
       </item>
       <item>
-        <linkId value="CatalogEntry.type.coding"/>
-        <text value="code:"/>
-        <type value="open-choice"/>
+        <linkId value="CatalogEntry.name.value"/>
+        <text value="Displayable name assigned to the catalog entry"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="code"/>
+      </extension>
+      <linkId value="CatalogEntry.type"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="The type of resource that is represented by this catalog entry."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.type.value"/>
+        <text value="type"/>
+        <type value="choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="code"/>
+      </extension>
+      <linkId value="CatalogEntry.status"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Indicates whether this catalog entry is open to public usage (active) or not (draft or retired)."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.status.value"/>
+        <text value="status"/>
+        <type value="choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Period"/>
+      </extension>
+      <linkId value="CatalogEntry.effectivePeriod"/>
+      <text value="When this catalog entry is expected to be active"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Period of usability of the catalog entry."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.effectivePeriod.low"/>
+        <text value="start:"/>
+        <type value="dateTime"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
       <item>
-        <linkId value="CatalogEntry.type.text"/>
-        <text value="text:"/>
-        <type value="string"/>
+        <linkId value="CatalogEntry.effectivePeriod.end"/>
+        <text value="end:"/>
+        <type value="dateTime"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
@@ -338,12 +434,12 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Whether the entry represents an orderable item."/>
+        <text value="Indicates whether or not the entry represents an item that is orderable."/>
         <type value="display"/>
       </item>
       <item>
         <linkId value="CatalogEntry.orderable.value"/>
-        <text value="Whether the entry represents an orderable item"/>
+        <text value="Is orderable"/>
         <type value="boolean"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -373,317 +469,26 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The item in a catalog or definition."/>
+        <text value="The item (resource) that this entry of the catalog represents."/>
         <type value="display"/>
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Medication, Device, Organization, Practitioner, PractitionerRole, HealthcareService, ActivityDefinition, PlanDefinition, SpecimenDefinition, ObservationDefinition, Binary"/>
+          <valueCode value="DeviceDefinition, Organization, Practitioner, PractitionerRole, HealthcareService, ActivityDefinition, PlanDefinition, SpecimenDefinition, ObservationDefinition, MedicationKnowledge, Substance, Location"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="CatalogEntry.referencedItem.value"/>
-        <text value="The item that is being defined"/>
+        <text value="Item attached to this entry of the catalog"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
     </item>
     <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="Identifier"/>
-      </extension>
-      <linkId value="CatalogEntry.additionalIdentifier"/>
-      <text value="Any additional identifier(s) for the catalog item, in the same granularity or concept"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Used in supporting related concepts, e.g. NDC to RxNorm."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalIdentifier.label"/>
-        <text value="label:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalIdentifier.system"/>
-        <text value="system:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalIdentifier.value"/>
-        <text value="value:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="CodeableConcept"/>
-      </extension>
-      <linkId value="CatalogEntry.classification"/>
-      <text value="Classification (category or class) of the item entry"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Classes of devices, or ATC for medication."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.classification.coding"/>
-        <text value="code:"/>
-        <type value="open-choice"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.classification.text"/>
-        <text value="text:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="code"/>
-      </extension>
-      <linkId value="CatalogEntry.status"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.status.value"/>
-        <text value="status"/>
-        <type value="choice"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="Period"/>
-      </extension>
-      <linkId value="CatalogEntry.validityPeriod"/>
-      <text value="The time period in which this catalog entry is expected to be active"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="The time period in which this catalog entry is expected to be active."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.validityPeriod.low"/>
-        <text value="start:"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.validityPeriod.end"/>
-        <text value="end:"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="datetime"/>
-      </extension>
-      <linkId value="CatalogEntry.validTo"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="The date until which this catalog entry is expected to be active."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.validTo.value"/>
-        <text value="The date until which this catalog entry is expected to be active"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="datetime"/>
-      </extension>
-      <linkId value="CatalogEntry.lastUpdated"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated. Perhaps not needed - if we use fhir resource metadata."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.lastUpdated.value"/>
-        <text value="When was this catalog last updated"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="CodeableConcept"/>
-      </extension>
-      <linkId value="CatalogEntry.additionalCharacteristic"/>
-      <text value="Additional characteristics of the catalog entry"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Used for examplefor Out of Formulary, or any specifics."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalCharacteristic.coding"/>
-        <text value="code:"/>
-        <type value="open-choice"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalCharacteristic.text"/>
-        <text value="text:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="CodeableConcept"/>
-      </extension>
-      <linkId value="CatalogEntry.additionalClassification"/>
-      <text value="Additional classification of the catalog entry"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="User for example for ATC classification, or."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalClassification.coding"/>
-        <text value="code:"/>
-        <type value="open-choice"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="CatalogEntry.additionalClassification.text"/>
-        <text value="text:"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
       <linkId value="CatalogEntry.relatedEntry"/>
-      <text value="An item that this catalog entry is related to"/>
+      <text value="Another entry of the catalog related to this one"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -782,7 +587,7 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="code"/>
         </extension>
-        <linkId value="CatalogEntry.relatedEntry.relationtype"/>
+        <linkId value="CatalogEntry.relatedEntry.relationship"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -796,12 +601,12 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc."/>
+          <text value="The type of relationship to the related entry."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="CatalogEntry.relatedEntry.relationtype.value"/>
-          <text value="relationtype"/>
+          <linkId value="CatalogEntry.relatedEntry.relationship.value"/>
+          <text value="relationship"/>
           <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -817,7 +622,7 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="Reference"/>
         </extension>
-        <linkId value="CatalogEntry.relatedEntry.item"/>
+        <linkId value="CatalogEntry.relatedEntry.target"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -831,7 +636,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The reference to the related item."/>
+          <text value="The reference to the related entry."/>
           <type value="display"/>
         </item>
         <item>
@@ -841,12 +646,238 @@
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
           </extension>
-          <linkId value="CatalogEntry.relatedEntry.item.value"/>
-          <text value="The reference to the related item"/>
+          <linkId value="CatalogEntry.relatedEntry.target.value"/>
+          <text value="The reference to the related entry"/>
           <type value="reference"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="CatalogEntry.updatedBy"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Last actor who recorded (created or updated) this catalog entry."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="Person, Device"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+        </extension>
+        <linkId value="CatalogEntry.updatedBy.value"/>
+        <text value="Last updater of this catalog entry"/>
+        <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Annotation"/>
+      </extension>
+      <linkId value="CatalogEntry.note"/>
+      <text value="Notes and comments about this catalog entry"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Notes and comments about this catalog entry."/>
+        <type value="display"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="CodeableConcept"/>
+      </extension>
+      <linkId value="CatalogEntry.billingCode"/>
+      <text value="Billing code in the context of this catalog entry"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Billing code associated to the  item in the context of this  entry of the catalog."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.billingCode.coding"/>
+        <text value="code:"/>
+        <type value="open-choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.billingCode.text"/>
+        <text value="text:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="string"/>
+      </extension>
+      <linkId value="CatalogEntry.billingSummary"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Billing summary attached to the  item in the context of this  entry of the catalog."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.billingSummary.value"/>
+        <text value="Billing summary in the context of this catalog entry"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="string"/>
+      </extension>
+      <linkId value="CatalogEntry.scheduleSummary"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Schedule summary for the  item in the context of this  entry of the catalog."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.scheduleSummary.value"/>
+        <text value="Schedule summary for the catalog entry"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="string"/>
+      </extension>
+      <linkId value="CatalogEntry.limitationSummary"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Summary of limitations for the  item in the context of this  entry of the catalog."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.limitationSummary.value"/>
+        <text value="Summary of limitations for the catalog entry"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="string"/>
+      </extension>
+      <linkId value="CatalogEntry.regulatorySummary"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Regulatory summary for the  item in the context of this  entry of the catalog."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="CatalogEntry.regulatorySummary.value"/>
+        <text value="Regulatory  summary for the catalog entry"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
       </item>
     </item>
   </item>

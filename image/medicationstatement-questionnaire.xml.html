@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationstatement-questionnaire.xml - FHIR v4.0.0</title>
+  <title>Medicationstatement-questionnaire.xml - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -106,7 +106,7 @@
 <div class="col-12">
 
 <h1>Medicationstatement-questionnaire.xml</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 <p>
 <a href="medicationstatement-questionnaire.xml">Raw XML</a> (<a href="medicationstatement-questionnaire.canonical.xml">canonical form</a> + also see <a href="xml.html">XML Format Specification</a>)
@@ -127,8 +127,8 @@
       &lt;status value=&quot;active&quot;/&gt;
       &lt;description value=&quot;Type options for MedicationStatement.medication[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:bb6a6ca3-6d2e-4c81-bb5b-63283126be04&quot;/&gt;
-        &lt;timestamp value=&quot;2019-02-28T12:35:17-06:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:8987192d-b8ad-47a3-b384-dcbb1f904d4f&quot;/&gt;
+        &lt;timestamp value=&quot;2019-04-09T02:16:52+01:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;CodeableConcept&quot;/&gt;
@@ -149,8 +149,8 @@
       &lt;status value=&quot;active&quot;/&gt;
       &lt;description value=&quot;Type options for MedicationStatement.effective[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:f6a6d22c-cd99-4668-90fd-bca13e6e137a&quot;/&gt;
-        &lt;timestamp value=&quot;2019-02-28T12:35:17-06:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:282405c5-a215-4cf9-9a9c-8963df9d6125&quot;/&gt;
+        &lt;timestamp value=&quot;2019-04-09T02:16:52+01:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;dateTime&quot;/&gt;
@@ -167,9 +167,9 @@
   &lt;identifier&gt;
     &lt;system value=&quot;urn:ietf:rfc:3986&quot;/&gt;
   &lt;/identifier&gt;
-  &lt;version value=&quot;4.0.0&quot;/&gt;
+  &lt;version value=&quot;4.1.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-02-28T12:32:32-06:00&quot;/&gt;
+  &lt;date value=&quot;2019-04-09T02:13:58+01:00&quot;/&gt;
   &lt;publisher value=&quot;Health Level Seven International (Pharmacy)&quot;/&gt;
   &lt;item&gt;
     &lt;linkId value=&quot;MedicationStatement&quot;/&gt;
@@ -741,7 +741,7 @@
       &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
         &lt;valueString value=&quot;Reference&quot;/&gt;
       &lt;/extension&gt;
-      &lt;linkId value=&quot;MedicationStatement.context&quot;/&gt;
+      &lt;linkId value=&quot;MedicationStatement.encounter&quot;/&gt;
       &lt;type value=&quot;group&quot;/&gt;
       &lt;required value=&quot;false&quot;/&gt;
       &lt;repeats value=&quot;true&quot;/&gt;
@@ -755,18 +755,18 @@
             &lt;/coding&gt;
           &lt;/valueCodeableConcept&gt;
         &lt;/extension&gt;
-        &lt;text value=&quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot;/&gt;
+        &lt;text value=&quot;The encounter that establishes the context for this MedicationStatement.&quot;/&gt;
         &lt;type value=&quot;display&quot;/&gt;
       &lt;/item&gt;
       &lt;item&gt;
         &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
-          &lt;valueCode value=&quot;Encounter, EpisodeOfCare&quot;/&gt;
+          &lt;valueCode value=&quot;Encounter&quot;/&gt;
         &lt;/extension&gt;
         &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
           &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
         &lt;/extension&gt;
-        &lt;linkId value=&quot;MedicationStatement.context.value&quot;/&gt;
-        &lt;text value=&quot;Encounter / Episode associated with MedicationStatement&quot;/&gt;
+        &lt;linkId value=&quot;MedicationStatement.encounter.value&quot;/&gt;
+        &lt;text value=&quot;Encounter associated with MedicationStatement&quot;/&gt;
         &lt;type value=&quot;reference&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
         &lt;repeats value=&quot;false&quot;/&gt;
@@ -1087,7 +1087,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Thu, Feb 28, 2019 12:35-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 02:16+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

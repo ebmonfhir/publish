@@ -5,38 +5,22 @@
   "MedicationDispense": {
     "elements": {
       "MedicationDispense.status": {
-        "old-min": 0,
-        "new-min": 1,
         "binding-valueset-changed": true,
         "binding-status": "changed",
         "old-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/medication-dispense-status",
+          "reference": "http://hl7.org/fhir/ValueSet/medicationdispense-status|4.0.0",
           "strength": "required"
         },
         "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/medicationdispense-status|4.0.0",
+          "reference": "http://hl7.org/fhir/ValueSet/medicationdispense-status|4.1.0",
           "strength": "required"
         }
-      },
-      "MedicationDispense.statusReason[x]": {
-        "status": "new"
       },
       "MedicationDispense.category": {
         "old-max": "1",
         "new-max": "*"
       },
-      "MedicationDispense.performer.function": {
-        "status": "new"
-      },
-      "MedicationDispense.performer.actor": {
-        "removed-types": [
-          "Reference(Practitioner | Organization | Patient | Device | RelatedPerson)"
-        ],
-        "added-types": [
-          "Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson)"
-        ]
-      },
-      "MedicationDispense.location": {
+      "MedicationDispense.encounter": {
         "status": "new"
       },
       "MedicationDispense.receiver": {
@@ -51,19 +35,13 @@
         "old-max": "*",
         "new-max": "1",
         "removed-types": [
-          "Reference(Practitioner)"
+          "Reference(Practitioner | PractitionerRole)"
         ],
         "added-types": [
           "Reference(Practitioner | PractitionerRole | Organization)"
         ]
       },
-      "MedicationDispense.performer.onBehalfOf": {
-        "status": "deleted"
-      },
-      "MedicationDispense.notDone": {
-        "status": "deleted"
-      },
-      "MedicationDispense.notDoneReason[x]": {
+      "MedicationDispense.context": {
         "status": "deleted"
       }
     },

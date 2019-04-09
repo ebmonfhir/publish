@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Flag {
   id: ID
@@ -19,114 +19,114 @@ type Flag {
   author: Reference
 }
 
-input Flag {
+input FlagInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  category: [CodeableConcept]
-  code: CodeableConcept!
-  subject: Reference!
-  period: Period
-  encounter: Reference
-  author: Reference
+  category: [CodeableConceptInput]
+  code: CodeableConceptInput!
+  subject: ReferenceInput!
+  period: PeriodInput
+  encounter: ReferenceInput
+  author: ReferenceInput
 }
 
 type FlagReadType {
-  Flag(id : ID!) : Flag
+  Flag(id: ID!): Flag
 }
 
 type FlagListType {
-  FlagList(_filter : String
-    author : [reference]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    patient : [reference]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Flag]
+  FlagList(_filter: String
+    author: [reference]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    patient: [reference]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Flag]
 }
 
 type FlagConnectionType {
-  FlagConection(_filter : String
-    author : [reference]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    patient : [reference]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : FlagConnection
+  FlagConection(_filter: String
+    author: [reference]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    patient: [reference]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): FlagConnection
 }
 
 type FlagConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [FlagEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [FlagEdge]
 }
 
 type FlagEdge {
-  mode : String
-  score : Float
-  resource : Flag
+  mode: String
+  score: Float
+  resource: Flag
 }
 
 type FlagCreateType {
-  FlagCreate(resource : Flag) : FlagCreation
+  FlagCreate(resource: FlagInput): FlagCreation
 }
 
 type FlagCreation {
-  location : String
-  resource : Flag
-  information : OperationOutcome
+  location: String
+  resource: Flag
+  information: OperationOutcome
 }
 
 type FlagUpdateType {
-  FlagUpdate(id : IDresource : Flag) : FlagUpdate
+  FlagUpdate(id: ID, resource: FlagInput): FlagUpdate
 }
 
 type FlagUpdate {
-  resource : Flag
-  information : OperationOutcome
+  resource: Flag
+  information: OperationOutcome
 }
 
 type FlagDeleteType {
-  FlagDelete(id : ID) : FlagDelete
+  FlagDelete(id: ID): FlagDelete
 }
 
 type FlagDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

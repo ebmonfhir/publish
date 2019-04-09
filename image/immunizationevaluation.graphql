@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type ImmunizationEvaluation {
   id: ID
@@ -26,24 +26,24 @@ type ImmunizationEvaluation {
   seriesDosesString: String  _seriesDosesString: ElementBase
 }
 
-input ImmunizationEvaluation {
+input ImmunizationEvaluationInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  patient: Reference!
+  patient: ReferenceInput!
   date: dateTime  _date: ElementBase
-  authority: Reference
-  targetDisease: CodeableConcept!
-  immunizationEvent: Reference!
-  doseStatus: CodeableConcept!
-  doseStatusReason: [CodeableConcept]
+  authority: ReferenceInput
+  targetDisease: CodeableConceptInput!
+  immunizationEvent: ReferenceInput!
+  doseStatus: CodeableConceptInput!
+  doseStatusReason: [CodeableConceptInput]
   description: String  _description: ElementBase
   series: String  _series: ElementBase
   doseNumberPositiveInt: positiveInt  _doseNumberPositiveInt: ElementBase
@@ -53,96 +53,96 @@ input ImmunizationEvaluation {
 }
 
 type ImmunizationEvaluationReadType {
-  ImmunizationEvaluation(id : ID!) : ImmunizationEvaluation
+  ImmunizationEvaluation(id: ID!): ImmunizationEvaluation
 }
 
 type ImmunizationEvaluationListType {
-  ImmunizationEvaluationList(_filter : String
-    date : [date]
-    dose_status : [token]
-    identifier : [token]
-    immunization_event : [reference]
-    patient : [reference]
-    status : [token]
-    target_disease : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [ImmunizationEvaluation]
+  ImmunizationEvaluationList(_filter: String
+    date: [date]
+    dose_status: [token]
+    identifier: [token]
+    immunization_event: [reference]
+    patient: [reference]
+    status: [token]
+    target_disease: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ImmunizationEvaluation]
 }
 
 type ImmunizationEvaluationConnectionType {
-  ImmunizationEvaluationConection(_filter : String
-    date : [date]
-    dose_status : [token]
-    identifier : [token]
-    immunization_event : [reference]
-    patient : [reference]
-    status : [token]
-    target_disease : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ImmunizationEvaluationConnection
+  ImmunizationEvaluationConection(_filter: String
+    date: [date]
+    dose_status: [token]
+    identifier: [token]
+    immunization_event: [reference]
+    patient: [reference]
+    status: [token]
+    target_disease: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ImmunizationEvaluationConnection
 }
 
 type ImmunizationEvaluationConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ImmunizationEvaluationEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ImmunizationEvaluationEdge]
 }
 
 type ImmunizationEvaluationEdge {
-  mode : String
-  score : Float
-  resource : ImmunizationEvaluation
+  mode: String
+  score: Float
+  resource: ImmunizationEvaluation
 }
 
 type ImmunizationEvaluationCreateType {
-  ImmunizationEvaluationCreate(resource : ImmunizationEvaluation) : ImmunizationEvaluationCreation
+  ImmunizationEvaluationCreate(resource: ImmunizationEvaluationInput): ImmunizationEvaluationCreation
 }
 
 type ImmunizationEvaluationCreation {
-  location : String
-  resource : ImmunizationEvaluation
-  information : OperationOutcome
+  location: String
+  resource: ImmunizationEvaluation
+  information: OperationOutcome
 }
 
 type ImmunizationEvaluationUpdateType {
-  ImmunizationEvaluationUpdate(id : IDresource : ImmunizationEvaluation) : ImmunizationEvaluationUpdate
+  ImmunizationEvaluationUpdate(id: ID, resource: ImmunizationEvaluationInput): ImmunizationEvaluationUpdate
 }
 
 type ImmunizationEvaluationUpdate {
-  resource : ImmunizationEvaluation
-  information : OperationOutcome
+  resource: ImmunizationEvaluation
+  information: OperationOutcome
 }
 
 type ImmunizationEvaluationDeleteType {
-  ImmunizationEvaluationDelete(id : ID) : ImmunizationEvaluationDelete
+  ImmunizationEvaluationDelete(id: ID): ImmunizationEvaluationDelete
 }
 
 type ImmunizationEvaluationDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 
