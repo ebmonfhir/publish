@@ -3,12 +3,14 @@
   "id": "Statistic-example-1",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: Statistic-example-1</p><p><b>status</b>: draft</p><p><b>date</b>: Jan 5, 2017, 5:18:19 PM</p><h3>Publishers</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>contributor</b>: </p><p><b>synthesisType</b>: std-MA <span>(Details : {[not stated] code 'std-MA' = 'std-MA)</span></p><p><b>studyType</b>: RCT <span>(Details : {[not stated] code 'RCT' = 'RCT)</span></p><p><b>exposureBackground</b>: </p><p><b>exposure</b>: </p><p><b>Exception generating Narrative: Unknown type BackgroundReference</b></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: Statistic-example-1</p><p><b>status</b>: draft</p><p><b>date</b>: Jan 5, 2017, 5:18:19 PM</p><h3>Publishers</h3><table><tr><td>-</td><td><b>Name</b></td></tr><tr><td>*</td><td>Cochrane</td></tr></table><p><b>contributor</b>: </p><p><b>synthesisType</b>: std-MA <span>(Details : {[not stated] code 'std-MA' = 'std-MA)</span></p><p><b>studyType</b>: RCT <span>(Details : {[not stated] code 'RCT' = 'RCT)</span></p><p><b>exposureBackground</b>: <a>Allergic rhinitis in adults without concomitant asthma</a></p><p><b>exposure</b>: <a>Sublingual specific immunotherapy exposure</a></p><p><b>exposureVariant</b>: <a>No sublingual specific immunotherapy exposure</a></p><p><b>measuredVariable</b>: <a>No sublingual specific immunotherapy exposure</a></p><p><b>statisticType</b>: </p><p><b>Exception generating Narrative: Unknown Content type @  START_TAG seen ...&lt;statisticType xmlns=&quot;http://hl7.org/fhir&quot;&gt;\\n\\t\\t&lt;type&gt;... @2:9</b></p></div>"
   },
   "status": "draft",
   "date": "2017-01-05T17:18:19+01:00",
   "publisher": [
-    null
+    {
+      "name": "Cochrane"
+    }
   ],
   "contributor": [
     {
@@ -35,17 +37,34 @@
       }
     ]
   },
+  "exposureBackground": {
+    "reference": "Group/AllergicRhinitisNOTasthma",
+    "type": "Group",
+    "display": "Allergic rhinitis in adults without concomitant asthma"
+  },
+  "exposure": {
+    "reference": "Group/SLimmunotherapy",
+    "type": "Group",
+    "display": "Sublingual specific immunotherapy exposure"
+  },
   "exposureVariant": [
-    {}
+    {
+      "reference": "Group/noSLimmunotherapy",
+      "type": "Group",
+      "display": "No sublingual specific immunotherapy exposure"
+    }
   ],
   "measuredVariable": [
-    {}
+    {
+      "reference": "EvidenceVariable/RQLQrhinitisQOL",
+      "type": "EvidenceVariable",
+      "display": "No sublingual specific immunotherapy exposure"
+    }
   ],
   "quantity": {
     "value": -0.36,
-    "comparator": "=",
     "unit": "points",
-    "system": "UCUM",
+    "system": "http://unitsofmeasure.org",
     "code": "score"
   },
   "sampleSize": {
@@ -82,7 +101,6 @@
         {
           "coding": [
             {
-              "system": "GRADE",
               "code": "3",
               "display": "Moderate"
             }
@@ -95,7 +113,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "RiskOfBias",
                   "display": "Risk of bias"
                 }
@@ -106,7 +123,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "no-concern",
                   "display": "no serious concern"
                 }
@@ -115,11 +131,15 @@
           ]
         },
         {
+          "note": [
+            {
+              "text": "No explanation was provided"
+            }
+          ],
           "type": [
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "Inconsistency",
                   "display": "Inconsistency"
                 }
@@ -130,15 +150,11 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "serious-concern",
                   "display": "serious concern"
                 }
               ]
             }
-          ],
-          "note": [
-            null
           ]
         },
         {
@@ -146,7 +162,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "Indirectness",
                   "display": "Indirectness"
                 }
@@ -157,7 +172,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "no-concern",
                   "display": "no serious concern"
                 }
@@ -170,7 +184,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "Imprecision",
                   "display": "Imprecision"
                 }
@@ -181,7 +194,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "no-concern",
                   "display": "no serious concern"
                 }
@@ -194,7 +206,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "PublicationBias",
                   "display": "Publication bias"
                 }
@@ -205,7 +216,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "no-concern",
                   "display": "no serious concern"
                 }
@@ -218,7 +228,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "DoseResponseGradient",
                   "display": "Dose response gradient"
                 }
@@ -229,7 +238,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "absent",
                   "display": "absent"
                 }
@@ -242,7 +250,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "PlausibleConfounding",
                   "display": "Plausible confounding"
                 }
@@ -253,7 +260,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "absent",
                   "display": "absent"
                 }
@@ -266,7 +272,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "LargeEffect",
                   "display": "Large effect"
                 }
@@ -277,7 +282,6 @@
             {
               "coding": [
                 {
-                  "system": "GRADE",
                   "code": "absent",
                   "display": "absent"
                 }

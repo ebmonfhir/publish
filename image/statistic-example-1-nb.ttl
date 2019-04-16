@@ -10,11 +10,14 @@
   fhir:Resource.id [ fhir:value "Statistic-example-1"];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: Statistic-example-1</p><p><b>status</b>: draft</p><p><b>date</b>: Jan 5, 2017, 5:18:19 PM</p><h3>Publishers</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>contributor</b>: </p><p><b>synthesisType</b>: std-MA <span>(Details : {[not stated] code 'std-MA' = 'std-MA)</span></p><p><b>studyType</b>: RCT <span>(Details : {[not stated] code 'RCT' = 'RCT)</span></p><p><b>exposureBackground</b>: </p><p><b>exposure</b>: </p><p><b>Exception generating Narrative: Unknown type BackgroundReference</b></p></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: Statistic-example-1</p><p><b>status</b>: draft</p><p><b>date</b>: Jan 5, 2017, 5:18:19 PM</p><h3>Publishers</h3><table><tr><td>-</td><td><b>Name</b></td></tr><tr><td>*</td><td>Cochrane</td></tr></table><p><b>contributor</b>: </p><p><b>synthesisType</b>: std-MA <span>(Details : {[not stated] code 'std-MA' = 'std-MA)</span></p><p><b>studyType</b>: RCT <span>(Details : {[not stated] code 'RCT' = 'RCT)</span></p><p><b>exposureBackground</b>: <a>Allergic rhinitis in adults without concomitant asthma</a></p><p><b>exposure</b>: <a>Sublingual specific immunotherapy exposure</a></p><p><b>exposureVariant</b>: <a>No sublingual specific immunotherapy exposure</a></p><p><b>measuredVariable</b>: <a>No sublingual specific immunotherapy exposure</a></p><p><b>statisticType</b>: </p><p><b>Exception generating Narrative: Unknown Content type @  START_TAG seen ...&lt;statisticType xmlns=&quot;http://hl7.org/fhir&quot;&gt;\\n\\t\\t&lt;type&gt;... @2:9</b></p></div>"
   ];
   fhir:Statistic.status [ fhir:value "draft"];
   fhir:Statistic.date [ fhir:value "2017-01-05T17:18:19+01:00"^^xsd:dateTime];
-  fhir:Statistic.publisher [ fhir:index 0];
+  fhir:Statistic.publisher [
+     fhir:index 0;
+     fhir:Statistic.publisher.name [ fhir:value "Cochrane" ]
+  ];
   fhir:Statistic.contributor [
      fhir:index 0;
      fhir:Contributor.type [ fhir:value "author" ];
@@ -36,22 +39,37 @@
        fhir:Coding.code [ fhir:value "RCT" ]
      ]
   ];
-  fhir:Statistic.exposureBackgroundReference [];
-  fhir:Statistic.exposureReference [];
+  fhir:Statistic.exposureBackground [
+     fhir:link <http://hl7.org/fhir/Group/AllergicRhinitisNOTasthma>;
+     fhir:Reference.reference [ fhir:value "Group/AllergicRhinitisNOTasthma" ];
+     fhir:Reference.type [ fhir:value "Group" ];
+     fhir:Reference.display [ fhir:value "Allergic rhinitis in adults without concomitant asthma" ]
+  ];
+  fhir:Statistic.exposure [
+     fhir:link <http://hl7.org/fhir/Group/SLimmunotherapy>;
+     fhir:Reference.reference [ fhir:value "Group/SLimmunotherapy" ];
+     fhir:Reference.type [ fhir:value "Group" ];
+     fhir:Reference.display [ fhir:value "Sublingual specific immunotherapy exposure" ]
+  ];
   fhir:Statistic.exposureVariant [
      fhir:index 0;
-     fhir:Statistic.exposureVariant.elementReference [ ]
+     fhir:link <http://hl7.org/fhir/Group/noSLimmunotherapy>;
+     fhir:Reference.reference [ fhir:value "Group/noSLimmunotherapy" ];
+     fhir:Reference.type [ fhir:value "Group" ];
+     fhir:Reference.display [ fhir:value "No sublingual specific immunotherapy exposure" ]
   ];
   fhir:Statistic.measuredVariable [
      fhir:index 0;
-     fhir:Statistic.measuredVariable.elementReference [ ]
+     fhir:link <http://hl7.org/fhir/EvidenceVariable/RQLQrhinitisQOL>;
+     fhir:Reference.reference [ fhir:value "EvidenceVariable/RQLQrhinitisQOL" ];
+     fhir:Reference.type [ fhir:value "EvidenceVariable" ];
+     fhir:Reference.display [ fhir:value "No sublingual specific immunotherapy exposure" ]
   ];
   fhir:Statistic.statisticType [];
   fhir:Statistic.quantity [
      fhir:Quantity.value [ fhir:value "-0.36"^^xsd:decimal ];
-     fhir:Quantity.comparator [ fhir:value "=" ];
      fhir:Quantity.unit [ fhir:value "points" ];
-     fhir:Quantity.system [ fhir:value "UCUM" ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
      fhir:Quantity.code [ fhir:value "score" ]
   ];
   fhir:Statistic.sampleSize [
@@ -85,7 +103,6 @@
        fhir:index 0;
        fhir:CodeableConcept.coding [
          fhir:index 0;
-         fhir:Coding.system [ fhir:value "GRADE" ];
          fhir:Coding.code [ fhir:value "3" ];
          fhir:Coding.display [ fhir:value "Moderate" ]
        ]
@@ -96,7 +113,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "RiskOfBias" ];
            fhir:Coding.display [ fhir:value "Risk of bias" ]
          ]
@@ -105,18 +121,20 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "no-concern" ];
            fhir:Coding.display [ fhir:value "no serious concern" ]
          ]
        ]
      ], [
        fhir:index 1;
+       fhir:Statistic.certainty.certaintySubcomponent.note [
+         fhir:index 0;
+         fhir:Annotation.text [ fhir:value "No explanation was provided" ]
+       ];
        fhir:Statistic.certainty.certaintySubcomponent.type [
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "Inconsistency" ];
            fhir:Coding.display [ fhir:value "Inconsistency" ]
          ]
@@ -125,19 +143,16 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "serious-concern" ];
            fhir:Coding.display [ fhir:value "serious concern" ]
          ]
-       ];
-       fhir:Statistic.certainty.certaintySubcomponent.note [ fhir:index 0 ]
+       ]
      ], [
        fhir:index 2;
        fhir:Statistic.certainty.certaintySubcomponent.type [
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "Indirectness" ];
            fhir:Coding.display [ fhir:value "Indirectness" ]
          ]
@@ -146,7 +161,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "no-concern" ];
            fhir:Coding.display [ fhir:value "no serious concern" ]
          ]
@@ -157,7 +171,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "Imprecision" ];
            fhir:Coding.display [ fhir:value "Imprecision" ]
          ]
@@ -166,7 +179,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "no-concern" ];
            fhir:Coding.display [ fhir:value "no serious concern" ]
          ]
@@ -177,7 +189,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "PublicationBias" ];
            fhir:Coding.display [ fhir:value "Publication bias" ]
          ]
@@ -186,7 +197,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "no-concern" ];
            fhir:Coding.display [ fhir:value "no serious concern" ]
          ]
@@ -197,7 +207,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "DoseResponseGradient" ];
            fhir:Coding.display [ fhir:value "Dose response gradient" ]
          ]
@@ -206,7 +215,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "absent" ];
            fhir:Coding.display [ fhir:value "absent" ]
          ]
@@ -217,7 +225,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "PlausibleConfounding" ];
            fhir:Coding.display [ fhir:value "Plausible confounding" ]
          ]
@@ -226,7 +233,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "absent" ];
            fhir:Coding.display [ fhir:value "absent" ]
          ]
@@ -237,7 +243,6 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "LargeEffect" ];
            fhir:Coding.display [ fhir:value "Large effect" ]
          ]
@@ -246,13 +251,20 @@
          fhir:index 0;
          fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Coding.system [ fhir:value "GRADE" ];
            fhir:Coding.code [ fhir:value "absent" ];
            fhir:Coding.display [ fhir:value "absent" ]
          ]
        ]
      ]
   ] .
+
+<http://hl7.org/fhir/Group/AllergicRhinitisNOTasthma> a fhir:Group .
+
+<http://hl7.org/fhir/Group/SLimmunotherapy> a fhir:Group .
+
+<http://hl7.org/fhir/Group/noSLimmunotherapy> a fhir:Group .
+
+<http://hl7.org/fhir/EvidenceVariable/RQLQrhinitisQOL> a fhir:EvidenceVariable .
 
 # - ontology header ------------------------------------------------------------
 

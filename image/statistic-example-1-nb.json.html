@@ -40,7 +40,7 @@
 		<div class="container"><!-- container -->
 			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
 			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
+			<b><font size="+2">EBMOnFHIR Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -119,12 +119,14 @@
   &quot;id&quot;: &quot;Statistic-example-1&quot;,
   &quot;text&quot;: {
     &quot;status&quot;: &quot;generated&quot;,
-    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: Statistic-example-1&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: Jan 5, 2017, 5:18:19 PM&lt;/p&gt;&lt;h3&gt;Publishers&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;contributor&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: std-MA &lt;span&gt;(Details : {[not stated] code 'std-MA' = 'std-MA)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: RCT &lt;span&gt;(Details : {[not stated] code 'RCT' = 'RCT)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;exposureBackground&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;exposure&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown type BackgroundReference&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
+    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: Statistic-example-1&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: Jan 5, 2017, 5:18:19 PM&lt;/p&gt;&lt;h3&gt;Publishers&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;Cochrane&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;contributor&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: std-MA &lt;span&gt;(Details : {[not stated] code 'std-MA' = 'std-MA)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: RCT &lt;span&gt;(Details : {[not stated] code 'RCT' = 'RCT)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;exposureBackground&lt;/b&gt;: &lt;a&gt;Allergic rhinitis in adults without concomitant asthma&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;exposure&lt;/b&gt;: &lt;a&gt;Sublingual specific immunotherapy exposure&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;exposureVariant&lt;/b&gt;: &lt;a&gt;No sublingual specific immunotherapy exposure&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;measuredVariable&lt;/b&gt;: &lt;a&gt;No sublingual specific immunotherapy exposure&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;statisticType&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown Content type @  START_TAG seen ...&amp;lt;statisticType xmlns=&amp;quot;http://hl7.org/fhir&amp;quot;&amp;gt;\\n\\t\\t&amp;lt;type&amp;gt;... @2:9&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
   },
   &quot;status&quot;: &quot;draft&quot;,
   &quot;date&quot;: &quot;2017-01-05T17:18:19+01:00&quot;,
   &quot;publisher&quot;: [
-    null
+    {
+      &quot;name&quot;: &quot;Cochrane&quot;
+    }
   ],
   &quot;contributor&quot;: [
     {
@@ -151,17 +153,34 @@
       }
     ]
   },
+  &quot;exposureBackground&quot;: {
+    &quot;reference&quot;: &quot;Group/AllergicRhinitisNOTasthma&quot;,
+    &quot;type&quot;: &quot;Group&quot;,
+    &quot;display&quot;: &quot;Allergic rhinitis in adults without concomitant asthma&quot;
+  },
+  &quot;exposure&quot;: {
+    &quot;reference&quot;: &quot;Group/SLimmunotherapy&quot;,
+    &quot;type&quot;: &quot;Group&quot;,
+    &quot;display&quot;: &quot;Sublingual specific immunotherapy exposure&quot;
+  },
   &quot;exposureVariant&quot;: [
-    {}
+    {
+      &quot;reference&quot;: &quot;Group/noSLimmunotherapy&quot;,
+      &quot;type&quot;: &quot;Group&quot;,
+      &quot;display&quot;: &quot;No sublingual specific immunotherapy exposure&quot;
+    }
   ],
   &quot;measuredVariable&quot;: [
-    {}
+    {
+      &quot;reference&quot;: &quot;EvidenceVariable/RQLQrhinitisQOL&quot;,
+      &quot;type&quot;: &quot;EvidenceVariable&quot;,
+      &quot;display&quot;: &quot;No sublingual specific immunotherapy exposure&quot;
+    }
   ],
   &quot;quantity&quot;: {
     &quot;value&quot;: -0.36,
-    &quot;comparator&quot;: &quot;=&quot;,
     &quot;unit&quot;: &quot;points&quot;,
-    &quot;system&quot;: &quot;UCUM&quot;,
+    &quot;system&quot;: &quot;http://unitsofmeasure.org&quot;,
     &quot;code&quot;: &quot;score&quot;
   },
   &quot;sampleSize&quot;: {
@@ -198,7 +217,6 @@
         {
           &quot;coding&quot;: [
             {
-              &quot;system&quot;: &quot;GRADE&quot;,
               &quot;code&quot;: &quot;3&quot;,
               &quot;display&quot;: &quot;Moderate&quot;
             }
@@ -211,7 +229,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;RiskOfBias&quot;,
                   &quot;display&quot;: &quot;Risk of bias&quot;
                 }
@@ -222,7 +239,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;no-concern&quot;,
                   &quot;display&quot;: &quot;no serious concern&quot;
                 }
@@ -231,11 +247,15 @@
           ]
         },
         {
+          &quot;note&quot;: [
+            {
+              &quot;text&quot;: &quot;No explanation was provided&quot;
+            }
+          ],
           &quot;type&quot;: [
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;Inconsistency&quot;,
                   &quot;display&quot;: &quot;Inconsistency&quot;
                 }
@@ -246,15 +266,11 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;serious-concern&quot;,
                   &quot;display&quot;: &quot;serious concern&quot;
                 }
               ]
             }
-          ],
-          &quot;note&quot;: [
-            null
           ]
         },
         {
@@ -262,7 +278,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;Indirectness&quot;,
                   &quot;display&quot;: &quot;Indirectness&quot;
                 }
@@ -273,7 +288,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;no-concern&quot;,
                   &quot;display&quot;: &quot;no serious concern&quot;
                 }
@@ -286,7 +300,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;Imprecision&quot;,
                   &quot;display&quot;: &quot;Imprecision&quot;
                 }
@@ -297,7 +310,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;no-concern&quot;,
                   &quot;display&quot;: &quot;no serious concern&quot;
                 }
@@ -310,7 +322,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;PublicationBias&quot;,
                   &quot;display&quot;: &quot;Publication bias&quot;
                 }
@@ -321,7 +332,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;no-concern&quot;,
                   &quot;display&quot;: &quot;no serious concern&quot;
                 }
@@ -334,7 +344,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;DoseResponseGradient&quot;,
                   &quot;display&quot;: &quot;Dose response gradient&quot;
                 }
@@ -345,7 +354,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;absent&quot;,
                   &quot;display&quot;: &quot;absent&quot;
                 }
@@ -358,7 +366,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;PlausibleConfounding&quot;,
                   &quot;display&quot;: &quot;Plausible confounding&quot;
                 }
@@ -369,7 +376,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;absent&quot;,
                   &quot;display&quot;: &quot;absent&quot;
                 }
@@ -382,7 +388,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;LargeEffect&quot;,
                   &quot;display&quot;: &quot;Large effect&quot;
                 }
@@ -393,7 +398,6 @@
             {
               &quot;coding&quot;: [
                 {
-                  &quot;system&quot;: &quot;GRADE&quot;,
                   &quot;code&quot;: &quot;absent&quot;,
                   &quot;display&quot;: &quot;absent&quot;
                 }
@@ -429,7 +433,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 10:27+0100. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 16, 2019 10:10-0500. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -38,7 +38,7 @@
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
 			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
-			<b><font size="+2">EBMOnFHIR Inline Statistics Model</font></b>
+			<b><font size="+2">EBMOnFHIR Statistics Model</font></b>
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -292,61 +292,25 @@ This is a representation of the json schema for Statistic, which is just a part 
           "description": "The type of study that produced this statistic.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
-        "exposureBackgroundString": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureBackgroundString": {
-          "description": "Extensions for exposureBackgroundString",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "exposureBackgroundMarkdown": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureBackgroundMarkdown": {
-          "description": "Extensions for exposureBackgroundMarkdown",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "exposureBackgroundReference": {
+        "exposureBackground": {
           "description": "TBD.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
-        "exposureString": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureString": {
-          "description": "Extensions for exposureString",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "exposureMarkdown": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureMarkdown": {
-          "description": "Extensions for exposureMarkdown",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "exposureReference": {
+        "exposure": {
           "description": "TBD.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "exposureVariant": {
           "description": "Exposure or intervention or exposure state.",
           "items": {
-            "$ref": "#/definitions/Statistic_ExposureVariant"
+            "$ref": "Reference.schema.json#/definitions/Reference"
           },
           "type": "array"
         },
         "measuredVariable": {
           "description": "Outcome or characteristic that is measured.",
           "items": {
-            "$ref": "#/definitions/Statistic_MeasuredVariable"
+            "$ref": "Reference.schema.json#/definitions/Reference"
           },
           "type": "array"
         },
@@ -386,6 +350,7 @@ This is a representation of the json schema for Statistic, which is just a part 
       },
       "additionalProperties": false,
       "required": [
+        "exposureBackground",
         "resourceType"
       ]
     },
@@ -424,98 +389,6 @@ This is a representation of the json schema for Statistic, which is just a part 
             "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
           },
           "type": "array"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_ExposureVariant": {
-      "description": "The Statistic resource codifies a statistical measure and corresponding certainty.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.json#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "elementString": {
-          "description": "Exposure variant instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementString": {
-          "description": "Extensions for elementString",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "elementMarkdown": {
-          "description": "Exposure variant instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementMarkdown": {
-          "description": "Extensions for elementMarkdown",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "elementReference": {
-          "description": "Exposure variant instance.",
-          "$ref": "Reference.schema.json#/definitions/Reference"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_MeasuredVariable": {
-      "description": "The Statistic resource codifies a statistical measure and corresponding certainty.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.json#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "Extension.schema.json#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "elementString": {
-          "description": "Outcome characteristic instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementString": {
-          "description": "Extensions for elementString",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "elementMarkdown": {
-          "description": "Outcome characteristic instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementMarkdown": {
-          "description": "Extensions for elementMarkdown",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "elementReference": {
-          "description": "Outcome characteristic instance.",
-          "$ref": "Reference.schema.json#/definitions/Reference"
         }
       },
       "additionalProperties": false
@@ -834,7 +707,7 @@ This is a representation of the json schema for Statistic, which is just a part 
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 9, 2019 10:27+0100. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 16, 2019 10:10-0500. <a style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 

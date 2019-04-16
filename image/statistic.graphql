@@ -25,14 +25,10 @@ type Statistic {
   note: [Annotation]
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  exposureBackgroundString: String  _exposureBackgroundString: ElementBase
-  exposureBackgroundMarkdown: markdown  _exposureBackgroundMarkdown: ElementBase
-  exposureBackgroundReference: Reference
-  exposureString: String  _exposureString: ElementBase
-  exposureMarkdown: markdown  _exposureMarkdown: ElementBase
-  exposureReference: Reference
-  exposureVariant: [StatisticExposureVariant]
-  measuredVariable: [StatisticMeasuredVariable]
+  exposureBackground: Reference!
+  exposure: Reference
+  exposureVariant: [Reference]
+  measuredVariable: [Reference]
   statisticType: CodeableConcept
   quantity: Quantity
   sampleSize: StatisticSampleSize
@@ -47,24 +43,6 @@ type StatisticPublisher {
   modifierExtension: [Extension]
   name: String  _name: ElementBase
   contact: [ContactDetail]
-}
-
-type StatisticExposureVariant {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  elementString: String  _elementString: ElementBase
-  elementMarkdown: markdown  _elementMarkdown: ElementBase
-  elementReference: Reference
-}
-
-type StatisticMeasuredVariable {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  elementString: String  _elementString: ElementBase
-  elementMarkdown: markdown  _elementMarkdown: ElementBase
-  elementReference: Reference
 }
 
 type StatisticSampleSize {
@@ -147,14 +125,10 @@ input StatisticInput {
   note: [AnnotationInput]
   synthesisType: CodeableConceptInput
   studyType: CodeableConceptInput
-  exposureBackgroundString: String  _exposureBackgroundString: ElementBase
-  exposureBackgroundMarkdown: markdown  _exposureBackgroundMarkdown: ElementBase
-  exposureBackgroundReference: ReferenceInput
-  exposureString: String  _exposureString: ElementBase
-  exposureMarkdown: markdown  _exposureMarkdown: ElementBase
-  exposureReference: ReferenceInput
-  exposureVariant: [StatisticExposureVariantInput]
-  measuredVariable: [StatisticMeasuredVariableInput]
+  exposureBackground: ReferenceInput!
+  exposure: ReferenceInput
+  exposureVariant: [ReferenceInput]
+  measuredVariable: [ReferenceInput]
   statisticType: CodeableConceptInput
   quantity: QuantityInput
   sampleSize: StatisticSampleSizeInput
@@ -169,24 +143,6 @@ input StatisticPublisherInput {
   modifierExtension: [ExtensionInput]
   name: String  _name: ElementBase
   contact: [ContactDetailInput]
-}
-
-input StatisticExposureVariantInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  elementString: String  _elementString: ElementBase
-  elementMarkdown: markdown  _elementMarkdown: ElementBase
-  elementReference: ReferenceInput
-}
-
-input StatisticMeasuredVariableInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  elementString: String  _elementString: ElementBase
-  elementMarkdown: markdown  _elementMarkdown: ElementBase
-  elementReference: ReferenceInput
 }
 
 input StatisticSampleSizeInput {

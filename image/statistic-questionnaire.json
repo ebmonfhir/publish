@@ -1,116 +1,12 @@
 {
   "resourceType" : "Questionnaire",
   "id" : "qs1",
-  "contained" : [{
-    "resourceType" : "ValueSet",
-    "id" : "vs2",
-    "name" : "Type options for Statistic.exposureBackground[x]",
-    "status" : "active",
-    "description" : "Type options for Statistic.exposureBackground[x]",
-    "expansion" : {
-      "identifier" : "urn:uuid:bcc86100-f416-45a4-bf00-11b08253bb09",
-      "timestamp" : "2019-04-09T10:27:22+01:00",
-      "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "string",
-        "display" : "string"
-      },
-      {
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "markdown",
-        "display" : "markdown"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Group",
-        "display" : "Group"
-      }]
-    }
-  },
-  {
-    "resourceType" : "ValueSet",
-    "id" : "vs3",
-    "name" : "Type options for Statistic.exposure[x]",
-    "status" : "active",
-    "description" : "Type options for Statistic.exposure[x]",
-    "expansion" : {
-      "identifier" : "urn:uuid:d236e99b-1d66-40b8-bafb-dac76c651822",
-      "timestamp" : "2019-04-09T10:27:22+01:00",
-      "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "string",
-        "display" : "string"
-      },
-      {
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "markdown",
-        "display" : "markdown"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Group",
-        "display" : "Group"
-      }]
-    }
-  },
-  {
-    "resourceType" : "ValueSet",
-    "id" : "vs4",
-    "name" : "Type options for Statistic.exposureVariant.element[x]",
-    "status" : "active",
-    "description" : "Type options for Statistic.exposureVariant.element[x]",
-    "expansion" : {
-      "identifier" : "urn:uuid:6c8f5a7d-95af-4ff6-9718-79139e85755a",
-      "timestamp" : "2019-04-09T10:27:22+01:00",
-      "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "string",
-        "display" : "string"
-      },
-      {
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "markdown",
-        "display" : "markdown"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Group",
-        "display" : "Group"
-      }]
-    }
-  },
-  {
-    "resourceType" : "ValueSet",
-    "id" : "vs5",
-    "name" : "Type options for Statistic.measuredVariable.element[x]",
-    "status" : "active",
-    "description" : "Type options for Statistic.measuredVariable.element[x]",
-    "expansion" : {
-      "identifier" : "urn:uuid:bdd99224-7d0c-4acd-82ef-8fc55cf16aa8",
-      "timestamp" : "2019-04-09T10:27:22+01:00",
-      "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "string",
-        "display" : "string"
-      },
-      {
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "markdown",
-        "display" : "markdown"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "EvidenceVariable",
-        "display" : "EvidenceVariable"
-      }]
-    }
-  }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-04-09T10:24:31+01:00",
+  "date" : "2019-04-16T10:07:03-05:00",
   "publisher" : "Health Level Seven International (Clinical Decision Support)",
   "item" : [{
     "linkId" : "Statistic",
@@ -1028,9 +924,12 @@
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
       }],
-      "linkId" : "Statistic.exposureBackground[x]",
-      "text" : "TBD",
+      "linkId" : "Statistic.exposureBackground",
       "type" : "group",
       "required" : true,
       "repeats" : true,
@@ -1049,71 +948,31 @@
         "type" : "display"
       },
       {
-        "linkId" : "Statistic.exposureBackground[x]._type",
-        "text" : "type",
-        "type" : "choice",
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Group"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "Statistic.exposureBackground.value",
+        "text" : "TBD",
+        "type" : "reference",
         "required" : false,
-        "repeats" : false,
-        "answerValueSet" : "#vs2",
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "string"
-          }],
-          "linkId" : "Statistic.exposureBackground[x]._null",
-          "type" : "group",
-          "item" : [{
-            "linkId" : "Statistic.exposureBackground[x]._null.value",
-            "type" : "string",
-            "required" : false,
-            "repeats" : false
-          }]
-        },
-        {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "string"
-          }],
-          "linkId" : "Statistic.exposureBackground[x]._null",
-          "type" : "group",
-          "item" : [{
-            "linkId" : "Statistic.exposureBackground[x]._null.value",
-            "type" : "string",
-            "required" : false,
-            "repeats" : false
-          }]
-        },
-        {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "Reference"
-          }],
-          "linkId" : "Statistic.exposureBackground[x]._null",
-          "type" : "group",
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-              "valueCode" : "Group"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-              "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-            }],
-            "linkId" : "Statistic.exposureBackground[x]._null.value",
-            "type" : "reference",
-            "required" : false,
-            "repeats" : false
-          }]
-        }]
+        "repeats" : false
       }]
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
       }],
-      "linkId" : "Statistic.exposure[x]",
-      "text" : "TBD",
+      "linkId" : "Statistic.exposure",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -1132,67 +991,27 @@
         "type" : "display"
       },
       {
-        "linkId" : "Statistic.exposure[x]._type",
-        "text" : "type",
-        "type" : "choice",
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Group"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "Statistic.exposure.value",
+        "text" : "TBD",
+        "type" : "reference",
         "required" : false,
-        "repeats" : false,
-        "answerValueSet" : "#vs3",
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "string"
-          }],
-          "linkId" : "Statistic.exposure[x]._null",
-          "type" : "group",
-          "item" : [{
-            "linkId" : "Statistic.exposure[x]._null.value",
-            "type" : "string",
-            "required" : false,
-            "repeats" : false
-          }]
-        },
-        {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "string"
-          }],
-          "linkId" : "Statistic.exposure[x]._null",
-          "type" : "group",
-          "item" : [{
-            "linkId" : "Statistic.exposure[x]._null.value",
-            "type" : "string",
-            "required" : false,
-            "repeats" : false
-          }]
-        },
-        {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "Reference"
-          }],
-          "linkId" : "Statistic.exposure[x]._null",
-          "type" : "group",
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-              "valueCode" : "Group"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-              "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-            }],
-            "linkId" : "Statistic.exposure[x]._null.value",
-            "type" : "reference",
-            "required" : false,
-            "repeats" : false
-          }]
-        }]
+        "repeats" : false
       }]
     },
     {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
       "linkId" : "Statistic.exposureVariant",
-      "text" : "Exposure or intervention or exposure state",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -1212,172 +1031,26 @@
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Group"
         },
         {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "string"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "Statistic.exposureVariant.id",
-        "type" : "group",
+        "linkId" : "Statistic.exposureVariant.value",
+        "text" : "Exposure or intervention or exposure state",
+        "type" : "reference",
         "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "Statistic.exposureVariant.id.value",
-          "text" : "Unique id for inter-element referencing",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        }]
-      },
-      {
-        "linkId" : "Statistic.exposureVariant.extension",
-        "text" : "Additional content defined by implementations",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-          "type" : "display"
-        }]
-      },
-      {
-        "linkId" : "Statistic.exposureVariant.modifierExtension",
-        "text" : "Extensions that cannot be ignored even if unrecognized",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-          "type" : "display"
-        }]
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
-        }],
-        "linkId" : "Statistic.exposureVariant.element[x]",
-        "text" : "Exposure variant instance",
-        "type" : "group",
-        "required" : true,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "Exposure variant instance.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "Statistic.exposureVariant.element[x]._type",
-          "text" : "type",
-          "type" : "choice",
-          "required" : false,
-          "repeats" : false,
-          "answerValueSet" : "#vs4",
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "string"
-            }],
-            "linkId" : "Statistic.exposureVariant.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "linkId" : "Statistic.exposureVariant.element[x]._null.value",
-              "type" : "string",
-              "required" : false,
-              "repeats" : false
-            }]
-          },
-          {
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "string"
-            }],
-            "linkId" : "Statistic.exposureVariant.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "linkId" : "Statistic.exposureVariant.element[x]._null.value",
-              "type" : "string",
-              "required" : false,
-              "repeats" : false
-            }]
-          },
-          {
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "Reference"
-            }],
-            "linkId" : "Statistic.exposureVariant.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "extension" : [{
-                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                "valueCode" : "Group"
-              },
-              {
-                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-                "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-              }],
-              "linkId" : "Statistic.exposureVariant.element[x]._null.value",
-              "type" : "reference",
-              "required" : false,
-              "repeats" : false
-            }]
-          }]
-        }]
+        "repeats" : false
       }]
     },
     {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
       "linkId" : "Statistic.measuredVariable",
-      "text" : "Outcome or characteristic that is measured",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -1397,167 +1070,18 @@
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "EvidenceVariable"
         },
         {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "string"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "Statistic.measuredVariable.id",
-        "type" : "group",
+        "linkId" : "Statistic.measuredVariable.value",
+        "text" : "Outcome or characteristic that is measured",
+        "type" : "reference",
         "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "Statistic.measuredVariable.id.value",
-          "text" : "Unique id for inter-element referencing",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        }]
-      },
-      {
-        "linkId" : "Statistic.measuredVariable.extension",
-        "text" : "Additional content defined by implementations",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-          "type" : "display"
-        }]
-      },
-      {
-        "linkId" : "Statistic.measuredVariable.modifierExtension",
-        "text" : "Extensions that cannot be ignored even if unrecognized",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-          "type" : "display"
-        }]
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
-        }],
-        "linkId" : "Statistic.measuredVariable.element[x]",
-        "text" : "Outcome characteristic instance",
-        "type" : "group",
-        "required" : true,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "Outcome characteristic instance.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "Statistic.measuredVariable.element[x]._type",
-          "text" : "type",
-          "type" : "choice",
-          "required" : false,
-          "repeats" : false,
-          "answerValueSet" : "#vs5",
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "string"
-            }],
-            "linkId" : "Statistic.measuredVariable.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "linkId" : "Statistic.measuredVariable.element[x]._null.value",
-              "type" : "string",
-              "required" : false,
-              "repeats" : false
-            }]
-          },
-          {
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "string"
-            }],
-            "linkId" : "Statistic.measuredVariable.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "linkId" : "Statistic.measuredVariable.element[x]._null.value",
-              "type" : "string",
-              "required" : false,
-              "repeats" : false
-            }]
-          },
-          {
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "Reference"
-            }],
-            "linkId" : "Statistic.measuredVariable.element[x]._null",
-            "type" : "group",
-            "item" : [{
-              "extension" : [{
-                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                "valueCode" : "EvidenceVariable"
-              },
-              {
-                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-                "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-              }],
-              "linkId" : "Statistic.measuredVariable.element[x]._null.value",
-              "type" : "reference",
-              "required" : false,
-              "repeats" : false
-            }]
-          }]
-        }]
+        "repeats" : false
       }]
     },
     {

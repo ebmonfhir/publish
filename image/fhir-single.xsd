@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Apr 9, 2019 02:13+0100 for FHIR v4.1.0 
+  Generated on Tue, Apr 16, 2019 10:07-0500 for FHIR v4.1.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.1.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -39687,11 +39687,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The identifier that is used to identify this version of the statistic when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the statistic author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A natural language name identifying the statistic. This name should be usable as an identifier for the module by machine processing applications such as code generation.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the statistic.</xs:documentation>
@@ -39707,19 +39702,9 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The date  (and optionally time) when the statistic was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the statistic changes.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A legal or geographic region in which the statistic is intended to be used.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
             <xs:annotation>
               <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A copyright statement relating to the statistic and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the statistic.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
@@ -39730,16 +39715,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
             <xs:annotation>
               <xs:documentation xml:lang="en">The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="effectivePeriod" minOccurs="0" maxOccurs="1" type="Period">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The period during which the statistic  was or is planned to be in active use.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="topic" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">General topic of the statistic.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="publisher" type="Statistic.Publisher" minOccurs="0" maxOccurs="unbounded">
@@ -39777,28 +39752,22 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The type of study that produced this statistic.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1" >
+          <xs:element name="exposureBackground" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">TBD.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="exposureBackgroundString" type="string"/>
-            <xs:element name="exposureBackgroundMarkdown" type="markdown"/>
-            <xs:element name="exposureBackgroundReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1" >
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="exposure" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">TBD.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="exposureString" type="string"/>
-            <xs:element name="exposureMarkdown" type="markdown"/>
-            <xs:element name="exposureReference" type="Reference"/>
-          </xs:choice>
-          <xs:element name="exposureVariant" type="Statistic.ExposureVariant" minOccurs="0" maxOccurs="unbounded">
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="exposureVariant" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Exposure or intervention or exposure state.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="measuredVariable" type="Statistic.MeasuredVariable" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="measuredVariable" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">Outcome or characteristic that is measured.</xs:documentation>
            </xs:annotation>
@@ -39854,44 +39823,6 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">Contact details for the  publisher.</xs:documentation>
            </xs:annotation>
           </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Statistic.ExposureVariant">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The Statistic resource codifies a statistical measure and corresponding certainty.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:choice minOccurs="1" maxOccurs="1" >
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Exposure variant instance.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="elementString" type="string"/>
-            <xs:element name="elementMarkdown" type="markdown"/>
-            <xs:element name="elementReference" type="Reference"/>
-          </xs:choice>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Statistic.MeasuredVariable">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The Statistic resource codifies a statistical measure and corresponding certainty.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:choice minOccurs="1" maxOccurs="1" >
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Outcome characteristic instance.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="elementString" type="string"/>
-            <xs:element name="elementMarkdown" type="markdown"/>
-            <xs:element name="elementReference" type="Reference"/>
-          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

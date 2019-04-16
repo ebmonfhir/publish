@@ -13,7 +13,15 @@
      fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>"
   ];
   fhir:Evidence.status [ fhir:value "draft"];
-  fhir:Evidence.exposureBackground [ fhir:index 0] .
+  fhir:Evidence.exposureBackground [
+     fhir:index 0;
+     fhir:Evidence.exposureBackground.population [
+       fhir:link <http://hl7.org/fhir/EvidenceVariable/example>;
+       fhir:Reference.reference [ fhir:value "EvidenceVariable/example" ]
+     ]
+  ] .
+
+<http://hl7.org/fhir/EvidenceVariable/example> a fhir:EvidenceVariable .
 
 # - ontology header ------------------------------------------------------------
 

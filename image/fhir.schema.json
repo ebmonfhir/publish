@@ -52465,14 +52465,6 @@
           "description": "Extensions for version",
           "$ref": "#/definitions/Element"
         },
-        "name": {
-          "description": "A natural language name identifying the statistic. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
-          "$ref": "#/definitions/string"
-        },
-        "_name": {
-          "description": "Extensions for name",
-          "$ref": "#/definitions/Element"
-        },
         "title": {
           "description": "A short, descriptive, user-friendly title for the statistic.",
           "$ref": "#/definitions/string"
@@ -52502,27 +52494,12 @@
           "description": "Extensions for date",
           "$ref": "#/definitions/Element"
         },
-        "jurisdiction": {
-          "description": "A legal or geographic region in which the statistic is intended to be used.",
-          "items": {
-            "$ref": "#/definitions/CodeableConcept"
-          },
-          "type": "array"
-        },
         "useContext": {
           "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.",
           "items": {
             "$ref": "#/definitions/UsageContext"
           },
           "type": "array"
-        },
-        "copyright": {
-          "description": "A copyright statement relating to the statistic and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the statistic.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_copyright": {
-          "description": "Extensions for copyright",
-          "$ref": "#/definitions/Element"
         },
         "approvalDate": {
           "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
@@ -52539,17 +52516,6 @@
         "_lastReviewDate": {
           "description": "Extensions for lastReviewDate",
           "$ref": "#/definitions/Element"
-        },
-        "effectivePeriod": {
-          "description": "The period during which the statistic  was or is planned to be in active use.",
-          "$ref": "#/definitions/Period"
-        },
-        "topic": {
-          "description": "General topic of the statistic.",
-          "items": {
-            "$ref": "#/definitions/CodeableConcept"
-          },
-          "type": "array"
         },
         "publisher": {
           "description": "The name of the organization or individual that published the statistic.",
@@ -52595,61 +52561,25 @@
           "description": "The type of study that produced this statistic.",
           "$ref": "#/definitions/CodeableConcept"
         },
-        "exposureBackgroundString": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureBackgroundString": {
-          "description": "Extensions for exposureBackgroundString",
-          "$ref": "#/definitions/Element"
-        },
-        "exposureBackgroundMarkdown": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureBackgroundMarkdown": {
-          "description": "Extensions for exposureBackgroundMarkdown",
-          "$ref": "#/definitions/Element"
-        },
-        "exposureBackgroundReference": {
+        "exposureBackground": {
           "description": "TBD.",
           "$ref": "#/definitions/Reference"
         },
-        "exposureString": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureString": {
-          "description": "Extensions for exposureString",
-          "$ref": "#/definitions/Element"
-        },
-        "exposureMarkdown": {
-          "description": "TBD.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_exposureMarkdown": {
-          "description": "Extensions for exposureMarkdown",
-          "$ref": "#/definitions/Element"
-        },
-        "exposureReference": {
+        "exposure": {
           "description": "TBD.",
           "$ref": "#/definitions/Reference"
         },
         "exposureVariant": {
           "description": "Exposure or intervention or exposure state.",
           "items": {
-            "$ref": "#/definitions/Statistic_ExposureVariant"
+            "$ref": "#/definitions/Reference"
           },
           "type": "array"
         },
         "measuredVariable": {
           "description": "Outcome or characteristic that is measured.",
           "items": {
-            "$ref": "#/definitions/Statistic_MeasuredVariable"
+            "$ref": "#/definitions/Reference"
           },
           "type": "array"
         },
@@ -52689,6 +52619,7 @@
       },
       "additionalProperties": false,
       "required": [
+        "exposureBackground",
         "resourceType"
       ]
     },
@@ -52727,98 +52658,6 @@
             "$ref": "#/definitions/ContactDetail"
           },
           "type": "array"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_ExposureVariant": {
-      "description": "The Statistic resource codifies a statistical measure and corresponding certainty.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "elementString": {
-          "description": "Exposure variant instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementString": {
-          "description": "Extensions for elementString",
-          "$ref": "#/definitions/Element"
-        },
-        "elementMarkdown": {
-          "description": "Exposure variant instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementMarkdown": {
-          "description": "Extensions for elementMarkdown",
-          "$ref": "#/definitions/Element"
-        },
-        "elementReference": {
-          "description": "Exposure variant instance.",
-          "$ref": "#/definitions/Reference"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_MeasuredVariable": {
-      "description": "The Statistic resource codifies a statistical measure and corresponding certainty.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "elementString": {
-          "description": "Outcome characteristic instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementString": {
-          "description": "Extensions for elementString",
-          "$ref": "#/definitions/Element"
-        },
-        "elementMarkdown": {
-          "description": "Outcome characteristic instance.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
-        },
-        "_elementMarkdown": {
-          "description": "Extensions for elementMarkdown",
-          "$ref": "#/definitions/Element"
-        },
-        "elementReference": {
-          "description": "Outcome characteristic instance.",
-          "$ref": "#/definitions/Reference"
         }
       },
       "additionalProperties": false
