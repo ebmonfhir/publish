@@ -123,7 +123,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Statistic&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-04-16T10:07:03.345-05:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-04-22T09:16:06.330-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -153,7 +153,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Statistic&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-04-16T10:07:03-05:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-04-22T09:16:06-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Clinical Decision Support)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -845,16 +845,15 @@
        ]
      ], [
        fhir:index 18;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The individual or organization that produced this statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The name of the organization or individual that published the statistic.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Usually an organization but may be an individual. The publisher (or steward) of the statistic is the organization or individual primarily responsible for the maintenance and upkeep of the statistic. This is not necessarily the same individual or organization that developed and initially authored the content. The publisher is the primary point of contact for questions or issues with the statistic. This item SHOULD be populated unless the information is available from context.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Helps establish the \&quot;authority/credibility\&quot; of the statistic.  May also allow for contact.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The individual or organization that produced this statistic.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Name changed to statistic-publisher because MetadataResource already defines string publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
@@ -872,20 +871,11 @@
          fhir:ElementDefinition.source [ fhir:value &quot;Element&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
-       fhir:ElementDefinition.mapping [
-         fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Definition.publisher&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.witness&quot; ]
-       ]
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
        fhir:index 19;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.id&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.id&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.id&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.id&quot; ];
        fhir:ElementDefinition.representation [
          fhir:value &quot;xmlAttr&quot;;
          fhir:index 0
@@ -912,8 +902,8 @@
        ]
      ], [
        fhir:index 20;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.extension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.extension&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.extension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -944,8 +934,8 @@
        ]
      ], [
        fhir:index 21;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.modifierExtension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.modifierExtension&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.modifierExtension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -981,14 +971,14 @@
        ]
      ], [
        fhir:index 22;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.name&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.name&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.name&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the publisher&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The name of the publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.name&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.name&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -1000,14 +990,14 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 23;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.contact&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.contact&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.contact&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.contact&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Contact details for the  publisher&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Contact details for the  publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.contact&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.contact&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
@@ -2718,32 +2708,21 @@
        ]
      ], [
        fhir:index 10;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The individual or organization that produced this statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The name of the organization or individual that published the statistic.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Usually an organization but may be an individual. The publisher (or steward) of the statistic is the organization or individual primarily responsible for the maintenance and upkeep of the statistic. This is not necessarily the same individual or organization that developed and initially authored the content. The publisher is the primary point of contact for questions or issues with the statistic. This item SHOULD be populated unless the information is available from context.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Helps establish the \&quot;authority/credibility\&quot; of the statistic.  May also allow for contact.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The individual or organization that produced this statistic.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Name changed to statistic-publisher because MetadataResource already defines string publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
-       fhir:ElementDefinition.mapping [
-         fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;Definition.publisher&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.witness&quot; ]
        ]
      ], [
        fhir:index 11;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.name&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.name&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.name&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the publisher&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The name of the publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2755,8 +2734,8 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;Statistic.publisher.contact&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.publisher.contact&quot; ];
+       fhir:Element.id [ fhir:value &quot;Statistic.statisticPublisher.contact&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Statistic.statisticPublisher.contact&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Contact details for the  publisher&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Contact details for the  publisher.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -3390,7 +3369,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Tue, Apr 16, 2019 10:10-0500. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.1.0-0a3a4eda5b) generated on Mon, Apr 22, 2019 09:21-0500. <a  style="color: #ffffff" href="qa.html">QA Page</a>
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
