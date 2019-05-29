@@ -7,7 +7,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-05-29T10:45:36-05:00"/>
+  <date value="2019-05-29T12:18:54-05:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <item>
     <linkId value="Evidence"/>
@@ -1883,16 +1883,45 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="The statistic value(s)."/>
+              <text value="The statistic value(s) - sb type Statistic."/>
               <type value="display"/>
             </item>
             <item>
               <linkId value="Evidence.population.evidenceVariable.statisticCollection.statistic.value"/>
-              <text value="The statistic value(s)"/>
+              <text value="The statistic value(s) - sb type Statistic"/>
               <type value="string"/>
               <required value="false"/>
               <repeats value="false"/>
             </item>
+          </item>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+            <valueString value="string"/>
+          </extension>
+          <linkId value="Evidence.population.evidenceVariable.distribution"/>
+          <type value="group"/>
+          <required value="false"/>
+          <repeats value="true"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+              <valueCodeableConcept>
+                <coding>
+                  <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                  <code value="flyover"/>
+                  <display value="Fly-over"/>
+                </coding>
+              </valueCodeableConcept>
+            </extension>
+            <text value="Ordered distribution - sb type OrderedDistribution."/>
+            <type value="display"/>
+          </item>
+          <item>
+            <linkId value="Evidence.population.evidenceVariable.distribution.value"/>
+            <text value="Ordered distribution - sb type OrderedDistribution"/>
+            <type value="string"/>
+            <required value="false"/>
+            <repeats value="false"/>
           </item>
         </item>
         <item>
@@ -2526,12 +2555,12 @@
                     </coding>
                   </valueCodeableConcept>
                 </extension>
-                <text value="The statistic value(s)."/>
+                <text value="The statistic value(s) - sb type Statistic."/>
                 <type value="display"/>
               </item>
               <item>
                 <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic.value"/>
-                <text value="The statistic value(s)"/>
+                <text value="The statistic value(s) - sb type Statistic"/>
                 <type value="string"/>
                 <required value="false"/>
                 <repeats value="false"/>

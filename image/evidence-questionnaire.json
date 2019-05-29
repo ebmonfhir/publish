@@ -6,7 +6,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-05-29T10:45:36-05:00",
+  "date" : "2019-05-29T12:18:54-05:00",
   "publisher" : "Health Level Seven International (Clinical Decision Support)",
   "item" : [{
     "linkId" : "Evidence",
@@ -2041,16 +2041,47 @@
                   }]
                 }
               }],
-              "text" : "The statistic value(s).",
+              "text" : "The statistic value(s) - sb type Statistic.",
               "type" : "display"
             },
             {
               "linkId" : "Evidence.population.evidenceVariable.statisticCollection.statistic.value",
-              "text" : "The statistic value(s)",
+              "text" : "The statistic value(s) - sb type Statistic",
               "type" : "string",
               "required" : false,
               "repeats" : false
             }]
+          }]
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+            "valueString" : "string"
+          }],
+          "linkId" : "Evidence.population.evidenceVariable.distribution",
+          "type" : "group",
+          "required" : false,
+          "repeats" : true,
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept" : {
+                "coding" : [{
+                  "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                  "code" : "flyover",
+                  "display" : "Fly-over"
+                }]
+              }
+            }],
+            "text" : "Ordered distribution - sb type OrderedDistribution.",
+            "type" : "display"
+          },
+          {
+            "linkId" : "Evidence.population.evidenceVariable.distribution.value",
+            "text" : "Ordered distribution - sb type OrderedDistribution",
+            "type" : "string",
+            "required" : false,
+            "repeats" : false
           }]
         },
         {
@@ -2739,12 +2770,12 @@
                     }]
                   }
                 }],
-                "text" : "The statistic value(s).",
+                "text" : "The statistic value(s) - sb type Statistic.",
                 "type" : "display"
               },
               {
                 "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic.value",
-                "text" : "The statistic value(s)",
+                "text" : "The statistic value(s) - sb type Statistic",
                 "type" : "string",
                 "required" : false,
                 "repeats" : false
