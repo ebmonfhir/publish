@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type VerificationResult {
   id: ID
@@ -61,146 +61,146 @@ type VerificationResultValidator {
   attestationSignature: Signature
 }
 
-input VerificationResult {
+input VerificationResultInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  target: [Reference]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  target: [ReferenceInput]
   targetLocation: String  _targetLocation: [ElementBase]
-  need: CodeableConcept
+  need: CodeableConceptInput
   status: code  _status: ElementBase
   statusDate: dateTime  _statusDate: ElementBase
-  validationType: CodeableConcept
-  validationProcess: [CodeableConcept]
-  frequency: Timing
+  validationType: CodeableConceptInput
+  validationProcess: [CodeableConceptInput]
+  frequency: TimingInput
   lastPerformed: dateTime  _lastPerformed: ElementBase
   nextScheduled: date  _nextScheduled: ElementBase
-  failureAction: CodeableConcept
-  primarySource: [VerificationResultPrimarySource]
-  attestation: VerificationResultAttestation
-  validator: [VerificationResultValidator]
+  failureAction: CodeableConceptInput
+  primarySource: [VerificationResultPrimarySourceInput]
+  attestation: VerificationResultAttestationInput
+  validator: [VerificationResultValidatorInput]
 }
 
-input VerificationResultPrimarySource {
+input VerificationResultPrimarySourceInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  who: Reference
-  type: [CodeableConcept]
-  communicationMethod: [CodeableConcept]
-  validationStatus: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  who: ReferenceInput
+  type: [CodeableConceptInput]
+  communicationMethod: [CodeableConceptInput]
+  validationStatus: CodeableConceptInput
   validationDate: dateTime  _validationDate: ElementBase
-  canPushUpdates: CodeableConcept
-  pushTypeAvailable: [CodeableConcept]
+  canPushUpdates: CodeableConceptInput
+  pushTypeAvailable: [CodeableConceptInput]
 }
 
-input VerificationResultAttestation {
+input VerificationResultAttestationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  who: Reference
-  onBehalfOf: Reference
-  communicationMethod: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  who: ReferenceInput
+  onBehalfOf: ReferenceInput
+  communicationMethod: CodeableConceptInput
   date: date  _date: ElementBase
   sourceIdentityCertificate: String  _sourceIdentityCertificate: ElementBase
   proxyIdentityCertificate: String  _proxyIdentityCertificate: ElementBase
-  proxySignature: Signature
-  sourceSignature: Signature
+  proxySignature: SignatureInput
+  sourceSignature: SignatureInput
 }
 
-input VerificationResultValidator {
+input VerificationResultValidatorInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  organization: Reference!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  organization: ReferenceInput!
   identityCertificate: String  _identityCertificate: ElementBase
-  attestationSignature: Signature
+  attestationSignature: SignatureInput
 }
 
 type VerificationResultReadType {
-  VerificationResult(id : ID!) : VerificationResult
+  VerificationResult(id: ID!): VerificationResult
 }
 
 type VerificationResultListType {
-  VerificationResultList(_filter : String
-    target : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [VerificationResult]
+  VerificationResultList(_filter: String
+    target: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [VerificationResult]
 }
 
 type VerificationResultConnectionType {
-  VerificationResultConection(_filter : String
-    target : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : VerificationResultConnection
+  VerificationResultConection(_filter: String
+    target: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): VerificationResultConnection
 }
 
 type VerificationResultConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [VerificationResultEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [VerificationResultEdge]
 }
 
 type VerificationResultEdge {
-  mode : String
-  score : Float
-  resource : VerificationResult
+  mode: String
+  score: Float
+  resource: VerificationResult
 }
 
 type VerificationResultCreateType {
-  VerificationResultCreate(resource : VerificationResult) : VerificationResultCreation
+  VerificationResultCreate(resource: VerificationResultInput): VerificationResultCreation
 }
 
 type VerificationResultCreation {
-  location : String
-  resource : VerificationResult
-  information : OperationOutcome
+  location: String
+  resource: VerificationResult
+  information: OperationOutcome
 }
 
 type VerificationResultUpdateType {
-  VerificationResultUpdate(id : IDresource : VerificationResult) : VerificationResultUpdate
+  VerificationResultUpdate(id: ID, resource: VerificationResultInput): VerificationResultUpdate
 }
 
 type VerificationResultUpdate {
-  resource : VerificationResult
-  information : OperationOutcome
+  resource: VerificationResult
+  information: OperationOutcome
 }
 
 type VerificationResultDeleteType {
-  VerificationResultDelete(id : ID) : VerificationResultDelete
+  VerificationResultDelete(id: ID): VerificationResultDelete
 }
 
 type VerificationResultDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

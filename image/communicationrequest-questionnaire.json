@@ -8,14 +8,9 @@
     "status" : "active",
     "description" : "Type options for CommunicationRequest.payload.content[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:1b33d9b3-4ca9-4725-bbfb-7577eb284188",
-      "timestamp" : "2019-03-01T07:28:10-06:00",
+      "identifier" : "urn:uuid:b083f746-b018-44e4-8818-beb83a21bcd0",
+      "timestamp" : "2019-05-29T10:48:27-05:00",
       "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "string",
-        "display" : "string"
-      },
-      {
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Attachment",
         "display" : "Attachment"
@@ -24,6 +19,11 @@
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "Resource",
         "display" : "Resource"
+      },
+      {
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "CodeableConcept",
+        "display" : "CodeableConcept"
       }]
     }
   },
@@ -34,8 +34,8 @@
     "status" : "active",
     "description" : "Type options for CommunicationRequest.occurrence[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:7f2b2c9f-b411-4492-8062-44459a8ee420",
-      "timestamp" : "2019-03-01T07:28:10-06:00",
+      "identifier" : "urn:uuid:398b9c72-4aeb-4daf-9123-6aa297095943",
+      "timestamp" : "2019-05-29T10:48:27-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -51,9 +51,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "CommunicationRequest",
@@ -816,7 +816,7 @@
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
         "linkId" : "CommunicationRequest.encounter.value",
-        "text" : "Encounter created as part of",
+        "text" : "The Encounter during which this CommunicationRequest was created",
         "type" : "reference",
         "required" : false,
         "repeats" : false
@@ -944,7 +944,7 @@
               }]
             }
           }],
-          "text" : "The communicated content (or for multi-part communications, one portion of the communication).",
+          "text" : "The communicated content (or for multi-part communications, one portion of the communication). When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.",
           "type" : "display"
         },
         {
@@ -955,20 +955,6 @@
           "repeats" : false,
           "answerValueSet" : "#vs2",
           "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-              "valueString" : "string"
-            }],
-            "linkId" : "CommunicationRequest.payload.content[x]._null",
-            "type" : "group",
-            "item" : [{
-              "linkId" : "CommunicationRequest.payload.content[x]._null.value",
-              "type" : "string",
-              "required" : false,
-              "repeats" : false
-            }]
-          },
-          {
             "extension" : [{
               "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
               "valueString" : "Attachment"
@@ -994,6 +980,28 @@
               }],
               "linkId" : "CommunicationRequest.payload.content[x]._null.value",
               "type" : "reference",
+              "required" : false,
+              "repeats" : false
+            }]
+          },
+          {
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "CodeableConcept"
+            }],
+            "linkId" : "CommunicationRequest.payload.content[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "CommunicationRequest.payload.content[x]._null.coding",
+              "text" : "code:",
+              "type" : "open-choice",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "CommunicationRequest.payload.content[x]._null.text",
+              "text" : "text:",
+              "type" : "string",
               "required" : false,
               "repeats" : false
             }]
@@ -1295,7 +1303,7 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Condition, Observation, DiagnosticReport, DocumentReference"
+          "valueCode" : "Resource"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",

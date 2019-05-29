@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MedicinalProductIndication {
   id: ID
@@ -29,114 +29,114 @@ type MedicinalProductIndicationOtherTherapy {
   medicationReference: Reference
 }
 
-input MedicinalProductIndication {
+input MedicinalProductIndicationInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  subject: [Reference]
-  diseaseSymptomProcedure: CodeableConcept
-  diseaseStatus: CodeableConcept
-  comorbidity: [CodeableConcept]
-  intendedEffect: CodeableConcept
-  duration: Quantity
-  otherTherapy: [MedicinalProductIndicationOtherTherapy]
-  undesirableEffect: [Reference]
-  population: [Population]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  subject: [ReferenceInput]
+  diseaseSymptomProcedure: CodeableConceptInput
+  diseaseStatus: CodeableConceptInput
+  comorbidity: [CodeableConceptInput]
+  intendedEffect: CodeableConceptInput
+  duration: QuantityInput
+  otherTherapy: [MedicinalProductIndicationOtherTherapyInput]
+  undesirableEffect: [ReferenceInput]
+  population: [PopulationInput]
 }
 
-input MedicinalProductIndicationOtherTherapy {
+input MedicinalProductIndicationOtherTherapyInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  therapyRelationshipType: CodeableConcept!
-  medicationCodeableConcept: CodeableConcept
-  medicationReference: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  therapyRelationshipType: CodeableConceptInput!
+  medicationCodeableConcept: CodeableConceptInput
+  medicationReference: ReferenceInput
 }
 
 type MedicinalProductIndicationReadType {
-  MedicinalProductIndication(id : ID!) : MedicinalProductIndication
+  MedicinalProductIndication(id: ID!): MedicinalProductIndication
 }
 
 type MedicinalProductIndicationListType {
-  MedicinalProductIndicationList(_filter : String
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MedicinalProductIndication]
+  MedicinalProductIndicationList(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MedicinalProductIndication]
 }
 
 type MedicinalProductIndicationConnectionType {
-  MedicinalProductIndicationConection(_filter : String
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicinalProductIndicationConnection
+  MedicinalProductIndicationConection(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicinalProductIndicationConnection
 }
 
 type MedicinalProductIndicationConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicinalProductIndicationEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicinalProductIndicationEdge]
 }
 
 type MedicinalProductIndicationEdge {
-  mode : String
-  score : Float
-  resource : MedicinalProductIndication
+  mode: String
+  score: Float
+  resource: MedicinalProductIndication
 }
 
 type MedicinalProductIndicationCreateType {
-  MedicinalProductIndicationCreate(resource : MedicinalProductIndication) : MedicinalProductIndicationCreation
+  MedicinalProductIndicationCreate(resource: MedicinalProductIndicationInput): MedicinalProductIndicationCreation
 }
 
 type MedicinalProductIndicationCreation {
-  location : String
-  resource : MedicinalProductIndication
-  information : OperationOutcome
+  location: String
+  resource: MedicinalProductIndication
+  information: OperationOutcome
 }
 
 type MedicinalProductIndicationUpdateType {
-  MedicinalProductIndicationUpdate(id : IDresource : MedicinalProductIndication) : MedicinalProductIndicationUpdate
+  MedicinalProductIndicationUpdate(id: ID, resource: MedicinalProductIndicationInput): MedicinalProductIndicationUpdate
 }
 
 type MedicinalProductIndicationUpdate {
-  resource : MedicinalProductIndication
-  information : OperationOutcome
+  resource: MedicinalProductIndication
+  information: OperationOutcome
 }
 
 type MedicinalProductIndicationDeleteType {
-  MedicinalProductIndicationDelete(id : ID) : MedicinalProductIndicationDelete
+  MedicinalProductIndicationDelete(id: ID): MedicinalProductIndicationDelete
 }
 
 type MedicinalProductIndicationDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

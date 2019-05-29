@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type OperationDefinition {
   id: ID
@@ -78,15 +78,15 @@ type OperationDefinitionOverload {
   comment: String  _comment: ElementBase
 }
 
-input OperationDefinition {
+input OperationDefinitionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
   version: String  _version: ElementBase
   name: String  _name: ElementBase
@@ -96,10 +96,10 @@ input OperationDefinition {
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   purpose: markdown  _purpose: ElementBase
   affectsState: Boolean  _affectsState: ElementBase
   code: code  _code: ElementBase
@@ -111,14 +111,14 @@ input OperationDefinition {
   instance: Boolean  _instance: ElementBase
   inputProfile: canonical  _inputProfile: ElementBase
   outputProfile: canonical  _outputProfile: ElementBase
-  parameter: [OperationDefinitionParameter]
-  overload: [OperationDefinitionOverload]
+  parameter: [OperationDefinitionParameterInput]
+  overload: [OperationDefinitionOverloadInput]
 }
 
-input OperationDefinitionParameter {
+input OperationDefinitionParameterInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: code  _name: ElementBase
   use: code  _use: ElementBase
   min: Int  _min: ElementBase
@@ -127,156 +127,156 @@ input OperationDefinitionParameter {
   type: code  _type: ElementBase
   targetProfile: canonical  _targetProfile: [ElementBase]
   searchType: code  _searchType: ElementBase
-  binding: OperationDefinitionParameterBinding
-  referencedFrom: [OperationDefinitionParameterReferencedFrom]
+  binding: OperationDefinitionParameterBindingInput
+  referencedFrom: [OperationDefinitionParameterReferencedFromInput]
   part: [OperationDefinitionParameter]
 }
 
-input OperationDefinitionParameterBinding {
+input OperationDefinitionParameterBindingInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   strength: code  _strength: ElementBase
   valueSet: canonical  _valueSet: ElementBase
 }
 
-input OperationDefinitionParameterReferencedFrom {
+input OperationDefinitionParameterReferencedFromInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   source: String  _source: ElementBase
   sourceId: String  _sourceId: ElementBase
 }
 
-input OperationDefinitionOverload {
+input OperationDefinitionOverloadInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   parameterName: String  _parameterName: [ElementBase]
   comment: String  _comment: ElementBase
 }
 
 type OperationDefinitionReadType {
-  OperationDefinition(id : ID!) : OperationDefinition
+  OperationDefinition(id: ID!): OperationDefinition
 }
 
 type OperationDefinitionListType {
-  OperationDefinitionList(_filter : String
-    base : [reference]
-    code : [token]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    input_profile : [reference]
-    instance : [token]
-    jurisdiction : [token]
-    kind : [token]
-    name : [String]
-    output_profile : [reference]
-    publisher : [String]
-    status : [token]
-    system : [token]
-    title : [String]
-    type : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [OperationDefinition]
+  OperationDefinitionList(_filter: String
+    base: [reference]
+    code: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    input_profile: [reference]
+    instance: [token]
+    jurisdiction: [token]
+    kind: [token]
+    name: [String]
+    output_profile: [reference]
+    publisher: [String]
+    status: [token]
+    system: [token]
+    title: [String]
+    type: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [OperationDefinition]
 }
 
 type OperationDefinitionConnectionType {
-  OperationDefinitionConection(_filter : String
-    base : [reference]
-    code : [token]
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    input_profile : [reference]
-    instance : [token]
-    jurisdiction : [token]
-    kind : [token]
-    name : [String]
-    output_profile : [reference]
-    publisher : [String]
-    status : [token]
-    system : [token]
-    title : [String]
-    type : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : OperationDefinitionConnection
+  OperationDefinitionConection(_filter: String
+    base: [reference]
+    code: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    input_profile: [reference]
+    instance: [token]
+    jurisdiction: [token]
+    kind: [token]
+    name: [String]
+    output_profile: [reference]
+    publisher: [String]
+    status: [token]
+    system: [token]
+    title: [String]
+    type: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): OperationDefinitionConnection
 }
 
 type OperationDefinitionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [OperationDefinitionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [OperationDefinitionEdge]
 }
 
 type OperationDefinitionEdge {
-  mode : String
-  score : Float
-  resource : OperationDefinition
+  mode: String
+  score: Float
+  resource: OperationDefinition
 }
 
 type OperationDefinitionCreateType {
-  OperationDefinitionCreate(resource : OperationDefinition) : OperationDefinitionCreation
+  OperationDefinitionCreate(resource: OperationDefinitionInput): OperationDefinitionCreation
 }
 
 type OperationDefinitionCreation {
-  location : String
-  resource : OperationDefinition
-  information : OperationOutcome
+  location: String
+  resource: OperationDefinition
+  information: OperationOutcome
 }
 
 type OperationDefinitionUpdateType {
-  OperationDefinitionUpdate(id : IDresource : OperationDefinition) : OperationDefinitionUpdate
+  OperationDefinitionUpdate(id: ID, resource: OperationDefinitionInput): OperationDefinitionUpdate
 }
 
 type OperationDefinitionUpdate {
-  resource : OperationDefinition
-  information : OperationOutcome
+  resource: OperationDefinition
+  information: OperationOutcome
 }
 
 type OperationDefinitionDeleteType {
-  OperationDefinitionDelete(id : ID) : OperationDefinitionDelete
+  OperationDefinitionDelete(id: ID): OperationDefinitionDelete
 }
 
 type OperationDefinitionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

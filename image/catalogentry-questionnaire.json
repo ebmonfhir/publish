@@ -4,9 +4,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International (Orders and Observations)",
   "item" : [{
     "linkId" : "CatalogEntry",
@@ -252,7 +252,7 @@
         "valueString" : "Identifier"
       }],
       "linkId" : "CatalogEntry.identifier",
-      "text" : "Unique identifier of the catalog item",
+      "text" : "Business identifier of the catalog entry",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -267,7 +267,7 @@
             }]
           }
         }],
-        "text" : "Used in supporting different identifiers for the same product, e.g. manufacturer code and retailer code.",
+        "text" : "Business identifier uniquely assigned to the catalog entry.",
         "type" : "display"
       },
       {
@@ -299,10 +299,9 @@
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
+        "valueString" : "string"
       }],
-      "linkId" : "CatalogEntry.type",
-      "text" : "The type of item - medication, device, service, protocol or other",
+      "linkId" : "CatalogEntry.name",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -317,20 +316,126 @@
             }]
           }
         }],
-        "text" : "The type of item - medication, device, service, protocol or other.",
+        "text" : "The name of this catalog entry announces the item that is represented by the entry.",
         "type" : "display"
       },
       {
-        "linkId" : "CatalogEntry.type.coding",
-        "text" : "code:",
-        "type" : "open-choice",
+        "linkId" : "CatalogEntry.name.value",
+        "text" : "Displayable name assigned to the catalog entry",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "code"
+      }],
+      "linkId" : "CatalogEntry.type",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "The type of resource that is represented by this catalog entry.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.type.value",
+        "text" : "type",
+        "type" : "choice",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "code"
+      }],
+      "linkId" : "CatalogEntry.status",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Indicates whether this catalog entry is open to public usage (active) or not (draft or retired).",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.status.value",
+        "text" : "status",
+        "type" : "choice",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Period"
+      }],
+      "linkId" : "CatalogEntry.effectivePeriod",
+      "text" : "When this catalog entry is expected to be active",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Period of usability of the catalog entry.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.effectivePeriod.low",
+        "text" : "start:",
+        "type" : "dateTime",
         "required" : false,
         "repeats" : false
       },
       {
-        "linkId" : "CatalogEntry.type.text",
-        "text" : "text:",
-        "type" : "string",
+        "linkId" : "CatalogEntry.effectivePeriod.end",
+        "text" : "end:",
+        "type" : "dateTime",
         "required" : false,
         "repeats" : false
       }]
@@ -363,12 +468,12 @@
             }]
           }
         }],
-        "text" : "Whether the entry represents an orderable item.",
+        "text" : "Indicates whether or not the entry represents an item that is orderable.",
         "type" : "display"
       },
       {
         "linkId" : "CatalogEntry.orderable.value",
-        "text" : "Whether the entry represents an orderable item",
+        "text" : "Is orderable",
         "type" : "boolean",
         "required" : false,
         "repeats" : false
@@ -402,339 +507,28 @@
             }]
           }
         }],
-        "text" : "The item in a catalog or definition.",
+        "text" : "The item (resource) that this entry of the catalog represents.",
         "type" : "display"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Medication, Device, Organization, Practitioner, PractitionerRole, HealthcareService, ActivityDefinition, PlanDefinition, SpecimenDefinition, ObservationDefinition, Binary"
+          "valueCode" : "DeviceDefinition, Organization, Practitioner, PractitionerRole, HealthcareService, ActivityDefinition, PlanDefinition, SpecimenDefinition, ObservationDefinition, MedicationKnowledge, Substance, Location"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
         "linkId" : "CatalogEntry.referencedItem.value",
-        "text" : "The item that is being defined",
+        "text" : "Item attached to this entry of the catalog",
         "type" : "reference",
         "required" : false,
         "repeats" : false
       }]
     },
     {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Identifier"
-      }],
-      "linkId" : "CatalogEntry.additionalIdentifier",
-      "text" : "Any additional identifier(s) for the catalog item, in the same granularity or concept",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Used in supporting related concepts, e.g. NDC to RxNorm.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.additionalIdentifier.label",
-        "text" : "label:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.additionalIdentifier.system",
-        "text" : "system:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.additionalIdentifier.value",
-        "text" : "value:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
-      }],
-      "linkId" : "CatalogEntry.classification",
-      "text" : "Classification (category or class) of the item entry",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Classes of devices, or ATC for medication.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.classification.coding",
-        "text" : "code:",
-        "type" : "open-choice",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.classification.text",
-        "text" : "text:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "code"
-      }],
-      "linkId" : "CatalogEntry.status",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Used to support catalog exchange even for unsupported products, e.g. getting list of medications even if not prescribable.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.status.value",
-        "text" : "status",
-        "type" : "choice",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Period"
-      }],
-      "linkId" : "CatalogEntry.validityPeriod",
-      "text" : "The time period in which this catalog entry is expected to be active",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "The time period in which this catalog entry is expected to be active.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.validityPeriod.low",
-        "text" : "start:",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.validityPeriod.end",
-        "text" : "end:",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "datetime"
-      }],
-      "linkId" : "CatalogEntry.validTo",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "The date until which this catalog entry is expected to be active.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.validTo.value",
-        "text" : "The date until which this catalog entry is expected to be active",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "datetime"
-      }],
-      "linkId" : "CatalogEntry.lastUpdated",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Typically date of issue is different from the beginning of the validity. This can be used to see when an item was last updated. Perhaps not needed - if we use fhir resource metadata.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.lastUpdated.value",
-        "text" : "When was this catalog last updated",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
-      }],
-      "linkId" : "CatalogEntry.additionalCharacteristic",
-      "text" : "Additional characteristics of the catalog entry",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Used for examplefor Out of Formulary, or any specifics.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.additionalCharacteristic.coding",
-        "text" : "code:",
-        "type" : "open-choice",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.additionalCharacteristic.text",
-        "text" : "text:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
-      }],
-      "linkId" : "CatalogEntry.additionalClassification",
-      "text" : "Additional classification of the catalog entry",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "User for example for ATC classification, or.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "CatalogEntry.additionalClassification.coding",
-        "text" : "code:",
-        "type" : "open-choice",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "CatalogEntry.additionalClassification.text",
-        "text" : "text:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
       "linkId" : "CatalogEntry.relatedEntry",
-      "text" : "An item that this catalog entry is related to",
+      "text" : "Another entry of the catalog related to this one",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -842,7 +636,7 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "code"
         }],
-        "linkId" : "CatalogEntry.relatedEntry.relationtype",
+        "linkId" : "CatalogEntry.relatedEntry.relationship",
         "type" : "group",
         "required" : true,
         "repeats" : true,
@@ -857,12 +651,12 @@
               }]
             }
           }],
-          "text" : "The type of relation to the related item: child, parent, packageContent, containerPackage, usedIn, uses, requires, etc.",
+          "text" : "The type of relationship to the related entry.",
           "type" : "display"
         },
         {
-          "linkId" : "CatalogEntry.relatedEntry.relationtype.value",
-          "text" : "relationtype",
+          "linkId" : "CatalogEntry.relatedEntry.relationship.value",
+          "text" : "relationship",
           "type" : "choice",
           "required" : false,
           "repeats" : false
@@ -881,7 +675,7 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "Reference"
         }],
-        "linkId" : "CatalogEntry.relatedEntry.item",
+        "linkId" : "CatalogEntry.relatedEntry.target",
         "type" : "group",
         "required" : true,
         "repeats" : true,
@@ -896,7 +690,7 @@
               }]
             }
           }],
-          "text" : "The reference to the related item.",
+          "text" : "The reference to the related entry.",
           "type" : "display"
         },
         {
@@ -908,12 +702,259 @@
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
             "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
           }],
-          "linkId" : "CatalogEntry.relatedEntry.item.value",
-          "text" : "The reference to the related item",
+          "linkId" : "CatalogEntry.relatedEntry.target.value",
+          "text" : "The reference to the related entry",
           "type" : "reference",
           "required" : false,
           "repeats" : false
         }]
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "CatalogEntry.updatedBy",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Last actor who recorded (created or updated) this catalog entry.",
+        "type" : "display"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Person, Device"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "CatalogEntry.updatedBy.value",
+        "text" : "Last updater of this catalog entry",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Annotation"
+      }],
+      "linkId" : "CatalogEntry.note",
+      "text" : "Notes and comments about this catalog entry",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Notes and comments about this catalog entry.",
+        "type" : "display"
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "CodeableConcept"
+      }],
+      "linkId" : "CatalogEntry.billingCode",
+      "text" : "Billing code in the context of this catalog entry",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Billing code associated to the  item in the context of this  entry of the catalog.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.billingCode.coding",
+        "text" : "code:",
+        "type" : "open-choice",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "CatalogEntry.billingCode.text",
+        "text" : "text:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "string"
+      }],
+      "linkId" : "CatalogEntry.billingSummary",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Billing summary attached to the  item in the context of this  entry of the catalog.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.billingSummary.value",
+        "text" : "Billing summary in the context of this catalog entry",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "string"
+      }],
+      "linkId" : "CatalogEntry.scheduleSummary",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Schedule summary for the  item in the context of this  entry of the catalog.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.scheduleSummary.value",
+        "text" : "Schedule summary for the catalog entry",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "string"
+      }],
+      "linkId" : "CatalogEntry.limitationSummary",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Summary of limitations for the  item in the context of this  entry of the catalog.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.limitationSummary.value",
+        "text" : "Summary of limitations for the catalog entry",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "string"
+      }],
+      "linkId" : "CatalogEntry.regulatorySummary",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Regulatory summary for the  item in the context of this  entry of the catalog.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "CatalogEntry.regulatorySummary.value",
+        "text" : "Regulatory  summary for the catalog entry",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
       }]
     }]
   }]

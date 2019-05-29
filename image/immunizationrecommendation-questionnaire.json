@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for ImmunizationRecommendation.recommendation.doseNumber[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:46639209-8322-45b2-8b2a-3840918153c1",
-      "timestamp" : "2019-03-01T07:28:29-06:00",
+      "identifier" : "urn:uuid:48b32e62-f5be-492b-85d5-1923b093fd6f",
+      "timestamp" : "2019-05-29T10:49:11-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "positiveInt",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for ImmunizationRecommendation.recommendation.seriesDoses[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:1fb81d7a-58c2-4e4e-845d-d2295dac126d",
-      "timestamp" : "2019-03-01T07:28:29-06:00",
+      "identifier" : "urn:uuid:917c87cf-77f6-4267-92f6-037f172e5e08",
+      "timestamp" : "2019-05-29T10:49:11-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "positiveInt",
@@ -46,9 +46,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International (Public Health and Emergency Response)",
   "item" : [{
     "linkId" : "ImmunizationRecommendation",
@@ -474,6 +474,10 @@
       "required" : true,
       "repeats" : true,
       "item" : [{
+        "text" : "A given instance of the .recommendation backbone element should correspond to a single recommended administration.",
+        "type" : "display"
+      },
+      {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
           "valueCodeableConcept" : {
@@ -605,10 +609,6 @@
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
-        },
-        {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "CodeableConcept"
         }],
@@ -628,7 +628,7 @@
               }]
             }
           }],
-          "text" : "The targeted disease for the recommendation.",
+          "text" : "The targeted disease for the recommendation. A given instance of the .recommendation backbone element should correspond to a single recommended administration but sometimes that administration (eg. MMR) will encompass multiple diseases, thus the targetDisease element is allowed to repeat.",
           "type" : "display"
         },
         {

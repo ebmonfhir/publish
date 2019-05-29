@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Evidence {
   id: ID
@@ -12,451 +12,327 @@ type Evidence {
   url: uri  _url: ElementBase
   identifier: [Identifier]
   version: String  _version: ElementBase
-  name: String  _name: ElementBase
   title: String  _title: ElementBase
+  shortTitle: String  _shortTitle: ElementBase
+  subTitle: String  _subTitle: ElementBase
   status: code  _status: ElementBase
-  experimental: Boolean  _experimental: ElementBase
-  date: dateTime  _date: ElementBase
-  publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
-  description: markdown  _description: ElementBase
   useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
-  purpose: markdown  _purpose: ElementBase
+  date: dateTime  _date: ElementBase
   copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  effectivePeriod: Period
-  exposureBackground: [EvidenceExposureBackground]
+  summaryPublisher: [EvidenceSummaryPublisher]
+  contributor: [Contributor]
+  relatedArtifact: [RelatedArtifact]
+  description: markdown  _description: ElementBase
+  note: [Annotation]
+  synthesisType: CodeableConcept
+  studyType: CodeableConcept
+  population: [EvidencePopulation]!
 }
 
-type EvidenceExposureBackground {
+type EvidenceSummaryPublisher {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  name: String  _name: ElementBase
+  contact: [ContactDetail]
+}
+
+type EvidencePopulation {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: markdown  _description: ElementBase
+  note: [Annotation]
+  intendedCohort: Reference
+  sampleCohort: Reference
+  actualCohort: Reference
+  sampleSize: [EvidencePopulationSampleSize]
+  evidenceVariable: [EvidencePopulationEvidenceVariable]
+}
+
+type EvidencePopulationSampleSize {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  population: Reference!
-  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  exposureVariant: [EvidenceExposureBackgroundExposureVariant]
-  comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
-}
-
-type EvidenceExposureBackgroundPopulationSampleSize {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
+  note: [Annotation]
   numberOfStudies: Int  _numberOfStudies: ElementBase
   numberOfParticipants: Int  _numberOfParticipants: ElementBase
-  knownDataCount: Int  _knownDataCount: ElementBase
-  numeratorCount: Int  _numeratorCount: ElementBase
-  note: [Annotation]
 }
 
-type EvidenceExposureBackgroundExposureVariant {
+type EvidencePopulationEvidenceVariable {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
-  covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
+  description: markdown  _description: ElementBase
   note: [Annotation]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: Reference!
+  statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollection]
+  nestedVariable: [EvidencePopulationEvidenceVariableNestedVariable]
 }
 
-type EvidenceExposureBackgroundExposureVariantMeasuredVariable {
+type EvidencePopulationEvidenceVariableStatisticCollection {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  measuredVariableDefinition: Reference!
-  univariateStatistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatistic]
+  description: markdown  _description: ElementBase
   note: [Annotation]
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatistic {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
+  statistic: markdown  _statistic: [ElementBase]
+}
+
+type EvidencePopulationEvidenceVariableNestedVariable {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: markdown  _description: ElementBase
   note: [Annotation]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: Reference!
+  statisticCollection: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollection]
 }
 
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic {
+type EvidencePopulationEvidenceVariableNestedVariableStatisticCollection {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  type: CodeableConcept
-  quantity: Quantity
-  precisionEstimate: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate]
-  pValue: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue]
+  description: markdown  _description: ElementBase
   note: [Annotation]
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  level: decimal  _level: ElementBase
-  from: decimal  _from: ElementBase
-  to: decimal  _to: ElementBase
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  value: decimal  _value: ElementBase
-  range: Range
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  rating: [CodeableConcept]
-  note: [Annotation]
-  certaintySubcomponent: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertaintyCertaintySubcomponent]
-}
-
-type EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertaintyCertaintySubcomponent {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  rating: [CodeableConcept]
-  note: [Annotation]
-}
-
-type EvidenceExposureBackgroundExposureVariantCovariantStatistic {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  measuredVariable1: Reference!
-  measuredVariable2: Reference!
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
-  note: [Annotation]
+  additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable]
+  statistic: markdown  _statistic: [ElementBase]
 }
 
-type EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize {
+type EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: Reference!
 }
 
-type EvidenceExposureBackgroundComparativeStatistic {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  exposure: Reference!
-  exposureAlternative: Reference!
-  measuredVariable: Reference!
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
-  note: [Annotation]
-}
-
-input Evidence {
+input EvidenceInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
-  identifier: [Identifier]
+  identifier: [IdentifierInput]
   version: String  _version: ElementBase
-  name: String  _name: ElementBase
   title: String  _title: ElementBase
+  shortTitle: String  _shortTitle: ElementBase
+  subTitle: String  _subTitle: ElementBase
   status: code  _status: ElementBase
-  experimental: Boolean  _experimental: ElementBase
+  useContext: [UsageContextInput]
   date: dateTime  _date: ElementBase
-  publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
-  description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
-  purpose: markdown  _purpose: ElementBase
   copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  effectivePeriod: Period
-  exposureBackground: [EvidenceExposureBackground]
+  summaryPublisher: [EvidenceSummaryPublisherInput]
+  contributor: [ContributorInput]
+  relatedArtifact: [RelatedArtifactInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  synthesisType: CodeableConceptInput
+  studyType: CodeableConceptInput
+  population: [EvidencePopulationInput]!
 }
 
-input EvidenceExposureBackground {
+input EvidenceSummaryPublisherInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  population: Reference!
-  populationSampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  exposureVariant: [EvidenceExposureBackgroundExposureVariant]
-  comparativeStatistic: [EvidenceExposureBackgroundComparativeStatistic]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  name: String  _name: ElementBase
+  contact: [ContactDetailInput]
 }
 
-input EvidenceExposureBackgroundPopulationSampleSize {
+input EvidencePopulationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  intendedCohort: ReferenceInput
+  sampleCohort: ReferenceInput
+  actualCohort: ReferenceInput
+  sampleSize: [EvidencePopulationSampleSizeInput]
+  evidenceVariable: [EvidencePopulationEvidenceVariableInput]
+}
+
+input EvidencePopulationSampleSizeInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
+  note: [AnnotationInput]
   numberOfStudies: Int  _numberOfStudies: ElementBase
   numberOfParticipants: Int  _numberOfParticipants: ElementBase
-  knownDataCount: Int  _knownDataCount: ElementBase
-  numeratorCount: Int  _numeratorCount: ElementBase
-  note: [Annotation]
 }
 
-input EvidenceExposureBackgroundExposureVariant {
+input EvidencePopulationEvidenceVariableInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  groupByExposure: Reference!
-  exposureSubsetSampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  measuredVariable: [EvidenceExposureBackgroundExposureVariantMeasuredVariable]
-  covariantStatistic: [EvidenceExposureBackgroundExposureVariantCovariantStatistic]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: ReferenceInput!
+  statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollectionInput]
+  nestedVariable: [EvidencePopulationEvidenceVariableNestedVariableInput]
 }
 
-input EvidenceExposureBackgroundExposureVariantMeasuredVariable {
+input EvidencePopulationEvidenceVariableStatisticCollectionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  measuredVariableDefinition: Reference!
-  univariateStatistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatistic]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  synthesisType: CodeableConceptInput
+  studyType: CodeableConceptInput
+  statistic: markdown  _statistic: [ElementBase]
 }
 
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatistic {
+input EvidencePopulationEvidenceVariableNestedVariableInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: ReferenceInput!
+  statisticCollection: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionInput]
 }
 
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic {
+input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  type: CodeableConcept
-  quantity: Quantity
-  precisionEstimate: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate]
-  pValue: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  synthesisType: CodeableConceptInput
+  studyType: CodeableConceptInput
+  additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput]
+  statistic: markdown  _statistic: [ElementBase]
 }
 
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPrecisionEstimate {
+input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  level: decimal  _level: ElementBase
-  from: decimal  _from: ElementBase
-  to: decimal  _to: ElementBase
-}
-
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatisticPValue {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  value: decimal  _value: ElementBase
-  range: Range
-}
-
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  rating: [CodeableConcept]
-  note: [Annotation]
-  certaintySubcomponent: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertaintyCertaintySubcomponent]
-}
-
-input EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertaintyCertaintySubcomponent {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  rating: [CodeableConcept]
-  note: [Annotation]
-}
-
-input EvidenceExposureBackgroundExposureVariantCovariantStatistic {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  measuredVariable1: Reference!
-  measuredVariable2: Reference!
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
-  note: [Annotation]
-}
-
-input EvidenceExposureBackgroundExposureVariantCovariantStatisticSampleSize {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-}
-
-input EvidenceExposureBackgroundComparativeStatistic {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: String  _description: ElementBase
-  exposure: Reference!
-  exposureAlternative: Reference!
-  measuredVariable: Reference!
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  sampleSize: EvidenceExposureBackgroundPopulationSampleSize
-  statistic: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticStatistic]
-  certainty: [EvidenceExposureBackgroundExposureVariantMeasuredVariableUnivariateStatisticCertainty]
-  note: [Annotation]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  variableRole: code  _variableRole: ElementBase
+  variableDefinition: ReferenceInput!
 }
 
 type EvidenceReadType {
-  Evidence(id : ID!) : Evidence
+  Evidence(id: ID!): Evidence
 }
 
 type EvidenceListType {
-  EvidenceList(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Evidence]
+  EvidenceList(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Evidence]
 }
 
 type EvidenceConnectionType {
-  EvidenceConection(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : EvidenceConnection
+  EvidenceConection(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): EvidenceConnection
 }
 
 type EvidenceConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [EvidenceEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [EvidenceEdge]
 }
 
 type EvidenceEdge {
-  mode : String
-  score : Float
-  resource : Evidence
+  mode: String
+  score: Float
+  resource: Evidence
 }
 
 type EvidenceCreateType {
-  EvidenceCreate(resource : Evidence) : EvidenceCreation
+  EvidenceCreate(resource: EvidenceInput): EvidenceCreation
 }
 
 type EvidenceCreation {
-  location : String
-  resource : Evidence
-  information : OperationOutcome
+  location: String
+  resource: Evidence
+  information: OperationOutcome
 }
 
 type EvidenceUpdateType {
-  EvidenceUpdate(id : IDresource : Evidence) : EvidenceUpdate
+  EvidenceUpdate(id: ID, resource: EvidenceInput): EvidenceUpdate
 }
 
 type EvidenceUpdate {
-  resource : Evidence
-  information : OperationOutcome
+  resource: Evidence
+  information: OperationOutcome
 }
 
 type EvidenceDeleteType {
-  EvidenceDelete(id : ID) : EvidenceDelete
+  EvidenceDelete(id: ID): EvidenceDelete
 }
 
 type EvidenceDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

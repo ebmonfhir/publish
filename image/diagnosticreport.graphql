@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type DiagnosticReport {
   id: ID
@@ -38,153 +38,153 @@ type DiagnosticReportMedia {
   link: Reference!
 }
 
-input DiagnosticReport {
+input DiagnosticReportInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  basedOn: [Reference]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
   status: code  _status: ElementBase
-  category: [CodeableConcept]
-  code: CodeableConcept!
-  subject: Reference
-  encounter: Reference
+  category: [CodeableConceptInput]
+  code: CodeableConceptInput!
+  subject: ReferenceInput
+  encounter: ReferenceInput
   effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
-  effectivePeriod: Period
+  effectivePeriod: PeriodInput
   issued: instant  _issued: ElementBase
-  performer: [Reference]
-  resultsInterpreter: [Reference]
-  specimen: [Reference]
-  result: [Reference]
-  imagingStudy: [Reference]
-  media: [DiagnosticReportMedia]
+  performer: [ReferenceInput]
+  resultsInterpreter: [ReferenceInput]
+  specimen: [ReferenceInput]
+  result: [ReferenceInput]
+  imagingStudy: [ReferenceInput]
+  media: [DiagnosticReportMediaInput]
   conclusion: String  _conclusion: ElementBase
-  conclusionCode: [CodeableConcept]
-  presentedForm: [Attachment]
+  conclusionCode: [CodeableConceptInput]
+  presentedForm: [AttachmentInput]
 }
 
-input DiagnosticReportMedia {
+input DiagnosticReportMediaInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   comment: String  _comment: ElementBase
-  link: Reference!
+  link: ReferenceInput!
 }
 
 type DiagnosticReportReadType {
-  DiagnosticReport(id : ID!) : DiagnosticReport
+  DiagnosticReport(id: ID!): DiagnosticReport
 }
 
 type DiagnosticReportListType {
-  DiagnosticReportList(_filter : String
-    based_on : [reference]
-    category : [token]
-    code : [token]
-    conclusion : [token]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    issued : [date]
-    media : [reference]
-    patient : [reference]
-    performer : [reference]
-    result : [reference]
-    results_interpreter : [reference]
-    specimen : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [DiagnosticReport]
+  DiagnosticReportList(_filter: String
+    based_on: [reference]
+    category: [token]
+    code: [token]
+    conclusion: [token]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    issued: [date]
+    media: [reference]
+    patient: [reference]
+    performer: [reference]
+    result: [reference]
+    results_interpreter: [reference]
+    specimen: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [DiagnosticReport]
 }
 
 type DiagnosticReportConnectionType {
-  DiagnosticReportConection(_filter : String
-    based_on : [reference]
-    category : [token]
-    code : [token]
-    conclusion : [token]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    issued : [date]
-    media : [reference]
-    patient : [reference]
-    performer : [reference]
-    result : [reference]
-    results_interpreter : [reference]
-    specimen : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : DiagnosticReportConnection
+  DiagnosticReportConection(_filter: String
+    based_on: [reference]
+    category: [token]
+    code: [token]
+    conclusion: [token]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    issued: [date]
+    media: [reference]
+    patient: [reference]
+    performer: [reference]
+    result: [reference]
+    results_interpreter: [reference]
+    specimen: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): DiagnosticReportConnection
 }
 
 type DiagnosticReportConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [DiagnosticReportEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [DiagnosticReportEdge]
 }
 
 type DiagnosticReportEdge {
-  mode : String
-  score : Float
-  resource : DiagnosticReport
+  mode: String
+  score: Float
+  resource: DiagnosticReport
 }
 
 type DiagnosticReportCreateType {
-  DiagnosticReportCreate(resource : DiagnosticReport) : DiagnosticReportCreation
+  DiagnosticReportCreate(resource: DiagnosticReportInput): DiagnosticReportCreation
 }
 
 type DiagnosticReportCreation {
-  location : String
-  resource : DiagnosticReport
-  information : OperationOutcome
+  location: String
+  resource: DiagnosticReport
+  information: OperationOutcome
 }
 
 type DiagnosticReportUpdateType {
-  DiagnosticReportUpdate(id : IDresource : DiagnosticReport) : DiagnosticReportUpdate
+  DiagnosticReportUpdate(id: ID, resource: DiagnosticReportInput): DiagnosticReportUpdate
 }
 
 type DiagnosticReportUpdate {
-  resource : DiagnosticReport
-  information : OperationOutcome
+  resource: DiagnosticReport
+  information: OperationOutcome
 }
 
 type DiagnosticReportDeleteType {
-  DiagnosticReportDelete(id : ID) : DiagnosticReportDelete
+  DiagnosticReportDelete(id: ID): DiagnosticReportDelete
 }
 
 type DiagnosticReportDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

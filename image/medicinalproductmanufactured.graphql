@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MedicinalProductManufactured {
   id: ID
@@ -18,101 +18,101 @@ type MedicinalProductManufactured {
   otherCharacteristics: [CodeableConcept]
 }
 
-input MedicinalProductManufactured {
+input MedicinalProductManufacturedInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  manufacturedDoseForm: CodeableConcept!
-  unitOfPresentation: CodeableConcept
-  quantity: Quantity!
-  manufacturer: [Reference]
-  ingredient: [Reference]
-  physicalCharacteristics: ProdCharacteristic
-  otherCharacteristics: [CodeableConcept]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  manufacturedDoseForm: CodeableConceptInput!
+  unitOfPresentation: CodeableConceptInput
+  quantity: QuantityInput!
+  manufacturer: [ReferenceInput]
+  ingredient: [ReferenceInput]
+  physicalCharacteristics: ProdCharacteristicInput
+  otherCharacteristics: [CodeableConceptInput]
 }
 
 type MedicinalProductManufacturedReadType {
-  MedicinalProductManufactured(id : ID!) : MedicinalProductManufactured
+  MedicinalProductManufactured(id: ID!): MedicinalProductManufactured
 }
 
 type MedicinalProductManufacturedListType {
-  MedicinalProductManufacturedList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MedicinalProductManufactured]
+  MedicinalProductManufacturedList(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MedicinalProductManufactured]
 }
 
 type MedicinalProductManufacturedConnectionType {
-  MedicinalProductManufacturedConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MedicinalProductManufacturedConnection
+  MedicinalProductManufacturedConection(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MedicinalProductManufacturedConnection
 }
 
 type MedicinalProductManufacturedConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MedicinalProductManufacturedEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MedicinalProductManufacturedEdge]
 }
 
 type MedicinalProductManufacturedEdge {
-  mode : String
-  score : Float
-  resource : MedicinalProductManufactured
+  mode: String
+  score: Float
+  resource: MedicinalProductManufactured
 }
 
 type MedicinalProductManufacturedCreateType {
-  MedicinalProductManufacturedCreate(resource : MedicinalProductManufactured) : MedicinalProductManufacturedCreation
+  MedicinalProductManufacturedCreate(resource: MedicinalProductManufacturedInput): MedicinalProductManufacturedCreation
 }
 
 type MedicinalProductManufacturedCreation {
-  location : String
-  resource : MedicinalProductManufactured
-  information : OperationOutcome
+  location: String
+  resource: MedicinalProductManufactured
+  information: OperationOutcome
 }
 
 type MedicinalProductManufacturedUpdateType {
-  MedicinalProductManufacturedUpdate(id : IDresource : MedicinalProductManufactured) : MedicinalProductManufacturedUpdate
+  MedicinalProductManufacturedUpdate(id: ID, resource: MedicinalProductManufacturedInput): MedicinalProductManufacturedUpdate
 }
 
 type MedicinalProductManufacturedUpdate {
-  resource : MedicinalProductManufactured
-  information : OperationOutcome
+  resource: MedicinalProductManufactured
+  information: OperationOutcome
 }
 
 type MedicinalProductManufacturedDeleteType {
-  MedicinalProductManufacturedDelete(id : ID) : MedicinalProductManufacturedDelete
+  MedicinalProductManufacturedDelete(id: ID): MedicinalProductManufacturedDelete
 }
 
 type MedicinalProductManufacturedDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>DocumentReference - FHIR v4.0.0</title>
+  <title>DocumentReference - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,9 +36,11 @@
 <body>
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
-			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -69,6 +71,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -106,7 +109,7 @@
 
 <h1 class="self-link-parent"><span class="sectioncount">2.42<a name="2.42"> </a></span> Resource DocumentReference - Content <a href="documentreference.html#2.42" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h1>
 
-<table class="colstu"><tr><td><a href="http://www.hl7.org/Special/committees/structure/index.cfm">Structured Documents <img src="external.png" style="text-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 3</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Not Classified</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colstu"><tr><td><a href="http://www.hl7.org/Special/committees/structure/index.cfm">Structured Documents <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 3</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Not Classified</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 
 <p>
@@ -125,15 +128,15 @@ author, etc. can be displayed to the user), and has defined update management. T
 used with any document format that has a recognized mime type and that conforms to this definition.
 </p>
 <p>
-Typically, DocumentReference resources are used in document indexing systems, such as <a href="http://wiki.ihe.net/index.php?title=Cross-Enterprise_Document_Sharing">IHE XDS <img src="external.png" style="text-align: baseline"/></a>,
-such as profiled in <a href="http://wiki.ihe.net/index.php/Mobile_access_to_Health_Documents_(MHD)">IHE Mobile access to Health Documents <img src="external.png" style="text-align: baseline"/></a>.
+Typically, DocumentReference resources are used in document indexing systems, such as <a href="http://wiki.ihe.net/index.php?title=Cross-Enterprise_Document_Sharing">IHE XDS <img src="external.png" style="vertical-align: baseline"/></a>,
+such as profiled in <a href="http://wiki.ihe.net/index.php/Mobile_access_to_Health_Documents_(MHD)">IHE Mobile access to Health Documents <img src="external.png" style="vertical-align: baseline"/></a>.
 </p>
 <p>
 DocumentReference is metadata describing a document such as:</p>
 <ul>
- <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA <img src="external.png" style="text-align: baseline"/></a> documents in FHIR systems</li>
+ <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA <img src="external.png" style="vertical-align: baseline"/></a> documents in FHIR systems</li>
  <li><a href="documents.html">FHIR documents</a> stored elsewhere (i.e. registry/repository following the XDS model)</li>
- <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents <img src="external.png" style="text-align: baseline"/></a>, Scanned Paper, and digital records of faxes</li>
+ <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents <img src="external.png" style="vertical-align: baseline"/></a>, Scanned Paper, and digital records of faxes</li>
  <li>Clinical Notes in various forms</li>
  <li>Image files (e.g., JPEG, GIF, TIFF)</li>
  <li>Non-Standard formats (e.g., WORD)</li>
@@ -152,7 +155,7 @@ that are authored and assembled in FHIR. This resource is mainly intended for ge
 The document that is a target of the reference can be a reference to a FHIR document served by another server, or 
 the target can be stored in the special <a href="http.html#binary">FHIR Binary Resource</a>, or the target can be 
 stored on some other server system. The document reference is also able to address documents that are retrieved 
-by a service call such as an XDS.b RetrieveDocumentSet, or a DICOM exchange, or an <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2 <img src="external.png" style="text-align: baseline"/></a> message query - though 
+by a service call such as an XDS.b RetrieveDocumentSet, or a DICOM exchange, or an <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2 <img src="external.png" style="vertical-align: baseline"/></a> message query - though 
 the way each of these service calls works must be specified in some external standard or other documentation.
 </p>
 <p>
@@ -169,11 +172,12 @@ discussed as <a href="provenance.html#overlap">part of the description of the Pr
 
 </div>
 
-<p>This resource is referenced by <a href="adverseevent.html#AdverseEvent">AdverseEvent</a>, <a href="careplan.html#CarePlan">CarePlan</a>, <a href="communication.html#Communication">Communication</a>, <a href="communicationrequest.html#CommunicationRequest">CommunicationRequest</a>, <a href="consent.html#Consent">Consent</a>, <a href="contract.html#Contract">Contract</a>, <a href="devicerequest.html#DeviceRequest">DeviceRequest</a>, <a href="deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, itself, <a href="familymemberhistory.html#FamilyMemberHistory">FamilyMemberHistory</a>, <a href="guidanceresponse.html#GuidanceResponse">GuidanceResponse</a>, <a href="imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="medicationknowledge.html#MedicationKnowledge">MedicationKnowledge</a>, <a href="medicinalproduct.html#MedicinalProduct">MedicinalProduct</a>, <a href="observation.html#Observation">Observation</a>, <a href="procedure.html#Procedure">Procedure</a>, <a href="requestgroup.html#RequestGroup">RequestGroup</a>, <a href="riskassessment.html#RiskAssessment">RiskAssessment</a>, <a href="servicerequest.html#ServiceRequest">ServiceRequest</a>, <a href="substancedefinition.html#SubstanceDefinition">SubstanceDefinition</a>, <a href="substancereferenceinformation.html#SubstanceReferenceInformation">SubstanceReferenceInformation</a> and <a href="supplyrequest.html#SupplyRequest">SupplyRequest</a></p>
+<h2 class="self-link-parent"><span class="sectioncount">2.42.3<a name="2.42.3"> </a></span> References <a href="documentreference.html#2.42.3" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2><p>This resource is referenced by <a href="adverseevent.html#AdverseEvent">AdverseEvent</a>, <a href="careplan.html#CarePlan">CarePlan</a>, <a href="consent.html#Consent">Consent</a>, <a href="contract.html#Contract">Contract</a>, <a href="devicerequest.html#DeviceRequest">DeviceRequest</a>, <a href="deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, itself, <a href="familymemberhistory.html#FamilyMemberHistory">FamilyMemberHistory</a>, <a href="guidanceresponse.html#GuidanceResponse">GuidanceResponse</a>, <a href="imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="medicationknowledge.html#MedicationKnowledge">MedicationKnowledge</a>, <a href="observation.html#Observation">Observation</a>, <a href="procedure.html#Procedure">Procedure</a>, <a href="regulatedmedicinalproduct.html#RegulatedMedicinalProduct">RegulatedMedicinalProduct</a>, <a href="requestgroup.html#RequestGroup">RequestGroup</a>, <a href="riskassessment.html#RiskAssessment">RiskAssessment</a>, <a href="servicerequest.html#ServiceRequest">ServiceRequest</a>, <a href="substancedefinition.html#SubstanceDefinition">SubstanceDefinition</a>, <a href="substancereferenceinformation.html#SubstanceReferenceInformation">SubstanceReferenceInformation</a> and <a href="supplyrequest.html#SupplyRequest">SupplyRequest</a>.</p>
+<p>This resource implements the <a href="event.html#Event">Event</a> pattern.</p>
 
 
 <a name="resource"></a>
-<h2 class="self-link-parent"><span class="sectioncount">2.42.3</span> 
+<h2 class="self-link-parent"><span class="sectioncount">2.42.4</span> 
 Resource Content
  <a href="documentreference.html#resource" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <a name="def"></a>
@@ -262,11 +266,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
  &lt;<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict"><b>docStatus</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy"><a style="color: navy" href="valueset-composition-status.html">preliminary | final | appended | amended | entered-in-error</a></span><span style="color: Gray"> --&gt;</span>
  &lt;<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict"><b>type</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> <span style="color: navy"><a style="color: navy" href="valueset-c80-doc-typecodes.html">Kind of document (LOINC if possible)</a></span><span style="color: Gray"> --&gt;</span>&lt;/type&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict"><b>category</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> <span style="color: navy"><a style="color: navy" href="valueset-document-classcodes.html">Categorization of document</a></span><span style="color: Gray"> --&gt;</span>&lt;/category&gt;
- &lt;<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict"><b>subject</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what is the subject of the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/subject&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict"><b>subject</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what is the subject of the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/subject&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict"><b>date</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#instant">instant</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">When this document reference was created</a></span><span style="color: Gray"> --&gt;</span>
- &lt;<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict"><b>author</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|
-   <a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who and/or what authored the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/author&gt;
- &lt;<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict"><b>authenticator</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what authenticated the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/authenticator&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict"><b>author</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|
+   <a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who and/or what authored the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/author&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict"><b>authenticator</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what authenticated the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/authenticator&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict"><b>custodian</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Organization which maintains the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/custodian&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict"><b>relatesTo</b></a>&gt;  <span style="color: Gray">&lt;!-- <span style="color: brown"><b>0..*</b></span> Relationships to other documents --&gt;</span>
   &lt;<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict"><b>code</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: navy"><a style="color: navy" href="valueset-document-relationship-type.html">replaces | transforms | signs | appends</a></span><span style="color: Gray"> --&gt;</span>
@@ -310,11 +314,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   "<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict">docStatus</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-composition-status.html">preliminary | final | appended | amended | entered-in-error</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict">type</a>" : { <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-c80-doc-typecodes.html">Kind of document (LOINC if possible)</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict">category</a>" : [{ <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-document-classcodes.html">Categorization of document</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">subject</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what is the subject of the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">subject</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what is the subject of the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict">date</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">When this document reference was created</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">author</a>" : [{ <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|
-   <a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who and/or what authored the document</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">authenticator</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what authenticated the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">author</a>" : [{ <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|
+   <a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who and/or what authored the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">authenticator</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what authenticated the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict">custodian</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Organization which maintains the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict">relatesTo</a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Relationships to other documents</a></span>
     "<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict">code</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="This element is required"><b>R!</b></span>  <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-document-relationship-type.html">replaces | transforms | signs | appends</a></span>
@@ -362,10 +366,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   fhir:<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict">DocumentReference.docStatus</a><a name="ttl-docStatus"> </a>[ <a href="datatypes.html#code">code</a> ]; # 0..1 <span style="color: navy">preliminary | final | appended | amended | entered-in-error</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict">DocumentReference.type</a><a name="ttl-type"> </a>[ <a href="datatypes.html#CodeableConcept">CodeableConcept</a> ]; # 0..1 <span style="color: navy">Kind of document (LOINC if possible)</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict">DocumentReference.category</a><a name="ttl-category"> </a>[ <a href="datatypes.html#CodeableConcept">CodeableConcept</a> ], ... ; # 0..* <span style="color: navy">Categorization of document</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">DocumentReference.subject</a><a name="ttl-subject"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>) ]; # 0..1 <span style="color: navy">Who/what is the subject of the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">DocumentReference.subject</a><a name="ttl-subject"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>) ]; # 0..1 <span style="color: navy">Who/what is the subject of the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict">DocumentReference.date</a><a name="ttl-date"> </a>[ <a href="datatypes.html#instant">instant</a> ]; # 0..1 <span style="color: navy">When this document reference was created</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">DocumentReference.author</a><a name="ttl-author"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|<a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>) ], ... ; # 0..* <span style="color: navy">Who and/or what authored the document</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">DocumentReference.authenticator</a><a name="ttl-authenticator"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>) ]; # 0..1 <span style="color: navy">Who/what authenticated the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">DocumentReference.author</a><a name="ttl-author"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>) ], ... ; # 0..* <span style="color: navy">Who and/or what authored the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">DocumentReference.authenticator</a><a name="ttl-authenticator"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>) ]; # 0..1 <span style="color: navy">Who/what authenticated the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict">DocumentReference.custodian</a><a name="ttl-custodian"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>) ]; # 0..1 <span style="color: navy">Organization which maintains the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict">DocumentReference.relatesTo</a><a name="ttl-relatesTo"> </a>[ # 0..* <span style="color: navy">Relationships to other documents</span>
     fhir:<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict">DocumentReference.relatesTo.code</a><a name="ttl-code"> </a>[ <a href="datatypes.html#code">code</a> ]; # 1..1 <span style="color: navy">replaces | transforms | signs | appends</span>
@@ -409,7 +413,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.status</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/document-reference-status to http://hl7.org/fhir/ValueSet/document-reference-status|4.0.0</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/document-reference-status|4.0.0 to http://hl7.org/fhir/ValueSet/document-reference-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -417,56 +421,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.docStatus</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/composition-status to http://hl7.org/fhir/ValueSet/composition-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>Min Cardinality changed from 1 to 0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-changed-item">
-    <td class="diff-left">DocumentReference.category</td>
-    <td class="diff-right">
-      <ul>
-        <li>Renamed from class to category</li>
-        <li>Max Cardinality changed from 1 to *</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">DocumentReference.date</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.author</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.authenticator</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.relatesTo</td>
-    <td class="diff-right">
-      <ul>
-        <li>No longer marked as Modifier</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/composition-status|4.0.0 to http://hl7.org/fhir/ValueSet/composition-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -474,56 +429,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.relatesTo.code</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/document-relationship-type to http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.context.encounter</td>
-    <td class="diff-right">
-      <ul>
-        <li>Max Cardinality changed from 1 to *</li>
-        <li>Type Reference: Added Target Type EpisodeOfCare</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.context.related</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from BackboneElement to Reference(Resource)</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.created</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.indexed</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.context.related.identifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.context.related.ref</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.0 to http://hl7.org/fhir/ValueSet/document-relationship-type|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -610,11 +516,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
  &lt;<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict"><b>docStatus</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy"><a style="color: navy" href="valueset-composition-status.html">preliminary | final | appended | amended | entered-in-error</a></span><span style="color: Gray"> --&gt;</span>
  &lt;<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict"><b>type</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> <span style="color: navy"><a style="color: navy" href="valueset-c80-doc-typecodes.html">Kind of document (LOINC if possible)</a></span><span style="color: Gray"> --&gt;</span>&lt;/type&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict"><b>category</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> <span style="color: navy"><a style="color: navy" href="valueset-document-classcodes.html">Categorization of document</a></span><span style="color: Gray"> --&gt;</span>&lt;/category&gt;
- &lt;<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict"><b>subject</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what is the subject of the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/subject&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict"><b>subject</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what is the subject of the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/subject&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict"><b>date</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#instant">instant</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">When this document reference was created</a></span><span style="color: Gray"> --&gt;</span>
- &lt;<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict"><b>author</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|
-   <a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who and/or what authored the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/author&gt;
- &lt;<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict"><b>authenticator</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what authenticated the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/authenticator&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict"><b>author</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|
+   <a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who and/or what authored the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/author&gt;
+ &lt;<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict"><b>authenticator</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Who/what authenticated the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/authenticator&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict"><b>custodian</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>)</span> <span style="color: navy"><a style="color: navy" href="terminologies.html#unbound">Organization which maintains the document</a></span><span style="color: Gray"> --&gt;</span>&lt;/custodian&gt;
  &lt;<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict"><b>relatesTo</b></a>&gt;  <span style="color: Gray">&lt;!-- <span style="color: brown"><b>0..*</b></span> Relationships to other documents --&gt;</span>
   &lt;<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict"><b>code</b></a> value="[<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>]"/&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: navy"><a style="color: navy" href="valueset-document-relationship-type.html">replaces | transforms | signs | appends</a></span><span style="color: Gray"> --&gt;</span>
@@ -656,11 +562,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   "<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict">docStatus</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-composition-status.html">preliminary | final | appended | amended | entered-in-error</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict">type</a>" : { <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-c80-doc-typecodes.html">Kind of document (LOINC if possible)</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict">category</a>" : [{ <span style="color: darkgreen"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-document-classcodes.html">Categorization of document</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">subject</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what is the subject of the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">subject</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what is the subject of the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict">date</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">When this document reference was created</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">author</a>" : [{ <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|
-   <a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who and/or what authored the document</a></span>
-  "<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">authenticator</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what authenticated the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">author</a>" : [{ <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|
+   <a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>)</span> }], <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who and/or what authored the document</a></span>
+  "<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">authenticator</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Who/what authenticated the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict">custodian</a>" : { <span style="color: darkgreen"><a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>)</span> }, <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Organization which maintains the document</a></span>
   "<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict">relatesTo</a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="terminologies.html#unbound">Relationships to other documents</a></span>
     "<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict">code</a>" : "&lt;<span style="color: darkgreen"><a href="datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="This element is required"><b>R!</b></span>  <span style="color: navy; opacity: 0.8"><a style="color: navy; opacity: 0.8" href="valueset-document-relationship-type.html">replaces | transforms | signs | appends</a></span>
@@ -706,10 +612,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
   fhir:<a href="documentreference-definitions.html#DocumentReference.docStatus" title="The status of the underlying document." class="dict">DocumentReference.docStatus</a><a name="ttl-docStatus"> </a>[ <a href="datatypes.html#code">code</a> ]; # 0..1 <span style="color: navy">preliminary | final | appended | amended | entered-in-error</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.type" title="Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced." class="dict">DocumentReference.type</a><a name="ttl-type"> </a>[ <a href="datatypes.html#CodeableConcept">CodeableConcept</a> ]; # 0..1 <span style="color: navy">Kind of document (LOINC if possible)</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.category" title="A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type." class="dict">DocumentReference.category</a><a name="ttl-category"> </a>[ <a href="datatypes.html#CodeableConcept">CodeableConcept</a> ], ... ; # 0..* <span style="color: navy">Categorization of document</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">DocumentReference.subject</a><a name="ttl-subject"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="group.html#Group">Group</a>|<a href="device.html#Device">Device</a>) ]; # 0..1 <span style="color: navy">Who/what is the subject of the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.subject" title="Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure)." class="dict">DocumentReference.subject</a><a name="ttl-subject"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="group.html#Group">Group</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>) ]; # 0..1 <span style="color: navy">Who/what is the subject of the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.date" title="When the document reference was created." class="dict">DocumentReference.date</a><a name="ttl-date"> </a>[ <a href="datatypes.html#instant">instant</a> ]; # 0..1 <span style="color: navy">When this document reference was created</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">DocumentReference.author</a><a name="ttl-author"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>|<a href="device.html#Device">Device</a>|<a href="patient.html#Patient">Patient</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>) ], ... ; # 0..* <span style="color: navy">Who and/or what authored the document</span>
-  fhir:<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">DocumentReference.authenticator</a><a name="ttl-authenticator"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="organization.html#Organization">Organization</a>) ]; # 0..1 <span style="color: navy">Who/what authenticated the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.author" title="Identifies who is responsible for adding the information to the document." class="dict">DocumentReference.author</a><a name="ttl-author"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="device.html#Device">Device</a>|<a href="organization.html#Organization">Organization</a>|<a href="patient.html#Patient">Patient</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>|<a href="relatedperson.html#RelatedPerson">RelatedPerson</a>) ], ... ; # 0..* <span style="color: navy">Who and/or what authored the document</span>
+  fhir:<a href="documentreference-definitions.html#DocumentReference.authenticator" title="Which person or organization authenticates that this document is valid." class="dict">DocumentReference.authenticator</a><a name="ttl-authenticator"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>|<a href="practitioner.html#Practitioner">Practitioner</a>|<a href="practitionerrole.html#PractitionerRole">PractitionerRole</a>) ]; # 0..1 <span style="color: navy">Who/what authenticated the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.custodian" title="Identifies the organization or group who is responsible for ongoing maintenance of and access to the document." class="dict">DocumentReference.custodian</a><a name="ttl-custodian"> </a>[ <a href="references.html#Reference">Reference</a>(<a href="organization.html#Organization">Organization</a>) ]; # 0..1 <span style="color: navy">Organization which maintains the document</span>
   fhir:<a href="documentreference-definitions.html#DocumentReference.relatesTo" title="Relationships that this document has with other document references that already exist." class="dict">DocumentReference.relatesTo</a><a name="ttl-relatesTo"> </a>[ # 0..* <span style="color: navy">Relationships to other documents</span>
     fhir:<a href="documentreference-definitions.html#DocumentReference.relatesTo.code" title="The type of relationship that this document has with anther document." class="dict">DocumentReference.relatesTo.code</a><a name="ttl-code"> </a>[ <a href="datatypes.html#code">code</a> ]; # 1..1 <span style="color: navy">replaces | transforms | signs | appends</span>
@@ -750,7 +656,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.status</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/document-reference-status to http://hl7.org/fhir/ValueSet/document-reference-status|4.0.0</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/document-reference-status|4.0.0 to http://hl7.org/fhir/ValueSet/document-reference-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -758,56 +664,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.docStatus</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/composition-status to http://hl7.org/fhir/ValueSet/composition-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>Min Cardinality changed from 1 to 0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-changed-item">
-    <td class="diff-left">DocumentReference.category</td>
-    <td class="diff-right">
-      <ul>
-        <li>Renamed from class to category</li>
-        <li>Max Cardinality changed from 1 to *</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">DocumentReference.date</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.author</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.authenticator</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type Reference: Added Target Type PractitionerRole</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.relatesTo</td>
-    <td class="diff-right">
-      <ul>
-        <li>No longer marked as Modifier</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/composition-status|4.0.0 to http://hl7.org/fhir/ValueSet/composition-status|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -815,56 +672,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     <td class="diff-left">DocumentReference.relatesTo.code</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/document-relationship-type to http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.context.encounter</td>
-    <td class="diff-right">
-      <ul>
-        <li>Max Cardinality changed from 1 to *</li>
-        <li>Type Reference: Added Target Type EpisodeOfCare</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-entry">
-    <td class="diff-left">DocumentReference.context.related</td>
-    <td class="diff-right">
-      <ul>
-        <li>Type changed from BackboneElement to Reference(Resource)</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.created</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.indexed</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.context.related.identifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">DocumentReference.context.related.ref</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/document-relationship-type|4.0.0 to http://hl7.org/fhir/ValueSet/document-relationship-type|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -887,10 +695,10 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <p>See the <a href="documentreference-profiles.html">Profiles &amp; Extensions</a> and the alternate definitions:
 Master Definition <a href="documentreference.profile.xml.html">XML</a> + <a href="documentreference.profile.json.html">JSON</a>,
 <a href="xml.html">XML</a> <a href="documentreference.xsd">Schema</a>/<a href="documentreference.sch">Schematron</a> + <a href="json.html">JSON</a> 
-<a href="documentreference.schema.json.html">Schema</a>, <a href="documentreference.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)  + <a href="documentreference-profiles.html">see the extensions</a> &amp; the <a href="documentreference-dependencies.html">dependency analysis</a></p>
+<a href="documentreference.schema.json.html">Schema</a>, <a href="documentreference.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)  + <a href="documentreference-profiles.html">see the extensions</a>, the <a href="documentreference.xlsx">spreadsheet version</a> &amp; the <a href="documentreference-dependencies.html">dependency analysis</a> a</p>
 
 <a name="tx"></a>
-<h3 class="self-link-parent"><span class="sectioncount">2.42.3.1</span> 
+<h3 class="self-link-parent"><span class="sectioncount">2.42.4.1</span> 
 Terminology Bindings
  <a href="documentreference.html#tx" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
 <table class="grid">
@@ -912,7 +720,7 @@ Terminology Bindings
 
 
 <a name="impl"></a>
-<h2 class="self-link-parent"><span class="sectioncount">2.42.4</span> Implementation Notes <a href="documentreference.html#impl" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">2.42.5</span> Implementation Notes <a href="documentreference.html#impl" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <ul>
  <li>The use of the .docStatus codes is discussed in the <a href="composition.html#status">Composition description</a></li>
  <li>The resources maintain one way relationships that point backwards - e.g., the document that replaces one document points towards the document that it replaced. The reverse relationships can be followed by using 
@@ -955,7 +763,7 @@ Several organizations define codes for document formats:
 Note that IHE specifies that their URNs and OIDs are codes in the code system <code>urn:oid:1.3.6.1.4.1.19376.1.2.3</code>.
 HL7 and ASTM URIs are in the general URI code system <code>urn:ietf:rfc:3986</code>.
 </p> -->
-<h3 class="self-link-parent"><span class="sectioncount">2.42.4.1<a name="2.42.4.1"> </a></span> Generating a Document Reference <a href="documentreference.html#2.42.4.1" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
+<h3 class="self-link-parent"><span class="sectioncount">2.42.5.1<a name="2.42.5.1"> </a></span> Generating a Document Reference <a href="documentreference.html#2.42.5.1" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
 <p>
 A client can ask a server to generate a document reference from a document.
 The server reads the existing document and generates a matching DocumentReference
@@ -965,7 +773,7 @@ return or generate document references for the following types of content:
 <table class="grid">
   <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR Documents</a></td> <td>The uri refers to an existing Document</td> </tr>
-  <tr> <td><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA <img src="external.png" style="text-align: baseline"/></a> Document</td> <td>The uri is a reference to a <a href="binary.html">Binary</a> end-point that returns either a CDA 
+  <tr> <td><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA <img src="external.png" style="vertical-align: baseline"/></a> Document</td> <td>The uri is a reference to a <a href="binary.html">Binary</a> end-point that returns either a CDA 
     document, or some kind of CDA Package that the server knows how to process (e.g., an IHE .zip) </td> </tr>
   <tr> <td>Other</td> <td>The server can be asked to generate a document reference for other kinds of 
     documents. For some of these documents (e.g., PDF documents) a server could only provide a 
@@ -994,7 +802,7 @@ document types described above. Other parameters may be supplied:
 </table>
 
 <a name="search"></a>
-<h2 class="self-link-parent"><span class="sectioncount">2.42.5</span> Search Parameters <a href="documentreference.html#search" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">2.42.6</span> Search Parameters <a href="documentreference.html#search" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <p>Search parameters for this resource. The <a href="search.html#all">common parameters</a> also apply. See <a href="search.html">Searching</a> for more information about searching in REST, messaging, and services.</p>
 <table class="list">
 <tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Expression</b></td><td><b>In Common</b></td></tr>
@@ -1041,16 +849,17 @@ document types described above. Other parameters may be supplied:
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
-        Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 
+        Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdocumentreference.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference.html">Compare to R3 <img src="external.png" style="text-align: baseline"/></a> |                
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+  <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdocumentreference.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
-               <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="text-align: baseline"/></a>   
+               <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>
         </p>
 			</div>  <!-- /inner-wrapper -->

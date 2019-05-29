@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Device - FHIR v4.0.0</title>
+  <title>Device - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,9 +36,11 @@
 <body>
 	<div id="segment-header" class="segment">  <!-- segment-header -->	
 		<div class="container">  <!-- container -->
-			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -69,6 +71,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -106,7 +109,7 @@
 
 <h1 class="self-link-parent"><span class="sectioncount">8.14<a name="8.14"> </a></span> Resource Device - Content <a href="device.html#8.14" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h1>
 
-<table class="colsd"><tr><td><a href="http://www.hl7.org/Special/committees/orders/index.cfm">Orders and Observations <img src="external.png" style="text-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 0</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Business</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
+<table class="colsd"><tr><td><a href="http://www.hl7.org/Special/committees/orders/index.cfm">Orders and Observations <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 0</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Business</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
 
 
 <p>
@@ -145,11 +148,12 @@ Devices differ from medications because they are not "used up" - they remain act
 
 </div>
 
-<p>This resource is referenced by <a href="datatypes.html#Signature">Signature</a>, <a href="account.html#Account">Account</a>, <a href="adverseevent.html#AdverseEvent">AdverseEvent</a>, <a href="appointment.html#Appointment">Appointment</a>, <a href="appointmentresponse.html#AppointmentResponse">AppointmentResponse</a>, <a href="auditevent.html#AuditEvent">AuditEvent</a>, <a href="careplan.html#CarePlan">CarePlan</a>, <a href="catalogentry.html#CatalogEntry">CatalogEntry</a>, <a href="chargeitem.html#ChargeItem">ChargeItem</a>, <a href="chargeitemdefinition.html#ChargeItemDefinition">ChargeItemDefinition</a>, <a href="claim.html#Claim">Claim</a>, <a href="communication.html#Communication">Communication</a>, <a href="communicationrequest.html#CommunicationRequest">CommunicationRequest</a>, <a href="composition.html#Composition">Composition</a>, <a href="consent.html#Consent">Consent</a>, <a href="contract.html#Contract">Contract</a>, <a href="detectedissue.html#DetectedIssue">DetectedIssue</a>, itself, <a href="devicemetric.html#DeviceMetric">DeviceMetric</a>, <a href="devicerequest.html#DeviceRequest">DeviceRequest</a>, <a href="deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="diagnosticreport.html#DiagnosticReport">DiagnosticReport</a>, <a href="documentmanifest.html#DocumentManifest">DocumentManifest</a>, <a href="documentreference.html#DocumentReference">DocumentReference</a>, <a href="explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>, <a href="flag.html#Flag">Flag</a>, <a href="group.html#Group">Group</a>, <a href="guidanceresponse.html#GuidanceResponse">GuidanceResponse</a>, <a href="imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="invoice.html#Invoice">Invoice</a>, <a href="list.html#List">List</a>, <a href="measurereport.html#MeasureReport">MeasureReport</a>, <a href="media.html#Media">Media</a>, <a href="medicationadministration.html#MedicationAdministration">MedicationAdministration</a>, <a href="medicationdispense.html#MedicationDispense">MedicationDispense</a>, <a href="medicationknowledge.html#MedicationKnowledge">MedicationKnowledge</a>, <a href="medicationrequest.html#MedicationRequest">MedicationRequest</a>, <a href="messageheader.html#MessageHeader">MessageHeader</a>, <a href="molecularsequence.html#MolecularSequence">MolecularSequence</a>, <a href="observation.html#Observation">Observation</a>, <a href="procedure.html#Procedure">Procedure</a>, <a href="provenance.html#Provenance">Provenance</a>, <a href="questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="requestgroup.html#RequestGroup">RequestGroup</a>, <a href="riskassessment.html#RiskAssessment">RiskAssessment</a>, <a href="schedule.html#Schedule">Schedule</a>, <a href="servicerequest.html#ServiceRequest">ServiceRequest</a>, <a href="specimen.html#Specimen">Specimen</a>, <a href="supplydelivery.html#SupplyDelivery">SupplyDelivery</a>, <a href="supplyrequest.html#SupplyRequest">SupplyRequest</a> and <a href="task.html#Task">Task</a></p>
+<h2 class="self-link-parent"><span class="sectioncount">8.14.3<a name="8.14.3"> </a></span> References <a href="device.html#8.14.3" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2><p>This resource is referenced by <a href="datatypes.html#Signature">Signature</a>, <a href="account.html#Account">Account</a>, <a href="adverseevent.html#AdverseEvent">AdverseEvent</a>, <a href="appointment.html#Appointment">Appointment</a>, <a href="appointmentresponse.html#AppointmentResponse">AppointmentResponse</a>, <a href="auditevent.html#AuditEvent">AuditEvent</a>, <a href="careplan.html#CarePlan">CarePlan</a>, <a href="catalogentry.html#CatalogEntry">CatalogEntry</a>, <a href="chargeitem.html#ChargeItem">ChargeItem</a>, <a href="chargeitemdefinition.html#ChargeItemDefinition">ChargeItemDefinition</a>, <a href="claim.html#Claim">Claim</a>, <a href="clinicaluseissue.html#ClinicalUseIssue">ClinicalUseIssue</a>, <a href="communication.html#Communication">Communication</a>, <a href="communicationrequest.html#CommunicationRequest">CommunicationRequest</a>, <a href="composition.html#Composition">Composition</a>, <a href="consent.html#Consent">Consent</a>, <a href="contract.html#Contract">Contract</a>, <a href="detectedissue.html#DetectedIssue">DetectedIssue</a>, itself, <a href="devicemetric.html#DeviceMetric">DeviceMetric</a>, <a href="devicerequest.html#DeviceRequest">DeviceRequest</a>, <a href="deviceusestatement.html#DeviceUseStatement">DeviceUseStatement</a>, <a href="diagnosticreport.html#DiagnosticReport">DiagnosticReport</a>, <a href="documentmanifest.html#DocumentManifest">DocumentManifest</a>, <a href="documentreference.html#DocumentReference">DocumentReference</a>, <a href="explanationofbenefit.html#ExplanationOfBenefit">ExplanationOfBenefit</a>, <a href="flag.html#Flag">Flag</a>, <a href="group.html#Group">Group</a>, <a href="guidanceresponse.html#GuidanceResponse">GuidanceResponse</a>, <a href="imagingstudy.html#ImagingStudy">ImagingStudy</a>, <a href="invoice.html#Invoice">Invoice</a>, <a href="list.html#List">List</a>, <a href="measurereport.html#MeasureReport">MeasureReport</a>, <a href="media.html#Media">Media</a>, <a href="medicationadministration.html#MedicationAdministration">MedicationAdministration</a>, <a href="medicationdispense.html#MedicationDispense">MedicationDispense</a>, <a href="medicationknowledge.html#MedicationKnowledge">MedicationKnowledge</a>, <a href="medicationrequest.html#MedicationRequest">MedicationRequest</a>, <a href="messageheader.html#MessageHeader">MessageHeader</a>, <a href="molecularsequence.html#MolecularSequence">MolecularSequence</a>, <a href="observation.html#Observation">Observation</a>, <a href="procedure.html#Procedure">Procedure</a>, <a href="provenance.html#Provenance">Provenance</a>, <a href="questionnaireresponse.html#QuestionnaireResponse">QuestionnaireResponse</a>, <a href="requestgroup.html#RequestGroup">RequestGroup</a>, <a href="riskassessment.html#RiskAssessment">RiskAssessment</a>, <a href="schedule.html#Schedule">Schedule</a>, <a href="servicerequest.html#ServiceRequest">ServiceRequest</a>, <a href="specimen.html#Specimen">Specimen</a>, <a href="supplydelivery.html#SupplyDelivery">SupplyDelivery</a>, <a href="supplyrequest.html#SupplyRequest">SupplyRequest</a> and <a href="task.html#Task">Task</a>.</p>
+<p>This resource implements the <a href="participant.html#Participant">Participant</a> pattern.</p>
 
 
 <a name="resource"></a>
-<h2 class="self-link-parent"><span class="sectioncount">8.14.3</span> 
+<h2 class="self-link-parent"><span class="sectioncount">8.14.4</span> 
 Resource Content
  <a href="device.html#resource" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <a name="def"></a>
@@ -490,67 +494,11 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     </td>
     <td class="diff-right"></td>
   </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.definition</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.deviceIdentifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.issuer</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.jurisdiction</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.carrierAIDC</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.carrierHRF</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
+  <tr class="diff-entry">
     <td class="diff-left">Device.udiCarrier.entryType</td>
     <td class="diff-right">
       <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/udi-entry-type|4.0.0 to http://hl7.org/fhir/ValueSet/udi-entry-type|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -558,194 +506,15 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     <td class="diff-left">Device.status</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/device-status to http://hl7.org/fhir/ValueSet/device-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.statusReason</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.distinctIdentifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.serialNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName.name</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.modelNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.partNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization.systemType</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization.version</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/device-status|4.0.0 to http://hl7.org/fhir/ValueSet/device-status|4.1.0</li>
       </ul>
     </td>
   </tr>
   <tr class="diff-entry">
-    <td class="diff-left">Device.version</td>
+    <td class="diff-left">Device.deviceName.type</td>
     <td class="diff-right">
       <ul>
-        <li>Max Cardinality changed from 1 to *</li>
-        <li>Type changed from string to BackboneElement</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.component</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.value</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.valueQuantity</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.valueCode</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.parent</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">Device.udi</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">Device.model</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/device-nametype|4.0.0 to http://hl7.org/fhir/ValueSet/device-nametype|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1077,67 +846,11 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     </td>
     <td class="diff-right"></td>
   </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.definition</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.deviceIdentifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.issuer</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.jurisdiction</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.carrierAIDC</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.udiCarrier.carrierHRF</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
+  <tr class="diff-entry">
     <td class="diff-left">Device.udiCarrier.entryType</td>
     <td class="diff-right">
       <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/udi-entry-type|4.0.0 to http://hl7.org/fhir/ValueSet/udi-entry-type|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1145,194 +858,15 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     <td class="diff-left">Device.status</td>
     <td class="diff-right">
       <ul>
-        <li>Change value set from http://hl7.org/fhir/ValueSet/device-status to http://hl7.org/fhir/ValueSet/device-status|4.0.0</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.statusReason</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.distinctIdentifier</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.serialNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName.name</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.deviceName.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.modelNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.partNumber</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization.systemType</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.specialization.version</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/device-status|4.0.0 to http://hl7.org/fhir/ValueSet/device-status|4.1.0</li>
       </ul>
     </td>
   </tr>
   <tr class="diff-entry">
-    <td class="diff-left">Device.version</td>
+    <td class="diff-left">Device.deviceName.type</td>
     <td class="diff-right">
       <ul>
-        <li>Max Cardinality changed from 1 to *</li>
-        <li>Type changed from string to BackboneElement</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.component</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.version.value</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.type</td>
-    <td class="diff-right">
-      <ul>
-        <li>
-          <b>Added Mandatory Element</b>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.valueQuantity</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.property.valueCode</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-new">
-    <td class="diff-left">Device.parent</td>
-    <td class="diff-right">
-      <ul>
-        <li>Added Element</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">Device.udi</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
-      </ul>
-    </td>
-  </tr>
-  <tr class="diff-del">
-    <td class="diff-left">Device.model</td>
-    <td class="diff-right">
-      <ul>
-        <li>deleted</li>
+        <li>Change value set from http://hl7.org/fhir/ValueSet/device-nametype|4.0.0 to http://hl7.org/fhir/ValueSet/device-nametype|4.1.0</li>
       </ul>
     </td>
   </tr>
@@ -1355,10 +889,10 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
 <p>See the <a href="device-profiles.html">Profiles &amp; Extensions</a> and the alternate definitions:
 Master Definition <a href="device.profile.xml.html">XML</a> + <a href="device.profile.json.html">JSON</a>,
 <a href="xml.html">XML</a> <a href="device.xsd">Schema</a>/<a href="device.sch">Schematron</a> + <a href="json.html">JSON</a> 
-<a href="device.schema.json.html">Schema</a>, <a href="device.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)  + <a href="device-profiles.html">see the extensions</a> &amp; the <a href="device-dependencies.html">dependency analysis</a></p>
+<a href="device.schema.json.html">Schema</a>, <a href="device.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)  + <a href="device-profiles.html">see the extensions</a>, the <a href="device.xlsx">spreadsheet version</a> &amp; the <a href="device-dependencies.html">dependency analysis</a> a</p>
 
 <a name="tx"></a>
-<h3 class="self-link-parent"><span class="sectioncount">8.14.3.1</span> 
+<h3 class="self-link-parent"><span class="sectioncount">8.14.4.1</span> 
 Terminology Bindings
  <a href="device.html#tx" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
 <table class="grid">
@@ -1374,9 +908,9 @@ Terminology Bindings
 
 
 
-<h3 class="self-link-parent"><span class="sectioncount">8.14.3.2<a name="8.14.3.2"> </a></span> Notes <a href="device.html#8.14.3.2" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
+<h3 class="self-link-parent"><span class="sectioncount">8.14.4.2<a name="8.14.4.2"> </a></span> Notes <a href="device.html#8.14.4.2" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h3>
 	<a name="identifierandtype"></a>
-	<h4 class="self-link-parent"><span class="sectioncount">8.14.3.2.1</span> Device Identifier and Device Type <a href="device.html#identifierandtype" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h4>
+	<h4 class="self-link-parent"><span class="sectioncount">8.14.4.2.1</span> Device Identifier and Device Type <a href="device.html#identifierandtype" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h4>
 
 	<p>Nearly all devices are assigned a string of characters to represent one or more identifiers or codes, which are usually printed or affixed to the device using either barcodes or RFIDs.   The identifier or code can come from the manufacturer (for example, a 'serial number', 'reference number', or 'catalog number'), various institution and registries. Any of these identifiers or codes assigned to the device can and should be recorded in the device resource.   However, there can there can be confusion where to represent them in the resource because codes and identifiers are represented in FHIR as semantically distinct elements and because organizations may conflate the term 'code' for an identifier or 'identifier' for a code in their names.</p>
 
@@ -1385,14 +919,14 @@ Terminology Bindings
 
 		<ul>
 		<li><a href="valueset-device-kind.html">SNOMED CT</a> - the example binding used here</li>
-			<li><a href="https://www.gmdnagency.org/">Global Medical Device Nomenclature (GMDN&reg;) <img src="external.png" style="text-align: baseline"/></a></li>
-			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM) <img src="external.png" style="text-align: baseline"/></a></li>
+			<li><a href="https://www.gmdnagency.org/">Global Medical Device Nomenclature (GMDN&reg;) <img src="external.png" style="vertical-align: baseline"/></a></li>
+			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM) <img src="external.png" style="vertical-align: baseline"/></a></li>
 		</ul>
 
 <a name="udi"></a>
-<h4 class="self-link-parent"><span class="sectioncount">8.14.3.2.2</span> Unique Device Identifier (UDI) <a href="device.html#udi" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h4>
+<h4 class="self-link-parent"><span class="sectioncount">8.14.4.2.2</span> Unique Device Identifier (UDI) <a href="device.html#udi" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h4>
 	<p>
-The International Medical Device Regulators Forum IMDRF UDI Working Group published <a href="http://www.imdrf.org/consultations/cons-udi.asp">UDI System for Medical Devices (Version 2.0) <img src="external.png" style="text-align: baseline"/></a>, the base specification for Unique Device Identifiers (UDI). The United States Food and Drug Administration has produced an <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm">implementation guide <img src="external.png" style="text-align: baseline"/></a> for Unique Device Identifiers (UDI) which implements the IMDRF specification and other jurisdictions may produce similar IMDRF implementation guides as well.  The full UDI string that represents the barcode as printed on the packaging of the device or Automatic Identification and Data Capture (AIDC) representation is called the "UDI carrier".  The UDI has 2 components*:
+The International Medical Device Regulators Forum IMDRF UDI Working Group published <a href="http://www.imdrf.org/consultations/cons-udi.asp">UDI System for Medical Devices (Version 2.0) <img src="external.png" style="vertical-align: baseline"/></a>, the base specification for Unique Device Identifiers (UDI). The United States Food and Drug Administration has produced an <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm">implementation guide <img src="external.png" style="vertical-align: baseline"/></a> for Unique Device Identifiers (UDI) which implements the IMDRF specification and other jurisdictions may produce similar IMDRF implementation guides as well.  The full UDI string that represents the barcode as printed on the packaging of the device or Automatic Identification and Data Capture (AIDC) representation is called the "UDI carrier".  The UDI has 2 components*:
 </p><ul>
 	<li>Device identifier (DI)**, which is the actual identification component</li>
 	<li>Production identifier(s)(PI) which provide the means to track a device through its manufacture, distribution and use.</li>
@@ -1400,16 +934,16 @@ The International Medical Device Regulators Forum IMDRF UDI Working Group publis
 <p>
 *non-UDI elements may also appear within the UDI carrier.
 
-**a "GTIN" (sometimes also called an EAN number) is a code developed by <a href="http://www.gs1.org/">GS1 <img src="external.png" style="text-align: baseline"/></a> for the kind of device not an identifier for the device. A GTIN may appear on its own or it may appear in a UDI string as the DI component.
+**a "GTIN" (sometimes also called an EAN number) is a code developed by <a href="http://www.gs1.org/">GS1 <img src="external.png" style="vertical-align: baseline"/></a> for the kind of device not an identifier for the device. A GTIN may appear on its own or it may appear in a UDI string as the DI component.
 </p>
 
 <p>
-The DI of the UDI may be stored in a jurisdictional repository and used as the primary key to access other device information. For example, in the United States, the DI of the UDI is submitted in a device record to the <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/GlobalUDIDatabaseGUDID/default.htm">Global Unique Device Identification Database (GUDID) <img src="external.png" style="text-align: baseline"/></a>.  The UDI may identify an instance of a device uniquely (when the PI includes a serial number), or it may just identify the type of the device. The UDI is parsed into its constituent parts (DI, PI and other elements) by parsing rules developed by each Issuing Agency standard. Where the device has an assigned UDI, the other details carried in the resource (e.g., lot, expiration date, etc.) SHALL be consistent with the information encoded in the UDI string or registered in the local repository.
+The DI of the UDI may be stored in a jurisdictional repository and used as the primary key to access other device information. For example, in the United States, the DI of the UDI is submitted in a device record to the <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/GlobalUDIDatabaseGUDID/default.htm">Global Unique Device Identification Database (GUDID) <img src="external.png" style="vertical-align: baseline"/></a>.  The UDI may identify an instance of a device uniquely (when the PI includes a serial number), or it may just identify the type of the device. The UDI is parsed into its constituent parts (DI, PI and other elements) by parsing rules developed by each Issuing Agency standard. Where the device has an assigned UDI, the other details carried in the resource (e.g., lot, expiration date, etc.) SHALL be consistent with the information encoded in the UDI string or registered in the local repository.
 </p>
 <p>Best practice guidelines for transmitting UDI data using the Device resource dictate transmitting both the UDI Carrier and all components found within the UDI as described in Device <a href="device-mappings.html#udi)">UDI Mapping</a>.   Several  <a href="device-examples.html">examples</a> are provided for further guidance.</p>
 
 <a name="search"></a>
-<h2 class="self-link-parent"><span class="sectioncount">8.14.4</span> Search Parameters <a href="device.html#search" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">8.14.5</span> Search Parameters <a href="device.html#search" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <p>Search parameters for this resource. The <a href="search.html#all">common parameters</a> also apply. See <a href="search.html">Searching</a> for more information about searching in REST, messaging, and services.</p>
 <table class="list">
 <tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Expression</b></td><td><b>In Common</b></td></tr>
@@ -1443,16 +977,17 @@ The DI of the UDI may be stored in a jurisdictional repository and used as the p
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;&copy; HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
-        Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="text-align: baseline"/></a> | 
+        Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdevice.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdevice.html">Compare to R3 <img src="external.png" style="text-align: baseline"/></a> |                
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+  <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdevice.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdevice.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
-               <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="text-align: baseline"/></a>   
+               <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>
         </p>
 			</div>  <!-- /inner-wrapper -->

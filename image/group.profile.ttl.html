@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Group.profile.ttl - FHIR v4.0.0</title>
+  <title>Group.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Group&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Base.Individuals&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;1&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;business&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;fhir&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Group&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Group&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (FHIR Infrastructure)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -167,7 +174,7 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;rim&quot; ];
@@ -175,6 +182,11 @@
      fhir:StructureDefinition.name [ fhir:value &quot;RIM Mapping&quot; ]
   ], [
      fhir:index 1;
+     fhir:StructureDefinition.identity [ fhir:value &quot;interface&quot; ];
+     fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/fhir/interface&quot; ];
+     fhir:StructureDefinition.name [ fhir:value &quot;Interface Pattern&quot; ]
+  ], [
+     fhir:index 2;
      fhir:StructureDefinition.identity [ fhir:value &quot;w5&quot; ];
      fhir:StructureDefinition.uri [ fhir:value &quot;http://hl7.org/fhir/fivews&quot; ];
      fhir:StructureDefinition.name [ fhir:value &quot;FiveWs Pattern Mapping&quot; ]
@@ -266,6 +278,10 @@
          fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;Entity[determinerCode=\&quot;GRP\&quot; or determinerCode=\&quot;GRP_KIND\&quot;]&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant&quot; ]
        ]
      ], [
        fhir:index 1;
@@ -532,6 +548,10 @@
          fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;unique(./id[displayable=\&quot;true\&quot; and scope=\&quot;OBJ\&quot;])&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.identifier&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -562,6 +582,10 @@
          fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;./statusCode&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.active&quot; ]
        ]
      ], [
        fhir:index 11;
@@ -592,7 +616,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Types of resources that are part of group.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/group-type|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/group-type|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -698,6 +722,10 @@
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;./name[type=\&quot;ST\&quot;]&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.name&quot; ]
        ]
      ], [
        fhir:index 15;
@@ -1258,6 +1286,10 @@
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;Entity[determinerCode=\&quot;GRP\&quot; or determinerCode=\&quot;GRP_KIND\&quot;]&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant&quot; ]
        ]
      ], [
        fhir:index 1;
@@ -1281,6 +1313,10 @@
          fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;unique(./id[displayable=\&quot;true\&quot; and scope=\&quot;OBJ\&quot;])&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.identifier&quot; ]
        ]
      ], [
        fhir:index 2;
@@ -1305,6 +1341,10 @@
          fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;./statusCode&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.active&quot; ]
        ]
      ], [
        fhir:index 3;
@@ -1329,7 +1369,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Types of resources that are part of group.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/group-type|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/group-type|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1417,6 +1457,10 @@
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;./name[type=\&quot;ST\&quot;]&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;interface&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Participant.name&quot; ]
        ]
      ], [
        fhir:index 7;
@@ -1696,13 +1740,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:49-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fgroup.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fgroup.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

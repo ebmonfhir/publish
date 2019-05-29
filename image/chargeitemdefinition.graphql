@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type ChargeItemDefinition {
   id: ID
@@ -61,17 +61,17 @@ type ChargeItemDefinitionPropertyGroupPriceComponent {
   amount: Money
 }
 
-input ChargeItemDefinition {
+input ChargeItemDefinitionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
-  identifier: [Identifier]
+  identifier: [IdentifierInput]
   version: String  _version: ElementBase
   title: String  _title: ElementBase
   derivedFromUri: uri  _derivedFromUri: [ElementBase]
@@ -81,154 +81,154 @@ input ChargeItemDefinition {
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  effectivePeriod: Period
-  code: CodeableConcept
-  instance: [Reference]
-  applicability: [ChargeItemDefinitionApplicability]
-  propertyGroup: [ChargeItemDefinitionPropertyGroup]
+  effectivePeriod: PeriodInput
+  code: CodeableConceptInput
+  instance: [ReferenceInput]
+  applicability: [ChargeItemDefinitionApplicabilityInput]
+  propertyGroup: [ChargeItemDefinitionPropertyGroupInput]
 }
 
-input ChargeItemDefinitionApplicability {
+input ChargeItemDefinitionApplicabilityInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
   language: String  _language: ElementBase
   expression: String  _expression: ElementBase
 }
 
-input ChargeItemDefinitionPropertyGroup {
+input ChargeItemDefinitionPropertyGroupInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   applicability: [ChargeItemDefinitionApplicability]
-  priceComponent: [ChargeItemDefinitionPropertyGroupPriceComponent]
+  priceComponent: [ChargeItemDefinitionPropertyGroupPriceComponentInput]
 }
 
-input ChargeItemDefinitionPropertyGroupPriceComponent {
+input ChargeItemDefinitionPropertyGroupPriceComponentInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
-  code: CodeableConcept
+  code: CodeableConceptInput
   factor: decimal  _factor: ElementBase
-  amount: Money
+  amount: MoneyInput
 }
 
 type ChargeItemDefinitionReadType {
-  ChargeItemDefinition(id : ID!) : ChargeItemDefinition
+  ChargeItemDefinition(id: ID!): ChargeItemDefinition
 }
 
 type ChargeItemDefinitionListType {
-  ChargeItemDefinitionList(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [ChargeItemDefinition]
+  ChargeItemDefinitionList(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ChargeItemDefinition]
 }
 
 type ChargeItemDefinitionConnectionType {
-  ChargeItemDefinitionConection(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    effective : [date]
-    identifier : [token]
-    jurisdiction : [token]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ChargeItemDefinitionConnection
+  ChargeItemDefinitionConection(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    effective: [date]
+    identifier: [token]
+    jurisdiction: [token]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ChargeItemDefinitionConnection
 }
 
 type ChargeItemDefinitionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ChargeItemDefinitionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ChargeItemDefinitionEdge]
 }
 
 type ChargeItemDefinitionEdge {
-  mode : String
-  score : Float
-  resource : ChargeItemDefinition
+  mode: String
+  score: Float
+  resource: ChargeItemDefinition
 }
 
 type ChargeItemDefinitionCreateType {
-  ChargeItemDefinitionCreate(resource : ChargeItemDefinition) : ChargeItemDefinitionCreation
+  ChargeItemDefinitionCreate(resource: ChargeItemDefinitionInput): ChargeItemDefinitionCreation
 }
 
 type ChargeItemDefinitionCreation {
-  location : String
-  resource : ChargeItemDefinition
-  information : OperationOutcome
+  location: String
+  resource: ChargeItemDefinition
+  information: OperationOutcome
 }
 
 type ChargeItemDefinitionUpdateType {
-  ChargeItemDefinitionUpdate(id : IDresource : ChargeItemDefinition) : ChargeItemDefinitionUpdate
+  ChargeItemDefinitionUpdate(id: ID, resource: ChargeItemDefinitionInput): ChargeItemDefinitionUpdate
 }
 
 type ChargeItemDefinitionUpdate {
-  resource : ChargeItemDefinition
-  information : OperationOutcome
+  resource: ChargeItemDefinition
+  information: OperationOutcome
 }
 
 type ChargeItemDefinitionDeleteType {
-  ChargeItemDefinitionDelete(id : ID) : ChargeItemDefinitionDelete
+  ChargeItemDefinitionDelete(id: ID): ChargeItemDefinitionDelete
 }
 
 type ChargeItemDefinitionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

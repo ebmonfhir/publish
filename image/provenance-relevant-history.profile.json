@@ -18,7 +18,7 @@
     "valueCode" : "trial-use"
   }],
   "url" : "http://hl7.org/fhir/StructureDefinition/provenance-relevant-history",
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "name" : "Provenance Relevant History",
   "status" : "draft",
   "experimental" : false,
@@ -31,7 +31,7 @@
     }]
   }],
   "description" : "Guidance on using Provenance for related history elements",
-  "fhirVersion" : "4.0.0",
+  "fhirVersion" : "4.1.0",
   "mapping" : [{
     "identity" : "workflow",
     "uri" : "http://hl7.org/fhir/workflow",
@@ -749,8 +749,9 @@
       "id" : "Provenance.agent.type",
       "path" : "Provenance.agent.type",
       "short" : "How the agent participated",
-      "definition" : "The participation the agent had with respect to the activity.",
-      "comment" : "For example: author, performer, enterer, attester, etc.",
+      "definition" : "The primary act of participation of the agent with respect to the activity.",
+      "comment" : "For example: assembler, author, doctor, nurse, clerk, etc.",
+      "requirements" : "Note: The .type of author could be .role of primary author. Note there are overlapping codes to be used in specific circumstances. See ISO 21298:2018 - Health Informatics - Functional and structural roles.",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -794,8 +795,9 @@
       "id" : "Provenance.agent.role",
       "path" : "Provenance.agent.role",
       "short" : "What the agents role was",
-      "definition" : "The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.",
-      "comment" : "For example: doctor, nurse, clerk, etc.",
+      "definition" : "The functional or structural roles of the agent indicating the agent's competency. The security role enabling the agent with respect to the activity.",
+      "comment" : "For example: PRIMAUTH, REVIEWER, VERF, etc.",
+      "requirements" : "Note: The .type of author could be .role of primary author. Note there are overlapping codes to be used in specific circumstances. See ISO 21298:2018 - Health Informatics - Functional and structural roles.",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1022,8 +1024,9 @@
       "id" : "Provenance.agent:Author.type",
       "path" : "Provenance.agent.type",
       "short" : "How the agent participated",
-      "definition" : "The participation the agent had with respect to the activity.",
-      "comment" : "For example: author, performer, enterer, attester, etc.",
+      "definition" : "The primary act of participation of the agent with respect to the activity.",
+      "comment" : "For example: assembler, author, doctor, nurse, clerk, etc.",
+      "requirements" : "Note: The .type of author could be .role of primary author. Note there are overlapping codes to be used in specific circumstances. See ISO 21298:2018 - Health Informatics - Functional and structural roles.",
       "min" : 1,
       "max" : "1",
       "base" : {
@@ -1073,8 +1076,9 @@
       "id" : "Provenance.agent:Author.role",
       "path" : "Provenance.agent.role",
       "short" : "What the agents role was",
-      "definition" : "The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.",
-      "comment" : "For example: doctor, nurse, clerk, etc.",
+      "definition" : "The functional or structural roles of the agent indicating the agent's competency. The security role enabling the agent with respect to the activity.",
+      "comment" : "For example: PRIMAUTH, REVIEWER, VERF, etc.",
+      "requirements" : "Note: The .type of author could be .role of primary author. Note there are overlapping codes to be used in specific circumstances. See ISO 21298:2018 - Health Informatics - Functional and structural roles.",
       "min" : 0,
       "max" : "*",
       "base" : {
@@ -1310,7 +1314,7 @@
         }],
         "strength" : "required",
         "description" : "How an entity was used in an activity.",
-        "valueSet" : "http://hl7.org/fhir/ValueSet/provenance-entity-role|4.0.0"
+        "valueSet" : "http://hl7.org/fhir/ValueSet/provenance-entity-role|4.1.0"
       },
       "mapping" : [{
         "identity" : "rim",

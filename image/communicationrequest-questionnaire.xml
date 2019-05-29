@@ -9,13 +9,8 @@
       <status value="active"/>
       <description value="Type options for CommunicationRequest.payload.content[x]"/>
       <expansion>
-        <identifier value="urn:uuid:1b33d9b3-4ca9-4725-bbfb-7577eb284188"/>
-        <timestamp value="2019-03-01T07:28:10-06:00"/>
-        <contains>
-          <system value="http://hl7.org/fhir/data-types"/>
-          <code value="string"/>
-          <display value="string"/>
-        </contains>
+        <identifier value="urn:uuid:b083f746-b018-44e4-8818-beb83a21bcd0"/>
+        <timestamp value="2019-05-29T10:48:27-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Attachment"/>
@@ -25,6 +20,11 @@
           <system value="http://hl7.org/fhir/resource-types"/>
           <code value="Resource"/>
           <display value="Resource"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
         </contains>
       </expansion>
     </ValueSet>
@@ -36,8 +36,8 @@
       <status value="active"/>
       <description value="Type options for CommunicationRequest.occurrence[x]"/>
       <expansion>
-        <identifier value="urn:uuid:7f2b2c9f-b411-4492-8062-44459a8ee420"/>
-        <timestamp value="2019-03-01T07:28:10-06:00"/>
+        <identifier value="urn:uuid:398b9c72-4aeb-4daf-9123-6aa297095943"/>
+        <timestamp value="2019-05-29T10:48:27-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -54,9 +54,9 @@
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
-  <version value="4.0.0"/>
+  <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-03-01T07:26:01-06:00"/>
+  <date value="2019-05-29T10:45:36-05:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="CommunicationRequest"/>
@@ -758,7 +758,7 @@
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="CommunicationRequest.encounter.value"/>
-        <text value="Encounter created as part of"/>
+        <text value="The Encounter during which this CommunicationRequest was created"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -877,7 +877,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The communicated content (or for multi-part communications, one portion of the communication)."/>
+          <text value="The communicated content (or for multi-part communications, one portion of the communication). When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content."/>
           <type value="display"/>
         </item>
         <item>
@@ -887,19 +887,6 @@
           <required value="false"/>
           <repeats value="false"/>
           <answerValueSet value="#vs2"/>
-          <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-              <valueString value="string"/>
-            </extension>
-            <linkId value="CommunicationRequest.payload.content[x]._null"/>
-            <type value="group"/>
-            <item>
-              <linkId value="CommunicationRequest.payload.content[x]._null.value"/>
-              <type value="string"/>
-              <required value="false"/>
-              <repeats value="false"/>
-            </item>
-          </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
               <valueString value="Attachment"/>
@@ -922,6 +909,27 @@
               </extension>
               <linkId value="CommunicationRequest.payload.content[x]._null.value"/>
               <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="CodeableConcept"/>
+            </extension>
+            <linkId value="CommunicationRequest.payload.content[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="CommunicationRequest.payload.content[x]._null.coding"/>
+              <text value="code:"/>
+              <type value="open-choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="CommunicationRequest.payload.content[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
               <required value="false"/>
               <repeats value="false"/>
             </item>
@@ -1197,7 +1205,7 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Condition, Observation, DiagnosticReport, DocumentReference"/>
+          <valueCode value="Resource"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>

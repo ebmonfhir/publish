@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Procedure {
   id: ID
@@ -16,15 +16,17 @@ type Procedure {
   partOf: [Reference]
   status: code  _status: ElementBase
   statusReason: CodeableConcept
-  category: CodeableConcept
+  category: [CodeableConcept]
   code: CodeableConcept
   subject: Reference!
   encounter: Reference
-  performedDateTime: dateTime  _performedDateTime: ElementBase
-  performedPeriod: Period
-  performedString: String  _performedString: ElementBase
-  performedAge: Age
-  performedRange: Range
+  occurrenceDateTime: dateTime  _occurrenceDateTime: ElementBase
+  occurrencePeriod: Period
+  occurrenceString: String  _occurrenceString: ElementBase
+  occurrenceAge: Age
+  occurrenceRange: Range
+  occurrenceTiming: Timing
+  recorded: dateTime  _recorded: ElementBase
   recorder: Reference
   reportedBoolean: Boolean  _reportedBoolean: ElementBase
   reportedReference: Reference
@@ -61,176 +63,178 @@ type ProcedureFocalDevice {
   manipulated: Reference!
 }
 
-input Procedure {
+input ProcedureInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   instantiatesCanonical: canonical  _instantiatesCanonical: [ElementBase]
   instantiatesUri: uri  _instantiatesUri: [ElementBase]
-  basedOn: [Reference]
-  partOf: [Reference]
+  basedOn: [ReferenceInput]
+  partOf: [ReferenceInput]
   status: code  _status: ElementBase
-  statusReason: CodeableConcept
-  category: CodeableConcept
-  code: CodeableConcept
-  subject: Reference!
-  encounter: Reference
-  performedDateTime: dateTime  _performedDateTime: ElementBase
-  performedPeriod: Period
-  performedString: String  _performedString: ElementBase
-  performedAge: Age
-  performedRange: Range
-  recorder: Reference
+  statusReason: CodeableConceptInput
+  category: [CodeableConceptInput]
+  code: CodeableConceptInput
+  subject: ReferenceInput!
+  encounter: ReferenceInput
+  occurrenceDateTime: dateTime  _occurrenceDateTime: ElementBase
+  occurrencePeriod: PeriodInput
+  occurrenceString: String  _occurrenceString: ElementBase
+  occurrenceAge: AgeInput
+  occurrenceRange: RangeInput
+  occurrenceTiming: TimingInput
+  recorded: dateTime  _recorded: ElementBase
+  recorder: ReferenceInput
   reportedBoolean: Boolean  _reportedBoolean: ElementBase
-  reportedReference: Reference
-  performer: [ProcedurePerformer]
-  location: Reference
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  bodySite: [CodeableConcept]
-  outcome: CodeableConcept
-  report: [Reference]
-  complication: [CodeableConcept]
-  complicationDetail: [Reference]
-  followUp: [CodeableConcept]
-  note: [Annotation]
-  focalDevice: [ProcedureFocalDevice]
-  usedReference: [Reference]
-  usedCode: [CodeableConcept]
+  reportedReference: ReferenceInput
+  performer: [ProcedurePerformerInput]
+  location: ReferenceInput
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  bodySite: [CodeableConceptInput]
+  outcome: CodeableConceptInput
+  report: [ReferenceInput]
+  complication: [CodeableConceptInput]
+  complicationDetail: [ReferenceInput]
+  followUp: [CodeableConceptInput]
+  note: [AnnotationInput]
+  focalDevice: [ProcedureFocalDeviceInput]
+  usedReference: [ReferenceInput]
+  usedCode: [CodeableConceptInput]
 }
 
-input ProcedurePerformer {
+input ProcedurePerformerInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  function: CodeableConcept
-  actor: Reference!
-  onBehalfOf: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  function: CodeableConceptInput
+  actor: ReferenceInput!
+  onBehalfOf: ReferenceInput
 }
 
-input ProcedureFocalDevice {
+input ProcedureFocalDeviceInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  action: CodeableConcept
-  manipulated: Reference!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  action: CodeableConceptInput
+  manipulated: ReferenceInput!
 }
 
 type ProcedureReadType {
-  Procedure(id : ID!) : Procedure
+  Procedure(id: ID!): Procedure
 }
 
 type ProcedureListType {
-  ProcedureList(_filter : String
-    based_on : [reference]
-    category : [token]
-    code : [token]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    location : [reference]
-    part_of : [reference]
-    patient : [reference]
-    performer : [reference]
-    reason_code : [token]
-    reason_reference : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Procedure]
+  ProcedureList(_filter: String
+    based_on: [reference]
+    category: [token]
+    code: [token]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    location: [reference]
+    part_of: [reference]
+    patient: [reference]
+    performer: [reference]
+    reason_code: [token]
+    reason_reference: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Procedure]
 }
 
 type ProcedureConnectionType {
-  ProcedureConection(_filter : String
-    based_on : [reference]
-    category : [token]
-    code : [token]
-    date : [date]
-    encounter : [reference]
-    identifier : [token]
-    instantiates_canonical : [reference]
-    instantiates_uri : [uri]
-    location : [reference]
-    part_of : [reference]
-    patient : [reference]
-    performer : [reference]
-    reason_code : [token]
-    reason_reference : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ProcedureConnection
+  ProcedureConection(_filter: String
+    based_on: [reference]
+    category: [token]
+    code: [token]
+    date: [date]
+    encounter: [reference]
+    identifier: [token]
+    instantiates_canonical: [reference]
+    instantiates_uri: [uri]
+    location: [reference]
+    part_of: [reference]
+    patient: [reference]
+    performer: [reference]
+    reason_code: [token]
+    reason_reference: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ProcedureConnection
 }
 
 type ProcedureConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ProcedureEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ProcedureEdge]
 }
 
 type ProcedureEdge {
-  mode : String
-  score : Float
-  resource : Procedure
+  mode: String
+  score: Float
+  resource: Procedure
 }
 
 type ProcedureCreateType {
-  ProcedureCreate(resource : Procedure) : ProcedureCreation
+  ProcedureCreate(resource: ProcedureInput): ProcedureCreation
 }
 
 type ProcedureCreation {
-  location : String
-  resource : Procedure
-  information : OperationOutcome
+  location: String
+  resource: Procedure
+  information: OperationOutcome
 }
 
 type ProcedureUpdateType {
-  ProcedureUpdate(id : IDresource : Procedure) : ProcedureUpdate
+  ProcedureUpdate(id: ID, resource: ProcedureInput): ProcedureUpdate
 }
 
 type ProcedureUpdate {
-  resource : Procedure
-  information : OperationOutcome
+  resource: Procedure
+  information: OperationOutcome
 }
 
 type ProcedureDeleteType {
-  ProcedureDelete(id : ID) : ProcedureDelete
+  ProcedureDelete(id: ID): ProcedureDelete
 }
 
 type ProcedureDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

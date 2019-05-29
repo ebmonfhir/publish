@@ -73,6 +73,13 @@ CapabilityStatement (CapabilityStatement): (kind != 'capability') or (implementa
 CapabilityStatement (CapabilityStatement): (kind!='requirements') or (implementation.exists().not() and software.exists().not())
 CapabilityStatement (CapabilityStatement): document.select(profile&mode).isDistinct()
 CapabilityStatement (CapabilityStatement.rest): resource.select(type).isDistinct()
+CapabilityStatement2 (CapabilityStatement2): rest.exists()
+CapabilityStatement2 (CapabilityStatement2.rest.resource): searchParam.select(name).isDistinct()
+CapabilityStatement2 (CapabilityStatement2): (description.count() + software.count() + implementation.count()) > 0
+CapabilityStatement2 (CapabilityStatement2): (kind != 'instance') or implementation.exists()
+CapabilityStatement2 (CapabilityStatement2): (kind != 'capability') or (implementation.exists().not() and software.exists())
+CapabilityStatement2 (CapabilityStatement2): (kind!='requirements') or (implementation.exists().not() and software.exists().not())
+CapabilityStatement2 (CapabilityStatement2.rest): resource.select(type).isDistinct()
 MolecularSequence (MolecularSequence): coordinateSystem = 1 or coordinateSystem = 0
 MolecularSequence (MolecularSequence.referenceSeq): (chromosome.empty() and genomeBuild.empty()) or (chromosome.exists() and genomeBuild.exists())
 MolecularSequence (MolecularSequence.referenceSeq): (genomeBuild.count()+referenceSeqId.count()+ referenceSeqPointer.count()+ referenceSeqString.count()) = 1
@@ -296,6 +303,7 @@ AuditEvent (AuditEvent): AuditEvent.entity.type
 AuditEvent (AuditEvent): AuditEvent.agent.who
 AuditEvent (AuditEvent): AuditEvent.agent.network.address
 AuditEvent (AuditEvent): AuditEvent.entity.role
+AuditEvent (AuditEvent): AuditEvent.purposeOfEvent | AuditEvent.agent.purposeOfUse
 AuditEvent (AuditEvent): AuditEvent.source.observer
 AuditEvent (AuditEvent): AuditEvent.type
 AuditEvent (AuditEvent): AuditEvent.agent.altId
@@ -347,6 +355,28 @@ CapabilityStatement (CapabilityStatement): CapabilityStatement.publisher
 CapabilityStatement (CapabilityStatement): CapabilityStatement.useContext
 CapabilityStatement (CapabilityStatement): CapabilityStatement.implementationGuide
 CapabilityStatement (CapabilityStatement): CapabilityStatement.status
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.date
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.rest.resource.profile
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.useContext
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.software.name
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.rest.resource.type
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.jurisdiction
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.format
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.description
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.useContext.code
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.title
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.version
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.version
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.url
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.rest.resource.supportedProfile
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.rest.mode
+CapabilityStatement2 (CapabilityStatement2): (CapabilityStatement2.useContext.value as Quantity) | (CapabilityStatement2.useContext.value as Range)
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.name
+CapabilityStatement2 (CapabilityStatement2): (CapabilityStatement2.useContext.value as CodeableConcept)
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.publisher
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.useContext
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.implementationGuide
+CapabilityStatement2 (CapabilityStatement2): CapabilityStatement2.status
 CarePlan (CarePlan): CarePlan.period
 CarePlan (CarePlan): CarePlan.careTeam
 CarePlan (CarePlan): CarePlan.identifier
@@ -375,6 +405,13 @@ CareTeam (CareTeam): CareTeam.encounter
 CareTeam (CareTeam): CareTeam.category
 CareTeam (CareTeam): CareTeam.participant.member
 CareTeam (CareTeam): CareTeam.status
+CatalogEntry (CatalogEntry): CatalogEntry.identifier
+CatalogEntry (CatalogEntry): CatalogEntry.relatedEntry.target
+CatalogEntry (CatalogEntry): CatalogEntry.referencedItem
+CatalogEntry (CatalogEntry): CatalogEntry.orderable
+CatalogEntry (CatalogEntry): CatalogEntry.name
+CatalogEntry (CatalogEntry): CatalogEntry.type
+CatalogEntry (CatalogEntry): CatalogEntry.status
 ChargeItem (ChargeItem): ChargeItem.identifier
 ChargeItem (ChargeItem): ChargeItem.performingOrganization
 ChargeItem (ChargeItem): ChargeItem.code
@@ -447,6 +484,7 @@ ClinicalImpression (ClinicalImpression): ClinicalImpression.supportingInfo
 ClinicalImpression (ClinicalImpression): ClinicalImpression.encounter
 ClinicalImpression (ClinicalImpression): ClinicalImpression.finding.itemReference
 ClinicalImpression (ClinicalImpression): ClinicalImpression.status
+ClinicalUseIssue (ClinicalUseIssue): ClinicalUseIssue.subject
 CodeSystem (CodeSystem): CodeSystem.date
 CodeSystem (CodeSystem): CodeSystem.identifier
 CodeSystem (CodeSystem): CodeSystem.concept.code
@@ -489,7 +527,7 @@ CommunicationRequest (CommunicationRequest): CommunicationRequest.subject
 CommunicationRequest (CommunicationRequest): CommunicationRequest.replaces
 CommunicationRequest (CommunicationRequest): CommunicationRequest.medium
 CommunicationRequest (CommunicationRequest): CommunicationRequest.encounter
-CommunicationRequest (CommunicationRequest): (CommunicationRequest.occurrence as dateTime)
+CommunicationRequest (CommunicationRequest): CommunicationRequest.occurrence.as(dateTime) | CommunicationRequest.occurrence.as(Period)
 CommunicationRequest (CommunicationRequest): CommunicationRequest.priority
 CommunicationRequest (CommunicationRequest): CommunicationRequest.groupIdentifier
 CommunicationRequest (CommunicationRequest): CommunicationRequest.basedOn
@@ -577,6 +615,21 @@ Condition (Condition): Condition.onset.as(Age) | Condition.onset.as(Range)
 Condition (Condition): Condition.abatement.as(Age) | Condition.abatement.as(Range)
 Condition (Condition): Condition.category
 Condition (Condition): Condition.bodySite
+ConditionDefinition (ConditionDefinition): ConditionDefinition.date
+ConditionDefinition (ConditionDefinition): ConditionDefinition.identifier
+ConditionDefinition (ConditionDefinition): ConditionDefinition.useContext
+ConditionDefinition (ConditionDefinition): ConditionDefinition.jurisdiction
+ConditionDefinition (ConditionDefinition): ConditionDefinition.description
+ConditionDefinition (ConditionDefinition): ConditionDefinition.useContext.code
+ConditionDefinition (ConditionDefinition): ConditionDefinition.title
+ConditionDefinition (ConditionDefinition): ConditionDefinition.version
+ConditionDefinition (ConditionDefinition): ConditionDefinition.url
+ConditionDefinition (ConditionDefinition): (ConditionDefinition.useContext.value as Quantity) | (ConditionDefinition.useContext.value as Range)
+ConditionDefinition (ConditionDefinition): ConditionDefinition.name
+ConditionDefinition (ConditionDefinition): (ConditionDefinition.useContext.value as CodeableConcept)
+ConditionDefinition (ConditionDefinition): ConditionDefinition.publisher
+ConditionDefinition (ConditionDefinition): ConditionDefinition.useContext
+ConditionDefinition (ConditionDefinition): ConditionDefinition.status
 Consent (Consent): Consent.dateTime
 Consent (Consent): Consent.identifier
 Consent (Consent): Consent.provision.period
@@ -751,6 +804,7 @@ Encounter (Encounter): Encounter.period
 Encounter (Encounter): Encounter.identifier
 Encounter (Encounter): Encounter.participant.type
 Encounter (Encounter): Encounter.participant.individual.where(resolve() is Practitioner)
+Encounter (Encounter): Encounter.subjectStatus
 Encounter (Encounter): Encounter.subject
 Encounter (Encounter): Encounter.length
 Encounter (Encounter): Encounter.episodeOfCare
@@ -816,18 +870,14 @@ EventDefinition (EventDefinition): EventDefinition.useContext
 EventDefinition (EventDefinition): EventDefinition.status
 Evidence (Evidence): Evidence.date
 Evidence (Evidence): Evidence.identifier
+Evidence (Evidence): (Evidence.useContext.value as Quantity) | (Evidence.useContext.value as Range)
 Evidence (Evidence): Evidence.useContext
-Evidence (Evidence): Evidence.jurisdiction
+Evidence (Evidence): (Evidence.useContext.value as CodeableConcept)
 Evidence (Evidence): Evidence.description
 Evidence (Evidence): Evidence.useContext.code
 Evidence (Evidence): Evidence.title
 Evidence (Evidence): Evidence.version
 Evidence (Evidence): Evidence.url
-Evidence (Evidence): (Evidence.useContext.value as Quantity) | (Evidence.useContext.value as Range)
-Evidence (Evidence): Evidence.effectivePeriod
-Evidence (Evidence): Evidence.name
-Evidence (Evidence): (Evidence.useContext.value as CodeableConcept)
-Evidence (Evidence): Evidence.publisher
 Evidence (Evidence): Evidence.useContext
 Evidence (Evidence): Evidence.status
 EvidenceVariable (EvidenceVariable): EvidenceVariable.date
@@ -1140,7 +1190,6 @@ Medication (Medication): (Medication.ingredient.item as CodeableConcept)
 Medication (Medication): Medication.identifier
 Medication (Medication): Medication.code
 Medication (Medication): (Medication.ingredient.item as Reference)
-Medication (Medication): Medication.form
 Medication (Medication): Medication.batch.lotNumber
 Medication (Medication): Medication.batch.expirationDate
 Medication (Medication): Medication.manufacturer
@@ -1152,9 +1201,9 @@ MedicationAdministration (MedicationAdministration): MedicationAdministration.pe
 MedicationAdministration (MedicationAdministration): MedicationAdministration.subject
 MedicationAdministration (MedicationAdministration): (MedicationAdministration.medication as Reference)
 MedicationAdministration (MedicationAdministration): MedicationAdministration.reasonCode
+MedicationAdministration (MedicationAdministration): MedicationAdministration.encounter
 MedicationAdministration (MedicationAdministration): MedicationAdministration.subject.where(resolve() is Patient)
 MedicationAdministration (MedicationAdministration): MedicationAdministration.effective
-MedicationAdministration (MedicationAdministration): MedicationAdministration.context
 MedicationAdministration (MedicationAdministration): MedicationAdministration.statusReason
 MedicationAdministration (MedicationAdministration): MedicationAdministration.device
 MedicationAdministration (MedicationAdministration): MedicationAdministration.status
@@ -1166,13 +1215,14 @@ MedicationDispense (MedicationDispense): MedicationDispense.subject
 MedicationDispense (MedicationDispense): MedicationDispense.destination
 MedicationDispense (MedicationDispense): (MedicationDispense.medication as Reference)
 MedicationDispense (MedicationDispense): MedicationDispense.substitution.responsibleParty
+MedicationDispense (MedicationDispense): MedicationDispense.encounter
 MedicationDispense (MedicationDispense): MedicationDispense.type
 MedicationDispense (MedicationDispense): MedicationDispense.whenHandedOver
 MedicationDispense (MedicationDispense): MedicationDispense.whenPrepared
 MedicationDispense (MedicationDispense): MedicationDispense.authorizingPrescription
 MedicationDispense (MedicationDispense): MedicationDispense.subject.where(resolve() is Patient)
-MedicationDispense (MedicationDispense): MedicationDispense.context
 MedicationDispense (MedicationDispense): MedicationDispense.status
+MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.identifier
 MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.code
 MedicationKnowledge (MedicationKnowledge): (MedicationKnowledge.ingredient.item as Reference)
 MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.doseForm
@@ -1202,35 +1252,18 @@ MedicationRequest (MedicationRequest): MedicationRequest.performer
 MedicationRequest (MedicationRequest): MedicationRequest.performerType
 MedicationRequest (MedicationRequest): MedicationRequest.category
 MedicationRequest (MedicationRequest): MedicationRequest.status
-MedicationStatement (MedicationStatement): MedicationStatement.identifier
-MedicationStatement (MedicationStatement): MedicationStatement.effective
-MedicationStatement (MedicationStatement): (MedicationStatement.medication as CodeableConcept)
-MedicationStatement (MedicationStatement): MedicationStatement.subject
-MedicationStatement (MedicationStatement): MedicationStatement.subject.where(resolve() is Patient)
-MedicationStatement (MedicationStatement): MedicationStatement.context
-MedicationStatement (MedicationStatement): (MedicationStatement.medication as Reference)
-MedicationStatement (MedicationStatement): MedicationStatement.partOf
-MedicationStatement (MedicationStatement): MedicationStatement.informationSource
-MedicationStatement (MedicationStatement): MedicationStatement.category
-MedicationStatement (MedicationStatement): MedicationStatement.status
-MedicinalProduct (MedicinalProduct): MedicinalProduct.identifier
-MedicinalProduct (MedicinalProduct): MedicinalProduct.name.productName
-MedicinalProduct (MedicinalProduct): MedicinalProduct.name.countryLanguage.language
-MedicinalProductAuthorization (MedicinalProductAuthorization): MedicinalProductAuthorization.identifier
-MedicinalProductAuthorization (MedicinalProductAuthorization): MedicinalProductAuthorization.country
-MedicinalProductAuthorization (MedicinalProductAuthorization): MedicinalProductAuthorization.subject
-MedicinalProductAuthorization (MedicinalProductAuthorization): MedicinalProductAuthorization.holder
-MedicinalProductAuthorization (MedicinalProductAuthorization): MedicinalProductAuthorization.status
-MedicinalProductContraindication (MedicinalProductContraindication): MedicinalProductContraindication.subject
-MedicinalProductIndication (MedicinalProductIndication): MedicinalProductIndication.subject
-MedicinalProductInteraction (MedicinalProductInteraction): MedicinalProductInteraction.subject
-MedicinalProductPackaged (MedicinalProductPackaged): MedicinalProductPackaged.identifier
-MedicinalProductPackaged (MedicinalProductPackaged): MedicinalProductPackaged.subject
-MedicinalProductPharmaceutical (MedicinalProductPharmaceutical): MedicinalProductPharmaceutical.identifier
-MedicinalProductPharmaceutical (MedicinalProductPharmaceutical): MedicinalProductPharmaceutical.routeOfAdministration.code
-MedicinalProductPharmaceutical (MedicinalProductPharmaceutical): MedicinalProductPharmaceutical.subject
-MedicinalProductPharmaceutical (MedicinalProductPharmaceutical): MedicinalProductPharmaceutical.routeOfAdministration.targetSpecies.code
-MedicinalProductUndesirableEffect (MedicinalProductUndesirableEffect): MedicinalProductUndesirableEffect.subject
+MedicationUsage (MedicationUsage): MedicationUsage.identifier
+MedicationUsage (MedicationUsage): MedicationUsage.effective
+MedicationUsage (MedicationUsage): (MedicationUsage.medication as CodeableConcept)
+MedicationUsage (MedicationUsage): MedicationUsage.subject
+MedicationUsage (MedicationUsage): MedicationUsage.subject.where(resolve() is Patient)
+MedicationUsage (MedicationUsage): MedicationUsage.takenAsOrdered
+MedicationUsage (MedicationUsage): (MedicationUsage.medication as Reference)
+MedicationUsage (MedicationUsage): MedicationUsage.partOf
+MedicationUsage (MedicationUsage): MedicationUsage.informationSource
+MedicationUsage (MedicationUsage): MedicationUsage.encounter
+MedicationUsage (MedicationUsage): MedicationUsage.category
+MedicationUsage (MedicationUsage): MedicationUsage.status
 MessageDefinition (MessageDefinition): MessageDefinition.date
 MessageDefinition (MessageDefinition): MessageDefinition.identifier
 MessageDefinition (MessageDefinition): MessageDefinition.parent
@@ -1506,7 +1539,7 @@ PractitionerRole (PractitionerRole): PractitionerRole.organization
 PractitionerRole (PractitionerRole): PractitionerRole.telecom
 PractitionerRole (PractitionerRole): PractitionerRole.location
 PractitionerRole (PractitionerRole): PractitionerRole.telecom.where(system='email')
-Procedure (Procedure): Procedure.performed
+Procedure (Procedure): Procedure.occurrence
 Procedure (Procedure): Procedure.identifier
 Procedure (Procedure): Procedure.code
 Procedure (Procedure): Procedure.performer.actor
@@ -1562,6 +1595,20 @@ QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.partOf
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.encounter
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.source
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.status
+RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.identifier
+RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.routeOfAdministration.code
+RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.subject
+RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.routeOfAdministration.targetSpecies.code
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.identifier
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.country
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.subject
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.holder
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.status
+RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.identifier
+RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.name.productName
+RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.name.countryLanguage.language
+RegulatedPackagedProduct (RegulatedPackagedProduct): RegulatedPackagedProduct.identifier
+RegulatedPackagedProduct (RegulatedPackagedProduct): RegulatedPackagedProduct.subject
 RelatedPerson (RelatedPerson): RelatedPerson.identifier
 RelatedPerson (RelatedPerson): RelatedPerson.address
 RelatedPerson (RelatedPerson): RelatedPerson.birthDate
@@ -1752,6 +1799,18 @@ Specimen (Specimen): Specimen.status
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeTested.container.type
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.identifier
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeCollected
+Statistic (Statistic): Statistic.date
+Statistic (Statistic): Statistic.identifier
+Statistic (Statistic): (Statistic.useContext.value as Quantity) | (Statistic.useContext.value as Range)
+Statistic (Statistic): Statistic.useContext
+Statistic (Statistic): (Statistic.useContext.value as CodeableConcept)
+Statistic (Statistic): Statistic.description
+Statistic (Statistic): Statistic.useContext.code
+Statistic (Statistic): Statistic.title
+Statistic (Statistic): Statistic.version
+Statistic (Statistic): Statistic.url
+Statistic (Statistic): Statistic.useContext
+Statistic (Statistic): Statistic.status
 StructureDefinition (StructureDefinition): StructureDefinition.date
 StructureDefinition (StructureDefinition): StructureDefinition.useContext
 StructureDefinition (StructureDefinition): StructureDefinition.jurisdiction

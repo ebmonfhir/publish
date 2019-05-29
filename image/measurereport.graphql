@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MeasureReport {
   id: ID
@@ -76,177 +76,177 @@ type MeasureReportGroupStratifierStratumPopulation {
   subjectResults: Reference
 }
 
-input MeasureReport {
+input MeasureReportInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
   type: code  _type: ElementBase
   measure: canonical  _measure: ElementBase
-  subject: Reference
+  subject: ReferenceInput
   date: dateTime  _date: ElementBase
-  reporter: Reference
-  period: Period!
-  improvementNotation: CodeableConcept
-  group: [MeasureReportGroup]
-  evaluatedResource: [Reference]
+  reporter: ReferenceInput
+  period: PeriodInput!
+  improvementNotation: CodeableConceptInput
+  group: [MeasureReportGroupInput]
+  evaluatedResource: [ReferenceInput]
 }
 
-input MeasureReportGroup {
+input MeasureReportGroupInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept
-  population: [MeasureReportGroupPopulation]
-  measureScore: Quantity
-  stratifier: [MeasureReportGroupStratifier]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
+  population: [MeasureReportGroupPopulationInput]
+  measureScore: QuantityInput
+  stratifier: [MeasureReportGroupStratifierInput]
 }
 
-input MeasureReportGroupPopulation {
+input MeasureReportGroupPopulationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
   count: Int  _count: ElementBase
-  subjectResults: Reference
+  subjectResults: ReferenceInput
 }
 
-input MeasureReportGroupStratifier {
+input MeasureReportGroupStratifierInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: [CodeableConcept]
-  stratum: [MeasureReportGroupStratifierStratum]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: [CodeableConceptInput]
+  stratum: [MeasureReportGroupStratifierStratumInput]
 }
 
-input MeasureReportGroupStratifierStratum {
+input MeasureReportGroupStratifierStratumInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  value: CodeableConcept
-  component: [MeasureReportGroupStratifierStratumComponent]
-  population: [MeasureReportGroupStratifierStratumPopulation]
-  measureScore: Quantity
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  value: CodeableConceptInput
+  component: [MeasureReportGroupStratifierStratumComponentInput]
+  population: [MeasureReportGroupStratifierStratumPopulationInput]
+  measureScore: QuantityInput
 }
 
-input MeasureReportGroupStratifierStratumComponent {
+input MeasureReportGroupStratifierStratumComponentInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept!
-  value: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput!
+  value: CodeableConceptInput!
 }
 
-input MeasureReportGroupStratifierStratumPopulation {
+input MeasureReportGroupStratifierStratumPopulationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
   count: Int  _count: ElementBase
-  subjectResults: Reference
+  subjectResults: ReferenceInput
 }
 
 type MeasureReportReadType {
-  MeasureReport(id : ID!) : MeasureReport
+  MeasureReport(id: ID!): MeasureReport
 }
 
 type MeasureReportListType {
-  MeasureReportList(_filter : String
-    date : [date]
-    evaluated_resource : [reference]
-    identifier : [token]
-    measure : [reference]
-    patient : [reference]
-    period : [date]
-    reporter : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MeasureReport]
+  MeasureReportList(_filter: String
+    date: [date]
+    evaluated_resource: [reference]
+    identifier: [token]
+    measure: [reference]
+    patient: [reference]
+    period: [date]
+    reporter: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MeasureReport]
 }
 
 type MeasureReportConnectionType {
-  MeasureReportConection(_filter : String
-    date : [date]
-    evaluated_resource : [reference]
-    identifier : [token]
-    measure : [reference]
-    patient : [reference]
-    period : [date]
-    reporter : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MeasureReportConnection
+  MeasureReportConection(_filter: String
+    date: [date]
+    evaluated_resource: [reference]
+    identifier: [token]
+    measure: [reference]
+    patient: [reference]
+    period: [date]
+    reporter: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MeasureReportConnection
 }
 
 type MeasureReportConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MeasureReportEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MeasureReportEdge]
 }
 
 type MeasureReportEdge {
-  mode : String
-  score : Float
-  resource : MeasureReport
+  mode: String
+  score: Float
+  resource: MeasureReport
 }
 
 type MeasureReportCreateType {
-  MeasureReportCreate(resource : MeasureReport) : MeasureReportCreation
+  MeasureReportCreate(resource: MeasureReportInput): MeasureReportCreation
 }
 
 type MeasureReportCreation {
-  location : String
-  resource : MeasureReport
-  information : OperationOutcome
+  location: String
+  resource: MeasureReport
+  information: OperationOutcome
 }
 
 type MeasureReportUpdateType {
-  MeasureReportUpdate(id : IDresource : MeasureReport) : MeasureReportUpdate
+  MeasureReportUpdate(id: ID, resource: MeasureReportInput): MeasureReportUpdate
 }
 
 type MeasureReportUpdate {
-  resource : MeasureReport
-  information : OperationOutcome
+  resource: MeasureReport
+  information: OperationOutcome
 }
 
 type MeasureReportDeleteType {
-  MeasureReportDelete(id : ID) : MeasureReportDelete
+  MeasureReportDelete(id: ID): MeasureReportDelete
 }
 
 type MeasureReportDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

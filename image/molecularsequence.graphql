@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type MolecularSequence {
   id: ID
@@ -127,70 +127,70 @@ type MolecularSequenceStructureVariantInner {
   end: Int  _end: ElementBase
 }
 
-input MolecularSequence {
+input MolecularSequenceInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   type: code  _type: ElementBase
   coordinateSystem: Int  _coordinateSystem: ElementBase
-  patient: Reference
-  specimen: Reference
-  device: Reference
-  performer: Reference
-  quantity: Quantity
-  referenceSeq: MolecularSequenceReferenceSeq
-  variant: [MolecularSequenceVariant]
+  patient: ReferenceInput
+  specimen: ReferenceInput
+  device: ReferenceInput
+  performer: ReferenceInput
+  quantity: QuantityInput
+  referenceSeq: MolecularSequenceReferenceSeqInput
+  variant: [MolecularSequenceVariantInput]
   observedSeq: String  _observedSeq: ElementBase
-  quality: [MolecularSequenceQuality]
+  quality: [MolecularSequenceQualityInput]
   readCoverage: Int  _readCoverage: ElementBase
-  repository: [MolecularSequenceRepository]
-  pointer: [Reference]
-  structureVariant: [MolecularSequenceStructureVariant]
+  repository: [MolecularSequenceRepositoryInput]
+  pointer: [ReferenceInput]
+  structureVariant: [MolecularSequenceStructureVariantInput]
 }
 
-input MolecularSequenceReferenceSeq {
+input MolecularSequenceReferenceSeqInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  chromosome: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  chromosome: CodeableConceptInput
   genomeBuild: String  _genomeBuild: ElementBase
   orientation: code  _orientation: ElementBase
-  referenceSeqId: CodeableConcept
-  referenceSeqPointer: Reference
+  referenceSeqId: CodeableConceptInput
+  referenceSeqPointer: ReferenceInput
   referenceSeqString: String  _referenceSeqString: ElementBase
   strand: code  _strand: ElementBase
   windowStart: Int  _windowStart: ElementBase
   windowEnd: Int  _windowEnd: ElementBase
 }
 
-input MolecularSequenceVariant {
+input MolecularSequenceVariantInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   start: Int  _start: ElementBase
   end: Int  _end: ElementBase
   observedAllele: String  _observedAllele: ElementBase
   referenceAllele: String  _referenceAllele: ElementBase
   cigar: String  _cigar: ElementBase
-  variantPointer: Reference
+  variantPointer: ReferenceInput
 }
 
-input MolecularSequenceQuality {
+input MolecularSequenceQualityInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
-  standardSequence: CodeableConcept
+  standardSequence: CodeableConceptInput
   start: Int  _start: ElementBase
   end: Int  _end: ElementBase
-  score: Quantity
-  method: CodeableConcept
+  score: QuantityInput
+  method: CodeableConceptInput
   truthTP: decimal  _truthTP: ElementBase
   queryTP: decimal  _queryTP: ElementBase
   truthFN: decimal  _truthFN: ElementBase
@@ -199,13 +199,13 @@ input MolecularSequenceQuality {
   precision: decimal  _precision: ElementBase
   recall: decimal  _recall: ElementBase
   fScore: decimal  _fScore: ElementBase
-  roc: MolecularSequenceQualityRoc
+  roc: MolecularSequenceQualityRocInput
 }
 
-input MolecularSequenceQualityRoc {
+input MolecularSequenceQualityRocInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   score: Int  _score: [ElementBase]
   numTP: Int  _numTP: [ElementBase]
   numFP: Int  _numFP: [ElementBase]
@@ -215,10 +215,10 @@ input MolecularSequenceQualityRoc {
   fMeasure: decimal  _fMeasure: [ElementBase]
 }
 
-input MolecularSequenceRepository {
+input MolecularSequenceRepositoryInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
   url: uri  _url: ElementBase
   name: String  _name: ElementBase
@@ -227,136 +227,136 @@ input MolecularSequenceRepository {
   readsetId: String  _readsetId: ElementBase
 }
 
-input MolecularSequenceStructureVariant {
+input MolecularSequenceStructureVariantInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  variantType: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  variantType: CodeableConceptInput
   exact: Boolean  _exact: ElementBase
   length: Int  _length: ElementBase
-  outer: MolecularSequenceStructureVariantOuter
-  inner: MolecularSequenceStructureVariantInner
+  outer: MolecularSequenceStructureVariantOuterInput
+  inner: MolecularSequenceStructureVariantInnerInput
 }
 
-input MolecularSequenceStructureVariantOuter {
+input MolecularSequenceStructureVariantOuterInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   start: Int  _start: ElementBase
   end: Int  _end: ElementBase
 }
 
-input MolecularSequenceStructureVariantInner {
+input MolecularSequenceStructureVariantInnerInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   start: Int  _start: ElementBase
   end: Int  _end: ElementBase
 }
 
 type MolecularSequenceReadType {
-  MolecularSequence(id : ID!) : MolecularSequence
+  MolecularSequence(id: ID!): MolecularSequence
 }
 
 type MolecularSequenceListType {
-  MolecularSequenceList(_filter : String
-    chromosome : [token]
-    chromosome_variant_coordinate : [composite]
-    chromosome_window_coordinate : [composite]
-    identifier : [token]
-    patient : [reference]
-    referenceseqid : [token]
-    referenceseqid_variant_coordinate : [composite]
-    referenceseqid_window_coordinate : [composite]
-    type : [token]
-    variant_end : [number]
-    variant_start : [number]
-    window_end : [number]
-    window_start : [number]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [MolecularSequence]
+  MolecularSequenceList(_filter: String
+    chromosome: [token]
+    chromosome_variant_coordinate: [composite]
+    chromosome_window_coordinate: [composite]
+    identifier: [token]
+    patient: [reference]
+    referenceseqid: [token]
+    referenceseqid_variant_coordinate: [composite]
+    referenceseqid_window_coordinate: [composite]
+    type: [token]
+    variant_end: [number]
+    variant_start: [number]
+    window_end: [number]
+    window_start: [number]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MolecularSequence]
 }
 
 type MolecularSequenceConnectionType {
-  MolecularSequenceConection(_filter : String
-    chromosome : [token]
-    chromosome_variant_coordinate : [composite]
-    chromosome_window_coordinate : [composite]
-    identifier : [token]
-    patient : [reference]
-    referenceseqid : [token]
-    referenceseqid_variant_coordinate : [composite]
-    referenceseqid_window_coordinate : [composite]
-    type : [token]
-    variant_end : [number]
-    variant_start : [number]
-    window_end : [number]
-    window_start : [number]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MolecularSequenceConnection
+  MolecularSequenceConection(_filter: String
+    chromosome: [token]
+    chromosome_variant_coordinate: [composite]
+    chromosome_window_coordinate: [composite]
+    identifier: [token]
+    patient: [reference]
+    referenceseqid: [token]
+    referenceseqid_variant_coordinate: [composite]
+    referenceseqid_window_coordinate: [composite]
+    type: [token]
+    variant_end: [number]
+    variant_start: [number]
+    window_end: [number]
+    window_start: [number]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MolecularSequenceConnection
 }
 
 type MolecularSequenceConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MolecularSequenceEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MolecularSequenceEdge]
 }
 
 type MolecularSequenceEdge {
-  mode : String
-  score : Float
-  resource : MolecularSequence
+  mode: String
+  score: Float
+  resource: MolecularSequence
 }
 
 type MolecularSequenceCreateType {
-  MolecularSequenceCreate(resource : MolecularSequence) : MolecularSequenceCreation
+  MolecularSequenceCreate(resource: MolecularSequenceInput): MolecularSequenceCreation
 }
 
 type MolecularSequenceCreation {
-  location : String
-  resource : MolecularSequence
-  information : OperationOutcome
+  location: String
+  resource: MolecularSequence
+  information: OperationOutcome
 }
 
 type MolecularSequenceUpdateType {
-  MolecularSequenceUpdate(id : IDresource : MolecularSequence) : MolecularSequenceUpdate
+  MolecularSequenceUpdate(id: ID, resource: MolecularSequenceInput): MolecularSequenceUpdate
 }
 
 type MolecularSequenceUpdate {
-  resource : MolecularSequence
-  information : OperationOutcome
+  resource: MolecularSequence
+  information: OperationOutcome
 }
 
 type MolecularSequenceDeleteType {
-  MolecularSequenceDelete(id : ID) : MolecularSequenceDelete
+  MolecularSequenceDelete(id: ID): MolecularSequenceDelete
 }
 
 type MolecularSequenceDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

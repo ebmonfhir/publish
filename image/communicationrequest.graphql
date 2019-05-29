@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type CommunicationRequest {
   id: ID
@@ -38,163 +38,163 @@ type CommunicationRequestPayload {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  contentString: String  _contentString: ElementBase
   contentAttachment: Attachment
   contentReference: Reference
+  contentCodeableConcept: CodeableConcept
 }
 
-input CommunicationRequest {
+input CommunicationRequestInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  basedOn: [Reference]
-  replaces: [Reference]
-  groupIdentifier: Identifier
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
+  replaces: [ReferenceInput]
+  groupIdentifier: IdentifierInput
   status: code  _status: ElementBase
-  statusReason: CodeableConcept
-  category: [CodeableConcept]
+  statusReason: CodeableConceptInput
+  category: [CodeableConceptInput]
   priority: code  _priority: ElementBase
   doNotPerform: Boolean  _doNotPerform: ElementBase
-  medium: [CodeableConcept]
-  subject: Reference
-  about: [Reference]
-  encounter: Reference
-  payload: [CommunicationRequestPayload]
+  medium: [CodeableConceptInput]
+  subject: ReferenceInput
+  about: [ReferenceInput]
+  encounter: ReferenceInput
+  payload: [CommunicationRequestPayloadInput]
   occurrenceDateTime: dateTime  _occurrenceDateTime: ElementBase
-  occurrencePeriod: Period
+  occurrencePeriod: PeriodInput
   authoredOn: dateTime  _authoredOn: ElementBase
-  requester: Reference
-  recipient: [Reference]
-  sender: Reference
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  note: [Annotation]
+  requester: ReferenceInput
+  recipient: [ReferenceInput]
+  sender: ReferenceInput
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  note: [AnnotationInput]
 }
 
-input CommunicationRequestPayload {
+input CommunicationRequestPayloadInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  contentString: String  _contentString: ElementBase
-  contentAttachment: Attachment
-  contentReference: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  contentAttachment: AttachmentInput
+  contentReference: ReferenceInput
+  contentCodeableConcept: CodeableConceptInput
 }
 
 type CommunicationRequestReadType {
-  CommunicationRequest(id : ID!) : CommunicationRequest
+  CommunicationRequest(id: ID!): CommunicationRequest
 }
 
 type CommunicationRequestListType {
-  CommunicationRequestList(_filter : String
-    authored : [date]
-    based_on : [reference]
-    category : [token]
-    encounter : [reference]
-    group_identifier : [token]
-    identifier : [token]
-    medium : [token]
-    occurrence : [date]
-    patient : [reference]
-    priority : [token]
-    recipient : [reference]
-    replaces : [reference]
-    requester : [reference]
-    sender : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [CommunicationRequest]
+  CommunicationRequestList(_filter: String
+    authored: [date]
+    based_on: [reference]
+    category: [token]
+    encounter: [reference]
+    group_identifier: [token]
+    identifier: [token]
+    medium: [token]
+    occurrence: [date]
+    patient: [reference]
+    priority: [token]
+    recipient: [reference]
+    replaces: [reference]
+    requester: [reference]
+    sender: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [CommunicationRequest]
 }
 
 type CommunicationRequestConnectionType {
-  CommunicationRequestConection(_filter : String
-    authored : [date]
-    based_on : [reference]
-    category : [token]
-    encounter : [reference]
-    group_identifier : [token]
-    identifier : [token]
-    medium : [token]
-    occurrence : [date]
-    patient : [reference]
-    priority : [token]
-    recipient : [reference]
-    replaces : [reference]
-    requester : [reference]
-    sender : [reference]
-    status : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : CommunicationRequestConnection
+  CommunicationRequestConection(_filter: String
+    authored: [date]
+    based_on: [reference]
+    category: [token]
+    encounter: [reference]
+    group_identifier: [token]
+    identifier: [token]
+    medium: [token]
+    occurrence: [date]
+    patient: [reference]
+    priority: [token]
+    recipient: [reference]
+    replaces: [reference]
+    requester: [reference]
+    sender: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): CommunicationRequestConnection
 }
 
 type CommunicationRequestConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [CommunicationRequestEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [CommunicationRequestEdge]
 }
 
 type CommunicationRequestEdge {
-  mode : String
-  score : Float
-  resource : CommunicationRequest
+  mode: String
+  score: Float
+  resource: CommunicationRequest
 }
 
 type CommunicationRequestCreateType {
-  CommunicationRequestCreate(resource : CommunicationRequest) : CommunicationRequestCreation
+  CommunicationRequestCreate(resource: CommunicationRequestInput): CommunicationRequestCreation
 }
 
 type CommunicationRequestCreation {
-  location : String
-  resource : CommunicationRequest
-  information : OperationOutcome
+  location: String
+  resource: CommunicationRequest
+  information: OperationOutcome
 }
 
 type CommunicationRequestUpdateType {
-  CommunicationRequestUpdate(id : IDresource : CommunicationRequest) : CommunicationRequestUpdate
+  CommunicationRequestUpdate(id: ID, resource: CommunicationRequestInput): CommunicationRequestUpdate
 }
 
 type CommunicationRequestUpdate {
-  resource : CommunicationRequest
-  information : OperationOutcome
+  resource: CommunicationRequest
+  information: OperationOutcome
 }
 
 type CommunicationRequestDeleteType {
-  CommunicationRequestDelete(id : ID) : CommunicationRequestDelete
+  CommunicationRequestDelete(id: ID): CommunicationRequestDelete
 }
 
 type CommunicationRequestDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -5,48 +5,27 @@
   "Goal": {
     "elements": {
       "Goal.lifecycleStatus": {
-        "status": "new"
-      },
-      "Goal.achievementStatus": {
-        "status": "new"
+        "binding-valueset-changed": true,
+        "binding-status": "changed",
+        "old-binding": {
+          "reference": "http://hl7.org/fhir/ValueSet/goal-status|4.0.0",
+          "strength": "required"
+        },
+        "new-binding": {
+          "reference": "http://hl7.org/fhir/ValueSet/goal-status|4.1.0",
+          "strength": "required"
+        }
       },
       "Goal.continuous": {
         "status": "new"
       },
-      "Goal.subject": {
-        "old-min": 0,
-        "new-min": 1
-      },
-      "Goal.target": {
-        "old-max": "1",
-        "new-max": "*"
-      },
-      "Goal.target.detail[x]": {
-        "added-types": [
-          "string",
-          "boolean",
-          "integer",
-          "Ratio"
-        ]
-      },
-      "Goal.expressedBy": {
-        "removed-types": [
-          "Reference(Patient | Practitioner | RelatedPerson)"
-        ],
-        "added-types": [
-          "Reference(Patient | Practitioner | PractitionerRole | RelatedPerson)"
-        ]
-      },
       "Goal.addresses": {
         "removed-types": [
-          "Reference(Condition | Observation | MedicationStatement | NutritionOrder | ProcedureRequest | RiskAssessment)"
+          "Reference(Condition | Observation | MedicationStatement | NutritionOrder | ServiceRequest | RiskAssessment)"
         ],
         "added-types": [
-          "Reference(Condition | Observation | MedicationStatement | MedicationRequest | NutritionOrder | ServiceRequest | RiskAssessment)"
+          "Reference(Condition | Observation | MedicationUsage | MedicationRequest | NutritionOrder | ServiceRequest | RiskAssessment)"
         ]
-      },
-      "Goal.status": {
-        "status": "deleted"
       }
     },
     "status": "changed"

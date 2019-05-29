@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type ClinicalImpression {
   id: ID
@@ -40,147 +40,147 @@ type ClinicalImpressionFinding {
   basis: String  _basis: ElementBase
 }
 
-input ClinicalImpression {
+input ClinicalImpressionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  statusReason: CodeableConcept
-  code: CodeableConcept
+  statusReason: CodeableConceptInput
+  code: CodeableConceptInput
   description: String  _description: ElementBase
-  subject: Reference!
-  encounter: Reference
+  subject: ReferenceInput!
+  encounter: ReferenceInput
   effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
-  effectivePeriod: Period
+  effectivePeriod: PeriodInput
   date: dateTime  _date: ElementBase
-  performer: Reference
-  previous: Reference
-  problem: [Reference]
+  performer: ReferenceInput
+  previous: ReferenceInput
+  problem: [ReferenceInput]
   protocol: uri  _protocol: [ElementBase]
   summary: String  _summary: ElementBase
-  finding: [ClinicalImpressionFinding]
-  prognosisCodeableConcept: [CodeableConcept]
-  prognosisReference: [Reference]
-  supportingInfo: [Reference]
-  note: [Annotation]
+  finding: [ClinicalImpressionFindingInput]
+  prognosisCodeableConcept: [CodeableConceptInput]
+  prognosisReference: [ReferenceInput]
+  supportingInfo: [ReferenceInput]
+  note: [AnnotationInput]
 }
 
-input ClinicalImpressionFinding {
+input ClinicalImpressionFindingInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  itemCodeableConcept: CodeableConcept
-  itemReference: Reference
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  itemCodeableConcept: CodeableConceptInput
+  itemReference: ReferenceInput
   basis: String  _basis: ElementBase
 }
 
 type ClinicalImpressionReadType {
-  ClinicalImpression(id : ID!) : ClinicalImpression
+  ClinicalImpression(id: ID!): ClinicalImpression
 }
 
 type ClinicalImpressionListType {
-  ClinicalImpressionList(_filter : String
-    date : [date]
-    encounter : [reference]
-    finding_code : [token]
-    finding_ref : [reference]
-    identifier : [token]
-    patient : [reference]
-    performer : [reference]
-    previous : [reference]
-    problem : [reference]
-    status : [token]
-    subject : [reference]
-    supporting_info : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [ClinicalImpression]
+  ClinicalImpressionList(_filter: String
+    date: [date]
+    encounter: [reference]
+    finding_code: [token]
+    finding_ref: [reference]
+    identifier: [token]
+    patient: [reference]
+    performer: [reference]
+    previous: [reference]
+    problem: [reference]
+    status: [token]
+    subject: [reference]
+    supporting_info: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ClinicalImpression]
 }
 
 type ClinicalImpressionConnectionType {
-  ClinicalImpressionConection(_filter : String
-    date : [date]
-    encounter : [reference]
-    finding_code : [token]
-    finding_ref : [reference]
-    identifier : [token]
-    patient : [reference]
-    performer : [reference]
-    previous : [reference]
-    problem : [reference]
-    status : [token]
-    subject : [reference]
-    supporting_info : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ClinicalImpressionConnection
+  ClinicalImpressionConection(_filter: String
+    date: [date]
+    encounter: [reference]
+    finding_code: [token]
+    finding_ref: [reference]
+    identifier: [token]
+    patient: [reference]
+    performer: [reference]
+    previous: [reference]
+    problem: [reference]
+    status: [token]
+    subject: [reference]
+    supporting_info: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ClinicalImpressionConnection
 }
 
 type ClinicalImpressionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ClinicalImpressionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ClinicalImpressionEdge]
 }
 
 type ClinicalImpressionEdge {
-  mode : String
-  score : Float
-  resource : ClinicalImpression
+  mode: String
+  score: Float
+  resource: ClinicalImpression
 }
 
 type ClinicalImpressionCreateType {
-  ClinicalImpressionCreate(resource : ClinicalImpression) : ClinicalImpressionCreation
+  ClinicalImpressionCreate(resource: ClinicalImpressionInput): ClinicalImpressionCreation
 }
 
 type ClinicalImpressionCreation {
-  location : String
-  resource : ClinicalImpression
-  information : OperationOutcome
+  location: String
+  resource: ClinicalImpression
+  information: OperationOutcome
 }
 
 type ClinicalImpressionUpdateType {
-  ClinicalImpressionUpdate(id : IDresource : ClinicalImpression) : ClinicalImpressionUpdate
+  ClinicalImpressionUpdate(id: ID, resource: ClinicalImpressionInput): ClinicalImpressionUpdate
 }
 
 type ClinicalImpressionUpdate {
-  resource : ClinicalImpression
-  information : OperationOutcome
+  resource: ClinicalImpression
+  information: OperationOutcome
 }
 
 type ClinicalImpressionDeleteType {
-  ClinicalImpressionDelete(id : ID) : ClinicalImpressionDelete
+  ClinicalImpressionDelete(id: ID): ClinicalImpressionDelete
 }
 
 type ClinicalImpressionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

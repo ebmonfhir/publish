@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Adverseevent.profile.json - FHIR v4.0.0</title>
+  <title>Adverseevent.profile.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -118,13 +121,17 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;AdverseEvent&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-03-01T07:26:01.444-06:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-05-29T10:45:36.897-05:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
     &quot;div&quot; : &quot;&lt;div&gt;!-- Snipped for Brevity --&gt;&lt;/div&gt;&quot;
   },
   &quot;extension&quot; : [{
+    &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot;,
+    &quot;valueString&quot; : &quot;Clinical.Summary&quot;
+  },
+  {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
     &quot;valueCode&quot; : &quot;trial-use&quot;
   },
@@ -141,10 +148,10 @@
     &quot;valueCode&quot; : &quot;pc&quot;
   }],
   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/AdverseEvent&quot;,
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;AdverseEvent&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
+  &quot;date&quot; : &quot;2019-05-29T10:45:36-05:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -158,17 +165,17 @@
       &quot;value&quot; : &quot;http://www.hl7.org/Special/committees/patientcare/index.cfm&quot;
     }]
   }],
-  &quot;description&quot; : &quot;Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.&quot;,
-  &quot;fhirVersion&quot; : &quot;4.0.0&quot;,
+  &quot;description&quot; : &quot;An event (i.e. any change to current patient status) that may be related to unintended effects on a patient or research subject.  The unintended effects may require additional monitoring, treatment or hospitalization or may result in death.  The AdverseEvent resource also extends to potential or avoided events that could have had such effects.&quot;,
+  &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
-    &quot;identity&quot; : &quot;w5&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/fhir/fivews&quot;,
-    &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;rim&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
     &quot;name&quot; : &quot;RIM Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;w5&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/fhir/fivews&quot;,
+    &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -180,7 +187,7 @@
       &quot;id&quot; : &quot;AdverseEvent&quot;,
       &quot;path&quot; : &quot;AdverseEvent&quot;,
       &quot;short&quot; : &quot;Medical care, research study or other healthcare event causing physical injury&quot;,
-      &quot;definition&quot; : &quot;Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.&quot;,
+      &quot;definition&quot; : &quot;An event (i.e. any change to current patient status) that may be related to unintended effects on a patient or research subject.  The unintended effects may require additional monitoring, treatment or hospitalization or may result in death.  The AdverseEvent resource also extends to potential or avoided events that could have had such effects.&quot;,
       &quot;alias&quot; : [&quot;AE&quot;],
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -242,6 +249,10 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Entity. Role, or Act&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Act&quot;
       }]
     },
     {
@@ -487,7 +498,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;Overall nature of the adverse event, e.g. real or potential.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-actuality|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-actuality|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;w5&quot;,
@@ -588,7 +599,7 @@
     {
       &quot;id&quot; : &quot;AdverseEvent.encounter&quot;,
       &quot;path&quot; : &quot;AdverseEvent.encounter&quot;,
-      &quot;short&quot; : &quot;Encounter created as part of&quot;,
+      &quot;short&quot; : &quot;The Encounter during which this AdverseEvent was created&quot;,
       &quot;definition&quot; : &quot;The Encounter during which AdverseEvent was created or to which the creation of this record is tightly associated.&quot;,
       &quot;comment&quot; : &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.  For example, if a medication administration was considered an adverse event because it resulted in a rash, then the encounter when the medication administration was given is the context.  If the patient reports the AdverseEvent during a second encounter, that second encounter is not the context.&quot;,
       &quot;min&quot; : 0,
@@ -761,7 +772,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;The severity of the adverse event itself, in direct relation to the subject.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0&quot;
       }
     },
     {
@@ -788,7 +799,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;TODO (and should this be required?).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0&quot;
       }
     },
     {
@@ -986,7 +997,7 @@
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/MedicationAdministration&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/MedicationUsage&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
       }],
       &quot;isModifier&quot; : false,
@@ -1095,79 +1106,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.assessment&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessment&quot;,
-      &quot;short&quot; : &quot;Assessment of if the entity caused the event&quot;,
-      &quot;definition&quot; : &quot;Assessment of if the entity caused the event.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.assessmentMethod&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessmentMethod&quot;,
+      &quot;short&quot; : &quot;Method of evaluating the relatedness of the suspected entity to the event&quot;,
+      &quot;definition&quot; : &quot;The method of evaluating the relatedness of the suspected entity to the event.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessment&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;AdverseEventCausalityAssessment&quot;
-        }],
-        &quot;strength&quot; : &quot;example&quot;,
-        &quot;description&quot; : &quot;Codes for the assessment of whether the entity caused the event.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-causality-assess&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.productRelatedness&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.productRelatedness&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.suspectEntity.causalityProductRelatedness&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.suspectEntity.causalityProductRelatedness.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.productRelatedness&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.suspectEntity.causalityAuthor&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.suspectEntity.causalityAuthor.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.method&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.method&quot;,
-      &quot;short&quot; : &quot;ProbabilityScale | Bayesian | Checklist&quot;,
-      &quot;definition&quot; : &quot;ProbabilityScale | Bayesian | Checklist.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.method&quot;,
+        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessmentMethod&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -1187,16 +1133,167 @@
       }
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.subjectMedicalHistory.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.entityRelatedness&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.entityRelatedness&quot;,
+      &quot;short&quot; : &quot;Result of the assessment regarding the relatedness of the suspected entity to the event&quot;,
+      &quot;definition&quot; : &quot;The result of the assessment regarding the relatedness of the suspected entity to the event.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.entityRelatedness&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;AdverseEventCausalityAssessment&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Codes for the assessment of whether the entity caused the event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-causality-assess&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
+      &quot;short&quot; : &quot;Author of the information on the possible cause of the event&quot;,
+      &quot;definition&quot; : &quot;The author of the information on the possible cause of the event.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo&quot;,
+      &quot;short&quot; : &quot;Supporting information relevant to the event&quot;,
+      &quot;definition&quot; : &quot;Supporting information relevant to the event.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
+        &quot;path&quot; : &quot;AdverseEvent.supportingInfo&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;constraint&quot; : [{
+        &quot;key&quot; : &quot;ele-1&quot;,
+        &quot;severity&quot; : &quot;error&quot;,
+        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
+        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
+        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
+        &quot;source&quot; : &quot;Element&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.id&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.id&quot;,
+      &quot;representation&quot; : [&quot;xmlAttr&quot;],
+      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
+      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.extension&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.extension&quot;,
+      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.extension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.modifierExtension&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.modifierExtension&quot;,
+      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;,
+      &quot;modifiers&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.item&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.item&quot;,
+      &quot;short&quot; : &quot;Subject medical history or document relevant to this adverse event&quot;,
+      &quot;definition&quot; : &quot;Relevant past history for the subject.  In a clinical care context, an example being a patient had an adverse event following a penciliin administration and the patient had a previously documented penicillin allergy.  In a clinical trials context, an example is a bunion or rash that was present prior to the study.\nAdditionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history.  For example, a clinical note, staff list, or material safety data sheet (MSDS).&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;AdverseEvent.supportingInfo.item&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
@@ -1213,20 +1310,19 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.referenceDocument.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.contributingFactor&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.contributingFactor&quot;,
+      &quot;short&quot; : &quot;If true, the item has been assessed to be a contributing factor of the adverse event&quot;,
+      &quot;definition&quot; : &quot;If true, the item has been assessed to be a contributing factor of the adverse event.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.referenceDocument&quot;,
+        &quot;path&quot; : &quot;AdverseEvent.supportingInfo.contributingFactor&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
+        &quot;code&quot; : &quot;boolean&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -1234,8 +1330,8 @@
     {
       &quot;id&quot; : &quot;AdverseEvent.study&quot;,
       &quot;path&quot; : &quot;AdverseEvent.study&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.study&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.study.&quot;,
+      &quot;short&quot; : &quot;Research study that the subject is enrolled in&quot;,
+      &quot;definition&quot; : &quot;The research study that the subject is enrolled in.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -1256,10 +1352,14 @@
       &quot;id&quot; : &quot;AdverseEvent&quot;,
       &quot;path&quot; : &quot;AdverseEvent&quot;,
       &quot;short&quot; : &quot;Medical care, research study or other healthcare event causing physical injury&quot;,
-      &quot;definition&quot; : &quot;Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.&quot;,
+      &quot;definition&quot; : &quot;An event (i.e. any change to current patient status) that may be related to unintended effects on a patient or research subject.  The unintended effects may require additional monitoring, treatment or hospitalization or may result in death.  The AdverseEvent resource also extends to potential or avoided events that could have had such effects.&quot;,
       &quot;alias&quot; : [&quot;AE&quot;],
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;Act&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.identifier&quot;,
@@ -1295,7 +1395,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;Overall nature of the adverse event, e.g. real or potential.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-actuality|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-actuality|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;w5&quot;,
@@ -1378,7 +1478,7 @@
     {
       &quot;id&quot; : &quot;AdverseEvent.encounter&quot;,
       &quot;path&quot; : &quot;AdverseEvent.encounter&quot;,
-      &quot;short&quot; : &quot;Encounter created as part of&quot;,
+      &quot;short&quot; : &quot;The Encounter during which this AdverseEvent was created&quot;,
       &quot;definition&quot; : &quot;The Encounter during which AdverseEvent was created or to which the creation of this record is tightly associated.&quot;,
       &quot;comment&quot; : &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.  For example, if a medication administration was considered an adverse event because it resulted in a rash, then the encounter when the medication administration was given is the context.  If the patient reports the AdverseEvent during a second encounter, that second encounter is not the context.&quot;,
       &quot;min&quot; : 0,
@@ -1503,7 +1603,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;The severity of the adverse event itself, in direct relation to the subject.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0&quot;
       }
     },
     {
@@ -1524,7 +1624,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;TODO (and should this be required?).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0&quot;
       }
     },
     {
@@ -1609,7 +1709,7 @@
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/MedicationAdministration&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/MedicationUsage&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
       }],
       &quot;isSummary&quot; : true
@@ -1627,57 +1727,10 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.assessment&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessment&quot;,
-      &quot;short&quot; : &quot;Assessment of if the entity caused the event&quot;,
-      &quot;definition&quot; : &quot;Assessment of if the entity caused the event.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;AdverseEventCausalityAssessment&quot;
-        }],
-        &quot;strength&quot; : &quot;example&quot;,
-        &quot;description&quot; : &quot;Codes for the assessment of whether the entity caused the event.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-causality-assess&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.productRelatedness&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.productRelatedness&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.suspectEntity.causalityProductRelatedness&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.suspectEntity.causalityProductRelatedness.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.suspectEntity.causalityAuthor&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.suspectEntity.causalityAuthor.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;]
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.method&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.method&quot;,
-      &quot;short&quot; : &quot;ProbabilityScale | Bayesian | Checklist&quot;,
-      &quot;definition&quot; : &quot;ProbabilityScale | Bayesian | Checklist.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.assessmentMethod&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.assessmentMethod&quot;,
+      &quot;short&quot; : &quot;Method of evaluating the relatedness of the suspected entity to the event&quot;,
+      &quot;definition&quot; : &quot;The method of evaluating the relatedness of the suspected entity to the event.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1695,12 +1748,61 @@
       }
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.subjectMedicalHistory&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.subjectMedicalHistory.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.entityRelatedness&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.entityRelatedness&quot;,
+      &quot;short&quot; : &quot;Result of the assessment regarding the relatedness of the suspected entity to the event&quot;,
+      &quot;definition&quot; : &quot;The result of the assessment regarding the relatedness of the suspected entity to the event.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;AdverseEventCausalityAssessment&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Codes for the assessment of whether the entity caused the event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-causality-assess&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality.author&quot;,
+      &quot;short&quot; : &quot;Author of the information on the possible cause of the event&quot;,
+      &quot;definition&quot; : &quot;The author of the information on the possible cause of the event.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;]
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo&quot;,
+      &quot;short&quot; : &quot;Supporting information relevant to the event&quot;,
+      &quot;definition&quot; : &quot;Supporting information relevant to the event.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.item&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.item&quot;,
+      &quot;short&quot; : &quot;Subject medical history or document relevant to this adverse event&quot;,
+      &quot;definition&quot; : &quot;Relevant past history for the subject.  In a clinical care context, an example being a patient had an adverse event following a penciliin administration and the patient had a previously documented penicillin allergy.  In a clinical trials context, an example is a bunion or rash that was present prior to the study.\nAdditionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history.  For example, a clinical note, staff list, or material safety data sheet (MSDS).&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Condition&quot;,
@@ -1715,23 +1817,22 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.referenceDocument&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.referenceDocument.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.supportingInfo.contributingFactor&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.supportingInfo.contributingFactor&quot;,
+      &quot;short&quot; : &quot;If true, the item has been assessed to be a contributing factor of the adverse event&quot;,
+      &quot;definition&quot; : &quot;If true, the item has been assessed to be a contributing factor of the adverse event.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
+        &quot;code&quot; : &quot;boolean&quot;
       }],
       &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.study&quot;,
       &quot;path&quot; : &quot;AdverseEvent.study&quot;,
-      &quot;short&quot; : &quot;AdverseEvent.study&quot;,
-      &quot;definition&quot; : &quot;AdverseEvent.study.&quot;,
+      &quot;short&quot; : &quot;Research study that the subject is enrolled in&quot;,
+      &quot;definition&quot; : &quot;The research study that the subject is enrolled in.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -1766,13 +1867,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fadverseevent.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fadverseevent.profile.json.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

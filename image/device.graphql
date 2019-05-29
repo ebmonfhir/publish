@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Device {
   id: ID
@@ -83,47 +83,47 @@ type DeviceProperty {
   valueCode: [CodeableConcept]
 }
 
-input Device {
+input DeviceInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  definition: Reference
-  udiCarrier: [DeviceUdiCarrier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  definition: ReferenceInput
+  udiCarrier: [DeviceUdiCarrierInput]
   status: code  _status: ElementBase
-  statusReason: [CodeableConcept]
+  statusReason: [CodeableConceptInput]
   distinctIdentifier: String  _distinctIdentifier: ElementBase
   manufacturer: String  _manufacturer: ElementBase
   manufactureDate: dateTime  _manufactureDate: ElementBase
   expirationDate: dateTime  _expirationDate: ElementBase
   lotNumber: String  _lotNumber: ElementBase
   serialNumber: String  _serialNumber: ElementBase
-  deviceName: [DeviceDeviceName]
+  deviceName: [DeviceDeviceNameInput]
   modelNumber: String  _modelNumber: ElementBase
   partNumber: String  _partNumber: ElementBase
-  type: CodeableConcept
-  specialization: [DeviceSpecialization]
-  version: [DeviceVersion]
-  property: [DeviceProperty]
-  patient: Reference
-  owner: Reference
-  contact: [ContactPoint]
-  location: Reference
+  type: CodeableConceptInput
+  specialization: [DeviceSpecializationInput]
+  version: [DeviceVersionInput]
+  property: [DevicePropertyInput]
+  patient: ReferenceInput
+  owner: ReferenceInput
+  contact: [ContactPointInput]
+  location: ReferenceInput
   url: uri  _url: ElementBase
-  note: [Annotation]
-  safety: [CodeableConcept]
-  parent: Reference
+  note: [AnnotationInput]
+  safety: [CodeableConceptInput]
+  parent: ReferenceInput
 }
 
-input DeviceUdiCarrier {
+input DeviceUdiCarrierInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   deviceIdentifier: String  _deviceIdentifier: ElementBase
   issuer: uri  _issuer: ElementBase
   jurisdiction: uri  _jurisdiction: ElementBase
@@ -132,141 +132,141 @@ input DeviceUdiCarrier {
   entryType: code  _entryType: ElementBase
 }
 
-input DeviceDeviceName {
+input DeviceDeviceNameInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: String  _name: ElementBase
   type: code  _type: ElementBase
 }
 
-input DeviceSpecialization {
+input DeviceSpecializationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  systemType: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  systemType: CodeableConceptInput!
   version: String  _version: ElementBase
 }
 
-input DeviceVersion {
+input DeviceVersionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept
-  component: Identifier
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput
+  component: IdentifierInput
   value: String  _value: ElementBase
 }
 
-input DeviceProperty {
+input DevicePropertyInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  type: CodeableConcept!
-  valueQuantity: [Quantity]
-  valueCode: [CodeableConcept]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
+  valueQuantity: [QuantityInput]
+  valueCode: [CodeableConceptInput]
 }
 
 type DeviceReadType {
-  Device(id : ID!) : Device
+  Device(id: ID!): Device
 }
 
 type DeviceListType {
-  DeviceList(_filter : String
-    device_name : [String]
-    identifier : [token]
-    location : [reference]
-    manufacturer : [String]
-    model : [String]
-    organization : [reference]
-    patient : [reference]
-    status : [token]
-    type : [token]
-    udi_carrier : [String]
-    udi_di : [String]
-    url : [uri]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Device]
+  DeviceList(_filter: String
+    device_name: [String]
+    identifier: [token]
+    location: [reference]
+    manufacturer: [String]
+    model: [String]
+    organization: [reference]
+    patient: [reference]
+    status: [token]
+    type: [token]
+    udi_carrier: [String]
+    udi_di: [String]
+    url: [uri]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Device]
 }
 
 type DeviceConnectionType {
-  DeviceConection(_filter : String
-    device_name : [String]
-    identifier : [token]
-    location : [reference]
-    manufacturer : [String]
-    model : [String]
-    organization : [reference]
-    patient : [reference]
-    status : [token]
-    type : [token]
-    udi_carrier : [String]
-    udi_di : [String]
-    url : [uri]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : DeviceConnection
+  DeviceConection(_filter: String
+    device_name: [String]
+    identifier: [token]
+    location: [reference]
+    manufacturer: [String]
+    model: [String]
+    organization: [reference]
+    patient: [reference]
+    status: [token]
+    type: [token]
+    udi_carrier: [String]
+    udi_di: [String]
+    url: [uri]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): DeviceConnection
 }
 
 type DeviceConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [DeviceEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [DeviceEdge]
 }
 
 type DeviceEdge {
-  mode : String
-  score : Float
-  resource : Device
+  mode: String
+  score: Float
+  resource: Device
 }
 
 type DeviceCreateType {
-  DeviceCreate(resource : Device) : DeviceCreation
+  DeviceCreate(resource: DeviceInput): DeviceCreation
 }
 
 type DeviceCreation {
-  location : String
-  resource : Device
-  information : OperationOutcome
+  location: String
+  resource: Device
+  information: OperationOutcome
 }
 
 type DeviceUpdateType {
-  DeviceUpdate(id : IDresource : Device) : DeviceUpdate
+  DeviceUpdate(id: ID, resource: DeviceInput): DeviceUpdate
 }
 
 type DeviceUpdate {
-  resource : Device
-  information : OperationOutcome
+  resource: Device
+  information: OperationOutcome
 }
 
 type DeviceDeleteType {
-  DeviceDelete(id : ID) : DeviceDelete
+  DeviceDelete(id: ID): DeviceDelete
 }
 
 type DeviceDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Communication.profile.ttl - FHIR v4.0.0</title>
+  <title>Communication.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Communication&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Clinical.Request &amp;amp; Response&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;2&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;pc&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Communication&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Communication&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Patient Care)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -166,8 +173,8 @@
        fhir:ContactPoint.value [ fhir:value &quot;http://www.hl7.org/Special/committees/patientcare/index.cfm&quot; ]
      ]
   ];
-  fhir:StructureDefinition.description [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.description [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -195,7 +202,7 @@
        fhir:Element.id [ fhir:value &quot;Communication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Communication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A record of information transmitted from a sender to a receiver&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -722,7 +729,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The status of the communication.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -839,7 +846,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Codes indicating the relative importance of a communication.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -986,7 +993,7 @@
        fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Communication.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Communication.encounter&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The Encounter during which this Communication was created&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The Encounter during which this Communication was created or to which the creation of this record is tightly associated.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -1086,34 +1093,42 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-pattern&quot; ];
+           fhir:Extension.value [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Participant&quot; ]
+         ];
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;;
            fhir:index 0
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
            fhir:index 1
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Group&quot;;
            fhir:index 2
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
            fhir:index 3
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;;
            fhir:index 4
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
            fhir:index 5
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Group&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
            fhir:index 6
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
            fhir:index 7
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
            fhir:index 8
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:index 9
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1237,17 +1252,8 @@
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Condition&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Resource&quot;;
            fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;;
-           fhir:index 1
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
-           fhir:index 2
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;;
-           fhir:index 3
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1396,6 +1402,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;Communication.payload.content[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Message part content&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A communicated content (or for multi-part communications, one portion of the communication).&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1405,17 +1412,17 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.code [ fhir:value &quot;Attachment&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 1;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Resource&quot;;
            fhir:index 0
          ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
@@ -1451,7 +1458,7 @@
        fhir:Element.id [ fhir:value &quot;Communication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Communication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A record of information transmitted from a sender to a receiver&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.mapping [
@@ -1638,7 +1645,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The status of the communication.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1736,7 +1743,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Codes indicating the relative importance of a communication.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1856,7 +1863,7 @@
        fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Communication.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Communication.encounter&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The Encounter during which this Communication was created&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The Encounter during which this Communication was created or to which the creation of this record is tightly associated.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -1931,34 +1938,42 @@
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-pattern&quot; ];
+           fhir:Extension.value [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Participant&quot; ]
+         ];
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;;
            fhir:index 0
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
            fhir:index 1
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Group&quot;;
            fhir:index 2
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
            fhir:index 3
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;;
            fhir:index 4
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
            fhir:index 5
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Group&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
            fhir:index 6
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
            fhir:index 7
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/HealthcareService&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
            fhir:index 8
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:index 9
          ]
        ];
        fhir:ElementDefinition.mapping [
@@ -2062,17 +2077,8 @@
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Condition&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Resource&quot;;
            fhir:index 0
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;;
-           fhir:index 1
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
-           fhir:index 2
-         ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;;
-           fhir:index 3
          ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
@@ -2107,21 +2113,22 @@
        fhir:ElementDefinition.path [ fhir:value &quot;Communication.payload.content[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Message part content&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A communicated content (or for multi-part communications, one portion of the communication).&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
-       ], [
-         fhir:index 1;
          fhir:ElementDefinition.code [ fhir:value &quot;Attachment&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 1;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Resource&quot;;
            fhir:index 0
          ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ]
      ], [
        fhir:index 24;
@@ -2170,13 +2177,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcommunication.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunication.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

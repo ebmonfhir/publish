@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Procedure-questionnaire.xml - FHIR v4.0.0</title>
+  <title>Procedure-questionnaire.xml - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -39,9 +39,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -72,6 +74,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,12 +126,12 @@
   &lt;contained&gt;
     &lt;ValueSet&gt;
       &lt;id value=&quot;vs2&quot;/&gt;
-      &lt;name value=&quot;Type options for Procedure.performed[x]&quot;/&gt;
+      &lt;name value=&quot;Type options for Procedure.occurrence[x]&quot;/&gt;
       &lt;status value=&quot;active&quot;/&gt;
-      &lt;description value=&quot;Type options for Procedure.performed[x]&quot;/&gt;
+      &lt;description value=&quot;Type options for Procedure.occurrence[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:cf43e0e5-f9d2-4a60-8df2-e59a5ad4ab9e&quot;/&gt;
-        &lt;timestamp value=&quot;2019-03-01T07:28:58-06:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:e846c635-e053-4e89-a8a6-9fe9eaae9a49&quot;/&gt;
+        &lt;timestamp value=&quot;2019-05-29T10:50:03-05:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;dateTime&quot;/&gt;
@@ -154,6 +157,11 @@
           &lt;code value=&quot;Range&quot;/&gt;
           &lt;display value=&quot;Range&quot;/&gt;
         &lt;/contains&gt;
+        &lt;contains&gt;
+          &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
+          &lt;code value=&quot;Timing&quot;/&gt;
+          &lt;display value=&quot;Timing&quot;/&gt;
+        &lt;/contains&gt;
       &lt;/expansion&gt;
     &lt;/ValueSet&gt;
   &lt;/contained&gt;
@@ -164,8 +172,8 @@
       &lt;status value=&quot;active&quot;/&gt;
       &lt;description value=&quot;Type options for Procedure.reported[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:de188db7-6f6d-4c24-8a2f-7582959012a0&quot;/&gt;
-        &lt;timestamp value=&quot;2019-03-01T07:28:58-06:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:0e22e9c8-d15e-461a-8033-bb259082ccc3&quot;/&gt;
+        &lt;timestamp value=&quot;2019-05-29T10:50:03-05:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;boolean&quot;/&gt;
@@ -202,9 +210,9 @@
   &lt;identifier&gt;
     &lt;system value=&quot;urn:ietf:rfc:3986&quot;/&gt;
   &lt;/identifier&gt;
-  &lt;version value=&quot;4.0.0&quot;/&gt;
+  &lt;version value=&quot;4.1.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-03-01T07:26:01-06:00&quot;/&gt;
+  &lt;date value=&quot;2019-05-29T10:45:36-05:00&quot;/&gt;
   &lt;publisher value=&quot;Health Level Seven International (Patient Care)&quot;/&gt;
   &lt;item&gt;
     &lt;linkId value=&quot;Procedure&quot;/&gt;
@@ -675,9 +683,6 @@
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
-      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
-        &lt;valueInteger value=&quot;1&quot;/&gt;
-      &lt;/extension&gt;
       &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
         &lt;valueString value=&quot;CodeableConcept&quot;/&gt;
       &lt;/extension&gt;
@@ -827,7 +832,7 @@
           &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
         &lt;/extension&gt;
         &lt;linkId value=&quot;Procedure.encounter.value&quot;/&gt;
-        &lt;text value=&quot;Encounter created as part of&quot;/&gt;
+        &lt;text value=&quot;The Encounter during which this Procedure was created&quot;/&gt;
         &lt;type value=&quot;reference&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
         &lt;repeats value=&quot;false&quot;/&gt;
@@ -837,8 +842,8 @@
       &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
         &lt;valueInteger value=&quot;1&quot;/&gt;
       &lt;/extension&gt;
-      &lt;linkId value=&quot;Procedure.performed[x]&quot;/&gt;
-      &lt;text value=&quot;When the procedure was performed&quot;/&gt;
+      &lt;linkId value=&quot;Procedure.occurrence[x]&quot;/&gt;
+      &lt;text value=&quot;When the procedure occurred or is occurring&quot;/&gt;
       &lt;type value=&quot;group&quot;/&gt;
       &lt;required value=&quot;false&quot;/&gt;
       &lt;repeats value=&quot;true&quot;/&gt;
@@ -852,11 +857,11 @@
             &lt;/coding&gt;
           &lt;/valueCodeableConcept&gt;
         &lt;/extension&gt;
-        &lt;text value=&quot;Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured. Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot;/&gt;
+        &lt;text value=&quot;Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured. This indicates when the procedure actually occurred or is occurring, not when it was asked/requested/ordered to occur. For the latter, look at the occurence element of the Request this Procedure is &amp;quot;basedOn&amp;quot;. The status code allows differentiation of whether the timing reflects a historic event or an ongoing event. Ongoing events should not include an upper bound in the Period or Timing.bounds.&amp;#xA;&amp;#xA;Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot;/&gt;
         &lt;type value=&quot;display&quot;/&gt;
       &lt;/item&gt;
       &lt;item&gt;
-        &lt;linkId value=&quot;Procedure.performed[x]._type&quot;/&gt;
+        &lt;linkId value=&quot;Procedure.occurrence[x]._type&quot;/&gt;
         &lt;text value=&quot;type&quot;/&gt;
         &lt;type value=&quot;choice&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
@@ -866,10 +871,10 @@
           &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
             &lt;valueString value=&quot;datetime&quot;/&gt;
           &lt;/extension&gt;
-          &lt;linkId value=&quot;Procedure.performed[x]._null&quot;/&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
           &lt;type value=&quot;group&quot;/&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.value&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.value&quot;/&gt;
             &lt;type value=&quot;dateTime&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
@@ -879,17 +884,17 @@
           &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
             &lt;valueString value=&quot;Period&quot;/&gt;
           &lt;/extension&gt;
-          &lt;linkId value=&quot;Procedure.performed[x]._null&quot;/&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
           &lt;type value=&quot;group&quot;/&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.low&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.low&quot;/&gt;
             &lt;text value=&quot;start:&quot;/&gt;
             &lt;type value=&quot;dateTime&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.end&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.end&quot;/&gt;
             &lt;text value=&quot;end:&quot;/&gt;
             &lt;type value=&quot;dateTime&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
@@ -900,10 +905,10 @@
           &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
             &lt;valueString value=&quot;string&quot;/&gt;
           &lt;/extension&gt;
-          &lt;linkId value=&quot;Procedure.performed[x]._null&quot;/&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
           &lt;type value=&quot;group&quot;/&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.value&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.value&quot;/&gt;
             &lt;type value=&quot;string&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
@@ -913,38 +918,38 @@
           &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
             &lt;valueString value=&quot;Quantity&quot;/&gt;
           &lt;/extension&gt;
-          &lt;linkId value=&quot;Procedure.performed[x]._null&quot;/&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
           &lt;type value=&quot;group&quot;/&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.comparator&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.comparator&quot;/&gt;
             &lt;text value=&quot;comp:&quot;/&gt;
             &lt;type value=&quot;choice&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.value&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.value&quot;/&gt;
             &lt;text value=&quot;value:&quot;/&gt;
             &lt;type value=&quot;decimal&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.units&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.units&quot;/&gt;
             &lt;text value=&quot;units:&quot;/&gt;
             &lt;type value=&quot;string&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.code&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.code&quot;/&gt;
             &lt;text value=&quot;coded units:&quot;/&gt;
             &lt;type value=&quot;string&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.system&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.system&quot;/&gt;
             &lt;text value=&quot;units system:&quot;/&gt;
             &lt;type value=&quot;string&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
@@ -955,30 +960,99 @@
           &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
             &lt;valueString value=&quot;Range&quot;/&gt;
           &lt;/extension&gt;
-          &lt;linkId value=&quot;Procedure.performed[x]._null&quot;/&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
           &lt;type value=&quot;group&quot;/&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.low&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.low&quot;/&gt;
             &lt;text value=&quot;low:&quot;/&gt;
             &lt;type value=&quot;decimal&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.high&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.high&quot;/&gt;
             &lt;text value=&quot;high:&quot;/&gt;
             &lt;type value=&quot;decimal&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
           &lt;item&gt;
-            &lt;linkId value=&quot;Procedure.performed[x]._null.units&quot;/&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.units&quot;/&gt;
             &lt;text value=&quot;units:&quot;/&gt;
             &lt;type value=&quot;string&quot;/&gt;
             &lt;required value=&quot;false&quot;/&gt;
             &lt;repeats value=&quot;false&quot;/&gt;
           &lt;/item&gt;
         &lt;/item&gt;
+        &lt;item&gt;
+          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+            &lt;valueString value=&quot;Schedule&quot;/&gt;
+          &lt;/extension&gt;
+          &lt;linkId value=&quot;Procedure.occurrence[x]._null&quot;/&gt;
+          &lt;type value=&quot;group&quot;/&gt;
+          &lt;item&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.text&quot;/&gt;
+            &lt;text value=&quot;text:&quot;/&gt;
+            &lt;type value=&quot;string&quot;/&gt;
+            &lt;required value=&quot;false&quot;/&gt;
+            &lt;repeats value=&quot;false&quot;/&gt;
+          &lt;/item&gt;
+          &lt;item&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.date&quot;/&gt;
+            &lt;text value=&quot;date:&quot;/&gt;
+            &lt;type value=&quot;dateTime&quot;/&gt;
+            &lt;required value=&quot;false&quot;/&gt;
+            &lt;repeats value=&quot;false&quot;/&gt;
+          &lt;/item&gt;
+          &lt;item&gt;
+            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
+              &lt;valueCode value=&quot;Patient&quot;/&gt;
+            &lt;/extension&gt;
+            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
+              &lt;valueCode value=&quot;Practitioner&quot;/&gt;
+            &lt;/extension&gt;
+            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
+              &lt;valueCode value=&quot;RelatedPerson&quot;/&gt;
+            &lt;/extension&gt;
+            &lt;linkId value=&quot;Procedure.occurrence[x]._null.author&quot;/&gt;
+            &lt;text value=&quot;author:&quot;/&gt;
+            &lt;type value=&quot;reference&quot;/&gt;
+            &lt;required value=&quot;false&quot;/&gt;
+            &lt;repeats value=&quot;false&quot;/&gt;
+          &lt;/item&gt;
+        &lt;/item&gt;
+      &lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
+        &lt;valueInteger value=&quot;1&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+        &lt;valueString value=&quot;datetime&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;linkId value=&quot;Procedure.recorded&quot;/&gt;
+      &lt;type value=&quot;group&quot;/&gt;
+      &lt;required value=&quot;false&quot;/&gt;
+      &lt;repeats value=&quot;true&quot;/&gt;
+      &lt;item&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
+          &lt;valueCodeableConcept&gt;
+            &lt;coding&gt;
+              &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
+              &lt;code value=&quot;flyover&quot;/&gt;
+              &lt;display value=&quot;Fly-over&quot;/&gt;
+            &lt;/coding&gt;
+          &lt;/valueCodeableConcept&gt;
+        &lt;/extension&gt;
+        &lt;text value=&quot;The date the occurrence of the procedure was first captured in the record - potentially significantly after the occurrence of the event.&quot;/&gt;
+        &lt;type value=&quot;display&quot;/&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;linkId value=&quot;Procedure.recorded.value&quot;/&gt;
+        &lt;text value=&quot;When the procedure was first captured in the subject&amp;#39;s record&quot;/&gt;
+        &lt;type value=&quot;dateTime&quot;/&gt;
+        &lt;required value=&quot;false&quot;/&gt;
+        &lt;repeats value=&quot;false&quot;/&gt;
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -1918,13 +1992,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:50-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fprocedure-questionnaire.xml.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fprocedure-questionnaire.xml.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

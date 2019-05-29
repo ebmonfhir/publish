@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Auditevent.profile.ttl - FHIR v4.0.0</title>
+  <title>Auditevent.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;AuditEvent&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Foundation.Security&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;3&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;not-classified&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;sec&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/AuditEvent&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;AuditEvent&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Security)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -166,8 +173,8 @@
        fhir:ContactPoint.value [ fhir:value &quot;http://www.hl7.org/Special/committees/secure/index.cfm&quot; ]
      ]
   ];
-  fhir:StructureDefinition.description [ fhir:value &quot;A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.description [ fhir:value &quot;A record of an event relevant for purposes such as operations, privacy, security, maintenance, and performance analysis.&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -209,8 +216,8 @@
        fhir:index 0;
        fhir:Element.id [ fhir:value &quot;AuditEvent&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Event record kept for security purposes&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Record of an event&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;A record of an event relevant for purposes such as operations, privacy, security, maintenance, and performance analysis.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Based on IHE-ATNA.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -647,7 +654,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Indicator for type of action performed during the event that generated the event.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-action|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-action|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -773,7 +780,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Indicates whether the event succeeded or failed.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-outcome|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-outcome|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -827,6 +834,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The purposeOfUse of the event&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The purposeOfUse (reason) that was used during the event being recorded.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Use AuditEvent.agent.purposeOfUse when you know that it is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;record of any relevant security context not restricted to purposeOfUse valueSet, may include security compartments or other security tags.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1037,6 +1045,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent.agent.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;How agent participated&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Specification of the participation type the user plays when performing the event.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The most relevant role code for how the agent participated in the activity.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1075,7 +1084,7 @@
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;dicom&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;RoleIdCode&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;prime RoleIdCode&quot; ]
        ], [
          fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;w3c.prov&quot; ];
@@ -1091,7 +1100,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent.agent.role&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Agent role in the event&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The security role that the user was acting under, that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Should be roles relevant to the event. Should  not be an exhaustive list of roles.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Should be all the relevant roles (Functional and Structural) inclusive of the value in .agent.type.&quot; ];
        fhir:ElementDefinition.requirements [ fhir:value &quot;This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -1127,7 +1136,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;dicom&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;RoleIdCode&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;all RoleIdCode&quot; ]
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w3c.prov&quot; ];
@@ -1639,7 +1648,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The type of network access point of this agent in the audit event.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/network-type|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/network-type|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1661,6 +1670,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Reason given for this user&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The reason (purpose of use), specific to this agent, that was used during the event being recorded.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;record of any relevant security context not restricted to purposeOfUse valueSet, may include security compartments or other security tags.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2695,8 +2705,8 @@
        fhir:index 0;
        fhir:Element.id [ fhir:value &quot;AuditEvent&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Event record kept for security purposes&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Record of an event&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;A record of an event relevant for purposes such as operations, privacy, security, maintenance, and performance analysis.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Based on IHE-ATNA.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -2817,7 +2827,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Indicator for type of action performed during the event that generated the event.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-action|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-action|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2924,7 +2934,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Indicates whether the event succeeded or failed.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-outcome|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/audit-event-outcome|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2972,6 +2982,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The purposeOfUse of the event&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The purposeOfUse (reason) that was used during the event being recorded.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Use AuditEvent.agent.purposeOfUse when you know that it is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;record of any relevant security context not restricted to purposeOfUse valueSet, may include security compartments or other security tags.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3063,6 +3074,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent.agent.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;How agent participated&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Specification of the participation type the user plays when performing the event.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The most relevant role code for how the agent participated in the activity.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3094,7 +3106,7 @@
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;dicom&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;RoleIdCode&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;prime RoleIdCode&quot; ]
        ], [
          fhir:index 4;
          fhir:ElementDefinition.identity [ fhir:value &quot;w3c.prov&quot; ];
@@ -3110,7 +3122,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;AuditEvent.agent.role&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Agent role in the event&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The security role that the user was acting under, that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Should be roles relevant to the event. Should  not be an exhaustive list of roles.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Should be all the relevant roles (Functional and Structural) inclusive of the value in .agent.type.&quot; ];
        fhir:ElementDefinition.requirements [ fhir:value &quot;This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -3139,7 +3151,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;dicom&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;RoleIdCode&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;all RoleIdCode&quot; ]
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;w3c.prov&quot; ];
@@ -3477,7 +3489,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The type of network access point of this agent in the audit event.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/network-type|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/network-type|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -3499,6 +3511,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Reason given for this user&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The reason (purpose of use), specific to this agent, that was used during the event being recorded.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;record of any relevant security context not restricted to purposeOfUse valueSet, may include security compartments or other security tags.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -4124,13 +4137,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fauditevent.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fauditevent.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

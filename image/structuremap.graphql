@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type StructureMap {
   id: ID
@@ -170,17 +170,17 @@ type StructureMapGroupRuleDependent {
   variable: String  _variable: [ElementBase]
 }
 
-input StructureMap {
+input StructureMapInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
-  identifier: [Identifier]
+  identifier: [IdentifierInput]
   version: String  _version: ElementBase
   name: String  _name: ElementBase
   title: String  _title: ElementBase
@@ -188,65 +188,65 @@ input StructureMap {
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   purpose: markdown  _purpose: ElementBase
   copyright: markdown  _copyright: ElementBase
-  structure: [StructureMapStructure]
+  structure: [StructureMapStructureInput]
   import: canonical  _import: [ElementBase]
-  group: [StructureMapGroup]!
+  group: [StructureMapGroupInput]!
 }
 
-input StructureMapStructure {
+input StructureMapStructureInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: canonical  _url: ElementBase
   mode: code  _mode: ElementBase
   alias: String  _alias: ElementBase
   documentation: String  _documentation: ElementBase
 }
 
-input StructureMapGroup {
+input StructureMapGroupInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: ID  _name: ElementBase
   extends: ID  _extends: ElementBase
   typeMode: code  _typeMode: ElementBase
   documentation: String  _documentation: ElementBase
-  input: [StructureMapGroupInput]!
-  rule: [StructureMapGroupRule]!
+  input: [StructureMapGroupInputInput]!
+  rule: [StructureMapGroupRuleInput]!
 }
 
-input StructureMapGroupInput {
+input StructureMapGroupInputInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: ID  _name: ElementBase
   type: String  _type: ElementBase
   mode: code  _mode: ElementBase
   documentation: String  _documentation: ElementBase
 }
 
-input StructureMapGroupRule {
+input StructureMapGroupRuleInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: ID  _name: ElementBase
-  source: [StructureMapGroupRuleSource]!
-  target: [StructureMapGroupRuleTarget]
+  source: [StructureMapGroupRuleSourceInput]!
+  target: [StructureMapGroupRuleTargetInput]
   rule: [StructureMapGroupRule]
-  dependent: [StructureMapGroupRuleDependent]
+  dependent: [StructureMapGroupRuleDependentInput]
   documentation: String  _documentation: ElementBase
 }
 
-input StructureMapGroupRuleSource {
+input StructureMapGroupRuleSourceInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   context: ID  _context: ElementBase
   min: Int  _min: ElementBase
   max: String  _max: ElementBase
@@ -270,35 +270,35 @@ input StructureMapGroupRuleSource {
   defaultValueUri: uri  _defaultValueUri: ElementBase
   defaultValueUrl: url  _defaultValueUrl: ElementBase
   defaultValueUuid: uuid  _defaultValueUuid: ElementBase
-  defaultValueAddress: Address
-  defaultValueAge: Age
-  defaultValueAnnotation: Annotation
-  defaultValueAttachment: Attachment
-  defaultValueCodeableConcept: CodeableConcept
-  defaultValueCoding: Coding
-  defaultValueContactPoint: ContactPoint
-  defaultValueCount: Count
-  defaultValueDistance: Distance
-  defaultValueDuration: Duration
-  defaultValueHumanName: HumanName
-  defaultValueIdentifier: Identifier
-  defaultValueMoney: Money
-  defaultValuePeriod: Period
-  defaultValueQuantity: Quantity
-  defaultValueRange: Range
-  defaultValueRatio: Ratio
-  defaultValueSampledData: SampledData
-  defaultValueSignature: Signature
-  defaultValueTiming: Timing
-  defaultValueContactDetail: ContactDetail
-  defaultValueContributor: Contributor
-  defaultValueDataRequirement: DataRequirement
-  defaultValueExpression: Expression
-  defaultValueParameterDefinition: ParameterDefinition
-  defaultValueRelatedArtifact: RelatedArtifact
-  defaultValueTriggerDefinition: TriggerDefinition
-  defaultValueUsageContext: UsageContext
-  defaultValueDosage: Dosage
+  defaultValueAddress: AddressInput
+  defaultValueAge: AgeInput
+  defaultValueAnnotation: AnnotationInput
+  defaultValueAttachment: AttachmentInput
+  defaultValueCodeableConcept: CodeableConceptInput
+  defaultValueCoding: CodingInput
+  defaultValueContactPoint: ContactPointInput
+  defaultValueCount: CountInput
+  defaultValueDistance: DistanceInput
+  defaultValueDuration: DurationInput
+  defaultValueHumanName: HumanNameInput
+  defaultValueIdentifier: IdentifierInput
+  defaultValueMoney: MoneyInput
+  defaultValuePeriod: PeriodInput
+  defaultValueQuantity: QuantityInput
+  defaultValueRange: RangeInput
+  defaultValueRatio: RatioInput
+  defaultValueSampledData: SampledDataInput
+  defaultValueSignature: SignatureInput
+  defaultValueTiming: TimingInput
+  defaultValueContactDetail: ContactDetailInput
+  defaultValueContributor: ContributorInput
+  defaultValueDataRequirement: DataRequirementInput
+  defaultValueExpression: ExpressionInput
+  defaultValueParameterDefinition: ParameterDefinitionInput
+  defaultValueRelatedArtifact: RelatedArtifactInput
+  defaultValueTriggerDefinition: TriggerDefinitionInput
+  defaultValueUsageContext: UsageContextInput
+  defaultValueDosage: DosageInput
   element: String  _element: ElementBase
   listMode: code  _listMode: ElementBase
   variable: ID  _variable: ElementBase
@@ -307,10 +307,10 @@ input StructureMapGroupRuleSource {
   logMessage: String  _logMessage: ElementBase
 }
 
-input StructureMapGroupRuleTarget {
+input StructureMapGroupRuleTargetInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   context: ID  _context: ElementBase
   contextType: code  _contextType: ElementBase
   element: String  _element: ElementBase
@@ -318,13 +318,13 @@ input StructureMapGroupRuleTarget {
   listMode: code  _listMode: [ElementBase]
   listRuleId: ID  _listRuleId: ElementBase
   transform: code  _transform: ElementBase
-  parameter: [StructureMapGroupRuleTargetParameter]
+  parameter: [StructureMapGroupRuleTargetParameterInput]
 }
 
-input StructureMapGroupRuleTargetParameter {
+input StructureMapGroupRuleTargetParameterInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   valueId: ID  _valueId: ElementBase
   valueString: String  _valueString: ElementBase
   valueBoolean: Boolean  _valueBoolean: ElementBase
@@ -332,121 +332,121 @@ input StructureMapGroupRuleTargetParameter {
   valueDecimal: decimal  _valueDecimal: ElementBase
 }
 
-input StructureMapGroupRuleDependent {
+input StructureMapGroupRuleDependentInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: ID  _name: ElementBase
   variable: String  _variable: [ElementBase]
 }
 
 type StructureMapReadType {
-  StructureMap(id : ID!) : StructureMap
+  StructureMap(id: ID!): StructureMap
 }
 
 type StructureMapListType {
-  StructureMapList(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [StructureMap]
+  StructureMapList(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [StructureMap]
 }
 
 type StructureMapConnectionType {
-  StructureMapConection(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    identifier : [token]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    status : [token]
-    title : [String]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : StructureMapConnection
+  StructureMapConection(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): StructureMapConnection
 }
 
 type StructureMapConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [StructureMapEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [StructureMapEdge]
 }
 
 type StructureMapEdge {
-  mode : String
-  score : Float
-  resource : StructureMap
+  mode: String
+  score: Float
+  resource: StructureMap
 }
 
 type StructureMapCreateType {
-  StructureMapCreate(resource : StructureMap) : StructureMapCreation
+  StructureMapCreate(resource: StructureMapInput): StructureMapCreation
 }
 
 type StructureMapCreation {
-  location : String
-  resource : StructureMap
-  information : OperationOutcome
+  location: String
+  resource: StructureMap
+  information: OperationOutcome
 }
 
 type StructureMapUpdateType {
-  StructureMapUpdate(id : IDresource : StructureMap) : StructureMapUpdate
+  StructureMapUpdate(id: ID, resource: StructureMapInput): StructureMapUpdate
 }
 
 type StructureMapUpdate {
-  resource : StructureMap
-  information : OperationOutcome
+  resource: StructureMap
+  information: OperationOutcome
 }
 
 type StructureMapDeleteType {
-  StructureMapDelete(id : ID) : StructureMapDelete
+  StructureMapDelete(id: ID): StructureMapDelete
 }
 
 type StructureMapDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -10,11 +10,11 @@
     <valueCode value="informative"/>
   </extension>
   <url value="http://hl7.org/fhir/StructureDefinition/Request"/>
-  <version value="4.0.0"/>
+  <version value="4.1.0"/>
   <name value="Request"/>
   <title value="request"/>
   <status value="draft"/>
-  <date value="2019-03-01T07:26:01-06:00"/>
+  <date value="2019-05-29T10:45:36-05:00"/>
   <publisher value="Health Level Seven International fhir"/>
   <contact>
     <telecom>
@@ -23,7 +23,7 @@
     </telecom>
   </contact>
   <description value="Logical Model: A pattern to be followed by resources that represent a specific proposal, plan and/or order for some sort of action or service."/>
-  <fhirVersion value="4.0.0"/>
+  <fhirVersion value="4.1.0"/>
   <mapping>
     <identity value="v2"/>
     <uri value="http://hl7.org/v2"/>
@@ -108,7 +108,19 @@
       </base>
       <type>
         <code value="canonical"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Definition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ActivityDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/EffectEvidenceSynthesis"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/EventDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Evidence"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/EvidenceVariable"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Measure"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/OperationDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/PlanDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Questionnaire"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ResearchDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ResearchElementDefinition"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RiskEvidenceSynthesis"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Statistic"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -163,7 +175,22 @@
       </base>
       <type>
         <code value="Reference"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Request"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Appointment"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/AppointmentResponse"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CarePlan"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Claim"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CommunicationRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Contract"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/DeviceRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/EnrollmentRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/NutritionOrder"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RequestGroup"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/SupplyRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/VisionPrescription"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -194,7 +221,22 @@
       </base>
       <type>
         <code value="Reference"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Request"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Appointment"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/AppointmentResponse"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CarePlan"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Claim"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CommunicationRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Contract"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/DeviceRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/EnrollmentRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/NutritionOrder"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RequestGroup"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/SupplyRequest"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/VisionPrescription"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -260,7 +302,7 @@
         </extension>
         <strength value="required"/>
         <description value="Codes identifying the lifecycle stage of a request."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/request-status|4.0.0"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/request-status|4.1.0"/>
       </binding>
       <mapping>
         <identity value="v2"/>
@@ -332,7 +374,7 @@
         </extension>
         <strength value="required"/>
         <description value="Codes indicating the degree of authority/intentionality associated with a request."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/request-intent|4.0.0"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/request-intent|4.1.0"/>
       </binding>
       <mapping>
         <identity value="v2"/>
@@ -370,7 +412,7 @@
         </extension>
         <strength value="required"/>
         <description value="Identifies the level of importance to be assigned to actioning the request."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/request-priority|4.0.0"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/request-priority|4.1.0"/>
       </binding>
       <mapping>
         <identity value="v2"/>

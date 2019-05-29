@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Procedure.profile.ttl - FHIR v4.0.0</title>
+  <title>Procedure.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Procedure&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Clinical.Summary&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;3&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;pc&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Procedure&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Procedure&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Patient Care)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -167,7 +174,7 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -707,7 +714,7 @@
        fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Procedure.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A code specifying the state of the procedure. Generally, this will be the in-progress or completed state.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The \&quot;unknown\&quot; code is not to be used to convey other statuses.  The \&quot;unknown\&quot; code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.\n\nThis element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -732,7 +739,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A code specifying the state of the procedure.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -800,11 +807,11 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Classification of the procedure&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A code that classifies the procedure for searching, sorting and display purposes (e.g. \&quot;Surgical Procedure\&quot;).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
          fhir:ElementDefinition.path [ fhir:value &quot;Procedure.category&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -937,7 +944,7 @@
        fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Procedure.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.encounter&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The Encounter during which this Procedure was created&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The Encounter during which this Procedure was created or performed or to which the creation of this record is tightly associated.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -976,15 +983,15 @@
        ]
      ], [
        fhir:index 20;
-       fhir:Element.id [ fhir:value &quot;Procedure.performed[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performed[x]&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure was performed&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Procedure.occurrence[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.occurrence[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure occurred or is occurring&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This indicates when the procedure actually occurred or is occurring, not when it was asked/requested/ordered to occur. For the latter, look at the occurence element of the Request this Procedure is \&quot;basedOn\&quot;. The status code allows differentiation of whether the timing reflects a historic event or an ongoing event. Ongoing events should not include an upper bound in the Period or Timing.bounds.\n\nAge is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performed[x]&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Procedure.occurrence[x]&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -1003,6 +1010,9 @@
        ], [
          fhir:index 4;
          fhir:ElementDefinition.code [ fhir:value &quot;Range&quot; ]
+       ], [
+         fhir:index 5;
+         fhir:ElementDefinition.code [ fhir:value &quot;Timing&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
@@ -1025,6 +1035,38 @@
        ]
      ], [
        fhir:index 21;
+       fhir:Element.id [ fhir:value &quot;Procedure.recorded&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.recorded&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure was first captured in the subject's record&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The date the occurrence of the procedure was first captured in the record - potentially significantly after the occurrence of the event.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Procedure.recorded&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.recorded&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
+       ]
+     ], [
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;Procedure.recorder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.recorder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who recorded the procedure&quot; ];
@@ -1065,7 +1107,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Procedure.reported[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reported[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reported rather than primary record&quot; ];
@@ -1121,7 +1163,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=RPT].role&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Procedure.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The people who performed the procedure&quot; ];
@@ -1158,7 +1200,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF]&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1186,7 +1228,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1218,7 +1260,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1255,7 +1297,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.function&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.function&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of performance&quot; ];
@@ -1298,7 +1340,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.functionCode&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.actor&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.actor&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The reference to the practitioner&quot; ];
@@ -1354,7 +1396,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.role&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.onBehalfOf&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.onBehalfOf&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Organization the device or practitioner was acting for&quot; ];
@@ -1383,7 +1425,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.scoper&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;Procedure.location&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.location&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Where the procedure happened&quot; ];
@@ -1416,7 +1458,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=LOC].role[classCode=SDLOC]&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Procedure.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Coded reason procedure performed&quot; ];
@@ -1459,7 +1501,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;Procedure.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The justification that the procedure was performed&quot; ];
@@ -1508,7 +1550,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;Procedure.bodySite&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.bodySite&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Target body sites&quot; ];
@@ -1547,7 +1589,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.targetSiteCode&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;Procedure.outcome&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.outcome&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The result of procedure&quot; ];
@@ -1582,7 +1624,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUT].target.text&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;Procedure.report&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.report&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Any report resulting from the procedure&quot; ];
@@ -1617,7 +1659,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN]&quot; ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;Procedure.complication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.complication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Complication following the procedure&quot; ];
@@ -1652,7 +1694,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=\&quot;complication\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 37;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;Procedure.complicationDetail&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.complicationDetail&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A condition that is a result of the procedure&quot; ];
@@ -1681,7 +1723,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=\&quot;complication\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;Procedure.followUp&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.followUp&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instructions for follow up&quot; ];
@@ -1715,7 +1757,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=ACT, moodCode=INT].code&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;Procedure.note&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.note&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional information about the procedure&quot; ];
@@ -1747,7 +1789,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=\&quot;annotation\&quot;].value&quot; ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Manipulated, implanted, or removed device&quot; ];
@@ -1780,7 +1822,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=MANU]&quot; ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1808,7 +1850,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1840,7 +1882,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1877,7 +1919,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 44;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.action&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.action&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of change to device&quot; ];
@@ -1911,7 +1953,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=\&quot;procedure device action\&quot;].value=:procedure device action codes&quot; ]
        ]
      ], [
-       fhir:index 45;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.manipulated&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.manipulated&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Device that was changed&quot; ];
@@ -1939,7 +1981,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=SDLOC]&quot; ]
        ]
      ], [
-       fhir:index 46;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;Procedure.usedReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.usedReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Items used during procedure&quot; ];
@@ -1975,7 +2017,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=MANU] or\n.participation[typeCode=CSM].role[classCode=ADMM] (for Medication or Substance)&quot; ]
        ]
      ], [
-       fhir:index 47;
+       fhir:index 48;
        fhir:Element.id [ fhir:value &quot;Procedure.usedCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.usedCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Coded items used during the procedure&quot; ];
@@ -2196,7 +2238,7 @@
        fhir:index 6;
        fhir:Element.id [ fhir:value &quot;Procedure.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A code specifying the state of the procedure. Generally, this will be the in-progress or completed state.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The \&quot;unknown\&quot; code is not to be used to convey other statuses.  The \&quot;unknown\&quot; code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.\n\nThis element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2216,7 +2258,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A code specifying the state of the procedure.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/event-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2278,7 +2320,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Classification of the procedure&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;A code that classifies the procedure for searching, sorting and display purposes (e.g. \&quot;Surgical Procedure\&quot;).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
@@ -2397,7 +2439,7 @@
        fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Procedure.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.encounter&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The Encounter during which this Procedure was created&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The Encounter during which this Procedure was created or performed or to which the creation of this record is tightly associated.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This will typically be the encounter the event occurred within, but some activities may be initiated prior to or after the official completion of an encounter but still be tied to the context of the encounter.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -2430,11 +2472,11 @@
        ]
      ], [
        fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;Procedure.performed[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performed[x]&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure was performed&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Age is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Procedure.occurrence[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.occurrence[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure occurred or is occurring&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This indicates when the procedure actually occurred or is occurring, not when it was asked/requested/ordered to occur. For the latter, look at the occurence element of the Request this Procedure is \&quot;basedOn\&quot;. The status code allows differentiation of whether the timing reflects a historic event or an ongoing event. Ongoing events should not include an upper bound in the Period or Timing.bounds.\n\nAge is generally used when the patient reports an age at which the procedure was performed. Range is generally used when the patient reports an age range when the procedure was performed, such as sometime between 20-25 years old.  dateTime supports a range of precision due to some procedures being reported as past procedures that might not have millisecond precision while other procedures performed and documented during the encounter might have more precise UTC timestamps with timezone.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -2452,6 +2494,9 @@
        ], [
          fhir:index 4;
          fhir:ElementDefinition.code [ fhir:value &quot;Range&quot; ]
+       ], [
+         fhir:index 5;
+         fhir:ElementDefinition.code [ fhir:value &quot;Timing&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
@@ -2473,6 +2518,32 @@
        ]
      ], [
        fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;Procedure.recorded&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Procedure.recorded&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;When the procedure was first captured in the subject's record&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The date the occurrence of the procedure was first captured in the record - potentially significantly after the occurrence of the event.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.recorded&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.recorded&quot; ]
+       ], [
+         fhir:index 2;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
+       ]
+     ], [
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Procedure.recorder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.recorder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who recorded the procedure&quot; ];
@@ -2507,7 +2578,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Procedure.reported[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reported[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reported rather than primary record&quot; ];
@@ -2557,7 +2628,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=RPT].role&quot; ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Procedure.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The people who performed the procedure&quot; ];
@@ -2579,7 +2650,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF]&quot; ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.function&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.function&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Type of performance&quot; ];
@@ -2616,7 +2687,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.functionCode&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.actor&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.actor&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The reference to the practitioner&quot; ];
@@ -2666,7 +2737,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.role&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Procedure.performer.onBehalfOf&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.performer.onBehalfOf&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Organization the device or practitioner was acting for&quot; ];
@@ -2688,7 +2759,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.scoper&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;Procedure.location&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.location&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Where the procedure happened&quot; ];
@@ -2715,7 +2786,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=LOC].role[classCode=SDLOC]&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Procedure.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Coded reason procedure performed&quot; ];
@@ -2752,7 +2823,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;Procedure.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The justification that the procedure was performed&quot; ];
@@ -2795,7 +2866,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Procedure.bodySite&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.bodySite&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Target body sites&quot; ];
@@ -2828,7 +2899,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.targetSiteCode&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Procedure.outcome&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.outcome&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The result of procedure&quot; ];
@@ -2857,7 +2928,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUT].target.text&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Procedure.report&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.report&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Any report resulting from the procedure&quot; ];
@@ -2885,7 +2956,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN]&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Procedure.complication&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.complication&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Complication following the procedure&quot; ];
@@ -2913,7 +2984,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=\&quot;complication\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Procedure.complicationDetail&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.complicationDetail&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A condition that is a result of the procedure&quot; ];
@@ -2935,7 +3006,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=OUTC].target[classCode=OBS, code=\&quot;complication\&quot;, moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Procedure.followUp&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.followUp&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instructions for follow up&quot; ];
@@ -2962,7 +3033,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=ACT, moodCode=INT].code&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Procedure.note&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.note&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional information about the procedure&quot; ];
@@ -2987,7 +3058,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=\&quot;annotation\&quot;].value&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Manipulated, implanted, or removed device&quot; ];
@@ -3004,7 +3075,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=MANU]&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.action&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.action&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of change to device&quot; ];
@@ -3031,7 +3102,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=\&quot;procedure device action\&quot;].value=:procedure device action codes&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Procedure.focalDevice.manipulated&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.focalDevice.manipulated&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Device that was changed&quot; ];
@@ -3052,7 +3123,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=SDLOC]&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;Procedure.usedReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.usedReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Items used during procedure&quot; ];
@@ -3081,7 +3152,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=DEV].role[classCode=MANU] or\n.participation[typeCode=CSM].role[classCode=ADMM] (for Medication or Substance)&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;Procedure.usedCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Procedure.usedCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Coded items used during the procedure&quot; ];
@@ -3138,13 +3209,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:50-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fprocedure.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fprocedure.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

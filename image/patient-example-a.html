@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Patient-example-a - FHIR v4.0.0</title>
+  <title>Patient-example-a - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -39,9 +39,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -72,6 +74,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -181,6 +184,7 @@ Other examples that reference this example:</p>
 <li><a href="medicationdispense0329.html">MedicationDispense/Compound</a></li>
 <li><a href="medicationdispense0330.html">MedicationDispense/Warfarin</a></li>
 <li><a href="medicationdispense0331.html">MedicationDispense/Warfarin</a></li>
+<li><a href="medicationdispense0332.html">MedicationDispense/Future dated</a></li>
 <li><a href="medicationrequestexample2.html">MedicationRequest/Text Dose</a></li>
 <li><a href="medicationrequest0301.html">MedicationRequest/PRN dose</a></li>
 <li><a href="medicationrequest0302.html">MedicationRequest/Multiple dosage lines</a></li>
@@ -221,13 +225,13 @@ Other examples that reference this example:</p>
 <li><a href="medicationrequest0337.html">MedicationRequest/RateQuantity</a></li>
 <li><a href="medicationrequest0338.html">MedicationRequest/RateQty and DoseQty</a></li>
 <li><a href="medicationrequest0339.html">MedicationRequest/Combination</a></li>
-<li><a href="medicationstatementexample1.html">MedicationStatement/Fully Populated</a></li>
-<li><a href="medicationstatementexample2.html">MedicationStatement/Not Taking</a></li>
-<li><a href="medicationstatementexample3.html">MedicationStatement/Little pink pill</a></li>
-<li><a href="medicationstatementexample4.html">MedicationStatement/Past</a></li>
-<li><a href="medicationstatementexample5.html">MedicationStatement/Nullified</a></li>
-<li><a href="medicationstatementexample6.html">MedicationStatement/Care Giver</a></li>
-<li><a href="medicationstatementexample7.html">MedicationStatement/Intend</a></li>
+<li><a href="medicationusageexample1.html">MedicationUsage/Fully Populated</a></li>
+<li><a href="medicationusageexample2.html">MedicationUsage/Not Taking</a></li>
+<li><a href="medicationusageexample3.html">MedicationUsage/Little pink pill</a></li>
+<li><a href="medicationusageexample4.html">MedicationUsage/Past</a></li>
+<li><a href="medicationusageexample5.html">MedicationUsage/Nullified</a></li>
+<li><a href="medicationusageexample6.html">MedicationUsage/Care Giver</a></li>
+<li><a href="medicationusageexample7.html">MedicationUsage/Intend</a></li>
 <li><a href="patient-example-b.html">Patient/Patient2</a></li>
 <li><a href="testscript-example-history.html">TestScript/History Test</a></li>
 <li><a href="testscript-example-update.html">TestScript/Update Test</a></li>
@@ -261,13 +265,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:49-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fpatient-example-a.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fpatient-example-a.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

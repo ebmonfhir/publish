@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type ResearchSubject {
   id: ID
@@ -19,114 +19,114 @@ type ResearchSubject {
   consent: Reference
 }
 
-input ResearchSubject {
+input ResearchSubjectInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   status: code  _status: ElementBase
-  period: Period
-  study: Reference!
-  individual: Reference!
+  period: PeriodInput
+  study: ReferenceInput!
+  individual: ReferenceInput!
   assignedArm: String  _assignedArm: ElementBase
   actualArm: String  _actualArm: ElementBase
-  consent: Reference
+  consent: ReferenceInput
 }
 
 type ResearchSubjectReadType {
-  ResearchSubject(id : ID!) : ResearchSubject
+  ResearchSubject(id: ID!): ResearchSubject
 }
 
 type ResearchSubjectListType {
-  ResearchSubjectList(_filter : String
-    date : [date]
-    identifier : [token]
-    individual : [reference]
-    patient : [reference]
-    status : [token]
-    study : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [ResearchSubject]
+  ResearchSubjectList(_filter: String
+    date: [date]
+    identifier: [token]
+    individual: [reference]
+    patient: [reference]
+    status: [token]
+    study: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ResearchSubject]
 }
 
 type ResearchSubjectConnectionType {
-  ResearchSubjectConection(_filter : String
-    date : [date]
-    identifier : [token]
-    individual : [reference]
-    patient : [reference]
-    status : [token]
-    study : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : ResearchSubjectConnection
+  ResearchSubjectConection(_filter: String
+    date: [date]
+    identifier: [token]
+    individual: [reference]
+    patient: [reference]
+    status: [token]
+    study: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ResearchSubjectConnection
 }
 
 type ResearchSubjectConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [ResearchSubjectEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ResearchSubjectEdge]
 }
 
 type ResearchSubjectEdge {
-  mode : String
-  score : Float
-  resource : ResearchSubject
+  mode: String
+  score: Float
+  resource: ResearchSubject
 }
 
 type ResearchSubjectCreateType {
-  ResearchSubjectCreate(resource : ResearchSubject) : ResearchSubjectCreation
+  ResearchSubjectCreate(resource: ResearchSubjectInput): ResearchSubjectCreation
 }
 
 type ResearchSubjectCreation {
-  location : String
-  resource : ResearchSubject
-  information : OperationOutcome
+  location: String
+  resource: ResearchSubject
+  information: OperationOutcome
 }
 
 type ResearchSubjectUpdateType {
-  ResearchSubjectUpdate(id : IDresource : ResearchSubject) : ResearchSubjectUpdate
+  ResearchSubjectUpdate(id: ID, resource: ResearchSubjectInput): ResearchSubjectUpdate
 }
 
 type ResearchSubjectUpdate {
-  resource : ResearchSubject
-  information : OperationOutcome
+  resource: ResearchSubject
+  information: OperationOutcome
 }
 
 type ResearchSubjectDeleteType {
-  ResearchSubjectDelete(id : ID) : ResearchSubjectDelete
+  ResearchSubjectDelete(id: ID): ResearchSubjectDelete
 }
 
 type ResearchSubjectDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationstatement.profile.json - FHIR v4.0.0</title>
+  <title>Medicationstatement.profile.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -105,7 +107,7 @@
 <div class="col-12">
 
 <h1>Medicationstatement.profile.json</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/medication/index.cfm">Pharmacy</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 <p>
 <a href="medicationstatement.profile.json">Raw JSON</a> (<a href="medicationstatement.profile.canonical.json">canonical form</a> + also see <a href="json.html">JSON Format Specification</a>)
@@ -118,13 +120,17 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;MedicationStatement&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-03-01T07:26:01.444-06:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-05-07T18:46:41.216-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
     &quot;div&quot; : &quot;&lt;div&gt;!-- Snipped for Brevity --&gt;&lt;/div&gt;&quot;
   },
   &quot;extension&quot; : [{
+    &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot;,
+    &quot;valueString&quot; : &quot;Clinical.Medications&quot;
+  },
+  {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
     &quot;valueCode&quot; : &quot;trial-use&quot;
   },
@@ -141,10 +147,10 @@
     &quot;valueCode&quot; : &quot;phx&quot;
   }],
   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot;,
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;MedicationStatement&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
+  &quot;date&quot; : &quot;2019-05-07T18:46:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Pharmacy)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -159,7 +165,7 @@
     }]
   }],
   &quot;description&quot; : &quot;A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \n\nThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.&quot;,
-  &quot;fhirVersion&quot; : &quot;4.0.0&quot;,
+  &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
     &quot;identity&quot; : &quot;workflow&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/fhir/workflow&quot;,
@@ -579,7 +585,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;A coded concept indicating the current status of a MedicationStatement.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
@@ -750,21 +756,20 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;MedicationStatement.context&quot;,
-      &quot;path&quot; : &quot;MedicationStatement.context&quot;,
-      &quot;short&quot; : &quot;Encounter / Episode associated with MedicationStatement&quot;,
-      &quot;definition&quot; : &quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot;,
+      &quot;id&quot; : &quot;MedicationStatement.encounter&quot;,
+      &quot;path&quot; : &quot;MedicationStatement.encounter&quot;,
+      &quot;short&quot; : &quot;Encounter associated with MedicationStatement&quot;,
+      &quot;definition&quot; : &quot;The encounter that establishes the context for this MedicationStatement.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;MedicationStatement.context&quot;,
+        &quot;path&quot; : &quot;MedicationStatement.encounter&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/EpisodeOfCare&quot;]
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;]
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
@@ -1014,6 +1019,28 @@
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;refer dosageInstruction mapping&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;MedicationStatement.takenAsOrdered&quot;,
+      &quot;path&quot; : &quot;MedicationStatement.takenAsOrdered&quot;,
+      &quot;short&quot; : &quot;Indicates if the medication is being consumed or administered as prescribed&quot;,
+      &quot;definition&quot; : &quot;Indicates if the medication is being consumed or administered as prescribed.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;MedicationStatement.takenAsOrdered&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;boolean&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;outboundRelationship[typeCode=PERT].target[classCode=OBV,moodCode=EVN].value[xsi:type=BL]&quot;
+      }]
     }]
   },
   &quot;differential&quot; : {
@@ -1130,7 +1157,7 @@
         }],
         &quot;strength&quot; : &quot;required&quot;,
         &quot;description&quot; : &quot;A coded concept indicating the current status of a MedicationStatement.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.0.0&quot;
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/medication-statement-status|4.1.0&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
@@ -1276,16 +1303,15 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;MedicationStatement.context&quot;,
-      &quot;path&quot; : &quot;MedicationStatement.context&quot;,
-      &quot;short&quot; : &quot;Encounter / Episode associated with MedicationStatement&quot;,
-      &quot;definition&quot; : &quot;The encounter or episode of care that establishes the context for this MedicationStatement.&quot;,
+      &quot;id&quot; : &quot;MedicationStatement.encounter&quot;,
+      &quot;path&quot; : &quot;MedicationStatement.encounter&quot;,
+      &quot;short&quot; : &quot;Encounter associated with MedicationStatement&quot;,
+      &quot;definition&quot; : &quot;The encounter that establishes the context for this MedicationStatement.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/EpisodeOfCare&quot;]
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Encounter&quot;]
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
@@ -1480,6 +1506,21 @@
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;refer dosageInstruction mapping&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;MedicationStatement.takenAsOrdered&quot;,
+      &quot;path&quot; : &quot;MedicationStatement.takenAsOrdered&quot;,
+      &quot;short&quot; : &quot;Indicates if the medication is being consumed or administered as prescribed&quot;,
+      &quot;definition&quot; : &quot;Indicates if the medication is being consumed or administered as prescribed.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;boolean&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;outboundRelationship[typeCode=PERT].target[classCode=OBV,moodCode=EVN].value[xsi:type=BL]&quot;
+      }]
     }]
   }
 }
@@ -1507,13 +1548,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub aee49d16b4) generated on Tue, May 7, 2019 18:49-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fmedicationstatement.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fmedicationstatement.profile.json.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type BodyStructure {
   id: ID
@@ -19,110 +19,110 @@ type BodyStructure {
   patient: Reference!
 }
 
-input BodyStructure {
+input BodyStructureInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   active: Boolean  _active: ElementBase
-  morphology: CodeableConcept
-  location: CodeableConcept
-  locationQualifier: [CodeableConcept]
+  morphology: CodeableConceptInput
+  location: CodeableConceptInput
+  locationQualifier: [CodeableConceptInput]
   description: String  _description: ElementBase
-  image: [Attachment]
-  patient: Reference!
+  image: [AttachmentInput]
+  patient: ReferenceInput!
 }
 
 type BodyStructureReadType {
-  BodyStructure(id : ID!) : BodyStructure
+  BodyStructure(id: ID!): BodyStructure
 }
 
 type BodyStructureListType {
-  BodyStructureList(_filter : String
-    identifier : [token]
-    location : [token]
-    morphology : [token]
-    patient : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [BodyStructure]
+  BodyStructureList(_filter: String
+    identifier: [token]
+    location: [token]
+    morphology: [token]
+    patient: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [BodyStructure]
 }
 
 type BodyStructureConnectionType {
-  BodyStructureConection(_filter : String
-    identifier : [token]
-    location : [token]
-    morphology : [token]
-    patient : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : BodyStructureConnection
+  BodyStructureConection(_filter: String
+    identifier: [token]
+    location: [token]
+    morphology: [token]
+    patient: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): BodyStructureConnection
 }
 
 type BodyStructureConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [BodyStructureEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [BodyStructureEdge]
 }
 
 type BodyStructureEdge {
-  mode : String
-  score : Float
-  resource : BodyStructure
+  mode: String
+  score: Float
+  resource: BodyStructure
 }
 
 type BodyStructureCreateType {
-  BodyStructureCreate(resource : BodyStructure) : BodyStructureCreation
+  BodyStructureCreate(resource: BodyStructureInput): BodyStructureCreation
 }
 
 type BodyStructureCreation {
-  location : String
-  resource : BodyStructure
-  information : OperationOutcome
+  location: String
+  resource: BodyStructure
+  information: OperationOutcome
 }
 
 type BodyStructureUpdateType {
-  BodyStructureUpdate(id : IDresource : BodyStructure) : BodyStructureUpdate
+  BodyStructureUpdate(id: ID, resource: BodyStructureInput): BodyStructureUpdate
 }
 
 type BodyStructureUpdate {
-  resource : BodyStructure
-  information : OperationOutcome
+  resource: BodyStructure
+  information: OperationOutcome
 }
 
 type BodyStructureDeleteType {
-  BodyStructureDelete(id : ID) : BodyStructureDelete
+  BodyStructureDelete(id: ID): BodyStructureDelete
 }
 
 type BodyStructureDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

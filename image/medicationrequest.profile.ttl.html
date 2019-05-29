@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Medicationrequest.profile.ttl - FHIR v4.0.0</title>
+  <title>Medicationrequest.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;MedicationRequest&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Clinical.Medications&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;3&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;phx&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicationRequest&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;MedicationRequest&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Pharmacy)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -167,7 +174,7 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \&quot;MedicationRequest\&quot; rather than \&quot;MedicationPrescription\&quot; or \&quot;MedicationOrder\&quot; to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -596,7 +603,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -683,7 +690,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The kind of medication order.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -768,7 +775,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Identifies the level of importance to be assigned to actioning the request.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -811,22 +818,43 @@
        ]
      ], [
        fhir:index 16;
-       fhir:Element.id [ fhir:value &quot;MedicationRequest.reported[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported[x]&quot; ];
+       fhir:Element.id [ fhir:value &quot;MedicationRequest.reported&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reported rather than primary record&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported[x]&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
-       ], [
-         fhir:index 1;
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
+       ]
+     ], [
+       fhir:index 17;
+       fhir:Element.id [ fhir:value &quot;MedicationRequest.informationSource&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.informationSource&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The person or organization who provided the information about this request, if the source is someone other than the requestor&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The person or organization who provided the information about this request, if the source is someone other than the requestor.  This is often used when the MedicationRequest is reported by another person.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.informationSource&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
@@ -846,14 +874,14 @@
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person or Practitioner Role or Organization&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.medication[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.medication[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication to be taken&quot; ];
@@ -911,7 +939,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;consumable.administrableMedication&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.subject&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.subject&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who or group medication request is for&quot; ];
@@ -963,7 +991,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.encounter&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of encounter/admission/stay&quot; ];
@@ -1008,12 +1036,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.supportingInformation&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.supportingInformation&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Information to support ordering of the medication&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Include additional information (for example, patient height and weight, a medicationStatement for the patient) that supports the ordering of the medication.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This attribute can be used to reference a MedicationStatement about the patients' medication use.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Include additional information (for example, patient height and weight, a MedicationUsage for the patient) that supports the ordering of the medication.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This attribute can be used to reference a MedicationUsage about the patients' medication use.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1045,7 +1073,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.authoredOn&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.authoredOn&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;When request was initially authored&quot; ];
@@ -1085,7 +1113,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;author.time&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.requester&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.requester&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who/What requested the Request&quot; ];
@@ -1136,7 +1164,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended performer of administration&quot; ];
@@ -1190,7 +1218,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.performerType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.performerType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Desired kind of performer of the medication administration&quot; ];
@@ -1229,7 +1257,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=KIND].code&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.recorder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.recorder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Person who entered the request&quot; ];
@@ -1264,7 +1292,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reason or indication for ordering or not ordering the medication&quot; ];
@@ -1315,12 +1343,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Condition or observation that supports why the prescription is being written&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Condition or observation that supports why the medication was ordered.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This is a reference to a condition or observation that is the reason for the medication order.  If only a code exists, use reasonCode.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is a reference to a condition or observation that is the reason for the medication request.  It is not intended to be used to reference a goal.  If only a code exists, use reasonCode.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1359,7 +1387,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.instantiatesCanonical&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.instantiatesCanonical&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instantiates FHIR protocol or definition&quot; ];
@@ -1373,7 +1401,14 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 1
+         ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
@@ -1387,7 +1422,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=DEFN].target&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.instantiatesUri&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.instantiatesUri&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instantiates external protocol or definition&quot; ];
@@ -1411,7 +1446,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=DEFN].target&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.basedOn&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.basedOn&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What request fulfills&quot; ];
@@ -1452,7 +1487,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=FLFS].target[classCode=SBADM or PROC or PCPR or OBS, moodCode=RQO orPLAN or PRP]&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.groupIdentifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.groupIdentifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Composite request this is part of&quot; ];
@@ -1481,7 +1516,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship(typeCode=COMP].target[classCode=SBADM, moodCode=INT].id&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.courseOfTherapyType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.courseOfTherapyType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Overall pattern of medication administration&quot; ];
@@ -1516,7 +1551,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Act.code where classCode = LIST and moodCode = EVN&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.insurance&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.insurance&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated insurance coverage&quot; ];
@@ -1551,7 +1586,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COVBY].target&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.note&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.note&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Information about the prescription&quot; ];
@@ -1583,7 +1618,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ]/source[classCode=OBS,moodCode=EVN,code=\&quot;annotation\&quot;].value&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dosageInstruction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dosageInstruction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;How the medication should be taken&quot; ];
@@ -1612,7 +1647,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;see dosageInstruction mapping&quot; ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication supply authorization&quot; ];
@@ -1649,7 +1684,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;component.supplyEvent&quot; ]
        ]
      ], [
-       fhir:index 37;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1677,7 +1712,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1709,7 +1744,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1746,7 +1781,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill details&quot; ];
@@ -1780,7 +1815,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;SubstanceAdministration -&gt; ActRelationship[sequenceNumber = '1'] -&gt; Supply&quot; ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1808,7 +1843,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1840,7 +1875,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1877,7 +1912,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 44;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill quantity&quot; ];
@@ -1905,7 +1940,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.quantity[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 45;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.duration&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.duration&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill duration&quot; ];
@@ -1929,7 +1964,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.effectivetime[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 46;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.dispenseInterval&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.dispenseInterval&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Minimum period of time between dispenses&quot; ];
@@ -1953,7 +1988,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.effectivetime[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 47;
+       fhir:index 48;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.validityPeriod&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.validityPeriod&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Time period supply is authorized for&quot; ];
@@ -1983,7 +2018,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 48;
+       fhir:index 49;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.numberOfRepeatsAllowed&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.numberOfRepeatsAllowed&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of refills authorized&quot; ];
@@ -2016,7 +2051,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;repeatNumber&quot; ]
        ]
      ], [
-       fhir:index 49;
+       fhir:index 50;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Amount of medication to supply per dispense&quot; ];
@@ -2052,7 +2087,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;quantity&quot; ]
        ]
      ], [
-       fhir:index 50;
+       fhir:index 51;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.expectedSupplyDuration&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.expectedSupplyDuration&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of days supply per dispense&quot; ];
@@ -2081,7 +2116,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;expectedUseTime&quot; ]
        ]
      ], [
-       fhir:index 51;
+       fhir:index 52;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended dispenser&quot; ];
@@ -2113,7 +2148,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
-       fhir:index 52;
+       fhir:index 53;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Any restrictions on medication substitution&quot; ];
@@ -2150,7 +2185,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;subjectOf.substitutionPersmission&quot; ]
        ]
      ], [
-       fhir:index 53;
+       fhir:index 54;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -2178,7 +2213,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 54;
+       fhir:index 55;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -2210,7 +2245,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 55;
+       fhir:index 56;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -2247,7 +2282,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 56;
+       fhir:index 57;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.allowed[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.allowed[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether substitution is allowed or not&quot; ];
@@ -2293,7 +2328,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;code&quot; ]
        ]
      ], [
-       fhir:index 57;
+       fhir:index 58;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.reason&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.reason&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why should (not) substitution be made&quot; ];
@@ -2335,7 +2370,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reasonCode&quot; ]
        ]
      ], [
-       fhir:index 58;
+       fhir:index 59;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.priorPrescription&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.priorPrescription&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;An order/prescription that is being replaced&quot; ];
@@ -2371,7 +2406,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=?RPLC or ?SUCC]/target[classCode=SBADM,moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 59;
+       fhir:index 60;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.detectedIssue&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.detectedIssue&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Clinical Issue with action&quot; ];
@@ -2410,7 +2445,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ]/source[classCode=ALRT,moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 60;
+       fhir:index 61;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.eventHistory&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.eventHistory&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A list of events of interest in the lifecycle&quot; ];
@@ -2531,7 +2566,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2606,7 +2641,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;The kind of medication order.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/medicationrequest-intent|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2678,7 +2713,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;Identifies the level of importance to be assigned to actioning the request.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/request-priority|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2716,8 +2751,8 @@
        ]
      ], [
        fhir:index 8;
-       fhir:Element.id [ fhir:value &quot;MedicationRequest.reported[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported[x]&quot; ];
+       fhir:Element.id [ fhir:value &quot;MedicationRequest.reported&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reported&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reported rather than primary record&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -2725,8 +2760,23 @@
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;boolean&quot; ]
-       ], [
-         fhir:index 1;
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
+       ]
+     ], [
+       fhir:index 9;
+       fhir:Element.id [ fhir:value &quot;MedicationRequest.informationSource&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.informationSource&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The person or organization who provided the information about this request, if the source is someone other than the requestor&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The person or organization who provided the information about this request, if the source is someone other than the requestor.  This is often used when the MedicationRequest is reported by another person.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
@@ -2745,14 +2795,13 @@
            fhir:index 4
          ]
        ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role[classCode=PAT, or codes for Practioner or Related Person or Practitioner Role or Organization&quot; ]
        ]
      ], [
-       fhir:index 9;
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.medication[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.medication[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication to be taken&quot; ];
@@ -2804,7 +2853,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;consumable.administrableMedication&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.subject&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.subject&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who or group medication request is for&quot; ];
@@ -2850,7 +2899,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.subject&quot; ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.encounter&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.encounter&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Encounter created as part of encounter/admission/stay&quot; ];
@@ -2888,12 +2937,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\&quot;type of encounter or episode\&quot;]&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.supportingInformation&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.supportingInformation&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Information to support ordering of the medication&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Include additional information (for example, patient height and weight, a medicationStatement for the patient) that supports the ordering of the medication.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This attribute can be used to reference a MedicationStatement about the patients' medication use.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Include additional information (for example, patient height and weight, a MedicationUsage for the patient) that supports the ordering of the medication.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This attribute can be used to reference a MedicationUsage about the patients' medication use.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -2918,7 +2967,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.authoredOn&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.authoredOn&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;When request was initially authored&quot; ];
@@ -2952,7 +3001,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;author.time&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.requester&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.requester&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who/What requested the Request&quot; ];
@@ -2997,7 +3046,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended performer of administration&quot; ];
@@ -3044,7 +3093,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.performerType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.performerType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Desired kind of performer of the medication administration&quot; ];
@@ -3077,7 +3126,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=PRF].role[scoper.determinerCode=KIND].code&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.recorder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.recorder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Person who entered the request&quot; ];
@@ -3105,7 +3154,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=TRANS].role[classCode=ASSIGNED].code (HealthcareProviderType)&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reason or indication for ordering or not ordering the medication&quot; ];
@@ -3149,12 +3198,12 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation.reasonCode&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Condition or observation that supports why the prescription is being written&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Condition or observation that supports why the medication was ordered.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This is a reference to a condition or observation that is the reason for the medication order.  If only a code exists, use reasonCode.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is a reference to a condition or observation that is the reason for the medication request.  It is not intended to be used to reference a goal.  If only a code exists, use reasonCode.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3186,7 +3235,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reason.observation[code=ASSERTION].value&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.instantiatesCanonical&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.instantiatesCanonical&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instantiates FHIR protocol or definition&quot; ];
@@ -3195,7 +3244,14 @@
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 1
+         ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
@@ -3208,7 +3264,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=DEFN].target&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.instantiatesUri&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.instantiatesUri&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Instantiates external protocol or definition&quot; ];
@@ -3226,7 +3282,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=DEFN].target&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.basedOn&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.basedOn&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What request fulfills&quot; ];
@@ -3261,7 +3317,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=FLFS].target[classCode=SBADM or PROC or PCPR or OBS, moodCode=RQO orPLAN or PRP]&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.groupIdentifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.groupIdentifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Composite request this is part of&quot; ];
@@ -3284,7 +3340,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship(typeCode=COMP].target[classCode=SBADM, moodCode=INT].id&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.courseOfTherapyType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.courseOfTherapyType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Overall pattern of medication administration&quot; ];
@@ -3312,7 +3368,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Act.code where classCode = LIST and moodCode = EVN&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.insurance&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.insurance&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Associated insurance coverage&quot; ];
@@ -3340,7 +3396,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COVBY].target&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.note&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.note&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Information about the prescription&quot; ];
@@ -3365,7 +3421,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ]/source[classCode=OBS,moodCode=EVN,code=\&quot;annotation\&quot;].value&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dosageInstruction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dosageInstruction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;How the medication should be taken&quot; ];
@@ -3387,7 +3443,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;see dosageInstruction mapping&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medication supply authorization&quot; ];
@@ -3408,7 +3464,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;component.supplyEvent&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill details&quot; ];
@@ -3426,7 +3482,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;SubstanceAdministration -&gt; ActRelationship[sequenceNumber = '1'] -&gt; Supply&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill quantity&quot; ];
@@ -3447,7 +3503,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.quantity[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.duration&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.initialFill.duration&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;First fill duration&quot; ];
@@ -3464,7 +3520,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.effectivetime[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.dispenseInterval&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.dispenseInterval&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Minimum period of time between dispenses&quot; ];
@@ -3481,7 +3537,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Supply.effectivetime[moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.validityPeriod&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.validityPeriod&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Time period supply is authorized for&quot; ];
@@ -3504,7 +3560,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.numberOfRepeatsAllowed&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.numberOfRepeatsAllowed&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of refills authorized&quot; ];
@@ -3530,7 +3586,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;repeatNumber&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Amount of medication to supply per dispense&quot; ];
@@ -3559,7 +3615,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;quantity&quot; ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.expectedSupplyDuration&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.expectedSupplyDuration&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of days supply per dispense&quot; ];
@@ -3581,7 +3637,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;expectedUseTime&quot; ]
        ]
      ], [
-       fhir:index 37;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.dispenseRequest.performer&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.dispenseRequest.performer&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended dispenser&quot; ];
@@ -3606,7 +3662,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=COMP].target[classCode=SPLY, moodCode=RQO] .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot; ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Any restrictions on medication substitution&quot; ];
@@ -3627,7 +3683,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;subjectOf.substitutionPersmission&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.allowed[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.allowed[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether substitution is allowed or not&quot; ];
@@ -3666,7 +3722,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;code&quot; ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.substitution.reason&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.substitution.reason&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why should (not) substitution be made&quot; ];
@@ -3701,7 +3757,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;reasonCode&quot; ]
        ]
      ], [
-       fhir:index 41;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.priorPrescription&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.priorPrescription&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;An order/prescription that is being replaced&quot; ];
@@ -3730,7 +3786,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=?RPLC or ?SUCC]/target[classCode=SBADM,moodCode=RQO]&quot; ]
        ]
      ], [
-       fhir:index 42;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.detectedIssue&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.detectedIssue&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Clinical Issue with action&quot; ];
@@ -3762,7 +3818,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.inboundRelationship[typeCode=SUBJ]/source[classCode=ALRT,moodCode=EVN].value&quot; ]
        ]
      ], [
-       fhir:index 43;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;MedicationRequest.eventHistory&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;MedicationRequest.eventHistory&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;A list of events of interest in the lifecycle&quot; ];
@@ -3817,13 +3873,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:49-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fmedicationrequest.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fmedicationrequest.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

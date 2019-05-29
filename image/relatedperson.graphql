@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type RelatedPerson {
   id: ID
@@ -31,148 +31,148 @@ type RelatedPersonCommunication {
   preferred: Boolean  _preferred: ElementBase
 }
 
-input RelatedPerson {
+input RelatedPersonInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   active: Boolean  _active: ElementBase
-  patient: Reference!
-  relationship: [CodeableConcept]
-  name: [HumanName]
-  telecom: [ContactPoint]
+  patient: ReferenceInput!
+  relationship: [CodeableConceptInput]
+  name: [HumanNameInput]
+  telecom: [ContactPointInput]
   gender: code  _gender: ElementBase
   birthDate: date  _birthDate: ElementBase
-  address: [Address]
-  photo: [Attachment]
-  period: Period
-  communication: [RelatedPersonCommunication]
+  address: [AddressInput]
+  photo: [AttachmentInput]
+  period: PeriodInput
+  communication: [RelatedPersonCommunicationInput]
 }
 
-input RelatedPersonCommunication {
+input RelatedPersonCommunicationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  language: CodeableConcept!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  language: CodeableConceptInput!
   preferred: Boolean  _preferred: ElementBase
 }
 
 type RelatedPersonReadType {
-  RelatedPerson(id : ID!) : RelatedPerson
+  RelatedPerson(id: ID!): RelatedPerson
 }
 
 type RelatedPersonListType {
-  RelatedPersonList(_filter : String
-    active : [token]
-    address : [String]
-    address_city : [String]
-    address_country : [String]
-    address_postalcode : [String]
-    address_state : [String]
-    address_use : [token]
-    birthdate : [date]
-    email : [token]
-    gender : [token]
-    identifier : [token]
-    name : [String]
-    patient : [reference]
-    phone : [token]
-    phonetic : [String]
-    relationship : [token]
-    telecom : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [RelatedPerson]
+  RelatedPersonList(_filter: String
+    active: [token]
+    address: [String]
+    address_city: [String]
+    address_country: [String]
+    address_postalcode: [String]
+    address_state: [String]
+    address_use: [token]
+    birthdate: [date]
+    email: [token]
+    gender: [token]
+    identifier: [token]
+    name: [String]
+    patient: [reference]
+    phone: [token]
+    phonetic: [String]
+    relationship: [token]
+    telecom: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [RelatedPerson]
 }
 
 type RelatedPersonConnectionType {
-  RelatedPersonConection(_filter : String
-    active : [token]
-    address : [String]
-    address_city : [String]
-    address_country : [String]
-    address_postalcode : [String]
-    address_state : [String]
-    address_use : [token]
-    birthdate : [date]
-    email : [token]
-    gender : [token]
-    identifier : [token]
-    name : [String]
-    patient : [reference]
-    phone : [token]
-    phonetic : [String]
-    relationship : [token]
-    telecom : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : RelatedPersonConnection
+  RelatedPersonConection(_filter: String
+    active: [token]
+    address: [String]
+    address_city: [String]
+    address_country: [String]
+    address_postalcode: [String]
+    address_state: [String]
+    address_use: [token]
+    birthdate: [date]
+    email: [token]
+    gender: [token]
+    identifier: [token]
+    name: [String]
+    patient: [reference]
+    phone: [token]
+    phonetic: [String]
+    relationship: [token]
+    telecom: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): RelatedPersonConnection
 }
 
 type RelatedPersonConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [RelatedPersonEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [RelatedPersonEdge]
 }
 
 type RelatedPersonEdge {
-  mode : String
-  score : Float
-  resource : RelatedPerson
+  mode: String
+  score: Float
+  resource: RelatedPerson
 }
 
 type RelatedPersonCreateType {
-  RelatedPersonCreate(resource : RelatedPerson) : RelatedPersonCreation
+  RelatedPersonCreate(resource: RelatedPersonInput): RelatedPersonCreation
 }
 
 type RelatedPersonCreation {
-  location : String
-  resource : RelatedPerson
-  information : OperationOutcome
+  location: String
+  resource: RelatedPerson
+  information: OperationOutcome
 }
 
 type RelatedPersonUpdateType {
-  RelatedPersonUpdate(id : IDresource : RelatedPerson) : RelatedPersonUpdate
+  RelatedPersonUpdate(id: ID, resource: RelatedPersonInput): RelatedPersonUpdate
 }
 
 type RelatedPersonUpdate {
-  resource : RelatedPerson
-  information : OperationOutcome
+  resource: RelatedPerson
+  information: OperationOutcome
 }
 
 type RelatedPersonDeleteType {
-  RelatedPersonDelete(id : ID) : RelatedPersonDelete
+  RelatedPersonDelete(id: ID): RelatedPersonDelete
 }
 
 type RelatedPersonDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for CarePlan.activity.detail.scheduled[x]"/>
       <expansion>
-        <identifier value="urn:uuid:445bbf6e-ee03-419e-afbb-06bb31bca6e7"/>
-        <timestamp value="2019-03-01T07:28:05-06:00"/>
+        <identifier value="urn:uuid:ce05d808-3f3e-43f7-a538-8d50037ecd5d"/>
+        <timestamp value="2019-05-29T10:48:16-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Timing"/>
@@ -36,8 +36,8 @@
       <status value="active"/>
       <description value="Type options for CarePlan.activity.detail.reported[x]"/>
       <expansion>
-        <identifier value="urn:uuid:a8d0f5bf-89b8-46d1-870f-b1db3c700df8"/>
-        <timestamp value="2019-03-01T07:28:05-06:00"/>
+        <identifier value="urn:uuid:cda94dfe-d158-401b-803a-6e68303b1715"/>
+        <timestamp value="2019-05-29T10:48:16-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="boolean"/>
@@ -78,8 +78,8 @@
       <status value="active"/>
       <description value="Type options for CarePlan.activity.detail.product[x]"/>
       <expansion>
-        <identifier value="urn:uuid:6f1a2816-a3ff-414a-9138-0d7727fa310a"/>
-        <timestamp value="2019-03-01T07:28:05-06:00"/>
+        <identifier value="urn:uuid:f3b82fa8-f55d-41f7-8f95-b6640a010f43"/>
+        <timestamp value="2019-05-29T10:48:16-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -101,9 +101,9 @@
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
-  <version value="4.0.0"/>
+  <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-03-01T07:26:01-06:00"/>
+  <date value="2019-05-29T10:45:36-05:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="CarePlan"/>
@@ -592,7 +592,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Indicates the level of authority/intentionality associated with the care plan and where the care plan fits into the workflow chain. This element is labeled as a modifier because the intent alters when and how the resource is actually applicable."/>
+        <text value="Indicates the level of authority/intentionality associated with the care plan and where the care plan fits into the workflow chain. This element is labeled as a modifier because the intent alters when and how the resource is actually applicable.&#xA;This element is expected to be immutable. E.g. A &quot;proposal&quot; instance should never change to be a &quot;plan&quot; instance or &quot;order&quot; instance. Instead, a new instance &#39;basedOn&#39; the prior instance should be created with the new &#39;intent&#39; value."/>
         <type value="display"/>
       </item>
       <item>
@@ -777,7 +777,7 @@
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="CarePlan.encounter.value"/>
-        <text value="Encounter created as part of"/>
+        <text value="The Encounter during which this CarePlan was created"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -1053,7 +1053,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Identifies portions of the patient&#39;s record that specifically influenced the formation of the plan.  These might include comorbidities, recent procedures, limitations, recent assessments, etc. Use &quot;concern&quot; to identify specific conditions addressed by the care plan."/>
+        <text value="Identifies portions of the patient&#39;s record that specifically influenced the formation of the plan.  These might include comorbidities, recent procedures, limitations, recent assessments, etc. Use &quot;concern&quot; to identify specific conditions addressed by the care plan.  supportingInfo can be used to convey one or more Advance Directives or Medical Treatment Consent Directives by referencing Consent or any other request resource with intent = directive."/>
         <type value="display"/>
       </item>
       <item>

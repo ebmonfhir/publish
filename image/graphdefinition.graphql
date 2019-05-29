@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type GraphDefinition {
   id: ID
@@ -60,15 +60,15 @@ type GraphDefinitionLinkTargetCompartment {
   description: String  _description: ElementBase
 }
 
-input GraphDefinition {
+input GraphDefinitionInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   url: uri  _url: ElementBase
   version: String  _version: ElementBase
   name: String  _name: ElementBase
@@ -76,43 +76,43 @@ input GraphDefinition {
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
   publisher: String  _publisher: ElementBase
-  contact: [ContactDetail]
+  contact: [ContactDetailInput]
   description: markdown  _description: ElementBase
-  useContext: [UsageContext]
-  jurisdiction: [CodeableConcept]
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
   purpose: markdown  _purpose: ElementBase
   start: code  _start: ElementBase
   profile: canonical  _profile: ElementBase
-  link: [GraphDefinitionLink]
+  link: [GraphDefinitionLinkInput]
 }
 
-input GraphDefinitionLink {
+input GraphDefinitionLinkInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   path: String  _path: ElementBase
   sliceName: String  _sliceName: ElementBase
   min: Int  _min: ElementBase
   max: String  _max: ElementBase
   description: String  _description: ElementBase
-  target: [GraphDefinitionLinkTarget]
+  target: [GraphDefinitionLinkTargetInput]
 }
 
-input GraphDefinitionLinkTarget {
+input GraphDefinitionLinkTargetInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
   params: String  _params: ElementBase
   profile: canonical  _profile: ElementBase
-  compartment: [GraphDefinitionLinkTargetCompartment]
+  compartment: [GraphDefinitionLinkTargetCompartmentInput]
   link: [GraphDefinitionLink]
 }
 
-input GraphDefinitionLinkTargetCompartment {
+input GraphDefinitionLinkTargetCompartmentInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   use: code  _use: ElementBase
   code: code  _code: ElementBase
   rule: code  _rule: ElementBase
@@ -121,110 +121,110 @@ input GraphDefinitionLinkTargetCompartment {
 }
 
 type GraphDefinitionReadType {
-  GraphDefinition(id : ID!) : GraphDefinition
+  GraphDefinition(id: ID!): GraphDefinition
 }
 
 type GraphDefinitionListType {
-  GraphDefinitionList(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    start : [token]
-    status : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [GraphDefinition]
+  GraphDefinitionList(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    start: [token]
+    status: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [GraphDefinition]
 }
 
 type GraphDefinitionConnectionType {
-  GraphDefinitionConection(_filter : String
-    context : [token]
-    context_quantity : [quantity]
-    context_type : [token]
-    context_type_quantity : [composite]
-    context_type_value : [composite]
-    date : [date]
-    description : [String]
-    jurisdiction : [token]
-    name : [String]
-    publisher : [String]
-    start : [token]
-    status : [token]
-    url : [uri]
-    version : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : GraphDefinitionConnection
+  GraphDefinitionConection(_filter: String
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    start: [token]
+    status: [token]
+    url: [uri]
+    version: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): GraphDefinitionConnection
 }
 
 type GraphDefinitionConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [GraphDefinitionEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [GraphDefinitionEdge]
 }
 
 type GraphDefinitionEdge {
-  mode : String
-  score : Float
-  resource : GraphDefinition
+  mode: String
+  score: Float
+  resource: GraphDefinition
 }
 
 type GraphDefinitionCreateType {
-  GraphDefinitionCreate(resource : GraphDefinition) : GraphDefinitionCreation
+  GraphDefinitionCreate(resource: GraphDefinitionInput): GraphDefinitionCreation
 }
 
 type GraphDefinitionCreation {
-  location : String
-  resource : GraphDefinition
-  information : OperationOutcome
+  location: String
+  resource: GraphDefinition
+  information: OperationOutcome
 }
 
 type GraphDefinitionUpdateType {
-  GraphDefinitionUpdate(id : IDresource : GraphDefinition) : GraphDefinitionUpdate
+  GraphDefinitionUpdate(id: ID, resource: GraphDefinitionInput): GraphDefinitionUpdate
 }
 
 type GraphDefinitionUpdate {
-  resource : GraphDefinition
-  information : OperationOutcome
+  resource: GraphDefinition
+  information: OperationOutcome
 }
 
 type GraphDefinitionDeleteType {
-  GraphDefinitionDelete(id : ID) : GraphDefinitionDelete
+  GraphDefinitionDelete(id: ID): GraphDefinitionDelete
 }
 
 type GraphDefinitionDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

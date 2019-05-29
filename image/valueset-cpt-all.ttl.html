@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Valueset-cpt-all.ttl - FHIR v4.0.0</title>
+  <title>Valueset-cpt-all.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -88,7 +91,7 @@
 	<div id="segment-breadcrumb" class="segment"><!-- segment-breadcrumb -->
 		<div class="container"><!-- container -->	
 			<ul class="breadcrumb">
-        <li><a href="terminology-module.html"><img src="terminology.png"/> Terminology</a></li>        <li><a href="valueset.html">ValueSet</a></li>        <li><b>Example Instance</b></li>        <!-- valueset-cpt-all.ttl.html / resource-instance:ValueSet / Example-->
+        <li><a href="terminology-module.html"><img src="terminology.png"/> Terminology</a></li>        <li><a href="terminologies-valuesets.html">Value Sets</a></li>        <li><a href="valueset-cpt-all.html">valueset-cpt-all</a></li>        <li><b>Instance</b></li>        <!-- valueset-cpt-all.ttl.html / valueset-instance / Value Set-->
 
 			</ul>	
 		</div><!-- /container -->
@@ -105,7 +108,7 @@
 <div class="col-12">
 
 <h1>Valueset-cpt-all.ttl</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/Vocab/index.cfm">Vocabulary</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/Vocab/index.cfm">Vocabulary</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td></td></tr></table>
 
 </tbody></table>
 <p>
@@ -113,46 +116,64 @@
 </p>
 
 <div class="example">
-<p>All CPT codes</p>
-<pre class="rdf">
+<p>Definition for Value SetAll CPT codes</p>
+<pre class="turtle">
 @prefix fhir: &lt;http://hl7.org/fhir/&gt; .
-@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix sct: &lt;http://snomed.info/id/&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 # - resource -------------------------------------------------------------------
 
-&lt;http://hl7.org/fhir/ValueSet/cpt-all&gt; a fhir:ValueSet;
-  fhir:nodeRole fhir:treeRoot;
+[] a fhir:ValueSet;
   fhir:Resource.id [ fhir:value &quot;cpt-all&quot;];
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value &quot;generated&quot; ];
-     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n      &lt;h2&gt;All CPT codes&lt;/h2&gt;\n      &lt;div&gt;\n        &lt;p&gt;A value set that includes all CPT codes&lt;/p&gt;\n\n      &lt;/div&gt;\n      &lt;p&gt;\n        &lt;b&gt;Copyright Statement:&lt;/b&gt; CPT Copyright © 2014 American Medical Association. All rights reserved.\n      &lt;/p&gt;\n      &lt;p&gt;This value set includes codes from the following code systems:&lt;/p&gt;\n      &lt;ul&gt;\n        &lt;li&gt;Include all codes defined in \n          &lt;code&gt;http://www.ama-assn.org/go/cpt&lt;/code&gt;\n        &lt;/li&gt;\n      &lt;/ul&gt;\n    &lt;/div&gt;&quot;
-  ];
-  fhir:ValueSet.url [ fhir:value &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot;];
-  fhir:ValueSet.version [ fhir:value &quot;4.0.0&quot;];
-  fhir:ValueSet.name [ fhir:value &quot;All CPT codes&quot;];
-  fhir:ValueSet.status [ fhir:value &quot;active&quot;];
-  fhir:ValueSet.date [ fhir:value &quot;2015-03-12&quot;^^xsd:date];
-  fhir:ValueSet.publisher [ fhir:value &quot;Health Level Seven International (Vocabulary)&quot;];
-  fhir:ValueSet.description [ fhir:value &quot;A value set that includes all CPT codes&quot;];
-  fhir:ValueSet.useContext [
-     fhir:index 0;
-     fhir:UsageContext.code [
-       fhir:Coding.system [ fhir:value &quot;http://example.org/fhir/CodeSystem/use-contexts&quot; ];
-       fhir:Coding.code [ fhir:value &quot;species&quot; ]
-     ];
-     fhir:UsageContext.valueCodeableConcept [
-       fhir:CodeableConcept.coding [
-         fhir:index 0;
-         a sct:337915000;
-         fhir:Coding.system [ fhir:value &quot;http://snomed.info/sct&quot; ];
-         fhir:Coding.code [ fhir:value &quot;337915000&quot; ];
-         fhir:Coding.display [ fhir:value &quot;Homo sapiens (organism)&quot; ]
-       ]
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ];
+     fhir:Meta.profile [
+       fhir:value &quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;;
+       fhir:index 0
      ]
   ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
+     fhir:Extension.value [ fhir:value &quot;oo&quot; ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+     fhir:Extension.value [ fhir:value &quot;draft&quot; ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
+     fhir:Extension.value [ fhir:value &quot;1&quot; ]
+  ];
+  fhir:ValueSet.url [ fhir:value &quot;http://hl7.org/fhir/ValueSet/cpt-all&quot;];
+  fhir:ValueSet.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value &quot;urn:ietf:rfc:3986&quot; ];
+     fhir:Identifier.value [ fhir:value &quot;urn:oid:2.16.840.1.113883.4.642.3.0&quot; ]
+  ];
+  fhir:ValueSet.version [ fhir:value &quot;4.1.0&quot;];
+  fhir:ValueSet.name [ fhir:value &quot;All CPT codes&quot;];
+  fhir:ValueSet.title [ fhir:value &quot;All CPT codes&quot;];
+  fhir:ValueSet.status [ fhir:value &quot;active&quot;];
+  fhir:ValueSet.experimental [ fhir:value &quot;false&quot;];
+  fhir:ValueSet.date [ fhir:value &quot;2015-03-12&quot;];
+  fhir:ValueSet.publisher [ fhir:value &quot;Health Level Seven International (Vocabulary)&quot;];
+  fhir:ValueSet.contact [
+     fhir:index 0;
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value &quot;url&quot; ];
+       fhir:ContactPoint.value [ fhir:value &quot;http://hl7.org/fhir&quot; ]
+     ], [
+       fhir:index 1;
+       fhir:ContactPoint.system [ fhir:value &quot;email&quot; ];
+       fhir:ContactPoint.value [ fhir:value &quot;fhir@lists.hl7.org&quot; ]
+     ]
+  ];
+  fhir:ValueSet.description [ fhir:value &quot;A value set that includes all CPT codes&quot;];
   fhir:ValueSet.jurisdiction [
      fhir:index 0;
      fhir:CodeableConcept.coding [
@@ -163,17 +184,11 @@
   ];
   fhir:ValueSet.copyright [ fhir:value &quot;CPT Copyright © 2014 American Medical Association. All rights reserved.&quot;];
   fhir:ValueSet.compose [
-     fhir:ValueSet.compose.include [
+     fhir:ValueSet.include [
        fhir:index 0;
-       fhir:ValueSet.compose.include.system [ fhir:value &quot;http://www.ama-assn.org/go/cpt&quot; ]
+       fhir:ValueSet.system [ fhir:value &quot;http://www.ama-assn.org/go/cpt&quot; ]
      ]
   ] .
-
-# - ontology header ------------------------------------------------------------
-
-&lt;http://hl7.org/fhir/ValueSet/cpt-all.ttl&gt; a owl:Ontology;
-  owl:imports fhir:fhir.ttl;
-  owl:versionIRI &lt;http://build.fhir.org/ValueSet/cpt-all.ttl&gt; .
 
 # -------------------------------------------------------------------------------------
 
@@ -202,13 +217,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:27-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:47-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fvalueset-cpt-all.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fvalueset-cpt-all.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

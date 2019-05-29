@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type SubstanceNucleicAcid {
   id: ID
@@ -49,132 +49,132 @@ type SubstanceNucleicAcidSubunitSugar {
   residueSite: String  _residueSite: ElementBase
 }
 
-input SubstanceNucleicAcid {
+input SubstanceNucleicAcidInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  sequenceType: CodeableConcept
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  sequenceType: CodeableConceptInput
   numberOfSubunits: Int  _numberOfSubunits: ElementBase
   areaOfHybridisation: String  _areaOfHybridisation: ElementBase
-  oligoNucleotideType: CodeableConcept
-  subunit: [SubstanceNucleicAcidSubunit]
+  oligoNucleotideType: CodeableConceptInput
+  subunit: [SubstanceNucleicAcidSubunitInput]
 }
 
-input SubstanceNucleicAcidSubunit {
+input SubstanceNucleicAcidSubunitInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   subunit: Int  _subunit: ElementBase
   sequence: String  _sequence: ElementBase
   length: Int  _length: ElementBase
-  sequenceAttachment: Attachment
-  fivePrime: CodeableConcept
-  threePrime: CodeableConcept
-  linkage: [SubstanceNucleicAcidSubunitLinkage]
-  sugar: [SubstanceNucleicAcidSubunitSugar]
+  sequenceAttachment: AttachmentInput
+  fivePrime: CodeableConceptInput
+  threePrime: CodeableConceptInput
+  linkage: [SubstanceNucleicAcidSubunitLinkageInput]
+  sugar: [SubstanceNucleicAcidSubunitSugarInput]
 }
 
-input SubstanceNucleicAcidSubunitLinkage {
+input SubstanceNucleicAcidSubunitLinkageInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   connectivity: String  _connectivity: ElementBase
-  identifier: Identifier
+  identifier: IdentifierInput
   name: String  _name: ElementBase
   residueSite: String  _residueSite: ElementBase
 }
 
-input SubstanceNucleicAcidSubunitSugar {
+input SubstanceNucleicAcidSubunitSugarInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: Identifier
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: IdentifierInput
   name: String  _name: ElementBase
   residueSite: String  _residueSite: ElementBase
 }
 
 type SubstanceNucleicAcidReadType {
-  SubstanceNucleicAcid(id : ID!) : SubstanceNucleicAcid
+  SubstanceNucleicAcid(id: ID!): SubstanceNucleicAcid
 }
 
 type SubstanceNucleicAcidListType {
-  SubstanceNucleicAcidList(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [SubstanceNucleicAcid]
+  SubstanceNucleicAcidList(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [SubstanceNucleicAcid]
 }
 
 type SubstanceNucleicAcidConnectionType {
-  SubstanceNucleicAcidConection(_filter : String
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : SubstanceNucleicAcidConnection
+  SubstanceNucleicAcidConection(_filter: String
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): SubstanceNucleicAcidConnection
 }
 
 type SubstanceNucleicAcidConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [SubstanceNucleicAcidEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [SubstanceNucleicAcidEdge]
 }
 
 type SubstanceNucleicAcidEdge {
-  mode : String
-  score : Float
-  resource : SubstanceNucleicAcid
+  mode: String
+  score: Float
+  resource: SubstanceNucleicAcid
 }
 
 type SubstanceNucleicAcidCreateType {
-  SubstanceNucleicAcidCreate(resource : SubstanceNucleicAcid) : SubstanceNucleicAcidCreation
+  SubstanceNucleicAcidCreate(resource: SubstanceNucleicAcidInput): SubstanceNucleicAcidCreation
 }
 
 type SubstanceNucleicAcidCreation {
-  location : String
-  resource : SubstanceNucleicAcid
-  information : OperationOutcome
+  location: String
+  resource: SubstanceNucleicAcid
+  information: OperationOutcome
 }
 
 type SubstanceNucleicAcidUpdateType {
-  SubstanceNucleicAcidUpdate(id : IDresource : SubstanceNucleicAcid) : SubstanceNucleicAcidUpdate
+  SubstanceNucleicAcidUpdate(id: ID, resource: SubstanceNucleicAcidInput): SubstanceNucleicAcidUpdate
 }
 
 type SubstanceNucleicAcidUpdate {
-  resource : SubstanceNucleicAcid
-  information : OperationOutcome
+  resource: SubstanceNucleicAcid
+  information: OperationOutcome
 }
 
 type SubstanceNucleicAcidDeleteType {
-  SubstanceNucleicAcidDelete(id : ID) : SubstanceNucleicAcidDelete
+  SubstanceNucleicAcidDelete(id: ID): SubstanceNucleicAcidDelete
 }
 
 type SubstanceNucleicAcidDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

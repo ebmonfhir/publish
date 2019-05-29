@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationAdministration.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:f36b72e4-1574-4aba-85d9-b8ff2a1b919e",
-      "timestamp" : "2019-03-01T07:28:36-06:00",
+      "identifier" : "urn:uuid:9494bb76-0ff0-4d87-9c82-2ee38262ef33",
+      "timestamp" : "2019-05-29T10:49:25-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationAdministration.effective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:2e3173e8-392e-4438-b787-bc226e942d9d",
-      "timestamp" : "2019-03-01T07:28:36-06:00",
+      "identifier" : "urn:uuid:7df4925c-ba37-4991-95d5-788a72c8fe95",
+      "timestamp" : "2019-05-29T10:49:25-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -50,8 +50,8 @@
     "status" : "active",
     "description" : "Type options for MedicationAdministration.dosage.rate[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:565d7005-3c5e-4366-a23b-e1c7288acc45",
-      "timestamp" : "2019-03-01T07:28:36-06:00",
+      "identifier" : "urn:uuid:5fd5e456-7de8-435f-bdfa-363b93fd8ecc",
+      "timestamp" : "2019-05-29T10:49:25-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Ratio",
@@ -67,9 +67,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationAdministration",
@@ -360,7 +360,7 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "uri"
       }],
-      "linkId" : "MedicationAdministration.instantiates",
+      "linkId" : "MedicationAdministration.instantiatesCanonical",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -379,8 +379,39 @@
         "type" : "display"
       },
       {
-        "linkId" : "MedicationAdministration.instantiates.value",
+        "linkId" : "MedicationAdministration.instantiatesCanonical.value",
         "text" : "Instantiates protocol or definition",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "uri"
+      }],
+      "linkId" : "MedicationAdministration.instantiatesUri",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this MedicationAdministration.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "MedicationAdministration.instantiatesUri.value",
+        "text" : "Instantiates external protocol or definition",
         "type" : "string",
         "required" : false,
         "repeats" : false
@@ -679,7 +710,7 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "Reference"
       }],
-      "linkId" : "MedicationAdministration.context",
+      "linkId" : "MedicationAdministration.encounter",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -700,14 +731,14 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Encounter, EpisodeOfCare"
+          "valueCode" : "Encounter"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "MedicationAdministration.context.value",
-        "text" : "Encounter or Episode of Care administered as part of",
+        "linkId" : "MedicationAdministration.encounter.value",
+        "text" : "Encounter administered as part of",
         "type" : "reference",
         "required" : false,
         "repeats" : false

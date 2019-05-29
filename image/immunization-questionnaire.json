@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for Immunization.occurrence[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:d925b3f8-a082-4393-8ece-d3b0353b077c",
-      "timestamp" : "2019-03-01T07:28:28-06:00",
+      "identifier" : "urn:uuid:e133f442-d58b-4a88-a93c-485666803eb8",
+      "timestamp" : "2019-05-29T10:49:09-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -25,12 +25,53 @@
   {
     "resourceType" : "ValueSet",
     "id" : "vs3",
+    "name" : "Type options for Immunization.informationSource[x]",
+    "status" : "active",
+    "description" : "Type options for Immunization.informationSource[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:f3228da4-66b1-4630-be6e-da718f1e5ce0",
+      "timestamp" : "2019-05-29T10:49:09-05:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "CodeableConcept",
+        "display" : "CodeableConcept"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Patient",
+        "display" : "Patient"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Practitioner",
+        "display" : "Practitioner"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "PractitionerRole",
+        "display" : "PractitionerRole"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "RelatedPerson",
+        "display" : "RelatedPerson"
+      },
+      {
+        "system" : "http://hl7.org/fhir/resource-types",
+        "code" : "Organization",
+        "display" : "Organization"
+      }]
+    }
+  },
+  {
+    "resourceType" : "ValueSet",
+    "id" : "vs4",
     "name" : "Type options for Immunization.protocolApplied.doseNumber[x]",
     "status" : "active",
     "description" : "Type options for Immunization.protocolApplied.doseNumber[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:41fd910a-77f6-4422-9872-09d3c9c3ec67",
-      "timestamp" : "2019-03-01T07:28:28-06:00",
+      "identifier" : "urn:uuid:e2d6e0ff-999b-4559-a42a-a77dee727b1f",
+      "timestamp" : "2019-05-29T10:49:09-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "positiveInt",
@@ -45,13 +86,13 @@
   },
   {
     "resourceType" : "ValueSet",
-    "id" : "vs4",
+    "id" : "vs5",
     "name" : "Type options for Immunization.protocolApplied.seriesDoses[x]",
     "status" : "active",
     "description" : "Type options for Immunization.protocolApplied.seriesDoses[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:39599afb-bfb7-459d-ae42-4b3587b459dc",
-      "timestamp" : "2019-03-01T07:28:28-06:00",
+      "identifier" : "urn:uuid:1e72fe58-c171-4dc7-b7a0-0e03a74d9830",
+      "timestamp" : "2019-05-29T10:49:09-05:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "positiveInt",
@@ -67,9 +108,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International (Public Health and Emergency Response)",
   "item" : [{
     "linkId" : "Immunization",
@@ -404,7 +445,7 @@
         "valueString" : "CodeableConcept"
       }],
       "linkId" : "Immunization.statusReason",
-      "text" : "Reason not done",
+      "text" : "Reason for current status",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -698,7 +739,7 @@
             }]
           }
         }],
-        "text" : "An indication that the content of the record is based on information from the person who administered the vaccine. This reflects the context under which the data was originally recorded. Reflects the “reliability” of the content.",
+        "text" : "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record. Reflects the “reliability” of the content.",
         "type" : "display"
       },
       {
@@ -713,13 +754,9 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
       }],
-      "linkId" : "Immunization.reportOrigin",
-      "text" : "Indicates the source of a secondarily reported record",
+      "linkId" : "Immunization.informationSource[x]",
+      "text" : "Indicates the source of a  reported record",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -734,22 +771,60 @@
             }]
           }
         }],
-        "text" : "The source of the data when the report of the immunization event is not based on information from the person who administered the vaccine. Should not be populated if primarySource = True, not required even if primarySource = False.",
+        "text" : "Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine. Typically will not be populated if primarySource = True, not required even if primarySource = False.",
         "type" : "display"
       },
       {
-        "linkId" : "Immunization.reportOrigin.coding",
-        "text" : "code:",
-        "type" : "open-choice",
+        "linkId" : "Immunization.informationSource[x]._type",
+        "text" : "type",
+        "type" : "choice",
         "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "Immunization.reportOrigin.text",
-        "text" : "text:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
+        "repeats" : false,
+        "answerValueSet" : "#vs3",
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+            "valueString" : "CodeableConcept"
+          }],
+          "linkId" : "Immunization.informationSource[x]._null",
+          "type" : "group",
+          "item" : [{
+            "linkId" : "Immunization.informationSource[x]._null.coding",
+            "text" : "code:",
+            "type" : "open-choice",
+            "required" : false,
+            "repeats" : false
+          },
+          {
+            "linkId" : "Immunization.informationSource[x]._null.text",
+            "text" : "text:",
+            "type" : "string",
+            "required" : false,
+            "repeats" : false
+          }]
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+            "valueString" : "Reference"
+          }],
+          "linkId" : "Immunization.informationSource[x]._null",
+          "type" : "group",
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+              "valueCode" : "Patient, Practitioner, PractitionerRole, RelatedPerson, Organization"
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+              "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+            }],
+            "linkId" : "Immunization.informationSource[x]._null.value",
+            "type" : "reference",
+            "required" : false,
+            "repeats" : false
+          }]
+        }]
       }]
     },
     {
@@ -1292,7 +1367,7 @@
             }]
           }
         }],
-        "text" : "Reasons why the vaccine was administered.",
+        "text" : "Describes why the immunization occurred in coded or textual form.",
         "type" : "display"
       },
       {
@@ -1330,7 +1405,7 @@
             }]
           }
         }],
-        "text" : "Condition, Observation or DiagnosticReport that supports why the immunization was administered.",
+        "text" : "Indicates another resource (Condition, Observation or DiagnosticReport) whose existence justifies this immunization.",
         "type" : "display"
       },
       {
@@ -2206,7 +2281,7 @@
           "type" : "choice",
           "required" : false,
           "repeats" : false,
-          "answerValueSet" : "#vs3",
+          "answerValueSet" : "#vs4",
           "item" : [{
             "extension" : [{
               "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
@@ -2267,7 +2342,7 @@
           "type" : "choice",
           "required" : false,
           "repeats" : false,
-          "answerValueSet" : "#vs4",
+          "answerValueSet" : "#vs5",
           "item" : [{
             "extension" : [{
               "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",

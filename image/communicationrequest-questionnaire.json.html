@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Communicationrequest-questionnaire.json - FHIR v4.0.0</title>
+  <title>Communicationrequest-questionnaire.json - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -124,14 +127,9 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for CommunicationRequest.payload.content[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:1b33d9b3-4ca9-4725-bbfb-7577eb284188&quot;,
-      &quot;timestamp&quot; : &quot;2019-03-01T07:28:10-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:b083f746-b018-44e4-8818-beb83a21bcd0&quot;,
+      &quot;timestamp&quot; : &quot;2019-05-29T10:48:27-05:00&quot;,
       &quot;contains&quot; : [{
-        &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
-        &quot;code&quot; : &quot;string&quot;,
-        &quot;display&quot; : &quot;string&quot;
-      },
-      {
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;Attachment&quot;,
         &quot;display&quot; : &quot;Attachment&quot;
@@ -140,6 +138,11 @@
         &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
         &quot;code&quot; : &quot;Resource&quot;,
         &quot;display&quot; : &quot;Resource&quot;
+      },
+      {
+        &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
+        &quot;code&quot; : &quot;CodeableConcept&quot;,
+        &quot;display&quot; : &quot;CodeableConcept&quot;
       }]
     }
   },
@@ -150,8 +153,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for CommunicationRequest.occurrence[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:7f2b2c9f-b411-4492-8062-44459a8ee420&quot;,
-      &quot;timestamp&quot; : &quot;2019-03-01T07:28:10-06:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:398b9c72-4aeb-4daf-9123-6aa297095943&quot;,
+      &quot;timestamp&quot; : &quot;2019-05-29T10:48:27-05:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;dateTime&quot;,
@@ -167,9 +170,9 @@
   &quot;identifier&quot; : [{
     &quot;system&quot; : &quot;urn:ietf:rfc:3986&quot;
   }],
-  &quot;version&quot; : &quot;4.0.0&quot;,
+  &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-03-01T07:26:01-06:00&quot;,
+  &quot;date&quot; : &quot;2019-05-29T10:45:36-05:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;CommunicationRequest&quot;,
@@ -932,7 +935,7 @@
           &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
         }],
         &quot;linkId&quot; : &quot;CommunicationRequest.encounter.value&quot;,
-        &quot;text&quot; : &quot;Encounter created as part of&quot;,
+        &quot;text&quot; : &quot;The Encounter during which this CommunicationRequest was created&quot;,
         &quot;type&quot; : &quot;reference&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : false
@@ -1060,7 +1063,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The communicated content (or for multi-part communications, one portion of the communication).&quot;,
+          &quot;text&quot; : &quot;The communicated content (or for multi-part communications, one portion of the communication). When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1071,20 +1074,6 @@
           &quot;repeats&quot; : false,
           &quot;answerValueSet&quot; : &quot;#vs2&quot;,
           &quot;item&quot; : [{
-            &quot;extension&quot; : [{
-              &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
-              &quot;valueString&quot; : &quot;string&quot;
-            }],
-            &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null&quot;,
-            &quot;type&quot; : &quot;group&quot;,
-            &quot;item&quot; : [{
-              &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null.value&quot;,
-              &quot;type&quot; : &quot;string&quot;,
-              &quot;required&quot; : false,
-              &quot;repeats&quot; : false
-            }]
-          },
-          {
             &quot;extension&quot; : [{
               &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
               &quot;valueString&quot; : &quot;Attachment&quot;
@@ -1110,6 +1099,28 @@
               }],
               &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null.value&quot;,
               &quot;type&quot; : &quot;reference&quot;,
+              &quot;required&quot; : false,
+              &quot;repeats&quot; : false
+            }]
+          },
+          {
+            &quot;extension&quot; : [{
+              &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+              &quot;valueString&quot; : &quot;CodeableConcept&quot;
+            }],
+            &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null&quot;,
+            &quot;type&quot; : &quot;group&quot;,
+            &quot;item&quot; : [{
+              &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null.coding&quot;,
+              &quot;text&quot; : &quot;code:&quot;,
+              &quot;type&quot; : &quot;open-choice&quot;,
+              &quot;required&quot; : false,
+              &quot;repeats&quot; : false
+            },
+            {
+              &quot;linkId&quot; : &quot;CommunicationRequest.payload.content[x]._null.text&quot;,
+              &quot;text&quot; : &quot;text:&quot;,
+              &quot;type&quot; : &quot;string&quot;,
               &quot;required&quot; : false,
               &quot;repeats&quot; : false
             }]
@@ -1411,7 +1422,7 @@
       {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-          &quot;valueCode&quot; : &quot;Condition, Observation, DiagnosticReport, DocumentReference&quot;
+          &quot;valueCode&quot; : &quot;Resource&quot;
         },
         {
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
@@ -1475,13 +1486,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:48-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcommunicationrequest-questionnaire.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest-questionnaire.json.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

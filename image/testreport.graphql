@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type TestReport {
   id: ID
@@ -96,191 +96,191 @@ type TestReportTeardownAction {
   operation: TestReportSetupActionOperation!
 }
 
-input TestReport {
+input TestReportInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: Identifier
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: IdentifierInput
   name: String  _name: ElementBase
   status: code  _status: ElementBase
-  testScript: Reference!
+  testScript: ReferenceInput!
   result: code  _result: ElementBase
   score: decimal  _score: ElementBase
   tester: String  _tester: ElementBase
   issued: dateTime  _issued: ElementBase
-  participant: [TestReportParticipant]
-  setup: TestReportSetup
-  test: [TestReportTest]
-  teardown: TestReportTeardown
+  participant: [TestReportParticipantInput]
+  setup: TestReportSetupInput
+  test: [TestReportTestInput]
+  teardown: TestReportTeardownInput
 }
 
-input TestReportParticipant {
+input TestReportParticipantInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   type: code  _type: ElementBase
   uri: uri  _uri: ElementBase
   display: String  _display: ElementBase
 }
 
-input TestReportSetup {
+input TestReportSetupInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  action: [TestReportSetupAction]!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  action: [TestReportSetupActionInput]!
 }
 
-input TestReportSetupAction {
+input TestReportSetupActionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  operation: TestReportSetupActionOperation
-  assert: TestReportSetupActionAssert
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  operation: TestReportSetupActionOperationInput
+  assert: TestReportSetupActionAssertInput
 }
 
-input TestReportSetupActionOperation {
+input TestReportSetupActionOperationInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   result: code  _result: ElementBase
   message: markdown  _message: ElementBase
   detail: uri  _detail: ElementBase
 }
 
-input TestReportSetupActionAssert {
+input TestReportSetupActionAssertInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   result: code  _result: ElementBase
   message: markdown  _message: ElementBase
   detail: String  _detail: ElementBase
 }
 
-input TestReportTest {
+input TestReportTestInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   name: String  _name: ElementBase
   description: String  _description: ElementBase
-  action: [TestReportTestAction]!
+  action: [TestReportTestActionInput]!
 }
 
-input TestReportTestAction {
+input TestReportTestActionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   operation: TestReportSetupActionOperation
   assert: TestReportSetupActionAssert
 }
 
-input TestReportTeardown {
+input TestReportTeardownInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  action: [TestReportTeardownAction]!
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  action: [TestReportTeardownActionInput]!
 }
 
-input TestReportTeardownAction {
+input TestReportTeardownActionInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   operation: TestReportSetupActionOperation!
 }
 
 type TestReportReadType {
-  TestReport(id : ID!) : TestReport
+  TestReport(id: ID!): TestReport
 }
 
 type TestReportListType {
-  TestReportList(_filter : String
-    identifier : [token]
-    issued : [date]
-    participant : [uri]
-    result : [token]
-    tester : [String]
-    testscript : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [TestReport]
+  TestReportList(_filter: String
+    identifier: [token]
+    issued: [date]
+    participant: [uri]
+    result: [token]
+    tester: [String]
+    testscript: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [TestReport]
 }
 
 type TestReportConnectionType {
-  TestReportConection(_filter : String
-    identifier : [token]
-    issued : [date]
-    participant : [uri]
-    result : [token]
-    tester : [String]
-    testscript : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : TestReportConnection
+  TestReportConection(_filter: String
+    identifier: [token]
+    issued: [date]
+    participant: [uri]
+    result: [token]
+    tester: [String]
+    testscript: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): TestReportConnection
 }
 
 type TestReportConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [TestReportEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [TestReportEdge]
 }
 
 type TestReportEdge {
-  mode : String
-  score : Float
-  resource : TestReport
+  mode: String
+  score: Float
+  resource: TestReport
 }
 
 type TestReportCreateType {
-  TestReportCreate(resource : TestReport) : TestReportCreation
+  TestReportCreate(resource: TestReportInput): TestReportCreation
 }
 
 type TestReportCreation {
-  location : String
-  resource : TestReport
-  information : OperationOutcome
+  location: String
+  resource: TestReport
+  information: OperationOutcome
 }
 
 type TestReportUpdateType {
-  TestReportUpdate(id : IDresource : TestReport) : TestReportUpdate
+  TestReportUpdate(id: ID, resource: TestReportInput): TestReportUpdate
 }
 
 type TestReportUpdate {
-  resource : TestReport
-  information : OperationOutcome
+  resource: TestReport
+  information: OperationOutcome
 }
 
 type TestReportDeleteType {
-  TestReportDelete(id : ID) : TestReportDelete
+  TestReportDelete(id: ID): TestReportDelete
 }
 
 type TestReportDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

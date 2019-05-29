@@ -3,7 +3,7 @@
 <!-- template-example-ttl.html -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Immunization.profile.ttl - FHIR v4.0.0</title>
+  <title>Immunization.profile.ttl - FHIR v4.1.0</title>
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,9 +38,11 @@
 <body>
 	<div id="segment-header" class="segment"><!-- segment-header -->	
 		<div class="container"><!-- container -->
-			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir"/> </a>
-			<a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" height="30" style="align:top"/></a>
-			<b><font size="+2">EBMOnFHIR Back Reference  Statistics Model</font></b>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,6 +73,7 @@
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
               <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -123,33 +126,37 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Immunization&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-03-01T07:26:01.444-06:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-29T10:45:36.897-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
   ];
   fhir:DomainResource.extension [
      fhir:index 0;
+     fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot; ];
+     fhir:Extension.value [ fhir:value &quot;Clinical.Medications&quot; ]
+  ], [
+     fhir:index 1;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
      fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
   ], [
-     fhir:index 1;
+     fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
      fhir:Extension.value [ fhir:value &quot;3&quot; ]
   ], [
-     fhir:index 2;
+     fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
      fhir:Extension.value [ fhir:value &quot;patient&quot; ]
   ], [
-     fhir:index 3;
+     fhir:index 4;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot; ];
      fhir:Extension.value [ fhir:value &quot;pher&quot; ]
   ];
   fhir:StructureDefinition.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Immunization&quot;];
-  fhir:StructureDefinition.version [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Immunization&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-03-01T07:26:01-06:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-29T10:45:36-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Public Health and Emergency Response)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -167,7 +174,7 @@
      ]
   ];
   fhir:StructureDefinition.description [ fhir:value &quot;Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.&quot;];
-  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.0.0&quot;];
+  fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.mapping [
      fhir:index 0;
      fhir:StructureDefinition.identity [ fhir:value &quot;workflow&quot; ];
@@ -584,7 +591,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A set of codes indicating the current status of an Immunization.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/immunization-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/immunization-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -603,7 +610,7 @@
        fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Immunization.statusReason&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.statusReason&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Reason not done&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Reason for current status&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Indicates the reason the immunization event was not performed.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for the status of \&quot;not-done\&quot;. The reason for performing the immunization event is captured in reasonCode, not here.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -849,7 +856,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.primarySource&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.primarySource&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Indicates context the data was recorded in&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;An indication that the content of the record is based on information from the person who administered the vaccine. This reflects the context under which the data was originally recorded.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Reflects the “reliability” of the content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
@@ -866,34 +873,57 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.reportedBoolean&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXA-9&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;immunization.uncertaintycode (if primary source=false, uncertainty=U)&quot; ]
        ]
      ], [
        fhir:index 18;
-       fhir:Element.id [ fhir:value &quot;Immunization.reportOrigin&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reportOrigin&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Indicates the source of a secondarily reported record&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Should not be populated if primarySource = True, not required even if primarySource = False.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Immunization.informationSource[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Immunization.informationSource[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Indicates the source of a  reported record&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Typically will not be populated if primarySource = True, not required even if primarySource = False.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reportOrigin&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Immunization.informationSource[x]&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:index 4
+         ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -909,14 +939,18 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.reportedReference&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXA-9&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported) .participation[typeCode=INF].role[classCode=LIC] (this syntax for health care professional) .participation[typeCode=INF].role[classCode=PRS] (this syntax for family member)&quot; ]
        ]
@@ -1428,7 +1462,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why immunization occurred&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Reasons why the vaccine was administered.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Describes why the immunization occurred in coded or textual form.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1466,7 +1500,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why immunization occurred&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Condition, Observation or DiagnosticReport that supports why the immunization was administered.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates another resource (Condition, Observation or DiagnosticReport) whose existence justifies this immunization.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2453,7 +2487,7 @@
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
          fhir:ElementDefinition.description [ fhir:value &quot;A set of codes indicating the current status of an Immunization.&quot; ];
-         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/immunization-status|4.0.0&quot; ]
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/immunization-status|4.1.0&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -2472,7 +2506,7 @@
        fhir:index 3;
        fhir:Element.id [ fhir:value &quot;Immunization.statusReason&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.statusReason&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Reason not done&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Reason for current status&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Indicates the reason the immunization event was not performed.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for the status of \&quot;not-done\&quot;. The reason for performing the immunization event is captured in reasonCode, not here.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -2680,7 +2714,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.primarySource&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.primarySource&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Indicates context the data was recorded in&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;An indication that the content of the record is based on information from the person who administered the vaccine. This reflects the context under which the data was originally recorded.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Reflects the “reliability” of the content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
@@ -2691,29 +2725,52 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.reportedBoolean&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXA-9&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;immunization.uncertaintycode (if primary source=false, uncertainty=U)&quot; ]
        ]
      ], [
        fhir:index 10;
-       fhir:Element.id [ fhir:value &quot;Immunization.reportOrigin&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reportOrigin&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Indicates the source of a secondarily reported record&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;Should not be populated if primarySource = True, not required even if primarySource = False.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Immunization.informationSource[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Immunization.informationSource[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Indicates the source of a  reported record&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Typically the source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Typically will not be populated if primarySource = True, not required even if primarySource = False.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;;
+           fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;;
+           fhir:index 4
+         ]
        ];
        fhir:ElementDefinition.binding [
          fhir:Element.extension [
@@ -2727,14 +2784,18 @@
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;Event.reportedReference&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.source&quot; ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;v2&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;RXA-9&quot; ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported) .participation[typeCode=INF].role[classCode=LIC] (this syntax for health care professional) .participation[typeCode=INF].role[classCode=PRS] (this syntax for family member)&quot; ]
        ]
@@ -3067,7 +3128,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.reasonCode&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reasonCode&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why immunization occurred&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Reasons why the vaccine was administered.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Describes why the immunization occurred in coded or textual form.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3098,7 +3159,7 @@
        fhir:Element.id [ fhir:value &quot;Immunization.reasonReference&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Immunization.reasonReference&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why immunization occurred&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Condition, Observation or DiagnosticReport that supports why the immunization was administered.&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Indicates another resource (Condition, Observation or DiagnosticReport) whose existence justifies this immunization.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3583,13 +3644,14 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        &reg;© HL7.org 2011+. FHIR Release 4 Candidate (v4.0.0-ea3f1df149) generated on Fri, Mar 1, 2019 07:28-0600. <a  style="color: #ffffff" href="qa.html">QA Page</a>
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 35b45b2412) generated on Wed, May 29, 2019 10:49-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
                <a style="color: #b8dcf9" href="history.html">Version History</a> | 
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
-               <a style="color: #b8dcf9" href="credits.html">Credits</a> | 
+               <a style="color: #ffffff" href="qa.html">QA Page</a> |
+<!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
                <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fimmunization.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fimmunization.profile.ttl.html">Compare to R3</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   

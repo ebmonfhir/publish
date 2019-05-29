@@ -9,13 +9,8 @@
       <status value="active"/>
       <description value="Type options for Communication.payload.content[x]"/>
       <expansion>
-        <identifier value="urn:uuid:ca219800-bdbd-4f13-97a0-46f450acb319"/>
-        <timestamp value="2019-03-01T07:28:09-06:00"/>
-        <contains>
-          <system value="http://hl7.org/fhir/data-types"/>
-          <code value="string"/>
-          <display value="string"/>
-        </contains>
+        <identifier value="urn:uuid:ac01c2ec-06ff-40eb-88b6-79498a8430a6"/>
+        <timestamp value="2019-05-29T10:48:26-05:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Attachment"/>
@@ -26,15 +21,20 @@
           <code value="Resource"/>
           <display value="Resource"/>
         </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
+        </contains>
       </expansion>
     </ValueSet>
   </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
-  <version value="4.0.0"/>
+  <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-03-01T07:26:01-06:00"/>
+  <date value="2019-05-29T10:45:36-05:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="Communication"/>
@@ -52,7 +52,7 @@
           </coding>
         </valueCodeableConcept>
       </extension>
-      <text value="An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition."/>
+      <text value="An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition."/>
       <type value="display"/>
     </item>
     <item>
@@ -790,7 +790,7 @@
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="Communication.encounter.value"/>
-        <text value="Encounter created as part of"/>
+        <text value="The Encounter during which this Communication was created"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -883,7 +883,7 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Device, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson, Group, CareTeam, HealthcareService"/>
+          <valueCode value="CareTeam, Device, Group, HealthcareService, Location, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -993,7 +993,7 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="Condition, Observation, DiagnosticReport, DocumentReference"/>
+          <valueCode value="Resource"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -1118,7 +1118,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="A communicated content (or for multi-part communications, one portion of the communication)."/>
+          <text value="A communicated content (or for multi-part communications, one portion of the communication). When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content."/>
           <type value="display"/>
         </item>
         <item>
@@ -1128,19 +1128,6 @@
           <required value="false"/>
           <repeats value="false"/>
           <answerValueSet value="#vs2"/>
-          <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-              <valueString value="string"/>
-            </extension>
-            <linkId value="Communication.payload.content[x]._null"/>
-            <type value="group"/>
-            <item>
-              <linkId value="Communication.payload.content[x]._null.value"/>
-              <type value="string"/>
-              <required value="false"/>
-              <repeats value="false"/>
-            </item>
-          </item>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
               <valueString value="Attachment"/>
@@ -1163,6 +1150,27 @@
               </extension>
               <linkId value="Communication.payload.content[x]._null.value"/>
               <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="CodeableConcept"/>
+            </extension>
+            <linkId value="Communication.payload.content[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="Communication.payload.content[x]._null.coding"/>
+              <text value="code:"/>
+              <type value="open-choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="Communication.payload.content[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
               <required value="false"/>
               <repeats value="false"/>
             </item>

@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationStatement.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:e8c51911-a04e-4d37-b88d-395d9680a980",
-      "timestamp" : "2019-03-01T07:28:40-06:00",
+      "identifier" : "urn:uuid:e609157f-93ad-4a89-b1ef-4055486b1d92",
+      "timestamp" : "2019-05-07T18:49:53-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationStatement.effective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:6466b1a6-85af-43b0-932d-916e9b98a757",
-      "timestamp" : "2019-03-01T07:28:40-06:00",
+      "identifier" : "urn:uuid:447076ae-6dbd-4dcd-b142-3d04af4d3b5b",
+      "timestamp" : "2019-05-07T18:49:53-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -46,9 +46,9 @@
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-07T18:46:41-04:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationStatement",
@@ -670,7 +670,7 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "Reference"
       }],
-      "linkId" : "MedicationStatement.context",
+      "linkId" : "MedicationStatement.encounter",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -685,20 +685,20 @@
             }]
           }
         }],
-        "text" : "The encounter or episode of care that establishes the context for this MedicationStatement.",
+        "text" : "The encounter that establishes the context for this MedicationStatement.",
         "type" : "display"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Encounter, EpisodeOfCare"
+          "valueCode" : "Encounter"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "MedicationStatement.context.value",
-        "text" : "Encounter / Episode associated with MedicationStatement",
+        "linkId" : "MedicationStatement.encounter.value",
+        "text" : "Encounter associated with MedicationStatement",
         "type" : "reference",
         "required" : false,
         "repeats" : false
@@ -1016,6 +1016,41 @@
         }],
         "text" : "Indicates how the medication is/was or should be taken by the patient.",
         "type" : "display"
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "boolean"
+      }],
+      "linkId" : "MedicationStatement.takenAsOrdered",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Indicates if the medication is being consumed or administered as prescribed.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "MedicationStatement.takenAsOrdered.value",
+        "text" : "Indicates if the medication is being consumed or administered as prescribed",
+        "type" : "boolean",
+        "required" : false,
+        "repeats" : false
       }]
     }]
   }]

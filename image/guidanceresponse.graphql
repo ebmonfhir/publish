@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type GuidanceResponse {
   id: ID
@@ -28,119 +28,119 @@ type GuidanceResponse {
   dataRequirement: [DataRequirement]
 }
 
-input GuidanceResponse {
+input GuidanceResponseInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  requestIdentifier: Identifier
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  requestIdentifier: IdentifierInput
+  identifier: [IdentifierInput]
   moduleUri: uri  _moduleUri: ElementBase
   moduleCanonical: canonical  _moduleCanonical: ElementBase
-  moduleCodeableConcept: CodeableConcept
+  moduleCodeableConcept: CodeableConceptInput
   status: code  _status: ElementBase
-  subject: Reference
-  encounter: Reference
+  subject: ReferenceInput
+  encounter: ReferenceInput
   occurrenceDateTime: dateTime  _occurrenceDateTime: ElementBase
-  performer: Reference
-  reasonCode: [CodeableConcept]
-  reasonReference: [Reference]
-  note: [Annotation]
-  evaluationMessage: [Reference]
-  outputParameters: Reference
-  result: Reference
-  dataRequirement: [DataRequirement]
+  performer: ReferenceInput
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  note: [AnnotationInput]
+  evaluationMessage: [ReferenceInput]
+  outputParameters: ReferenceInput
+  result: ReferenceInput
+  dataRequirement: [DataRequirementInput]
 }
 
 type GuidanceResponseReadType {
-  GuidanceResponse(id : ID!) : GuidanceResponse
+  GuidanceResponse(id: ID!): GuidanceResponse
 }
 
 type GuidanceResponseListType {
-  GuidanceResponseList(_filter : String
-    identifier : [token]
-    patient : [reference]
-    request : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [GuidanceResponse]
+  GuidanceResponseList(_filter: String
+    identifier: [token]
+    patient: [reference]
+    request: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [GuidanceResponse]
 }
 
 type GuidanceResponseConnectionType {
-  GuidanceResponseConection(_filter : String
-    identifier : [token]
-    patient : [reference]
-    request : [token]
-    subject : [reference]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : GuidanceResponseConnection
+  GuidanceResponseConection(_filter: String
+    identifier: [token]
+    patient: [reference]
+    request: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): GuidanceResponseConnection
 }
 
 type GuidanceResponseConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [GuidanceResponseEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [GuidanceResponseEdge]
 }
 
 type GuidanceResponseEdge {
-  mode : String
-  score : Float
-  resource : GuidanceResponse
+  mode: String
+  score: Float
+  resource: GuidanceResponse
 }
 
 type GuidanceResponseCreateType {
-  GuidanceResponseCreate(resource : GuidanceResponse) : GuidanceResponseCreation
+  GuidanceResponseCreate(resource: GuidanceResponseInput): GuidanceResponseCreation
 }
 
 type GuidanceResponseCreation {
-  location : String
-  resource : GuidanceResponse
-  information : OperationOutcome
+  location: String
+  resource: GuidanceResponse
+  information: OperationOutcome
 }
 
 type GuidanceResponseUpdateType {
-  GuidanceResponseUpdate(id : IDresource : GuidanceResponse) : GuidanceResponseUpdate
+  GuidanceResponseUpdate(id: ID, resource: GuidanceResponseInput): GuidanceResponseUpdate
 }
 
 type GuidanceResponseUpdate {
-  resource : GuidanceResponse
-  information : OperationOutcome
+  resource: GuidanceResponse
+  information: OperationOutcome
 }
 
 type GuidanceResponseDeleteType {
-  GuidanceResponseDelete(id : ID) : GuidanceResponseDelete
+  GuidanceResponseDelete(id: ID): GuidanceResponseDelete
 }
 
 type GuidanceResponseDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

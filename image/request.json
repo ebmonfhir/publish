@@ -10,11 +10,11 @@
     "valueCode" : "informative"
   }],
   "url" : "http://hl7.org/fhir/StructureDefinition/Request",
-  "version" : "4.0.0",
+  "version" : "4.1.0",
   "name" : "Request",
   "title" : "request",
   "status" : "draft",
-  "date" : "2019-03-01T07:26:01-06:00",
+  "date" : "2019-05-29T10:45:36-05:00",
   "publisher" : "Health Level Seven International fhir",
   "contact" : [{
     "telecom" : [{
@@ -23,7 +23,7 @@
     }]
   }],
   "description" : "Logical Model: A pattern to be followed by resources that represent a specific proposal, plan and/or order for some sort of action or service.",
-  "fhirVersion" : "4.0.0",
+  "fhirVersion" : "4.1.0",
   "mapping" : [{
     "identity" : "v2",
     "uri" : "http://hl7.org/v2",
@@ -111,7 +111,19 @@
       },
       "type" : [{
         "code" : "canonical",
-        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Definition"]
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
+        "http://hl7.org/fhir/StructureDefinition/EffectEvidenceSynthesis",
+        "http://hl7.org/fhir/StructureDefinition/EventDefinition",
+        "http://hl7.org/fhir/StructureDefinition/Evidence",
+        "http://hl7.org/fhir/StructureDefinition/EvidenceVariable",
+        "http://hl7.org/fhir/StructureDefinition/Measure",
+        "http://hl7.org/fhir/StructureDefinition/OperationDefinition",
+        "http://hl7.org/fhir/StructureDefinition/PlanDefinition",
+        "http://hl7.org/fhir/StructureDefinition/Questionnaire",
+        "http://hl7.org/fhir/StructureDefinition/ResearchDefinition",
+        "http://hl7.org/fhir/StructureDefinition/ResearchElementDefinition",
+        "http://hl7.org/fhir/StructureDefinition/RiskEvidenceSynthesis",
+        "http://hl7.org/fhir/StructureDefinition/Statistic"]
       }],
       "isModifier" : false,
       "isSummary" : true,
@@ -168,7 +180,22 @@
       },
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Request"]
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Appointment",
+        "http://hl7.org/fhir/StructureDefinition/AppointmentResponse",
+        "http://hl7.org/fhir/StructureDefinition/CarePlan",
+        "http://hl7.org/fhir/StructureDefinition/Claim",
+        "http://hl7.org/fhir/StructureDefinition/CommunicationRequest",
+        "http://hl7.org/fhir/StructureDefinition/Contract",
+        "http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest",
+        "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+        "http://hl7.org/fhir/StructureDefinition/EnrollmentRequest",
+        "http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation",
+        "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+        "http://hl7.org/fhir/StructureDefinition/NutritionOrder",
+        "http://hl7.org/fhir/StructureDefinition/RequestGroup",
+        "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+        "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
+        "http://hl7.org/fhir/StructureDefinition/VisionPrescription"]
       }],
       "isModifier" : false,
       "isSummary" : true,
@@ -200,7 +227,22 @@
       },
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Request"]
+        "targetProfile" : ["http://hl7.org/fhir/StructureDefinition/Appointment",
+        "http://hl7.org/fhir/StructureDefinition/AppointmentResponse",
+        "http://hl7.org/fhir/StructureDefinition/CarePlan",
+        "http://hl7.org/fhir/StructureDefinition/Claim",
+        "http://hl7.org/fhir/StructureDefinition/CommunicationRequest",
+        "http://hl7.org/fhir/StructureDefinition/Contract",
+        "http://hl7.org/fhir/StructureDefinition/CoverageEligibilityRequest",
+        "http://hl7.org/fhir/StructureDefinition/DeviceRequest",
+        "http://hl7.org/fhir/StructureDefinition/EnrollmentRequest",
+        "http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation",
+        "http://hl7.org/fhir/StructureDefinition/MedicationRequest",
+        "http://hl7.org/fhir/StructureDefinition/NutritionOrder",
+        "http://hl7.org/fhir/StructureDefinition/RequestGroup",
+        "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+        "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
+        "http://hl7.org/fhir/StructureDefinition/VisionPrescription"]
       }],
       "isModifier" : false,
       "isSummary" : true,
@@ -269,7 +311,7 @@
         }],
         "strength" : "required",
         "description" : "Codes identifying the lifecycle stage of a request.",
-        "valueSet" : "http://hl7.org/fhir/ValueSet/request-status|4.0.0"
+        "valueSet" : "http://hl7.org/fhir/ValueSet/request-status|4.1.0"
       },
       "mapping" : [{
         "identity" : "v2",
@@ -345,7 +387,7 @@
         }],
         "strength" : "required",
         "description" : "Codes indicating the degree of authority/intentionality associated with a request.",
-        "valueSet" : "http://hl7.org/fhir/ValueSet/request-intent|4.0.0"
+        "valueSet" : "http://hl7.org/fhir/ValueSet/request-intent|4.1.0"
       },
       "mapping" : [{
         "identity" : "v2",
@@ -385,7 +427,7 @@
         }],
         "strength" : "required",
         "description" : "Identifies the level of importance to be assigned to actioning the request.",
-        "valueSet" : "http://hl7.org/fhir/ValueSet/request-priority|4.0.0"
+        "valueSet" : "http://hl7.org/fhir/ValueSet/request-priority|4.1.0"
       },
       "mapping" : [{
         "identity" : "v2",

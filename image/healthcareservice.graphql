@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type HealthcareService {
   id: ID
@@ -61,168 +61,168 @@ type HealthcareServiceNotAvailable {
   during: Period
 }
 
-input HealthcareService {
+input HealthcareServiceInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   active: Boolean  _active: ElementBase
-  providedBy: Reference
-  category: [CodeableConcept]
-  type: [CodeableConcept]
-  specialty: [CodeableConcept]
-  location: [Reference]
+  providedBy: ReferenceInput
+  category: [CodeableConceptInput]
+  type: [CodeableConceptInput]
+  specialty: [CodeableConceptInput]
+  location: [ReferenceInput]
   name: String  _name: ElementBase
   comment: String  _comment: ElementBase
   extraDetails: markdown  _extraDetails: ElementBase
-  photo: Attachment
-  telecom: [ContactPoint]
-  coverageArea: [Reference]
-  serviceProvisionCode: [CodeableConcept]
-  eligibility: [HealthcareServiceEligibility]
-  program: [CodeableConcept]
-  characteristic: [CodeableConcept]
-  communication: [CodeableConcept]
-  referralMethod: [CodeableConcept]
+  photo: AttachmentInput
+  telecom: [ContactPointInput]
+  coverageArea: [ReferenceInput]
+  serviceProvisionCode: [CodeableConceptInput]
+  eligibility: [HealthcareServiceEligibilityInput]
+  program: [CodeableConceptInput]
+  characteristic: [CodeableConceptInput]
+  communication: [CodeableConceptInput]
+  referralMethod: [CodeableConceptInput]
   appointmentRequired: Boolean  _appointmentRequired: ElementBase
-  availableTime: [HealthcareServiceAvailableTime]
-  notAvailable: [HealthcareServiceNotAvailable]
+  availableTime: [HealthcareServiceAvailableTimeInput]
+  notAvailable: [HealthcareServiceNotAvailableInput]
   availabilityExceptions: String  _availabilityExceptions: ElementBase
-  endpoint: [Reference]
+  endpoint: [ReferenceInput]
 }
 
-input HealthcareServiceEligibility {
+input HealthcareServiceEligibilityInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  code: CodeableConcept
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: CodeableConceptInput
   comment: markdown  _comment: ElementBase
 }
 
-input HealthcareServiceAvailableTime {
+input HealthcareServiceAvailableTimeInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   daysOfWeek: code  _daysOfWeek: [ElementBase]
   allDay: Boolean  _allDay: ElementBase
   availableStartTime: time  _availableStartTime: ElementBase
   availableEndTime: time  _availableEndTime: ElementBase
 }
 
-input HealthcareServiceNotAvailable {
+input HealthcareServiceNotAvailableInput {
   id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
-  during: Period
+  during: PeriodInput
 }
 
 type HealthcareServiceReadType {
-  HealthcareService(id : ID!) : HealthcareService
+  HealthcareService(id: ID!): HealthcareService
 }
 
 type HealthcareServiceListType {
-  HealthcareServiceList(_filter : String
-    active : [token]
-    characteristic : [token]
-    coverage_area : [reference]
-    endpoint : [reference]
-    identifier : [token]
-    location : [reference]
-    name : [String]
-    organization : [reference]
-    program : [token]
-    service_category : [token]
-    service_type : [token]
-    specialty : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [HealthcareService]
+  HealthcareServiceList(_filter: String
+    active: [token]
+    characteristic: [token]
+    coverage_area: [reference]
+    endpoint: [reference]
+    identifier: [token]
+    location: [reference]
+    name: [String]
+    organization: [reference]
+    program: [token]
+    service_category: [token]
+    service_type: [token]
+    specialty: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [HealthcareService]
 }
 
 type HealthcareServiceConnectionType {
-  HealthcareServiceConection(_filter : String
-    active : [token]
-    characteristic : [token]
-    coverage_area : [reference]
-    endpoint : [reference]
-    identifier : [token]
-    location : [reference]
-    name : [String]
-    organization : [reference]
-    program : [token]
-    service_category : [token]
-    service_type : [token]
-    specialty : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : HealthcareServiceConnection
+  HealthcareServiceConection(_filter: String
+    active: [token]
+    characteristic: [token]
+    coverage_area: [reference]
+    endpoint: [reference]
+    identifier: [token]
+    location: [reference]
+    name: [String]
+    organization: [reference]
+    program: [token]
+    service_category: [token]
+    service_type: [token]
+    specialty: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): HealthcareServiceConnection
 }
 
 type HealthcareServiceConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [HealthcareServiceEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [HealthcareServiceEdge]
 }
 
 type HealthcareServiceEdge {
-  mode : String
-  score : Float
-  resource : HealthcareService
+  mode: String
+  score: Float
+  resource: HealthcareService
 }
 
 type HealthcareServiceCreateType {
-  HealthcareServiceCreate(resource : HealthcareService) : HealthcareServiceCreation
+  HealthcareServiceCreate(resource: HealthcareServiceInput): HealthcareServiceCreation
 }
 
 type HealthcareServiceCreation {
-  location : String
-  resource : HealthcareService
-  information : OperationOutcome
+  location: String
+  resource: HealthcareService
+  information: OperationOutcome
 }
 
 type HealthcareServiceUpdateType {
-  HealthcareServiceUpdate(id : IDresource : HealthcareService) : HealthcareServiceUpdate
+  HealthcareServiceUpdate(id: ID, resource: HealthcareServiceInput): HealthcareServiceUpdate
 }
 
 type HealthcareServiceUpdate {
-  resource : HealthcareService
-  information : OperationOutcome
+  resource: HealthcareService
+  information: OperationOutcome
 }
 
 type HealthcareServiceDeleteType {
-  HealthcareServiceDelete(id : ID) : HealthcareServiceDelete
+  HealthcareServiceDelete(id: ID): HealthcareServiceDelete
 }
 
 type HealthcareServiceDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 

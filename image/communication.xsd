@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Mar 1, 2019 07:26-0600 for FHIR v4.0.0 
+  Generated on Wed, May 29, 2019 10:45-0500 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Communication" type="Communication">
     <xs:annotation>
-      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.</xs:documentation>
+      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Communication">
     <xs:annotation>
-      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.</xs:documentation>
+      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -170,7 +170,7 @@
   </xs:complexType>
   <xs:complexType name="Communication.Payload">
     <xs:annotation>
-      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.</xs:documentation>
+      <xs:documentation xml:lang="en">An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -179,9 +179,9 @@
             <xs:annotation>
               <xs:documentation xml:lang="en">A communicated content (or for multi-part communications, one portion of the communication).</xs:documentation>
             </xs:annotation>
-            <xs:element name="contentString" type="string"/>
             <xs:element name="contentAttachment" type="Attachment"/>
             <xs:element name="contentReference" type="Reference"/>
+            <xs:element name="contentCodeableConcept" type="CodeableConcept"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>

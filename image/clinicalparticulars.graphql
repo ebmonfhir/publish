@@ -1,0 +1,244 @@
+# FHIR GraphQL Schema. Version 4.1.0
+
+type ClinicalParticulars {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: code  _type: ElementBase
+  subject: [Reference]
+  description: String  _description: ElementBase
+  contraindication: ClinicalParticularsContraindication
+  indication: ClinicalParticularsIndication
+  interaction: ClinicalParticularsInteraction
+  population: [Population]
+  undesirableEffect: ClinicalParticularsUndesirableEffect
+}
+
+type ClinicalParticularsContraindication {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  diseaseSymptomProcedure: CodeableConcept
+  diseaseStatus: CodeableConcept
+  comorbidity: [CodeableConcept]
+  indication: [Reference]
+  otherTherapy: [ClinicalParticularsContraindicationOtherTherapy]
+}
+
+type ClinicalParticularsContraindicationOtherTherapy {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  therapyRelationshipType: CodeableConcept!
+  medicationCodeableConcept: CodeableConcept
+  medicationReference: Reference
+}
+
+type ClinicalParticularsIndication {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  diseaseSymptomProcedure: CodeableConcept
+  diseaseStatus: CodeableConcept
+  comorbidity: [CodeableConcept]
+  intendedEffect: CodeableConcept
+  duration: Quantity
+  undesirableEffect: [Reference]
+  otherTherapy: [ClinicalParticularsContraindicationOtherTherapy]
+}
+
+type ClinicalParticularsInteraction {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  interactant: [ClinicalParticularsInteractionInteractant]
+  type: CodeableConcept
+  effect: CodeableConcept
+  incidence: CodeableConcept
+  management: CodeableConcept
+}
+
+type ClinicalParticularsInteractionInteractant {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  itemReference: Reference
+  itemCodeableConcept: CodeableConcept
+}
+
+type ClinicalParticularsUndesirableEffect {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  symptomConditionEffect: CodeableConcept
+  classification: CodeableConcept
+  frequencyOfOccurrence: CodeableConcept
+}
+
+input ClinicalParticularsInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: code  _type: ElementBase
+  subject: [ReferenceInput]
+  description: String  _description: ElementBase
+  contraindication: ClinicalParticularsContraindicationInput
+  indication: ClinicalParticularsIndicationInput
+  interaction: ClinicalParticularsInteractionInput
+  population: [PopulationInput]
+  undesirableEffect: ClinicalParticularsUndesirableEffectInput
+}
+
+input ClinicalParticularsContraindicationInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  diseaseSymptomProcedure: CodeableConceptInput
+  diseaseStatus: CodeableConceptInput
+  comorbidity: [CodeableConceptInput]
+  indication: [ReferenceInput]
+  otherTherapy: [ClinicalParticularsContraindicationOtherTherapyInput]
+}
+
+input ClinicalParticularsContraindicationOtherTherapyInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  therapyRelationshipType: CodeableConceptInput!
+  medicationCodeableConcept: CodeableConceptInput
+  medicationReference: ReferenceInput
+}
+
+input ClinicalParticularsIndicationInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  diseaseSymptomProcedure: CodeableConceptInput
+  diseaseStatus: CodeableConceptInput
+  comorbidity: [CodeableConceptInput]
+  intendedEffect: CodeableConceptInput
+  duration: QuantityInput
+  undesirableEffect: [ReferenceInput]
+  otherTherapy: [ClinicalParticularsContraindicationOtherTherapy]
+}
+
+input ClinicalParticularsInteractionInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  interactant: [ClinicalParticularsInteractionInteractantInput]
+  type: CodeableConceptInput
+  effect: CodeableConceptInput
+  incidence: CodeableConceptInput
+  management: CodeableConceptInput
+}
+
+input ClinicalParticularsInteractionInteractantInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  itemReference: ReferenceInput
+  itemCodeableConcept: CodeableConceptInput
+}
+
+input ClinicalParticularsUndesirableEffectInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  symptomConditionEffect: CodeableConceptInput
+  classification: CodeableConceptInput
+  frequencyOfOccurrence: CodeableConceptInput
+}
+
+type ClinicalParticularsReadType {
+  ClinicalParticulars(id: ID!): ClinicalParticulars
+}
+
+type ClinicalParticularsListType {
+  ClinicalParticularsList(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [ClinicalParticulars]
+}
+
+type ClinicalParticularsConnectionType {
+  ClinicalParticularsConection(_filter: String
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): ClinicalParticularsConnection
+}
+
+type ClinicalParticularsConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [ClinicalParticularsEdge]
+}
+
+type ClinicalParticularsEdge {
+  mode: String
+  score: Float
+  resource: ClinicalParticulars
+}
+
+type ClinicalParticularsCreateType {
+  ClinicalParticularsCreate(resource: ClinicalParticularsInput): ClinicalParticularsCreation
+}
+
+type ClinicalParticularsCreation {
+  location: String
+  resource: ClinicalParticulars
+  information: OperationOutcome
+}
+
+type ClinicalParticularsUpdateType {
+  ClinicalParticularsUpdate(id: ID, resource: ClinicalParticularsInput): ClinicalParticularsUpdate
+}
+
+type ClinicalParticularsUpdate {
+  resource: ClinicalParticulars
+  information: OperationOutcome
+}
+
+type ClinicalParticularsDeleteType {
+  ClinicalParticularsDelete(id: ID): ClinicalParticularsDelete
+}
+
+type ClinicalParticularsDelete {
+  information: OperationOutcome
+}
+

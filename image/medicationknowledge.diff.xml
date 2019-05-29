@@ -1,4 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <difference>
-   <type name="MedicationKnowledge" status="new"/>
+   <type name="MedicationKnowledge" status="changed">
+      <element path="MedicationKnowledge.identifier" status="new"/>
+      <element binding-status="changed"
+               binding-valueset-changed="true"
+               path="MedicationKnowledge.status">
+         <old-binding reference="http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.0.0"
+                      strength="required"/>
+         <new-binding reference="http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0"
+                      strength="required"/>
+      </element>
+      <element path="MedicationKnowledge.device" status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline" status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.dosage" status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.dosage.type"
+               status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.dosage.dosage"
+               status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.indication[x]"
+               status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.patientCharacteristic"
+               status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.patientCharacteristic.characteristic[x]"
+               status="new"/>
+      <element path="MedicationKnowledge.administrationGuideline.patientCharacteristic.value"
+               status="new"/>
+      <element path="MedicationKnowledge.packaging.device" status="new"/>
+      <element path="MedicationKnowledge.packaging.material" status="new"/>
+      <element path="MedicationKnowledge.packaging.packaging" status="new"/>
+      <element path="MedicationKnowledge.drugCharacteristic.value[x]">
+         <removed-type name="Quantity()"/>
+         <added-type name="Quantity()"/>
+      </element>
+      <element path="MedicationKnowledge.clinicalUseIssue" status="new"/>
+      <element path="MedicationKnowledge.kineticCharacteristic" status="new"/>
+      <element path="MedicationKnowledge.kineticCharacteristic.type" status="new"/>
+      <element path="MedicationKnowledge.kineticCharacteristic.value[x]" status="new"/>
+      <element path="MedicationKnowledge.administrationGuidelines" status="deleted"/>
+      <element path="MedicationKnowledge.contraindication" status="deleted"/>
+      <element path="MedicationKnowledge.kinetics" status="deleted"/>
+   </type>
 </difference>

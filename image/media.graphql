@@ -1,4 +1,4 @@
-# FHIR GraphQL Schema. Version 4.0.0
+# FHIR GraphQL Schema. Version 4.1.0
 
 type Media {
   id: ID
@@ -34,143 +34,143 @@ type Media {
   note: [Annotation]
 }
 
-input Media {
+input MediaInput {
   id: ID
-  meta: Meta
+  meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
-  text: Narrative
-  contained: [Resource]
-  extension: [Extension]
-  modifierExtension: [Extension]
-  identifier: [Identifier]
-  basedOn: [Reference]
-  partOf: [Reference]
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
+  partOf: [ReferenceInput]
   status: code  _status: ElementBase
-  type: CodeableConcept
-  modality: CodeableConcept
-  view: CodeableConcept
-  subject: Reference
-  encounter: Reference
+  type: CodeableConceptInput
+  modality: CodeableConceptInput
+  view: CodeableConceptInput
+  subject: ReferenceInput
+  encounter: ReferenceInput
   createdDateTime: dateTime  _createdDateTime: ElementBase
-  createdPeriod: Period
+  createdPeriod: PeriodInput
   issued: instant  _issued: ElementBase
-  operator: Reference
-  reasonCode: [CodeableConcept]
-  bodySite: CodeableConcept
+  operator: ReferenceInput
+  reasonCode: [CodeableConceptInput]
+  bodySite: CodeableConceptInput
   deviceName: String  _deviceName: ElementBase
-  device: Reference
+  device: ReferenceInput
   height: positiveInt  _height: ElementBase
   width: positiveInt  _width: ElementBase
   frames: positiveInt  _frames: ElementBase
   duration: decimal  _duration: ElementBase
-  content: Attachment!
-  note: [Annotation]
+  content: AttachmentInput!
+  note: [AnnotationInput]
 }
 
 type MediaReadType {
-  Media(id : ID!) : Media
+  Media(id: ID!): Media
 }
 
 type MediaListType {
-  MediaList(_filter : String
-    based_on : [reference]
-    created : [date]
-    device : [reference]
-    encounter : [reference]
-    identifier : [token]
-    modality : [token]
-    operator : [reference]
-    patient : [reference]
-    site : [token]
-    status : [token]
-    subject : [reference]
-    type : [token]
-    view : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : [Media]
+  MediaList(_filter: String
+    based_on: [reference]
+    created: [date]
+    device: [reference]
+    encounter: [reference]
+    identifier: [token]
+    modality: [token]
+    operator: [reference]
+    patient: [reference]
+    site: [token]
+    status: [token]
+    subject: [reference]
+    type: [token]
+    view: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Media]
 }
 
 type MediaConnectionType {
-  MediaConection(_filter : String
-    based_on : [reference]
-    created : [date]
-    device : [reference]
-    encounter : [reference]
-    identifier : [token]
-    modality : [token]
-    operator : [reference]
-    patient : [reference]
-    site : [token]
-    status : [token]
-    subject : [reference]
-    type : [token]
-    view : [token]
-    _text : [String]
-    _content : [String]
-    _id : [token]
-    _lastUpdated : [date]
-    _profile : [reference]
-    _query : [token]
-    _security : [token]
-    _source : [uri]
-    _tag : [token]
-    _sort : String
-    _count : Int
-    _cursor : String) : MediaConnection
+  MediaConection(_filter: String
+    based_on: [reference]
+    created: [date]
+    device: [reference]
+    encounter: [reference]
+    identifier: [token]
+    modality: [token]
+    operator: [reference]
+    patient: [reference]
+    site: [token]
+    status: [token]
+    subject: [reference]
+    type: [token]
+    view: [token]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MediaConnection
 }
 
 type MediaConnection {
-  count : Int
-  offset : Int
-  pagesize : Int
-  first : ID
-  previous : ID
-  next : ID
-  last : ID
-  edges : [MediaEdge]
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MediaEdge]
 }
 
 type MediaEdge {
-  mode : String
-  score : Float
-  resource : Media
+  mode: String
+  score: Float
+  resource: Media
 }
 
 type MediaCreateType {
-  MediaCreate(resource : Media) : MediaCreation
+  MediaCreate(resource: MediaInput): MediaCreation
 }
 
 type MediaCreation {
-  location : String
-  resource : Media
-  information : OperationOutcome
+  location: String
+  resource: Media
+  information: OperationOutcome
 }
 
 type MediaUpdateType {
-  MediaUpdate(id : IDresource : Media) : MediaUpdate
+  MediaUpdate(id: ID, resource: MediaInput): MediaUpdate
 }
 
 type MediaUpdate {
-  resource : Media
-  information : OperationOutcome
+  resource: Media
+  information: OperationOutcome
 }
 
 type MediaDeleteType {
-  MediaDelete(id : ID) : MediaDelete
+  MediaDelete(id: ID): MediaDelete
 }
 
 type MediaDelete {
-  information : OperationOutcome
+  information: OperationOutcome
 }
 
