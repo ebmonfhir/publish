@@ -13,6 +13,10 @@ DomainResource (Period): start.hasValue().not() or end.hasValue().not() or (star
 DomainResource (Ratio): (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
 DomainResource (Reference): reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))
 DomainResource (ContactPoint): value.empty() or system.exists()
+DomainResource (OrderedDistribution): true
+DomainResource (OrderedDistribution): true
+DomainResource (OrderedDistribution): true
+DomainResource (OrderedDistribution): interval.count() = numberOfIntervals
 DomainResource (Timing.repeat): duration.empty() or durationUnit.exists()
 DomainResource (Timing.repeat): period.empty() or periodUnit.exists()
 DomainResource (Timing.repeat): duration.exists() implies duration >= 0
@@ -1799,18 +1803,6 @@ Specimen (Specimen): Specimen.status
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeTested.container.type
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.identifier
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeCollected
-Statistic (Statistic): Statistic.date
-Statistic (Statistic): Statistic.identifier
-Statistic (Statistic): (Statistic.useContext.value as Quantity) | (Statistic.useContext.value as Range)
-Statistic (Statistic): Statistic.useContext
-Statistic (Statistic): (Statistic.useContext.value as CodeableConcept)
-Statistic (Statistic): Statistic.description
-Statistic (Statistic): Statistic.useContext.code
-Statistic (Statistic): Statistic.title
-Statistic (Statistic): Statistic.version
-Statistic (Statistic): Statistic.url
-Statistic (Statistic): Statistic.useContext
-Statistic (Statistic): Statistic.status
 StructureDefinition (StructureDefinition): StructureDefinition.date
 StructureDefinition (StructureDefinition): StructureDefinition.useContext
 StructureDefinition (StructureDefinition): StructureDefinition.jurisdiction

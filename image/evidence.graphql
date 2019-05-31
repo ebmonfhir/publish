@@ -71,7 +71,7 @@ type EvidencePopulationEvidenceVariable {
   variableRole: code  _variableRole: ElementBase
   variableDefinition: Reference!
   statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollection]
-  distribution: markdown  _distribution: [ElementBase]
+  distribution: [OrderedDistribution]
   nestedVariable: [EvidencePopulationEvidenceVariableNestedVariable]
 }
 
@@ -83,7 +83,7 @@ type EvidencePopulationEvidenceVariableStatisticCollection {
   note: [Annotation]
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  statistic: markdown  _statistic: [ElementBase]
+  statistic: [Statistic]!
 }
 
 type EvidencePopulationEvidenceVariableNestedVariable {
@@ -106,7 +106,7 @@ type EvidencePopulationEvidenceVariableNestedVariableStatisticCollection {
   synthesisType: CodeableConcept
   studyType: CodeableConcept
   additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable]
-  statistic: markdown  _statistic: [ElementBase]
+  statistic: [Statistic]!
 }
 
 type EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable {
@@ -188,7 +188,7 @@ input EvidencePopulationEvidenceVariableInput {
   variableRole: code  _variableRole: ElementBase
   variableDefinition: ReferenceInput!
   statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollectionInput]
-  distribution: markdown  _distribution: [ElementBase]
+  distribution: [OrderedDistributionInput]
   nestedVariable: [EvidencePopulationEvidenceVariableNestedVariableInput]
 }
 
@@ -200,7 +200,7 @@ input EvidencePopulationEvidenceVariableStatisticCollectionInput {
   note: [AnnotationInput]
   synthesisType: CodeableConceptInput
   studyType: CodeableConceptInput
-  statistic: markdown  _statistic: [ElementBase]
+  statistic: [StatisticInput]!
 }
 
 input EvidencePopulationEvidenceVariableNestedVariableInput {
@@ -223,7 +223,7 @@ input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionInput {
   synthesisType: CodeableConceptInput
   studyType: CodeableConceptInput
   additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput]
-  statistic: markdown  _statistic: [ElementBase]
+  statistic: [StatisticInput]!
 }
 
 input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput {

@@ -1292,6 +1292,44 @@ input NarrativeInput {
   div: xhtml  _div: ElementBase
 }
 
+type OrderedDistribution {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  numberOfIntervals: Int  _numberOfIntervals: ElementBase
+  note: [Annotation]
+  minimum: Quantity
+  interval: [OrderedDistributionInterval]!
+  rankorder: Int  _rankorder: ElementBase
+}
+
+type OrderedDistributionInterval {
+  id: String
+  extension: [Extension]
+  maximum: Quantity
+  intervalStatistic: [Statistic]
+}
+
+input OrderedDistributionInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBase
+  numberOfIntervals: Int  _numberOfIntervals: ElementBase
+  note: [AnnotationInput]
+  minimum: QuantityInput
+  interval: [OrderedDistributionIntervalInput]!
+  rankorder: Int  _rankorder: ElementBase
+}
+
+input OrderedDistributionIntervalInput {
+  id: String
+  extension: [ExtensionInput]
+  maximum: QuantityInput
+  intervalStatistic: [StatisticInput]
+}
+
 type ParameterDefinition {
   id: String
   extension: [Extension]
@@ -1542,6 +1580,112 @@ input SignatureInput {
   targetFormat: code  _targetFormat: ElementBase
   sigFormat: code  _sigFormat: ElementBase
   data: base64Binary  _data: ElementBase
+}
+
+type Statistic {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  note: [Annotation]
+  statisticType: CodeableConcept
+  quantity: Quantity
+  sampleSize: StatisticSampleSize
+  precisionEstimate: [StatisticPrecisionEstimate]
+  certainty: [StatisticCertainty]
+}
+
+type StatisticSampleSize {
+  id: String
+  extension: [Extension]
+  description: String  _description: ElementBase
+  note: [Annotation]
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  knownDataCount: Int  _knownDataCount: ElementBase
+  numeratorCount: Int  _numeratorCount: ElementBase
+}
+
+type StatisticPrecisionEstimate {
+  id: String
+  extension: [Extension]
+  description: String  _description: ElementBase
+  note: [Annotation]
+  type: CodeableConcept
+  quantity: Quantity
+  level: decimal  _level: ElementBase
+  range: Range
+}
+
+type StatisticCertainty {
+  id: String
+  extension: [Extension]
+  description: String  _description: ElementBase
+  note: [Annotation]
+  rating: [CodeableConcept]
+  certaintySubcomponent: [StatisticCertaintyCertaintySubcomponent]
+}
+
+type StatisticCertaintyCertaintySubcomponent {
+  id: String
+  extension: [Extension]
+  description: String  _description: ElementBase
+  note: [Annotation]
+  type: [CodeableConcept]
+  rating: [CodeableConcept]
+}
+
+input StatisticInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: [AnnotationInput]
+  statisticType: CodeableConceptInput
+  quantity: QuantityInput
+  sampleSize: StatisticSampleSizeInput
+  precisionEstimate: [StatisticPrecisionEstimateInput]
+  certainty: [StatisticCertaintyInput]
+}
+
+input StatisticSampleSizeInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: [AnnotationInput]
+  numberOfStudies: Int  _numberOfStudies: ElementBase
+  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  knownDataCount: Int  _knownDataCount: ElementBase
+  numeratorCount: Int  _numeratorCount: ElementBase
+}
+
+input StatisticPrecisionEstimateInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: [AnnotationInput]
+  type: CodeableConceptInput
+  quantity: QuantityInput
+  level: decimal  _level: ElementBase
+  range: RangeInput
+}
+
+input StatisticCertaintyInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: [AnnotationInput]
+  rating: [CodeableConceptInput]
+  certaintySubcomponent: [StatisticCertaintyCertaintySubcomponentInput]
+}
+
+input StatisticCertaintyCertaintySubcomponentInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: [AnnotationInput]
+  type: [CodeableConceptInput]
+  rating: [CodeableConceptInput]
 }
 
 type SubstanceAmount {

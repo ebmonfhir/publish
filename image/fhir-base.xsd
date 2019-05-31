@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, May 29, 2019 10:45-0500 for FHIR v4.1.0 
+  Generated on Fri, May 31, 2019 09:15-0500 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -494,7 +494,6 @@
       <xs:element ref="Slot"/>
       <xs:element ref="Specimen"/>
       <xs:element ref="SpecimenDefinition"/>
-      <xs:element ref="Statistic"/>
       <xs:element ref="StructureDefinition"/>
       <xs:element ref="StructureMap"/>
       <xs:element ref="Subscription"/>
@@ -1672,6 +1671,201 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="Statistic">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A description of the content value of the statistic.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="statisticType" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Type of statistic.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Statistic value.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="sampleSize" type="Statistic.SampleSize" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Population sample size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="precisionEstimate" type="Statistic.PrecisionEstimate" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An estimate of the precision of the statistic.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="certainty" type="Statistic.Certainty" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A description of the certainty of the effect estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Statistic.PrecisionEstimate">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Human-readable summary of the estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnote or explanatory note about the estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="type" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The estimate type.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The precision value.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="level" type="decimal" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Use 95 for a 95% confidence interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="range" type="Range" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Lower bound of confidence interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Statistic.Certainty">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Human-readable summary of the certainty.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the resource.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="rating" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A rating of the certainty of the effect estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="certaintySubcomponent" type="Statistic.CertaintySubcomponent" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A description of a component of the overall certainty.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Statistic.CertaintySubcomponent">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Human-readable summary of the subcomponent.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the resource.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="type" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Type of subcomponent of certainty rating.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="rating" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A rating of a subcomponent of rating certainty.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Statistic.SampleSize">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Human-readable summary of population sample size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnote or explanatory note about the sample size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfStudies" type="integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Number of participants in the population.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfParticipants" type="integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the sample size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="knownDataCount" type="integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">TBD.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numeratorCount" type="integer" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">TBD.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="Coding">
     <xs:annotation>
       <xs:documentation xml:lang="en">A reference to a code defined by a terminology system.</xs:documentation>
@@ -1819,6 +2013,70 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           <xs:element name="denominator" type="Quantity" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">The value of the denominator.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OrderedDistribution">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">An ordered list (distribution) of statistics.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A description of the content value of the statistic.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfIntervals" type="integer" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Number of elements in interval array.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="minimum" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Bottom of first interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="interval" type="OrderedDistribution.Interval" minOccurs="1" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="rankorder" type="integer" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Relative order of interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OrderedDistribution.Interval">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">An ordered list (distribution) of statistics.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="maximum" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Top of interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="intervalStatistic" type="Statistic" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Interval statistic(s).</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
