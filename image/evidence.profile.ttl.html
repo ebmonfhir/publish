@@ -123,7 +123,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Evidence&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-31T13:21:05.565-05:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-06-04T14:04:39.144-05:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -153,7 +153,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Evidence&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-31T13:21:05-05:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-06-04T14:04:39-05:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Clinical Decision Support)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -210,7 +210,7 @@
        fhir:index 0;
        fhir:Element.id [ fhir:value &quot;Evidence&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;A collection of evidence focused statistics&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;A collection of evidence focused statistics, considered a summary of evidence&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The representation of a collection of statistics for a given population and set of evidence variables.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -748,7 +748,7 @@
        fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Evidence.useContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.useContext&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Use conte3xt&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Use contetxt&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;When multiple useContexts are specified, there is no expectation that all or any of the contexts apply.&quot; ];
        fhir:ElementDefinition.requirements [ fhir:value &quot;Assist in searching for appropriate content.&quot; ];
@@ -1099,8 +1099,8 @@
        fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Evidence.relatedArtifact&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.relatedArtifact&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Link to artifact associated with summary&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Link to artifact associated with summary.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Link or citation to artifact associated with the summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Link or citation to artifact associated with the summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1345,8 +1345,8 @@
        fhir:index 37;
        fhir:Element.id [ fhir:value &quot;Evidence.population.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of the particular summary&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of the particular summary.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description of population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description of population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1383,8 +1383,8 @@
        fhir:index 39;
        fhir:Element.id [ fhir:value &quot;Evidence.population.intendedCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.intendedCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence that the summary indirectly represents&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence that the summary indirectly represents.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1406,8 +1406,8 @@
        fhir:index 40;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence from which the sample was drawn&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence from which the sample was drawn.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Summary statistics describing the actual group for this population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Summary statistics describing the actual group for this population.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The target reference must conform to the CohortSummary profile.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
@@ -1430,8 +1430,8 @@
        fhir:index 41;
        fhir:Element.id [ fhir:value &quot;Evidence.population.actualCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.actualCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence that the summary directly reprresents&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence that the summary directly reprresents.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The actual group (ie list of members) for this population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The actual group (ie list of members) for this population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1453,8 +1453,8 @@
        fhir:index 42;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleSize&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleSize&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Sample description&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Sample description.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Sample size for the population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Sample size for the population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1578,8 +1578,8 @@
        fhir:index 46;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleSize.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleSize.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of the sample size&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of the sample size.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description of population sample&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description of population sample.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1846,8 +1846,8 @@
        fhir:index 57;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The definition of a nested variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The definition of a nested variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1869,8 +1869,8 @@
        fhir:index 58;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics associated with variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics associated with variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1994,8 +1994,8 @@
        fhir:index 62;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description related to the set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description related to the set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2032,8 +2032,8 @@
        fhir:index 64;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of synthesis statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of synthesis statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2090,8 +2090,8 @@
        fhir:index 66;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The statistic value(s)&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The statistic value(s).&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Values and parameters for a single statistic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Values and parameters for a single statistic.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2107,14 +2107,14 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 67;
-       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.distribution&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.distribution&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Ordered distribution&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Ordered distribution.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An ordered group of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An ordered group of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.distribution&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
@@ -2128,8 +2128,8 @@
        fhir:index 68;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Dependent evvidence variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Dependent evvidence variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2320,8 +2320,8 @@
        fhir:index 75;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The definition of a nested variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The definition of a nested variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2343,8 +2343,8 @@
        fhir:index 76;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics associated with variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics associated with variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2468,8 +2468,8 @@
        fhir:index 80;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description related to the set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description related to the set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2506,8 +2506,8 @@
        fhir:index 82;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of synthesis statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of synthesis statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2564,8 +2564,8 @@
        fhir:index 84;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional variables&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Additional variables.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2718,8 +2718,8 @@
        fhir:index 89;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Definition of additional variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of additional variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -2741,8 +2741,8 @@
        fhir:index 90;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The statistic value(s)&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The statistic value(s).&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Values and parameters for a single statistic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Values and parameters for a single statistic.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -2756,6 +2756,25 @@
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 91;
+       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An ordered group of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An ordered group of statistics.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;OrderedDistribution&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ]
   ];
   fhir:StructureDefinition.differential [
@@ -2763,7 +2782,7 @@
        fhir:index 0;
        fhir:Element.id [ fhir:value &quot;Evidence&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;A collection of evidence focused statistics&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;A collection of evidence focused statistics, considered a summary of evidence&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The representation of a collection of statistics for a given population and set of evidence variables.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
@@ -2961,7 +2980,7 @@
        fhir:index 8;
        fhir:Element.id [ fhir:value &quot;Evidence.useContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.useContext&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Use conte3xt&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Use contetxt&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;When multiple useContexts are specified, there is no expectation that all or any of the contexts apply.&quot; ];
        fhir:ElementDefinition.requirements [ fhir:value &quot;Assist in searching for appropriate content.&quot; ];
@@ -3146,8 +3165,8 @@
        fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Evidence.relatedArtifact&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.relatedArtifact&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Link to artifact associated with summary&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Link to artifact associated with summary.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Link or citation to artifact associated with the summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Link or citation to artifact associated with the summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3245,8 +3264,8 @@
        fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Evidence.population.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of the particular summary&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of the particular summary.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description of population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description of population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3269,8 +3288,8 @@
        fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Evidence.population.intendedCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.intendedCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence that the summary indirectly represents&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence that the summary indirectly represents.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3285,8 +3304,8 @@
        fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence from which the sample was drawn&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence from which the sample was drawn.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Summary statistics describing the actual group for this population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Summary statistics describing the actual group for this population.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The target reference must conform to the CohortSummary profile.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
@@ -3302,8 +3321,8 @@
        fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Evidence.population.actualCohort&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.actualCohort&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The evidence that the summary directly reprresents&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The evidence that the summary directly reprresents.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The actual group (ie list of members) for this population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The actual group (ie list of members) for this population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3318,8 +3337,8 @@
        fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleSize&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleSize&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Sample description&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Sample description.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Sample size for the population&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Sample size for the population.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3330,8 +3349,8 @@
        fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Evidence.population.sampleSize.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.sampleSize.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of the sample size&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of the sample size.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description of population sample&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description of population sample.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3436,8 +3455,8 @@
        fhir:index 37;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The definition of a nested variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The definition of a nested variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3453,8 +3472,8 @@
        fhir:index 38;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics associated with variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics associated with variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3465,8 +3484,8 @@
        fhir:index 39;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description related to the set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description related to the set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3489,8 +3508,8 @@
        fhir:index 41;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of synthesis statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of synthesis statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3533,8 +3552,8 @@
        fhir:index 43;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The statistic value(s)&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The statistic value(s).&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Values and parameters for a single statistic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Values and parameters for a single statistic.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3544,10 +3563,10 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 44;
-       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.distribution&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.distribution&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Ordered distribution&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Ordered distribution.&quot; ];
+       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An ordered group of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An ordered group of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3558,8 +3577,8 @@
        fhir:index 45;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Dependent evvidence variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Dependent evvidence variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3616,8 +3635,8 @@
        fhir:index 49;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The definition of a nested variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The definition of a nested variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3633,8 +3652,8 @@
        fhir:index 50;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics associated with variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics associated with variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3645,8 +3664,8 @@
        fhir:index 51;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Description of statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Description of statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Textual description related to the set of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Textual description related to the set of statistics.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3669,8 +3688,8 @@
        fhir:index 53;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The type of synthesis statistic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The type of synthesis statistic.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The particular type of synthesis if this is a synthesis summary.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3713,8 +3732,8 @@
        fhir:index 55;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Additional variables&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Additional variables.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3747,8 +3766,8 @@
        fhir:index 57;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Definition of additional variable&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of additional variable.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Definition of a variable related to the statistic(s)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Definition of a variable related to the statistic(s).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -3764,8 +3783,8 @@
        fhir:index 58;
        fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The statistic value(s)&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The statistic value(s).&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Values and parameters for a single statistic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Values and parameters for a single statistic.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3773,6 +3792,18 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Statistic&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 59;
+       fhir:Element.id [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;An ordered group of statistics&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An ordered group of statistics.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;OrderedDistribution&quot; ]
+       ]
      ]
   ] .
 
@@ -3803,7 +3834,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Tue, Jun 4, 2019 14:08-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -287,7 +287,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "relatedArtifact": {
-          "description": "Link to artifact associated with summary.",
+          "description": "Link or citation to artifact associated with the summary.",
           "items": {
             "$ref": "RelatedArtifact.schema.json#/definitions/RelatedArtifact"
           },
@@ -391,7 +391,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "description": {
-          "description": "Description of the particular summary.",
+          "description": "Textual description of population.",
           "$ref": "#/definitions/markdown"
         },
         "_description": {
@@ -406,19 +406,19 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "intendedCohort": {
-          "description": "The evidence that the summary indirectly represents.",
+          "description": "Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "sampleCohort": {
-          "description": "The evidence from which the sample was drawn.",
+          "description": "Summary statistics describing the actual group for this population.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "actualCohort": {
-          "description": "The evidence that the summary directly reprresents.",
+          "description": "The actual group (ie list of members) for this population.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "sampleSize": {
-          "description": "Sample description.",
+          "description": "Sample size for the population.",
           "items": {
             "$ref": "#/definitions/Evidence_SampleSize"
           },
@@ -456,7 +456,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "description": {
-          "description": "Description of the sample size.",
+          "description": "Textual description of population sample.",
           "$ref": "#/definitions/string"
         },
         "_description": {
@@ -537,25 +537,18 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "variableDefinition": {
-          "description": "The definition of a nested variable.",
+          "description": "Definition of a variable related to the statistic(s).",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "statisticCollection": {
-          "description": "Set of statistics associated with variable.",
+          "description": "Set of statistics.",
           "items": {
             "$ref": "#/definitions/Evidence_StatisticCollection"
           },
           "type": "array"
         },
-        "distribution": {
-          "description": "Ordered distribution.",
-          "items": {
-            "$ref": "OrderedDistribution.schema.json#/definitions/OrderedDistribution"
-          },
-          "type": "array"
-        },
         "nestedVariable": {
-          "description": "Dependent evvidence variable.",
+          "description": "An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.",
           "items": {
             "$ref": "#/definitions/Evidence_NestedVariable"
           },
@@ -589,7 +582,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "description": {
-          "description": "Description of statistic.",
+          "description": "Textual description related to the set of statistics.",
           "$ref": "#/definitions/markdown"
         },
         "_description": {
@@ -604,7 +597,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "synthesisType": {
-          "description": "The type of synthesis statistic.",
+          "description": "The particular type of synthesis if this is a synthesis summary.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "studyType": {
@@ -612,9 +605,16 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "statistic": {
-          "description": "The statistic value(s).",
+          "description": "Values and parameters for a single statistic.",
           "items": {
             "$ref": "Statistic.schema.json#/definitions/Statistic"
+          },
+          "type": "array"
+        },
+        "distribution": {
+          "description": "An ordered group of statistics.",
+          "items": {
+            "$ref": "OrderedDistribution.schema.json#/definitions/OrderedDistribution"
           },
           "type": "array"
         }
@@ -672,11 +672,11 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "variableDefinition": {
-          "description": "The definition of a nested variable.",
+          "description": "Definition of a variable related to the statistic(s).",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "statisticCollection": {
-          "description": "Set of statistics associated with variable.",
+          "description": "Set of statistics.",
           "items": {
             "$ref": "#/definitions/Evidence_StatisticCollection1"
           },
@@ -710,7 +710,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "description": {
-          "description": "Description of statistic.",
+          "description": "Textual description related to the set of statistics.",
           "$ref": "#/definitions/markdown"
         },
         "_description": {
@@ -725,7 +725,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "type": "array"
         },
         "synthesisType": {
-          "description": "The type of synthesis statistic.",
+          "description": "The particular type of synthesis if this is a synthesis summary.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "studyType": {
@@ -733,16 +733,23 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "additionalVariable": {
-          "description": "Additional variables.",
+          "description": "An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.",
           "items": {
             "$ref": "#/definitions/Evidence_AdditionalVariable"
           },
           "type": "array"
         },
         "statistic": {
-          "description": "The statistic value(s).",
+          "description": "Values and parameters for a single statistic.",
           "items": {
             "$ref": "Statistic.schema.json#/definitions/Statistic"
+          },
+          "type": "array"
+        },
+        "distribution": {
+          "description": "An ordered group of statistics.",
+          "items": {
+            "$ref": "OrderedDistribution.schema.json#/definitions/OrderedDistribution"
           },
           "type": "array"
         }
@@ -785,7 +792,7 @@ This is a representation of the json schema for Evidence, which is just a part o
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "variableDefinition": {
-          "description": "Definition of additional variable.",
+          "description": "Definition of a variable related to the statistic(s).",
           "$ref": "Reference.schema.json#/definitions/Reference"
         }
       },
@@ -813,7 +820,7 @@ This is a representation of the json schema for Evidence, which is just a part o
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Tue, Jun 4, 2019 14:08-0500. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
