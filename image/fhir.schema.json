@@ -11,6 +11,7 @@
       "AllergyIntolerance": "#/definitions/AllergyIntolerance",
       "Appointment": "#/definitions/Appointment",
       "AppointmentResponse": "#/definitions/AppointmentResponse",
+      "Assertion": "#/definitions/Assertion",
       "AuditEvent": "#/definitions/AuditEvent",
       "Basic": "#/definitions/Basic",
       "Binary": "#/definitions/Binary",
@@ -57,7 +58,6 @@
       "EnrollmentResponse": "#/definitions/EnrollmentResponse",
       "EpisodeOfCare": "#/definitions/EpisodeOfCare",
       "EventDefinition": "#/definitions/EventDefinition",
-      "Evidence": "#/definitions/Evidence",
       "EvidenceVariable": "#/definitions/EvidenceVariable",
       "ExampleScenario": "#/definitions/ExampleScenario",
       "ExplanationOfBenefit": "#/definitions/ExplanationOfBenefit",
@@ -66,6 +66,7 @@
       "Goal": "#/definitions/Goal",
       "GraphDefinition": "#/definitions/GraphDefinition",
       "Group": "#/definitions/Group",
+      "GroupSummary": "#/definitions/GroupSummary",
       "GuidanceResponse": "#/definitions/GuidanceResponse",
       "HealthcareService": "#/definitions/HealthcareService",
       "ImagingStudy": "#/definitions/ImagingStudy",
@@ -170,6 +171,9 @@
     },
     {
       "$ref": "#/definitions/AppointmentResponse"
+    },
+    {
+      "$ref": "#/definitions/Assertion"
     },
     {
       "$ref": "#/definitions/AuditEvent"
@@ -310,9 +314,6 @@
       "$ref": "#/definitions/EventDefinition"
     },
     {
-      "$ref": "#/definitions/Evidence"
-    },
-    {
       "$ref": "#/definitions/EvidenceVariable"
     },
     {
@@ -335,6 +336,9 @@
     },
     {
       "$ref": "#/definitions/Group"
+    },
+    {
+      "$ref": "#/definitions/GroupSummary"
     },
     {
       "$ref": "#/definitions/GuidanceResponse"
@@ -611,6 +615,9 @@
           "$ref": "#/definitions/AppointmentResponse"
         },
         {
+          "$ref": "#/definitions/Assertion"
+        },
+        {
           "$ref": "#/definitions/AuditEvent"
         },
         {
@@ -749,9 +756,6 @@
           "$ref": "#/definitions/EventDefinition"
         },
         {
-          "$ref": "#/definitions/Evidence"
-        },
-        {
           "$ref": "#/definitions/EvidenceVariable"
         },
         {
@@ -774,6 +778,9 @@
         },
         {
           "$ref": "#/definitions/Group"
+        },
+        {
+          "$ref": "#/definitions/GroupSummary"
         },
         {
           "$ref": "#/definitions/GuidanceResponse"
@@ -2690,7 +2697,7 @@
           "type": "array"
         },
         "statisticType": {
-          "description": "Type of statistic.",
+          "description": "Type of statistic, eg relative risk.",
           "$ref": "#/definitions/CodeableConcept"
         },
         "quantity": {
@@ -2698,20 +2705,13 @@
           "$ref": "#/definitions/Quantity"
         },
         "sampleSize": {
-          "description": "Population sample size.",
+          "description": "Sample size for the statistic.",
           "$ref": "#/definitions/Statistic_SampleSize"
         },
-        "precisionEstimate": {
+        "attributeEstimate": {
           "description": "An estimate of the precision of the statistic.",
           "items": {
-            "$ref": "#/definitions/Statistic_PrecisionEstimate"
-          },
-          "type": "array"
-        },
-        "certainty": {
-          "description": "A description of the certainty of the effect estimate.",
-          "items": {
-            "$ref": "#/definitions/Statistic_Certainty"
+            "$ref": "#/definitions/Statistic_AttributeEstimate"
           },
           "type": "array"
         }
@@ -2771,7 +2771,7 @@
           "$ref": "#/definitions/Element"
         },
         "knownDataCount": {
-          "description": "TBD.",
+          "description": "Number of participants with known results for measured variables.",
           "$ref": "#/definitions/integer"
         },
         "_knownDataCount": {
@@ -2779,7 +2779,7 @@
           "$ref": "#/definitions/Element"
         },
         "numeratorCount": {
-          "description": "TBD.",
+          "description": "Number of participants with “positive” results, only used to report actual numerator count for a proportion.",
           "$ref": "#/definitions/integer"
         },
         "_numeratorCount": {
@@ -2789,7 +2789,7 @@
       },
       "additionalProperties": false
     },
-    "Statistic_PrecisionEstimate": {
+    "Statistic_AttributeEstimate": {
       "description": "A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.",
       "properties": {
         "id": {
@@ -2820,17 +2820,14 @@
         },
         "note": {
           "description": "Footnote or explanatory note about the estimate.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
+          "$ref": "#/definitions/Annotation"
         },
         "type": {
-          "description": "The estimate type.",
+          "description": "The estimateType of precision estimate, eg confidence interval or p value type.",
           "$ref": "#/definitions/CodeableConcept"
         },
         "quantity": {
-          "description": "The precision value.",
+          "description": "The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure.",
           "$ref": "#/definitions/Quantity"
         },
         "level": {
@@ -2844,112 +2841,6 @@
         "range": {
           "description": "Lower bound of confidence interval.",
           "$ref": "#/definitions/Range"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_Certainty": {
-      "description": "A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Human-readable summary of the certainty.",
-          "$ref": "#/definitions/string"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "A human-readable string to clarify or explain concepts about the resource.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "rating": {
-          "description": "A rating of the certainty of the effect estimate.",
-          "items": {
-            "$ref": "#/definitions/CodeableConcept"
-          },
-          "type": "array"
-        },
-        "certaintySubcomponent": {
-          "description": "A description of a component of the overall certainty.",
-          "items": {
-            "$ref": "#/definitions/Statistic_CertaintySubcomponent"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Statistic_CertaintySubcomponent": {
-      "description": "A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Human-readable summary of the subcomponent.",
-          "$ref": "#/definitions/string"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "A human-readable string to clarify or explain concepts about the resource.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "type": {
-          "description": "Type of subcomponent of certainty rating.",
-          "items": {
-            "$ref": "#/definitions/CodeableConcept"
-          },
-          "type": "array"
-        },
-        "rating": {
-          "description": "A rating of a subcomponent of rating certainty.",
-          "items": {
-            "$ref": "#/definitions/CodeableConcept"
-          },
-          "type": "array"
         }
       },
       "additionalProperties": false
@@ -2976,29 +2867,26 @@
           "type": "array"
         },
         "description": {
-          "description": "A description of the content value of the statistic.",
+          "description": "A description of the content and value of the statistic.",
           "$ref": "#/definitions/string"
         },
         "_description": {
           "description": "Extensions for description",
           "$ref": "#/definitions/Element"
         },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "$ref": "#/definitions/Annotation"
+        },
         "numberOfIntervals": {
-          "description": "Number of elements in interval array.",
+          "description": "Number of intervals in an array, eg 4 for quartiles.",
           "$ref": "#/definitions/integer"
         },
         "_numberOfIntervals": {
           "description": "Extensions for numberOfIntervals",
           "$ref": "#/definitions/Element"
         },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "minimum": {
+        "bottomOfFirstInterval": {
           "description": "Bottom of first interval.",
           "$ref": "#/definitions/Quantity"
         },
@@ -3008,6 +2896,10 @@
             "$ref": "#/definitions/OrderedDistribution_Interval"
           },
           "type": "array"
+        },
+        "topOfInterval": {
+          "description": "Singular value of the statistic at the upper bound of the interval.",
+          "$ref": "#/definitions/Quantity"
         }
       },
       "additionalProperties": false,
@@ -3036,20 +2928,16 @@
           },
           "type": "array"
         },
-        "rankorder": {
+        "rankOrder": {
           "description": "Relative order of interval.",
           "$ref": "#/definitions/integer"
         },
-        "_rankorder": {
-          "description": "Extensions for rankorder",
+        "_rankOrder": {
+          "description": "Extensions for rankOrder",
           "$ref": "#/definitions/Element"
         },
-        "maximum": {
-          "description": "Top of interval.",
-          "$ref": "#/definitions/Quantity"
-        },
         "intervalStatistic": {
-          "description": "Interval statistic(s).",
+          "description": "Values and parameters for a single statistic related to the interval.",
           "items": {
             "$ref": "#/definitions/Statistic"
           },
@@ -8207,6 +8095,450 @@
         "appointment",
         "resourceType"
       ]
+    },
+    "Assertion": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Assertion resource",
+          "const": "Assertion"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "$ref": "#/definitions/id"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+          "items": {
+            "$ref": "#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.",
+          "$ref": "#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "$ref": "#/definitions/Identifier"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the summary.",
+          "$ref": "#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this summary. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate assertion instances.",
+          "items": {
+            "$ref": "#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "#/definitions/Element"
+        },
+        "approvalDate": {
+          "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
+          "$ref": "#/definitions/date"
+        },
+        "_approvalDate": {
+          "description": "Extensions for approvalDate",
+          "$ref": "#/definitions/Element"
+        },
+        "lastReviewDate": {
+          "description": "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.",
+          "$ref": "#/definitions/date"
+        },
+        "_lastReviewDate": {
+          "description": "Extensions for lastReviewDate",
+          "$ref": "#/definitions/Element"
+        },
+        "contributor": {
+          "description": "Contact detail and role for contributor to summary.",
+          "items": {
+            "$ref": "#/definitions/Contributor"
+          },
+          "type": "array"
+        },
+        "relatedArtifact": {
+          "description": "Link or citation to artifact associated with the summary.",
+          "items": {
+            "$ref": "#/definitions/RelatedArtifact"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the assertion from a consumer\u0027s perspective.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "referentGroup": {
+          "description": "Group being referenced.",
+          "$ref": "#/definitions/Assertion_ReferentGroup"
+        },
+        "variableDefinition": {
+          "description": "Evidence variable.",
+          "items": {
+            "$ref": "#/definitions/Assertion_VariableDefinition"
+          },
+          "type": "array"
+        },
+        "synthesisType": {
+          "description": "The particular type of synthesis if this is a synthesis summary.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "studyType": {
+          "description": "The type of study that produced this summary.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "statisticCollection": {
+          "description": "Set of statistics associated with variable.",
+          "$ref": "#/definitions/Assertion_StatisticCollection"
+        },
+        "certainty": {
+          "description": "Level of certainty.",
+          "items": {
+            "$ref": "#/definitions/Assertion_Certainty"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "referentGroup",
+        "resourceType"
+      ]
+    },
+    "Assertion_ReferentGroup": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "descripton": {
+          "description": "Textual description of referent group.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_descripton": {
+          "description": "Extensions for descripton",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "evidenceSource": {
+          "description": "Various information categories of group.",
+          "$ref": "#/definitions/Reference"
+        },
+        "intendedGroup": {
+          "description": "Non-actual group that is a set of characteristics.",
+          "$ref": "#/definitions/Reference"
+        },
+        "directnessMatch": {
+          "description": "Indication of quality of match between intended group to actual group.",
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "evidenceSource"
+      ]
+    },
+    "Assertion_VariableDefinition": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Description of the variable.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "variableRole": {
+          "description": "exposure | measuredVariable.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "actualDefinition": {
+          "description": "Definition of the actual variable related to the statistic(s).",
+          "$ref": "#/definitions/Reference"
+        },
+        "intendedDefinition": {
+          "description": "Definition of the intended variable related to the assertion.",
+          "$ref": "#/definitions/Reference"
+        },
+        "directnessMatch": {
+          "description": "Indication of quality of match between intended variable to actual variable.",
+          "$ref": "#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "actualDefinition"
+      ]
+    },
+    "Assertion_StatisticCollection": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "statistic": {
+          "description": "The statistic value(s).",
+          "items": {
+            "$ref": "#/definitions/Statistic"
+          },
+          "type": "array"
+        },
+        "distribution": {
+          "description": "Ordered distribution.",
+          "items": {
+            "$ref": "#/definitions/OrderedDistribution"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Assertion_Certainty": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of certainty.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "$ref": "#/definitions/Annotation"
+        },
+        "rating": {
+          "description": "Rating of certainty.",
+          "items": {
+            "$ref": "#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "certaintySubcomponent": {
+          "description": "Subcomponent of certainty.",
+          "items": {
+            "$ref": "#/definitions/Assertion_CertaintySubcomponent"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Assertion_CertaintySubcomponent": {
+      "description": "This represents statistics, certainty, both the intended and actual population, and evidence variables.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of certainty subcomponent.",
+          "$ref": "#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Textual note of certainty subcomponent.",
+          "$ref": "#/definitions/Annotation"
+        },
+        "type": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "rating": {
+          "description": "Rating of certainty subcomponent.",
+          "items": {
+            "$ref": "#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
     },
     "AuditEvent": {
       "description": "A record of an event relevant for purposes such as operations, privacy, security, maintenance, and performance analysis.",
@@ -26223,683 +26555,6 @@
         "resourceType"
       ]
     },
-    "Evidence": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "resourceType": {
-          "description": "This is a Evidence resource",
-          "const": "Evidence"
-        },
-        "id": {
-          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
-          "$ref": "#/definitions/id"
-        },
-        "meta": {
-          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
-          "$ref": "#/definitions/Meta"
-        },
-        "implicitRules": {
-          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
-          "$ref": "#/definitions/uri"
-        },
-        "_implicitRules": {
-          "description": "Extensions for implicitRules",
-          "$ref": "#/definitions/Element"
-        },
-        "language": {
-          "description": "The base language in which the resource is written.",
-          "$ref": "#/definitions/code"
-        },
-        "_language": {
-          "description": "Extensions for language",
-          "$ref": "#/definitions/Element"
-        },
-        "text": {
-          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
-          "$ref": "#/definitions/Narrative"
-        },
-        "contained": {
-          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
-          "items": {
-            "$ref": "#/definitions/ResourceList"
-          },
-          "type": "array"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "url": {
-          "description": "An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.",
-          "$ref": "#/definitions/uri"
-        },
-        "_url": {
-          "description": "Extensions for url",
-          "$ref": "#/definitions/Element"
-        },
-        "identifier": {
-          "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
-          "items": {
-            "$ref": "#/definitions/Identifier"
-          },
-          "type": "array"
-        },
-        "version": {
-          "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
-          "$ref": "#/definitions/string"
-        },
-        "_version": {
-          "description": "Extensions for version",
-          "$ref": "#/definitions/Element"
-        },
-        "title": {
-          "description": "A short, descriptive, user-friendly title for the summary.",
-          "$ref": "#/definitions/string"
-        },
-        "_title": {
-          "description": "Extensions for title",
-          "$ref": "#/definitions/Element"
-        },
-        "shortTitle": {
-          "description": "Shortened title for this summary.",
-          "$ref": "#/definitions/string"
-        },
-        "_shortTitle": {
-          "description": "Extensions for shortTitle",
-          "$ref": "#/definitions/Element"
-        },
-        "subTitle": {
-          "description": "Summary subtitle.",
-          "$ref": "#/definitions/string"
-        },
-        "_subTitle": {
-          "description": "Extensions for subTitle",
-          "$ref": "#/definitions/Element"
-        },
-        "status": {
-          "description": "The status of this summary. Enables tracking the life-cycle of the content.",
-          "enum": [
-            "draft",
-            "active",
-            "retired",
-            "unknown"
-          ]
-        },
-        "_status": {
-          "description": "Extensions for status",
-          "$ref": "#/definitions/Element"
-        },
-        "useContext": {
-          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.",
-          "items": {
-            "$ref": "#/definitions/UsageContext"
-          },
-          "type": "array"
-        },
-        "date": {
-          "description": "The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.",
-          "$ref": "#/definitions/dateTime"
-        },
-        "_date": {
-          "description": "Extensions for date",
-          "$ref": "#/definitions/Element"
-        },
-        "copyright": {
-          "description": "A copyright statement relating to the evidence and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_copyright": {
-          "description": "Extensions for copyright",
-          "$ref": "#/definitions/Element"
-        },
-        "approvalDate": {
-          "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
-          "$ref": "#/definitions/date"
-        },
-        "_approvalDate": {
-          "description": "Extensions for approvalDate",
-          "$ref": "#/definitions/Element"
-        },
-        "lastReviewDate": {
-          "description": "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.",
-          "$ref": "#/definitions/date"
-        },
-        "_lastReviewDate": {
-          "description": "Extensions for lastReviewDate",
-          "$ref": "#/definitions/Element"
-        },
-        "summaryPublisher": {
-          "description": "Evidence publisher.",
-          "items": {
-            "$ref": "#/definitions/Evidence_SummaryPublisher"
-          },
-          "type": "array"
-        },
-        "contributor": {
-          "description": "Contact detail and role for contributor to summary.",
-          "items": {
-            "$ref": "#/definitions/Contributor"
-          },
-          "type": "array"
-        },
-        "relatedArtifact": {
-          "description": "Link to artifact associated with summary.",
-          "items": {
-            "$ref": "#/definitions/RelatedArtifact"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "A free text natural language description of the evidence from a consumer\u0027s perspective.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "synthesisType": {
-          "description": "The particular type of synthesis if this is a synthesis summary.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "studyType": {
-          "description": "The type of study that produced this summary.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "population": {
-          "description": "The population being summarized.",
-          "items": {
-            "$ref": "#/definitions/Evidence_Population"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "resourceType",
-        "population"
-      ]
-    },
-    "Evidence_SummaryPublisher": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "name": {
-          "description": "Publisher name.",
-          "$ref": "#/definitions/string"
-        },
-        "_name": {
-          "description": "Extensions for name",
-          "$ref": "#/definitions/Element"
-        },
-        "contact": {
-          "description": "Pubblisher contact information.",
-          "items": {
-            "$ref": "#/definitions/ContactDetail"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Evidence_Population": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of the particular summary.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "intendedCohort": {
-          "description": "The evidence that the summary indirectly represents.",
-          "$ref": "#/definitions/Reference"
-        },
-        "sampleCohort": {
-          "description": "The evidence from which the sample was drawn.",
-          "$ref": "#/definitions/Reference"
-        },
-        "actualCohort": {
-          "description": "The evidence that the summary directly reprresents.",
-          "$ref": "#/definitions/Reference"
-        },
-        "sampleSize": {
-          "description": "Sample description.",
-          "items": {
-            "$ref": "#/definitions/Evidence_SampleSize"
-          },
-          "type": "array"
-        },
-        "evidenceVariable": {
-          "description": "Evidence variable.",
-          "items": {
-            "$ref": "#/definitions/Evidence_EvidenceVariable"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Evidence_SampleSize": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of the sample size.",
-          "$ref": "#/definitions/string"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "numberOfStudies": {
-          "description": "Number of studies included in sample.",
-          "$ref": "#/definitions/integer"
-        },
-        "_numberOfStudies": {
-          "description": "Extensions for numberOfStudies",
-          "$ref": "#/definitions/Element"
-        },
-        "numberOfParticipants": {
-          "description": "Total number of participants in sample.",
-          "$ref": "#/definitions/integer"
-        },
-        "_numberOfParticipants": {
-          "description": "Extensions for numberOfParticipants",
-          "$ref": "#/definitions/Element"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Evidence_EvidenceVariable": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of the variable.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "variableRole": {
-          "description": "exposure | measuredVariable.",
-          "enum": [
-            "exposure",
-            "measuredVariable"
-          ]
-        },
-        "_variableRole": {
-          "description": "Extensions for variableRole",
-          "$ref": "#/definitions/Element"
-        },
-        "variableDefinition": {
-          "description": "The definition of a nested variable.",
-          "$ref": "#/definitions/Reference"
-        },
-        "statisticCollection": {
-          "description": "Set of statistics associated with variable.",
-          "items": {
-            "$ref": "#/definitions/Evidence_StatisticCollection"
-          },
-          "type": "array"
-        },
-        "distribution": {
-          "description": "Ordered distribution.",
-          "items": {
-            "$ref": "#/definitions/OrderedDistribution"
-          },
-          "type": "array"
-        },
-        "nestedVariable": {
-          "description": "Dependent evvidence variable.",
-          "items": {
-            "$ref": "#/definitions/Evidence_NestedVariable"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "variableDefinition"
-      ]
-    },
-    "Evidence_StatisticCollection": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of statistic.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "synthesisType": {
-          "description": "The type of synthesis statistic.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "studyType": {
-          "description": "The type of study.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "statistic": {
-          "description": "The statistic value(s).",
-          "items": {
-            "$ref": "#/definitions/Statistic"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "statistic"
-      ]
-    },
-    "Evidence_NestedVariable": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of the variable.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "variableRole": {
-          "description": "exposure | measuredVariable.",
-          "enum": [
-            "exposure",
-            "measuredVariable"
-          ]
-        },
-        "_variableRole": {
-          "description": "Extensions for variableRole",
-          "$ref": "#/definitions/Element"
-        },
-        "variableDefinition": {
-          "description": "The definition of a nested variable.",
-          "$ref": "#/definitions/Reference"
-        },
-        "statisticCollection": {
-          "description": "Set of statistics associated with variable.",
-          "items": {
-            "$ref": "#/definitions/Evidence_StatisticCollection1"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "variableDefinition"
-      ]
-    },
-    "Evidence_StatisticCollection1": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "description": {
-          "description": "Description of statistic.",
-          "$ref": "#/definitions/markdown"
-        },
-        "_description": {
-          "description": "Extensions for description",
-          "$ref": "#/definitions/Element"
-        },
-        "note": {
-          "description": "Footnotes and/or explanatory notes.",
-          "items": {
-            "$ref": "#/definitions/Annotation"
-          },
-          "type": "array"
-        },
-        "synthesisType": {
-          "description": "The type of synthesis statistic.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "studyType": {
-          "description": "The type of study.",
-          "$ref": "#/definitions/CodeableConcept"
-        },
-        "additionalVariable": {
-          "description": "Additional variables.",
-          "items": {
-            "$ref": "#/definitions/Evidence_AdditionalVariable"
-          },
-          "type": "array"
-        },
-        "statistic": {
-          "description": "The statistic value(s).",
-          "items": {
-            "$ref": "#/definitions/Statistic"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "statistic"
-      ]
-    },
-    "Evidence_AdditionalVariable": {
-      "description": "The representation of a collection of statistics for a given population and set of evidence variables.",
-      "properties": {
-        "id": {
-          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
-        },
-        "extension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "modifierExtension": {
-          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
-          "items": {
-            "$ref": "#/definitions/Extension"
-          },
-          "type": "array"
-        },
-        "variableRole": {
-          "description": "exposure | measuredVariable.",
-          "enum": [
-            "exposure",
-            "measuredVariable"
-          ]
-        },
-        "_variableRole": {
-          "description": "Extensions for variableRole",
-          "$ref": "#/definitions/Element"
-        },
-        "variableDefinition": {
-          "description": "Definition of additional variable.",
-          "$ref": "#/definitions/Reference"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "variableDefinition"
-      ]
-    },
     "EvidenceVariable": {
       "description": "The EvidenceVariable resource describes a \"PICO\" element that knowledge (evidence, assertion, recommendation) is about.",
       "properties": {
@@ -31223,6 +30878,433 @@
       "additionalProperties": false,
       "required": [
         "entity"
+      ]
+    },
+    "GroupSummary": {
+      "description": "The summary of interventions and characteristics of a group.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a GroupSummary resource",
+          "const": "GroupSummary"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "$ref": "#/definitions/id"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+          "items": {
+            "$ref": "#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.",
+          "$ref": "#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "$ref": "#/definitions/Identifier"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the summary.",
+          "$ref": "#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "#/definitions/Element"
+        },
+        "shortTitle": {
+          "description": "Shortened title for this summary.",
+          "$ref": "#/definitions/string"
+        },
+        "_shortTitle": {
+          "description": "Extensions for shortTitle",
+          "$ref": "#/definitions/Element"
+        },
+        "subTitle": {
+          "description": "Summary subtitle.",
+          "$ref": "#/definitions/string"
+        },
+        "_subTitle": {
+          "description": "Extensions for subTitle",
+          "$ref": "#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this summary. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate group summary instances.",
+          "items": {
+            "$ref": "#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "#/definitions/Element"
+        },
+        "copyright": {
+          "description": "A copyright statement relating to the group summary and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the group summary.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_copyright": {
+          "description": "Extensions for copyright",
+          "$ref": "#/definitions/Element"
+        },
+        "approvalDate": {
+          "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
+          "$ref": "#/definitions/date"
+        },
+        "_approvalDate": {
+          "description": "Extensions for approvalDate",
+          "$ref": "#/definitions/Element"
+        },
+        "lastReviewDate": {
+          "description": "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.",
+          "$ref": "#/definitions/date"
+        },
+        "_lastReviewDate": {
+          "description": "Extensions for lastReviewDate",
+          "$ref": "#/definitions/Element"
+        },
+        "summaryPublisher": {
+          "description": "GroupSummary publisher.",
+          "items": {
+            "$ref": "#/definitions/GroupSummary_SummaryPublisher"
+          },
+          "type": "array"
+        },
+        "contributor": {
+          "description": "Contact detail and role for contributor to summary.",
+          "items": {
+            "$ref": "#/definitions/Contributor"
+          },
+          "type": "array"
+        },
+        "relatedArtifact": {
+          "description": "Link or citation to artifact associated with the summary.",
+          "items": {
+            "$ref": "#/definitions/RelatedArtifact"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the group summary from a consumer\u0027s perspective.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "synthesisType": {
+          "description": "The particular type of synthesis if this is a synthesis summary.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "studyType": {
+          "description": "The type of study that produced this summary.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "population": {
+          "description": "The population being summarized.",
+          "$ref": "#/definitions/GroupSummary_Population"
+        },
+        "variableDefinition": {
+          "description": "GroupSummary variable.",
+          "items": {
+            "$ref": "#/definitions/GroupSummary_VariableDefinition"
+          },
+          "type": "array"
+        },
+        "assertions": {
+          "description": "Assertion of a statistic.",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "resourceType",
+        "population"
+      ]
+    },
+    "GroupSummary_SummaryPublisher": {
+      "description": "The summary of interventions and characteristics of a group.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Publisher name.",
+          "$ref": "#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "#/definitions/Element"
+        },
+        "contact": {
+          "description": "Pubblisher contact information.",
+          "items": {
+            "$ref": "#/definitions/ContactDetail"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupSummary_Population": {
+      "description": "The summary of interventions and characteristics of a group.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of population.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "intendedCohort": {
+          "description": "Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.",
+          "$ref": "#/definitions/Reference"
+        },
+        "sampleCohort": {
+          "description": "Summary statistics describing the actual group for this population.",
+          "$ref": "#/definitions/Reference"
+        },
+        "actualCohort": {
+          "description": "The actual group (ie list of members) for this population.",
+          "$ref": "#/definitions/Reference"
+        },
+        "sampleSize": {
+          "description": "Sample size for the population.",
+          "items": {
+            "$ref": "#/definitions/GroupSummary_SampleSize"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupSummary_SampleSize": {
+      "description": "The summary of interventions and characteristics of a group.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of population sample.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "numberOfStudies": {
+          "description": "Number of studies included in sample.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfStudies": {
+          "description": "Extensions for numberOfStudies",
+          "$ref": "#/definitions/Element"
+        },
+        "numberOfParticipants": {
+          "description": "Total number of participants in sample.",
+          "$ref": "#/definitions/integer"
+        },
+        "_numberOfParticipants": {
+          "description": "Extensions for numberOfParticipants",
+          "$ref": "#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupSummary_VariableDefinition": {
+      "description": "The summary of interventions and characteristics of a group.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Description of the variable.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "#/definitions/Element"
+        },
+        "note": {
+          "description": "Footnotes and/or explanatory notes.",
+          "items": {
+            "$ref": "#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "variableRole": {
+          "description": "exposure | measuredVariable.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "actualDefinition": {
+          "description": "Definition of the actual variable related to the statistic(s).",
+          "$ref": "#/definitions/Reference"
+        },
+        "intendedDefinition": {
+          "description": "Definition of the intended variable related to the assertion.",
+          "$ref": "#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "actualDefinition"
       ]
     },
     "GuidanceResponse": {

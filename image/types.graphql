@@ -1297,17 +1297,17 @@ type OrderedDistribution {
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
+  note: Annotation
   numberOfIntervals: Int  _numberOfIntervals: ElementBase
-  note: [Annotation]
-  minimum: Quantity
+  bottomOfFirstInterval: Quantity
   interval: [OrderedDistributionInterval]!
+  topOfInterval: Quantity
 }
 
 type OrderedDistributionInterval {
   id: String
   extension: [Extension]
-  rankorder: Int  _rankorder: ElementBase
-  maximum: Quantity
+  rankOrder: Int  _rankOrder: ElementBase
   intervalStatistic: [Statistic]
 }
 
@@ -1316,17 +1316,17 @@ input OrderedDistributionInput {
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
+  note: AnnotationInput
   numberOfIntervals: Int  _numberOfIntervals: ElementBase
-  note: [AnnotationInput]
-  minimum: QuantityInput
+  bottomOfFirstInterval: QuantityInput
   interval: [OrderedDistributionIntervalInput]!
+  topOfInterval: QuantityInput
 }
 
 input OrderedDistributionIntervalInput {
   id: String
   extension: [ExtensionInput]
-  rankorder: Int  _rankorder: ElementBase
-  maximum: QuantityInput
+  rankOrder: Int  _rankOrder: ElementBase
   intervalStatistic: [StatisticInput]
 }
 
@@ -1591,8 +1591,7 @@ type Statistic {
   statisticType: CodeableConcept
   quantity: Quantity
   sampleSize: StatisticSampleSize
-  precisionEstimate: [StatisticPrecisionEstimate]
-  certainty: [StatisticCertainty]
+  attributeEstimate: [StatisticAttributeEstimate]
 }
 
 type StatisticSampleSize {
@@ -1606,33 +1605,15 @@ type StatisticSampleSize {
   numeratorCount: Int  _numeratorCount: ElementBase
 }
 
-type StatisticPrecisionEstimate {
+type StatisticAttributeEstimate {
   id: String
   extension: [Extension]
   description: String  _description: ElementBase
-  note: [Annotation]
+  note: Annotation
   type: CodeableConcept
   quantity: Quantity
   level: decimal  _level: ElementBase
   range: Range
-}
-
-type StatisticCertainty {
-  id: String
-  extension: [Extension]
-  description: String  _description: ElementBase
-  note: [Annotation]
-  rating: [CodeableConcept]
-  certaintySubcomponent: [StatisticCertaintyCertaintySubcomponent]
-}
-
-type StatisticCertaintyCertaintySubcomponent {
-  id: String
-  extension: [Extension]
-  description: String  _description: ElementBase
-  note: [Annotation]
-  type: [CodeableConcept]
-  rating: [CodeableConcept]
 }
 
 input StatisticInput {
@@ -1644,8 +1625,7 @@ input StatisticInput {
   statisticType: CodeableConceptInput
   quantity: QuantityInput
   sampleSize: StatisticSampleSizeInput
-  precisionEstimate: [StatisticPrecisionEstimateInput]
-  certainty: [StatisticCertaintyInput]
+  attributeEstimate: [StatisticAttributeEstimateInput]
 }
 
 input StatisticSampleSizeInput {
@@ -1659,33 +1639,15 @@ input StatisticSampleSizeInput {
   numeratorCount: Int  _numeratorCount: ElementBase
 }
 
-input StatisticPrecisionEstimateInput {
+input StatisticAttributeEstimateInput {
   id: String
   extension: [ExtensionInput]
   description: String  _description: ElementBase
-  note: [AnnotationInput]
+  note: AnnotationInput
   type: CodeableConceptInput
   quantity: QuantityInput
   level: decimal  _level: ElementBase
   range: RangeInput
-}
-
-input StatisticCertaintyInput {
-  id: String
-  extension: [ExtensionInput]
-  description: String  _description: ElementBase
-  note: [AnnotationInput]
-  rating: [CodeableConceptInput]
-  certaintySubcomponent: [StatisticCertaintyCertaintySubcomponentInput]
-}
-
-input StatisticCertaintyCertaintySubcomponentInput {
-  id: String
-  extension: [ExtensionInput]
-  description: String  _description: ElementBase
-  note: [AnnotationInput]
-  type: [CodeableConceptInput]
-  rating: [CodeableConceptInput]
 }
 
 type SubstanceAmount {

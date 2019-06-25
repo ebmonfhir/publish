@@ -260,13 +260,13 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="metadatatypes.html#Contributor">Contributor</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.relatedArtifact"> </a><b>Evidence.relatedArtifact</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.relatedArtifact</td></tr>
-  <tr><td>Definition</td><td><p>Link to artifact associated with summary.</p>
+  <tr><td>Definition</td><td><p>Link or citation to artifact associated with the summary.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="metadatatypes.html#RelatedArtifact">RelatedArtifact</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.description"> </a><b>Evidence.description</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.description</td></tr>
-  <tr><td>Definition</td><td><p>A free text natural language description of the evidence from a consumer's perspective.</p>
+  <tr><td>Definition</td><td><p>ASM edit.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#markdown">markdown</a></td></tr>
@@ -292,6 +292,13 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-study-type.html">StatisticStudyType</a> (<a href="terminologies.html#extensible">Extensible</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
+  <tr><td colspan="2" class="structure"><a name="Evidence.locked"> </a><b>Evidence.locked</b></td></tr>
+  <tr><td>Element Id</td><td>Evidence.locked</td></tr>
+  <tr><td>Definition</td><td><p>Root value def.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#boolean">boolean</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population"> </a><b>Evidence.population</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population</td></tr>
   <tr><td>Definition</td><td><p>The population being summarized.</p>
@@ -300,7 +307,7 @@
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.description"> </a><b>Evidence.population.description</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.description</td></tr>
-  <tr><td>Definition</td><td><p>Description of the particular summary.</p>
+  <tr><td>Definition</td><td><p>Textual description of population.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#markdown">markdown</a></td></tr>
@@ -312,13 +319,13 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.intendedCohort"> </a><b>Evidence.population.intendedCohort</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.intendedCohort</td></tr>
-  <tr><td>Definition</td><td><p>The evidence that the summary indirectly represents.</p>
+  <tr><td>Definition</td><td><p>Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="group.html">Group</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.sampleCohort"> </a><b>Evidence.population.sampleCohort</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.sampleCohort</td></tr>
-  <tr><td>Definition</td><td><p>The evidence from which the sample was drawn.</p>
+  <tr><td>Definition</td><td><p>Summary statistics describing the actual group for this population.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="evidence.html">Evidence</a>)</td></tr>
@@ -326,18 +333,18 @@
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.actualCohort"> </a><b>Evidence.population.actualCohort</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.actualCohort</td></tr>
-  <tr><td>Definition</td><td><p>The evidence that the summary directly reprresents.</p>
+  <tr><td>Definition</td><td><p>The actual group (ie list of members) for this population.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="group.html">Group</a>)</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.sampleSize"> </a><b>Evidence.population.sampleSize</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.sampleSize</td></tr>
-  <tr><td>Definition</td><td><p>Sample description.</p>
+  <tr><td>Definition</td><td><p>Sample size for the population.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.sampleSize.description"> </a><b>Evidence.population.sampleSize.description</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.sampleSize.description</td></tr>
-  <tr><td>Definition</td><td><p>Description of the sample size.</p>
+  <tr><td>Definition</td><td><p>Textual description of population sample.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
@@ -385,19 +392,19 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.variableDefinition"> </a><b>Evidence.population.evidenceVariable.variableDefinition</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.variableDefinition</td></tr>
-  <tr><td>Definition</td><td><p>The definition of a nested variable.</p>
+  <tr><td>Definition</td><td><p>Definition of a variable related to the statistic(s).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="evidencevariable.html">EvidenceVariable</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.statisticCollection"> </a><b>Evidence.population.evidenceVariable.statisticCollection</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.statisticCollection</td></tr>
-  <tr><td>Definition</td><td><p>Set of statistics associated with variable.</p>
+  <tr><td>Definition</td><td><p>Set of statistics.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.statisticCollection.description"> </a><b>Evidence.population.evidenceVariable.statisticCollection.description</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.statisticCollection.description</td></tr>
-  <tr><td>Definition</td><td><p>Description of statistic.</p>
+  <tr><td>Definition</td><td><p>Textual description related to the set of statistics.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#markdown">markdown</a></td></tr>
@@ -409,7 +416,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.statisticCollection.synthesisType"> </a><b>Evidence.population.evidenceVariable.statisticCollection.synthesisType</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.statisticCollection.synthesisType</td></tr>
-  <tr><td>Definition</td><td><p>The type of synthesis statistic.</p>
+  <tr><td>Definition</td><td><p>The particular type of synthesis if this is a synthesis summary.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-synthesis-type.html">StatisticSynthesisType</a> (<a href="terminologies.html#extensible">Extensible</a>)</td></tr>
@@ -423,20 +430,20 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.statisticCollection.statistic"> </a><b>Evidence.population.evidenceVariable.statisticCollection.statistic</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.statisticCollection.statistic</td></tr>
-  <tr><td>Definition</td><td><p>The statistic value(s).</p>
+  <tr><td>Definition</td><td><p>Values and parameters for a single statistic.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Statistic">Statistic</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.distribution"> </a><b>Evidence.population.evidenceVariable.distribution</b></td></tr>
-  <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.distribution</td></tr>
-  <tr><td>Definition</td><td><p>Ordered distribution.</p>
+  <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.statisticCollection.distribution"> </a><b>Evidence.population.evidenceVariable.statisticCollection.distribution</b></td></tr>
+  <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.statisticCollection.distribution</td></tr>
+  <tr><td>Definition</td><td><p>An ordered group of statistics.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#OrderedDistribution">OrderedDistribution</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable"> </a><b>Evidence.population.evidenceVariable.nestedVariable</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable</td></tr>
-  <tr><td>Definition</td><td><p>Dependent evvidence variable.</p>
+  <tr><td>Definition</td><td><p>An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.description"> </a><b>Evidence.population.evidenceVariable.nestedVariable.description</b></td></tr>
@@ -460,19 +467,19 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.variableDefinition"> </a><b>Evidence.population.evidenceVariable.nestedVariable.variableDefinition</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.variableDefinition</td></tr>
-  <tr><td>Definition</td><td><p>The definition of a nested variable.</p>
+  <tr><td>Definition</td><td><p>Definition of a variable related to the statistic(s).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="evidencevariable.html">EvidenceVariable</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection</td></tr>
-  <tr><td>Definition</td><td><p>Set of statistics associated with variable.</p>
+  <tr><td>Definition</td><td><p>Set of statistics.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description</td></tr>
-  <tr><td>Definition</td><td><p>Description of statistic.</p>
+  <tr><td>Definition</td><td><p>Textual description related to the set of statistics.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#markdown">markdown</a></td></tr>
@@ -484,7 +491,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Annotation">Annotation</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType</td></tr>
-  <tr><td>Definition</td><td><p>The type of synthesis statistic.</p>
+  <tr><td>Definition</td><td><p>The particular type of synthesis if this is a synthesis summary.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-synthesis-type.html">StatisticSynthesisType</a> (<a href="terminologies.html#extensible">Extensible</a>)</td></tr>
@@ -498,7 +505,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable</td></tr>
-  <tr><td>Definition</td><td><p>Additional variables.</p>
+  <tr><td>Definition</td><td><p>An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole</b></td></tr>
@@ -510,18 +517,24 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition</td></tr>
-  <tr><td>Definition</td><td><p>Definition of additional variable.</p>
+  <tr><td>Definition</td><td><p>Definition of a variable related to the statistic(s).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="evidencevariable.html">EvidenceVariable</a>)</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic</b></td></tr>
   <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic</td></tr>
-  <tr><td>Definition</td><td><p>The statistic value(s).</p>
+  <tr><td>Definition</td><td><p>Values and parameters for a single statistic.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Statistic">Statistic</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution"> </a><b>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution</b></td></tr>
+  <tr><td>Element Id</td><td>Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution</td></tr>
+  <tr><td>Definition</td><td><p>An ordered group of statistics.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#OrderedDistribution">OrderedDistribution</a></td></tr>
 </table>
 
 
@@ -540,7 +553,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jun 13, 2019 11:22-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 

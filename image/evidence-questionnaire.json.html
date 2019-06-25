@@ -122,11 +122,11 @@
   }],
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-05-31T13:21:05-05:00&quot;,
+  &quot;date&quot; : &quot;2019-06-13T11:15:37-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Clinical Decision Support)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;Evidence&quot;,
-    &quot;text&quot; : &quot;A collection of evidence focused statistics&quot;,
+    &quot;text&quot; : &quot;A collection of evidence focused statistics, considered a summary of evidence&quot;,
     &quot;type&quot; : &quot;group&quot;,
     &quot;required&quot; : false,
     &quot;repeats&quot; : true,
@@ -624,7 +624,7 @@
     },
     {
       &quot;linkId&quot; : &quot;Evidence.useContext&quot;,
-      &quot;text&quot; : &quot;Use conte3xt&quot;,
+      &quot;text&quot; : &quot;Use contetxt&quot;,
       &quot;type&quot; : &quot;group&quot;,
       &quot;required&quot; : false,
       &quot;repeats&quot; : true,
@@ -968,7 +968,7 @@
     },
     {
       &quot;linkId&quot; : &quot;Evidence.relatedArtifact&quot;,
-      &quot;text&quot; : &quot;Link to artifact associated with summary&quot;,
+      &quot;text&quot; : &quot;Link or citation to artifact associated with the summary&quot;,
       &quot;type&quot; : &quot;group&quot;,
       &quot;required&quot; : false,
       &quot;repeats&quot; : true,
@@ -983,7 +983,7 @@
             }]
           }
         }],
-        &quot;text&quot; : &quot;Link to artifact associated with summary.&quot;,
+        &quot;text&quot; : &quot;Link or citation to artifact associated with the summary.&quot;,
         &quot;type&quot; : &quot;display&quot;
       }]
     },
@@ -1011,7 +1011,7 @@
             }]
           }
         }],
-        &quot;text&quot; : &quot;A free text natural language description of the evidence from a consumer's perspective. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the 'text' field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created).&quot;,
+        &quot;text&quot; : &quot;ASM edit. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the 'text' field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created).&quot;,
         &quot;type&quot; : &quot;display&quot;
       },
       {
@@ -1129,6 +1129,45 @@
         &quot;linkId&quot; : &quot;Evidence.studyType.text&quot;,
         &quot;text&quot; : &quot;text:&quot;,
         &quot;type&quot; : &quot;string&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      }]
+    },
+    {
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs&quot;,
+        &quot;valueInteger&quot; : 1
+      },
+      {
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;,
+        &quot;valueInteger&quot; : 1
+      },
+      {
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+        &quot;valueString&quot; : &quot;boolean&quot;
+      }],
+      &quot;linkId&quot; : &quot;Evidence.locked&quot;,
+      &quot;type&quot; : &quot;group&quot;,
+      &quot;required&quot; : true,
+      &quot;repeats&quot; : true,
+      &quot;item&quot; : [{
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+          &quot;valueCodeableConcept&quot; : {
+            &quot;coding&quot; : [{
+              &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+              &quot;code&quot; : &quot;flyover&quot;,
+              &quot;display&quot; : &quot;Fly-over&quot;
+            }]
+          }
+        }],
+        &quot;text&quot; : &quot;Root value def.&quot;,
+        &quot;type&quot; : &quot;display&quot;
+      },
+      {
+        &quot;linkId&quot; : &quot;Evidence.locked.value&quot;,
+        &quot;text&quot; : &quot;Root value&quot;,
+        &quot;type&quot; : &quot;boolean&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : false
       }]
@@ -1258,12 +1297,12 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;Description of the particular summary.&quot;,
+          &quot;text&quot; : &quot;Textual description of population.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
           &quot;linkId&quot; : &quot;Evidence.population.description.value&quot;,
-          &quot;text&quot; : &quot;Description of the particular summary&quot;,
+          &quot;text&quot; : &quot;Textual description of population&quot;,
           &quot;type&quot; : &quot;string&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : false
@@ -1318,7 +1357,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The evidence that the summary indirectly represents.&quot;,
+          &quot;text&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1331,7 +1370,7 @@
             &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
           }],
           &quot;linkId&quot; : &quot;Evidence.population.intendedCohort.value&quot;,
-          &quot;text&quot; : &quot;The evidence that the summary indirectly represents&quot;,
+          &quot;text&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study&quot;,
           &quot;type&quot; : &quot;reference&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : false
@@ -1361,7 +1400,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The evidence from which the sample was drawn. The target reference must conform to the CohortSummary profile.&quot;,
+          &quot;text&quot; : &quot;Summary statistics describing the actual group for this population. The target reference must conform to the CohortSummary profile.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1374,7 +1413,7 @@
             &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
           }],
           &quot;linkId&quot; : &quot;Evidence.population.sampleCohort.value&quot;,
-          &quot;text&quot; : &quot;The evidence from which the sample was drawn&quot;,
+          &quot;text&quot; : &quot;Summary statistics describing the actual group for this population&quot;,
           &quot;type&quot; : &quot;reference&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : false
@@ -1404,7 +1443,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The evidence that the summary directly reprresents.&quot;,
+          &quot;text&quot; : &quot;The actual group (ie list of members) for this population.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1417,7 +1456,7 @@
             &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
           }],
           &quot;linkId&quot; : &quot;Evidence.population.actualCohort.value&quot;,
-          &quot;text&quot; : &quot;The evidence that the summary directly reprresents&quot;,
+          &quot;text&quot; : &quot;The actual group (ie list of members) for this population&quot;,
           &quot;type&quot; : &quot;reference&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : false
@@ -1425,7 +1464,7 @@
       },
       {
         &quot;linkId&quot; : &quot;Evidence.population.sampleSize&quot;,
-        &quot;text&quot; : &quot;Sample description&quot;,
+        &quot;text&quot; : &quot;Sample size for the population&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -1440,7 +1479,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;Sample description.&quot;,
+          &quot;text&quot; : &quot;Sample size for the population.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1544,12 +1583,12 @@
                 }]
               }
             }],
-            &quot;text&quot; : &quot;Description of the sample size.&quot;,
+            &quot;text&quot; : &quot;Textual description of population sample.&quot;,
             &quot;type&quot; : &quot;display&quot;
           },
           {
             &quot;linkId&quot; : &quot;Evidence.population.sampleSize.description.value&quot;,
-            &quot;text&quot; : &quot;Description of the sample size&quot;,
+            &quot;text&quot; : &quot;Textual description of population sample&quot;,
             &quot;type&quot; : &quot;string&quot;,
             &quot;required&quot; : false,
             &quot;repeats&quot; : false
@@ -1871,7 +1910,7 @@
                 }]
               }
             }],
-            &quot;text&quot; : &quot;The definition of a nested variable.&quot;,
+            &quot;text&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
             &quot;type&quot; : &quot;display&quot;
           },
           {
@@ -1884,7 +1923,7 @@
               &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
             }],
             &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition.value&quot;,
-            &quot;text&quot; : &quot;The definition of a nested variable&quot;,
+            &quot;text&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
             &quot;type&quot; : &quot;reference&quot;,
             &quot;required&quot; : false,
             &quot;repeats&quot; : false
@@ -1892,7 +1931,7 @@
         },
         {
           &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-          &quot;text&quot; : &quot;Set of statistics associated with variable&quot;,
+          &quot;text&quot; : &quot;Set of statistics&quot;,
           &quot;type&quot; : &quot;group&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : true,
@@ -1907,7 +1946,7 @@
                 }]
               }
             }],
-            &quot;text&quot; : &quot;Set of statistics associated with variable.&quot;,
+            &quot;text&quot; : &quot;Set of statistics.&quot;,
             &quot;type&quot; : &quot;display&quot;
           },
           {
@@ -2011,12 +2050,12 @@
                   }]
                 }
               }],
-              &quot;text&quot; : &quot;Description of statistic.&quot;,
+              &quot;text&quot; : &quot;Textual description related to the set of statistics.&quot;,
               &quot;type&quot; : &quot;display&quot;
             },
             {
               &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description.value&quot;,
-              &quot;text&quot; : &quot;Description of statistic&quot;,
+              &quot;text&quot; : &quot;Textual description related to the set of statistics&quot;,
               &quot;type&quot; : &quot;string&quot;,
               &quot;required&quot; : false,
               &quot;repeats&quot; : false
@@ -2057,7 +2096,7 @@
               &quot;valueString&quot; : &quot;CodeableConcept&quot;
             }],
             &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-            &quot;text&quot; : &quot;The type of synthesis statistic&quot;,
+            &quot;text&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
             &quot;type&quot; : &quot;group&quot;,
             &quot;required&quot; : false,
             &quot;repeats&quot; : true,
@@ -2072,7 +2111,7 @@
                   }]
                 }
               }],
-              &quot;text&quot; : &quot;The type of synthesis statistic.&quot;,
+              &quot;text&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
               &quot;type&quot; : &quot;display&quot;
             },
             {
@@ -2139,7 +2178,7 @@
               &quot;valueInteger&quot; : 1
             }],
             &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
-            &quot;text&quot; : &quot;The statistic value(s)&quot;,
+            &quot;text&quot; : &quot;Values and parameters for a single statistic&quot;,
             &quot;type&quot; : &quot;group&quot;,
             &quot;required&quot; : true,
             &quot;repeats&quot; : true,
@@ -2154,35 +2193,35 @@
                   }]
                 }
               }],
-              &quot;text&quot; : &quot;The statistic value(s).&quot;,
+              &quot;text&quot; : &quot;Values and parameters for a single statistic.&quot;,
+              &quot;type&quot; : &quot;display&quot;
+            }]
+          },
+          {
+            &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
+            &quot;text&quot; : &quot;An ordered group of statistics&quot;,
+            &quot;type&quot; : &quot;group&quot;,
+            &quot;required&quot; : false,
+            &quot;repeats&quot; : true,
+            &quot;item&quot; : [{
+              &quot;extension&quot; : [{
+                &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+                &quot;valueCodeableConcept&quot; : {
+                  &quot;coding&quot; : [{
+                    &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+                    &quot;code&quot; : &quot;flyover&quot;,
+                    &quot;display&quot; : &quot;Fly-over&quot;
+                  }]
+                }
+              }],
+              &quot;text&quot; : &quot;An ordered group of statistics.&quot;,
               &quot;type&quot; : &quot;display&quot;
             }]
           }]
         },
         {
-          &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.distribution&quot;,
-          &quot;text&quot; : &quot;Ordered distribution&quot;,
-          &quot;type&quot; : &quot;group&quot;,
-          &quot;required&quot; : false,
-          &quot;repeats&quot; : true,
-          &quot;item&quot; : [{
-            &quot;extension&quot; : [{
-              &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
-              &quot;valueCodeableConcept&quot; : {
-                &quot;coding&quot; : [{
-                  &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
-                  &quot;code&quot; : &quot;flyover&quot;,
-                  &quot;display&quot; : &quot;Fly-over&quot;
-                }]
-              }
-            }],
-            &quot;text&quot; : &quot;Ordered distribution.&quot;,
-            &quot;type&quot; : &quot;display&quot;
-          }]
-        },
-        {
           &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
-          &quot;text&quot; : &quot;Dependent evvidence variable&quot;,
+          &quot;text&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable&quot;,
           &quot;type&quot; : &quot;group&quot;,
           &quot;required&quot; : false,
           &quot;repeats&quot; : true,
@@ -2197,7 +2236,7 @@
                 }]
               }
             }],
-            &quot;text&quot; : &quot;Dependent evvidence variable.&quot;,
+            &quot;text&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.&quot;,
             &quot;type&quot; : &quot;display&quot;
           },
           {
@@ -2400,7 +2439,7 @@
                   }]
                 }
               }],
-              &quot;text&quot; : &quot;The definition of a nested variable.&quot;,
+              &quot;text&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
               &quot;type&quot; : &quot;display&quot;
             },
             {
@@ -2413,7 +2452,7 @@
                 &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
               }],
               &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition.value&quot;,
-              &quot;text&quot; : &quot;The definition of a nested variable&quot;,
+              &quot;text&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
               &quot;type&quot; : &quot;reference&quot;,
               &quot;required&quot; : false,
               &quot;repeats&quot; : false
@@ -2421,7 +2460,7 @@
           },
           {
             &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-            &quot;text&quot; : &quot;Set of statistics associated with variable&quot;,
+            &quot;text&quot; : &quot;Set of statistics&quot;,
             &quot;type&quot; : &quot;group&quot;,
             &quot;required&quot; : false,
             &quot;repeats&quot; : true,
@@ -2436,7 +2475,7 @@
                   }]
                 }
               }],
-              &quot;text&quot; : &quot;Set of statistics associated with variable.&quot;,
+              &quot;text&quot; : &quot;Set of statistics.&quot;,
               &quot;type&quot; : &quot;display&quot;
             },
             {
@@ -2540,12 +2579,12 @@
                     }]
                   }
                 }],
-                &quot;text&quot; : &quot;Description of statistic.&quot;,
+                &quot;text&quot; : &quot;Textual description related to the set of statistics.&quot;,
                 &quot;type&quot; : &quot;display&quot;
               },
               {
                 &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description.value&quot;,
-                &quot;text&quot; : &quot;Description of statistic&quot;,
+                &quot;text&quot; : &quot;Textual description related to the set of statistics&quot;,
                 &quot;type&quot; : &quot;string&quot;,
                 &quot;required&quot; : false,
                 &quot;repeats&quot; : false
@@ -2586,7 +2625,7 @@
                 &quot;valueString&quot; : &quot;CodeableConcept&quot;
               }],
               &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
-              &quot;text&quot; : &quot;The type of synthesis statistic&quot;,
+              &quot;text&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
               &quot;type&quot; : &quot;group&quot;,
               &quot;required&quot; : false,
               &quot;repeats&quot; : true,
@@ -2601,7 +2640,7 @@
                     }]
                   }
                 }],
-                &quot;text&quot; : &quot;The type of synthesis statistic.&quot;,
+                &quot;text&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
                 &quot;type&quot; : &quot;display&quot;
               },
               {
@@ -2664,7 +2703,7 @@
             },
             {
               &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
-              &quot;text&quot; : &quot;Additional variables&quot;,
+              &quot;text&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables&quot;,
               &quot;type&quot; : &quot;group&quot;,
               &quot;required&quot; : false,
               &quot;repeats&quot; : true,
@@ -2679,7 +2718,7 @@
                     }]
                   }
                 }],
-                &quot;text&quot; : &quot;Additional variables.&quot;,
+                &quot;text&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.&quot;,
                 &quot;type&quot; : &quot;display&quot;
               },
               {
@@ -2822,7 +2861,7 @@
                       }]
                     }
                   }],
-                  &quot;text&quot; : &quot;Definition of additional variable.&quot;,
+                  &quot;text&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
                   &quot;type&quot; : &quot;display&quot;
                 },
                 {
@@ -2835,7 +2874,7 @@
                     &quot;valueString&quot; : &quot;subject=$subj&amp;patient=$subj&amp;encounter=$encounter&quot;
                   }],
                   &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition.value&quot;,
-                  &quot;text&quot; : &quot;Definition of additional variable&quot;,
+                  &quot;text&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
                   &quot;type&quot; : &quot;reference&quot;,
                   &quot;required&quot; : false,
                   &quot;repeats&quot; : false
@@ -2848,7 +2887,7 @@
                 &quot;valueInteger&quot; : 1
               }],
               &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-              &quot;text&quot; : &quot;The statistic value(s)&quot;,
+              &quot;text&quot; : &quot;Values and parameters for a single statistic&quot;,
               &quot;type&quot; : &quot;group&quot;,
               &quot;required&quot; : true,
               &quot;repeats&quot; : true,
@@ -2863,7 +2902,28 @@
                     }]
                   }
                 }],
-                &quot;text&quot; : &quot;The statistic value(s).&quot;,
+                &quot;text&quot; : &quot;Values and parameters for a single statistic.&quot;,
+                &quot;type&quot; : &quot;display&quot;
+              }]
+            },
+            {
+              &quot;linkId&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
+              &quot;text&quot; : &quot;An ordered group of statistics&quot;,
+              &quot;type&quot; : &quot;group&quot;,
+              &quot;required&quot; : false,
+              &quot;repeats&quot; : true,
+              &quot;item&quot; : [{
+                &quot;extension&quot; : [{
+                  &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+                  &quot;valueCodeableConcept&quot; : {
+                    &quot;coding&quot; : [{
+                      &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+                      &quot;code&quot; : &quot;flyover&quot;,
+                      &quot;display&quot; : &quot;Fly-over&quot;
+                    }]
+                  }
+                }],
+                &quot;text&quot; : &quot;An ordered group of statistics.&quot;,
                 &quot;type&quot; : &quot;display&quot;
               }]
             }]
@@ -2897,7 +2957,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jun 13, 2019 11:22-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

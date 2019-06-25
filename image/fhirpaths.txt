@@ -13,10 +13,11 @@ DomainResource (Period): start.hasValue().not() or end.hasValue().not() or (star
 DomainResource (Ratio): (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
 DomainResource (Reference): reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))
 DomainResource (ContactPoint): value.empty() or system.exists()
-DomainResource (OrderedDistribution): true
-DomainResource (OrderedDistribution): true
-DomainResource (OrderedDistribution): true
+DomainResource (OrderedDistribution.bottomOfFirstInterval): true
+DomainResource (OrderedDistribution.interval): true
+DomainResource (OrderedDistribution.interval.rankOrder): true
 DomainResource (OrderedDistribution): interval.count() = numberOfIntervals
+DomainResource (OrderedDistribution.interval.rankOrder): true
 DomainResource (Timing.repeat): duration.empty() or durationUnit.exists()
 DomainResource (Timing.repeat): period.empty() or periodUnit.exists()
 DomainResource (Timing.repeat): duration.exists() implies duration >= 0
@@ -302,6 +303,18 @@ AppointmentResponse (AppointmentResponse): AppointmentResponse.participantStatus
 AppointmentResponse (AppointmentResponse): AppointmentResponse.actor.where(resolve() is Patient)
 AppointmentResponse (AppointmentResponse): AppointmentResponse.appointment
 AppointmentResponse (AppointmentResponse): AppointmentResponse.actor.where(resolve() is Location)
+Assertion (Assertion): Assertion.date
+Assertion (Assertion): Assertion.identifier
+Assertion (Assertion): (Assertion.useContext.value as Quantity) | (Assertion.useContext.value as Range)
+Assertion (Assertion): Assertion.useContext
+Assertion (Assertion): (Assertion.useContext.value as CodeableConcept)
+Assertion (Assertion): Assertion.description
+Assertion (Assertion): Assertion.useContext.code
+Assertion (Assertion): Assertion.title
+Assertion (Assertion): Assertion.version
+Assertion (Assertion): Assertion.url
+Assertion (Assertion): Assertion.useContext
+Assertion (Assertion): Assertion.status
 AuditEvent (AuditEvent): AuditEvent.recorded
 AuditEvent (AuditEvent): AuditEvent.entity.type
 AuditEvent (AuditEvent): AuditEvent.agent.who
@@ -872,18 +885,6 @@ EventDefinition (EventDefinition): EventDefinition.publisher
 EventDefinition (EventDefinition): EventDefinition.topic
 EventDefinition (EventDefinition): EventDefinition.useContext
 EventDefinition (EventDefinition): EventDefinition.status
-Evidence (Evidence): Evidence.date
-Evidence (Evidence): Evidence.identifier
-Evidence (Evidence): (Evidence.useContext.value as Quantity) | (Evidence.useContext.value as Range)
-Evidence (Evidence): Evidence.useContext
-Evidence (Evidence): (Evidence.useContext.value as CodeableConcept)
-Evidence (Evidence): Evidence.description
-Evidence (Evidence): Evidence.useContext.code
-Evidence (Evidence): Evidence.title
-Evidence (Evidence): Evidence.version
-Evidence (Evidence): Evidence.url
-Evidence (Evidence): Evidence.useContext
-Evidence (Evidence): Evidence.status
 EvidenceVariable (EvidenceVariable): EvidenceVariable.date
 EvidenceVariable (EvidenceVariable): EvidenceVariable.identifier
 EvidenceVariable (EvidenceVariable): EvidenceVariable.relatedArtifact.where(type='successor').resource
@@ -983,6 +984,18 @@ Group (Group): Group.characteristic.exclude
 Group (Group): Group.type
 Group (Group): (Group.characteristic.value as CodeableConcept) | (Group.characteristic.value as boolean)
 Group (Group): Group.characteristic.code
+GroupSummary (GroupSummary): GroupSummary.date
+GroupSummary (GroupSummary): GroupSummary.identifier
+GroupSummary (GroupSummary): (GroupSummary.useContext.value as Quantity) | (GroupSummary.useContext.value as Range)
+GroupSummary (GroupSummary): GroupSummary.useContext
+GroupSummary (GroupSummary): (GroupSummary.useContext.value as CodeableConcept)
+GroupSummary (GroupSummary): GroupSummary.description
+GroupSummary (GroupSummary): GroupSummary.useContext.code
+GroupSummary (GroupSummary): GroupSummary.title
+GroupSummary (GroupSummary): GroupSummary.version
+GroupSummary (GroupSummary): GroupSummary.url
+GroupSummary (GroupSummary): GroupSummary.useContext
+GroupSummary (GroupSummary): GroupSummary.status
 GuidanceResponse (GuidanceResponse): GuidanceResponse.requestIdentifier
 GuidanceResponse (GuidanceResponse): GuidanceResponse.identifier
 GuidanceResponse (GuidanceResponse): GuidanceResponse.subject.where(resolve() is Patient)

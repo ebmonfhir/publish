@@ -6,11 +6,11 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-05-31T13:21:05-05:00",
+  "date" : "2019-06-13T11:15:37-04:00",
   "publisher" : "Health Level Seven International (Clinical Decision Support)",
   "item" : [{
     "linkId" : "Evidence",
-    "text" : "A collection of evidence focused statistics",
+    "text" : "A collection of evidence focused statistics, considered a summary of evidence",
     "type" : "group",
     "required" : false,
     "repeats" : true,
@@ -508,7 +508,7 @@
     },
     {
       "linkId" : "Evidence.useContext",
-      "text" : "Use conte3xt",
+      "text" : "Use contetxt",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -852,7 +852,7 @@
     },
     {
       "linkId" : "Evidence.relatedArtifact",
-      "text" : "Link to artifact associated with summary",
+      "text" : "Link or citation to artifact associated with the summary",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -867,7 +867,7 @@
             }]
           }
         }],
-        "text" : "Link to artifact associated with summary.",
+        "text" : "Link or citation to artifact associated with the summary.",
         "type" : "display"
       }]
     },
@@ -895,7 +895,7 @@
             }]
           }
         }],
-        "text" : "A free text natural language description of the evidence from a consumer's perspective. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the 'text' field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created).",
+        "text" : "ASM edit. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the 'text' field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created).",
         "type" : "display"
       },
       {
@@ -1013,6 +1013,45 @@
         "linkId" : "Evidence.studyType.text",
         "text" : "text:",
         "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "boolean"
+      }],
+      "linkId" : "Evidence.locked",
+      "type" : "group",
+      "required" : true,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Root value def.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "Evidence.locked.value",
+        "text" : "Root value",
+        "type" : "boolean",
         "required" : false,
         "repeats" : false
       }]
@@ -1142,12 +1181,12 @@
               }]
             }
           }],
-          "text" : "Description of the particular summary.",
+          "text" : "Textual description of population.",
           "type" : "display"
         },
         {
           "linkId" : "Evidence.population.description.value",
-          "text" : "Description of the particular summary",
+          "text" : "Textual description of population",
           "type" : "string",
           "required" : false,
           "repeats" : false
@@ -1202,7 +1241,7 @@
               }]
             }
           }],
-          "text" : "The evidence that the summary indirectly represents.",
+          "text" : "Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.",
           "type" : "display"
         },
         {
@@ -1215,7 +1254,7 @@
             "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
           }],
           "linkId" : "Evidence.population.intendedCohort.value",
-          "text" : "The evidence that the summary indirectly represents",
+          "text" : "Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study",
           "type" : "reference",
           "required" : false,
           "repeats" : false
@@ -1245,7 +1284,7 @@
               }]
             }
           }],
-          "text" : "The evidence from which the sample was drawn. The target reference must conform to the CohortSummary profile.",
+          "text" : "Summary statistics describing the actual group for this population. The target reference must conform to the CohortSummary profile.",
           "type" : "display"
         },
         {
@@ -1258,7 +1297,7 @@
             "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
           }],
           "linkId" : "Evidence.population.sampleCohort.value",
-          "text" : "The evidence from which the sample was drawn",
+          "text" : "Summary statistics describing the actual group for this population",
           "type" : "reference",
           "required" : false,
           "repeats" : false
@@ -1288,7 +1327,7 @@
               }]
             }
           }],
-          "text" : "The evidence that the summary directly reprresents.",
+          "text" : "The actual group (ie list of members) for this population.",
           "type" : "display"
         },
         {
@@ -1301,7 +1340,7 @@
             "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
           }],
           "linkId" : "Evidence.population.actualCohort.value",
-          "text" : "The evidence that the summary directly reprresents",
+          "text" : "The actual group (ie list of members) for this population",
           "type" : "reference",
           "required" : false,
           "repeats" : false
@@ -1309,7 +1348,7 @@
       },
       {
         "linkId" : "Evidence.population.sampleSize",
-        "text" : "Sample description",
+        "text" : "Sample size for the population",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1324,7 +1363,7 @@
               }]
             }
           }],
-          "text" : "Sample description.",
+          "text" : "Sample size for the population.",
           "type" : "display"
         },
         {
@@ -1428,12 +1467,12 @@
                 }]
               }
             }],
-            "text" : "Description of the sample size.",
+            "text" : "Textual description of population sample.",
             "type" : "display"
           },
           {
             "linkId" : "Evidence.population.sampleSize.description.value",
-            "text" : "Description of the sample size",
+            "text" : "Textual description of population sample",
             "type" : "string",
             "required" : false,
             "repeats" : false
@@ -1755,7 +1794,7 @@
                 }]
               }
             }],
-            "text" : "The definition of a nested variable.",
+            "text" : "Definition of a variable related to the statistic(s).",
             "type" : "display"
           },
           {
@@ -1768,7 +1807,7 @@
               "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
             }],
             "linkId" : "Evidence.population.evidenceVariable.variableDefinition.value",
-            "text" : "The definition of a nested variable",
+            "text" : "Definition of a variable related to the statistic(s)",
             "type" : "reference",
             "required" : false,
             "repeats" : false
@@ -1776,7 +1815,7 @@
         },
         {
           "linkId" : "Evidence.population.evidenceVariable.statisticCollection",
-          "text" : "Set of statistics associated with variable",
+          "text" : "Set of statistics",
           "type" : "group",
           "required" : false,
           "repeats" : true,
@@ -1791,7 +1830,7 @@
                 }]
               }
             }],
-            "text" : "Set of statistics associated with variable.",
+            "text" : "Set of statistics.",
             "type" : "display"
           },
           {
@@ -1895,12 +1934,12 @@
                   }]
                 }
               }],
-              "text" : "Description of statistic.",
+              "text" : "Textual description related to the set of statistics.",
               "type" : "display"
             },
             {
               "linkId" : "Evidence.population.evidenceVariable.statisticCollection.description.value",
-              "text" : "Description of statistic",
+              "text" : "Textual description related to the set of statistics",
               "type" : "string",
               "required" : false,
               "repeats" : false
@@ -1941,7 +1980,7 @@
               "valueString" : "CodeableConcept"
             }],
             "linkId" : "Evidence.population.evidenceVariable.statisticCollection.synthesisType",
-            "text" : "The type of synthesis statistic",
+            "text" : "The particular type of synthesis if this is a synthesis summary",
             "type" : "group",
             "required" : false,
             "repeats" : true,
@@ -1956,7 +1995,7 @@
                   }]
                 }
               }],
-              "text" : "The type of synthesis statistic.",
+              "text" : "The particular type of synthesis if this is a synthesis summary.",
               "type" : "display"
             },
             {
@@ -2023,7 +2062,7 @@
               "valueInteger" : 1
             }],
             "linkId" : "Evidence.population.evidenceVariable.statisticCollection.statistic",
-            "text" : "The statistic value(s)",
+            "text" : "Values and parameters for a single statistic",
             "type" : "group",
             "required" : true,
             "repeats" : true,
@@ -2038,35 +2077,35 @@
                   }]
                 }
               }],
-              "text" : "The statistic value(s).",
+              "text" : "Values and parameters for a single statistic.",
+              "type" : "display"
+            }]
+          },
+          {
+            "linkId" : "Evidence.population.evidenceVariable.statisticCollection.distribution",
+            "text" : "An ordered group of statistics",
+            "type" : "group",
+            "required" : false,
+            "repeats" : true,
+            "item" : [{
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                "valueCodeableConcept" : {
+                  "coding" : [{
+                    "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                    "code" : "flyover",
+                    "display" : "Fly-over"
+                  }]
+                }
+              }],
+              "text" : "An ordered group of statistics.",
               "type" : "display"
             }]
           }]
         },
         {
-          "linkId" : "Evidence.population.evidenceVariable.distribution",
-          "text" : "Ordered distribution",
-          "type" : "group",
-          "required" : false,
-          "repeats" : true,
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-              "valueCodeableConcept" : {
-                "coding" : [{
-                  "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                  "code" : "flyover",
-                  "display" : "Fly-over"
-                }]
-              }
-            }],
-            "text" : "Ordered distribution.",
-            "type" : "display"
-          }]
-        },
-        {
           "linkId" : "Evidence.population.evidenceVariable.nestedVariable",
-          "text" : "Dependent evvidence variable",
+          "text" : "An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable",
           "type" : "group",
           "required" : false,
           "repeats" : true,
@@ -2081,7 +2120,7 @@
                 }]
               }
             }],
-            "text" : "Dependent evvidence variable.",
+            "text" : "An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.",
             "type" : "display"
           },
           {
@@ -2284,7 +2323,7 @@
                   }]
                 }
               }],
-              "text" : "The definition of a nested variable.",
+              "text" : "Definition of a variable related to the statistic(s).",
               "type" : "display"
             },
             {
@@ -2297,7 +2336,7 @@
                 "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
               }],
               "linkId" : "Evidence.population.evidenceVariable.nestedVariable.variableDefinition.value",
-              "text" : "The definition of a nested variable",
+              "text" : "Definition of a variable related to the statistic(s)",
               "type" : "reference",
               "required" : false,
               "repeats" : false
@@ -2305,7 +2344,7 @@
           },
           {
             "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection",
-            "text" : "Set of statistics associated with variable",
+            "text" : "Set of statistics",
             "type" : "group",
             "required" : false,
             "repeats" : true,
@@ -2320,7 +2359,7 @@
                   }]
                 }
               }],
-              "text" : "Set of statistics associated with variable.",
+              "text" : "Set of statistics.",
               "type" : "display"
             },
             {
@@ -2424,12 +2463,12 @@
                     }]
                   }
                 }],
-                "text" : "Description of statistic.",
+                "text" : "Textual description related to the set of statistics.",
                 "type" : "display"
               },
               {
                 "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description.value",
-                "text" : "Description of statistic",
+                "text" : "Textual description related to the set of statistics",
                 "type" : "string",
                 "required" : false,
                 "repeats" : false
@@ -2470,7 +2509,7 @@
                 "valueString" : "CodeableConcept"
               }],
               "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType",
-              "text" : "The type of synthesis statistic",
+              "text" : "The particular type of synthesis if this is a synthesis summary",
               "type" : "group",
               "required" : false,
               "repeats" : true,
@@ -2485,7 +2524,7 @@
                     }]
                   }
                 }],
-                "text" : "The type of synthesis statistic.",
+                "text" : "The particular type of synthesis if this is a synthesis summary.",
                 "type" : "display"
               },
               {
@@ -2548,7 +2587,7 @@
             },
             {
               "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable",
-              "text" : "Additional variables",
+              "text" : "An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables",
               "type" : "group",
               "required" : false,
               "repeats" : true,
@@ -2563,7 +2602,7 @@
                     }]
                   }
                 }],
-                "text" : "Additional variables.",
+                "text" : "An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.",
                 "type" : "display"
               },
               {
@@ -2706,7 +2745,7 @@
                       }]
                     }
                   }],
-                  "text" : "Definition of additional variable.",
+                  "text" : "Definition of a variable related to the statistic(s).",
                   "type" : "display"
                 },
                 {
@@ -2719,7 +2758,7 @@
                     "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
                   }],
                   "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition.value",
-                  "text" : "Definition of additional variable",
+                  "text" : "Definition of a variable related to the statistic(s)",
                   "type" : "reference",
                   "required" : false,
                   "repeats" : false
@@ -2732,7 +2771,7 @@
                 "valueInteger" : 1
               }],
               "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic",
-              "text" : "The statistic value(s)",
+              "text" : "Values and parameters for a single statistic",
               "type" : "group",
               "required" : true,
               "repeats" : true,
@@ -2747,7 +2786,28 @@
                     }]
                   }
                 }],
-                "text" : "The statistic value(s).",
+                "text" : "Values and parameters for a single statistic.",
+                "type" : "display"
+              }]
+            },
+            {
+              "linkId" : "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution",
+              "text" : "An ordered group of statistics",
+              "type" : "group",
+              "required" : false,
+              "repeats" : true,
+              "item" : [{
+                "extension" : [{
+                  "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept" : {
+                    "coding" : [{
+                      "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                      "code" : "flyover",
+                      "display" : "Fly-over"
+                    }]
+                  }
+                }],
+                "text" : "An ordered group of statistics.",
                 "type" : "display"
               }]
             }]

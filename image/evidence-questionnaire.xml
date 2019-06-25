@@ -7,11 +7,11 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-05-31T13:21:05-05:00"/>
+  <date value="2019-06-13T11:15:37-04:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <item>
     <linkId value="Evidence"/>
-    <text value="A collection of evidence focused statistics"/>
+    <text value="A collection of evidence focused statistics, considered a summary of evidence"/>
     <type value="group"/>
     <required value="false"/>
     <repeats value="true"/>
@@ -471,7 +471,7 @@
     </item>
     <item>
       <linkId value="Evidence.useContext"/>
-      <text value="Use conte3xt"/>
+      <text value="Use contetxt"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -790,7 +790,7 @@
     </item>
     <item>
       <linkId value="Evidence.relatedArtifact"/>
-      <text value="Link to artifact associated with summary"/>
+      <text value="Link or citation to artifact associated with the summary"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -804,7 +804,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Link to artifact associated with summary."/>
+        <text value="Link or citation to artifact associated with the summary."/>
         <type value="display"/>
       </item>
     </item>
@@ -829,7 +829,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="A free text natural language description of the evidence from a consumer&#39;s perspective. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the &#39;text&#39; field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created)."/>
+        <text value="ASM edit. This description can be used to capture details such as why the evidence was built, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc. It is not a rendering of the evidence as conveyed in the &#39;text&#39; field of the resource itself. This item SHOULD be populated unless the information is available from context (e.g. the language of the evidence is presumed to be the predominant language in the place the evidence was created)."/>
         <type value="display"/>
       </item>
       <item>
@@ -939,6 +939,41 @@
         <linkId value="Evidence.studyType.text"/>
         <text value="text:"/>
         <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="boolean"/>
+      </extension>
+      <linkId value="Evidence.locked"/>
+      <type value="group"/>
+      <required value="true"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Root value def."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="Evidence.locked.value"/>
+        <text value="Root value"/>
+        <type value="boolean"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
@@ -1058,12 +1093,12 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Description of the particular summary."/>
+          <text value="Textual description of population."/>
           <type value="display"/>
         </item>
         <item>
           <linkId value="Evidence.population.description.value"/>
-          <text value="Description of the particular summary"/>
+          <text value="Textual description of population"/>
           <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -1113,7 +1148,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The evidence that the summary indirectly represents."/>
+          <text value="Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study."/>
           <type value="display"/>
         </item>
         <item>
@@ -1124,7 +1159,7 @@
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
           </extension>
           <linkId value="Evidence.population.intendedCohort.value"/>
-          <text value="The evidence that the summary indirectly represents"/>
+          <text value="Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study"/>
           <type value="reference"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -1151,7 +1186,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The evidence from which the sample was drawn. The target reference must conform to the CohortSummary profile."/>
+          <text value="Summary statistics describing the actual group for this population. The target reference must conform to the CohortSummary profile."/>
           <type value="display"/>
         </item>
         <item>
@@ -1162,7 +1197,7 @@
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
           </extension>
           <linkId value="Evidence.population.sampleCohort.value"/>
-          <text value="The evidence from which the sample was drawn"/>
+          <text value="Summary statistics describing the actual group for this population"/>
           <type value="reference"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -1189,7 +1224,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The evidence that the summary directly reprresents."/>
+          <text value="The actual group (ie list of members) for this population."/>
           <type value="display"/>
         </item>
         <item>
@@ -1200,7 +1235,7 @@
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
           </extension>
           <linkId value="Evidence.population.actualCohort.value"/>
-          <text value="The evidence that the summary directly reprresents"/>
+          <text value="The actual group (ie list of members) for this population"/>
           <type value="reference"/>
           <required value="false"/>
           <repeats value="false"/>
@@ -1208,7 +1243,7 @@
       </item>
       <item>
         <linkId value="Evidence.population.sampleSize"/>
-        <text value="Sample description"/>
+        <text value="Sample size for the population"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1222,7 +1257,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Sample description."/>
+          <text value="Sample size for the population."/>
           <type value="display"/>
         </item>
         <item>
@@ -1318,12 +1353,12 @@
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <text value="Description of the sample size."/>
+            <text value="Textual description of population sample."/>
             <type value="display"/>
           </item>
           <item>
             <linkId value="Evidence.population.sampleSize.description.value"/>
-            <text value="Description of the sample size"/>
+            <text value="Textual description of population sample"/>
             <type value="string"/>
             <required value="false"/>
             <repeats value="false"/>
@@ -1619,7 +1654,7 @@
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <text value="The definition of a nested variable."/>
+            <text value="Definition of a variable related to the statistic(s)."/>
             <type value="display"/>
           </item>
           <item>
@@ -1630,7 +1665,7 @@
               <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
             </extension>
             <linkId value="Evidence.population.evidenceVariable.variableDefinition.value"/>
-            <text value="The definition of a nested variable"/>
+            <text value="Definition of a variable related to the statistic(s)"/>
             <type value="reference"/>
             <required value="false"/>
             <repeats value="false"/>
@@ -1638,7 +1673,7 @@
         </item>
         <item>
           <linkId value="Evidence.population.evidenceVariable.statisticCollection"/>
-          <text value="Set of statistics associated with variable"/>
+          <text value="Set of statistics"/>
           <type value="group"/>
           <required value="false"/>
           <repeats value="true"/>
@@ -1652,7 +1687,7 @@
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <text value="Set of statistics associated with variable."/>
+            <text value="Set of statistics."/>
             <type value="display"/>
           </item>
           <item>
@@ -1748,12 +1783,12 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="Description of statistic."/>
+              <text value="Textual description related to the set of statistics."/>
               <type value="display"/>
             </item>
             <item>
               <linkId value="Evidence.population.evidenceVariable.statisticCollection.description.value"/>
-              <text value="Description of statistic"/>
+              <text value="Textual description related to the set of statistics"/>
               <type value="string"/>
               <required value="false"/>
               <repeats value="false"/>
@@ -1790,7 +1825,7 @@
               <valueString value="CodeableConcept"/>
             </extension>
             <linkId value="Evidence.population.evidenceVariable.statisticCollection.synthesisType"/>
-            <text value="The type of synthesis statistic"/>
+            <text value="The particular type of synthesis if this is a synthesis summary"/>
             <type value="group"/>
             <required value="false"/>
             <repeats value="true"/>
@@ -1804,7 +1839,7 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="The type of synthesis statistic."/>
+              <text value="The particular type of synthesis if this is a synthesis summary."/>
               <type value="display"/>
             </item>
             <item>
@@ -1867,7 +1902,7 @@
               <valueInteger value="1"/>
             </extension>
             <linkId value="Evidence.population.evidenceVariable.statisticCollection.statistic"/>
-            <text value="The statistic value(s)"/>
+            <text value="Values and parameters for a single statistic"/>
             <type value="group"/>
             <required value="true"/>
             <repeats value="true"/>
@@ -1881,34 +1916,34 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="The statistic value(s)."/>
+              <text value="Values and parameters for a single statistic."/>
+              <type value="display"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="Evidence.population.evidenceVariable.statisticCollection.distribution"/>
+            <text value="An ordered group of statistics"/>
+            <type value="group"/>
+            <required value="false"/>
+            <repeats value="true"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                <valueCodeableConcept>
+                  <coding>
+                    <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                    <code value="flyover"/>
+                    <display value="Fly-over"/>
+                  </coding>
+                </valueCodeableConcept>
+              </extension>
+              <text value="An ordered group of statistics."/>
               <type value="display"/>
             </item>
           </item>
         </item>
         <item>
-          <linkId value="Evidence.population.evidenceVariable.distribution"/>
-          <text value="Ordered distribution"/>
-          <type value="group"/>
-          <required value="false"/>
-          <repeats value="true"/>
-          <item>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-              <valueCodeableConcept>
-                <coding>
-                  <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-                  <code value="flyover"/>
-                  <display value="Fly-over"/>
-                </coding>
-              </valueCodeableConcept>
-            </extension>
-            <text value="Ordered distribution."/>
-            <type value="display"/>
-          </item>
-        </item>
-        <item>
           <linkId value="Evidence.population.evidenceVariable.nestedVariable"/>
-          <text value="Dependent evvidence variable"/>
+          <text value="An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable"/>
           <type value="group"/>
           <required value="false"/>
           <repeats value="true"/>
@@ -1922,7 +1957,7 @@
                 </coding>
               </valueCodeableConcept>
             </extension>
-            <text value="Dependent evvidence variable."/>
+            <text value="An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable."/>
             <type value="display"/>
           </item>
           <item>
@@ -2108,7 +2143,7 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="The definition of a nested variable."/>
+              <text value="Definition of a variable related to the statistic(s)."/>
               <type value="display"/>
             </item>
             <item>
@@ -2119,7 +2154,7 @@
                 <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
               </extension>
               <linkId value="Evidence.population.evidenceVariable.nestedVariable.variableDefinition.value"/>
-              <text value="The definition of a nested variable"/>
+              <text value="Definition of a variable related to the statistic(s)"/>
               <type value="reference"/>
               <required value="false"/>
               <repeats value="false"/>
@@ -2127,7 +2162,7 @@
           </item>
           <item>
             <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection"/>
-            <text value="Set of statistics associated with variable"/>
+            <text value="Set of statistics"/>
             <type value="group"/>
             <required value="false"/>
             <repeats value="true"/>
@@ -2141,7 +2176,7 @@
                   </coding>
                 </valueCodeableConcept>
               </extension>
-              <text value="Set of statistics associated with variable."/>
+              <text value="Set of statistics."/>
               <type value="display"/>
             </item>
             <item>
@@ -2237,12 +2272,12 @@
                     </coding>
                   </valueCodeableConcept>
                 </extension>
-                <text value="Description of statistic."/>
+                <text value="Textual description related to the set of statistics."/>
                 <type value="display"/>
               </item>
               <item>
                 <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description.value"/>
-                <text value="Description of statistic"/>
+                <text value="Textual description related to the set of statistics"/>
                 <type value="string"/>
                 <required value="false"/>
                 <repeats value="false"/>
@@ -2279,7 +2314,7 @@
                 <valueString value="CodeableConcept"/>
               </extension>
               <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType"/>
-              <text value="The type of synthesis statistic"/>
+              <text value="The particular type of synthesis if this is a synthesis summary"/>
               <type value="group"/>
               <required value="false"/>
               <repeats value="true"/>
@@ -2293,7 +2328,7 @@
                     </coding>
                   </valueCodeableConcept>
                 </extension>
-                <text value="The type of synthesis statistic."/>
+                <text value="The particular type of synthesis if this is a synthesis summary."/>
                 <type value="display"/>
               </item>
               <item>
@@ -2353,7 +2388,7 @@
             </item>
             <item>
               <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable"/>
-              <text value="Additional variables"/>
+              <text value="An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables"/>
               <type value="group"/>
               <required value="false"/>
               <repeats value="true"/>
@@ -2367,7 +2402,7 @@
                     </coding>
                   </valueCodeableConcept>
                 </extension>
-                <text value="Additional variables."/>
+                <text value="An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables."/>
                 <type value="display"/>
               </item>
               <item>
@@ -2498,7 +2533,7 @@
                       </coding>
                     </valueCodeableConcept>
                   </extension>
-                  <text value="Definition of additional variable."/>
+                  <text value="Definition of a variable related to the statistic(s)."/>
                   <type value="display"/>
                 </item>
                 <item>
@@ -2509,7 +2544,7 @@
                     <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
                   </extension>
                   <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition.value"/>
-                  <text value="Definition of additional variable"/>
+                  <text value="Definition of a variable related to the statistic(s)"/>
                   <type value="reference"/>
                   <required value="false"/>
                   <repeats value="false"/>
@@ -2521,7 +2556,7 @@
                 <valueInteger value="1"/>
               </extension>
               <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic"/>
-              <text value="The statistic value(s)"/>
+              <text value="Values and parameters for a single statistic"/>
               <type value="group"/>
               <required value="true"/>
               <repeats value="true"/>
@@ -2535,7 +2570,27 @@
                     </coding>
                   </valueCodeableConcept>
                 </extension>
-                <text value="The statistic value(s)."/>
+                <text value="Values and parameters for a single statistic."/>
+                <type value="display"/>
+              </item>
+            </item>
+            <item>
+              <linkId value="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution"/>
+              <text value="An ordered group of statistics"/>
+              <type value="group"/>
+              <required value="false"/>
+              <repeats value="true"/>
+              <item>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+                  <valueCodeableConcept>
+                    <coding>
+                      <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                      <code value="flyover"/>
+                      <display value="Fly-over"/>
+                    </coding>
+                  </valueCodeableConcept>
+                </extension>
+                <text value="An ordered group of statistics."/>
                 <type value="display"/>
               </item>
             </item>

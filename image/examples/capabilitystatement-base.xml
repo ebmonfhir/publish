@@ -150,6 +150,20 @@
           <td>y</td>
         </tr>
         <tr>
+          <td>Assertion</td>
+          <td>
+            <a href="http://hl7.org/fhir/StructureDefinition/Assertion">http://hl7.org/fhir/StructureDefinition/Assertion</a>
+          </td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
           <td>AuditEvent</td>
           <td>
             <a href="http://hl7.org/fhir/StructureDefinition/AuditEvent">http://hl7.org/fhir/StructureDefinition/AuditEvent</a>
@@ -794,20 +808,6 @@
           <td>y</td>
         </tr>
         <tr>
-          <td>Evidence</td>
-          <td>
-            <a href="http://hl7.org/fhir/StructureDefinition/Evidence">http://hl7.org/fhir/StructureDefinition/Evidence</a>
-          </td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-          <td>y</td>
-        </tr>
-        <tr>
           <td>EvidenceVariable</td>
           <td>
             <a href="http://hl7.org/fhir/StructureDefinition/EvidenceVariable">http://hl7.org/fhir/StructureDefinition/EvidenceVariable</a>
@@ -909,6 +909,20 @@
           <td>Group</td>
           <td>
             <a href="http://hl7.org/fhir/StructureDefinition/Group">http://hl7.org/fhir/StructureDefinition/Group</a>
+          </td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>GroupSummary</td>
+          <td>
+            <a href="http://hl7.org/fhir/StructureDefinition/GroupSummary">http://hl7.org/fhir/StructureDefinition/GroupSummary</a>
           </td>
           <td>y</td>
           <td>y</td>
@@ -2089,7 +2103,7 @@
   <name value="Base FHIR Capability Statement (Full)"/>
   <status value="draft"/>
   <experimental value="true"/>
-  <date value="2019-05-31T13:21:05-05:00"/>
+  <date value="2019-06-25T11:47:30-04:00"/>
   <publisher value="FHIR Project Team"/>
   <contact>
     <telecom>
@@ -2906,6 +2920,119 @@
         <definition value="http://hl7.org/fhir/SearchParameter/AppointmentResponse-location"/>
         <type value="reference"/>
         <documentation value="This Response is for this Location"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Assertion"/>
+      <profile value="http://hl7.org/fhir/StructureDefinition/Assertion"/>
+      <interaction>
+        <code value="read"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="vread"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="update"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="delete"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-instance"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="create"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <conditionalCreate value="true"/>
+      <conditionalUpdate value="true"/>
+      <conditionalDelete value="multiple"/>
+      <referencePolicy value="literal"/>
+      <referencePolicy value="logical"/>
+      <searchParam>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-date"/>
+        <type value="date"/>
+        <documentation value="The assertion publication date"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-identifier"/>
+        <type value="token"/>
+        <documentation value="External identifier for the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-context-quantity"/>
+        <type value="quantity"/>
+        <documentation value="A quantity- or range-valued use context assigned to the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-value"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-context-type-value"/>
+        <type value="composite"/>
+        <documentation value="A use context type and value assigned to the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="context"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-context"/>
+        <type value="token"/>
+        <documentation value="A use context assigned to the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="description"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-description"/>
+        <type value="string"/>
+        <documentation value="The description of the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-context-type"/>
+        <type value="token"/>
+        <documentation value="A type of use context assigned to the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-title"/>
+        <type value="string"/>
+        <documentation value="The human-friendly name of the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="version"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-version"/>
+        <type value="token"/>
+        <documentation value="The business version of the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-url"/>
+        <type value="uri"/>
+        <documentation value="The uri that identifies the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-context-type-quantity"/>
+        <type value="composite"/>
+        <documentation value="A use context type and quantity- or range-based value assigned to the assertion"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Assertion-status"/>
+        <type value="token"/>
+        <documentation value="The current status of the assertion"/>
       </searchParam>
     </resource>
     <resource>
@@ -8612,119 +8739,6 @@
       </searchParam>
     </resource>
     <resource>
-      <type value="Evidence"/>
-      <profile value="http://hl7.org/fhir/StructureDefinition/Evidence"/>
-      <interaction>
-        <code value="read"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="vread"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="update"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="delete"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="history-instance"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="history-type"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="create"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <interaction>
-        <code value="search-type"/>
-        <documentation value="Implemented per the specification (or Insert other doco here)"/>
-      </interaction>
-      <conditionalCreate value="true"/>
-      <conditionalUpdate value="true"/>
-      <conditionalDelete value="multiple"/>
-      <referencePolicy value="literal"/>
-      <referencePolicy value="logical"/>
-      <searchParam>
-        <name value="date"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-date"/>
-        <type value="date"/>
-        <documentation value="The evidence publication date"/>
-      </searchParam>
-      <searchParam>
-        <name value="identifier"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-identifier"/>
-        <type value="token"/>
-        <documentation value="External identifier for the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="context-quantity"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-context-quantity"/>
-        <type value="quantity"/>
-        <documentation value="A quantity- or range-valued use context assigned to the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="context-type-value"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-context-type-value"/>
-        <type value="composite"/>
-        <documentation value="A use context type and value assigned to the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="context"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-context"/>
-        <type value="token"/>
-        <documentation value="A use context assigned to the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="description"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-description"/>
-        <type value="string"/>
-        <documentation value="The description of the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="context-type"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-context-type"/>
-        <type value="token"/>
-        <documentation value="A type of use context assigned to the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="title"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-title"/>
-        <type value="string"/>
-        <documentation value="The human-friendly name of the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="version"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-version"/>
-        <type value="token"/>
-        <documentation value="The business version of the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="url"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-url"/>
-        <type value="uri"/>
-        <documentation value="The uri that identifies the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="context-type-quantity"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-context-type-quantity"/>
-        <type value="composite"/>
-        <documentation value="A use context type and quantity- or range-based value assigned to the evidence"/>
-      </searchParam>
-      <searchParam>
-        <name value="status"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/Evidence-status"/>
-        <type value="token"/>
-        <documentation value="The current status of the evidence"/>
-      </searchParam>
-    </resource>
-    <resource>
       <type value="EvidenceVariable"/>
       <profile value="http://hl7.org/fhir/StructureDefinition/EvidenceVariable"/>
       <interaction>
@@ -9740,6 +9754,119 @@
         <definition value="http://hl7.org/fhir/SearchParameter/Group-characteristic"/>
         <type value="token"/>
         <documentation value="Kind of characteristic"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="GroupSummary"/>
+      <profile value="http://hl7.org/fhir/StructureDefinition/GroupSummary"/>
+      <interaction>
+        <code value="read"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="vread"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="update"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="delete"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-instance"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="create"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <conditionalCreate value="true"/>
+      <conditionalUpdate value="true"/>
+      <conditionalDelete value="multiple"/>
+      <referencePolicy value="literal"/>
+      <referencePolicy value="logical"/>
+      <searchParam>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-date"/>
+        <type value="date"/>
+        <documentation value="The group summary publication date"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-identifier"/>
+        <type value="token"/>
+        <documentation value="External identifier for the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-context-quantity"/>
+        <type value="quantity"/>
+        <documentation value="A quantity- or range-valued use context assigned to the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-value"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-context-type-value"/>
+        <type value="composite"/>
+        <documentation value="A use context type and value assigned to the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="context"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-context"/>
+        <type value="token"/>
+        <documentation value="A use context assigned to the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="description"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-description"/>
+        <type value="string"/>
+        <documentation value="The description of the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-context-type"/>
+        <type value="token"/>
+        <documentation value="A type of use context assigned to the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-title"/>
+        <type value="string"/>
+        <documentation value="The human-friendly name of the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="version"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-version"/>
+        <type value="token"/>
+        <documentation value="The business version of the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-url"/>
+        <type value="uri"/>
+        <documentation value="The uri that identifies the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-context-type-quantity"/>
+        <type value="composite"/>
+        <documentation value="A use context type and quantity- or range-based value assigned to the group summary"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/GroupSummary-status"/>
+        <type value="token"/>
+        <documentation value="The current status of the group summary"/>
       </searchParam>
     </resource>
     <resource>
