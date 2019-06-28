@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationUsage.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:4db89ba6-99d2-4cea-8a24-4952dac56dfa",
-      "timestamp" : "2019-06-25T12:07:03-04:00",
+      "identifier" : "urn:uuid:e28f1767-e649-4084-bd27-3e09135c04b3",
+      "timestamp" : "2019-06-28T15:41:04-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -29,8 +29,8 @@
     "status" : "active",
     "description" : "Type options for MedicationUsage.effective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:fcf4a9e0-4d57-474c-9561-86e1060e9559",
-      "timestamp" : "2019-06-25T12:07:03-04:00",
+      "identifier" : "urn:uuid:8b5e78fb-6933-4c74-99f6-aca68a70a6d5",
+      "timestamp" : "2019-06-28T15:41:04-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -48,7 +48,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-06-25T11:47:30-04:00",
+  "date" : "2019-06-28T15:31:51-04:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationUsage",
@@ -57,10 +57,6 @@
     "required" : false,
     "repeats" : true,
     "item" : [{
-      "text" : "When interpreting a MedicationUsage, the value of the status and NotTaken needed to be considered:\rMedicationUsage.status + MedicationUsage.wasNotTaken\rStatus=Active + NotTaken=T = Not currently taking\rStatus=Completed + NotTaken=T = Not taken in the past\rStatus=Intended + NotTaken=T = No intention of taking\rStatus=Active + NotTaken=F = Taking, but not as prescribed\rStatus=Active + NotTaken=F = Taking\rStatus=Intended +NotTaken= F = Will be taking (not started)\rStatus=Completed + NotTaken=F = Taken in past\rStatus=In Error + NotTaken=N/A = In Error.",
-      "type" : "display"
-    },
-    {
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
         "valueCodeableConcept" : {
@@ -725,7 +721,7 @@
             }]
           }
         }],
-        "text" : "The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationUsage.taken element is No). This attribute reflects the period over which the patient consumed the medication and is expected to be populated on the majority of Medication Usages. If the medication is still being taken at the time the usage is recorded, the \"end\" date will be omitted.  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.",
+        "text" : "The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationUsage.status element is NotTaken). This attribute reflects the period over which the patient consumed the medication and is expected to be populated on the majority of Medication Usages. f the medication is still being taken and is expected to continue indefinitely at the time the usage is recorded, the \"end\" date will be omitted.  If the end date is known, then it is included as the \"end date\".  The date/time attribute supports a variety of dates - year, year/month and exact date.  If something more than this is required, this should be conveyed as text.",
         "type" : "display"
       },
       {

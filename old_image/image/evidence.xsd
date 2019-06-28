@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright (c) 2011+, HL7, Inc.
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+
+  Generated on Thu, Jun 20, 2019 14:22-0400 for FHIR v4.1.0 
+
+  Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
+  valid. Implementers will still need to be familiar with the content of the specification and with
+  any profiles that apply to the resources in order to make a conformant implementation.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Evidence" type="Evidence">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Evidence">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="shortTitle" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Shortened title for this summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="subTitle" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Summary subtitle.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The status of this summary. Enables tracking the life-cycle of the content.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A copyright statement relating to the evidence and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="summaryPublisher" type="Evidence.SummaryPublisher" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Evidence publisher.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="Contributor">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Contact detail and role for contributor to summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="relatedArtifact" minOccurs="0" maxOccurs="unbounded" type="RelatedArtifact">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Link or citation to artifact associated with the summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">ASM edit.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The particular type of synthesis if this is a synthesis summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of study that produced this summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="locked" minOccurs="1" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Root value def.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="population" type="Evidence.Population" minOccurs="1" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The population being summarized.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.SummaryPublisher">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Publisher name.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Pubblisher contact information.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.Population">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description of population.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="intendedCohort" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="sampleCohort" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Summary statistics describing the actual group for this population.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="actualCohort" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The actual group (ie list of members) for this population.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="sampleSize" type="Evidence.SampleSize" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Sample size for the population.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="evidenceVariable" type="Evidence.EvidenceVariable" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Evidence variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.SampleSize">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description of population sample.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfStudies" minOccurs="0" maxOccurs="1" type="integer">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Number of studies included in sample.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfParticipants" minOccurs="0" maxOccurs="1" type="integer">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Total number of participants in sample.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.EvidenceVariable">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Description of the variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Definition of a variable related to the statistic(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statisticCollection" type="Evidence.StatisticCollection" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Set of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="nestedVariable" type="Evidence.NestedVariable" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.StatisticCollection">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description related to the set of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The particular type of synthesis if this is a synthesis summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of study.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statistic" minOccurs="1" maxOccurs="unbounded" type="Statistic">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Values and parameters for a single statistic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An ordered group of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.NestedVariable">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Description of the variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Definition of a variable related to the statistic(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statisticCollection" type="Evidence.StatisticCollection1" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Set of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.StatisticCollection1">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description related to the set of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The particular type of synthesis if this is a synthesis summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of study.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="additionalVariable" type="Evidence.AdditionalVariable" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statistic" minOccurs="1" maxOccurs="unbounded" type="Statistic">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Values and parameters for a single statistic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An ordered group of statistics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.AdditionalVariable">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Definition of a variable related to the statistic(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="EvidenceVariableRole-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="exposure">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">esposure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="measuredVariable">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">measured variable</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EvidenceVariableRole">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The role that the evidence variable plays.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="EvidenceVariableRole-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

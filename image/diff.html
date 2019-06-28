@@ -34,11 +34,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment">  <!-- segment-header -->	
+	<div id="segment-header" class="segment">  <!-- segment-header -->
 		<div class="container">  <!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" style="align:bottom" height="60"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -68,7 +70,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -99,7 +102,6 @@
             <div class="row">
             	<div class="inner-wrapper">
   <!-- CONTENT CONTENT -->
-
 
 <div class="col-12">
 
@@ -1731,6 +1733,14 @@ Add Binding <code>http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0</code> (r
     </td>
   </tr>
   <tr class="diff-new">
+    <td class="diff-left">CatalogEntry.estimatedDuration</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
     <td class="diff-left">CatalogEntry.billingCode</td>
     <td class="diff-right">
       <ul>
@@ -2111,12 +2121,28 @@ Add Binding <code>http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0</code> (r
       </ul>
     </td>
   </tr>
+  <tr class="diff-new">
+    <td class="diff-left">CommunicationRequest.informationProvider</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
   <tr class="diff-entry">
     <td class="diff-left">CommunicationRequest.reasonReference</td>
     <td class="diff-right">
       <ul>
         <li>Type Reference: Added Target Type Resource</li>
         <li>Type Reference: Removed Target Types Condition, Observation, DiagnosticReport, DocumentReference</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-del">
+    <td class="diff-left">CommunicationRequest.sender</td>
+    <td class="diff-right">
+      <ul>
+        <li>deleted</li>
       </ul>
     </td>
   </tr>
@@ -2245,6 +2271,14 @@ Add Binding <code>http://hl7.org/fhir/ValueSet/catalogentry-type|4.1.0</code> (r
     <td class="diff-right">
       <ul>
         <li>Change value set from http://hl7.org/fhir/ValueSet/condition-ver-status|4.0.0 to http://hl7.org/fhir/ValueSet/condition-ver-status|4.1.0</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-entry">
+    <td class="diff-left">Condition.asserter</td>
+    <td class="diff-right">
+      <ul>
+        <li>Type Reference: Added Target Type Device</li>
       </ul>
     </td>
   </tr>
@@ -3529,6 +3563,24 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
       </ul>
     </td>
   </tr>
+  <tr class="diff-new">
+    <td class="diff-left">MedicationAdministration.occurence[x]</td>
+    <td class="diff-right">
+      <ul>
+        <li>
+          <b>Added Mandatory Element</b>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">MedicationAdministration.recorded</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
   <tr class="diff-entry">
     <td class="diff-left">MedicationAdministration.dosage.rate[x]</td>
     <td class="diff-right">
@@ -3548,6 +3600,14 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
   </tr>
   <tr class="diff-del">
     <td class="diff-left">MedicationAdministration.context</td>
+    <td class="diff-right">
+      <ul>
+        <li>deleted</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-del">
+    <td class="diff-left">MedicationAdministration.effective[x]</td>
     <td class="diff-right">
       <ul>
         <li>deleted</li>
@@ -4078,11 +4138,205 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
     </td>
     <td class="diff-right"></td>
   </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.url</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-entry">
+    <td class="diff-left">ObservationDefinition.identifier</td>
+    <td class="diff-right">
+      <ul>
+        <li>Max Cardinality changed from * to 1</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.version</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.title</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.derivedFromCanonical</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.derivedFromUri</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.status</td>
+    <td class="diff-right">
+      <ul>
+        <li>
+          <b>Added Mandatory Element</b>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.experimental</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.subject[x]</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.date</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.publisher</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.contact</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.description</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.useContext</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.jurisdiction</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.purpose</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.copyright</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.approvalDate</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.lastReviewDate</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.effectivePeriod</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.performerType</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
   <tr class="diff-entry">
     <td class="diff-left">ObservationDefinition.permittedDataType</td>
     <td class="diff-right">
       <ul>
         <li>Change value set from http://hl7.org/fhir/ValueSet/permitted-data-type|4.0.0 to http://hl7.org/fhir/ValueSet/permitted-data-type|4.1.0</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.bodySite</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.specimen</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.device</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
       </ul>
     </td>
   </tr>
@@ -4099,6 +4353,56 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
     <td class="diff-right">
       <ul>
         <li>Change value set from http://hl7.org/fhir/ValueSet/administrative-gender|4.0.0 to http://hl7.org/fhir/ValueSet/administrative-gender|4.1.0</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.hasMember</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.component</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.component.code</td>
+    <td class="diff-right">
+      <ul>
+        <li>
+          <b>Added Mandatory Element</b>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.component.permittedDataType</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.component.quantitativeDetails</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">ObservationDefinition.component.qualifiedInterval</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
       </ul>
     </td>
   </tr>
@@ -4469,6 +4773,14 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
     <td class="diff-right">
       <ul>
         <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-entry">
+    <td class="diff-left">Procedure.performer.actor</td>
+    <td class="diff-right">
+      <ul>
+        <li>Type Reference: Added Target Types CareTeam, HealthcareService</li>
       </ul>
     </td>
   </tr>
@@ -4998,6 +5310,160 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
     </td>
     <td class="diff-right"></td>
   </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.url</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.version</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.title</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.derivedFromCanonical</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.derivedFromUri</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.status</td>
+    <td class="diff-right">
+      <ul>
+        <li>
+          <b>Added Mandatory Element</b>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.experimental</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.subject[x]</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.date</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.publisher</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.contact</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.description</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.useContext</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.jurisdiction</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.purpose</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.copyright</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.approvalDate</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.lastReviewDate</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.effectivePeriod</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
   <tr class="diff-entry">
     <td class="diff-left">SpecimenDefinition.typeTested.preference</td>
     <td class="diff-right">
@@ -5012,6 +5478,22 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
       <ul>
         <li>Add Type Quantity()</li>
         <li>Remove Type Quantity()</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.typeTested.singleUse</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
+      </ul>
+    </td>
+  </tr>
+  <tr class="diff-new">
+    <td class="diff-left">SpecimenDefinition.typeTested.testingDestination</td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Element</li>
       </ul>
     </td>
   </tr>
@@ -5479,6 +5961,16 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
       </ul>
     </td>
   </tr>
+  <tr class="diff-new-item">
+    <td class="diff-left">
+      <a href="topic.html#Topic">Topic</a>
+    </td>
+    <td class="diff-right">
+      <ul>
+        <li>Added Resource</li>
+      </ul>
+    </td>
+  </tr>
   <tr class="diff-item">
     <td class="diff-left">
       <a href="valueset.html#ValueSet">ValueSet</a>
@@ -5666,7 +6158,7 @@ Remove Binding <code>http://hl7.org/fhir/ValueSet/guide-parameter-code|4.0.0</co
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ed7bf4e6ff) generated on Tue, Jun 25, 2019 12:11-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 3f99e5c5d7) generated on Fri, Jun 28, 2019 15:42-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 

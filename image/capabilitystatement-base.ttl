@@ -13,7 +13,7 @@
   fhir:CapabilityStatement.name [ fhir:value "Base FHIR Capability Statement (Full)"];
   fhir:CapabilityStatement.status [ fhir:value "draft"];
   fhir:CapabilityStatement.experimental [ fhir:value "true"];
-  fhir:CapabilityStatement.date [ fhir:value "2019-06-25T11:47:30-04:00"];
+  fhir:CapabilityStatement.date [ fhir:value "2019-06-28T15:31:51-04:00"];
   fhir:CapabilityStatement.publisher [ fhir:value "FHIR Project Team"];
   fhir:CapabilityStatement.contact [
      fhir:index 0;
@@ -2259,7 +2259,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CarePlan-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | suspended | completed | entered-in-error | cancelled | unknown" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | on-hold | revoked | completed | entered-in-error | unknown" ]
        ]
      ], [
        fhir:index 16;
@@ -2364,11 +2364,14 @@
          fhir:value "Observation.performer";
          fhir:index 13
        ], [
-         fhir:value "ServiceRequest.performer";
+         fhir:value "Procedure.performer";
          fhir:index 14
        ], [
-         fhir:value "Task.owner";
+         fhir:value "ServiceRequest.performer";
          fhir:index 15
+       ], [
+         fhir:value "Task.owner";
+         fhir:index 16
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -3308,7 +3311,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ClinicalImpression-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "draft | completed | entered-in-error" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "in-progress | completed | entered-in-error" ]
        ]
      ], [
        fhir:index 23;
@@ -3675,7 +3678,7 @@
          fhir:CapabilityStatement.name [ fhir:value "sender" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Communication-sender" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Message sender" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Who shares the information" ]
        ], [
          fhir:index 10;
          fhir:CapabilityStatement.name [ fhir:value "patient" ];
@@ -3687,7 +3690,7 @@
          fhir:CapabilityStatement.name [ fhir:value "recipient" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Communication-recipient" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Message recipient" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Who the information is shared with" ]
        ], [
          fhir:index 12;
          fhir:CapabilityStatement.name [ fhir:value "instantiates-uri" ];
@@ -3705,7 +3708,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Communication-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown" ]
        ]
      ], [
        fhir:index 26;
@@ -3770,13 +3773,13 @@
          fhir:value "CommunicationRequest.based-on";
          fhir:index 4
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.patient";
          fhir:index 5
        ], [
-         fhir:value "CommunicationRequest.patient";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 6
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 7
        ];
        fhir:CapabilityStatement.searchRevInclude [
@@ -3791,7 +3794,7 @@
          fhir:CapabilityStatement.name [ fhir:value "requester" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-requester" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Who/what is requesting service" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Who asks for the information to be shared" ]
        ], [
          fhir:index 1;
          fhir:CapabilityStatement.name [ fhir:value "authored" ];
@@ -3839,7 +3842,7 @@
          fhir:CapabilityStatement.name [ fhir:value "priority" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-priority" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Message urgency" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "routine | urgent | asap | stat" ]
        ], [
          fhir:index 9;
          fhir:CapabilityStatement.name [ fhir:value "group-identifier" ];
@@ -3854,22 +3857,22 @@
          fhir:CapabilityStatement.documentation [ fhir:value "Fulfills plan or proposal" ]
        ], [
          fhir:index 11;
-         fhir:CapabilityStatement.name [ fhir:value "sender" ];
-         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-sender" ];
-         fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Message sender" ]
-       ], [
-         fhir:index 12;
          fhir:CapabilityStatement.name [ fhir:value "patient" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-patient" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Focus of message" ]
        ], [
-         fhir:index 13;
+         fhir:index 12;
          fhir:CapabilityStatement.name [ fhir:value "recipient" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-recipient" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Message recipient" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Who to share the information with" ]
+       ], [
+         fhir:index 13;
+         fhir:CapabilityStatement.name [ fhir:value "information-provider" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-information-provider" ];
+         fhir:CapabilityStatement.type [ fhir:value "reference" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Who should share the information" ]
        ], [
          fhir:index 14;
          fhir:CapabilityStatement.name [ fhir:value "category" ];
@@ -3881,7 +3884,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/CommunicationRequest-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | suspended | cancelled | completed | entered-in-error | unknown" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | on-hold | revoked | completed | entered-in-error | unknown" ]
        ]
      ], [
        fhir:index 27;
@@ -4601,7 +4604,7 @@
          fhir:CapabilityStatement.name [ fhir:value "asserter" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Condition-asserter" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Person who asserts this condition" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Person or device that asserts this condition" ]
        ], [
          fhir:index 14;
          fhir:CapabilityStatement.name [ fhir:value "stage" ];
@@ -5658,200 +5661,203 @@
          fhir:value "CommunicationRequest.requester";
          fhir:index 24
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 25
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 26
        ], [
          fhir:value "Composition.author";
          fhir:index 27
        ], [
-         fhir:value "Consent.actor";
+         fhir:value "Condition.asserter";
          fhir:index 28
        ], [
-         fhir:value "DetectedIssue.author";
+         fhir:value "Consent.actor";
          fhir:index 29
        ], [
-         fhir:value "DeviceMetric.parent";
+         fhir:value "DetectedIssue.author";
          fhir:index 30
        ], [
-         fhir:value "DeviceMetric.source";
+         fhir:value "DeviceMetric.parent";
          fhir:index 31
        ], [
-         fhir:value "DeviceRequest.requester";
+         fhir:value "DeviceMetric.source";
          fhir:index 32
        ], [
-         fhir:value "DeviceRequest.performer";
+         fhir:value "DeviceRequest.requester";
          fhir:index 33
        ], [
-         fhir:value "DeviceRequest.subject";
+         fhir:value "DeviceRequest.performer";
          fhir:index 34
        ], [
-         fhir:value "DeviceRequest.patient";
+         fhir:value "DeviceRequest.subject";
          fhir:index 35
        ], [
-         fhir:value "DeviceRequest.device";
+         fhir:value "DeviceRequest.patient";
          fhir:index 36
        ], [
-         fhir:value "DeviceUseStatement.device";
+         fhir:value "DeviceRequest.device";
          fhir:index 37
        ], [
-         fhir:value "DiagnosticReport.subject";
+         fhir:value "DeviceUseStatement.device";
          fhir:index 38
        ], [
-         fhir:value "DiagnosticReport.patient";
+         fhir:value "DiagnosticReport.subject";
          fhir:index 39
        ], [
-         fhir:value "DocumentManifest.subject";
+         fhir:value "DiagnosticReport.patient";
          fhir:index 40
        ], [
-         fhir:value "DocumentManifest.author";
+         fhir:value "DocumentManifest.subject";
          fhir:index 41
        ], [
-         fhir:value "DocumentManifest.patient";
+         fhir:value "DocumentManifest.author";
          fhir:index 42
        ], [
-         fhir:value "DocumentReference.subject";
+         fhir:value "DocumentManifest.patient";
          fhir:index 43
        ], [
-         fhir:value "DocumentReference.patient";
+         fhir:value "DocumentReference.subject";
          fhir:index 44
        ], [
-         fhir:value "DocumentReference.author";
+         fhir:value "DocumentReference.patient";
          fhir:index 45
        ], [
-         fhir:value "ExplanationOfBenefit.detail-udi";
+         fhir:value "DocumentReference.author";
          fhir:index 46
        ], [
-         fhir:value "ExplanationOfBenefit.procedure-udi";
+         fhir:value "ExplanationOfBenefit.detail-udi";
          fhir:index 47
        ], [
-         fhir:value "ExplanationOfBenefit.subdetail-udi";
+         fhir:value "ExplanationOfBenefit.procedure-udi";
          fhir:index 48
        ], [
-         fhir:value "ExplanationOfBenefit.item-udi";
+         fhir:value "ExplanationOfBenefit.subdetail-udi";
          fhir:index 49
        ], [
-         fhir:value "Flag.author";
+         fhir:value "ExplanationOfBenefit.item-udi";
          fhir:index 50
        ], [
-         fhir:value "Group.member";
+         fhir:value "Flag.author";
          fhir:index 51
        ], [
-         fhir:value "ImagingStudy.performer";
+         fhir:value "Group.member";
          fhir:index 52
        ], [
-         fhir:value "ImagingStudy.subject";
+         fhir:value "ImagingStudy.performer";
          fhir:index 53
        ], [
-         fhir:value "ImagingStudy.patient";
+         fhir:value "ImagingStudy.subject";
          fhir:index 54
        ], [
-         fhir:value "Invoice.participant";
+         fhir:value "ImagingStudy.patient";
          fhir:index 55
        ], [
-         fhir:value "List.subject";
+         fhir:value "Invoice.participant";
          fhir:index 56
        ], [
-         fhir:value "List.patient";
+         fhir:value "List.subject";
          fhir:index 57
        ], [
-         fhir:value "List.source";
+         fhir:value "List.patient";
          fhir:index 58
        ], [
-         fhir:value "MeasureReport.patient";
+         fhir:value "List.source";
          fhir:index 59
        ], [
-         fhir:value "MeasureReport.subject";
+         fhir:value "MeasureReport.patient";
          fhir:index 60
        ], [
-         fhir:value "Media.subject";
+         fhir:value "MeasureReport.subject";
          fhir:index 61
        ], [
-         fhir:value "Media.operator";
+         fhir:value "Media.subject";
          fhir:index 62
        ], [
-         fhir:value "Media.patient";
+         fhir:value "Media.operator";
          fhir:index 63
        ], [
-         fhir:value "Media.device";
+         fhir:value "Media.patient";
          fhir:index 64
        ], [
-         fhir:value "MedicationAdministration.performer";
+         fhir:value "Media.device";
          fhir:index 65
        ], [
-         fhir:value "MedicationAdministration.device";
+         fhir:value "MedicationAdministration.performer";
          fhir:index 66
        ], [
-         fhir:value "MedicationDispense.performer";
+         fhir:value "MedicationAdministration.device";
          fhir:index 67
        ], [
-         fhir:value "MedicationRequest.requester";
+         fhir:value "MedicationDispense.performer";
          fhir:index 68
        ], [
-         fhir:value "MedicationRequest.intended-performer";
+         fhir:value "MedicationRequest.requester";
          fhir:index 69
        ], [
-         fhir:value "MessageHeader.target";
+         fhir:value "MedicationRequest.intended-performer";
          fhir:index 70
        ], [
-         fhir:value "Observation.subject";
+         fhir:value "MessageHeader.target";
          fhir:index 71
        ], [
-         fhir:value "Observation.patient";
+         fhir:value "Observation.subject";
          fhir:index 72
        ], [
-         fhir:value "Observation.device";
+         fhir:value "Observation.patient";
          fhir:index 73
        ], [
-         fhir:value "Procedure.performer";
+         fhir:value "Observation.device";
          fhir:index 74
        ], [
-         fhir:value "Provenance.agent";
+         fhir:value "Procedure.performer";
          fhir:index 75
        ], [
-         fhir:value "QuestionnaireResponse.author";
+         fhir:value "Provenance.agent";
          fhir:index 76
        ], [
-         fhir:value "RequestGroup.author";
+         fhir:value "QuestionnaireResponse.author";
          fhir:index 77
        ], [
-         fhir:value "RequestGroup.participant";
+         fhir:value "RequestGroup.author";
          fhir:index 78
        ], [
-         fhir:value "RiskAssessment.performer";
+         fhir:value "RequestGroup.participant";
          fhir:index 79
        ], [
-         fhir:value "Schedule.actor";
+         fhir:value "RiskAssessment.performer";
          fhir:index 80
        ], [
-         fhir:value "ServiceRequest.requester";
+         fhir:value "Schedule.actor";
          fhir:index 81
        ], [
-         fhir:value "ServiceRequest.performer";
+         fhir:value "ServiceRequest.requester";
          fhir:index 82
        ], [
-         fhir:value "ServiceRequest.subject";
+         fhir:value "ServiceRequest.performer";
          fhir:index 83
        ], [
-         fhir:value "ServiceRequest.patient";
+         fhir:value "ServiceRequest.subject";
          fhir:index 84
        ], [
-         fhir:value "Specimen.subject";
+         fhir:value "ServiceRequest.patient";
          fhir:index 85
        ], [
-         fhir:value "Specimen.patient";
+         fhir:value "Specimen.subject";
          fhir:index 86
        ], [
-         fhir:value "SupplyRequest.requester";
+         fhir:value "Specimen.patient";
          fhir:index 87
        ], [
-         fhir:value "Task.owner";
+         fhir:value "SupplyRequest.requester";
          fhir:index 88
        ], [
-         fhir:value "Task.requester";
+         fhir:value "Task.owner";
          fhir:index 89
+       ], [
+         fhir:value "Task.requester";
+         fhir:index 90
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -9573,10 +9579,10 @@
          fhir:value "Communication.recipient";
          fhir:index 13
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 14
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 15
        ], [
          fhir:value "DeviceRequest.performer";
@@ -9588,17 +9594,20 @@
          fhir:value "PractitionerRole.service";
          fhir:index 18
        ], [
-         fhir:value "Schedule.actor";
+         fhir:value "Procedure.performer";
          fhir:index 19
        ], [
-         fhir:value "ServiceRequest.performer";
+         fhir:value "Schedule.actor";
          fhir:index 20
        ], [
-         fhir:value "SupplyRequest.supplier";
+         fhir:value "ServiceRequest.performer";
          fhir:index 21
        ], [
-         fhir:value "Task.owner";
+         fhir:value "SupplyRequest.supplier";
          fhir:index 22
+       ], [
+         fhir:value "Task.owner";
+         fhir:index 23
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -11998,7 +12007,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Media-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown" ]
        ]
      ], [
        fhir:index 79;
@@ -12227,64 +12236,64 @@
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
+         fhir:CapabilityStatement.name [ fhir:value "date" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/medications-date" ];
+         fhir:CapabilityStatement.type [ fhir:value "date" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Date administration happened (or did not happen)" ]
+       ], [
+         fhir:index 1;
          fhir:CapabilityStatement.name [ fhir:value "identifier" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/clinical-identifier" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Return administrations with this external identifier" ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:CapabilityStatement.name [ fhir:value "request" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationAdministration-request" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The identity of a request to list administrations from" ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:CapabilityStatement.name [ fhir:value "code" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/clinical-code" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Return administrations of this medication code" ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:CapabilityStatement.name [ fhir:value "performer" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationAdministration-performer" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The identity of the individual who administered the medication" ]
        ], [
-         fhir:index 4;
+         fhir:index 5;
          fhir:CapabilityStatement.name [ fhir:value "subject" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationAdministration-subject" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The identity of the individual or group to list administrations for" ]
        ], [
-         fhir:index 5;
+         fhir:index 6;
          fhir:CapabilityStatement.name [ fhir:value "medication" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/medications-medication" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Return administrations of this medication resource" ]
        ], [
-         fhir:index 6;
+         fhir:index 7;
          fhir:CapabilityStatement.name [ fhir:value "reason-given" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationAdministration-reason-given" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Reasons for administering the medication" ]
        ], [
-         fhir:index 7;
+         fhir:index 8;
          fhir:CapabilityStatement.name [ fhir:value "encounter" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/medications-encounter" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Return administrations that share this encounter" ]
        ], [
-         fhir:index 8;
+         fhir:index 9;
          fhir:CapabilityStatement.name [ fhir:value "patient" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/clinical-patient" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The identity of a patient to list administrations  for" ]
-       ], [
-         fhir:index 9;
-         fhir:CapabilityStatement.name [ fhir:value "effective-time" ];
-         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationAdministration-effective-time" ];
-         fhir:CapabilityStatement.type [ fhir:value "date" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "Date administration happened (or did not happen)" ]
        ], [
          fhir:index 10;
          fhir:CapabilityStatement.name [ fhir:value "reason-not-given" ];
@@ -12543,84 +12552,90 @@
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
+         fhir:CapabilityStatement.name [ fhir:value "product-type" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-product-type" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Category of the medication or product" ]
+       ], [
+         fhir:index 1;
          fhir:CapabilityStatement.name [ fhir:value "identifier" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-identifier" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Business identifier for this medication" ]
        ], [
-         fhir:index 1;
+         fhir:index 2;
          fhir:CapabilityStatement.name [ fhir:value "code" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-code" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Code that identifies this medication" ]
        ], [
-         fhir:index 2;
+         fhir:index 3;
          fhir:CapabilityStatement.name [ fhir:value "ingredient" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-ingredient" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Medication(s) or MedicinalProductIngredient(s) contained in the medication" ]
        ], [
-         fhir:index 3;
+         fhir:index 4;
          fhir:CapabilityStatement.name [ fhir:value "doseform" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-doseform" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "powder | tablets | capsule +" ]
        ], [
-         fhir:index 4;
+         fhir:index 5;
          fhir:CapabilityStatement.name [ fhir:value "classification-type" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-classification-type" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The type of category for the medication (for example, therapeutic classification, therapeutic sub-classification)" ]
        ], [
-         fhir:index 5;
+         fhir:index 6;
          fhir:CapabilityStatement.name [ fhir:value "monograph-type" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-monograph-type" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The category of medication document" ]
        ], [
-         fhir:index 6;
+         fhir:index 7;
          fhir:CapabilityStatement.name [ fhir:value "classification" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-classification" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Specific category assigned to the medication" ]
        ], [
-         fhir:index 7;
+         fhir:index 8;
          fhir:CapabilityStatement.name [ fhir:value "manufacturer" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-manufacturer" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Manufacturer of the item" ]
        ], [
-         fhir:index 8;
+         fhir:index 9;
          fhir:CapabilityStatement.name [ fhir:value "ingredient-code" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-ingredient-code" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Medication(s) or MedicinalProductIngredient(s) contained in the medication" ]
        ], [
-         fhir:index 9;
+         fhir:index 10;
          fhir:CapabilityStatement.name [ fhir:value "source-cost" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-source-cost" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The source or owner for the price information" ]
        ], [
-         fhir:index 10;
+         fhir:index 11;
          fhir:CapabilityStatement.name [ fhir:value "monograph" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-monograph" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Associated documentation about the medication" ]
        ], [
-         fhir:index 11;
+         fhir:index 12;
          fhir:CapabilityStatement.name [ fhir:value "monitoring-program-name" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-monitoring-program-name" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Name of the reviewing program" ]
        ], [
-         fhir:index 12;
+         fhir:index 13;
          fhir:CapabilityStatement.name [ fhir:value "monitoring-program-type" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-monitoring-program-type" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "Type of program under which the medication is monitored" ]
        ], [
-         fhir:index 13;
+         fhir:index 14;
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/MedicationKnowledge-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
@@ -14122,6 +14137,49 @@
        fhir:CapabilityStatement.searchRevInclude [
          fhir:value "CatalogEntry.referenced-item";
          fhir:index 0
+       ];
+       fhir:CapabilityStatement.searchParam [
+         fhir:index 0;
+         fhir:CapabilityStatement.name [ fhir:value "identifier" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-identifier" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "The unique identifier associated with the specimen definition" ]
+       ], [
+         fhir:index 1;
+         fhir:CapabilityStatement.name [ fhir:value "code" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-code" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Observation code" ]
+       ], [
+         fhir:index 2;
+         fhir:CapabilityStatement.name [ fhir:value "method" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-method" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Method of observation" ]
+       ], [
+         fhir:index 3;
+         fhir:CapabilityStatement.name [ fhir:value "experimental" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-experimental" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Not for genuine usage (true)" ]
+       ], [
+         fhir:index 4;
+         fhir:CapabilityStatement.name [ fhir:value "category" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-category" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Category (class) of observation" ]
+       ], [
+         fhir:index 5;
+         fhir:CapabilityStatement.name [ fhir:value "title" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-title" ];
+         fhir:CapabilityStatement.type [ fhir:value "string" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Human-friendly name of the ObservationDefinition" ]
+       ], [
+         fhir:index 6;
+         fhir:CapabilityStatement.name [ fhir:value "status" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ObservationDefinition-status" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Publication status of the ObservationDefinition: draft, active, retired, unknown" ]
        ]
      ], [
        fhir:index 92;
@@ -14500,10 +14558,10 @@
          fhir:value "CommunicationRequest.requester";
          fhir:index 22
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 23
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 24
        ], [
          fhir:value "Composition.author";
@@ -14754,6 +14812,9 @@
        ], [
          fhir:value "Task.requester";
          fhir:index 107
+       ], [
+         fhir:value "Topic.publisher";
+         fhir:index 108
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -15166,13 +15227,13 @@
          fhir:value "CommunicationRequest.subject";
          fhir:index 40
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.patient";
          fhir:index 41
        ], [
-         fhir:value "CommunicationRequest.patient";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 42
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 43
        ], [
          fhir:value "Composition.author";
@@ -16460,10 +16521,10 @@
          fhir:value "CommunicationRequest.requester";
          fhir:index 31
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 32
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 33
        ], [
          fhir:value "Composition.author";
@@ -16724,8 +16785,11 @@
          fhir:value "Task.requester";
          fhir:index 119
        ], [
-         fhir:value "VisionPrescription.prescriber";
+         fhir:value "Topic.publisher";
          fhir:index 120
+       ], [
+         fhir:value "VisionPrescription.prescriber";
+         fhir:index 121
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -16987,10 +17051,10 @@
          fhir:value "CommunicationRequest.requester";
          fhir:index 30
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 31
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 32
        ], [
          fhir:value "Composition.author";
@@ -17221,8 +17285,11 @@
          fhir:value "Task.requester";
          fhir:index 108
        ], [
-         fhir:value "VisionPrescription.prescriber";
+         fhir:value "Topic.publisher";
          fhir:index 109
+       ], [
+         fhir:value "VisionPrescription.prescriber";
+         fhir:index 110
        ];
        fhir:CapabilityStatement.searchParam [
          fhir:index 0;
@@ -17438,7 +17505,7 @@
          fhir:CapabilityStatement.name [ fhir:value "performer" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Procedure-performer" ];
          fhir:CapabilityStatement.type [ fhir:value "reference" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "The reference to the practitioner" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "Who performed the procedure" ]
        ], [
          fhir:index 4;
          fhir:CapabilityStatement.name [ fhir:value "subject" ];
@@ -18445,10 +18512,10 @@
          fhir:value "CommunicationRequest.requester";
          fhir:index 23
        ], [
-         fhir:value "CommunicationRequest.sender";
+         fhir:value "CommunicationRequest.recipient";
          fhir:index 24
        ], [
-         fhir:value "CommunicationRequest.recipient";
+         fhir:value "CommunicationRequest.information-provider";
          fhir:index 25
        ], [
          fhir:value "Composition.author";
@@ -20216,7 +20283,7 @@
          fhir:CapabilityStatement.name [ fhir:value "intent" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ServiceRequest-intent" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "proposal | plan | order +" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "proposal | plan | directive | order +" ]
        ], [
          fhir:index 13;
          fhir:CapabilityStatement.name [ fhir:value "performer-type" ];
@@ -20264,7 +20331,7 @@
          fhir:CapabilityStatement.name [ fhir:value "status" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/ServiceRequest-status" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | suspended | completed | entered-in-error | cancelled" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | on-hold | revoked | completed | entered-in-error | unknown" ]
        ]
      ], [
        fhir:index 123;
@@ -20584,13 +20651,43 @@
          fhir:CapabilityStatement.name [ fhir:value "identifier" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-identifier" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
-         fhir:CapabilityStatement.documentation [ fhir:value "The unique identifier associated with the specimen" ]
+         fhir:CapabilityStatement.documentation [ fhir:value "The unique identifier associated with the SpecimenDefinition" ]
        ], [
          fhir:index 2;
+         fhir:CapabilityStatement.name [ fhir:value "is-derived" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-is-derived" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Primary specimen (false) or derived specimen (true)" ]
+       ], [
+         fhir:index 3;
+         fhir:CapabilityStatement.name [ fhir:value "type-tested" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-type-tested" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "The type of specimen conditioned for testing" ]
+       ], [
+         fhir:index 4;
+         fhir:CapabilityStatement.name [ fhir:value "experimental" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-experimental" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Not for genuine usage (true)" ]
+       ], [
+         fhir:index 5;
          fhir:CapabilityStatement.name [ fhir:value "type" ];
          fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-type" ];
          fhir:CapabilityStatement.type [ fhir:value "token" ];
          fhir:CapabilityStatement.documentation [ fhir:value "The type of collected specimen" ]
+       ], [
+         fhir:index 6;
+         fhir:CapabilityStatement.name [ fhir:value "title" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-title" ];
+         fhir:CapabilityStatement.type [ fhir:value "string" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Human-friendly name of the SpecimenDefinition" ]
+       ], [
+         fhir:index 7;
+         fhir:CapabilityStatement.name [ fhir:value "status" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/SpecimenDefinition-status" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Publication status of the SpecimenDefinition: draft, active, retired, unknown" ]
        ]
      ], [
        fhir:index 126;
@@ -22226,6 +22323,112 @@
        ]
      ], [
        fhir:index 142;
+       fhir:CapabilityStatement.type [ fhir:value "Topic" ];
+       fhir:CapabilityStatement.profile [ fhir:value "http://hl7.org/fhir/StructureDefinition/Topic" ];
+       fhir:CapabilityStatement.interaction [
+         fhir:index 0;
+         fhir:CapabilityStatement.code [ fhir:value "read" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 1;
+         fhir:CapabilityStatement.code [ fhir:value "vread" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 2;
+         fhir:CapabilityStatement.code [ fhir:value "update" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 3;
+         fhir:CapabilityStatement.code [ fhir:value "delete" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 4;
+         fhir:CapabilityStatement.code [ fhir:value "history-instance" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 5;
+         fhir:CapabilityStatement.code [ fhir:value "history-type" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 6;
+         fhir:CapabilityStatement.code [ fhir:value "create" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ], [
+         fhir:index 7;
+         fhir:CapabilityStatement.code [ fhir:value "search-type" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Implemented per the specification (or Insert other doco here)" ]
+       ];
+       fhir:CapabilityStatement.conditionalCreate [ fhir:value "true" ];
+       fhir:CapabilityStatement.conditionalUpdate [ fhir:value "true" ];
+       fhir:CapabilityStatement.conditionalDelete [ fhir:value "multiple" ];
+       fhir:CapabilityStatement.referencePolicy [
+         fhir:value "literal";
+         fhir:index 0
+       ], [
+         fhir:value "logical";
+         fhir:index 1
+       ];
+       fhir:CapabilityStatement.searchInclude [
+         fhir:value "Topic.publisher";
+         fhir:index 0
+       ];
+       fhir:CapabilityStatement.searchParam [
+         fhir:index 0;
+         fhir:CapabilityStatement.name [ fhir:value "date" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-date" ];
+         fhir:CapabilityStatement.type [ fhir:value "date" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Date status first applied" ]
+       ], [
+         fhir:index 1;
+         fhir:CapabilityStatement.name [ fhir:value "identifier" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-identifier" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Business Identifier for Topic" ]
+       ], [
+         fhir:index 2;
+         fhir:CapabilityStatement.name [ fhir:value "publisher" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-publisher" ];
+         fhir:CapabilityStatement.type [ fhir:value "reference" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "The name of the individual or organization that published the Topic" ]
+       ], [
+         fhir:index 3;
+         fhir:CapabilityStatement.name [ fhir:value "resource-type" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-resource-type" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Candidate types for this topic" ]
+       ], [
+         fhir:index 4;
+         fhir:CapabilityStatement.name [ fhir:value "title" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-title" ];
+         fhir:CapabilityStatement.type [ fhir:value "string" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Name for this Topic (Human friendly)" ]
+       ], [
+         fhir:index 5;
+         fhir:CapabilityStatement.name [ fhir:value "version" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-version" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Business version of the Topic" ]
+       ], [
+         fhir:index 6;
+         fhir:CapabilityStatement.name [ fhir:value "url" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-url" ];
+         fhir:CapabilityStatement.type [ fhir:value "uri" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Logical canonical URL to reference this Topic (globally unique)" ]
+       ], [
+         fhir:index 7;
+         fhir:CapabilityStatement.name [ fhir:value "status" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-status" ];
+         fhir:CapabilityStatement.type [ fhir:value "token" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "draft | active | retired | unknown" ]
+       ], [
+         fhir:index 8;
+         fhir:CapabilityStatement.name [ fhir:value "trigger-description" ];
+         fhir:CapabilityStatement.definition [ fhir:value "http://hl7.org/fhir/SearchParameter/Topic-trigger-description" ];
+         fhir:CapabilityStatement.type [ fhir:value "string" ];
+         fhir:CapabilityStatement.documentation [ fhir:value "Text representation of the trigger" ]
+       ]
+     ], [
+       fhir:index 143;
        fhir:CapabilityStatement.type [ fhir:value "ValueSet" ];
        fhir:CapabilityStatement.profile [ fhir:value "http://hl7.org/fhir/StructureDefinition/ValueSet" ];
        fhir:CapabilityStatement.interaction [
@@ -22397,7 +22600,7 @@
          fhir:CapabilityStatement.documentation [ fhir:value "The current status of the value set" ]
        ]
      ], [
-       fhir:index 143;
+       fhir:index 144;
        fhir:CapabilityStatement.type [ fhir:value "VerificationResult" ];
        fhir:CapabilityStatement.profile [ fhir:value "http://hl7.org/fhir/StructureDefinition/VerificationResult" ];
        fhir:CapabilityStatement.interaction [
@@ -22455,7 +22658,7 @@
          fhir:CapabilityStatement.documentation [ fhir:value "A resource that was validated" ]
        ]
      ], [
-       fhir:index 144;
+       fhir:index 145;
        fhir:CapabilityStatement.type [ fhir:value "VisionPrescription" ];
        fhir:CapabilityStatement.profile [ fhir:value "http://hl7.org/fhir/StructureDefinition/VisionPrescription" ];
        fhir:CapabilityStatement.interaction [

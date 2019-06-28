@@ -3,7 +3,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="Assertion"/>
   <meta>
-    <lastUpdated value="2019-06-25T11:47:30.185-04:00"/>
+    <lastUpdated value="2019-06-28T15:31:51.596-04:00"/>
   </meta>
   <text>
     <status value="generated"/>
@@ -470,7 +470,7 @@
             <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzMPbYccAgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAMElEQVQ4y+3OQREAIBDDwAv+PQcFFN5MIyCzqHMKUGVCpMFLK97heq+gggoq+EiwAVjvMhFGmlEUAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
             <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzI3XJ6V3QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+2RsQ0AIAzDav7/2VzQwoCY4iWbZSmo1QGoUgNMghvWaIejPQW/CrrNCylIwcOCDYfLNRcNer4SAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
             <img src="data: image/png;base64,R0lGODlhEAAQAPZ/APrkusOiYvvfqbiXWaV2G+jGhdq1b8GgYf3v1frw3vTUlsWkZNewbcSjY/DQkad4Hb6dXv3u0f3v1ObEgfPTlerJiP3w1v79+e7OkPrfrfnjuNOtZPrpydaxa+/YrvvdpP779ZxvFPvnwKKBQaFyF/369M2vdaqHRPz58/HNh/vowufFhfroxO3OkPrluv779tK0e6JzGProwvrow9m4eOnIifPTlPDPkP78+Naxaf3v0/zowfXRi+bFhLWUVv379/rnwPvszv3rye3LiPvnv+3MjPDasKiIS/789/3x2f747eXDg+7Mifvu0tu7f+/QkfDTnPXWmPrjsvrjtPbPgrqZW+/QlPz48K2EMv36866OUPvowat8Ivvgq/Pbrvzgq/PguvrgrqN0Gda2evfYm9+7d/rpw9q6e/LSku/Rl/XVl/LSlfrkt+zVqe7Wqv3x1/bNffbOf59wFdS6if3u0vrqyP3owPvepfXQivDQkO/PkKh9K7STVf779P///wD/ACH5BAEKAH8ALAAAAAAQABAAAAemgH+CgxeFF4OIhBdKGwFChYl/hYwbdkoBPnaQkosbG3d3VEpSUlonUoY1Gzo6QkI8SrGxWBOFG4uySgY5ZWR3PFy2hnaWZXC/PHcPwkpJk1ShoHcxhQEXSUmtFy6+0iSFVResrjoTPDzdcoU+F65CduVU6KAhhQa3F8Tx8nchBoYuqoTLZoAKFRIhqGwqJAULFx0GYpBQeChRIR4TJm6KJMhQRUSBAAA7" alt="." style="background-color: white; background-color: inherit" title="Data Type" class="hierarchy"/> 
-            <span title="Assertion.variableDefinition.variableRole : exposure | measuredVariable.">variableRole</span>
+            <span title="Assertion.variableDefinition.variableRole : exposure | referenceExposure | measuredVariable | confounder.">variableRole</span>
             <a name="Assertion.variableDefinition.variableRole"> </a>
           </td>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
@@ -478,10 +478,10 @@
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
             <a href="datatypes.html#CodeableConcept">CodeableConcept</a>
           </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">exposure | measuredVariable
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">exposure | referenceExposure | measuredVariable | confounder
             <br/>
             <a href="valueset-variable-role.html" title="The role that the assertion variable plays.">AssertionVariableRole</a> (
-            <a href="terminologies.html#required" title="To be conformant, the concept in this element SHALL be from the specified value set.">Required</a>)
+            <a href="terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead.">Extensible</a>)
           </td>
         </tr>
 
@@ -588,26 +588,9 @@
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAACCAYAAACg/LjIAAAAL0lEQVR42u3XsQ0AQAgCQHdl/xn8jxvYWB3JlTR0VJLa+OltBwAAYP6EEQAAgCsPVYVAgIJrA/sAAAAASUVORK5CYII=)" class="hierarchy">
             <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzIs1vtcMQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAE0lEQVQI12P4//8/AxMDAwNdCABMPwMo2ctnoQAAAABJRU5ErkJggg==" alt="." style="background-color: inherit" class="hierarchy"/>
             <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzI3XJ6V3QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+2RsQ0AIAzDav7/2VzQwoCY4iWbZSmo1QGoUgNMghvWaIejPQW/CrrNCylIwcOCDYfLNRcNer4SAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
-            <img src="data: image/png;base64,R0lGODlhEAAQAPQfAOvGUf7ztuvPMf/78/fkl/Pbg+u8Rvjqteu2Pf3zxPz36Pz0z+vTmPzurPvuw/npofbjquvNefHVduuyN+uuMu3Oafbgjfnqvf/3zv/3xevPi+vRjP/20/bmsP///wD/ACH5BAEKAB8ALAAAAAAQABAAAAVl4CeOZGme5qCqqDg8jyVJaz1876DsmAQAgqDgltspMEhMJoMZ4iy6I1AooFCIv+wKybziALVAoAEjYLwDgGIpJhMslgxaLR4/3rMAWoBp32V5exg8Shl1ckRUQVaMVkQ2kCstKCEAOw==" alt="." style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> 
-            <span title="Assertion.statisticCollection : Set of statistics associated with variable.">statisticCollection</span>
-            <a name="Assertion.statisticCollection"> </a>
-          </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
-            <a href="backboneelement.html">BackboneElement</a>
-          </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Set of statistics</td>
-        </tr>
-
-        <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white;">
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAACCAYAAACg/LjIAAAAMElEQVR42u3QwQkAMAwDsezq/WdoskKgFAoy6HkfV5LamJ1tc7MHAAD+5QQAAOCZBkurQFbnaRSlAAAAAElFTkSuQmCC)" class="hierarchy">
-            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzIs1vtcMQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAE0lEQVQI12P4//8/AxMDAwNdCABMPwMo2ctnoQAAAABJRU5ErkJggg==" alt="." style="background-color: inherit" class="hierarchy"/>
-            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzMPbYccAgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAMElEQVQ4y+3OQREAIBDDwAv+PQcFFN5MIyCzqHMKUGVCpMFLK97heq+gggoq+EiwAVjvMhFGmlEUAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
-            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzI3XJ6V3QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+2RsQ0AIAzDav7/2VzQwoCY4iWbZSmo1QGoUgNMghvWaIejPQW/CrrNCylIwcOCDYfLNRcNer4SAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
             <img src="data: image/png;base64,R0lGODlhEAAQAPZ/APrkusOiYvvfqbiXWaV2G+jGhdq1b8GgYf3v1frw3vTUlsWkZNewbcSjY/DQkad4Hb6dXv3u0f3v1ObEgfPTlerJiP3w1v79+e7OkPrfrfnjuNOtZPrpydaxa+/YrvvdpP779ZxvFPvnwKKBQaFyF/369M2vdaqHRPz58/HNh/vowufFhfroxO3OkPrluv779tK0e6JzGProwvrow9m4eOnIifPTlPDPkP78+Naxaf3v0/zowfXRi+bFhLWUVv379/rnwPvszv3rye3LiPvnv+3MjPDasKiIS/789/3x2f747eXDg+7Mifvu0tu7f+/QkfDTnPXWmPrjsvrjtPbPgrqZW+/QlPz48K2EMv36866OUPvowat8Ivvgq/Pbrvzgq/PguvrgrqN0Gda2evfYm9+7d/rpw9q6e/LSku/Rl/XVl/LSlfrkt+zVqe7Wqv3x1/bNffbOf59wFdS6if3u0vrqyP3owPvepfXQivDQkO/PkKh9K7STVf779P///wD/ACH5BAEKAH8ALAAAAAAQABAAAAemgH+CgxeFF4OIhBdKGwFChYl/hYwbdkoBPnaQkosbG3d3VEpSUlonUoY1Gzo6QkI8SrGxWBOFG4uySgY5ZWR3PFy2hnaWZXC/PHcPwkpJk1ShoHcxhQEXSUmtFy6+0iSFVResrjoTPDzdcoU+F65CduVU6KAhhQa3F8Tx8nchBoYuqoTLZoAKFRIhqGwqJAULFx0GYpBQeChRIR4TJm6KJMhQRUSBAAA7" alt="." style="background-color: white; background-color: inherit" title="Data Type" class="hierarchy"/> 
-            <span title="Assertion.statisticCollection.statistic : The statistic value(s).">statistic</span>
-            <a name="Assertion.statisticCollection.statistic"> </a>
+            <span title="Assertion.statistic : The statistic value(s).">statistic</span>
+            <a name="Assertion.statistic"> </a>
           </td>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
@@ -622,11 +605,10 @@
         <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white;">
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAACCAYAAACg/LjIAAAAL0lEQVR42u3XsQ0AQAgCQHdl/xn8jxvYWB3JlTR0VJLa+OltBwAAYP6EEQAAgCsPVYVAgIJrA/sAAAAASUVORK5CYII=)" class="hierarchy">
             <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAYAAAABxvaqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzIs1vtcMQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAE0lEQVQI12P4//8/AxMDAwNdCABMPwMo2ctnoQAAAABJRU5ErkJggg==" alt="." style="background-color: inherit" class="hierarchy"/>
-            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzMPbYccAgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAMElEQVQ4y+3OQREAIBDDwAv+PQcFFN5MIyCzqHMKUGVCpMFLK97heq+gggoq+EiwAVjvMhFGmlEUAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
-            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzME+lXFigAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+3OsRUAIAjEUOL+O8cJABttJM11/x1qZAGqRBEVcNIqdWj1efDqQbb3HwwwwEfABmQUHSPM9dtDAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
+            <img src="data: image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYeFzI3XJ6V3QAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQ4y+2RsQ0AIAzDav7/2VzQwoCY4iWbZSmo1QGoUgNMghvWaIejPQW/CrrNCylIwcOCDYfLNRcNer4SAAAAAElFTkSuQmCC" alt="." style="background-color: inherit" class="hierarchy"/>
             <img src="data: image/png;base64,R0lGODlhEAAQAPZ/APrkusOiYvvfqbiXWaV2G+jGhdq1b8GgYf3v1frw3vTUlsWkZNewbcSjY/DQkad4Hb6dXv3u0f3v1ObEgfPTlerJiP3w1v79+e7OkPrfrfnjuNOtZPrpydaxa+/YrvvdpP779ZxvFPvnwKKBQaFyF/369M2vdaqHRPz58/HNh/vowufFhfroxO3OkPrluv779tK0e6JzGProwvrow9m4eOnIifPTlPDPkP78+Naxaf3v0/zowfXRi+bFhLWUVv379/rnwPvszv3rye3LiPvnv+3MjPDasKiIS/789/3x2f747eXDg+7Mifvu0tu7f+/QkfDTnPXWmPrjsvrjtPbPgrqZW+/QlPz48K2EMv36866OUPvowat8Ivvgq/Pbrvzgq/PguvrgrqN0Gda2evfYm9+7d/rpw9q6e/LSku/Rl/XVl/LSlfrkt+zVqe7Wqv3x1/bNffbOf59wFdS6if3u0vrqyP3owPvepfXQivDQkO/PkKh9K7STVf779P///wD/ACH5BAEKAH8ALAAAAAAQABAAAAemgH+CgxeFF4OIhBdKGwFChYl/hYwbdkoBPnaQkosbG3d3VEpSUlonUoY1Gzo6QkI8SrGxWBOFG4uySgY5ZWR3PFy2hnaWZXC/PHcPwkpJk1ShoHcxhQEXSUmtFy6+0iSFVResrjoTPDzdcoU+F65CduVU6KAhhQa3F8Tx8nchBoYuqoTLZoAKFRIhqGwqJAULFx0GYpBQeChRIR4TJm6KJMhQRUSBAAA7" alt="." style="background-color: white; background-color: inherit" title="Data Type" class="hierarchy"/> 
-            <span title="Assertion.statisticCollection.distribution : Ordered distribution.">distribution</span>
-            <a name="Assertion.statisticCollection.distribution"> </a>
+            <span title="Assertion.distribution : Ordered distribution.">distribution</span>
+            <a name="Assertion.distribution"> </a>
           </td>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
@@ -843,7 +825,7 @@
   <version value="4.1.0"/>
   <name value="Assertion"/>
   <status value="draft"/>
-  <date value="2019-06-25T11:47:30-04:00"/>
+  <date value="2019-06-28T15:31:51-04:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <contact>
     <telecom>
@@ -1795,8 +1777,8 @@
     </element>
     <element id="Assertion.variableDefinition.variableRole">
       <path value="Assertion.variableDefinition.variableRole"/>
-      <short value="exposure | measuredVariable"/>
-      <definition value="exposure | measuredVariable."/>
+      <short value="exposure | referenceExposure | measuredVariable | confounder"/>
+      <definition value="exposure | referenceExposure | measuredVariable | confounder."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1813,9 +1795,9 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="AssertionVariableRole"/>
         </extension>
-        <strength value="required"/>
+        <strength value="extensible"/>
         <description value="The role that the assertion variable plays."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/variable-role|4.1.0"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/variable-role"/>
       </binding>
     </element>
     <element id="Assertion.variableDefinition.actualDefinition">
@@ -1929,112 +1911,14 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/study-type"/>
       </binding>
     </element>
-    <element id="Assertion.statisticCollection">
-      <path value="Assertion.statisticCollection"/>
-      <short value="Set of statistics"/>
-      <definition value="Set of statistics associated with variable."/>
-      <min value="0"/>
-      <max value="1"/>
-      <base>
-        <path value="Assertion.statisticCollection"/>
-        <min value="0"/>
-        <max value="1"/>
-      </base>
-      <type>
-        <code value="BackboneElement"/>
-      </type>
-      <constraint>
-        <key value="ele-1"/>
-        <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
-        <expression value="hasValue() or (children().count() &gt; id.count())"/>
-        <xpath value="@value|f:*|h:div"/>
-        <source value="Element"/>
-      </constraint>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-    </element>
-    <element id="Assertion.statisticCollection.id">
-      <path value="Assertion.statisticCollection.id"/>
-      <representation value="xmlAttr"/>
-      <short value="Unique id for inter-element referencing"/>
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
-      <min value="0"/>
-      <max value="1"/>
-      <base>
-        <path value="Element.id"/>
-        <min value="0"/>
-        <max value="1"/>
-      </base>
-      <type>
-        <code value="string"/>
-      </type>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-    </element>
-    <element id="Assertion.statisticCollection.extension">
-      <path value="Assertion.statisticCollection.extension"/>
-      <short value="Additional content defined by implementations"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <alias value="extensions"/>
-      <alias value="user content"/>
-      <min value="0"/>
-      <max value="*"/>
-      <base>
-        <path value="Element.extension"/>
-        <min value="0"/>
-        <max value="*"/>
-      </base>
-      <type>
-        <code value="Extension"/>
-      </type>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="n/a"/>
-      </mapping>
-    </element>
-    <element id="Assertion.statisticCollection.modifierExtension">
-      <path value="Assertion.statisticCollection.modifierExtension"/>
-      <short value="Extensions that cannot be ignored even if unrecognized"/>
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element&#39;s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension)."/>
-      <alias value="extensions"/>
-      <alias value="user content"/>
-      <alias value="modifiers"/>
-      <min value="0"/>
-      <max value="*"/>
-      <base>
-        <path value="BackboneElement.modifierExtension"/>
-        <min value="0"/>
-        <max value="*"/>
-      </base>
-      <type>
-        <code value="Extension"/>
-      </type>
-      <isModifier value="true"/>
-      <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
-      <isSummary value="true"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="N/A"/>
-      </mapping>
-    </element>
-    <element id="Assertion.statisticCollection.statistic">
-      <path value="Assertion.statisticCollection.statistic"/>
+    <element id="Assertion.statistic">
+      <path value="Assertion.statistic"/>
       <short value="Values and parameters for a single statistic"/>
       <definition value="The statistic value(s)."/>
       <min value="0"/>
       <max value="*"/>
       <base>
-        <path value="Assertion.statisticCollection.statistic"/>
+        <path value="Assertion.statistic"/>
         <min value="0"/>
         <max value="*"/>
       </base>
@@ -2044,14 +1928,14 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
     </element>
-    <element id="Assertion.statisticCollection.distribution">
-      <path value="Assertion.statisticCollection.distribution"/>
+    <element id="Assertion.distribution">
+      <path value="Assertion.distribution"/>
       <short value="An ordered group of statistics"/>
       <definition value="Ordered distribution."/>
       <min value="0"/>
       <max value="*"/>
       <base>
-        <path value="Assertion.statisticCollection.distribution"/>
+        <path value="Assertion.distribution"/>
         <min value="0"/>
         <max value="*"/>
       </base>
@@ -2758,8 +2642,8 @@
     </element>
     <element id="Assertion.variableDefinition.variableRole">
       <path value="Assertion.variableDefinition.variableRole"/>
-      <short value="exposure | measuredVariable"/>
-      <definition value="exposure | measuredVariable."/>
+      <short value="exposure | referenceExposure | measuredVariable | confounder"/>
+      <definition value="exposure | referenceExposure | measuredVariable | confounder."/>
       <min value="0"/>
       <max value="1"/>
       <type>
@@ -2769,9 +2653,9 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="AssertionVariableRole"/>
         </extension>
-        <strength value="required"/>
+        <strength value="extensible"/>
         <description value="The role that the assertion variable plays."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/variable-role|4.1.0"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/variable-role"/>
       </binding>
     </element>
     <element id="Assertion.variableDefinition.actualDefinition">
@@ -2851,18 +2735,8 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/study-type"/>
       </binding>
     </element>
-    <element id="Assertion.statisticCollection">
-      <path value="Assertion.statisticCollection"/>
-      <short value="Set of statistics"/>
-      <definition value="Set of statistics associated with variable."/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="BackboneElement"/>
-      </type>
-    </element>
-    <element id="Assertion.statisticCollection.statistic">
-      <path value="Assertion.statisticCollection.statistic"/>
+    <element id="Assertion.statistic">
+      <path value="Assertion.statistic"/>
       <short value="Values and parameters for a single statistic"/>
       <definition value="The statistic value(s)."/>
       <min value="0"/>
@@ -2871,8 +2745,8 @@
         <code value="Statistic"/>
       </type>
     </element>
-    <element id="Assertion.statisticCollection.distribution">
-      <path value="Assertion.statisticCollection.distribution"/>
+    <element id="Assertion.distribution">
+      <path value="Assertion.distribution"/>
       <short value="An ordered group of statistics"/>
       <definition value="Ordered distribution."/>
       <min value="0"/>

@@ -1,5 +1,7 @@
 # FHIR GraphQL Schema. Version 4.1.0
 
+# import the types from 'types.graphql'
+
 type Assertion {
   id: ID
   meta: Meta
@@ -26,7 +28,8 @@ type Assertion {
   variableDefinition: [AssertionVariableDefinition]
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  statisticCollection: AssertionStatisticCollection
+  statistic: [Statistic]
+  distribution: [OrderedDistribution]
   certainty: [AssertionCertainty]
 }
 
@@ -51,14 +54,6 @@ type AssertionVariableDefinition {
   actualDefinition: Reference!
   intendedDefinition: Reference
   directnessMatch: CodeableConcept
-}
-
-type AssertionStatisticCollection {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  statistic: [Statistic]
-  distribution: [OrderedDistribution]
 }
 
 type AssertionCertainty {
@@ -107,7 +102,8 @@ input AssertionInput {
   variableDefinition: [AssertionVariableDefinitionInput]
   synthesisType: CodeableConceptInput
   studyType: CodeableConceptInput
-  statisticCollection: AssertionStatisticCollectionInput
+  statistic: [StatisticInput]
+  distribution: [OrderedDistributionInput]
   certainty: [AssertionCertaintyInput]
 }
 
@@ -132,14 +128,6 @@ input AssertionVariableDefinitionInput {
   actualDefinition: ReferenceInput!
   intendedDefinition: ReferenceInput
   directnessMatch: CodeableConceptInput
-}
-
-input AssertionStatisticCollectionInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  statistic: [StatisticInput]
-  distribution: [OrderedDistributionInput]
 }
 
 input AssertionCertaintyInput {
