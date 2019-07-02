@@ -94,15 +94,15 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Snapshot view of the structure
-<StructureDefinition.snapshot> CLOSED {
+# Differential view of the structure
+<StructureDefinition.differential> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
     fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
                                             # even if unrecognized 
-    fhir:StructureDefinition.snapshot.element @<ElementDefinition>+;  # Definition of elements in the 
+    fhir:StructureDefinition.differential.element @<ElementDefinition>+;  # Definition of elements in the 
                                             # resource (if no 
                                             # StructureDefinition) 
     fhir:index xsd:integer?                 # Relative position in a list
@@ -123,15 +123,15 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Differential view of the structure
-<StructureDefinition.differential> CLOSED {
+# Snapshot view of the structure
+<StructureDefinition.snapshot> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
     fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
                                             # even if unrecognized 
-    fhir:StructureDefinition.differential.element @<ElementDefinition>+;  # Definition of elements in the 
+    fhir:StructureDefinition.snapshot.element @<ElementDefinition>+;  # Definition of elements in the 
                                             # resource (if no 
                                             # StructureDefinition) 
     fhir:index xsd:integer?                 # Relative position in a list
@@ -1242,6 +1242,40 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Condition that must evaluate to true
+<ElementDefinition.constraint> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:ElementDefinition.constraint.key @<id>;  # Target of 'condition' reference 
+                                            # above 
+    fhir:ElementDefinition.constraint.requirements @<string>?;  # Why this constraint is necessary 
+                                            # or appropriate 
+    fhir:ElementDefinition.constraint.severity @<code> AND
+    	{fhir:value @fhirvs:constraint-severity};  # error | warning
+    fhir:ElementDefinition.constraint.human @<string>;  # Human description of constraint
+    fhir:ElementDefinition.constraint.expression @<string>?;  # FHIRPath expression of constraint
+    fhir:ElementDefinition.constraint.xpath @<string>?;  # XPath expression of constraint
+    fhir:ElementDefinition.constraint.source @<canonical>?;  # Reference to original source of 
+                                            # constraint 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# ValueSet details if this is coded
+<ElementDefinition.binding> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:ElementDefinition.binding.strength @<code> AND
+    	{fhir:value @fhirvs:binding-strength};  # required | extensible | preferred 
+                                            # | example 
+    fhir:ElementDefinition.binding.description @<string>?;  # Human explanation of the value set
+    fhir:ElementDefinition.binding.valueSet @<canonical>?;  # Source of value set
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # Example value (as defined for type)
 <ElementDefinition.example> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -1305,21 +1339,6 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# What codes are expected
-<DataRequirement.codeFilter> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:DataRequirement.codeFilter.path @<string>?;  # A code-valued attribute to filter 
-                                            # on 
-    fhir:DataRequirement.codeFilter.searchParam @<string>?;  # A coded (token) parameter to 
-                                            # search on 
-    fhir:DataRequirement.codeFilter.valueSet @<canonical>?;  # Valueset for the filter
-    fhir:DataRequirement.codeFilter.code @<Coding>*;  # What code is expected
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
 # Map element to another set of definitions
 <ElementDefinition.mapping> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -1335,54 +1354,18 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# This element is sliced - slices follow
-<ElementDefinition.slicing> CLOSED {
+# What codes are expected
+<DataRequirement.codeFilter> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:ElementDefinition.slicing.discriminator @<ElementDefinition.slicing.discriminator>*;  # Element values that are used to 
-                                            # distinguish the slices 
-    fhir:ElementDefinition.slicing.description @<string>?;  # Text description of how slicing 
-                                            # works (or not) 
-    fhir:ElementDefinition.slicing.ordered @<boolean>?;  # If elements must be in same order 
-                                            # as slices 
-    fhir:ElementDefinition.slicing.rules @<code> AND
-    	{fhir:value @fhirvs:resource-slicing-rules};  # closed | open | openAtEnd
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Condition that must evaluate to true
-<ElementDefinition.constraint> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:ElementDefinition.constraint.key @<id>;  # Target of 'condition' reference 
-                                            # above 
-    fhir:ElementDefinition.constraint.requirements @<string>?;  # Why this constraint is necessary 
-                                            # or appropriate 
-    fhir:ElementDefinition.constraint.severity @<code> AND
-    	{fhir:value @fhirvs:constraint-severity};  # error | warning
-    fhir:ElementDefinition.constraint.human @<string>;  # Human description of constraint
-    fhir:ElementDefinition.constraint.expression @<string>?;  # FHIRPath expression of constraint
-    fhir:ElementDefinition.constraint.xpath @<string>?;  # XPath expression of constraint
-    fhir:ElementDefinition.constraint.source @<canonical>?;  # Reference to original source of 
-                                            # constraint 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# ValueSet details if this is coded
-<ElementDefinition.binding> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:ElementDefinition.binding.strength @<code> AND
-    	{fhir:value @fhirvs:binding-strength};  # required | extensible | preferred 
-                                            # | example 
-    fhir:ElementDefinition.binding.description @<string>?;  # Human explanation of the value set
-    fhir:ElementDefinition.binding.valueSet @<canonical>?;  # Source of value set
+    fhir:DataRequirement.codeFilter.path @<string>?;  # A code-valued attribute to filter 
+                                            # on 
+    fhir:DataRequirement.codeFilter.searchParam @<string>?;  # A coded (token) parameter to 
+                                            # search on 
+    fhir:DataRequirement.codeFilter.valueSet @<canonical>?;  # Valueset for the filter
+    fhir:DataRequirement.codeFilter.code @<Coding>*;  # What code is expected
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1406,24 +1389,20 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Data type and Profile for this element
-<ElementDefinition.type> CLOSED {
+# This element is sliced - slices follow
+<ElementDefinition.slicing> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:ElementDefinition.type.code @<uri>;  # Data type or Resource (reference 
-                                            # to definition) 
-    fhir:ElementDefinition.type.profile @<canonical>*;  # Profiles (StructureDefinition or 
-                                            # IG) - one must apply 
-    fhir:ElementDefinition.type.targetProfile @<canonical>*;  # Profile (StructureDefinition or 
-                                            # IG) on the Reference/canonical 
-                                            # target - one must apply 
-    fhir:ElementDefinition.type.aggregation @<code> AND
-    	{fhir:value @fhirvs:resource-aggregation-mode}*;  # contained | referenced | bundled - 
-                                            # how aggregated 
-    fhir:ElementDefinition.type.versioning @<code> AND
-    	{fhir:value @fhirvs:reference-version-rules}?;  # either | independent | specific
+    fhir:ElementDefinition.slicing.discriminator @<ElementDefinition.slicing.discriminator>*;  # Element values that are used to 
+                                            # distinguish the slices 
+    fhir:ElementDefinition.slicing.description @<string>?;  # Text description of how slicing 
+                                            # works (or not) 
+    fhir:ElementDefinition.slicing.ordered @<boolean>?;  # If elements must be in same order 
+                                            # as slices 
+    fhir:ElementDefinition.slicing.rules @<code> AND
+    	{fhir:value @fhirvs:resource-slicing-rules};  # closed | open | openAtEnd
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1450,6 +1429,27 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # element 
     fhir:ElementDefinition.base.min @<unsignedInt>;  # Min cardinality of the base element
     fhir:ElementDefinition.base.max @<string>;  # Max cardinality of the base element
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Data type and Profile for this element
+<ElementDefinition.type> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:ElementDefinition.type.code @<uri>;  # Data type or Resource (reference 
+                                            # to definition) 
+    fhir:ElementDefinition.type.profile @<canonical>*;  # Profiles (StructureDefinition or 
+                                            # IG) - one must apply 
+    fhir:ElementDefinition.type.targetProfile @<canonical>*;  # Profile (StructureDefinition or 
+                                            # IG) on the Reference/canonical 
+                                            # target - one must apply 
+    fhir:ElementDefinition.type.aggregation @<code> AND
+    	{fhir:value @fhirvs:resource-aggregation-mode}*;  # contained | referenced | bundled - 
+                                            # how aggregated 
+    fhir:ElementDefinition.type.versioning @<code> AND
+    	{fhir:value @fhirvs:reference-version-rules}?;  # either | independent | specific
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1510,95 +1510,95 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
-# Defines the type of structure that a definition is describing.
-fhirvs:structure-definition-kind ["primitive-type" "complex-type" "resource" "logical"]
-
-# How a property is represented when serialized.
-fhirvs:property-representation ["xmlAttr" "xmlText" "typeAttr" "cdaText" "xhtml"]
-
-# Whether a reference needs to be version specific or version independent, or whether either can be used.
-fhirvs:reference-version-rules ["either" "independent" "specific"]
-
-# SHALL applications comply with this constraint?
-fhirvs:constraint-severity ["error" "warning"]
-
-# The use of a human name.
-fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
-
-# The type of an address (physical / postal).
-fhirvs:address-type ["postal" "physical" "both"]
-
-# Use of contact point.
-fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
-
 # The use of an address.
 fhirvs:address-use ["home" "work" "temp" "old" "billing"]
-
-# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
-fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "Assertion" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "EffectEvidenceSynthesis" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GroupSummary" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchDefinition" "ResearchElementDefinition" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "RiskEvidenceSynthesis" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
-
-# The lifecycle status of an artifact.
-fhirvs:publication-status ["draft" "active" "retired" "unknown"]
-
-# The type of relationship to the related artifact.
-fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
-
-# How the Quantity should be understood and represented.
-fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
-
-# All published FHIR Versions.
-fhirvs:FHIR-version ["0.01" "0.05" "0.06" "0.11" "0.0.80" "0.0.81" "0.0.82" "0.4.0" "0.5.0" "1.0.0" "1.0.1" "1.0.2" "1.1.0" "1.4.0" "1.6.0" "1.8.0" "3.0.0" "3.0.1" "3.3.0" "3.5.0" "4.0.0" "4.1.0"]
-
-# How slices are interpreted when evaluating an instance.
-fhirvs:resource-slicing-rules ["closed" "open" "openAtEnd"]
-
-# Identifies the purpose for this identifier, if known .
-fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
-
-# The type of contributor.
-fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
-
-# How a type relates to its baseDefinition.
-fhirvs:type-derivation-rule ["specialization" "constraint"]
-
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
 
 # Telecommunications form for contact point.
 fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
 
-# How an extension context is interpreted.
-fhirvs:extension-context-type ["fhirpath" "element" "extension"]
+# The lifecycle status of an artifact.
+fhirvs:publication-status ["draft" "active" "retired" "unknown"]
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+# All published FHIR Versions.
+fhirvs:FHIR-version ["0.01" "0.05" "0.06" "0.11" "0.0.80" "0.0.81" "0.0.82" "0.4.0" "0.5.0" "1.0.0" "1.0.1" "1.0.2" "1.1.0" "1.4.0" "1.6.0" "1.8.0" "3.0.0" "3.0.1" "3.3.0" "3.5.0" "4.0.0" "4.1.0"]
 
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# How an element value is interpreted when discrimination is evaluated.
-fhirvs:discriminator-type ["value" "exists" "pattern" "type" "profile"]
-
-# How resource references can be aggregated.
-fhirvs:resource-aggregation-mode ["contained" "referenced" "bundled"]
-
-# A unit of time (units from UCUM).
-fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
-
-# Whether an operation parameter is an input or an output parameter.
-fhirvs:operation-parameter-use ["in" "out"]
+# Use of contact point.
+fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
 
 # The status of a resource narrative.
 fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 
-# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
-fhirvs:mimetypes EXTERNAL
+# How the Quantity should be understood and represented.
+fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
 
-# Real world event relating to the schedule.
-fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
+# Indication of the degree of conformance expectations associated with a binding.
+fhirvs:binding-strength ["required" "extensible" "preferred" "example"]
+
+# How an element value is interpreted when discrimination is evaluated.
+fhirvs:discriminator-type ["value" "exists" "pattern" "type" "profile"]
+
+# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
+fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "Assertion" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "EffectEvidenceSynthesis" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GroupSummary" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchDefinition" "ResearchElementDefinition" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "RiskEvidenceSynthesis" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
+
+# The type of relationship to the related artifact.
+fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
+
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+
+# Whether a reference needs to be version specific or version independent, or whether either can be used.
+fhirvs:reference-version-rules ["either" "independent" "specific"]
+
+# How resource references can be aggregated.
+fhirvs:resource-aggregation-mode ["contained" "referenced" "bundled"]
+
+# Defines the type of structure that a definition is describing.
+fhirvs:structure-definition-kind ["primitive-type" "complex-type" "resource" "logical"]
 
 # The type of trigger.
 fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
 
-# Indication of the degree of conformance expectations associated with a binding.
-fhirvs:binding-strength ["required" "extensible" "preferred" "example"]
+# How slices are interpreted when evaluating an instance.
+fhirvs:resource-slicing-rules ["closed" "open" "openAtEnd"]
+
+# The type of contributor.
+fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
+
+# How an extension context is interpreted.
+fhirvs:extension-context-type ["fhirpath" "element" "extension"]
+
+# The type of an address (physical / postal).
+fhirvs:address-type ["postal" "physical" "both"]
+
+# Identifies the purpose for this identifier, if known .
+fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
+
+# How a type relates to its baseDefinition.
+fhirvs:type-derivation-rule ["specialization" "constraint"]
+
+# How a property is represented when serialized.
+fhirvs:property-representation ["xmlAttr" "xmlText" "typeAttr" "cdaText" "xhtml"]
+
+# SHALL applications comply with this constraint?
+fhirvs:constraint-severity ["error" "warning"]
+
+# Real world event relating to the schedule.
+fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
+
+# The use of a human name.
+fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
+
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
+
+# Whether an operation parameter is an input or an output parameter.
+fhirvs:operation-parameter-use ["in" "out"]
+
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
+
+# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
+fhirvs:mimetypes EXTERNAL

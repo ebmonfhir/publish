@@ -1098,19 +1098,6 @@ start=@&lt;MedicationDispense&gt; AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Order of the results
-&lt;DataRequirement.sort&gt; CLOSED {
-    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
-                                            # implementations 
-    fhir:DataRequirement.sort.path @&lt;string&gt;;  # The name of the attribute to 
-                                            # perform the sort 
-    fhir:DataRequirement.sort.direction @&lt;code&gt; AND
-    	{fhir:value @fhirvs:sort-direction};  # ascending | descending
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
 # What dates/date ranges are expected
 &lt;DataRequirement.dateFilter&gt; CLOSED {
     fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
@@ -1128,6 +1115,19 @@ start=@&lt;MedicationDispense&gt; AND {fhir:nodeRole [fhir:treeRoot]}
         fhir:DataRequirement.dateFilter.valuePeriod @&lt;Period&gt;  |
         fhir:DataRequirement.dateFilter.valueDuration @&lt;Duration&gt; 
     )?;
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Order of the results
+&lt;DataRequirement.sort&gt; CLOSED {
+    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
+                                            # implementations 
+    fhir:DataRequirement.sort.path @&lt;string&gt;;  # The name of the attribute to 
+                                            # perform the sort 
+    fhir:DataRequirement.sort.direction @&lt;code&gt; AND
+    	{fhir:value @fhirvs:sort-direction};  # ascending | descending
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1175,26 +1175,32 @@ start=@&lt;MedicationDispense&gt; AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies [&quot;AED&quot; &quot;AFN&quot; &quot;ALL&quot; &quot;AMD&quot; &quot;ANG&quot; &quot;AOA&quot; &quot;ARS&quot; &quot;AUD&quot; &quot;AWG&quot; &quot;AZN&quot; &quot;BAM&quot; &quot;BBD&quot; &quot;BDT&quot; &quot;BGN&quot; &quot;BHD&quot; &quot;BIF&quot; &quot;BMD&quot; &quot;BND&quot; &quot;BOB&quot; &quot;BOV&quot; &quot;BRL&quot; &quot;BSD&quot; &quot;BTN&quot; &quot;BWP&quot; &quot;BYN&quot; &quot;BZD&quot; &quot;CAD&quot; &quot;CDF&quot; &quot;CHE&quot; &quot;CHF&quot; &quot;CHW&quot; &quot;CLF&quot; &quot;CLP&quot; &quot;CNY&quot; &quot;COP&quot; &quot;COU&quot; &quot;CRC&quot; &quot;CUC&quot; &quot;CUP&quot; &quot;CVE&quot; &quot;CZK&quot; &quot;DJF&quot; &quot;DKK&quot; &quot;DOP&quot; &quot;DZD&quot; &quot;EGP&quot; &quot;ERN&quot; &quot;ETB&quot; &quot;EUR&quot; &quot;FJD&quot; &quot;FKP&quot; &quot;GBP&quot; &quot;GEL&quot; &quot;GGP&quot; &quot;GHS&quot; &quot;GIP&quot; &quot;GMD&quot; &quot;GNF&quot; &quot;GTQ&quot; &quot;GYD&quot; &quot;HKD&quot; &quot;HNL&quot; &quot;HRK&quot; &quot;HTG&quot; &quot;HUF&quot; &quot;IDR&quot; &quot;ILS&quot; &quot;IMP&quot; &quot;INR&quot; &quot;IQD&quot; &quot;IRR&quot; &quot;ISK&quot; &quot;JEP&quot; &quot;JMD&quot; &quot;JOD&quot; &quot;JPY&quot; &quot;KES&quot; &quot;KGS&quot; &quot;KHR&quot; &quot;KMF&quot; &quot;KPW&quot; &quot;KRW&quot; &quot;KWD&quot; &quot;KYD&quot; &quot;KZT&quot; &quot;LAK&quot; &quot;LBP&quot; &quot;LKR&quot; &quot;LRD&quot; &quot;LSL&quot; &quot;LYD&quot; &quot;MAD&quot; &quot;MDL&quot; &quot;MGA&quot; &quot;MKD&quot; &quot;MMK&quot; &quot;MNT&quot; &quot;MOP&quot; &quot;MRU&quot; &quot;MUR&quot; &quot;MVR&quot; &quot;MWK&quot; &quot;MXN&quot; &quot;MXV&quot; &quot;MYR&quot; &quot;MZN&quot; &quot;NAD&quot; &quot;NGN&quot; &quot;NIO&quot; &quot;NOK&quot; &quot;NPR&quot; &quot;NZD&quot; &quot;OMR&quot; &quot;PAB&quot; &quot;PEN&quot; &quot;PGK&quot; &quot;PHP&quot; &quot;PKR&quot; &quot;PLN&quot; &quot;PYG&quot; &quot;QAR&quot; &quot;RON&quot; &quot;RSD&quot; &quot;RUB&quot; &quot;RWF&quot; &quot;SAR&quot; &quot;SBD&quot; &quot;SCR&quot; &quot;SDG&quot; &quot;SEK&quot; &quot;SGD&quot; &quot;SHP&quot; &quot;SLL&quot; &quot;SOS&quot; &quot;SRD&quot; &quot;SSP&quot; &quot;STN&quot; &quot;SVC&quot; &quot;SYP&quot; &quot;SZL&quot; &quot;THB&quot; &quot;TJS&quot; &quot;TMT&quot; &quot;TND&quot; &quot;TOP&quot; &quot;TRY&quot; &quot;TTD&quot; &quot;TVD&quot; &quot;TWD&quot; &quot;TZS&quot; &quot;UAH&quot; &quot;UGX&quot; &quot;USD&quot; &quot;USN&quot; &quot;UYI&quot; &quot;UYU&quot; &quot;UZS&quot; &quot;VEF&quot; &quot;VND&quot; &quot;VUV&quot; &quot;WST&quot; &quot;XAF&quot; &quot;XAG&quot; &quot;XAU&quot; &quot;XBA&quot; &quot;XBB&quot; &quot;XBC&quot; &quot;XBD&quot; &quot;XCD&quot; &quot;XDR&quot; &quot;XOF&quot; &quot;XPD&quot; &quot;XPF&quot; &quot;XPT&quot; &quot;XSU&quot; &quot;XTS&quot; &quot;XUA&quot; &quot;XXX&quot; &quot;YER&quot; &quot;ZAR&quot; &quot;ZMW&quot; &quot;ZWL&quot;]
+# The use of an address.
+fhirvs:address-use [&quot;home&quot; &quot;work&quot; &quot;temp&quot; &quot;old&quot; &quot;billing&quot;]
 
-# The days of the week.
-fhirvs:days-of-week [&quot;mon&quot; &quot;tue&quot; &quot;wed&quot; &quot;thu&quot; &quot;fri&quot; &quot;sat&quot; &quot;sun&quot;]
-
-# The use of a human name.
-fhirvs:name-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;nickname&quot; &quot;anonymous&quot; &quot;old&quot; &quot;maiden&quot;]
-
-# A unit of time (units from UCUM).
-fhirvs:units-of-time [&quot;s&quot; &quot;min&quot; &quot;h&quot; &quot;d&quot; &quot;wk&quot; &quot;mo&quot; &quot;a&quot;]
-
-# The type of an address (physical / postal).
-fhirvs:address-type [&quot;postal&quot; &quot;physical&quot; &quot;both&quot;]
+# Telecommunications form for contact point.
+fhirvs:contact-point-system [&quot;phone&quot; &quot;fax&quot; &quot;email&quot; &quot;pager&quot; &quot;url&quot; &quot;sms&quot; &quot;other&quot;]
 
 # Use of contact point.
 fhirvs:contact-point-use [&quot;home&quot; &quot;work&quot; &quot;temp&quot; &quot;old&quot; &quot;mobile&quot;]
 
-# The use of an address.
-fhirvs:address-use [&quot;home&quot; &quot;work&quot; &quot;temp&quot; &quot;old&quot; &quot;billing&quot;]
+# Identifies the purpose for this identifier, if known .
+fhirvs:identifier-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;secondary&quot; &quot;old&quot;]
+
+# The status of a resource narrative.
+fhirvs:narrative-status [&quot;generated&quot; &quot;extensions&quot; &quot;additional&quot; &quot;empty&quot;]
+
+# How the Quantity should be understood and represented.
+fhirvs:quantity-comparator [&quot;&lt;&quot; &quot;&lt;=&quot; &quot;&gt;=&quot; &quot;&gt;&quot;]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time [&quot;s&quot; &quot;min&quot; &quot;h&quot; &quot;d&quot; &quot;wk&quot; &quot;mo&quot; &quot;a&quot;]
+
+# Real world event relating to the schedule.
+fhirvs:event-timing [&quot;MORN&quot; &quot;MORN.early&quot; &quot;MORN.late&quot; &quot;NOON&quot; &quot;AFT&quot; &quot;AFT.early&quot; &quot;AFT.late&quot; &quot;EVE&quot; &quot;EVE.early&quot; &quot;EVE.late&quot; &quot;NIGHT&quot; &quot;PHS&quot; &quot;HS&quot; &quot;WAKE&quot; &quot;C&quot; &quot;CM&quot; &quot;CD&quot; &quot;CV&quot; &quot;AC&quot; &quot;ACM&quot; &quot;ACD&quot; &quot;ACV&quot; &quot;PC&quot; &quot;PCM&quot; &quot;PCD&quot; &quot;PCV&quot;]
+
+# The use of a human name.
+fhirvs:name-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;nickname&quot; &quot;anonymous&quot; &quot;old&quot; &quot;maiden&quot;]
 
 # MedicationDispense Status Codes
 fhirvs:medicationdispense-status [&quot;preparation&quot; &quot;in-progress&quot; &quot;cancelled&quot; &quot;on-hold&quot; &quot;completed&quot; &quot;entered-in-error&quot; &quot;stopped&quot; &quot;declined&quot; &quot;unknown&quot;]
@@ -1205,35 +1211,29 @@ fhirvs:all-types [&quot;Address&quot; &quot;Age&quot; &quot;Annotation&quot; &qu
 # The type of relationship to the related artifact.
 fhirvs:related-artifact-type [&quot;documentation&quot; &quot;justification&quot; &quot;citation&quot; &quot;predecessor&quot; &quot;successor&quot; &quot;derived-from&quot; &quot;depends-on&quot; &quot;composed-of&quot;]
 
-# Whether an operation parameter is an input or an output parameter.
-fhirvs:operation-parameter-use [&quot;in&quot; &quot;out&quot;]
-
-# The status of a resource narrative.
-fhirvs:narrative-status [&quot;generated&quot; &quot;extensions&quot; &quot;additional&quot; &quot;empty&quot;]
-
-# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
-fhirvs:mimetypes EXTERNAL
-
-# Real world event relating to the schedule.
-fhirvs:event-timing [&quot;MORN&quot; &quot;MORN.early&quot; &quot;MORN.late&quot; &quot;NOON&quot; &quot;AFT&quot; &quot;AFT.early&quot; &quot;AFT.late&quot; &quot;EVE&quot; &quot;EVE.early&quot; &quot;EVE.late&quot; &quot;NIGHT&quot; &quot;PHS&quot; &quot;HS&quot; &quot;WAKE&quot; &quot;C&quot; &quot;CM&quot; &quot;CD&quot; &quot;CV&quot; &quot;AC&quot; &quot;ACM&quot; &quot;ACD&quot; &quot;ACV&quot; &quot;PC&quot; &quot;PCM&quot; &quot;PCD&quot; &quot;PCV&quot;]
-
-# How the Quantity should be understood and represented.
-fhirvs:quantity-comparator [&quot;&lt;&quot; &quot;&lt;=&quot; &quot;&gt;=&quot; &quot;&gt;&quot;]
-
-# The type of trigger.
-fhirvs:trigger-type [&quot;named-event&quot; &quot;periodic&quot; &quot;data-changed&quot; &quot;data-added&quot; &quot;data-modified&quot; &quot;data-removed&quot; &quot;data-accessed&quot; &quot;data-access-ended&quot;]
-
-# Identifies the purpose for this identifier, if known .
-fhirvs:identifier-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;secondary&quot; &quot;old&quot;]
-
-# The type of contributor.
-fhirvs:contributor-type [&quot;author&quot; &quot;editor&quot; &quot;reviewer&quot; &quot;endorser&quot;]
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies [&quot;AED&quot; &quot;AFN&quot; &quot;ALL&quot; &quot;AMD&quot; &quot;ANG&quot; &quot;AOA&quot; &quot;ARS&quot; &quot;AUD&quot; &quot;AWG&quot; &quot;AZN&quot; &quot;BAM&quot; &quot;BBD&quot; &quot;BDT&quot; &quot;BGN&quot; &quot;BHD&quot; &quot;BIF&quot; &quot;BMD&quot; &quot;BND&quot; &quot;BOB&quot; &quot;BOV&quot; &quot;BRL&quot; &quot;BSD&quot; &quot;BTN&quot; &quot;BWP&quot; &quot;BYN&quot; &quot;BZD&quot; &quot;CAD&quot; &quot;CDF&quot; &quot;CHE&quot; &quot;CHF&quot; &quot;CHW&quot; &quot;CLF&quot; &quot;CLP&quot; &quot;CNY&quot; &quot;COP&quot; &quot;COU&quot; &quot;CRC&quot; &quot;CUC&quot; &quot;CUP&quot; &quot;CVE&quot; &quot;CZK&quot; &quot;DJF&quot; &quot;DKK&quot; &quot;DOP&quot; &quot;DZD&quot; &quot;EGP&quot; &quot;ERN&quot; &quot;ETB&quot; &quot;EUR&quot; &quot;FJD&quot; &quot;FKP&quot; &quot;GBP&quot; &quot;GEL&quot; &quot;GGP&quot; &quot;GHS&quot; &quot;GIP&quot; &quot;GMD&quot; &quot;GNF&quot; &quot;GTQ&quot; &quot;GYD&quot; &quot;HKD&quot; &quot;HNL&quot; &quot;HRK&quot; &quot;HTG&quot; &quot;HUF&quot; &quot;IDR&quot; &quot;ILS&quot; &quot;IMP&quot; &quot;INR&quot; &quot;IQD&quot; &quot;IRR&quot; &quot;ISK&quot; &quot;JEP&quot; &quot;JMD&quot; &quot;JOD&quot; &quot;JPY&quot; &quot;KES&quot; &quot;KGS&quot; &quot;KHR&quot; &quot;KMF&quot; &quot;KPW&quot; &quot;KRW&quot; &quot;KWD&quot; &quot;KYD&quot; &quot;KZT&quot; &quot;LAK&quot; &quot;LBP&quot; &quot;LKR&quot; &quot;LRD&quot; &quot;LSL&quot; &quot;LYD&quot; &quot;MAD&quot; &quot;MDL&quot; &quot;MGA&quot; &quot;MKD&quot; &quot;MMK&quot; &quot;MNT&quot; &quot;MOP&quot; &quot;MRU&quot; &quot;MUR&quot; &quot;MVR&quot; &quot;MWK&quot; &quot;MXN&quot; &quot;MXV&quot; &quot;MYR&quot; &quot;MZN&quot; &quot;NAD&quot; &quot;NGN&quot; &quot;NIO&quot; &quot;NOK&quot; &quot;NPR&quot; &quot;NZD&quot; &quot;OMR&quot; &quot;PAB&quot; &quot;PEN&quot; &quot;PGK&quot; &quot;PHP&quot; &quot;PKR&quot; &quot;PLN&quot; &quot;PYG&quot; &quot;QAR&quot; &quot;RON&quot; &quot;RSD&quot; &quot;RUB&quot; &quot;RWF&quot; &quot;SAR&quot; &quot;SBD&quot; &quot;SCR&quot; &quot;SDG&quot; &quot;SEK&quot; &quot;SGD&quot; &quot;SHP&quot; &quot;SLL&quot; &quot;SOS&quot; &quot;SRD&quot; &quot;SSP&quot; &quot;STN&quot; &quot;SVC&quot; &quot;SYP&quot; &quot;SZL&quot; &quot;THB&quot; &quot;TJS&quot; &quot;TMT&quot; &quot;TND&quot; &quot;TOP&quot; &quot;TRY&quot; &quot;TTD&quot; &quot;TVD&quot; &quot;TWD&quot; &quot;TZS&quot; &quot;UAH&quot; &quot;UGX&quot; &quot;USD&quot; &quot;USN&quot; &quot;UYI&quot; &quot;UYU&quot; &quot;UZS&quot; &quot;VEF&quot; &quot;VND&quot; &quot;VUV&quot; &quot;WST&quot; &quot;XAF&quot; &quot;XAG&quot; &quot;XAU&quot; &quot;XBA&quot; &quot;XBB&quot; &quot;XBC&quot; &quot;XBD&quot; &quot;XCD&quot; &quot;XDR&quot; &quot;XOF&quot; &quot;XPD&quot; &quot;XPF&quot; &quot;XPT&quot; &quot;XSU&quot; &quot;XTS&quot; &quot;XUA&quot; &quot;XXX&quot; &quot;YER&quot; &quot;ZAR&quot; &quot;ZMW&quot; &quot;ZWL&quot;]
 
 # The possible sort directions, ascending or descending.
 fhirvs:sort-direction [&quot;ascending&quot; &quot;descending&quot;]
 
-# Telecommunications form for contact point.
-fhirvs:contact-point-system [&quot;phone&quot; &quot;fax&quot; &quot;email&quot; &quot;pager&quot; &quot;url&quot; &quot;sms&quot; &quot;other&quot;]
+# Whether an operation parameter is an input or an output parameter.
+fhirvs:operation-parameter-use [&quot;in&quot; &quot;out&quot;]
+
+# The days of the week.
+fhirvs:days-of-week [&quot;mon&quot; &quot;tue&quot; &quot;wed&quot; &quot;thu&quot; &quot;fri&quot; &quot;sat&quot; &quot;sun&quot;]
+
+# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
+fhirvs:mimetypes EXTERNAL
+
+# The type of trigger.
+fhirvs:trigger-type [&quot;named-event&quot; &quot;periodic&quot; &quot;data-changed&quot; &quot;data-added&quot; &quot;data-modified&quot; &quot;data-removed&quot; &quot;data-accessed&quot; &quot;data-access-ended&quot;]
+
+# The type of contributor.
+fhirvs:contributor-type [&quot;author&quot; &quot;editor&quot; &quot;reviewer&quot; &quot;endorser&quot;]
+
+# The type of an address (physical / postal).
+fhirvs:address-type [&quot;postal&quot; &quot;physical&quot; &quot;both&quot;]
 
 </pre>
 </div>
@@ -1259,7 +1259,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 3f99e5c5d7) generated on Fri, Jun 28, 2019 15:40-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub d8cfbf99ac) generated on Mon, Jul 1, 2019 16:37-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

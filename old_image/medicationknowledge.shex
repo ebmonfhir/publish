@@ -88,6 +88,50 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Program under which a medication is reviewed
+<MedicationKnowledge.monitoringProgram> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.monitoringProgram.type @<CodeableConcept>?;  # Type of program under which the 
+                                            # medication is monitored 
+    fhir:MedicationKnowledge.monitoringProgram.name @<string>?;  # Name of the reviewing program
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Associated documentation about the medication
+<MedicationKnowledge.monograph> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.monograph.type @<CodeableConcept>?;  # The category of medication document
+    fhir:MedicationKnowledge.monograph.source @<Reference>?;  # Associated documentation about the 
+                                            # medication 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# The pricing of the medication
+<MedicationKnowledge.cost> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.cost.type @<CodeableConcept>;  # The category of the cost 
+                                            # information 
+    fhir:MedicationKnowledge.cost.source @<string>?;  # The source or owner for the price 
+                                            # information 
+    fhir:MedicationKnowledge.cost.cost @<Money>;  # The price of the medication
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # Active or inactive ingredient
 <MedicationKnowledge.ingredient> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -107,17 +151,47 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Associated or related medication information
-<MedicationKnowledge.relatedMedicationKnowledge> CLOSED {
+# Guidelines or protocols for administration of the medication
+<MedicationKnowledge.administrationGuideline> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
     fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
                                             # even if unrecognized 
-    fhir:MedicationKnowledge.relatedMedicationKnowledge.type @<CodeableConcept>;  # Category of medicationKnowledge
-    fhir:MedicationKnowledge.relatedMedicationKnowledge.reference @<Reference>+;  # Associated documentation about the 
-                                            # associated medication knowledge 
+    fhir:MedicationKnowledge.administrationGuideline.dosage @<MedicationKnowledge.administrationGuideline.dosage>*;  # Dosage for the medication for the 
+                                            # specific guidelines 
+    (                                       # Indication for use that apply to 
+                                            # the specific administration 
+                                            # guidelines 
+        fhir:MedicationKnowledge.administrationGuideline.indicationCodeableConcept @<CodeableConcept>  |
+        fhir:MedicationKnowledge.administrationGuideline.indicationReference @<Reference> 
+    )?;
+    fhir:MedicationKnowledge.administrationGuideline.patientCharacteristic @<MedicationKnowledge.administrationGuideline.patientCharacteristic>*;  # Characteristics of the patient 
+                                            # that are relevant to the 
+                                            # administration guidelines 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Details about packaged medications
+<MedicationKnowledge.packaging> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.packaging.type @<CodeableConcept>?;  # A code that defines the specific 
+                                            # type of packaging that the 
+                                            # medication can be found in 
+    fhir:MedicationKnowledge.packaging.quantity @<SimpleQuantity>?;  # The number of product units the 
+                                            # package would contain if fully 
+                                            # loaded 
+    fhir:MedicationKnowledge.packaging.device @<Reference>?;  # The device used to administer the 
+                                            # medication (e.g. scoop, 
+                                            # applicator, syringe) 
+    fhir:MedicationKnowledge.packaging.material @<CodeableConcept>?;  # Material type of the package item
+    fhir:MedicationKnowledge.packaging.packaging @<MedicationKnowledge.packaging>*;  # Allows packages within packages
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -157,91 +231,17 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Guidelines or protocols for administration of the medication
-<MedicationKnowledge.administrationGuideline> CLOSED {
+# Associated or related medication information
+<MedicationKnowledge.relatedMedicationKnowledge> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
     fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
                                             # even if unrecognized 
-    fhir:MedicationKnowledge.administrationGuideline.dosage @<MedicationKnowledge.administrationGuideline.dosage>*;  # Dosage for the medication for the 
-                                            # specific guidelines 
-    (                                       # Indication for use that apply to 
-                                            # the specific administration 
-                                            # guidelines 
-        fhir:MedicationKnowledge.administrationGuideline.indicationCodeableConcept @<CodeableConcept>  |
-        fhir:MedicationKnowledge.administrationGuideline.indicationReference @<Reference> 
-    )?;
-    fhir:MedicationKnowledge.administrationGuideline.patientCharacteristic @<MedicationKnowledge.administrationGuideline.patientCharacteristic>*;  # Characteristics of the patient 
-                                            # that are relevant to the 
-                                            # administration guidelines 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Associated documentation about the medication
-<MedicationKnowledge.monograph> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.monograph.type @<CodeableConcept>?;  # The category of medication document
-    fhir:MedicationKnowledge.monograph.source @<Reference>?;  # Associated documentation about the 
-                                            # medication 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Program under which a medication is reviewed
-<MedicationKnowledge.monitoringProgram> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.monitoringProgram.type @<CodeableConcept>?;  # Type of program under which the 
-                                            # medication is monitored 
-    fhir:MedicationKnowledge.monitoringProgram.name @<string>?;  # Name of the reviewing program
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# The pricing of the medication
-<MedicationKnowledge.cost> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.cost.type @<CodeableConcept>;  # The category of the cost 
-                                            # information 
-    fhir:MedicationKnowledge.cost.source @<string>?;  # The source or owner for the price 
-                                            # information 
-    fhir:MedicationKnowledge.cost.cost @<Money>;  # The price of the medication
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Details about packaged medications
-<MedicationKnowledge.packaging> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.packaging.type @<CodeableConcept>?;  # A code that defines the specific 
-                                            # type of packaging that the 
-                                            # medication can be found in 
-    fhir:MedicationKnowledge.packaging.quantity @<SimpleQuantity>?;  # The number of product units the 
-                                            # package would contain if fully 
-                                            # loaded 
-    fhir:MedicationKnowledge.packaging.device @<Reference>?;  # The device used to administer the 
-                                            # medication (e.g. scoop, 
-                                            # applicator, syringe) 
-    fhir:MedicationKnowledge.packaging.material @<CodeableConcept>?;  # Material type of the package item
-    fhir:MedicationKnowledge.packaging.packaging @<MedicationKnowledge.packaging>*;  # Allows packages within packages
+    fhir:MedicationKnowledge.relatedMedicationKnowledge.type @<CodeableConcept>;  # Category of medicationKnowledge
+    fhir:MedicationKnowledge.relatedMedicationKnowledge.reference @<Reference>+;  # Associated documentation about the 
+                                            # associated medication knowledge 
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -282,35 +282,6 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# The maximum number of units of the medication that can be dispensed in a period
-<MedicationKnowledge.regulatory.maxDispense> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.regulatory.maxDispense.quantity @<SimpleQuantity>;  # The maximum number of units of the 
-                                            # medication that can be dispensed 
-    fhir:MedicationKnowledge.regulatory.maxDispense.period @<Duration>?;  # The period that applies to the 
-                                            # maximum number of units 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Dosage for the medication for the specific guidelines
-<MedicationKnowledge.administrationGuideline.dosage> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MedicationKnowledge.administrationGuideline.dosage.type @<CodeableConcept>;  # Category of dosage for a medication
-    fhir:MedicationKnowledge.administrationGuideline.dosage.dosage @<Dosage>+;  # Dosage for the medication for the 
-                                            # specific guidelines 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
 # Characteristics of the patient that are relevant to the administration guidelines
 <MedicationKnowledge.administrationGuideline.patientCharacteristic> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -329,6 +300,20 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Dosage for the medication for the specific guidelines
+<MedicationKnowledge.administrationGuideline.dosage> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.administrationGuideline.dosage.type @<CodeableConcept>;  # Category of dosage for a medication
+    fhir:MedicationKnowledge.administrationGuideline.dosage.dosage @<Dosage>+;  # Dosage for the medication for the 
+                                            # specific guidelines 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # Specifies the schedule of a medication in jurisdiction
 <MedicationKnowledge.regulatory.schedule> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -339,6 +324,21 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # even if unrecognized 
     fhir:MedicationKnowledge.regulatory.schedule.schedule @<CodeableConcept>;  # Specifies the specific drug 
                                             # schedule 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# The maximum number of units of the medication that can be dispensed in a period
+<MedicationKnowledge.regulatory.maxDispense> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MedicationKnowledge.regulatory.maxDispense.quantity @<SimpleQuantity>;  # The maximum number of units of the 
+                                            # medication that can be dispensed 
+    fhir:MedicationKnowledge.regulatory.maxDispense.period @<Duration>?;  # The period that applies to the 
+                                            # maximum number of units 
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1298,62 +1298,62 @@ start=@<MedicationKnowledge> AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+# The use of an address.
+fhirvs:address-use ["home" "work" "temp" "old" "billing"]
 
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# The use of a human name.
-fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
-
-# A unit of time (units from UCUM).
-fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
-
-# The type of an address (physical / postal).
-fhirvs:address-type ["postal" "physical" "both"]
+# Telecommunications form for contact point.
+fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
 
 # Use of contact point.
 fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
 
-# The use of an address.
-fhirvs:address-use ["home" "work" "temp" "old" "billing"]
-
-# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
-fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "Assertion" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "EffectEvidenceSynthesis" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GroupSummary" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchDefinition" "ResearchElementDefinition" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "RiskEvidenceSynthesis" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
-
-# The type of relationship to the related artifact.
-fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
-
-# Whether an operation parameter is an input or an output parameter.
-fhirvs:operation-parameter-use ["in" "out"]
+# Identifies the purpose for this identifier, if known .
+fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
 
 # The status of a resource narrative.
 fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 
-# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
-fhirvs:mimetypes EXTERNAL
+# How the Quantity should be understood and represented.
+fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
 
 # Real world event relating to the schedule.
 fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
 
-# How the Quantity should be understood and represented.
-fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
-
-# The type of trigger.
-fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
-
-# Identifies the purpose for this identifier, if known .
-fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
-
-# The type of contributor.
-fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
-
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
+# The use of a human name.
+fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
 
 # MedicationKnowledge Status Codes
 fhirvs:medicationknowledge-status ["active" "inactive" "entered-in-error"]
 
-# Telecommunications form for contact point.
-fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
+# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
+fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "Assertion" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "EffectEvidenceSynthesis" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GroupSummary" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchDefinition" "ResearchElementDefinition" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "RiskEvidenceSynthesis" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
+
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+
+# The type of relationship to the related artifact.
+fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
+
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
+
+# Whether an operation parameter is an input or an output parameter.
+fhirvs:operation-parameter-use ["in" "out"]
+
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
+
+# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
+fhirvs:mimetypes EXTERNAL
+
+# The type of trigger.
+fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
+
+# The type of contributor.
+fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
+
+# The type of an address (physical / postal).
+fhirvs:address-type ["postal" "physical" "both"]
