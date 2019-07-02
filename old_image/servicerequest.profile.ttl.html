@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Servicerequest.profile.ttl</h1>
@@ -123,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;ServiceRequest&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-06-25T11:47:30.185-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-06-28T15:31:51.596-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -153,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;ServiceRequest&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-06-25T11:47:30-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-06-28T15:31:51-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Orders and Observations)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -794,7 +796,7 @@
        fhir:index 15;
        fhir:Element.id [ fhir:value &quot;ServiceRequest.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;ServiceRequest.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | suspended | completed | entered-in-error | cancelled&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | on-hold | revoked | completed | entered-in-error | unknown&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The status of the order.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -846,7 +848,7 @@
        fhir:index 16;
        fhir:Element.id [ fhir:value &quot;ServiceRequest.intent&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;ServiceRequest.intent&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;proposal | plan | order +&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;proposal | plan | directive | order +&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Whether the request is a proposal, plan, an original order or a reflex order.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This element is labeled as a modifier because the intent alters when and how the resource is actually applicable.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2270,7 +2272,7 @@
        fhir:index 7;
        fhir:Element.id [ fhir:value &quot;ServiceRequest.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;ServiceRequest.status&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | suspended | completed | entered-in-error | cancelled&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;draft | active | on-hold | revoked | completed | entered-in-error | unknown&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The status of the order.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2317,7 +2319,7 @@
        fhir:index 8;
        fhir:Element.id [ fhir:value &quot;ServiceRequest.intent&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;ServiceRequest.intent&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;proposal | plan | order +&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;proposal | plan | directive | order +&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Whether the request is a proposal, plan, an original order or a reflex order.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;This element is labeled as a modifier because the intent alters when and how the resource is actually applicable.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -3353,7 +3355,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ed7bf4e6ff) generated on Tue, Jun 25, 2019 12:10-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 3f99e5c5d7) generated on Fri, Jun 28, 2019 15:42-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Jun 25, 2019 11:47-0400 for FHIR v4.1.0 
+  Generated on Fri, Jun 28, 2019 15:31-0400 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -134,9 +134,14 @@
               <xs:documentation xml:lang="en">The type of study that produced this summary.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="statisticCollection" type="Assertion.StatisticCollection" minOccurs="0" maxOccurs="1">
+          <xs:element name="statistic" minOccurs="0" maxOccurs="unbounded" type="Statistic">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Set of statistics associated with variable.</xs:documentation>
+              <xs:documentation xml:lang="en">The statistic value(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Ordered distribution.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="certainty" type="Assertion.Certainty" minOccurs="0" maxOccurs="unbounded">
@@ -203,7 +208,7 @@
           </xs:element>
           <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
+              <xs:documentation xml:lang="en">exposure | referenceExposure | measuredVariable | confounder.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="actualDefinition" minOccurs="1" maxOccurs="1" type="Reference">
@@ -219,27 +224,6 @@
           <xs:element name="directnessMatch" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indication of quality of match between intended variable to actual variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Assertion.StatisticCollection">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="statistic" minOccurs="0" maxOccurs="unbounded" type="Statistic">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The statistic value(s).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Ordered distribution.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
