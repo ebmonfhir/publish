@@ -8169,7 +8169,10 @@
         },
         "identifier": {
           "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
-          "$ref": "#/definitions/Identifier"
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
         },
         "version": {
           "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
@@ -26868,6 +26871,14 @@
           "description": "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year).",
           "$ref": "#/definitions/TriggerDefinition"
         },
+        "method": {
+          "description": "Method used for describing characteristic.",
+          "$ref": "#/definitions/CodeableConcept"
+        },
+        "device": {
+          "description": "Device used for determining characteristic.",
+          "$ref": "#/definitions/Reference"
+        },
         "usageContext": {
           "description": "Use UsageContext to define the members of the population, such as Age Ranges, Genders, Settings.",
           "items": {
@@ -30670,6 +30681,14 @@
           },
           "type": "array"
         },
+        "url": {
+          "description": "An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.",
+          "$ref": "#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "#/definitions/Element"
+        },
         "identifier": {
           "description": "A unique business identifier for this group.",
           "items": {
@@ -30929,7 +30948,10 @@
         },
         "identifier": {
           "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
-          "$ref": "#/definitions/Identifier"
+          "items": {
+            "$ref": "#/definitions/Identifier"
+          },
+          "type": "array"
         },
         "version": {
           "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
@@ -31285,10 +31307,7 @@
           "$ref": "#/definitions/Reference"
         }
       },
-      "additionalProperties": false,
-      "required": [
-        "actualDefinition"
-      ]
+      "additionalProperties": false
     },
     "GuidanceResponse": {
       "description": "A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.",

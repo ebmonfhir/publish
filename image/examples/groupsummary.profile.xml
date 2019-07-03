@@ -3,7 +3,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="GroupSummary"/>
   <meta>
-    <lastUpdated value="2019-07-02T11:20:29.950-04:00"/>
+    <lastUpdated value="2019-07-03T13:55:16.169-04:00"/>
   </meta>
   <text>
     <status value="generated"/>
@@ -90,11 +90,13 @@
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
             <a style="padding-left: 3px; padding-right: 3px; color: black; background-color: white" href="elementdefinition-definitions.html#ElementDefinition.isSummary" title="This element is included in summaries">&#x3A3;</a>
           </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
             <a href="datatypes.html#Identifier">Identifier</a>
           </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Additional identifier for the summary</td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Additional identifier for the summary
+            <br/>
+          </td>
         </tr>
 
         <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white;">
@@ -725,10 +727,8 @@
             <span title="GroupSummary.variableDefinition.actualDefinition : Definition of the actual variable related to the statistic(s).">actualDefinition</span>
             <a name="GroupSummary.variableDefinition.actualDefinition"> </a>
           </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
-            <a style="padding-left: 3px; padding-right: 3px; color: black; background-color: white" href="elementdefinition-definitions.html#ElementDefinition.isSummary" title="This element is included in summaries">&#x3A3;</a>
-          </td>
-          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/>
+          <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
           <td style="vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">
             <a href="references.html#Reference">Reference</a>(
             <a href="evidencevariable.html">EvidenceVariable</a>)
@@ -803,7 +803,7 @@
   <version value="4.1.0"/>
   <name value="GroupSummary"/>
   <status value="draft"/>
-  <date value="2019-07-02T11:20:29-04:00"/>
+  <date value="2019-07-03T13:55:16-04:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <contact>
     <telecom>
@@ -1149,11 +1149,11 @@
       <comment value="Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this summary outside of FHIR, where it is not possible to use the logical URI."/>
       <requirements value="Allows externally provided and/or usable business identifiers to be easily associated with the module."/>
       <min value="0"/>
-      <max value="1"/>
+      <max value="*"/>
       <base>
         <path value="GroupSummary.identifier"/>
         <min value="0"/>
-        <max value="1"/>
+        <max value="*"/>
       </base>
       <type>
         <code value="Identifier"/>
@@ -2222,11 +2222,11 @@
       <path value="GroupSummary.variableDefinition.actualDefinition"/>
       <short value="Definition of the actual variable related to the statistic(s)"/>
       <definition value="Definition of the actual variable related to the statistic(s)."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="GroupSummary.variableDefinition.actualDefinition"/>
-        <min value="1"/>
+        <min value="0"/>
         <max value="1"/>
       </base>
       <type>
@@ -2234,7 +2234,7 @@
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/EvidenceVariable"/>
       </type>
       <isModifier value="false"/>
-      <isSummary value="true"/>
+      <isSummary value="false"/>
     </element>
     <element id="GroupSummary.variableDefinition.intendedDefinition">
       <path value="GroupSummary.variableDefinition.intendedDefinition"/>
@@ -2324,7 +2324,7 @@
       <comment value="Typically, this is used for identifiers that can go in an HL7 V3 II (instance identifier) data type, and can then identify this summary outside of FHIR, where it is not possible to use the logical URI."/>
       <requirements value="Allows externally provided and/or usable business identifiers to be easily associated with the module."/>
       <min value="0"/>
-      <max value="1"/>
+      <max value="*"/>
       <type>
         <code value="Identifier"/>
       </type>
@@ -2837,13 +2837,12 @@
       <path value="GroupSummary.variableDefinition.actualDefinition"/>
       <short value="Definition of the actual variable related to the statistic(s)"/>
       <definition value="Definition of the actual variable related to the statistic(s)."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="http://hl7.org/fhir/StructureDefinition/EvidenceVariable"/>
       </type>
-      <isSummary value="true"/>
     </element>
     <element id="GroupSummary.variableDefinition.intendedDefinition">
       <path value="GroupSummary.variableDefinition.intendedDefinition"/>
