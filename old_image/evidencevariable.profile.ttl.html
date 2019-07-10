@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;EvidenceVariable&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-07-02T11:20:29.950-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-07-03T13:55:16.169-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -155,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;EvidenceVariable&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-07-02T11:20:29-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-07-03T13:55:16-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Clinical Decision Support)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -1438,6 +1438,61 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 41;
+       fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.method&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.method&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Method used for describing characteristic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Method used for describing characteristic.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.method&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CharacteristicMethod&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;The method used to determine the characteristic(s) of the variable.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/characteristic-method&quot; ]
+       ]
+     ], [
+       fhir:index 42;
+       fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.device&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.device&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Device used for determining characteristic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Device used for determining characteristic.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.device&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceMetric&quot;;
+           fhir:index 1
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
+     ], [
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.usageContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.usageContext&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What code/value pairs define members?&quot; ];
@@ -1457,7 +1512,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 42;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.exclude&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.exclude&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether the characteristic includes or excludes members&quot; ];
@@ -1477,7 +1532,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 43;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.participantEffective[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.participantEffective[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What time period do participants cover&quot; ];
@@ -1505,7 +1560,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 44;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.timeFromStart&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.timeFromStart&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Observation time from study start&quot; ];
@@ -1524,7 +1579,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 45;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.groupMeasure&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.groupMeasure&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median&quot; ];
@@ -2196,6 +2251,47 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 30;
+       fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.method&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.method&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Method used for describing characteristic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Method used for describing characteristic.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;CharacteristicMethod&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;The method used to determine the characteristic(s) of the variable.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/characteristic-method&quot; ]
+       ]
+     ], [
+       fhir:index 31;
+       fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.device&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.device&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Device used for determining characteristic&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Device used for determining characteristic.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;;
+           fhir:index 0
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceMetric&quot;;
+           fhir:index 1
+         ]
+       ]
+     ], [
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.usageContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.usageContext&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What code/value pairs define members?&quot; ];
@@ -2208,7 +2304,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;UsageContext&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.exclude&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.exclude&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether the characteristic includes or excludes members&quot; ];
@@ -2221,7 +2317,7 @@
        ];
        fhir:ElementDefinition.meaningWhenMissing [ fhir:value &quot;False&quot; ]
      ], [
-       fhir:index 32;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.participantEffective[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.participantEffective[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What time period do participants cover&quot; ];
@@ -2242,7 +2338,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Timing&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.timeFromStart&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.timeFromStart&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Observation time from study start&quot; ];
@@ -2254,7 +2350,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Duration&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;EvidenceVariable.characteristic.groupMeasure&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;EvidenceVariable.characteristic.groupMeasure&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;mean | median | mean-of-mean | mean-of-median | median-of-mean | median-of-median&quot; ];
@@ -2305,7 +2401,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 5f07bd3f48) generated on Tue, Jul 2, 2019 11:34-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub c82897bedc) generated on Wed, Jul 3, 2019 14:11-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

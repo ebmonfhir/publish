@@ -1510,6 +1510,9 @@ start=@<StructureDefinition> AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
+
 # The lifecycle status of an artifact.
 fhirvs:publication-status ["draft" "active" "retired" "unknown"]
 
@@ -1519,23 +1522,23 @@ fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
 # The type of trigger.
 fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
 
+# SHALL applications comply with this constraint?
+fhirvs:constraint-severity ["error" "warning"]
+
 # The use of an address.
 fhirvs:address-use ["home" "work" "temp" "old" "billing"]
-
-# How an extension context is interpreted.
-fhirvs:extension-context-type ["fhirpath" "element" "extension"]
-
-# How an element value is interpreted when discrimination is evaluated.
-fhirvs:discriminator-type ["value" "exists" "pattern" "type" "profile"]
 
 # All published FHIR Versions.
 fhirvs:FHIR-version ["0.01" "0.05" "0.06" "0.11" "0.0.80" "0.0.81" "0.0.82" "0.4.0" "0.5.0" "1.0.0" "1.0.1" "1.0.2" "1.1.0" "1.4.0" "1.6.0" "1.8.0" "3.0.0" "3.0.1" "3.3.0" "3.5.0" "4.0.0" "4.1.0"]
 
-# The status of a resource narrative.
-fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
 
 # The type of contributor.
 fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
+
+# How an element value is interpreted when discrimination is evaluated.
+fhirvs:discriminator-type ["value" "exists" "pattern" "type" "profile"]
 
 # How a property is represented when serialized.
 fhirvs:property-representation ["xmlAttr" "xmlText" "typeAttr" "cdaText" "xhtml"]
@@ -1546,29 +1549,17 @@ fhirvs:structure-definition-kind ["primitive-type" "complex-type" "resource" "lo
 # Identifies the purpose for this identifier, if known .
 fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
 
-# How resource references can be aggregated.
-fhirvs:resource-aggregation-mode ["contained" "referenced" "bundled"]
+# Whether a reference needs to be version specific or version independent, or whether either can be used.
+fhirvs:reference-version-rules ["either" "independent" "specific"]
 
 # This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
 fhirvs:mimetypes EXTERNAL
 
-# A unit of time (units from UCUM).
-fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
-
 # How the Quantity should be understood and represented.
 fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
 
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# Real world event relating to the schedule.
-fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
-
 # How a type relates to its baseDefinition.
 fhirvs:type-derivation-rule ["specialization" "constraint"]
-
-# Indication of the degree of conformance expectations associated with a binding.
-fhirvs:binding-strength ["required" "extensible" "preferred" "example"]
 
 # A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
 fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "Assertion" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "EffectEvidenceSynthesis" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GroupSummary" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchDefinition" "ResearchElementDefinition" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "RiskEvidenceSynthesis" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
@@ -1576,17 +1567,23 @@ fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "C
 # The use of a human name.
 fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+# Indication of the degree of conformance expectations associated with a binding.
+fhirvs:binding-strength ["required" "extensible" "preferred" "example"]
+
+# The status of a resource narrative.
+fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 
 # Whether an operation parameter is an input or an output parameter.
 fhirvs:operation-parameter-use ["in" "out"]
 
+# Real world event relating to the schedule.
+fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
+
 # Use of contact point.
 fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
 
-# Whether a reference needs to be version specific or version independent, or whether either can be used.
-fhirvs:reference-version-rules ["either" "independent" "specific"]
+# How an extension context is interpreted.
+fhirvs:extension-context-type ["fhirpath" "element" "extension"]
 
 # The type of an address (physical / postal).
 fhirvs:address-type ["postal" "physical" "both"]
@@ -1594,11 +1591,14 @@ fhirvs:address-type ["postal" "physical" "both"]
 # The type of relationship to the related artifact.
 fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
 
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
-
-# SHALL applications comply with this constraint?
-fhirvs:constraint-severity ["error" "warning"]
-
 # How slices are interpreted when evaluating an instance.
 fhirvs:resource-slicing-rules ["closed" "open" "openAtEnd"]
+
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+
+# How resource references can be aggregated.
+fhirvs:resource-aggregation-mode ["contained" "referenced" "bundled"]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]

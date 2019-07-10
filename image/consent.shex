@@ -1093,14 +1093,14 @@ start=@<Consent> AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
+
 # Telecommunications form for contact point.
 fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
 
 # The type of trigger.
 fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
-
-# A unit of time (units from UCUM).
-fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
 
 # The use of an address.
 fhirvs:address-use ["home" "work" "temp" "old" "billing"]
@@ -1108,11 +1108,8 @@ fhirvs:address-use ["home" "work" "temp" "old" "billing"]
 # How the Quantity should be understood and represented.
 fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
 
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# Real world event relating to the schedule.
-fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
+# How a rule statement is applied, such as adding additional consent or removing consent.
+fhirvs:consent-provision-type ["deny" "permit"]
 
 # Indicates the state of the consent.
 fhirvs:consent-state-codes ["draft" "proposed" "active" "rejected" "inactive" "entered-in-error"]
@@ -1123,17 +1120,20 @@ fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "C
 # The use of a human name.
 fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
 
-# How a rule statement is applied, such as adding additional consent or removing consent.
-fhirvs:consent-provision-type ["deny" "permit"]
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
+
+# How a resource reference is interpreted when testing consent restrictions.
+fhirvs:consent-data-meaning ["instance" "related" "dependents" "authoredby"]
 
 # The status of a resource narrative.
 fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
-
 # Whether an operation parameter is an input or an output parameter.
 fhirvs:operation-parameter-use ["in" "out"]
+
+# Real world event relating to the schedule.
+fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
 
 # Use of contact point.
 fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
@@ -1144,8 +1144,8 @@ fhirvs:address-type ["postal" "physical" "both"]
 # The type of relationship to the related artifact.
 fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
 
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
 
 # The type of contributor.
 fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
@@ -1153,8 +1153,8 @@ fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
 # Identifies the purpose for this identifier, if known .
 fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
 
-# How a resource reference is interpreted when testing consent restrictions.
-fhirvs:consent-data-meaning ["instance" "related" "dependents" "authoredby"]
+# A unit of time (units from UCUM).
+fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
 
 # This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
 fhirvs:mimetypes EXTERNAL

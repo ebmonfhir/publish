@@ -55,38 +55,6 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# An set of value as quality of sequence
-<MolecularSequence.quality> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MolecularSequence.quality.type @<code> AND
-    	{fhir:value @fhirvs:quality-type};  # indel | snp | unknown
-    fhir:MolecularSequence.quality.standardSequence @<CodeableConcept>?;  # Standard sequence for comparison
-    fhir:MolecularSequence.quality.start @<integer>?;  # Start position of the sequence
-    fhir:MolecularSequence.quality.end @<integer>?;  # End position of the sequence
-    fhir:MolecularSequence.quality.score @<Quantity>?;  # Quality score for the comparison
-    fhir:MolecularSequence.quality.method @<CodeableConcept>?;  # Method to get quality
-    fhir:MolecularSequence.quality.truthTP @<decimal>?;  # True positives from the 
-                                            # perspective of the truth data 
-    fhir:MolecularSequence.quality.queryTP @<decimal>?;  # True positives from the 
-                                            # perspective of the query data 
-    fhir:MolecularSequence.quality.truthFN @<decimal>?;  # False negatives
-    fhir:MolecularSequence.quality.queryFP @<decimal>?;  # False positives
-    fhir:MolecularSequence.quality.gtFP @<decimal>?;  # False positives where the non-REF 
-                                            # alleles in the Truth and Query 
-                                            # Call Sets match 
-    fhir:MolecularSequence.quality.precision @<decimal>?;  # Precision of comparison
-    fhir:MolecularSequence.quality.recall @<decimal>?;  # Recall of comparison
-    fhir:MolecularSequence.quality.fScore @<decimal>?;  # F-score
-    fhir:MolecularSequence.quality.roc @<MolecularSequence.quality.roc>?;  # Receiver Operator Characteristic 
-                                            # (ROC) Curve 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
 # Variant in sequence
 <MolecularSequence.variant> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -125,6 +93,59 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# An set of value as quality of sequence
+<MolecularSequence.quality> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MolecularSequence.quality.type @<code> AND
+    	{fhir:value @fhirvs:quality-type};  # indel | snp | unknown
+    fhir:MolecularSequence.quality.standardSequence @<CodeableConcept>?;  # Standard sequence for comparison
+    fhir:MolecularSequence.quality.start @<integer>?;  # Start position of the sequence
+    fhir:MolecularSequence.quality.end @<integer>?;  # End position of the sequence
+    fhir:MolecularSequence.quality.score @<Quantity>?;  # Quality score for the comparison
+    fhir:MolecularSequence.quality.method @<CodeableConcept>?;  # Method to get quality
+    fhir:MolecularSequence.quality.truthTP @<decimal>?;  # True positives from the 
+                                            # perspective of the truth data 
+    fhir:MolecularSequence.quality.queryTP @<decimal>?;  # True positives from the 
+                                            # perspective of the query data 
+    fhir:MolecularSequence.quality.truthFN @<decimal>?;  # False negatives
+    fhir:MolecularSequence.quality.queryFP @<decimal>?;  # False positives
+    fhir:MolecularSequence.quality.gtFP @<decimal>?;  # False positives where the non-REF 
+                                            # alleles in the Truth and Query 
+                                            # Call Sets match 
+    fhir:MolecularSequence.quality.precision @<decimal>?;  # Precision of comparison
+    fhir:MolecularSequence.quality.recall @<decimal>?;  # Recall of comparison
+    fhir:MolecularSequence.quality.fScore @<decimal>?;  # F-score
+    fhir:MolecularSequence.quality.roc @<MolecularSequence.quality.roc>?;  # Receiver Operator Characteristic 
+                                            # (ROC) Curve 
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# External repository which contains detailed report related with observedSeq in this resource
+<MolecularSequence.repository> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MolecularSequence.repository.type @<code> AND
+    	{fhir:value @fhirvs:repository-type};  # directlink | openapi | login | 
+                                            # oauth | other 
+    fhir:MolecularSequence.repository.url @<uri>?;  # URI of the repository
+    fhir:MolecularSequence.repository.name @<string>?;  # Repository's name
+    fhir:MolecularSequence.repository.datasetId @<string>?;  # Id of the dataset that used to 
+                                            # call for dataset in repository 
+    fhir:MolecularSequence.repository.variantsetId @<string>?;  # Id of the variantset that used to 
+                                            # call for variantset in repository 
+    fhir:MolecularSequence.repository.readsetId @<string>?;  # Id of the read
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # A sequence used as reference
 <MolecularSequence.referenceSeq> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -155,27 +176,6 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# External repository which contains detailed report related with observedSeq in this resource
-<MolecularSequence.repository> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MolecularSequence.repository.type @<code> AND
-    	{fhir:value @fhirvs:repository-type};  # directlink | openapi | login | 
-                                            # oauth | other 
-    fhir:MolecularSequence.repository.url @<uri>?;  # URI of the repository
-    fhir:MolecularSequence.repository.name @<string>?;  # Repository's name
-    fhir:MolecularSequence.repository.datasetId @<string>?;  # Id of the dataset that used to 
-                                            # call for dataset in repository 
-    fhir:MolecularSequence.repository.variantsetId @<string>?;  # Id of the variantset that used to 
-                                            # call for variantset in repository 
-    fhir:MolecularSequence.repository.readsetId @<string>?;  # Id of the read
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
 # Structural variant outer
 <MolecularSequence.structureVariant.outer> CLOSED {
     fhir:Element.id @<string>?;             # Unique id for inter-element 
@@ -186,6 +186,19 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # even if unrecognized 
     fhir:MolecularSequence.structureVariant.outer.start @<integer>?;  # Structural variant outer start
     fhir:MolecularSequence.structureVariant.outer.end @<integer>?;  # Structural variant outer end
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Structural variant inner
+<MolecularSequence.structureVariant.inner> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:MolecularSequence.structureVariant.inner.start @<integer>?;  # Structural variant inner start
+    fhir:MolecularSequence.structureVariant.inner.end @<integer>?;  # Structural variant inner end
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -204,19 +217,6 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:MolecularSequence.quality.roc.precision @<decimal>*;  # Precision of the GQ score
     fhir:MolecularSequence.quality.roc.sensitivity @<decimal>*;  # Sensitivity of the GQ score
     fhir:MolecularSequence.quality.roc.fMeasure @<decimal>*;  # FScore of the GQ score
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Structural variant inner
-<MolecularSequence.structureVariant.inner> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:MolecularSequence.structureVariant.inner.start @<integer>?;  # Structural variant inner start
-    fhir:MolecularSequence.structureVariant.inner.end @<integer>?;  # Structural variant inner end
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1176,29 +1176,23 @@ start=@<MolecularSequence> AND {fhir:nodeRole [fhir:treeRoot]}
 
 #---------------------- Value Sets ------------------------
 
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
+
 # Telecommunications form for contact point.
 fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
-
-# Type if a sequence -- DNA, RNA, or amino acid sequence.
-fhirvs:sequence-type ["aa" "dna" "rna"]
 
 # The type of trigger.
 fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
 
-# A unit of time (units from UCUM).
-fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
+# Type for strand.
+fhirvs:strand-type ["watson" "crick"]
 
 # The use of an address.
 fhirvs:address-use ["home" "work" "temp" "old" "billing"]
 
 # How the Quantity should be understood and represented.
 fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
-
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# Real world event relating to the schedule.
-fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
 
 # Type for access of external URI.
 fhirvs:repository-type ["directlink" "openapi" "login" "oauth" "other"]
@@ -1209,20 +1203,23 @@ fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "C
 # The use of a human name.
 fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
 
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
+
 # Type for quality report.
 fhirvs:quality-type ["indel" "snp" "unknown"]
+
+# Type for orientation.
+fhirvs:orientation-type ["sense" "antisense"]
 
 # The status of a resource narrative.
 fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
-
-# Type for strand.
-fhirvs:strand-type ["watson" "crick"]
-
 # Whether an operation parameter is an input or an output parameter.
 fhirvs:operation-parameter-use ["in" "out"]
+
+# Real world event relating to the schedule.
+fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
 
 # Use of contact point.
 fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
@@ -1233,17 +1230,20 @@ fhirvs:address-type ["postal" "physical" "both"]
 # The type of relationship to the related artifact.
 fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
 
-# Type for orientation.
-fhirvs:orientation-type ["sense" "antisense"]
+# Type if a sequence -- DNA, RNA, or amino acid sequence.
+fhirvs:sequence-type ["aa" "dna" "rna"]
 
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
 
 # The type of contributor.
 fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
 
 # Identifies the purpose for this identifier, if known .
 fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
 
 # This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
 fhirvs:mimetypes EXTERNAL

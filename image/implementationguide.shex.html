@@ -267,6 +267,47 @@ start=@&lt;ImplementationGuide&gt; AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Resource in the implementation guide
+&lt;ImplementationGuide.definition.resource&gt; CLOSED {
+    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @&lt;Extension&gt;*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:ImplementationGuide.definition.resource.reference @&lt;Reference&gt;;  # Location of the resource
+    fhir:ImplementationGuide.definition.resource.fhirVersion @&lt;code&gt; AND
+    	{fhir:value @fhirvs:FHIR-version}*;  # Versions this applies to (if 
+                                            # different to IG) 
+    fhir:ImplementationGuide.definition.resource.name @&lt;string&gt;?;  # Human Name for the resource
+    fhir:ImplementationGuide.definition.resource.description @&lt;string&gt;?;  # Reason why included in guide
+    (                                       # Is an example/What is this an 
+                                            # example of? 
+        fhir:ImplementationGuide.definition.resource.exampleBoolean @&lt;boolean&gt;  |
+        fhir:ImplementationGuide.definition.resource.exampleCanonical @&lt;canonical&gt; 
+    )?;
+    fhir:ImplementationGuide.definition.resource.groupingId @&lt;id&gt;?;  # Grouping this is part of
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
+# Defines how IG is built by tools
+&lt;ImplementationGuide.definition.parameter&gt; CLOSED {
+    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @&lt;Extension&gt;*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:ImplementationGuide.definition.parameter.code @&lt;string&gt;;  # apply | path-resource | path-pages 
+                                            # | path-tx-cache | 
+                                            # expansion-parameter | 
+                                            # rule-broken-links | generate-xml | 
+                                            # generate-json | generate-turtle | 
+                                            # html-template 
+    fhir:ImplementationGuide.definition.parameter.value @&lt;string&gt;;  # Value for named type
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # HTML page within the parent IG
 &lt;ImplementationGuide.manifest.page&gt; CLOSED {
     fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
@@ -295,21 +336,19 @@ start=@&lt;ImplementationGuide&gt; AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
-# Defines how IG is built by tools
-&lt;ImplementationGuide.definition.parameter&gt; CLOSED {
+# A template for building resources
+&lt;ImplementationGuide.definition.template&gt; CLOSED {
     fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
                                             # referencing 
     fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
                                             # implementations 
     fhir:BackboneElement.modifierExtension @&lt;Extension&gt;*;  # Extensions that cannot be ignored 
                                             # even if unrecognized 
-    fhir:ImplementationGuide.definition.parameter.code @&lt;string&gt;;  # apply | path-resource | path-pages 
-                                            # | path-tx-cache | 
-                                            # expansion-parameter | 
-                                            # rule-broken-links | generate-xml | 
-                                            # generate-json | generate-turtle | 
-                                            # html-template 
-    fhir:ImplementationGuide.definition.parameter.value @&lt;string&gt;;  # Value for named type
+    fhir:ImplementationGuide.definition.template.code @&lt;code&gt;;  # Type of template specified
+    fhir:ImplementationGuide.definition.template.source @&lt;string&gt;;  # The source location for the 
+                                            # template 
+    fhir:ImplementationGuide.definition.template.scope @&lt;string&gt;?;  # The scope in which the template 
+                                            # applies 
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -328,45 +367,6 @@ start=@&lt;ImplementationGuide&gt; AND {fhir:nodeRole [fhir:treeRoot]}
         fhir:ImplementationGuide.manifest.resource.exampleCanonical @&lt;canonical&gt; 
     )?;
     fhir:ImplementationGuide.manifest.resource.relativePath @&lt;url&gt;?;  # Relative path for page in IG
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# A template for building resources
-&lt;ImplementationGuide.definition.template&gt; CLOSED {
-    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @&lt;Extension&gt;*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:ImplementationGuide.definition.template.code @&lt;code&gt;;  # Type of template specified
-    fhir:ImplementationGuide.definition.template.source @&lt;string&gt;;  # The source location for the 
-                                            # template 
-    fhir:ImplementationGuide.definition.template.scope @&lt;string&gt;?;  # The scope in which the template 
-                                            # applies 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Resource in the implementation guide
-&lt;ImplementationGuide.definition.resource&gt; CLOSED {
-    fhir:Element.id @&lt;string&gt;?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @&lt;Extension&gt;*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @&lt;Extension&gt;*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:ImplementationGuide.definition.resource.reference @&lt;Reference&gt;;  # Location of the resource
-    fhir:ImplementationGuide.definition.resource.fhirVersion @&lt;code&gt; AND
-    	{fhir:value @fhirvs:FHIR-version}*;  # Versions this applies to (if 
-                                            # different to IG) 
-    fhir:ImplementationGuide.definition.resource.name @&lt;string&gt;?;  # Human Name for the resource
-    fhir:ImplementationGuide.definition.resource.description @&lt;string&gt;?;  # Reason why included in guide
-    (                                       # Is an example/What is this an 
-                                            # example of? 
-        fhir:ImplementationGuide.definition.resource.exampleBoolean @&lt;boolean&gt;  |
-        fhir:ImplementationGuide.definition.resource.exampleCanonical @&lt;canonical&gt; 
-    )?;
-    fhir:ImplementationGuide.definition.resource.groupingId @&lt;id&gt;?;  # Grouping this is part of
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1329,6 +1329,9 @@ start=@&lt;ImplementationGuide&gt; AND {fhir:nodeRole [fhir:treeRoot]}
 # One of the resource types defined as part of this version of FHIR.
 fhirvs:resource-types [&quot;Account&quot; &quot;ActivityDefinition&quot; &quot;AdverseEvent&quot; &quot;AllergyIntolerance&quot; &quot;Appointment&quot; &quot;AppointmentResponse&quot; &quot;Assertion&quot; &quot;AuditEvent&quot; &quot;Basic&quot; &quot;Binary&quot; &quot;BiologicallyDerivedProduct&quot; &quot;BodyStructure&quot; &quot;Bundle&quot; &quot;CapabilityStatement&quot; &quot;CapabilityStatement2&quot; &quot;CarePlan&quot; &quot;CareTeam&quot; &quot;CatalogEntry&quot; &quot;ChargeItem&quot; &quot;ChargeItemDefinition&quot; &quot;Claim&quot; &quot;ClaimResponse&quot; &quot;ClinicalImpression&quot; &quot;ClinicalUseIssue&quot; &quot;CodeSystem&quot; &quot;Communication&quot; &quot;CommunicationRequest&quot; &quot;CompartmentDefinition&quot; &quot;Composition&quot; &quot;ConceptMap&quot; &quot;Condition&quot; &quot;ConditionDefinition&quot; &quot;Consent&quot; &quot;Contract&quot; &quot;Coverage&quot; &quot;CoverageEligibilityRequest&quot; &quot;CoverageEligibilityResponse&quot; &quot;DetectedIssue&quot; &quot;Device&quot; &quot;DeviceDefinition&quot; &quot;DeviceMetric&quot; &quot;DeviceRequest&quot; &quot;DeviceUseStatement&quot; &quot;DiagnosticReport&quot; &quot;DocumentManifest&quot; &quot;DocumentReference&quot; &quot;DomainResource&quot; &quot;EffectEvidenceSynthesis&quot; &quot;Encounter&quot; &quot;Endpoint&quot; &quot;EnrollmentRequest&quot; &quot;EnrollmentResponse&quot; &quot;EpisodeOfCare&quot; &quot;EventDefinition&quot; &quot;EvidenceVariable&quot; &quot;ExampleScenario&quot; &quot;ExplanationOfBenefit&quot; &quot;FamilyMemberHistory&quot; &quot;Flag&quot; &quot;Goal&quot; &quot;GraphDefinition&quot; &quot;Group&quot; &quot;GroupSummary&quot; &quot;GuidanceResponse&quot; &quot;HealthcareService&quot; &quot;ImagingStudy&quot; &quot;Immunization&quot; &quot;ImmunizationEvaluation&quot; &quot;ImmunizationRecommendation&quot; &quot;ImplementationGuide&quot; &quot;Ingredient&quot; &quot;InsurancePlan&quot; &quot;Invoice&quot; &quot;Library&quot; &quot;Linkage&quot; &quot;List&quot; &quot;Location&quot; &quot;Measure&quot; &quot;MeasureReport&quot; &quot;Media&quot; &quot;Medication&quot; &quot;MedicationAdministration&quot; &quot;MedicationDispense&quot; &quot;MedicationKnowledge&quot; &quot;MedicationRequest&quot; &quot;MedicationUsage&quot; &quot;MessageDefinition&quot; &quot;MessageHeader&quot; &quot;MolecularSequence&quot; &quot;NamingSystem&quot; &quot;NutritionOrder&quot; &quot;Observation&quot; &quot;ObservationDefinition&quot; &quot;OperationDefinition&quot; &quot;OperationOutcome&quot; &quot;Organization&quot; &quot;OrganizationAffiliation&quot; &quot;Parameters&quot; &quot;Patient&quot; &quot;PaymentNotice&quot; &quot;PaymentReconciliation&quot; &quot;Person&quot; &quot;PlanDefinition&quot; &quot;Practitioner&quot; &quot;PractitionerRole&quot; &quot;Procedure&quot; &quot;Provenance&quot; &quot;Questionnaire&quot; &quot;QuestionnaireResponse&quot; &quot;RegulatedAdministrableProduct&quot; &quot;RegulatedAuthorization&quot; &quot;RegulatedManufacturedItem&quot; &quot;RegulatedMedicinalProduct&quot; &quot;RegulatedPackagedProduct&quot; &quot;RelatedPerson&quot; &quot;RequestGroup&quot; &quot;ResearchDefinition&quot; &quot;ResearchElementDefinition&quot; &quot;ResearchStudy&quot; &quot;ResearchSubject&quot; &quot;Resource&quot; &quot;RiskAssessment&quot; &quot;RiskEvidenceSynthesis&quot; &quot;Schedule&quot; &quot;SearchParameter&quot; &quot;ServiceRequest&quot; &quot;Slot&quot; &quot;Specimen&quot; &quot;SpecimenDefinition&quot; &quot;StructureDefinition&quot; &quot;StructureMap&quot; &quot;Subscription&quot; &quot;Substance&quot; &quot;SubstanceDefinition&quot; &quot;SubstanceNucleicAcid&quot; &quot;SubstancePolymer&quot; &quot;SubstanceProtein&quot; &quot;SubstanceReferenceInformation&quot; &quot;SubstanceSourceMaterial&quot; &quot;SupplyDelivery&quot; &quot;SupplyRequest&quot; &quot;Task&quot; &quot;TerminologyCapabilities&quot; &quot;TestReport&quot; &quot;TestScript&quot; &quot;Topic&quot; &quot;ValueSet&quot; &quot;VerificationResult&quot; &quot;VisionPrescription&quot;]
 
+# The days of the week.
+fhirvs:days-of-week [&quot;mon&quot; &quot;tue&quot; &quot;wed&quot; &quot;thu&quot; &quot;fri&quot; &quot;sat&quot; &quot;sun&quot;]
+
 # The lifecycle status of an artifact.
 fhirvs:publication-status [&quot;draft&quot; &quot;active&quot; &quot;retired&quot; &quot;unknown&quot;]
 
@@ -1341,20 +1344,11 @@ fhirvs:contact-point-system [&quot;phone&quot; &quot;fax&quot; &quot;email&quot;
 # The type of trigger.
 fhirvs:trigger-type [&quot;named-event&quot; &quot;periodic&quot; &quot;data-changed&quot; &quot;data-added&quot; &quot;data-modified&quot; &quot;data-removed&quot; &quot;data-accessed&quot; &quot;data-access-ended&quot;]
 
-# A unit of time (units from UCUM).
-fhirvs:units-of-time [&quot;s&quot; &quot;min&quot; &quot;h&quot; &quot;d&quot; &quot;wk&quot; &quot;mo&quot; &quot;a&quot;]
-
 # The use of an address.
 fhirvs:address-use [&quot;home&quot; &quot;work&quot; &quot;temp&quot; &quot;old&quot; &quot;billing&quot;]
 
 # How the Quantity should be understood and represented.
 fhirvs:quantity-comparator [&quot;&lt;&quot; &quot;&lt;=&quot; &quot;&gt;=&quot; &quot;&gt;&quot;]
-
-# The days of the week.
-fhirvs:days-of-week [&quot;mon&quot; &quot;tue&quot; &quot;wed&quot; &quot;thu&quot; &quot;fri&quot; &quot;sat&quot; &quot;sun&quot;]
-
-# Real world event relating to the schedule.
-fhirvs:event-timing [&quot;MORN&quot; &quot;MORN.early&quot; &quot;MORN.late&quot; &quot;NOON&quot; &quot;AFT&quot; &quot;AFT.early&quot; &quot;AFT.late&quot; &quot;EVE&quot; &quot;EVE.early&quot; &quot;EVE.late&quot; &quot;NIGHT&quot; &quot;PHS&quot; &quot;HS&quot; &quot;WAKE&quot; &quot;C&quot; &quot;CM&quot; &quot;CD&quot; &quot;CV&quot; &quot;AC&quot; &quot;ACM&quot; &quot;ACD&quot; &quot;ACV&quot; &quot;PC&quot; &quot;PCM&quot; &quot;PCD&quot; &quot;PCV&quot;]
 
 # All published FHIR Versions.
 fhirvs:FHIR-version [&quot;0.01&quot; &quot;0.05&quot; &quot;0.06&quot; &quot;0.11&quot; &quot;0.0.80&quot; &quot;0.0.81&quot; &quot;0.0.82&quot; &quot;0.4.0&quot; &quot;0.5.0&quot; &quot;1.0.0&quot; &quot;1.0.1&quot; &quot;1.0.2&quot; &quot;1.1.0&quot; &quot;1.4.0&quot; &quot;1.6.0&quot; &quot;1.8.0&quot; &quot;3.0.0&quot; &quot;3.0.1&quot; &quot;3.3.0&quot; &quot;3.5.0&quot; &quot;4.0.0&quot; &quot;4.1.0&quot;]
@@ -1365,20 +1359,23 @@ fhirvs:all-types [&quot;Address&quot; &quot;Age&quot; &quot;Annotation&quot; &qu
 # The use of a human name.
 fhirvs:name-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;nickname&quot; &quot;anonymous&quot; &quot;old&quot; &quot;maiden&quot;]
 
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction [&quot;ascending&quot; &quot;descending&quot;]
+
 # The status of a resource narrative.
 fhirvs:narrative-status [&quot;generated&quot; &quot;extensions&quot; &quot;additional&quot; &quot;empty&quot;]
-
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies [&quot;AED&quot; &quot;AFN&quot; &quot;ALL&quot; &quot;AMD&quot; &quot;ANG&quot; &quot;AOA&quot; &quot;ARS&quot; &quot;AUD&quot; &quot;AWG&quot; &quot;AZN&quot; &quot;BAM&quot; &quot;BBD&quot; &quot;BDT&quot; &quot;BGN&quot; &quot;BHD&quot; &quot;BIF&quot; &quot;BMD&quot; &quot;BND&quot; &quot;BOB&quot; &quot;BOV&quot; &quot;BRL&quot; &quot;BSD&quot; &quot;BTN&quot; &quot;BWP&quot; &quot;BYN&quot; &quot;BZD&quot; &quot;CAD&quot; &quot;CDF&quot; &quot;CHE&quot; &quot;CHF&quot; &quot;CHW&quot; &quot;CLF&quot; &quot;CLP&quot; &quot;CNY&quot; &quot;COP&quot; &quot;COU&quot; &quot;CRC&quot; &quot;CUC&quot; &quot;CUP&quot; &quot;CVE&quot; &quot;CZK&quot; &quot;DJF&quot; &quot;DKK&quot; &quot;DOP&quot; &quot;DZD&quot; &quot;EGP&quot; &quot;ERN&quot; &quot;ETB&quot; &quot;EUR&quot; &quot;FJD&quot; &quot;FKP&quot; &quot;GBP&quot; &quot;GEL&quot; &quot;GGP&quot; &quot;GHS&quot; &quot;GIP&quot; &quot;GMD&quot; &quot;GNF&quot; &quot;GTQ&quot; &quot;GYD&quot; &quot;HKD&quot; &quot;HNL&quot; &quot;HRK&quot; &quot;HTG&quot; &quot;HUF&quot; &quot;IDR&quot; &quot;ILS&quot; &quot;IMP&quot; &quot;INR&quot; &quot;IQD&quot; &quot;IRR&quot; &quot;ISK&quot; &quot;JEP&quot; &quot;JMD&quot; &quot;JOD&quot; &quot;JPY&quot; &quot;KES&quot; &quot;KGS&quot; &quot;KHR&quot; &quot;KMF&quot; &quot;KPW&quot; &quot;KRW&quot; &quot;KWD&quot; &quot;KYD&quot; &quot;KZT&quot; &quot;LAK&quot; &quot;LBP&quot; &quot;LKR&quot; &quot;LRD&quot; &quot;LSL&quot; &quot;LYD&quot; &quot;MAD&quot; &quot;MDL&quot; &quot;MGA&quot; &quot;MKD&quot; &quot;MMK&quot; &quot;MNT&quot; &quot;MOP&quot; &quot;MRU&quot; &quot;MUR&quot; &quot;MVR&quot; &quot;MWK&quot; &quot;MXN&quot; &quot;MXV&quot; &quot;MYR&quot; &quot;MZN&quot; &quot;NAD&quot; &quot;NGN&quot; &quot;NIO&quot; &quot;NOK&quot; &quot;NPR&quot; &quot;NZD&quot; &quot;OMR&quot; &quot;PAB&quot; &quot;PEN&quot; &quot;PGK&quot; &quot;PHP&quot; &quot;PKR&quot; &quot;PLN&quot; &quot;PYG&quot; &quot;QAR&quot; &quot;RON&quot; &quot;RSD&quot; &quot;RUB&quot; &quot;RWF&quot; &quot;SAR&quot; &quot;SBD&quot; &quot;SCR&quot; &quot;SDG&quot; &quot;SEK&quot; &quot;SGD&quot; &quot;SHP&quot; &quot;SLL&quot; &quot;SOS&quot; &quot;SRD&quot; &quot;SSP&quot; &quot;STN&quot; &quot;SVC&quot; &quot;SYP&quot; &quot;SZL&quot; &quot;THB&quot; &quot;TJS&quot; &quot;TMT&quot; &quot;TND&quot; &quot;TOP&quot; &quot;TRY&quot; &quot;TTD&quot; &quot;TVD&quot; &quot;TWD&quot; &quot;TZS&quot; &quot;UAH&quot; &quot;UGX&quot; &quot;USD&quot; &quot;USN&quot; &quot;UYI&quot; &quot;UYU&quot; &quot;UZS&quot; &quot;VEF&quot; &quot;VND&quot; &quot;VUV&quot; &quot;WST&quot; &quot;XAF&quot; &quot;XAG&quot; &quot;XAU&quot; &quot;XBA&quot; &quot;XBB&quot; &quot;XBC&quot; &quot;XBD&quot; &quot;XCD&quot; &quot;XDR&quot; &quot;XOF&quot; &quot;XPD&quot; &quot;XPF&quot; &quot;XPT&quot; &quot;XSU&quot; &quot;XTS&quot; &quot;XUA&quot; &quot;XXX&quot; &quot;YER&quot; &quot;ZAR&quot; &quot;ZMW&quot; &quot;ZWL&quot;]
-
-# A code that indicates how the page is generated.
-fhirvs:guide-page-generation [&quot;html&quot; &quot;markdown&quot; &quot;xml&quot; &quot;generated&quot;]
 
 # Whether an operation parameter is an input or an output parameter.
 fhirvs:operation-parameter-use [&quot;in&quot; &quot;out&quot;]
 
+# Real world event relating to the schedule.
+fhirvs:event-timing [&quot;MORN&quot; &quot;MORN.early&quot; &quot;MORN.late&quot; &quot;NOON&quot; &quot;AFT&quot; &quot;AFT.early&quot; &quot;AFT.late&quot; &quot;EVE&quot; &quot;EVE.early&quot; &quot;EVE.late&quot; &quot;NIGHT&quot; &quot;PHS&quot; &quot;HS&quot; &quot;WAKE&quot; &quot;C&quot; &quot;CM&quot; &quot;CD&quot; &quot;CV&quot; &quot;AC&quot; &quot;ACM&quot; &quot;ACD&quot; &quot;ACV&quot; &quot;PC&quot; &quot;PCM&quot; &quot;PCD&quot; &quot;PCV&quot;]
+
 # Use of contact point.
 fhirvs:contact-point-use [&quot;home&quot; &quot;work&quot; &quot;temp&quot; &quot;old&quot; &quot;mobile&quot;]
+
+# A code that indicates how the page is generated.
+fhirvs:guide-page-generation [&quot;html&quot; &quot;markdown&quot; &quot;xml&quot; &quot;generated&quot;]
 
 # The type of an address (physical / postal).
 fhirvs:address-type [&quot;postal&quot; &quot;physical&quot; &quot;both&quot;]
@@ -1386,14 +1383,17 @@ fhirvs:address-type [&quot;postal&quot; &quot;physical&quot; &quot;both&quot;]
 # The type of relationship to the related artifact.
 fhirvs:related-artifact-type [&quot;documentation&quot; &quot;justification&quot; &quot;citation&quot; &quot;predecessor&quot; &quot;successor&quot; &quot;derived-from&quot; &quot;depends-on&quot; &quot;composed-of&quot;]
 
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction [&quot;ascending&quot; &quot;descending&quot;]
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies [&quot;AED&quot; &quot;AFN&quot; &quot;ALL&quot; &quot;AMD&quot; &quot;ANG&quot; &quot;AOA&quot; &quot;ARS&quot; &quot;AUD&quot; &quot;AWG&quot; &quot;AZN&quot; &quot;BAM&quot; &quot;BBD&quot; &quot;BDT&quot; &quot;BGN&quot; &quot;BHD&quot; &quot;BIF&quot; &quot;BMD&quot; &quot;BND&quot; &quot;BOB&quot; &quot;BOV&quot; &quot;BRL&quot; &quot;BSD&quot; &quot;BTN&quot; &quot;BWP&quot; &quot;BYN&quot; &quot;BZD&quot; &quot;CAD&quot; &quot;CDF&quot; &quot;CHE&quot; &quot;CHF&quot; &quot;CHW&quot; &quot;CLF&quot; &quot;CLP&quot; &quot;CNY&quot; &quot;COP&quot; &quot;COU&quot; &quot;CRC&quot; &quot;CUC&quot; &quot;CUP&quot; &quot;CVE&quot; &quot;CZK&quot; &quot;DJF&quot; &quot;DKK&quot; &quot;DOP&quot; &quot;DZD&quot; &quot;EGP&quot; &quot;ERN&quot; &quot;ETB&quot; &quot;EUR&quot; &quot;FJD&quot; &quot;FKP&quot; &quot;GBP&quot; &quot;GEL&quot; &quot;GGP&quot; &quot;GHS&quot; &quot;GIP&quot; &quot;GMD&quot; &quot;GNF&quot; &quot;GTQ&quot; &quot;GYD&quot; &quot;HKD&quot; &quot;HNL&quot; &quot;HRK&quot; &quot;HTG&quot; &quot;HUF&quot; &quot;IDR&quot; &quot;ILS&quot; &quot;IMP&quot; &quot;INR&quot; &quot;IQD&quot; &quot;IRR&quot; &quot;ISK&quot; &quot;JEP&quot; &quot;JMD&quot; &quot;JOD&quot; &quot;JPY&quot; &quot;KES&quot; &quot;KGS&quot; &quot;KHR&quot; &quot;KMF&quot; &quot;KPW&quot; &quot;KRW&quot; &quot;KWD&quot; &quot;KYD&quot; &quot;KZT&quot; &quot;LAK&quot; &quot;LBP&quot; &quot;LKR&quot; &quot;LRD&quot; &quot;LSL&quot; &quot;LYD&quot; &quot;MAD&quot; &quot;MDL&quot; &quot;MGA&quot; &quot;MKD&quot; &quot;MMK&quot; &quot;MNT&quot; &quot;MOP&quot; &quot;MRU&quot; &quot;MUR&quot; &quot;MVR&quot; &quot;MWK&quot; &quot;MXN&quot; &quot;MXV&quot; &quot;MYR&quot; &quot;MZN&quot; &quot;NAD&quot; &quot;NGN&quot; &quot;NIO&quot; &quot;NOK&quot; &quot;NPR&quot; &quot;NZD&quot; &quot;OMR&quot; &quot;PAB&quot; &quot;PEN&quot; &quot;PGK&quot; &quot;PHP&quot; &quot;PKR&quot; &quot;PLN&quot; &quot;PYG&quot; &quot;QAR&quot; &quot;RON&quot; &quot;RSD&quot; &quot;RUB&quot; &quot;RWF&quot; &quot;SAR&quot; &quot;SBD&quot; &quot;SCR&quot; &quot;SDG&quot; &quot;SEK&quot; &quot;SGD&quot; &quot;SHP&quot; &quot;SLL&quot; &quot;SOS&quot; &quot;SRD&quot; &quot;SSP&quot; &quot;STN&quot; &quot;SVC&quot; &quot;SYP&quot; &quot;SZL&quot; &quot;THB&quot; &quot;TJS&quot; &quot;TMT&quot; &quot;TND&quot; &quot;TOP&quot; &quot;TRY&quot; &quot;TTD&quot; &quot;TVD&quot; &quot;TWD&quot; &quot;TZS&quot; &quot;UAH&quot; &quot;UGX&quot; &quot;USD&quot; &quot;USN&quot; &quot;UYI&quot; &quot;UYU&quot; &quot;UZS&quot; &quot;VEF&quot; &quot;VND&quot; &quot;VUV&quot; &quot;WST&quot; &quot;XAF&quot; &quot;XAG&quot; &quot;XAU&quot; &quot;XBA&quot; &quot;XBB&quot; &quot;XBC&quot; &quot;XBD&quot; &quot;XCD&quot; &quot;XDR&quot; &quot;XOF&quot; &quot;XPD&quot; &quot;XPF&quot; &quot;XPT&quot; &quot;XSU&quot; &quot;XTS&quot; &quot;XUA&quot; &quot;XXX&quot; &quot;YER&quot; &quot;ZAR&quot; &quot;ZMW&quot; &quot;ZWL&quot;]
 
 # The type of contributor.
 fhirvs:contributor-type [&quot;author&quot; &quot;editor&quot; &quot;reviewer&quot; &quot;endorser&quot;]
 
 # Identifies the purpose for this identifier, if known .
 fhirvs:identifier-use [&quot;usual&quot; &quot;official&quot; &quot;temp&quot; &quot;secondary&quot; &quot;old&quot;]
+
+# A unit of time (units from UCUM).
+fhirvs:units-of-time [&quot;s&quot; &quot;min&quot; &quot;h&quot; &quot;d&quot; &quot;wk&quot; &quot;mo&quot; &quot;a&quot;]
 
 # This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
 fhirvs:mimetypes EXTERNAL
@@ -1422,7 +1422,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub c82897bedc) generated on Wed, Jul 3, 2019 14:12-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 410ed80d7e) generated on Wed, Jul 10, 2019 12:57-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -185,7 +185,10 @@ This is a representation of the json schema for GroupSummary, which is just a pa
         },
         "identifier": {
           "description": "A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.",
-          "$ref": "Identifier.schema.json#/definitions/Identifier"
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
         },
         "version": {
           "description": "The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
@@ -541,10 +544,7 @@ This is a representation of the json schema for GroupSummary, which is just a pa
           "$ref": "Reference.schema.json#/definitions/Reference"
         }
       },
-      "additionalProperties": false,
-      "required": [
-        "actualDefinition"
-      ]
+      "additionalProperties": false
     }
   }
 }
@@ -565,7 +565,7 @@ This is a representation of the json schema for GroupSummary, which is just a pa
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 5f07bd3f48) generated on Tue, Jul 2, 2019 11:35-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub c82897bedc) generated on Wed, Jul 3, 2019 14:12-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
