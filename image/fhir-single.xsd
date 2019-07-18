@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, May 31, 2019 13:21-0500 for FHIR v4.1.0 
+  Generated on Thu, Jul 18, 2019 11:53-0400 for FHIR v4.1.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="4.1.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -417,6 +417,7 @@
       <xs:element ref="EpisodeOfCare"/>
       <xs:element ref="EventDefinition"/>
       <xs:element ref="Evidence"/>
+      <xs:element ref="EvidenceSet"/>
       <xs:element ref="EvidenceVariable"/>
       <xs:element ref="ExampleScenario"/>
       <xs:element ref="ExplanationOfBenefit"/>
@@ -505,6 +506,7 @@
       <xs:element ref="TerminologyCapabilities"/>
       <xs:element ref="TestReport"/>
       <xs:element ref="TestScript"/>
+      <xs:element ref="Topic"/>
       <xs:element ref="ValueSet"/>
       <xs:element ref="VerificationResult"/>
       <xs:element ref="VisionPrescription"/>
@@ -1686,7 +1688,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           </xs:element>
           <xs:element name="statisticType" type="CodeableConcept" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Type of statistic.</xs:documentation>
+              <xs:documentation xml:lang="en">Type of statistic, eg relative risk.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1">
@@ -1696,123 +1698,12 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           </xs:element>
           <xs:element name="sampleSize" type="Statistic.SampleSize" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Population sample size.</xs:documentation>
+              <xs:documentation xml:lang="en">Sample size for the statistic.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="precisionEstimate" type="Statistic.PrecisionEstimate" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="attributeEstimate" type="Statistic.AttributeEstimate" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">An estimate of the precision of the statistic.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="certainty" type="Statistic.Certainty" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A description of the certainty of the effect estimate.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Statistic.PrecisionEstimate">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Human-readable summary of the estimate.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Footnote or explanatory note about the estimate.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="type" type="CodeableConcept" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The estimate type.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The precision value.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="level" type="decimal" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Use 95 for a 95% confidence interval.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="range" type="Range" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Lower bound of confidence interval.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Statistic.Certainty">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Human-readable summary of the certainty.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the resource.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="rating" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A rating of the certainty of the effect estimate.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="certaintySubcomponent" type="Statistic.CertaintySubcomponent" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A description of a component of the overall certainty.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Statistic.CertaintySubcomponent">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Human-readable summary of the subcomponent.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable string to clarify or explain concepts about the resource.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="type" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Type of subcomponent of certainty rating.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="rating" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A rating of a subcomponent of rating certainty.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1849,12 +1740,54 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           </xs:element>
           <xs:element name="knownDataCount" type="integer" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">TBD.</xs:documentation>
+              <xs:documentation xml:lang="en">Number of participants with known results for measured variables.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="numeratorCount" type="integer" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">TBD.</xs:documentation>
+              <xs:documentation xml:lang="en">Number of participants with “positive” results, only used to report actual numerator count for a proportion.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Statistic.AttributeEstimate">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A fact or piece of data from a  study of a large quantity of numerical data.  A mathematical or quantified characteristic of a group of observations.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Human-readable summary of the estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnote or explanatory note about the estimate.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="type" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The estimateType of precision estimate, eg confidence interval or p value type.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="quantity" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="level" type="decimal" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Use 95 for a 95% confidence interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="range" type="Range" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Lower bound of confidence interval.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2024,20 +1957,20 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
         <xs:sequence>
           <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A description of the content value of the statistic.</xs:documentation>
+              <xs:documentation xml:lang="en">A description of the content and value of the statistic.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="numberOfIntervals" type="integer" minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Number of elements in interval array.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="minimum" type="Quantity" minOccurs="0" maxOccurs="1">
+          <xs:element name="numberOfIntervals" type="integer" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Number of intervals in an array, eg 4 for quartiles.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="bottomOfFirstInterval" type="Quantity" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Bottom of first interval.</xs:documentation>
             </xs:annotation>
@@ -2045,6 +1978,11 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           <xs:element name="interval" type="OrderedDistribution.Interval" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Interval.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="topOfInterval" type="Quantity" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Singular value of the statistic at the upper bound of the interval.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2059,19 +1997,14 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="rankorder" type="integer" minOccurs="1" maxOccurs="1">
+          <xs:element name="rankOrder" type="integer" minOccurs="1" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Relative order of interval.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="maximum" type="Quantity" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Top of interval.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="intervalStatistic" type="Statistic" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Interval statistic(s).</xs:documentation>
+              <xs:documentation xml:lang="en">Values and parameters for a single statistic related to the interval.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -8566,7 +8499,7 @@ into another (possibly the same) biological entity.</xs:documentation>
           </xs:element>
           <xs:element name="activity" type="CarePlan.Activity" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.</xs:documentation>
+              <xs:documentation xml:lang="en">Identifies an action that has occurred or is a planned action to occur as part of the plan. For example, a medication to be used, lab tests to perform, self-monitoring that has occurred, education etc.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -9176,6 +9109,11 @@ into another (possibly the same) biological entity.</xs:documentation>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             <xs:annotation>
               <xs:documentation xml:lang="en">Notes and comments about this catalog entry.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="estimatedDuration" minOccurs="0" maxOccurs="1" type="Duration">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Estimated duration of the orderable item of this  entry of the catalog.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="billingCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -12327,12 +12265,12 @@ into another (possibly the same) biological entity.</xs:documentation>
           </xs:element>
           <xs:element name="recipient" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, care team or device) which was the target of the communication. If receipts need to be tracked by an individual, a separate resource instance will need to be created for each recipient.  Multiple recipient communications are intended where either receipts are not tracked (e.g. a mass mail-out) or a receipt is captured in aggregate (all emails confirmed received by a particular time).</xs:documentation>
+              <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, care team or device) which is the target of the communication.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="sender" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, or device) which was the source of the communication.</xs:documentation>
+              <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, or device) which is the source of the communication.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="reasonCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -12530,7 +12468,7 @@ into another (possibly the same) biological entity.</xs:documentation>
           </xs:element>
           <xs:element name="requester" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The device, individual, or organization who initiated the request and has responsibility for its activation.</xs:documentation>
+              <xs:documentation xml:lang="en">The device, individual, or organization who asks for the information to be shared.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="recipient" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -12538,7 +12476,7 @@ into another (possibly the same) biological entity.</xs:documentation>
               <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, device, group, or care team) which is the intended target of the communication.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="sender" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="informationProvider" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.</xs:documentation>
            </xs:annotation>
@@ -13543,7 +13481,7 @@ into another (possibly the same) biological entity.</xs:documentation>
           </xs:element>
           <xs:element name="asserter" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Individual who is making the condition statement.</xs:documentation>
+              <xs:documentation xml:lang="en">Individual or device that is making the condition statement.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="stage" type="Condition.Stage" minOccurs="0" maxOccurs="unbounded">
@@ -14495,7 +14433,7 @@ into another (possibly the same) biological entity.</xs:documentation>
           </xs:element>
           <xs:element name="publicationStatus" minOccurs="1" maxOccurs="1" type="ContractResourcePublicationStatusCodes">
             <xs:annotation>
-              <xs:documentation xml:lang="en">draft | active | retired | unknown.</xs:documentation>
+              <xs:documentation xml:lang="en">amended | appended | cancelled | disputed | entered-in-error | executable +.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
@@ -19350,12 +19288,273 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
   </xs:complexType>
   <xs:element name="Evidence" type="Evidence">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Evidence">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A formal identifier that is used to identify this summary when it is represented in other formats, or referenced in a specification, model, design or an instance.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The identifier that is used to identify this version of the summary when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the summary author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The status of this summary. Enables tracking the life-cycle of the content.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="Contributor">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Contact detail and role for contributor to summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="relatedArtifact" minOccurs="0" maxOccurs="unbounded" type="RelatedArtifact">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Link or citation to artifact associated with the summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A free text natural language description of the evidence from a consumer's perspective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="assertion" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Declarative description of the Evidence.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="referentGroup" type="Evidence.ReferentGroup" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Group being referenced.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableDefinition" type="Evidence.VariableDefinition" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Evidence variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The particular type of synthesis if this is a synthesis summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of study that produced this summary.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="statistic" minOccurs="0" maxOccurs="unbounded" type="Statistic">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The statistic value(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Ordered distribution.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="certainty" type="Evidence.Certainty" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Level of certainty.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.ReferentGroup">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description of referent group.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="evidenceSource" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Various information categories of group.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="intendedGroup" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Non-actual group that is a set of characteristics.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="directnessMatch" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indication of quality of match between intended group to actual group.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.VariableDefinition">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Description of the variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">exposure | referenceExposure | measuredVariable | confounder.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="actualDefinition" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Definition of the actual variable related to the statistic(s).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="intendedDefinition" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Definition of the intended variable related to the Evidence.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="directnessMatch" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indication of quality of match between intended variable to actual variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.Certainty">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description of certainty.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="1" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="rating" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Rating of certainty.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="certaintySubcomponent" type="Evidence.CertaintySubcomponent" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Subcomponent of certainty.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Evidence.CertaintySubcomponent">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This represents statistics, certainty, both the intended and actual population, and evidence variables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual description of certainty subcomponent.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="1" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Textual note of certainty subcomponent.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="rating" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Rating of certainty subcomponent.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EvidenceSet" type="EvidenceSet">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="EvidenceSet">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -19398,7 +19597,7 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.</xs:documentation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence set instances.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -19408,7 +19607,7 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A copyright statement relating to the evidence and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence.</xs:documentation>
+              <xs:documentation xml:lang="en">A copyright statement relating to the evidence set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence set.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
@@ -19421,9 +19620,9 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="summaryPublisher" type="Evidence.SummaryPublisher" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="summaryPublisher" type="EvidenceSet.SummaryPublisher" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Evidence publisher.</xs:documentation>
+              <xs:documentation xml:lang="en">EvidenceSet publisher.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="Contributor">
@@ -19433,12 +19632,12 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="relatedArtifact" minOccurs="0" maxOccurs="unbounded" type="RelatedArtifact">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Link to artifact associated with summary.</xs:documentation>
+              <xs:documentation xml:lang="en">Link or citation to artifact associated with the summary.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A free text natural language description of the evidence from a consumer's perspective.</xs:documentation>
+              <xs:documentation xml:lang="en">A free text natural language description of the evidence set from a consumer's perspective.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -19456,18 +19655,28 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">The type of study that produced this summary.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="population" type="Evidence.Population" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="population" type="EvidenceSet.Population" minOccurs="1" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">The population being summarized.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="variableDefinition" type="EvidenceSet.VariableDefinition" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">EvidenceSet variable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="evidenceStatement" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Statement of evidence.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Evidence.SummaryPublisher">
+  <xs:complexType name="EvidenceSet.SummaryPublisher">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -19486,16 +19695,16 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Evidence.Population">
+  <xs:complexType name="EvidenceSet.Population">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Description of the particular summary.</xs:documentation>
+              <xs:documentation xml:lang="en">Textual description of population.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -19505,43 +19714,38 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="intendedCohort" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The evidence that the summary indirectly represents.</xs:documentation>
+              <xs:documentation xml:lang="en">Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="sampleCohort" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The evidence from which the sample was drawn.</xs:documentation>
+              <xs:documentation xml:lang="en">Summary statistics describing the actual group for this population.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="actualCohort" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The evidence that the summary directly reprresents.</xs:documentation>
+              <xs:documentation xml:lang="en">The actual group (ie list of members) for this population.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="sampleSize" type="Evidence.SampleSize" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="sampleSize" type="EvidenceSet.SampleSize" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Sample description.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="evidenceVariable" type="Evidence.EvidenceVariable" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Evidence variable.</xs:documentation>
+              <xs:documentation xml:lang="en">Sample size for the population.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Evidence.SampleSize">
+  <xs:complexType name="EvidenceSet.SampleSize">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Description of the sample size.</xs:documentation>
+              <xs:documentation xml:lang="en">Textual description of population sample.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
@@ -19563,9 +19767,9 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Evidence.EvidenceVariable">
+  <xs:complexType name="EvidenceSet.VariableDefinition">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
+      <xs:documentation xml:lang="en">The summary of interventions and characteristics of a group.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -19580,191 +19784,22 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
               <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
+          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
+              <xs:documentation xml:lang="en">exposure | referenceExposure | measuredVariable | confounder.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:element name="actualDefinition" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The definition of a nested variable.</xs:documentation>
+              <xs:documentation xml:lang="en">Definition of the actual variable related to the statistic(s).</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="statisticCollection" type="Evidence.StatisticCollection" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="intendedDefinition" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Set of statistics associated with variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="distribution" minOccurs="0" maxOccurs="unbounded" type="OrderedDistribution">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Ordered distribution.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="nestedVariable" type="Evidence.NestedVariable" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Dependent evvidence variable.</xs:documentation>
+              <xs:documentation xml:lang="en">Definition of the intended variable related to the assertion.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Evidence.StatisticCollection">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Description of statistic.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The type of synthesis statistic.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The type of study.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="statistic" minOccurs="1" maxOccurs="unbounded" type="Statistic">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The statistic value(s).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Evidence.NestedVariable">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Description of the variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The definition of a nested variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="statisticCollection" type="Evidence.StatisticCollection1" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Set of statistics associated with variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Evidence.StatisticCollection1">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Description of statistic.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="synthesisType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The type of synthesis statistic.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="studyType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The type of study.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="additionalVariable" type="Evidence.AdditionalVariable" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Additional variables.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="statistic" minOccurs="1" maxOccurs="unbounded" type="Statistic">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The statistic value(s).</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Evidence.AdditionalVariable">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The representation of a collection of statistics for a given population and set of evidence variables.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="variableRole" minOccurs="0" maxOccurs="1" type="EvidenceVariableRole">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">exposure | measuredVariable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="variableDefinition" minOccurs="1" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Definition of additional variable.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="EvidenceVariableRole-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="exposure">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">esposure</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="measuredVariable">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">measured variable</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="EvidenceVariableRole">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">The role that the evidence variable plays.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="EvidenceVariableRole-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -19943,6 +19978,16 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
             <xs:element name="definitionDataRequirement" type="DataRequirement"/>
             <xs:element name="definitionTriggerDefinition" type="TriggerDefinition"/>
           </xs:choice>
+          <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Method used for describing characteristic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Device used for determining characteristic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="usageContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
             <xs:annotation>
               <xs:documentation xml:lang="en">Use UsageContext to define the members of the population, such as Age Ranges, Genders, Settings.</xs:documentation>
@@ -20924,6 +20969,12 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:documentation xml:lang="en">Evidence</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="EvidenceSet">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">EvidenceSet</xs:documentation>
+          <xs:documentation xml:lang="en">EvidenceSet</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="EvidenceVariable">
         <xs:annotation>
           <xs:documentation xml:lang="en">EvidenceVariable</xs:documentation>
@@ -21672,6 +21723,15 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           <xs:documentation xml:lang="fr">ScriptTest</xs:documentation>
           <xs:documentation xml:lang="es">ScriptDePrueba</xs:documentation>
           <xs:documentation xml:lang="zh">测试脚本</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Topic">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Topic</xs:documentation>
+          <xs:documentation xml:lang="en">Topic</xs:documentation>
+          <xs:documentation xml:lang="fr">Sujet</xs:documentation>
+          <xs:documentation xml:lang="es">Tema</xs:documentation>
+          <xs:documentation xml:lang="zh">话题</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="ValueSet">
@@ -23749,6 +23809,11 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             <xs:annotation>
               <xs:documentation xml:lang="en">A unique business identifier for this group.</xs:documentation>
@@ -29711,11 +29776,16 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:choice minOccurs="1" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.</xs:documentation>
+              <xs:documentation xml:lang="en">A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.</xs:documentation>
             </xs:annotation>
-            <xs:element name="effectiveDateTime" type="dateTime"/>
-            <xs:element name="effectivePeriod" type="Period"/>
+            <xs:element name="occurenceDateTime" type="dateTime"/>
+            <xs:element name="occurencePeriod" type="Period"/>
           </xs:choice>
+          <xs:element name="recorded" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date the occurrence of the  MedicationAdministration was first captured in the record - potentially significantly after the occurrence of the event.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="performer" type="MedicationAdministration.Performer" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates who or what performed the medication administration and how they were involved.</xs:documentation>
@@ -30572,7 +30642,7 @@ UDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | 
           </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates the type of medication request (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient)).</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates the grouping or category of medication request (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient)).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="RequestPriority">
@@ -30987,7 +31057,7 @@ The primary difference between a medicationusage and a medicationadministration 
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationUsage.taken element is No).</xs:documentation>
+              <xs:documentation xml:lang="en">The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationUsage.status element is NotTaken).</xs:documentation>
             </xs:annotation>
             <xs:element name="effectiveDateTime" type="dateTime"/>
             <xs:element name="effectivePeriod" type="Period"/>
@@ -32880,6 +32950,113 @@ The primary difference between a medicationusage and a medicationadministration 
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URL that is used to identify this ObservationDefinition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this ObservationDefinition is (or will be) published. The URL SHOULD include the major version of the ObservationDefinition. For more information see Technical and Business Versions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Business identifiers assigned to this ObservationDefinition. by the performer and/or other systems. These identifiers remain constant as the resource is updated and propagates from server to server.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The identifier that is used to identify this version of the ObservationDefinition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the ObservationDefinition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions are orderable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the ObservationDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromCanonical" minOccurs="0" maxOccurs="unbounded" type="canonical">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The canonical URL pointing to another FHIR-defined ObservationDefinition that is adhered to in whole or in part by this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromUri" minOccurs="0" maxOccurs="unbounded" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The URL pointing to an externally-defined observation definition, guideline or other definition that is adhered to in whole or in part by this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The current state of the ObservationDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A flag to indicate that this ObservationDefinition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1" >
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A code or group definition that describes the intended subject of Observation instances conforming to this ObservationDefinition.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="subjectCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="subjectReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">For draft definitions, indicates the date of initial creation. For active definitions, represents the date of activation. For withdrawn definitions, indicates the date of withdrawal.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Helps establish the &quot;authority/credibility&quot; of the ObservationDefinition. May also allow for contact.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Contact details to assist a user in finding and communicating with the publisher.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A free text natural language description of the ObservationDefinition from the consumer's perspective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of observation definitions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A jurisdiction in which the ObservationDefinition is intended to be used.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Explains why this ObservationDefinition is needed and why it has been designed as it has.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Copyright statement relating to the ObservationDefinition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the ObservationDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was approved by the publisher. Approval happens once when the content is officially approved for usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was last reviewed. Review happens periodically after that, but doesn't change the original approval date.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="effectivePeriod" minOccurs="0" maxOccurs="1" type="Period">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The period during which the ObservationDefinition content was or is planned to be effective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="performerType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of individual/organization/device that is expected to act upon instances of this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">A code that classifies the general type of observation.</xs:documentation>
@@ -32888,11 +33065,6 @@ The primary difference between a medicationusage and a medicationadministration 
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Describes what will be observed. Sometimes this is called the observation &quot;name&quot;.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A unique identifier assigned to this ObservationDefinition artifact.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="permittedDataType" minOccurs="0" maxOccurs="unbounded" type="ObservationDataType">
@@ -32905,9 +33077,24 @@ The primary difference between a medicationusage and a medicationadministration 
               <xs:documentation xml:lang="en">Multiple results allowed for observations conforming to this ObservationDefinition.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The site on the subject's body where the  observation is to be made.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The method or technique used to perform the observation.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="specimen" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The kind of specimen that this type of observation is produced on.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The measurement device used to produce observations of this type.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="preferredReportName" minOccurs="0" maxOccurs="1" type="string">
@@ -32943,6 +33130,16 @@ The primary difference between a medicationusage and a medicationadministration 
           <xs:element name="criticalCodedValueSet" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The set of critical coded results for the observation conforming to this ObservationDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="hasMember" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">This ObservationDefinition defines a group  observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="component" type="ObservationDefinition.Component" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Some observations have multiple component observations, expressed as separate code value pairs.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -33025,6 +33222,37 @@ The primary difference between a medicationusage and a medicationadministration 
           <xs:element name="condition" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
               <xs:documentation xml:lang="en">Text based condition for which the reference range is valid.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ObservationDefinition.Component">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Describes what will be observed.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="permittedDataType" minOccurs="0" maxOccurs="unbounded" type="ObservationDataType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The data types allowed for the value element of the instance of this component observations.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="quantitativeDetails" type="ObservationDefinition.QuantitativeDetails" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The quantitative details specified.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="qualifiedInterval" type="ObservationDefinition.QualifiedInterval" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The qualified interval specified.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -33128,6 +33356,47 @@ The primary difference between a medicationusage and a medicationadministration 
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="ObservationRangeCategory-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="PublicationStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="draft">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Draft</xs:documentation>
+          <xs:documentation xml:lang="ru">черновик</xs:documentation>
+          <xs:documentation xml:lang="nl">ontwerp</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Active</xs:documentation>
+          <xs:documentation xml:lang="ru">активный</xs:documentation>
+          <xs:documentation xml:lang="nl">actief</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="retired">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Retired</xs:documentation>
+          <xs:documentation xml:lang="ru">удалён</xs:documentation>
+          <xs:documentation xml:lang="nl">verouderd</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PublicationStatus">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Codes identifying the state of an ObservationDefinition.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="PublicationStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -35773,7 +36042,7 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           </xs:element>
           <xs:element name="actor" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The practitioner who was involved in the procedure.</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates who or what performed the procedure.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="onBehalfOf" minOccurs="0" maxOccurs="1" type="Reference">
@@ -40200,9 +40469,106 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URL that is used to identify this SpecimenDefinition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this SpecimenDefinition is (or will be) published. The URL SHOULD include the major version of the SpecimenDefinition. For more information see Technical and Business Versions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A business identifier associated with the kind of specimen.</xs:documentation>
+              <xs:documentation xml:lang="en">A business identifier assigned to this SpecimenDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The identifier that is used to identify this version of the SpecimenDefinition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the SpecimenDefinition author and is not expected to be globally unique.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the SpecimenDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromCanonical" minOccurs="0" maxOccurs="unbounded" type="canonical">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The canonical URL pointing to another FHIR-defined SpecimenDefinition that is adhered to in whole or in part by this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromUri" minOccurs="0" maxOccurs="unbounded" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The URL pointing to an externally-defined type of specimen, guideline or other definition that is adhered to in whole or in part by this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The current state of theSpecimenDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A flag to indicate that this SpecimenDefinition is not authored for  genuine usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1" >
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A code or group definition that describes the intended subject  from which this kind of specimen is to be collected.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="subjectCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="subjectReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">For draft definitions, indicates the date of initial creation. For active definitions, represents the date of activation. For withdrawn definitions, indicates the date of withdrawal.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Helps establish the &quot;authority/credibility&quot; of the SpecimenDefinition. May also allow for contact.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Contact details to assist a user in finding and communicating with the publisher.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A free text natural language description of the SpecimenDefinition from the consumer's perspective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of specimen definitions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A jurisdiction in which the SpecimenDefinition is intended to be used.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Explains why this SpecimeDefinition is needed and why it has been designed as it has.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Copyright statement relating to the SpecimenDefinition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the SpecimenDefinition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was approved by the publisher. Approval happens once when the content is officially approved for usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was last reviewed. Review happens periodically after that, but doesn't change the original approval date.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="effectivePeriod" minOccurs="0" maxOccurs="1" type="Period">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The period during which the SpecimenDefinition content was or is planned to be effective.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="typeCollected" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -40271,6 +40637,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
               <xs:documentation xml:lang="en">The usual time that a specimen of this kind is retained after the ordered tests are completed, for the purpose of additional testing.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="singleUse" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Specimen can be used by only one test or panel if the value is &quot;true&quot;.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="rejectionCriterion" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Criterion for rejection of the specimen in its container by the laboratory.</xs:documentation>
@@ -40279,6 +40650,11 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
           <xs:element name="handling" type="SpecimenDefinition.Handling" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="testingDestination" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Where the specimen will be tested: e.g., lab, sector, device or any combination of these.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -45689,6 +46065,246 @@ Deceased patients may also be marked as inactive for the same reasons, but may b
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="TestScriptRequestMethodCode-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Topic" type="Topic">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Topic">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An absolute URL that is used to identify this Topic when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this Topic is (or will be) published. The URL SHOULD include the major version of the Topic. For more information see [Technical and Business Versions](resource.html#versions).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Business identifiers assigned to this Topic by the performer and/or other systems.  These identifiers remain constant as the resource is updated and propagates from server to server.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The identifier that is used to identify this version of the Topic when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the Topic author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions are orderable.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short, descriptive, user-friendly title for the Topic, for example, &quot;admission&quot;.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromCanonical" minOccurs="0" maxOccurs="unbounded" type="canonical">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The canonical URL pointing to another FHIR-defined Topic that is adhered to in whole or in part by this Topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="derivedFromUri" minOccurs="0" maxOccurs="unbounded" type="uri">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The URL pointing to an externally-defined subscription topic or other definition that is adhered to in whole or in part by this definition.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="replaces" minOccurs="0" maxOccurs="unbounded" type="canonical">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Completed or terminated request(s) whose function is taken by this new request.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The current state of the Topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A flag to indicate that this Topic is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">For draft definitions, indicates the date of initial creation.  For active definitions, represents the date of activation.  For withdrawn definitions, indicates the date of withdrawal.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Helps establish the &quot;authority/credibility&quot; of the Topic.  May also allow for contact.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Contact details to assist a user in finding and communicating with the publisher.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A free text natural language description of the Topic from the consumer's perspective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of code system definitions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A jurisdiction in which the Topic is intended to be used.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Explains why this Topic is needed and why it has been designed as it has.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A copyright statement relating to the Topic and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the Topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was approved by the publisher. Approval happens once when the content is officially approved for usage.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The date on which the asset content was last reviewed. Review happens periodically after that, but doesn't change the original approval date.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="effectivePeriod" minOccurs="0" maxOccurs="1" type="Period">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The period during which the Topic content was or is planned to be effective.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="resourceTrigger" type="Topic.ResourceTrigger" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The criteria for including updates to a nominated resource in the topic.  Thie criteria may be just a human readable description and/or a full FHIR search string or FHIRPath expression.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="canFilterBy" type="Topic.CanFilterBy" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">List of properties by which messages on the topic can be filtered.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Topic.ResourceTrigger">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The human readable description of what triggers inclusion into this topic -  for example, &quot;Beginning of a clinical encounter&quot;.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="resourceType" minOccurs="0" maxOccurs="unbounded" type="ResourceType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The list of resource types that are candidates for this topic.  For example, the Encounter resource is updated in an 'admission' topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="methodCriteria" minOccurs="0" maxOccurs="unbounded" type="InteractionTrigger">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The REST interaction based rules that the server should use to determine when to trigger a notification for this topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="queryCriteria" type="Topic.QueryCriteria" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The FHIR query based rules that the server should use to determine when to trigger a notification for this topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="fhirPathCriteria" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The FHIRPath based rules that the server should use to determine when to trigger a notification for this topic.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Topic.QueryCriteria">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="previous" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The FHIR query based rules are applied to the previous resource state.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="current" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The FHIR query based rules are applied to the current resource state.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="requireBoth" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">If set to true, both current and previous criteria must evaluate true to  trigger a notification for this topic.  Otherwise a notification for this topic will be triggered if either one evaluates to true.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Topic.CanFilterBy">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A search parameter (like &quot;patient&quot;) which is a label for the filter.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="documentation" minOccurs="0" maxOccurs="1" type="markdown">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Description of how this filter parameter is intended to be used.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="InteractionTrigger-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="create">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">create</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="update">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">update</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="delete">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">delete</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InteractionTrigger">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">FHIR RESTful interaction used for topic trigger.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="InteractionTrigger-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Evidence-example.json</h1>
@@ -112,29 +114,130 @@
 </p>
 
 <div class="example">
-<p>Example of evidence</p>
+<p>Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)</p>
 <pre class="json">
 {
   &quot;resourceType&quot;: &quot;Evidence&quot;,
   &quot;id&quot;: &quot;example&quot;,
   &quot;text&quot;: {
     &quot;status&quot;: &quot;generated&quot;,
-    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: example&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Corticosteroids vs No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;h3&gt;SummaryPublishers&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;MAGIC&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids vs no corticosteroids for patients with sepsis&lt;/p&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: summary data meta-analysis &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/synthesis-type code 'std-MA' = 'summary data meta-analysis', given as 'summary data meta-analysis'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: randomized trial &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/study-type code 'RCT' = 'randomized trial', given as 'randomized trial'})&lt;/span&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;population&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Patients with sepsis&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedCohort&lt;/b&gt;: &lt;a&gt;Patients with sepsis&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;evidenceVariable&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality Longer term (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: measuredVariable&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;: &lt;a&gt;Mortality Longer term (Follow up: 60 days to 1 year)&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;nestedVariable&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: exposure&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;: &lt;a&gt;Corticosteroids&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;statisticCollection&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: 349 per 1000&lt;/p&gt;&lt;p&gt;&lt;b&gt;statistic&lt;/b&gt;: &lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown type Statistic&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
+    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: example&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality reduced with RR 0.94 with Corticosteroids vs no corticosteroids for patients with sepsis&lt;/p&gt;&lt;h3&gt;ReferentGroups&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Description&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;EvidenceSource&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;IntendedGroup&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;DirectnessMatch&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;Patients with sepsis&lt;/td&gt;&lt;td&gt;???&lt;/td&gt;&lt;td&gt;Patients with sepsis&lt;/td&gt;&lt;td&gt;??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality Longer term (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: measured variable &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'measuredVariable' = 'measured variable', given as 'measured variable'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: many studies had shorter term outcomes&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: Mortality Longer term (Follow up: 60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: moderate &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'moderate' = 'Moderate quality match', given as 'moderate'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: exposure &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'exposure' = 'exposure', given as 'exposure'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: ???&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: ??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: referenceExposure &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'referenceExposure' = 'reference exposure', given as 'referenceExposure'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: ???&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: ??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: summary data meta-analysis &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/synthesis-type code 'std-MA' = 'summary data meta-analysis', given as 'summary data meta-analysis'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: randomized trial &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/study-type code 'RCT' = 'randomized trial', given as 'randomized trial'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;statistic&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown type Statistic&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
   },
-  &quot;title&quot;: &quot;Corticosteroids vs No corticosteroids&quot;,
+  &quot;title&quot;: &quot;Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)&quot;,
   &quot;status&quot;: &quot;draft&quot;,
-  &quot;summaryPublisher&quot;: [
-    {
-      &quot;name&quot;: &quot;MAGIC&quot;
-    }
-  ],
   &quot;relatedArtifact&quot;: [
     {
       &quot;type&quot;: &quot;derived-from&quot;,
       &quot;url&quot;: &quot;https://app.magicapp.org/public/guideline/EZ1w8n/pico/31831/widget?tab=outcome&quot;
     }
   ],
-  &quot;description&quot;: &quot;Corticosteroids vs no corticosteroids for patients with sepsis&quot;,
+  &quot;description&quot;: &quot;Mortality reduced with RR 0.94 with Corticosteroids vs no corticosteroids for patients with sepsis&quot;,
+  &quot;referentGroup&quot;: {
+    &quot;description&quot;: &quot;Patients with sepsis&quot;,
+    &quot;evidenceSource&quot;: {
+      &quot;type&quot;: &quot;Group&quot;,
+      &quot;display&quot;: &quot;???&quot;
+    },
+    &quot;intendedGroup&quot;: {
+      &quot;type&quot;: &quot;Group&quot;,
+      &quot;display&quot;: &quot;Patients with sepsis&quot;
+    },
+    &quot;directnessMatch&quot;: {
+      &quot;coding&quot;: [
+        {
+          &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/directness&quot;,
+          &quot;display&quot;: &quot;???&quot;
+        }
+      ]
+    }
+  },
+  &quot;variableDefinition&quot;: [
+    {
+      &quot;description&quot;: &quot;Mortality Longer term (60 days to 1 year)&quot;,
+      &quot;variableRole&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot;,
+            &quot;code&quot;: &quot;measuredVariable&quot;,
+            &quot;display&quot;: &quot;measured variable&quot;
+          }
+        ]
+      },
+      &quot;actualDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;many studies had shorter term outcomes&quot;
+      },
+      &quot;intendedDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;Mortality Longer term (Follow up: 60 days to 1 year)&quot;
+      },
+      &quot;directnessMatch&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/directness&quot;,
+            &quot;code&quot;: &quot;moderate&quot;,
+            &quot;display&quot;: &quot;moderate&quot;
+          }
+        ]
+      }
+    },
+    {
+      &quot;description&quot;: &quot;Corticosteroids&quot;,
+      &quot;variableRole&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot;,
+            &quot;code&quot;: &quot;exposure&quot;,
+            &quot;display&quot;: &quot;exposure&quot;
+          }
+        ]
+      },
+      &quot;actualDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;???&quot;
+      },
+      &quot;intendedDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;Corticosteroids&quot;
+      },
+      &quot;directnessMatch&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/directness&quot;,
+            &quot;display&quot;: &quot;???&quot;
+          }
+        ]
+      }
+    },
+    {
+      &quot;description&quot;: &quot;No corticosteroids&quot;,
+      &quot;variableRole&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot;,
+            &quot;code&quot;: &quot;referenceExposure&quot;,
+            &quot;display&quot;: &quot;referenceExposure&quot;
+          }
+        ]
+      },
+      &quot;actualDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;???&quot;
+      },
+      &quot;intendedDefinition&quot;: {
+        &quot;type&quot;: &quot;EvidenceVariable&quot;,
+        &quot;display&quot;: &quot;No corticosteroids&quot;
+      },
+      &quot;directnessMatch&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/directness&quot;,
+            &quot;display&quot;: &quot;???&quot;
+          }
+        ]
+      }
+    }
+  ],
   &quot;synthesisType&quot;: {
     &quot;coding&quot;: [
       {
@@ -153,298 +256,250 @@
       }
     ]
   },
-  &quot;population&quot;: [
+  &quot;statistic&quot;: [
     {
-      &quot;description&quot;: &quot;Patients with sepsis&quot;,
-      &quot;intendedCohort&quot;: {
-        &quot;reference&quot;: &quot;Group-Sepsis&quot;,
-        &quot;type&quot;: &quot;Group&quot;,
-        &quot;display&quot;: &quot;Patients with sepsis&quot;
-      },
-      &quot;evidenceVariable&quot;: [
+      &quot;description&quot;: &quot;Relative risk 0.94&quot;,
+      &quot;note&quot;: [
         {
-          &quot;description&quot;: &quot;Mortality Longer term (60 days to 1 year)&quot;,
-          &quot;variableRole&quot;: &quot;measuredVariable&quot;,
-          &quot;variableDefinition&quot;: {
-            &quot;reference&quot;: &quot;EvidenceVariable-Mortality-Long-Term&quot;,
-            &quot;type&quot;: &quot;EvidenceVariable&quot;,
-            &quot;display&quot;: &quot;Mortality Longer term (Follow up: 60 days to 1 year)&quot;
+          &quot;text&quot;: &quot;Based on data from 6438 patients in 9 studies &quot;
+        }
+      ],
+      &quot;statisticType&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot;,
+            &quot;code&quot;: &quot;relative-RR&quot;,
+            &quot;display&quot;: &quot;relative risk&quot;
+          }
+        ]
+      },
+      &quot;quantity&quot;: {
+        &quot;value&quot;: 0.94
+      },
+      &quot;sampleSize&quot;: {
+        &quot;note&quot;: [
+          {
+            &quot;text&quot;: &quot;Based on data from 6438 patients in 9 studies &quot;
+          }
+        ],
+        &quot;numberOfStudies&quot;: 9,
+        &quot;numberOfParticipants&quot;: 6438
+      },
+      &quot;attributeEstimate&quot;: [
+        {
+          &quot;description&quot;: &quot;(CI 95% 0.89 - 1.00)&quot;,
+          &quot;type&quot;: {
+            &quot;coding&quot;: [
+              {
+                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot;,
+                &quot;code&quot;: &quot;CI&quot;,
+                &quot;display&quot;: &quot;confidence interval&quot;
+              }
+            ]
           },
-          &quot;nestedVariable&quot;: [
+          &quot;level&quot;: 0.95,
+          &quot;range&quot;: {
+            &quot;low&quot;: {
+              &quot;value&quot;: 0.89
+            },
+            &quot;high&quot;: {
+              &quot;value&quot;: 1.00
+            }
+          }
+        }
+      ]
+    },
+    {
+      &quot;description&quot;: &quot;Absolute risk difference: 22 fewer per 1000&quot;,
+      &quot;note&quot;: [
+        {
+          &quot;text&quot;: &quot;Difference: 22 fewer per 1000&quot;
+        }
+      ],
+      &quot;statisticType&quot;: {
+        &quot;coding&quot;: [
+          {
+            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot;,
+            &quot;code&quot;: &quot;absolute-ARD&quot;,
+            &quot;display&quot;: &quot;absolute risk difference&quot;
+          }
+        ]
+      },
+      &quot;quantity&quot;: {
+        &quot;value&quot;: 0.022
+      },
+      &quot;sampleSize&quot;: {
+        &quot;note&quot;: [
+          {
+            &quot;text&quot;: &quot;Based on data from 6438 patients in 9 studies &quot;
+          }
+        ],
+        &quot;numberOfStudies&quot;: 9,
+        &quot;numberOfParticipants&quot;: 6438
+      },
+      &quot;attributeEstimate&quot;: [
+        {
+          &quot;description&quot;: &quot;(CI 95% 0.041 - 0.00)&quot;,
+          &quot;type&quot;: {
+            &quot;coding&quot;: [
+              {
+                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot;,
+                &quot;code&quot;: &quot;CI&quot;,
+                &quot;display&quot;: &quot;confidence interval&quot;
+              }
+            ]
+          },
+          &quot;range&quot;: {
+            &quot;low&quot;: {
+              &quot;value&quot;: 0
+            },
+            &quot;high&quot;: {
+              &quot;value&quot;: 0.041
+            }
+          }
+        }
+      ]
+    }
+  ],
+  &quot;certainty&quot;: [
+    {
+      &quot;description&quot;: &quot;Low, due to serious imprecision and indirectness.&quot;,
+      &quot;rating&quot;: [
+        {
+          &quot;coding&quot;: [
             {
-              &quot;description&quot;: &quot;Corticosteroids&quot;,
-              &quot;variableRole&quot;: &quot;exposure&quot;,
-              &quot;variableDefinition&quot;: {
-                &quot;reference&quot;: &quot;EvidenceVariable-Steroids&quot;,
-                &quot;type&quot;: &quot;EvidenceVariable&quot;,
-                &quot;display&quot;: &quot;Corticosteroids&quot;
-              },
-              &quot;statisticCollection&quot;: [
+              &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-rating&quot;,
+              &quot;code&quot;: &quot;low&quot;,
+              &quot;display&quot;: &quot;Low quality&quot;
+            }
+          ]
+        }
+      ],
+      &quot;certaintySubcomponent&quot;: [
+        {
+          &quot;note&quot;: {
+            &quot;text&quot;: &quot;Note that all studies that reported 90 day to 1 year mortality also reported 28-30 day mortality: the CI 95% around the pooled effect for short term mortality also excludes no effect: RR 0.91 (CI 95% 0.84 - 0.98).&quot;
+          },
+          &quot;type&quot;: [
+            {
+              &quot;coding&quot;: [
                 {
-                  &quot;description&quot;: &quot;349 per 1000&quot;,
-                  &quot;statistic&quot;: [
-                    {
-                      &quot;description&quot;: &quot;349 per 1000&quot;,
-                      &quot;statisticType&quot;: {
-                        &quot;coding&quot;: [
-                          {
-                            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot;,
-                            &quot;code&quot;: &quot;proportion&quot;,
-                            &quot;display&quot;: &quot;proportion&quot;
-                          }
-                        ]
-                      },
-                      &quot;quantity&quot;: {
-                        &quot;value&quot;: 0.349
-                      }
-                    }
-                  ]
-                },
-                {
-                  &quot;description&quot;: &quot;Corticosteroids possibly achieve a small reduction in long-term mortality.&quot;,
-                  &quot;additionalVariable&quot;: [
-                    {
-                      &quot;variableRole&quot;: &quot;exposure&quot;,
-                      &quot;variableDefinition&quot;: {
-                        &quot;reference&quot;: &quot;EvidenceVariable-No-Steroids&quot;,
-                        &quot;type&quot;: &quot;EvidenceVariable&quot;,
-                        &quot;display&quot;: &quot;No corticosteroids&quot;
-                      }
-                    }
-                  ],
-                  &quot;statistic&quot;: [
-                    {
-                      &quot;description&quot;: &quot;Relative risk 0.94&quot;,
-                      &quot;note&quot;: [
-                        {
-                          &quot;text&quot;: &quot;Based on data from 6438 patients in 9 studies &quot;
-                        }
-                      ],
-                      &quot;statisticType&quot;: {
-                        &quot;coding&quot;: [
-                          {
-                            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot;,
-                            &quot;code&quot;: &quot;relative-RR&quot;,
-                            &quot;display&quot;: &quot;relative risk&quot;
-                          }
-                        ]
-                      },
-                      &quot;quantity&quot;: {
-                        &quot;value&quot;: 0.94
-                      },
-                      &quot;sampleSize&quot;: {
-                        &quot;description&quot;: &quot;Based on data from 6438 patients in 9 studies&quot;,
-                        &quot;numberOfStudies&quot;: 9,
-                        &quot;numberOfParticipants&quot;: 6438
-                      },
-                      &quot;precisionEstimate&quot;: [
-                        {
-                          &quot;description&quot;: &quot;(CI 95% 0.89 - 1.00)&quot;,
-                          &quot;type&quot;: {
-                            &quot;coding&quot;: [
-                              {
-                                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot;,
-                                &quot;code&quot;: &quot;CI&quot;,
-                                &quot;display&quot;: &quot;confidence interval&quot;
-                              }
-                            ]
-                          },
-                          &quot;level&quot;: 0.95,
-                          &quot;range&quot;: {
-                            &quot;low&quot;: {
-                              &quot;value&quot;: 0.89
-                            },
-                            &quot;high&quot;: {
-                              &quot;value&quot;: 1
-                            }
-                          }
-                        }
-                      ],
-                      &quot;certainty&quot;: [
-                        {
-                          &quot;description&quot;: &quot;Low, due to serious imprecision and indirectness.&quot;,
-                          &quot;rating&quot;: [
-                            {
-                              &quot;coding&quot;: [
-                                {
-                                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-rating&quot;,
-                                  &quot;code&quot;: &quot;low&quot;,
-                                  &quot;display&quot;: &quot;Low quality&quot;
-                                }
-                              ]
-                            }
-                          ],
-                          &quot;certaintySubcomponent&quot;: [
-                            {
-                              &quot;note&quot;: [
-                                {
-                                  &quot;text&quot;: &quot;Note that all studies that reported 90 day to 1 year mortality also reported 28-30 day mortality: the CI 95% around the pooled effect for short term mortality also excludes no effect: RR 0.91 (CI 95% 0.84 - 0.98).&quot;
-                                }
-                              ],
-                              &quot;type&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
-                                      &quot;code&quot;: &quot;RiskOfBias&quot;,
-                                      &quot;display&quot;: &quot;Risk of bias&quot;
-                                    }
-                                  ]
-                                }
-                              ],
-                              &quot;rating&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
-                                      &quot;code&quot;: &quot;no-concern&quot;,
-                                      &quot;display&quot;: &quot;no serious concern&quot;
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              &quot;type&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
-                                      &quot;code&quot;: &quot;Inconsistency&quot;,
-                                      &quot;display&quot;: &quot;Inconsistency&quot;
-                                    }
-                                  ]
-                                }
-                              ],
-                              &quot;rating&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
-                                      &quot;code&quot;: &quot;no-concern&quot;,
-                                      &quot;display&quot;: &quot;no serious concern&quot;
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              &quot;note&quot;: [
-                                {
-                                  &quot;text&quot;: &quot;Only a small proportion of studies reported longer-term mortality.&quot;
-                                }
-                              ],
-                              &quot;type&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
-                                      &quot;code&quot;: &quot;Indirectness&quot;,
-                                      &quot;display&quot;: &quot;Indirectness&quot;
-                                    }
-                                  ]
-                                }
-                              ],
-                              &quot;rating&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
-                                      &quot;code&quot;: &quot;serious-concern&quot;,
-                                      &quot;display&quot;: &quot;serious concern&quot;
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              &quot;note&quot;: [
-                                {
-                                  &quot;text&quot;: &quot;Confidence interval includes no effect.&quot;
-                                }
-                              ],
-                              &quot;type&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
-                                      &quot;code&quot;: &quot;Imprecision&quot;,
-                                      &quot;display&quot;: &quot;Imprecision&quot;
-                                    }
-                                  ]
-                                }
-                              ],
-                              &quot;rating&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
-                                      &quot;code&quot;: &quot;serious-concern&quot;,
-                                      &quot;display&quot;: &quot;serious concern&quot;
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              &quot;type&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
-                                      &quot;code&quot;: &quot;PublicationBias&quot;,
-                                      &quot;display&quot;: &quot;Publication bias&quot;
-                                    }
-                                  ]
-                                }
-                              ],
-                              &quot;rating&quot;: [
-                                {
-                                  &quot;coding&quot;: [
-                                    {
-                                      &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
-                                      &quot;code&quot;: &quot;no-concern&quot;,
-                                      &quot;display&quot;: &quot;no serious concern&quot;
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
+                  &quot;code&quot;: &quot;RiskOfBias&quot;,
+                  &quot;display&quot;: &quot;Risk of bias&quot;
                 }
               ]
-            },
+            }
+          ],
+          &quot;rating&quot;: [
             {
-              &quot;description&quot;: &quot;No corticosteroids&quot;,
-              &quot;variableDefinition&quot;: {
-                &quot;reference&quot;: &quot;EvidenceVariable-No-Steroids&quot;,
-                &quot;type&quot;: &quot;EvidenceVariable&quot;,
-                &quot;display&quot;: &quot;No corticosteroids&quot;
-              },
-              &quot;statisticCollection&quot;: [
+              &quot;coding&quot;: [
                 {
-                  &quot;description&quot;: &quot;371 per 1000&quot;,
-                  &quot;statistic&quot;: [
-                    {
-                      &quot;description&quot;: &quot;371 per 1000&quot;,
-                      &quot;statisticType&quot;: {
-                        &quot;coding&quot;: [
-                          {
-                            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot;,
-                            &quot;code&quot;: &quot;proportion&quot;,
-                            &quot;display&quot;: &quot;proportion&quot;
-                          }
-                        ]
-                      },
-                      &quot;quantity&quot;: {
-                        &quot;value&quot;: 0.371
-                      }
-                    }
-                  ]
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
+                  &quot;code&quot;: &quot;no-concern&quot;,
+                  &quot;display&quot;: &quot;no serious concern&quot;
+                }
+              ]
+            }
+          ]
+        },
+        {
+          &quot;type&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
+                  &quot;code&quot;: &quot;Inconsistency&quot;,
+                  &quot;display&quot;: &quot;Inconsistency&quot;
+                }
+              ]
+            }
+          ],
+          &quot;rating&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
+                  &quot;code&quot;: &quot;no-concern&quot;,
+                  &quot;display&quot;: &quot;no serious concern&quot;
+                }
+              ]
+            }
+          ]
+        },
+        {
+          &quot;note&quot;: {
+            &quot;text&quot;: &quot;Only a small proportion of studies reported longer-term mortality.&quot;
+          },
+          &quot;type&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
+                  &quot;code&quot;: &quot;Indirectness&quot;,
+                  &quot;display&quot;: &quot;Indirectness&quot;
+                }
+              ]
+            }
+          ],
+          &quot;rating&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
+                  &quot;code&quot;: &quot;serious-concern&quot;,
+                  &quot;display&quot;: &quot;serious concern&quot;
+                }
+              ]
+            }
+          ]
+        },
+        {
+          &quot;note&quot;: {
+            &quot;text&quot;: &quot;Confidence interval includes no effect.&quot;
+          },
+          &quot;type&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
+                  &quot;code&quot;: &quot;Imprecision&quot;,
+                  &quot;display&quot;: &quot;Imprecision&quot;
+                }
+              ]
+            }
+          ],
+          &quot;rating&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
+                  &quot;code&quot;: &quot;serious-concern&quot;,
+                  &quot;display&quot;: &quot;serious concern&quot;
+                }
+              ]
+            }
+          ]
+        },
+        {
+          &quot;type&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot;,
+                  &quot;code&quot;: &quot;PublicationBias&quot;,
+                  &quot;display&quot;: &quot;Publication bias&quot;
+                }
+              ]
+            }
+          ],
+          &quot;rating&quot;: [
+            {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot;,
+                  &quot;code&quot;: &quot;no-concern&quot;,
+                  &quot;display&quot;: &quot;no serious concern&quot;
                 }
               ]
             }
@@ -478,7 +533,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:00-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

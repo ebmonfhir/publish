@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Evidence.profile.json</h1>
@@ -118,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Evidence&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-06-04T14:04:39.144-05:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-07-18T11:53:20.879-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -148,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Evidence&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-06-04T14:04:39-05:00&quot;,
+  &quot;date&quot; : &quot;2019-07-18T11:53:20-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Clinical Decision Support)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -162,7 +164,7 @@
       &quot;value&quot; : &quot;http://www.hl7.org/Special/committees/dss/index.cfm&quot;
     }]
   }],
-  &quot;description&quot; : &quot;The representation of a collection of statistics for a given population and set of evidence variables.&quot;,
+  &quot;description&quot; : &quot;This represents statistics, certainty, both the intended and actual population, and evidence variables.&quot;,
   &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
     &quot;identity&quot; : &quot;workflow&quot;,
@@ -175,14 +177,14 @@
     &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
   },
   {
-    &quot;identity&quot; : &quot;rim&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
-    &quot;name&quot; : &quot;RIM Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;objimpl&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/fhir/object-implementation&quot;,
     &quot;name&quot; : &quot;Object Implementation Information&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;rim&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
+    &quot;name&quot; : &quot;RIM Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -199,8 +201,8 @@
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Evidence&quot;,
       &quot;path&quot; : &quot;Evidence&quot;,
-      &quot;short&quot; : &quot;A collection of evidence focused statistics, considered a summary of evidence&quot;,
-      &quot;definition&quot; : &quot;The representation of a collection of statistics for a given population and set of evidence variables.&quot;,
+      &quot;short&quot; : &quot;Single evidence bit&quot;,
+      &quot;definition&quot; : &quot;This represents statistics, certainty, both the intended and actual population, and evidence variables.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -268,10 +270,6 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Entity. Role, or Act&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;Definition&quot;
       }]
     },
     {
@@ -498,10 +496,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.url&quot;
       }]
     },
     {
@@ -525,15 +519,11 @@
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
+        &quot;map&quot; : &quot;Definition.identifier&quot;
       },
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.identifier&quot;
       },
       {
         &quot;identity&quot; : &quot;objimpl&quot;,
@@ -565,10 +555,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.version&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.version&quot;
       }]
     },
     {
@@ -592,47 +578,7 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
         &quot;map&quot; : &quot;Definition.title&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.title&quot;
       }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.shortTitle&quot;,
-      &quot;path&quot; : &quot;Evidence.shortTitle&quot;,
-      &quot;short&quot; : &quot;Shortened title for this summary&quot;,
-      &quot;definition&quot; : &quot;Shortened title for this summary.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.shortTitle&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.subTitle&quot;,
-      &quot;path&quot; : &quot;Evidence.subTitle&quot;,
-      &quot;short&quot; : &quot;Summary subtitle&quot;,
-      &quot;definition&quot; : &quot;Summary subtitle.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.subTitle&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
     },
     {
       &quot;id&quot; : &quot;Evidence.status&quot;,
@@ -673,16 +619,12 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.status&quot;
       }]
     },
     {
       &quot;id&quot; : &quot;Evidence.useContext&quot;,
       &quot;path&quot; : &quot;Evidence.useContext&quot;,
-      &quot;short&quot; : &quot;Use contetxt&quot;,
+      &quot;short&quot; : &quot;Use context&quot;,
       &quot;definition&quot; : &quot;The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.&quot;,
       &quot;comment&quot; : &quot;When multiple useContexts are specified, there is no expectation that all or any of the contexts apply.&quot;,
       &quot;requirements&quot; : &quot;Assist in searching for appropriate content.&quot;,
@@ -709,8 +651,7 @@
       &quot;short&quot; : &quot;Date last changed&quot;,
       &quot;definition&quot; : &quot;The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.&quot;,
       &quot;comment&quot; : &quot;Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the summary. Additional specific dates may be added as extensions or be found by consulting Provenances associated with past versions of the resource.&quot;,
-      &quot;alias&quot; : [&quot;Revision Date&quot;,
-      &quot;Revision Date&quot;],
+      &quot;alias&quot; : [&quot;Revision Date&quot;],
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -730,39 +671,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.recorded&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.date&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.copyright&quot;,
-      &quot;path&quot; : &quot;Evidence.copyright&quot;,
-      &quot;short&quot; : &quot;Summary copyright notice&quot;,
-      &quot;definition&quot; : &quot;A copyright statement relating to the evidence and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence.&quot;,
-      &quot;requirements&quot; : &quot;Consumers must be able to determine any legal restrictions on the use of the evidence and/or its content.&quot;,
-      &quot;alias&quot; : [&quot;License&quot;,
-      &quot;Restrictions&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.copyright&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;Definition.copyright&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;objimpl&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
       }]
     },
     {
@@ -785,10 +693,6 @@
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Definition.approvalDate&quot;
       },
       {
@@ -817,154 +721,12 @@
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Definition.lastReviewDate&quot;
       },
       {
         &quot;identity&quot; : &quot;objimpl&quot;,
         &quot;map&quot; : &quot;no-gen-base&quot;
       }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher&quot;,
-      &quot;short&quot; : &quot;Evidence publisher&quot;,
-      &quot;definition&quot; : &quot;Evidence publisher.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.summaryPublisher&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.id&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.name&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.name&quot;,
-      &quot;short&quot; : &quot;Publisher name&quot;,
-      &quot;definition&quot; : &quot;Publisher name.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.summaryPublisher.name&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.contact&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.contact&quot;,
-      &quot;short&quot; : &quot;Pubblisher contact information&quot;,
-      &quot;definition&quot; : &quot;Pubblisher contact information.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.summaryPublisher.contact&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;ContactDetail&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
     },
     {
       &quot;id&quot; : &quot;Evidence.contributor&quot;,
@@ -1026,6 +788,24 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;Evidence.assertion&quot;,
+      &quot;path&quot; : &quot;Evidence.assertion&quot;,
+      &quot;short&quot; : &quot;Declarative description of the Evidence&quot;,
+      &quot;definition&quot; : &quot;Declarative description of the Evidence.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.assertion&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
       &quot;id&quot; : &quot;Evidence.note&quot;,
       &quot;path&quot; : &quot;Evidence.note&quot;,
       &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
@@ -1042,6 +822,440 @@
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup&quot;,
+      &quot;short&quot; : &quot;Group being referenced&quot;,
+      &quot;definition&quot; : &quot;Group being referenced.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;constraint&quot; : [{
+        &quot;key&quot; : &quot;ele-1&quot;,
+        &quot;severity&quot; : &quot;error&quot;,
+        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
+        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
+        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
+        &quot;source&quot; : &quot;Element&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.id&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.id&quot;,
+      &quot;representation&quot; : [&quot;xmlAttr&quot;],
+      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
+      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.extension&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.extension&quot;,
+      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.extension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.modifierExtension&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.modifierExtension&quot;,
+      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;,
+      &quot;modifiers&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.description&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.description&quot;,
+      &quot;short&quot; : &quot;Textual description of referent group&quot;,
+      &quot;definition&quot; : &quot;Textual description of referent group.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup.description&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.note&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.note&quot;,
+      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
+      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup.note&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.evidenceSource&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.evidenceSource&quot;,
+      &quot;short&quot; : &quot;Various information categories of group&quot;,
+      &quot;definition&quot; : &quot;Various information categories of group.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup.evidenceSource&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/EvidenceSet&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.intendedGroup&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.intendedGroup&quot;,
+      &quot;short&quot; : &quot;Non-actual group that is a set of characteristics&quot;,
+      &quot;definition&quot; : &quot;Non-actual group that is a set of characteristics.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup.intendedGroup&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.directnessMatch&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.directnessMatch&quot;,
+      &quot;short&quot; : &quot;low | moderate | high | exact&quot;,
+      &quot;definition&quot; : &quot;Indication of quality of match between intended group to actual group.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.referentGroup.directnessMatch&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceDirectness&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The quality of how direct the match is.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/directness&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition&quot;,
+      &quot;short&quot; : &quot;Evidence variable&quot;,
+      &quot;definition&quot; : &quot;Evidence variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;constraint&quot; : [{
+        &quot;key&quot; : &quot;ele-1&quot;,
+        &quot;severity&quot; : &quot;error&quot;,
+        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
+        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
+        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
+        &quot;source&quot; : &quot;Element&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.id&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.id&quot;,
+      &quot;representation&quot; : [&quot;xmlAttr&quot;],
+      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
+      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.extension&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.extension&quot;,
+      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.extension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.modifierExtension&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.modifierExtension&quot;,
+      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;,
+      &quot;modifiers&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.description&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.description&quot;,
+      &quot;short&quot; : &quot;Description of the variable&quot;,
+      &quot;definition&quot; : &quot;Description of the variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.description&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.note&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.note&quot;,
+      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
+      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.note&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.variableRole&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.variableRole&quot;,
+      &quot;short&quot; : &quot;exposure | referenceExposure | measuredVariable | confounder&quot;,
+      &quot;definition&quot; : &quot;exposure | referenceExposure | measuredVariable | confounder.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.variableRole&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The role that the assertion variable plays.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.actualDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.actualDefinition&quot;,
+      &quot;short&quot; : &quot;Definition of the actual variable related to the statistic(s)&quot;,
+      &quot;definition&quot; : &quot;Definition of the actual variable related to the statistic(s).&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.actualDefinition&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.intendedDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.intendedDefinition&quot;,
+      &quot;short&quot; : &quot;Definition of the intended variable related to the Evidence&quot;,
+      &quot;definition&quot; : &quot;Definition of the intended variable related to the Evidence.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.intendedDefinition&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.directnessMatch&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.directnessMatch&quot;,
+      &quot;short&quot; : &quot;low | moderate | high | exact&quot;,
+      &quot;definition&quot; : &quot;Indication of quality of match between intended variable to actual variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.variableDefinition.directnessMatch&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceDirectness&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The quality of how direct the match is.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/directness&quot;
+      }
     },
     {
       &quot;id&quot; : &quot;Evidence.synthesisType&quot;,
@@ -1098,778 +1312,32 @@
       }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population&quot;,
-      &quot;path&quot; : &quot;Evidence.population&quot;,
-      &quot;short&quot; : &quot;The population being summarized&quot;,
-      &quot;definition&quot; : &quot;The population being summarized.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population&quot;,
-      &quot;definition&quot; : &quot;Textual description of population.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.intendedCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.intendedCohort&quot;,
-      &quot;short&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study&quot;,
-      &quot;definition&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.intendedCohort&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleCohort&quot;,
-      &quot;short&quot; : &quot;Summary statistics describing the actual group for this population&quot;,
-      &quot;definition&quot; : &quot;Summary statistics describing the actual group for this population.&quot;,
-      &quot;comment&quot; : &quot;The target reference must conform to the CohortSummary profile.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleCohort&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Evidence&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.actualCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.actualCohort&quot;,
-      &quot;short&quot; : &quot;The actual group (ie list of members) for this population&quot;,
-      &quot;definition&quot; : &quot;The actual group (ie list of members) for this population.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.actualCohort&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize&quot;,
-      &quot;short&quot; : &quot;Sample size for the population&quot;,
-      &quot;definition&quot; : &quot;Sample size for the population.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleSize&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population sample&quot;,
-      &quot;definition&quot; : &quot;Textual description of population sample.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleSize.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleSize.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.numberOfStudies&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfStudies&quot;,
-      &quot;short&quot; : &quot;Number of studies included in sample&quot;,
-      &quot;definition&quot; : &quot;Number of studies included in sample.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfStudies&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;integer&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.numberOfParticipants&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfParticipants&quot;,
-      &quot;short&quot; : &quot;Total number of participants in sample&quot;,
-      &quot;definition&quot; : &quot;Total number of participants in sample.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfParticipants&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;integer&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable&quot;,
-      &quot;short&quot; : &quot;Evidence variable&quot;,
-      &quot;definition&quot; : &quot;Evidence variable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.description&quot;,
-      &quot;short&quot; : &quot;Description of the variable&quot;,
-      &quot;definition&quot; : &quot;Description of the variable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableRole&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-      &quot;short&quot; : &quot;Set of statistics&quot;,
-      &quot;definition&quot; : &quot;Set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot;,
-      &quot;short&quot; : &quot;Textual description related to the set of statistics&quot;,
-      &quot;definition&quot; : &quot;Textual description related to the set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-      &quot;short&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
-      &quot;definition&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticSynthesisType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;Types of combining results from a body of evidence (eg. summary data meta-analysis).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/synthesis-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.studyType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.studyType&quot;,
-      &quot;short&quot; : &quot;The type of study&quot;,
-      &quot;definition&quot; : &quot;The type of study.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.studyType&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticStudyType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The type of study a statistic was derived from.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/study-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
+      &quot;id&quot; : &quot;Evidence.statistic&quot;,
+      &quot;path&quot; : &quot;Evidence.statistic&quot;,
       &quot;short&quot; : &quot;Values and parameters for a single statistic&quot;,
-      &quot;definition&quot; : &quot;Values and parameters for a single statistic.&quot;,
-      &quot;min&quot; : 1,
+      &quot;definition&quot; : &quot;The statistic value(s).&quot;,
+      &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
-        &quot;min&quot; : 1,
+        &quot;path&quot; : &quot;Evidence.statistic&quot;,
+        &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Statistic&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
+      &quot;id&quot; : &quot;Evidence.distribution&quot;,
+      &quot;path&quot; : &quot;Evidence.distribution&quot;,
       &quot;short&quot; : &quot;An ordered group of statistics&quot;,
-      &quot;definition&quot; : &quot;An ordered group of statistics.&quot;,
+      &quot;definition&quot; : &quot;Ordered distribution.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
+        &quot;path&quot; : &quot;Evidence.distribution&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -1880,14 +1348,14 @@
       &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
-      &quot;short&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable&quot;,
-      &quot;definition&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty&quot;,
+      &quot;short&quot; : &quot;Level of certainty&quot;,
+      &quot;definition&quot; : &quot;Level of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -1906,8 +1374,8 @@
       &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.id&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.id&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.id&quot;,
       &quot;representation&quot; : [&quot;xmlAttr&quot;],
       &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
       &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
@@ -1929,8 +1397,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.extension&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.extension&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.extension&quot;,
       &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -1954,8 +1422,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.modifierExtension&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.modifierExtension&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.modifierExtension&quot;,
       &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -1982,123 +1450,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.description&quot;,
-      &quot;short&quot; : &quot;Description of the variable&quot;,
-      &quot;definition&quot; : &quot;Description of the variable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.description&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.description&quot;,
+      &quot;short&quot; : &quot;Textual description of certainty&quot;,
+      &quot;definition&quot; : &quot;Textual description of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableRole&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-      &quot;short&quot; : &quot;Set of statistics&quot;,
-      &quot;definition&quot; : &quot;Set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.description&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -2106,94 +1465,19 @@
         &quot;code&quot; : &quot;string&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.extension&quot;,
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.modifierExtension&quot;,
-      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;,
-      &quot;modifiers&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : true,
-      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;N/A&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot;,
-      &quot;short&quot; : &quot;Textual description related to the set of statistics&quot;,
-      &quot;definition&quot; : &quot;Textual description related to the set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.note&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.note&quot;,
       &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
       &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.note&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
@@ -2202,16 +1486,16 @@
       &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
-      &quot;short&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
-      &quot;definition&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.rating&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.rating&quot;,
+      &quot;short&quot; : &quot;Rating of certainty&quot;,
+      &quot;definition&quot; : &quot;Rating of certainty.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.rating&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -2221,49 +1505,22 @@
       &quot;binding&quot; : {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticSynthesisType&quot;
+          &quot;valueString&quot; : &quot;StatisticCertaintyRating&quot;
         }],
         &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;Types of combining results from a body of evidence (eg. summary data meta-analysis).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/synthesis-type&quot;
+        &quot;description&quot; : &quot;The relative quality of the statistic.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-rating&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType&quot;,
-      &quot;short&quot; : &quot;The type of study&quot;,
-      &quot;definition&quot; : &quot;The type of study.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticStudyType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The type of study a statistic was derived from.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/study-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
-      &quot;short&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables&quot;,
-      &quot;definition&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent&quot;,
+      &quot;short&quot; : &quot;Subcomponent of certainty&quot;,
+      &quot;definition&quot; : &quot;Subcomponent of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -2282,8 +1539,8 @@
       &quot;isSummary&quot; : false
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.id&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.id&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.id&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.id&quot;,
       &quot;representation&quot; : [&quot;xmlAttr&quot;],
       &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
       &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
@@ -2305,8 +1562,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.extension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.extension&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.extension&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.extension&quot;,
       &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -2330,8 +1587,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.modifierExtension&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.modifierExtension&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.modifierExtension&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.modifierExtension&quot;,
       &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -2358,94 +1615,102 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.description&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.description&quot;,
+      &quot;short&quot; : &quot;Textual description of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Textual description of certainty subcomponent.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.description&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.note&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.note&quot;,
+      &quot;short&quot; : &quot;Textual note of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Textual note of certainty subcomponent.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.note&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.type&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.type&quot;,
+      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
+      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.type&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
       &quot;binding&quot; : {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
+          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentType&quot;
         }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The subcomponent classification of quality of evidence rating systems.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-type&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-      &quot;short&quot; : &quot;Values and parameters for a single statistic&quot;,
-      &quot;definition&quot; : &quot;Values and parameters for a single statistic.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-        &quot;min&quot; : 1,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Statistic&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
-      &quot;short&quot; : &quot;An ordered group of statistics&quot;,
-      &quot;definition&quot; : &quot;An ordered group of statistics.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.rating&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.rating&quot;,
+      &quot;short&quot; : &quot;Rating of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Rating of certainty subcomponent.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
+        &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.rating&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;OrderedDistribution&quot;
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false
+      &quot;isSummary&quot; : false,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentRating&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The quality rating of the subcomponent of a quality of evidence rating.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating&quot;
+      }
     }]
   },
   &quot;differential&quot; : {
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Evidence&quot;,
       &quot;path&quot; : &quot;Evidence&quot;,
-      &quot;short&quot; : &quot;A collection of evidence focused statistics, considered a summary of evidence&quot;,
-      &quot;definition&quot; : &quot;The representation of a collection of statistics for a given population and set of evidence variables.&quot;,
+      &quot;short&quot; : &quot;Single evidence bit&quot;,
+      &quot;definition&quot; : &quot;This represents statistics, certainty, both the intended and actual population, and evidence variables.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;constraint&quot; : [{
@@ -2454,10 +1719,6 @@
         &quot;human&quot; : &quot;Name should be usable as an identifier for the module by machine processing applications such as code generation&quot;,
         &quot;expression&quot; : &quot;name.matches('[A-Z]([A-Za-z0-9_]){0,254}')&quot;,
         &quot;xpath&quot; : &quot;not(exists(f:name/@value)) or matches(f:name/@value, '[A-Z]([A-Za-z0-9_]){0,254}')&quot;
-      }],
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;Definition&quot;
       }]
     },
     {
@@ -2480,10 +1741,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.url&quot;
       }]
     },
     {
@@ -2501,15 +1758,11 @@
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
+        &quot;map&quot; : &quot;Definition.identifier&quot;
       },
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.identifier&quot;
       },
       {
         &quot;identity&quot; : &quot;objimpl&quot;,
@@ -2535,10 +1788,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.version&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.version&quot;
       }]
     },
     {
@@ -2556,32 +1805,6 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
         &quot;map&quot; : &quot;Definition.title&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.title&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.shortTitle&quot;,
-      &quot;path&quot; : &quot;Evidence.shortTitle&quot;,
-      &quot;short&quot; : &quot;Shortened title for this summary&quot;,
-      &quot;definition&quot; : &quot;Shortened title for this summary.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.subTitle&quot;,
-      &quot;path&quot; : &quot;Evidence.subTitle&quot;,
-      &quot;short&quot; : &quot;Summary subtitle&quot;,
-      &quot;definition&quot; : &quot;Summary subtitle.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
       }]
     },
     {
@@ -2618,16 +1841,12 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.status&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.status&quot;
       }]
     },
     {
       &quot;id&quot; : &quot;Evidence.useContext&quot;,
       &quot;path&quot; : &quot;Evidence.useContext&quot;,
-      &quot;short&quot; : &quot;Use contetxt&quot;,
+      &quot;short&quot; : &quot;Use context&quot;,
       &quot;definition&quot; : &quot;The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate evidence instances.&quot;,
       &quot;comment&quot; : &quot;When multiple useContexts are specified, there is no expectation that all or any of the contexts apply.&quot;,
       &quot;requirements&quot; : &quot;Assist in searching for appropriate content.&quot;,
@@ -2648,8 +1867,7 @@
       &quot;short&quot; : &quot;Date last changed&quot;,
       &quot;definition&quot; : &quot;The date  (and optionally time) when the summary was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the summary changes.&quot;,
       &quot;comment&quot; : &quot;Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the summary. Additional specific dates may be added as extensions or be found by consulting Provenances associated with past versions of the resource.&quot;,
-      &quot;alias&quot; : [&quot;Revision Date&quot;,
-      &quot;Revision Date&quot;],
+      &quot;alias&quot; : [&quot;Revision Date&quot;],
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -2663,32 +1881,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.recorded&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Definition.date&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.copyright&quot;,
-      &quot;path&quot; : &quot;Evidence.copyright&quot;,
-      &quot;short&quot; : &quot;Summary copyright notice&quot;,
-      &quot;definition&quot; : &quot;A copyright statement relating to the evidence and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the evidence.&quot;,
-      &quot;requirements&quot; : &quot;Consumers must be able to determine any legal restrictions on the use of the evidence and/or its content.&quot;,
-      &quot;alias&quot; : [&quot;License&quot;,
-      &quot;Restrictions&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }],
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;Definition.copyright&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;objimpl&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
       }]
     },
     {
@@ -2704,10 +1896,6 @@
       }],
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Definition.approvalDate&quot;
       },
       {
@@ -2729,49 +1917,11 @@
       }],
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;no-gen-base&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;Definition.lastReviewDate&quot;
       },
       {
         &quot;identity&quot; : &quot;objimpl&quot;,
         &quot;map&quot; : &quot;no-gen-base&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher&quot;,
-      &quot;short&quot; : &quot;Evidence publisher&quot;,
-      &quot;definition&quot; : &quot;Evidence publisher.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.name&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.name&quot;,
-      &quot;short&quot; : &quot;Publisher name&quot;,
-      &quot;definition&quot; : &quot;Publisher name.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.summaryPublisher.contact&quot;,
-      &quot;path&quot; : &quot;Evidence.summaryPublisher.contact&quot;,
-      &quot;short&quot; : &quot;Pubblisher contact information&quot;,
-      &quot;definition&quot; : &quot;Pubblisher contact information.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;ContactDetail&quot;
       }]
     },
     {
@@ -2813,6 +1963,17 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;Evidence.assertion&quot;,
+      &quot;path&quot; : &quot;Evidence.assertion&quot;,
+      &quot;short&quot; : &quot;Declarative description of the Evidence&quot;,
+      &quot;definition&quot; : &quot;Declarative description of the Evidence.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }]
+    },
+    {
       &quot;id&quot; : &quot;Evidence.note&quot;,
       &quot;path&quot; : &quot;Evidence.note&quot;,
       &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
@@ -2822,6 +1983,184 @@
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup&quot;,
+      &quot;short&quot; : &quot;Group being referenced&quot;,
+      &quot;definition&quot; : &quot;Group being referenced.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.description&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.description&quot;,
+      &quot;short&quot; : &quot;Textual description of referent group&quot;,
+      &quot;definition&quot; : &quot;Textual description of referent group.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.note&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.note&quot;,
+      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
+      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.evidenceSource&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.evidenceSource&quot;,
+      &quot;short&quot; : &quot;Various information categories of group&quot;,
+      &quot;definition&quot; : &quot;Various information categories of group.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/EvidenceSet&quot;]
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.intendedGroup&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.intendedGroup&quot;,
+      &quot;short&quot; : &quot;Non-actual group that is a set of characteristics&quot;,
+      &quot;definition&quot; : &quot;Non-actual group that is a set of characteristics.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.referentGroup.directnessMatch&quot;,
+      &quot;path&quot; : &quot;Evidence.referentGroup.directnessMatch&quot;,
+      &quot;short&quot; : &quot;low | moderate | high | exact&quot;,
+      &quot;definition&quot; : &quot;Indication of quality of match between intended group to actual group.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceDirectness&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The quality of how direct the match is.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/directness&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition&quot;,
+      &quot;short&quot; : &quot;Evidence variable&quot;,
+      &quot;definition&quot; : &quot;Evidence variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.description&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.description&quot;,
+      &quot;short&quot; : &quot;Description of the variable&quot;,
+      &quot;definition&quot; : &quot;Description of the variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;markdown&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.note&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.note&quot;,
+      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
+      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.variableRole&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.variableRole&quot;,
+      &quot;short&quot; : &quot;exposure | referenceExposure | measuredVariable | confounder&quot;,
+      &quot;definition&quot; : &quot;exposure | referenceExposure | measuredVariable | confounder.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The role that the assertion variable plays.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.actualDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.actualDefinition&quot;,
+      &quot;short&quot; : &quot;Definition of the actual variable related to the statistic(s)&quot;,
+      &quot;definition&quot; : &quot;Definition of the actual variable related to the statistic(s).&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.intendedDefinition&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.intendedDefinition&quot;,
+      &quot;short&quot; : &quot;Definition of the intended variable related to the Evidence&quot;,
+      &quot;definition&quot; : &quot;Definition of the intended variable related to the Evidence.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Evidence.variableDefinition.directnessMatch&quot;,
+      &quot;path&quot; : &quot;Evidence.variableDefinition.directnessMatch&quot;,
+      &quot;short&quot; : &quot;low | moderate | high | exact&quot;,
+      &quot;definition&quot; : &quot;Indication of quality of match between intended variable to actual variable.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;EvidenceDirectness&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The quality of how direct the match is.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/directness&quot;
+      }
     },
     {
       &quot;id&quot; : &quot;Evidence.synthesisType&quot;,
@@ -2864,81 +2203,32 @@
       }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population&quot;,
-      &quot;path&quot; : &quot;Evidence.population&quot;,
-      &quot;short&quot; : &quot;The population being summarized&quot;,
-      &quot;definition&quot; : &quot;The population being summarized.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population&quot;,
-      &quot;definition&quot; : &quot;Textual description of population.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;id&quot; : &quot;Evidence.statistic&quot;,
+      &quot;path&quot; : &quot;Evidence.statistic&quot;,
+      &quot;short&quot; : &quot;Values and parameters for a single statistic&quot;,
+      &quot;definition&quot; : &quot;The statistic value(s).&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
+        &quot;code&quot; : &quot;Statistic&quot;
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.intendedCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.intendedCohort&quot;,
-      &quot;short&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study&quot;,
-      &quot;definition&quot; : &quot;Descriptive (not actual) expression of the population this evidence is about, eg inclusion criteria for research study.&quot;,
+      &quot;id&quot; : &quot;Evidence.distribution&quot;,
+      &quot;path&quot; : &quot;Evidence.distribution&quot;,
+      &quot;short&quot; : &quot;An ordered group of statistics&quot;,
+      &quot;definition&quot; : &quot;Ordered distribution.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
+        &quot;code&quot; : &quot;OrderedDistribution&quot;
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.sampleCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleCohort&quot;,
-      &quot;short&quot; : &quot;Summary statistics describing the actual group for this population&quot;,
-      &quot;definition&quot; : &quot;Summary statistics describing the actual group for this population.&quot;,
-      &quot;comment&quot; : &quot;The target reference must conform to the CohortSummary profile.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Evidence&quot;]
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.actualCohort&quot;,
-      &quot;path&quot; : &quot;Evidence.population.actualCohort&quot;,
-      &quot;short&quot; : &quot;The actual group (ie list of members) for this population&quot;,
-      &quot;definition&quot; : &quot;The actual group (ie list of members) for this population.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Group&quot;]
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize&quot;,
-      &quot;short&quot; : &quot;Sample size for the population&quot;,
-      &quot;definition&quot; : &quot;Sample size for the population.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty&quot;,
+      &quot;short&quot; : &quot;Level of certainty&quot;,
+      &quot;definition&quot; : &quot;Level of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -2946,10 +2236,10 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population sample&quot;,
-      &quot;definition&quot; : &quot;Textual description of population sample.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.description&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.description&quot;,
+      &quot;short&quot; : &quot;Textual description of certainty&quot;,
+      &quot;definition&quot; : &quot;Textual description of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -2957,205 +2247,41 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.note&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.note&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.note&quot;,
       &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
       &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.numberOfStudies&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfStudies&quot;,
-      &quot;short&quot; : &quot;Number of studies included in sample&quot;,
-      &quot;definition&quot; : &quot;Number of studies included in sample.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;integer&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.sampleSize.numberOfParticipants&quot;,
-      &quot;path&quot; : &quot;Evidence.population.sampleSize.numberOfParticipants&quot;,
-      &quot;short&quot; : &quot;Total number of participants in sample&quot;,
-      &quot;definition&quot; : &quot;Total number of participants in sample.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;integer&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable&quot;,
-      &quot;short&quot; : &quot;Evidence variable&quot;,
-      &quot;definition&quot; : &quot;Evidence variable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.rating&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.rating&quot;,
+      &quot;short&quot; : &quot;Rating of certainty&quot;,
+      &quot;definition&quot; : &quot;Rating of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.description&quot;,
-      &quot;short&quot; : &quot;Description of the variable&quot;,
-      &quot;definition&quot; : &quot;Description of the variable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection&quot;,
-      &quot;short&quot; : &quot;Set of statistics&quot;,
-      &quot;definition&quot; : &quot;Set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.description&quot;,
-      &quot;short&quot; : &quot;Textual description related to the set of statistics&quot;,
-      &quot;definition&quot; : &quot;Textual description related to the set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.synthesisType&quot;,
-      &quot;short&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
-      &quot;definition&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;binding&quot; : {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticSynthesisType&quot;
+          &quot;valueString&quot; : &quot;StatisticCertaintyRating&quot;
         }],
         &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;Types of combining results from a body of evidence (eg. summary data meta-analysis).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/synthesis-type&quot;
+        &quot;description&quot; : &quot;The relative quality of the statistic.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-rating&quot;
       }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.studyType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.studyType&quot;,
-      &quot;short&quot; : &quot;The type of study&quot;,
-      &quot;definition&quot; : &quot;The type of study.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticStudyType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The type of study a statistic was derived from.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/study-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.statistic&quot;,
-      &quot;short&quot; : &quot;Values and parameters for a single statistic&quot;,
-      &quot;definition&quot; : &quot;Values and parameters for a single statistic.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Statistic&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.statisticCollection.distribution&quot;,
-      &quot;short&quot; : &quot;An ordered group of statistics&quot;,
-      &quot;definition&quot; : &quot;An ordered group of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;OrderedDistribution&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable&quot;,
-      &quot;short&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable&quot;,
-      &quot;definition&quot; : &quot;An evidence variable, nested for denoting that statistics relate to both this variable and the previously noted variable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent&quot;,
+      &quot;short&quot; : &quot;Subcomponent of certainty&quot;,
+      &quot;definition&quot; : &quot;Subcomponent of certainty.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -3163,199 +2289,66 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.description&quot;,
-      &quot;short&quot; : &quot;Description of the variable&quot;,
-      &quot;definition&quot; : &quot;Description of the variable.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.description&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.description&quot;,
+      &quot;short&quot; : &quot;Textual description of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Textual description of certainty subcomponent.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
+        &quot;code&quot; : &quot;string&quot;
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.note&quot;,
-      &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
-      &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.note&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.note&quot;,
+      &quot;short&quot; : &quot;Textual note of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Textual note of certainty subcomponent.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
       }]
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection&quot;,
-      &quot;short&quot; : &quot;Set of statistics&quot;,
-      &quot;definition&quot; : &quot;Set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description&quot;,
-      &quot;short&quot; : &quot;Textual description related to the set of statistics&quot;,
-      &quot;definition&quot; : &quot;Textual description related to the set of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;markdown&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.type&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.type&quot;,
       &quot;short&quot; : &quot;Footnotes and/or explanatory notes&quot;,
       &quot;definition&quot; : &quot;Footnotes and/or explanatory notes.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }]
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentType&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;The subcomponent classification of quality of evidence rating systems.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-type&quot;
+      }
     },
     {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType&quot;,
-      &quot;short&quot; : &quot;The particular type of synthesis if this is a synthesis summary&quot;,
-      &quot;definition&quot; : &quot;The particular type of synthesis if this is a synthesis summary.&quot;,
+      &quot;id&quot; : &quot;Evidence.certainty.certaintySubcomponent.rating&quot;,
+      &quot;path&quot; : &quot;Evidence.certainty.certaintySubcomponent.rating&quot;,
+      &quot;short&quot; : &quot;Rating of certainty subcomponent&quot;,
+      &quot;definition&quot; : &quot;Rating of certainty subcomponent.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;binding&quot; : {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticSynthesisType&quot;
+          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentRating&quot;
         }],
         &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;Types of combining results from a body of evidence (eg. summary data meta-analysis).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/synthesis-type&quot;
+        &quot;description&quot; : &quot;The quality rating of the subcomponent of a quality of evidence rating.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating&quot;
       }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType&quot;,
-      &quot;short&quot; : &quot;The type of study&quot;,
-      &quot;definition&quot; : &quot;The type of study.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticStudyType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The type of study a statistic was derived from.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/study-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable&quot;,
-      &quot;short&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables&quot;,
-      &quot;definition&quot; : &quot;An evidence variable, nested for denoting that statistics relate to this variable, any additional variables, plus the two previously noted variables.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole&quot;,
-      &quot;short&quot; : &quot;exposure | measuredVariable&quot;,
-      &quot;definition&quot; : &quot;exposure | measuredVariable.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;code&quot;
-      }],
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;EvidenceVariableRole&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The role that the evidence variable plays.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/variable-role|4.1.0&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition&quot;,
-      &quot;short&quot; : &quot;Definition of a variable related to the statistic(s)&quot;,
-      &quot;definition&quot; : &quot;Definition of a variable related to the statistic(s).&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/EvidenceVariable&quot;]
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic&quot;,
-      &quot;short&quot; : &quot;Values and parameters for a single statistic&quot;,
-      &quot;definition&quot; : &quot;Values and parameters for a single statistic.&quot;,
-      &quot;min&quot; : 1,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Statistic&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
-      &quot;path&quot; : &quot;Evidence.population.evidenceVariable.nestedVariable.statisticCollection.distribution&quot;,
-      &quot;short&quot; : &quot;An ordered group of statistics&quot;,
-      &quot;definition&quot; : &quot;An ordered group of statistics.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;OrderedDistribution&quot;
-      }]
     }]
   }
 }
@@ -3383,7 +2376,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Tue, Jun 4, 2019 14:08-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:00-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

@@ -9,6 +9,7 @@ RUN apt-get -y update && \
     git clone https://github.com/ebmonfhir/publish && \
      sed -i 's#/usr/share/nginx/html;#/publish/image;#' /etc/nginx/conf.d/default.conf
 
+RUN cd publish && git checkout EvidenceSet
 
 # Get am image of vim into the container
 RUN apt-get install apt-file -y && \

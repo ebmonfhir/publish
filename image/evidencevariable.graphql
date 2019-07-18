@@ -1,5 +1,7 @@
 # FHIR GraphQL Schema. Version 4.1.0
 
+# import the types from 'types.graphql'
+
 type EvidenceVariable {
   id: ID
   meta: Meta
@@ -48,6 +50,8 @@ type EvidenceVariableCharacteristic {
   definitionExpression: Expression
   definitionDataRequirement: DataRequirement
   definitionTriggerDefinition: TriggerDefinition
+  method: CodeableConcept
+  device: Reference
   usageContext: [UsageContext]
   exclude: Boolean  _exclude: ElementBase
   participantEffectiveDateTime: dateTime  _participantEffectiveDateTime: ElementBase
@@ -106,6 +110,8 @@ input EvidenceVariableCharacteristicInput {
   definitionExpression: ExpressionInput
   definitionDataRequirement: DataRequirementInput
   definitionTriggerDefinition: TriggerDefinitionInput
+  method: CodeableConceptInput
+  device: ReferenceInput
   usageContext: [UsageContextInput]
   exclude: Boolean  _exclude: ElementBase
   participantEffectiveDateTime: dateTime  _participantEffectiveDateTime: ElementBase

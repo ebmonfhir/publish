@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for MedicationAdministration.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:723b73a6-5a7e-40fb-bbe8-5059e3ed09b8",
-      "timestamp" : "2019-05-31T13:25:15-05:00",
+      "identifier" : "urn:uuid:b19a2a78-ec62-4de5-89d9-7fe4fa93d380",
+      "timestamp" : "2019-07-18T12:01:39-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -25,12 +25,12 @@
   {
     "resourceType" : "ValueSet",
     "id" : "vs3",
-    "name" : "Type options for MedicationAdministration.effective[x]",
+    "name" : "Type options for MedicationAdministration.occurence[x]",
     "status" : "active",
-    "description" : "Type options for MedicationAdministration.effective[x]",
+    "description" : "Type options for MedicationAdministration.occurence[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:c80c858c-4bc7-48de-a736-77278ec04333",
-      "timestamp" : "2019-05-31T13:25:15-05:00",
+      "identifier" : "urn:uuid:e7062a1e-35e7-4a10-845b-a19d5655a14b",
+      "timestamp" : "2019-07-18T12:01:39-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -50,8 +50,8 @@
     "status" : "active",
     "description" : "Type options for MedicationAdministration.dosage.rate[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:54dc656b-f4c2-4f0a-a2e9-0b737b441bfc",
-      "timestamp" : "2019-05-31T13:25:15-05:00",
+      "identifier" : "urn:uuid:6fa3b03e-fc11-4257-9566-1cd2a8f44325",
+      "timestamp" : "2019-07-18T12:01:39-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Ratio",
@@ -69,7 +69,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-05-31T13:21:05-05:00",
+  "date" : "2019-07-18T11:53:20-04:00",
   "publisher" : "Health Level Seven International (Pharmacy)",
   "item" : [{
     "linkId" : "MedicationAdministration",
@@ -792,7 +792,7 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
       }],
-      "linkId" : "MedicationAdministration.effective[x]",
+      "linkId" : "MedicationAdministration.occurence[x]",
       "text" : "Start and end time of administration",
       "type" : "group",
       "required" : true,
@@ -808,11 +808,11 @@
             }]
           }
         }],
-        "text" : "A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
+        "text" : "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
         "type" : "display"
       },
       {
-        "linkId" : "MedicationAdministration.effective[x]._type",
+        "linkId" : "MedicationAdministration.occurence[x]._type",
         "text" : "type",
         "type" : "choice",
         "required" : false,
@@ -823,10 +823,10 @@
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
             "valueString" : "datetime"
           }],
-          "linkId" : "MedicationAdministration.effective[x]._null",
+          "linkId" : "MedicationAdministration.occurence[x]._null",
           "type" : "group",
           "item" : [{
-            "linkId" : "MedicationAdministration.effective[x]._null.value",
+            "linkId" : "MedicationAdministration.occurence[x]._null.value",
             "type" : "dateTime",
             "required" : false,
             "repeats" : false
@@ -837,23 +837,58 @@
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
             "valueString" : "Period"
           }],
-          "linkId" : "MedicationAdministration.effective[x]._null",
+          "linkId" : "MedicationAdministration.occurence[x]._null",
           "type" : "group",
           "item" : [{
-            "linkId" : "MedicationAdministration.effective[x]._null.low",
+            "linkId" : "MedicationAdministration.occurence[x]._null.low",
             "text" : "start:",
             "type" : "dateTime",
             "required" : false,
             "repeats" : false
           },
           {
-            "linkId" : "MedicationAdministration.effective[x]._null.end",
+            "linkId" : "MedicationAdministration.occurence[x]._null.end",
             "text" : "end:",
             "type" : "dateTime",
             "required" : false,
             "repeats" : false
           }]
         }]
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "datetime"
+      }],
+      "linkId" : "MedicationAdministration.recorded",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "The date the occurrence of the  MedicationAdministration was first captured in the record - potentially significantly after the occurrence of the event.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "MedicationAdministration.recorded.value",
+        "text" : "When the MedicationAdministration was first captured in the subject's record",
+        "type" : "dateTime",
+        "required" : false,
+        "repeats" : false
       }]
     },
     {

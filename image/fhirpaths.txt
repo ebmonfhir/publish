@@ -13,10 +13,11 @@ DomainResource (Period): start.hasValue().not() or end.hasValue().not() or (star
 DomainResource (Ratio): (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
 DomainResource (Reference): reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))
 DomainResource (ContactPoint): value.empty() or system.exists()
-DomainResource (OrderedDistribution): true
-DomainResource (OrderedDistribution): true
-DomainResource (OrderedDistribution): true
+DomainResource (OrderedDistribution.bottomOfFirstInterval): true
+DomainResource (OrderedDistribution.interval): true
+DomainResource (OrderedDistribution.interval.rankOrder): true
 DomainResource (OrderedDistribution): interval.count() = numberOfIntervals
+DomainResource (OrderedDistribution.interval.rankOrder): true
 DomainResource (Timing.repeat): duration.empty() or durationUnit.exists()
 DomainResource (Timing.repeat): period.empty() or periodUnit.exists()
 DomainResource (Timing.repeat): duration.exists() implies duration >= 0
@@ -535,9 +536,9 @@ CommunicationRequest (CommunicationRequest): CommunicationRequest.occurrence.as(
 CommunicationRequest (CommunicationRequest): CommunicationRequest.priority
 CommunicationRequest (CommunicationRequest): CommunicationRequest.groupIdentifier
 CommunicationRequest (CommunicationRequest): CommunicationRequest.basedOn
-CommunicationRequest (CommunicationRequest): CommunicationRequest.sender
 CommunicationRequest (CommunicationRequest): CommunicationRequest.subject.where(resolve() is Patient)
 CommunicationRequest (CommunicationRequest): CommunicationRequest.recipient
+CommunicationRequest (CommunicationRequest): CommunicationRequest.informationProvider
 CommunicationRequest (CommunicationRequest): CommunicationRequest.category
 CommunicationRequest (CommunicationRequest): CommunicationRequest.status
 CompartmentDefinition (CompartmentDefinition): CompartmentDefinition.date
@@ -884,6 +885,18 @@ Evidence (Evidence): Evidence.version
 Evidence (Evidence): Evidence.url
 Evidence (Evidence): Evidence.useContext
 Evidence (Evidence): Evidence.status
+EvidenceSet (EvidenceSet): EvidenceSet.date
+EvidenceSet (EvidenceSet): EvidenceSet.identifier
+EvidenceSet (EvidenceSet): (EvidenceSet.useContext.value as Quantity) | (EvidenceSet.useContext.value as Range)
+EvidenceSet (EvidenceSet): EvidenceSet.useContext
+EvidenceSet (EvidenceSet): (EvidenceSet.useContext.value as CodeableConcept)
+EvidenceSet (EvidenceSet): EvidenceSet.description
+EvidenceSet (EvidenceSet): EvidenceSet.useContext.code
+EvidenceSet (EvidenceSet): EvidenceSet.title
+EvidenceSet (EvidenceSet): EvidenceSet.version
+EvidenceSet (EvidenceSet): EvidenceSet.url
+EvidenceSet (EvidenceSet): EvidenceSet.useContext
+EvidenceSet (EvidenceSet): EvidenceSet.status
 EvidenceVariable (EvidenceVariable): EvidenceVariable.date
 EvidenceVariable (EvidenceVariable): EvidenceVariable.identifier
 EvidenceVariable (EvidenceVariable): EvidenceVariable.relatedArtifact.where(type='successor').resource
@@ -1198,6 +1211,7 @@ Medication (Medication): Medication.batch.lotNumber
 Medication (Medication): Medication.batch.expirationDate
 Medication (Medication): Medication.manufacturer
 Medication (Medication): Medication.status
+MedicationAdministration (MedicationAdministration): MedicationAdministration.occurence
 MedicationAdministration (MedicationAdministration): MedicationAdministration.identifier
 MedicationAdministration (MedicationAdministration): MedicationAdministration.request
 MedicationAdministration (MedicationAdministration): (MedicationAdministration.medication as CodeableConcept)
@@ -1207,7 +1221,6 @@ MedicationAdministration (MedicationAdministration): (MedicationAdministration.m
 MedicationAdministration (MedicationAdministration): MedicationAdministration.reasonCode
 MedicationAdministration (MedicationAdministration): MedicationAdministration.encounter
 MedicationAdministration (MedicationAdministration): MedicationAdministration.subject.where(resolve() is Patient)
-MedicationAdministration (MedicationAdministration): MedicationAdministration.effective
 MedicationAdministration (MedicationAdministration): MedicationAdministration.statusReason
 MedicationAdministration (MedicationAdministration): MedicationAdministration.device
 MedicationAdministration (MedicationAdministration): MedicationAdministration.status
@@ -1226,6 +1239,7 @@ MedicationDispense (MedicationDispense): MedicationDispense.whenPrepared
 MedicationDispense (MedicationDispense): MedicationDispense.authorizingPrescription
 MedicationDispense (MedicationDispense): MedicationDispense.subject.where(resolve() is Patient)
 MedicationDispense (MedicationDispense): MedicationDispense.status
+MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.productType
 MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.identifier
 MedicationKnowledge (MedicationKnowledge): MedicationKnowledge.code
 MedicationKnowledge (MedicationKnowledge): (MedicationKnowledge.ingredient.item as Reference)
@@ -1383,6 +1397,13 @@ Observation (Observation): Observation.category
 Observation (Observation): Observation.device
 Observation (Observation): (Observation.value as CodeableConcept) | (Observation.component.value as CodeableConcept)
 Observation (Observation): Observation.status
+ObservationDefinition (ObservationDefinition): ObservationDefinition.identifier
+ObservationDefinition (ObservationDefinition): ObservationDefinition.code
+ObservationDefinition (ObservationDefinition): ObservationDefinition.method
+ObservationDefinition (ObservationDefinition): ObservationDefinition.experimental
+ObservationDefinition (ObservationDefinition): ObservationDefinition.category
+ObservationDefinition (ObservationDefinition): ObservationDefinition.title
+ObservationDefinition (ObservationDefinition): ObservationDefinition.status
 OperationDefinition (OperationDefinition): OperationDefinition.date
 OperationDefinition (OperationDefinition): OperationDefinition.code
 OperationDefinition (OperationDefinition): OperationDefinition.instance
@@ -1802,7 +1823,12 @@ Specimen (Specimen): Specimen.collection.collector
 Specimen (Specimen): Specimen.status
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeTested.container.type
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.identifier
+SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeTested.isDerived
+SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeTested.type
+SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.experimental
 SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.typeCollected
+SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.title
+SpecimenDefinition (SpecimenDefinition): SpecimenDefinition.status
 StructureDefinition (StructureDefinition): StructureDefinition.date
 StructureDefinition (StructureDefinition): StructureDefinition.useContext
 StructureDefinition (StructureDefinition): StructureDefinition.jurisdiction
@@ -1926,6 +1952,15 @@ TestScript (TestScript): (TestScript.useContext.value as CodeableConcept)
 TestScript (TestScript): TestScript.publisher
 TestScript (TestScript): TestScript.useContext
 TestScript (TestScript): TestScript.status
+Topic (Topic): Topic.date
+Topic (Topic): Topic.identifier
+Topic (Topic): Topic.publisher
+Topic (Topic): Topic.resourceTrigger.resourceType
+Topic (Topic): Topic.title
+Topic (Topic): Topic.version
+Topic (Topic): Topic.url
+Topic (Topic): Topic.status
+Topic (Topic): Topic.resourceTrigger.description
 ValueSet (ValueSet): ValueSet.date
 ValueSet (ValueSet): ValueSet.identifier
 ValueSet (ValueSet): ValueSet.expansion.contains.code | ValueSet.compose.include.concept.code

@@ -1,5 +1,7 @@
 # FHIR GraphQL Schema. Version 4.1.0
 
+# import the types from 'types.graphql'
+
 type Evidence {
   id: ID
   meta: Meta
@@ -13,109 +15,66 @@ type Evidence {
   identifier: [Identifier]
   version: String  _version: ElementBase
   title: String  _title: ElementBase
-  shortTitle: String  _shortTitle: ElementBase
-  subTitle: String  _subTitle: ElementBase
   status: code  _status: ElementBase
   useContext: [UsageContext]
   date: dateTime  _date: ElementBase
-  copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  summaryPublisher: [EvidenceSummaryPublisher]
   contributor: [Contributor]
   relatedArtifact: [RelatedArtifact]
   description: markdown  _description: ElementBase
+  assertion: markdown  _assertion: ElementBase
   note: [Annotation]
+  referentGroup: EvidenceReferentGroup!
+  variableDefinition: [EvidenceVariableDefinition]
   synthesisType: CodeableConcept
   studyType: CodeableConcept
-  population: [EvidencePopulation]!
+  statistic: [Statistic]
+  distribution: [OrderedDistribution]
+  certainty: [EvidenceCertainty]
 }
 
-type EvidenceSummaryPublisher {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  name: String  _name: ElementBase
-  contact: [ContactDetail]
-}
-
-type EvidencePopulation {
+type EvidenceReferentGroup {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   description: markdown  _description: ElementBase
   note: [Annotation]
-  intendedCohort: Reference
-  sampleCohort: Reference
-  actualCohort: Reference
-  sampleSize: [EvidencePopulationSampleSize]
-  evidenceVariable: [EvidencePopulationEvidenceVariable]
+  evidenceSource: Reference!
+  intendedGroup: Reference
+  directnessMatch: CodeableConcept
 }
 
-type EvidencePopulationSampleSize {
+type EvidenceVariableDefinition {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: markdown  _description: ElementBase
+  note: [Annotation]
+  variableRole: CodeableConcept
+  actualDefinition: Reference!
+  intendedDefinition: Reference
+  directnessMatch: CodeableConcept
+}
+
+type EvidenceCertainty {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   description: String  _description: ElementBase
-  note: [Annotation]
-  numberOfStudies: Int  _numberOfStudies: ElementBase
-  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: Annotation
+  rating: [CodeableConcept]
+  certaintySubcomponent: [EvidenceCertaintyCertaintySubcomponent]
 }
 
-type EvidencePopulationEvidenceVariable {
+type EvidenceCertaintyCertaintySubcomponent {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  description: markdown  _description: ElementBase
-  note: [Annotation]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: Reference!
-  statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollection]
-  nestedVariable: [EvidencePopulationEvidenceVariableNestedVariable]
-}
-
-type EvidencePopulationEvidenceVariableStatisticCollection {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: markdown  _description: ElementBase
-  note: [Annotation]
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  statistic: [Statistic]!
-  distribution: [OrderedDistribution]
-}
-
-type EvidencePopulationEvidenceVariableNestedVariable {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: markdown  _description: ElementBase
-  note: [Annotation]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: Reference!
-  statisticCollection: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollection]
-}
-
-type EvidencePopulationEvidenceVariableNestedVariableStatisticCollection {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  description: markdown  _description: ElementBase
-  note: [Annotation]
-  synthesisType: CodeableConcept
-  studyType: CodeableConcept
-  additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable]
-  statistic: [Statistic]!
-  distribution: [OrderedDistribution]
-}
-
-type EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariable {
-  id: String
-  extension: [Extension]
-  modifierExtension: [Extension]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: Reference!
+  description: String  _description: ElementBase
+  note: Annotation
+  type: [CodeableConcept]
+  rating: [CodeableConcept]
 }
 
 input EvidenceInput {
@@ -131,109 +90,66 @@ input EvidenceInput {
   identifier: [IdentifierInput]
   version: String  _version: ElementBase
   title: String  _title: ElementBase
-  shortTitle: String  _shortTitle: ElementBase
-  subTitle: String  _subTitle: ElementBase
   status: code  _status: ElementBase
   useContext: [UsageContextInput]
   date: dateTime  _date: ElementBase
-  copyright: markdown  _copyright: ElementBase
   approvalDate: date  _approvalDate: ElementBase
   lastReviewDate: date  _lastReviewDate: ElementBase
-  summaryPublisher: [EvidenceSummaryPublisherInput]
   contributor: [ContributorInput]
   relatedArtifact: [RelatedArtifactInput]
   description: markdown  _description: ElementBase
+  assertion: markdown  _assertion: ElementBase
   note: [AnnotationInput]
+  referentGroup: EvidenceReferentGroupInput!
+  variableDefinition: [EvidenceVariableDefinitionInput]
   synthesisType: CodeableConceptInput
   studyType: CodeableConceptInput
-  population: [EvidencePopulationInput]!
+  statistic: [StatisticInput]
+  distribution: [OrderedDistributionInput]
+  certainty: [EvidenceCertaintyInput]
 }
 
-input EvidenceSummaryPublisherInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  name: String  _name: ElementBase
-  contact: [ContactDetailInput]
-}
-
-input EvidencePopulationInput {
+input EvidenceReferentGroupInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   description: markdown  _description: ElementBase
   note: [AnnotationInput]
-  intendedCohort: ReferenceInput
-  sampleCohort: ReferenceInput
-  actualCohort: ReferenceInput
-  sampleSize: [EvidencePopulationSampleSizeInput]
-  evidenceVariable: [EvidencePopulationEvidenceVariableInput]
+  evidenceSource: ReferenceInput!
+  intendedGroup: ReferenceInput
+  directnessMatch: CodeableConceptInput
 }
 
-input EvidencePopulationSampleSizeInput {
+input EvidenceVariableDefinitionInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: markdown  _description: ElementBase
+  note: [AnnotationInput]
+  variableRole: CodeableConceptInput
+  actualDefinition: ReferenceInput!
+  intendedDefinition: ReferenceInput
+  directnessMatch: CodeableConceptInput
+}
+
+input EvidenceCertaintyInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   description: String  _description: ElementBase
-  note: [AnnotationInput]
-  numberOfStudies: Int  _numberOfStudies: ElementBase
-  numberOfParticipants: Int  _numberOfParticipants: ElementBase
+  note: AnnotationInput
+  rating: [CodeableConceptInput]
+  certaintySubcomponent: [EvidenceCertaintyCertaintySubcomponentInput]
 }
 
-input EvidencePopulationEvidenceVariableInput {
+input EvidenceCertaintyCertaintySubcomponentInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  description: markdown  _description: ElementBase
-  note: [AnnotationInput]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: ReferenceInput!
-  statisticCollection: [EvidencePopulationEvidenceVariableStatisticCollectionInput]
-  nestedVariable: [EvidencePopulationEvidenceVariableNestedVariableInput]
-}
-
-input EvidencePopulationEvidenceVariableStatisticCollectionInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  description: markdown  _description: ElementBase
-  note: [AnnotationInput]
-  synthesisType: CodeableConceptInput
-  studyType: CodeableConceptInput
-  statistic: [StatisticInput]!
-  distribution: [OrderedDistributionInput]
-}
-
-input EvidencePopulationEvidenceVariableNestedVariableInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  description: markdown  _description: ElementBase
-  note: [AnnotationInput]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: ReferenceInput!
-  statisticCollection: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionInput]
-}
-
-input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  description: markdown  _description: ElementBase
-  note: [AnnotationInput]
-  synthesisType: CodeableConceptInput
-  studyType: CodeableConceptInput
-  additionalVariable: [EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput]
-  statistic: [StatisticInput]!
-  distribution: [OrderedDistributionInput]
-}
-
-input EvidencePopulationEvidenceVariableNestedVariableStatisticCollectionAdditionalVariableInput {
-  id: String
-  extension: [ExtensionInput]
-  modifierExtension: [ExtensionInput]
-  variableRole: code  _variableRole: ElementBase
-  variableDefinition: ReferenceInput!
+  description: String  _description: ElementBase
+  note: AnnotationInput
+  type: [CodeableConceptInput]
+  rating: [CodeableConceptInput]
 }
 
 type EvidenceReadType {

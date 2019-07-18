@@ -37,11 +37,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -71,7 +73,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -102,7 +105,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Actualgroup-questionnaire.xml</h1>
@@ -127,8 +129,8 @@
       &lt;status value=&quot;active&quot;/&gt;
       &lt;description value=&quot;Type options for Group.characteristic.value[x]&quot;/&gt;
       &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:1c49976f-8d8b-4e0d-9eb7-6ff3ee39f210&quot;/&gt;
-        &lt;timestamp value=&quot;2019-05-31T13:24:47-05:00&quot;/&gt;
+        &lt;identifier value=&quot;urn:uuid:a2d1a9a3-90f4-4085-8fbd-e2fa65541a12&quot;/&gt;
+        &lt;timestamp value=&quot;2019-07-18T12:01:06-04:00&quot;/&gt;
         &lt;contains&gt;
           &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
           &lt;code value=&quot;CodeableConcept&quot;/&gt;
@@ -157,7 +159,7 @@
   &lt;/identifier&gt;
   &lt;version value=&quot;4.1.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-05-31T13:21:05-05:00&quot;/&gt;
+  &lt;date value=&quot;2019-07-18T11:53:20-04:00&quot;/&gt;
   &lt;publisher value=&quot;HL7&quot;/&gt;
   &lt;item&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs&quot;&gt;
@@ -388,6 +390,38 @@
         &lt;/extension&gt;
         &lt;text value=&quot;May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element&amp;#39;s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&amp;#xA;&amp;#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;/&gt;
         &lt;type value=&quot;display&quot;/&gt;
+      &lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
+        &lt;valueInteger value=&quot;1&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+        &lt;valueString value=&quot;uri&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;linkId value=&quot;Group.url&quot;/&gt;
+      &lt;type value=&quot;group&quot;/&gt;
+      &lt;required value=&quot;false&quot;/&gt;
+      &lt;repeats value=&quot;true&quot;/&gt;
+      &lt;item&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
+          &lt;valueCodeableConcept&gt;
+            &lt;coding&gt;
+              &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
+              &lt;code value=&quot;flyover&quot;/&gt;
+              &lt;display value=&quot;Fly-over&quot;/&gt;
+            &lt;/coding&gt;
+          &lt;/valueCodeableConcept&gt;
+        &lt;/extension&gt;
+        &lt;text value=&quot;An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers. Can be a urn:uuid: or a urn:oid: but real http: addresses are preferred. Multiple instances may share the same URL if they have a distinct version.&quot;/&gt;
+        &lt;type value=&quot;display&quot;/&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;linkId value=&quot;Group.url.value&quot;/&gt;
+        &lt;text value=&quot;Canonical identifier for this evidence, represented as a globally unique URI&quot;/&gt;
+        &lt;type value=&quot;string&quot;/&gt;
+        &lt;required value=&quot;false&quot;/&gt;
+        &lt;repeats value=&quot;false&quot;/&gt;
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -1280,7 +1314,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:01-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

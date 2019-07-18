@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Statistic.profile.json</h1>
@@ -118,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Statistic&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-05-31T13:21:05.565-05:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-07-18T11:53:20.879-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -132,7 +134,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Statistic&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-05-31T13:21:05-05:00&quot;,
+  &quot;date&quot; : &quot;2019-07-18T11:53:20-04:00&quot;,
   &quot;publisher&quot; : &quot;HL7 FHIR Standard&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -298,8 +300,8 @@
     {
       &quot;id&quot; : &quot;Statistic.statisticType&quot;,
       &quot;path&quot; : &quot;Statistic.statisticType&quot;,
-      &quot;short&quot; : &quot;Type of statistic&quot;,
-      &quot;definition&quot; : &quot;Type of statistic.&quot;,
+      &quot;short&quot; : &quot;Type of statistic, eg relative risk&quot;,
+      &quot;definition&quot; : &quot;Type of statistic, eg relative risk.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -343,8 +345,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize&quot;,
-      &quot;short&quot; : &quot;Population sample size&quot;,
-      &quot;definition&quot; : &quot;Population sample size.&quot;,
+      &quot;short&quot; : &quot;Sample size for the statistic&quot;,
+      &quot;definition&quot; : &quot;Sample size for the statistic.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -425,7 +427,7 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.description&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population sample size&quot;,
+      &quot;short&quot; : &quot;Textual description of sample size for statistic&quot;,
       &quot;definition&quot; : &quot;Human-readable summary of population sample size.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -497,8 +499,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.knownDataCount&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.knownDataCount&quot;,
-      &quot;short&quot; : &quot;TBD&quot;,
-      &quot;definition&quot; : &quot;TBD.&quot;,
+      &quot;short&quot; : &quot;Number of participants with known results for measured variables&quot;,
+      &quot;definition&quot; : &quot;Number of participants with known results for measured variables.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -515,8 +517,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.numeratorCount&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.numeratorCount&quot;,
-      &quot;short&quot; : &quot;TBD&quot;,
-      &quot;definition&quot; : &quot;TBD.&quot;,
+      &quot;short&quot; : &quot;Number of participants with â€œpositiveâ€� results, only used to report actual numerator count for a proportion&quot;,
+      &quot;definition&quot; : &quot;Number of participants with â€œpositiveâ€� results, only used to report actual numerator count for a proportion.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -531,14 +533,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate&quot;,
       &quot;short&quot; : &quot;An estimate of the precision of the statistic&quot;,
       &quot;definition&quot; : &quot;An estimate of the precision of the statistic.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -557,8 +559,8 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.id&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.id&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.id&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.id&quot;,
       &quot;representation&quot; : [&quot;xmlAttr&quot;],
       &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
       &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
@@ -580,8 +582,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.extension&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.extension&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.extension&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.extension&quot;,
       &quot;slicing&quot; : {
         &quot;discriminator&quot; : [{
           &quot;type&quot; : &quot;value&quot;,
@@ -613,14 +615,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.description&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the estimate&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.description&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.description&quot;,
+      &quot;short&quot; : &quot;Textual description of the precision estimate&quot;,
       &quot;definition&quot; : &quot;Human-readable summary of the estimate.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.description&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.description&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -631,16 +633,16 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.note&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.note&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.note&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.note&quot;,
       &quot;short&quot; : &quot;Footnote or explanatory note about the estimate&quot;,
       &quot;definition&quot; : &quot;Footnote or explanatory note about the estimate.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.note&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.note&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
@@ -649,14 +651,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.type&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.type&quot;,
-      &quot;short&quot; : &quot;The estimate type&quot;,
-      &quot;definition&quot; : &quot;The estimate type.&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.type&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.type&quot;,
+      &quot;short&quot; : &quot;The estimateType of precision estimate, eg confidence interval or p value type&quot;,
+      &quot;definition&quot; : &quot;The estimateType of precision estimate, eg confidence interval or p value type.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.type&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.type&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -676,15 +678,15 @@
       }
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.quantity&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.quantity&quot;,
-      &quot;short&quot; : &quot;The precision value&quot;,
-      &quot;definition&quot; : &quot;The precision value.&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.quantity&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.quantity&quot;,
+      &quot;short&quot; : &quot;The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure&quot;,
+      &quot;definition&quot; : &quot;The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure.&quot;,
       &quot;comment&quot; : &quot;Often the pvalue.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.quantity&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.quantity&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -695,14 +697,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.level&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.level&quot;,
-      &quot;short&quot; : &quot;Level of confidence interval&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.level&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.level&quot;,
+      &quot;short&quot; : &quot;Level of confidence interval, eg 0.95 for 95% confidence interval&quot;,
       &quot;definition&quot; : &quot;Use 95 for a 95% confidence interval.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.level&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.level&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -713,14 +715,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.range&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.range&quot;,
-      &quot;short&quot; : &quot;Lower bound&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.range&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.range&quot;,
+      &quot;short&quot; : &quot;Lower and upper bound values of the precision estimate&quot;,
       &quot;definition&quot; : &quot;Lower bound of confidence interval.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.precisionEstimate.range&quot;,
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.range&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -729,323 +731,6 @@
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty&quot;,
-      &quot;short&quot; : &quot;How certain is the effect&quot;,
-      &quot;definition&quot; : &quot;A description of the certainty of the effect estimate.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Element&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.id&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.extension&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.extension&quot;,
-      &quot;slicing&quot; : {
-        &quot;discriminator&quot; : [{
-          &quot;type&quot; : &quot;value&quot;,
-          &quot;path&quot; : &quot;url&quot;
-        }],
-        &quot;description&quot; : &quot;Extensions are always sliced by (at least) url&quot;,
-        &quot;rules&quot; : &quot;open&quot;
-      },
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.description&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the certainty&quot;,
-      &quot;definition&quot; : &quot;Human-readable summary of the certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.note&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.note&quot;,
-      &quot;short&quot; : &quot;Footnote or explanatory note about the statistic certainty&quot;,
-      &quot;definition&quot; : &quot;A human-readable string to clarify or explain concepts about the resource.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.rating&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.rating&quot;,
-      &quot;short&quot; : &quot;Certainty rating&quot;,
-      &quot;definition&quot; : &quot;A rating of the certainty of the effect estimate.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.rating&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintyRating&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The relative quality of the statistic.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-rating&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent&quot;,
-      &quot;short&quot; : &quot;A component that contributes to the overall certainty&quot;,
-      &quot;definition&quot; : &quot;A description of a component of the overall certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Element&quot;
-      }],
-      &quot;constraint&quot; : [{
-        &quot;key&quot; : &quot;ele-1&quot;,
-        &quot;severity&quot; : &quot;error&quot;,
-        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
-        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
-        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
-        &quot;source&quot; : &quot;Element&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.id&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.id&quot;,
-      &quot;representation&quot; : [&quot;xmlAttr&quot;],
-      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
-      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.id&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.extension&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.extension&quot;,
-      &quot;slicing&quot; : {
-        &quot;discriminator&quot; : [{
-          &quot;type&quot; : &quot;value&quot;,
-          &quot;path&quot; : &quot;url&quot;
-        }],
-        &quot;description&quot; : &quot;Extensions are always sliced by (at least) url&quot;,
-        &quot;rules&quot; : &quot;open&quot;
-      },
-      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
-      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
-      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
-      &quot;alias&quot; : [&quot;extensions&quot;,
-      &quot;user content&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Element.extension&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Extension&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : false,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;n/a&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.description&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the subcomponent&quot;,
-      &quot;definition&quot; : &quot;Human-readable summary of the subcomponent.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.description&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.note&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.note&quot;,
-      &quot;short&quot; : &quot;Footnote or explanatory note about the statistic certainty subcomponent&quot;,
-      &quot;definition&quot; : &quot;A human-readable string to clarify or explain concepts about the resource.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.note&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.type&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.type&quot;,
-      &quot;short&quot; : &quot;Type of subcomponent of certainty rating&quot;,
-      &quot;definition&quot; : &quot;Type of subcomponent of certainty rating.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.type&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The subcomponent classification of quality of evidence rating systems.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.rating&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.rating&quot;,
-      &quot;short&quot; : &quot;Subcomponent certainty rating&quot;,
-      &quot;definition&quot; : &quot;A rating of a subcomponent of rating certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.rating&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentRating&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The quality rating of the subcomponent of a quality of evidence rating.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating&quot;
-      }
     }]
   },
   &quot;differential&quot; : {
@@ -1088,8 +773,8 @@
     {
       &quot;id&quot; : &quot;Statistic.statisticType&quot;,
       &quot;path&quot; : &quot;Statistic.statisticType&quot;,
-      &quot;short&quot; : &quot;Type of statistic&quot;,
-      &quot;definition&quot; : &quot;Type of statistic.&quot;,
+      &quot;short&quot; : &quot;Type of statistic, eg relative risk&quot;,
+      &quot;definition&quot; : &quot;Type of statistic, eg relative risk.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1121,8 +806,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize&quot;,
-      &quot;short&quot; : &quot;Population sample size&quot;,
-      &quot;definition&quot; : &quot;Population sample size.&quot;,
+      &quot;short&quot; : &quot;Sample size for the statistic&quot;,
+      &quot;definition&quot; : &quot;Sample size for the statistic.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1133,7 +818,7 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.description&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.description&quot;,
-      &quot;short&quot; : &quot;Textual description of population sample size&quot;,
+      &quot;short&quot; : &quot;Textual description of sample size for statistic&quot;,
       &quot;definition&quot; : &quot;Human-readable summary of population sample size.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1181,8 +866,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.knownDataCount&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.knownDataCount&quot;,
-      &quot;short&quot; : &quot;TBD&quot;,
-      &quot;definition&quot; : &quot;TBD.&quot;,
+      &quot;short&quot; : &quot;Number of participants with known results for measured variables&quot;,
+      &quot;definition&quot; : &quot;Number of participants with known results for measured variables.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1193,8 +878,8 @@
     {
       &quot;id&quot; : &quot;Statistic.sampleSize.numeratorCount&quot;,
       &quot;path&quot; : &quot;Statistic.sampleSize.numeratorCount&quot;,
-      &quot;short&quot; : &quot;TBD&quot;,
-      &quot;definition&quot; : &quot;TBD.&quot;,
+      &quot;short&quot; : &quot;Number of participants with â€œpositiveâ€� results, only used to report actual numerator count for a proportion&quot;,
+      &quot;definition&quot; : &quot;Number of participants with â€œpositiveâ€� results, only used to report actual numerator count for a proportion.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1203,8 +888,8 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate&quot;,
       &quot;short&quot; : &quot;An estimate of the precision of the statistic&quot;,
       &quot;definition&quot; : &quot;An estimate of the precision of the statistic.&quot;,
       &quot;min&quot; : 0,
@@ -1215,9 +900,9 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.description&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the estimate&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.description&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.description&quot;,
+      &quot;short&quot; : &quot;Textual description of the precision estimate&quot;,
       &quot;definition&quot; : &quot;Human-readable summary of the estimate.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1227,22 +912,22 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.note&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.note&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.note&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.note&quot;,
       &quot;short&quot; : &quot;Footnote or explanatory note about the estimate&quot;,
       &quot;definition&quot; : &quot;Footnote or explanatory note about the estimate.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Annotation&quot;
       }],
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.type&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.type&quot;,
-      &quot;short&quot; : &quot;The estimate type&quot;,
-      &quot;definition&quot; : &quot;The estimate type.&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.type&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.type&quot;,
+      &quot;short&quot; : &quot;The estimateType of precision estimate, eg confidence interval or p value type&quot;,
+      &quot;definition&quot; : &quot;The estimateType of precision estimate, eg confidence interval or p value type.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1260,10 +945,10 @@
       }
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.quantity&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.quantity&quot;,
-      &quot;short&quot; : &quot;The precision value&quot;,
-      &quot;definition&quot; : &quot;The precision value.&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.quantity&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.quantity&quot;,
+      &quot;short&quot; : &quot;The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure&quot;,
+      &quot;definition&quot; : &quot;The singular quantity of the precision estimate, for precision estimates represented as single values; also used to report unit of measure.&quot;,
       &quot;comment&quot; : &quot;Often the pvalue.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1273,9 +958,9 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.level&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.level&quot;,
-      &quot;short&quot; : &quot;Level of confidence interval&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.level&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.level&quot;,
+      &quot;short&quot; : &quot;Level of confidence interval, eg 0.95 for 95% confidence interval&quot;,
       &quot;definition&quot; : &quot;Use 95 for a 95% confidence interval.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1285,9 +970,9 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;Statistic.precisionEstimate.range&quot;,
-      &quot;path&quot; : &quot;Statistic.precisionEstimate.range&quot;,
-      &quot;short&quot; : &quot;Lower bound&quot;,
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.range&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.range&quot;,
+      &quot;short&quot; : &quot;Lower and upper bound values of the precision estimate&quot;,
       &quot;definition&quot; : &quot;Lower bound of confidence interval.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1295,141 +980,6 @@
         &quot;code&quot; : &quot;Range&quot;
       }],
       &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty&quot;,
-      &quot;short&quot; : &quot;How certain is the effect&quot;,
-      &quot;definition&quot; : &quot;A description of the certainty of the effect estimate.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Element&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.description&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the certainty&quot;,
-      &quot;definition&quot; : &quot;Human-readable summary of the certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.note&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.note&quot;,
-      &quot;short&quot; : &quot;Footnote or explanatory note about the statistic certainty&quot;,
-      &quot;definition&quot; : &quot;A human-readable string to clarify or explain concepts about the resource.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.rating&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.rating&quot;,
-      &quot;short&quot; : &quot;Certainty rating&quot;,
-      &quot;definition&quot; : &quot;A rating of the certainty of the effect estimate.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintyRating&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The relative quality of the statistic.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-rating&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent&quot;,
-      &quot;short&quot; : &quot;A component that contributes to the overall certainty&quot;,
-      &quot;definition&quot; : &quot;A description of a component of the overall certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Element&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.description&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.description&quot;,
-      &quot;short&quot; : &quot;Textual description of the subcomponent&quot;,
-      &quot;definition&quot; : &quot;Human-readable summary of the subcomponent.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.note&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.note&quot;,
-      &quot;short&quot; : &quot;Footnote or explanatory note about the statistic certainty subcomponent&quot;,
-      &quot;definition&quot; : &quot;A human-readable string to clarify or explain concepts about the resource.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Annotation&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.type&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.type&quot;,
-      &quot;short&quot; : &quot;Type of subcomponent of certainty rating&quot;,
-      &quot;definition&quot; : &quot;Type of subcomponent of certainty rating.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentType&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The subcomponent classification of quality of evidence rating systems.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-type&quot;
-      }
-    },
-    {
-      &quot;id&quot; : &quot;Statistic.certainty.certaintySubcomponent.rating&quot;,
-      &quot;path&quot; : &quot;Statistic.certainty.certaintySubcomponent.rating&quot;,
-      &quot;short&quot; : &quot;Subcomponent certainty rating&quot;,
-      &quot;definition&quot; : &quot;A rating of a subcomponent of rating certainty.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;StatisticCertaintySubcomponentRating&quot;
-        }],
-        &quot;strength&quot; : &quot;extensible&quot;,
-        &quot;description&quot; : &quot;The quality rating of the subcomponent of a quality of evidence rating.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating&quot;
-      }
     }]
   }
 }
@@ -1457,7 +1007,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:23-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 11:59-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

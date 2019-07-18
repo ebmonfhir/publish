@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Evidence-example.ttl</h1>
@@ -113,7 +115,7 @@
 </p>
 
 <div class="example">
-<p>Example of evidence</p>
+<p>Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)</p>
 <pre class="rdf">
 @prefix fhir: &lt;http://hl7.org/fhir/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -127,20 +129,114 @@
   fhir:Resource.id [ fhir:value &quot;example&quot;];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ];
-     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: example&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Corticosteroids vs No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;h3&gt;SummaryPublishers&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;MAGIC&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids vs no corticosteroids for patients with sepsis&lt;/p&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: summary data meta-analysis &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/synthesis-type code 'std-MA' = 'summary data meta-analysis', given as 'summary data meta-analysis'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: randomized trial &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/study-type code 'RCT' = 'randomized trial', given as 'randomized trial'})&lt;/span&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;population&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Patients with sepsis&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedCohort&lt;/b&gt;: &lt;a&gt;Patients with sepsis&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;evidenceVariable&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality Longer term (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: measuredVariable&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;: &lt;a&gt;Mortality Longer term (Follow up: 60 days to 1 year)&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;nestedVariable&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: exposure&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;: &lt;a&gt;Corticosteroids&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;statisticCollection&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: 349 per 1000&lt;/p&gt;&lt;p&gt;&lt;b&gt;statistic&lt;/b&gt;: &lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown type Statistic&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
+     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative with Details&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;: example&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality reduced with RR 0.94 with Corticosteroids vs no corticosteroids for patients with sepsis&lt;/p&gt;&lt;h3&gt;ReferentGroups&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Description&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;EvidenceSource&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;IntendedGroup&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;DirectnessMatch&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;Patients with sepsis&lt;/td&gt;&lt;td&gt;???&lt;/td&gt;&lt;td&gt;Patients with sepsis&lt;/td&gt;&lt;td&gt;??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Mortality Longer term (60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: measured variable &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'measuredVariable' = 'measured variable', given as 'measured variable'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: many studies had shorter term outcomes&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: Mortality Longer term (Follow up: 60 days to 1 year)&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: moderate &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'moderate' = 'Moderate quality match', given as 'moderate'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: exposure &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'exposure' = 'exposure', given as 'exposure'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: ???&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: Corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: ??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;variableDefinition&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;variableRole&lt;/b&gt;: referenceExposure &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/variable-role code 'referenceExposure' = 'reference exposure', given as 'referenceExposure'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;actualDefinition&lt;/b&gt;: ???&lt;/p&gt;&lt;p&gt;&lt;b&gt;intendedDefinition&lt;/b&gt;: No corticosteroids&lt;/p&gt;&lt;p&gt;&lt;b&gt;directnessMatch&lt;/b&gt;: ??? &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/directness code 'null' = 'null', given as '???'})&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;synthesisType&lt;/b&gt;: summary data meta-analysis &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/synthesis-type code 'std-MA' = 'summary data meta-analysis', given as 'summary data meta-analysis'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;studyType&lt;/b&gt;: randomized trial &lt;span&gt;(Details : {http://terminology.hl7.org/CodeSystem/study-type code 'RCT' = 'randomized trial', given as 'randomized trial'})&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;statistic&lt;/b&gt;: &lt;/p&gt;&lt;p&gt;&lt;b&gt;Exception generating Narrative: Unknown type Statistic&lt;/b&gt;&lt;/p&gt;&lt;/div&gt;&quot;
   ];
-  fhir:Evidence.title [ fhir:value &quot;Corticosteroids vs No corticosteroids&quot;];
+  fhir:Evidence.title [ fhir:value &quot;Corticosteroids vs No corticosteroids for Patients with Sepsis with Mortality (60 days to 1 year)&quot;];
   fhir:Evidence.status [ fhir:value &quot;draft&quot;];
-  fhir:Evidence.summaryPublisher [
-     fhir:index 0;
-     fhir:Evidence.summaryPublisher.name [ fhir:value &quot;MAGIC&quot; ]
-  ];
   fhir:Evidence.relatedArtifact [
      fhir:index 0;
      fhir:RelatedArtifact.type [ fhir:value &quot;derived-from&quot; ];
      fhir:RelatedArtifact.url [ fhir:value &quot;https://app.magicapp.org/public/guideline/EZ1w8n/pico/31831/widget?tab=outcome&quot; ]
   ];
-  fhir:Evidence.description [ fhir:value &quot;Corticosteroids vs no corticosteroids for patients with sepsis&quot;];
+  fhir:Evidence.description [ fhir:value &quot;Mortality reduced with RR 0.94 with Corticosteroids vs no corticosteroids for patients with sepsis&quot;];
+  fhir:Evidence.referentGroup [
+     fhir:Evidence.referentGroup.description [ fhir:value &quot;Patients with sepsis&quot; ];
+     fhir:Evidence.referentGroup.evidenceSource [
+       fhir:Reference.type [ fhir:value &quot;Group&quot; ];
+       fhir:Reference.display [ fhir:value &quot;???&quot; ]
+     ];
+     fhir:Evidence.referentGroup.intendedGroup [
+       fhir:Reference.type [ fhir:value &quot;Group&quot; ];
+       fhir:Reference.display [ fhir:value &quot;Patients with sepsis&quot; ]
+     ];
+     fhir:Evidence.referentGroup.directnessMatch [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/directness&quot; ];
+         fhir:Coding.display [ fhir:value &quot;???&quot; ]
+       ]
+     ]
+  ];
+  fhir:Evidence.variableDefinition [
+     fhir:index 0;
+     fhir:Evidence.variableDefinition.description [ fhir:value &quot;Mortality Longer term (60 days to 1 year)&quot; ];
+     fhir:Evidence.variableDefinition.variableRole [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot; ];
+         fhir:Coding.code [ fhir:value &quot;measuredVariable&quot; ];
+         fhir:Coding.display [ fhir:value &quot;measured variable&quot; ]
+       ]
+     ];
+     fhir:Evidence.variableDefinition.actualDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;many studies had shorter term outcomes&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.intendedDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;Mortality Longer term (Follow up: 60 days to 1 year)&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.directnessMatch [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/directness&quot; ];
+         fhir:Coding.code [ fhir:value &quot;moderate&quot; ];
+         fhir:Coding.display [ fhir:value &quot;moderate&quot; ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Evidence.variableDefinition.description [ fhir:value &quot;Corticosteroids&quot; ];
+     fhir:Evidence.variableDefinition.variableRole [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot; ];
+         fhir:Coding.code [ fhir:value &quot;exposure&quot; ];
+         fhir:Coding.display [ fhir:value &quot;exposure&quot; ]
+       ]
+     ];
+     fhir:Evidence.variableDefinition.actualDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;???&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.intendedDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;Corticosteroids&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.directnessMatch [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/directness&quot; ];
+         fhir:Coding.display [ fhir:value &quot;???&quot; ]
+       ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Evidence.variableDefinition.description [ fhir:value &quot;No corticosteroids&quot; ];
+     fhir:Evidence.variableDefinition.variableRole [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/variable-role&quot; ];
+         fhir:Coding.code [ fhir:value &quot;referenceExposure&quot; ];
+         fhir:Coding.display [ fhir:value &quot;referenceExposure&quot; ]
+       ]
+     ];
+     fhir:Evidence.variableDefinition.actualDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;???&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.intendedDefinition [
+       fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
+       fhir:Reference.display [ fhir:value &quot;No corticosteroids&quot; ]
+     ];
+     fhir:Evidence.variableDefinition.directnessMatch [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/directness&quot; ];
+         fhir:Coding.display [ fhir:value &quot;???&quot; ]
+       ]
+     ]
+  ];
   fhir:Evidence.synthesisType [
      fhir:CodeableConcept.coding [
        fhir:index 0;
@@ -157,260 +253,219 @@
        fhir:Coding.display [ fhir:value &quot;randomized trial&quot; ]
      ]
   ];
-  fhir:Evidence.population [
+  fhir:Evidence.statistic [
      fhir:index 0;
-     fhir:Evidence.population.description [ fhir:value &quot;Patients with sepsis&quot; ];
-     fhir:Evidence.population.intendedCohort [
-       fhir:Reference.reference [ fhir:value &quot;Group-Sepsis&quot; ];
-       fhir:Reference.type [ fhir:value &quot;Group&quot; ];
-       fhir:Reference.display [ fhir:value &quot;Patients with sepsis&quot; ]
-     ];
-     fhir:Evidence.population.evidenceVariable [
+     fhir:Statistic.description [ fhir:value &quot;Relative risk 0.94&quot; ];
+     fhir:Statistic.note [
        fhir:index 0;
-       fhir:Evidence.population.evidenceVariable.description [ fhir:value &quot;Mortality Longer term (60 days to 1 year)&quot; ];
-       fhir:Evidence.population.evidenceVariable.variableRole [ fhir:value &quot;measuredVariable&quot; ];
-       fhir:Evidence.population.evidenceVariable.variableDefinition [
-         fhir:Reference.reference [ fhir:value &quot;EvidenceVariable-Mortality-Long-Term&quot; ];
-         fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
-         fhir:Reference.display [ fhir:value &quot;Mortality Longer term (Follow up: 60 days to 1 year)&quot; ]
-       ];
-       fhir:Evidence.population.evidenceVariable.nestedVariable [
+       fhir:Annotation.text [ fhir:value &quot;Based on data from 6438 patients in 9 studies &quot; ]
+     ];
+     fhir:Statistic.statisticType [
+       fhir:CodeableConcept.coding [
          fhir:index 0;
-         fhir:Evidence.population.evidenceVariable.nestedVariable.description [ fhir:value &quot;Corticosteroids&quot; ];
-         fhir:Evidence.population.evidenceVariable.nestedVariable.variableRole [ fhir:value &quot;exposure&quot; ];
-         fhir:Evidence.population.evidenceVariable.nestedVariable.variableDefinition [
-           fhir:Reference.reference [ fhir:value &quot;EvidenceVariable-Steroids&quot; ];
-           fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
-           fhir:Reference.display [ fhir:value &quot;Corticosteroids&quot; ]
-         ];
-         fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection [
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot; ];
+         fhir:Coding.code [ fhir:value &quot;relative-RR&quot; ];
+         fhir:Coding.display [ fhir:value &quot;relative risk&quot; ]
+       ]
+     ];
+     fhir:Statistic.quantity [
+       fhir:Quantity.value [ fhir:value &quot;0.94&quot;^^xsd:decimal ]
+     ];
+     fhir:Statistic.sampleSize [
+       fhir:Statistic.sampleSize.note [
+         fhir:index 0;
+         fhir:Annotation.text [ fhir:value &quot;Based on data from 6438 patients in 9 studies &quot; ]
+       ];
+       fhir:Statistic.sampleSize.numberOfStudies [ fhir:value &quot;9&quot;^^xsd:integer ];
+       fhir:Statistic.sampleSize.numberOfParticipants [ fhir:value &quot;6438&quot;^^xsd:integer ]
+     ];
+     fhir:Statistic.attributeEstimate [
+       fhir:index 0;
+       fhir:Statistic.attributeEstimate.description [ fhir:value &quot;(CI 95% 0.89 - 1.00)&quot; ];
+       fhir:Statistic.attributeEstimate.type [
+         fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description [ fhir:value &quot;349 per 1000&quot; ];
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic [
-             fhir:index 0;
-             fhir:Statistic.description [ fhir:value &quot;349 per 1000&quot; ];
-             fhir:Statistic.statisticType [
-               fhir:CodeableConcept.coding [
-                 fhir:index 0;
-                 fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot; ];
-                 fhir:Coding.code [ fhir:value &quot;proportion&quot; ];
-                 fhir:Coding.display [ fhir:value &quot;proportion&quot; ]
-               ]
-             ];
-             fhir:Statistic.quantity [
-               fhir:Quantity.value [ fhir:value &quot;0.349&quot;^^xsd:decimal ]
-             ]
-           ]
-         ], [
-           fhir:index 1;
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description [ fhir:value &quot;Corticosteroids possibly achieve a small reduction in long-term mortality.&quot; ];
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable [
-             fhir:index 0;
-             fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole [ fhir:value &quot;exposure&quot; ];
-             fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition [
-               fhir:Reference.reference [ fhir:value &quot;EvidenceVariable-No-Steroids&quot; ];
-               fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
-               fhir:Reference.display [ fhir:value &quot;No corticosteroids&quot; ]
-             ]
-           ];
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic [
-             fhir:index 0;
-             fhir:Statistic.description [ fhir:value &quot;Relative risk 0.94&quot; ];
-             fhir:Statistic.note [
-               fhir:index 0;
-               fhir:Annotation.text [ fhir:value &quot;Based on data from 6438 patients in 9 studies &quot; ]
-             ];
-             fhir:Statistic.statisticType [
-               fhir:CodeableConcept.coding [
-                 fhir:index 0;
-                 fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot; ];
-                 fhir:Coding.code [ fhir:value &quot;relative-RR&quot; ];
-                 fhir:Coding.display [ fhir:value &quot;relative risk&quot; ]
-               ]
-             ];
-             fhir:Statistic.quantity [
-               fhir:Quantity.value [ fhir:value &quot;0.94&quot;^^xsd:decimal ]
-             ];
-             fhir:Statistic.sampleSize [
-               fhir:Statistic.sampleSize.description [ fhir:value &quot;Based on data from 6438 patients in 9 studies&quot; ];
-               fhir:Statistic.sampleSize.numberOfStudies [ fhir:value &quot;9&quot;^^xsd:integer ];
-               fhir:Statistic.sampleSize.numberOfParticipants [ fhir:value &quot;6438&quot;^^xsd:integer ]
-             ];
-             fhir:Statistic.precisionEstimate [
-               fhir:index 0;
-               fhir:Statistic.precisionEstimate.description [ fhir:value &quot;(CI 95% 0.89 - 1.00)&quot; ];
-               fhir:Statistic.precisionEstimate.type [
-                 fhir:CodeableConcept.coding [
-                   fhir:index 0;
-                   fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot; ];
-                   fhir:Coding.code [ fhir:value &quot;CI&quot; ];
-                   fhir:Coding.display [ fhir:value &quot;confidence interval&quot; ]
-                 ]
-               ];
-               fhir:Statistic.precisionEstimate.level [ fhir:value &quot;0.95&quot;^^xsd:decimal ];
-               fhir:Statistic.precisionEstimate.range [
-                 fhir:Range.low [
-                   fhir:Quantity.value [ fhir:value &quot;0.89&quot;^^xsd:decimal ]
-                 ];
-                 fhir:Range.high [
-                   fhir:Quantity.value [ fhir:value &quot;1&quot;^^xsd:decimal ]
-                 ]
-               ]
-             ];
-             fhir:Statistic.certainty [
-               fhir:index 0;
-               fhir:Statistic.certainty.description [ fhir:value &quot;Low, due to serious imprecision and indirectness.&quot; ];
-               fhir:Statistic.certainty.rating [
-                 fhir:index 0;
-                 fhir:CodeableConcept.coding [
-                   fhir:index 0;
-                   fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-rating&quot; ];
-                   fhir:Coding.code [ fhir:value &quot;low&quot; ];
-                   fhir:Coding.display [ fhir:value &quot;Low quality&quot; ]
-                 ]
-               ];
-               fhir:Statistic.certainty.certaintySubcomponent [
-                 fhir:index 0;
-                 fhir:Statistic.certainty.certaintySubcomponent.note [
-                   fhir:index 0;
-                   fhir:Annotation.text [ fhir:value &quot;Note that all studies that reported 90 day to 1 year mortality also reported 28-30 day mortality: the CI 95% around the pooled effect for short term mortality also excludes no effect: RR 0.91 (CI 95% 0.84 - 0.98).&quot; ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.type [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;RiskOfBias&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;Risk of bias&quot; ]
-                   ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.rating [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
-                   ]
-                 ]
-               ], [
-                 fhir:index 1;
-                 fhir:Statistic.certainty.certaintySubcomponent.type [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;Inconsistency&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;Inconsistency&quot; ]
-                   ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.rating [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
-                   ]
-                 ]
-               ], [
-                 fhir:index 2;
-                 fhir:Statistic.certainty.certaintySubcomponent.note [
-                   fhir:index 0;
-                   fhir:Annotation.text [ fhir:value &quot;Only a small proportion of studies reported longer-term mortality.&quot; ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.type [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;Indirectness&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;Indirectness&quot; ]
-                   ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.rating [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;serious-concern&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;serious concern&quot; ]
-                   ]
-                 ]
-               ], [
-                 fhir:index 3;
-                 fhir:Statistic.certainty.certaintySubcomponent.note [
-                   fhir:index 0;
-                   fhir:Annotation.text [ fhir:value &quot;Confidence interval includes no effect.&quot; ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.type [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;Imprecision&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;Imprecision&quot; ]
-                   ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.rating [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;serious-concern&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;serious concern&quot; ]
-                   ]
-                 ]
-               ], [
-                 fhir:index 4;
-                 fhir:Statistic.certainty.certaintySubcomponent.type [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;PublicationBias&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;Publication bias&quot; ]
-                   ]
-                 ];
-                 fhir:Statistic.certainty.certaintySubcomponent.rating [
-                   fhir:index 0;
-                   fhir:CodeableConcept.coding [
-                     fhir:index 0;
-                     fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
-                     fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
-                     fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
-                   ]
-                 ]
-               ]
-             ]
-           ]
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;CI&quot; ];
+           fhir:Coding.display [ fhir:value &quot;confidence interval&quot; ]
          ]
-       ], [
-         fhir:index 1;
-         fhir:Evidence.population.evidenceVariable.nestedVariable.description [ fhir:value &quot;No corticosteroids&quot; ];
-         fhir:Evidence.population.evidenceVariable.nestedVariable.variableDefinition [
-           fhir:Reference.reference [ fhir:value &quot;EvidenceVariable-No-Steroids&quot; ];
-           fhir:Reference.type [ fhir:value &quot;EvidenceVariable&quot; ];
-           fhir:Reference.display [ fhir:value &quot;No corticosteroids&quot; ]
+       ];
+       fhir:Statistic.attributeEstimate.level [ fhir:value &quot;0.95&quot;^^xsd:decimal ];
+       fhir:Statistic.attributeEstimate.range [
+         fhir:Range.low [
+           fhir:Quantity.value [ fhir:value &quot;0.89&quot;^^xsd:decimal ]
          ];
-         fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection [
+         fhir:Range.high [
+           fhir:Quantity.value [ fhir:value &quot;1.00&quot;^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Statistic.description [ fhir:value &quot;Absolute risk difference: 22 fewer per 1000&quot; ];
+     fhir:Statistic.note [
+       fhir:index 0;
+       fhir:Annotation.text [ fhir:value &quot;Difference: 22 fewer per 1000&quot; ]
+     ];
+     fhir:Statistic.statisticType [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot; ];
+         fhir:Coding.code [ fhir:value &quot;absolute-ARD&quot; ];
+         fhir:Coding.display [ fhir:value &quot;absolute risk difference&quot; ]
+       ]
+     ];
+     fhir:Statistic.quantity [
+       fhir:Quantity.value [ fhir:value &quot;0.022&quot;^^xsd:decimal ]
+     ];
+     fhir:Statistic.sampleSize [
+       fhir:Statistic.sampleSize.note [
+         fhir:index 0;
+         fhir:Annotation.text [ fhir:value &quot;Based on data from 6438 patients in 9 studies &quot; ]
+       ];
+       fhir:Statistic.sampleSize.numberOfStudies [ fhir:value &quot;9&quot;^^xsd:integer ];
+       fhir:Statistic.sampleSize.numberOfParticipants [ fhir:value &quot;6438&quot;^^xsd:integer ]
+     ];
+     fhir:Statistic.attributeEstimate [
+       fhir:index 0;
+       fhir:Statistic.attributeEstimate.description [ fhir:value &quot;(CI 95% 0.041 - 0.00)&quot; ];
+       fhir:Statistic.attributeEstimate.type [
+         fhir:CodeableConcept.coding [
            fhir:index 0;
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description [ fhir:value &quot;371 per 1000&quot; ];
-           fhir:Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic [
-             fhir:index 0;
-             fhir:Statistic.description [ fhir:value &quot;371 per 1000&quot; ];
-             fhir:Statistic.statisticType [
-               fhir:CodeableConcept.coding [
-                 fhir:index 0;
-                 fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/statistic-type&quot; ];
-                 fhir:Coding.code [ fhir:value &quot;proportion&quot; ];
-                 fhir:Coding.display [ fhir:value &quot;proportion&quot; ]
-               ]
-             ];
-             fhir:Statistic.quantity [
-               fhir:Quantity.value [ fhir:value &quot;0.371&quot;^^xsd:decimal ]
-             ]
-           ]
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/precision-estimate-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;CI&quot; ];
+           fhir:Coding.display [ fhir:value &quot;confidence interval&quot; ]
+         ]
+       ];
+       fhir:Statistic.attributeEstimate.range [
+         fhir:Range.low [
+           fhir:Quantity.value [ fhir:value &quot;0&quot;^^xsd:decimal ]
+         ];
+         fhir:Range.high [
+           fhir:Quantity.value [ fhir:value &quot;0.041&quot;^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:Evidence.certainty [
+     fhir:index 0;
+     fhir:Evidence.certainty.description [ fhir:value &quot;Low, due to serious imprecision and indirectness.&quot; ];
+     fhir:Evidence.certainty.rating [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-rating&quot; ];
+         fhir:Coding.code [ fhir:value &quot;low&quot; ];
+         fhir:Coding.display [ fhir:value &quot;Low quality&quot; ]
+       ]
+     ];
+     fhir:Evidence.certainty.certaintySubcomponent [
+       fhir:index 0;
+       fhir:Evidence.certainty.certaintySubcomponent.note [
+         fhir:Annotation.text [ fhir:value &quot;Note that all studies that reported 90 day to 1 year mortality also reported 28-30 day mortality: the CI 95% around the pooled effect for short term mortality also excludes no effect: RR 0.91 (CI 95% 0.84 - 0.98).&quot; ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.type [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;RiskOfBias&quot; ];
+           fhir:Coding.display [ fhir:value &quot;Risk of bias&quot; ]
+         ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.rating [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
+           fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
+           fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Evidence.certainty.certaintySubcomponent.type [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;Inconsistency&quot; ];
+           fhir:Coding.display [ fhir:value &quot;Inconsistency&quot; ]
+         ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.rating [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
+           fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
+           fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Evidence.certainty.certaintySubcomponent.note [
+         fhir:Annotation.text [ fhir:value &quot;Only a small proportion of studies reported longer-term mortality.&quot; ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.type [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;Indirectness&quot; ];
+           fhir:Coding.display [ fhir:value &quot;Indirectness&quot; ]
+         ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.rating [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
+           fhir:Coding.code [ fhir:value &quot;serious-concern&quot; ];
+           fhir:Coding.display [ fhir:value &quot;serious concern&quot; ]
+         ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:Evidence.certainty.certaintySubcomponent.note [
+         fhir:Annotation.text [ fhir:value &quot;Confidence interval includes no effect.&quot; ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.type [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;Imprecision&quot; ];
+           fhir:Coding.display [ fhir:value &quot;Imprecision&quot; ]
+         ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.rating [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
+           fhir:Coding.code [ fhir:value &quot;serious-concern&quot; ];
+           fhir:Coding.display [ fhir:value &quot;serious concern&quot; ]
+         ]
+       ]
+     ], [
+       fhir:index 4;
+       fhir:Evidence.certainty.certaintySubcomponent.type [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type&quot; ];
+           fhir:Coding.code [ fhir:value &quot;PublicationBias&quot; ];
+           fhir:Coding.display [ fhir:value &quot;Publication bias&quot; ]
+         ]
+       ];
+       fhir:Evidence.certainty.certaintySubcomponent.rating [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating&quot; ];
+           fhir:Coding.code [ fhir:value &quot;no-concern&quot; ];
+           fhir:Coding.display [ fhir:value &quot;no serious concern&quot; ]
          ]
        ]
      ]
@@ -449,7 +504,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:00-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

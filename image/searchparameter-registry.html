@@ -34,11 +34,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment">  <!-- segment-header -->	
+	<div id="segment-header" class="segment">  <!-- segment-header -->
 		<div class="container">  <!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" style="align:bottom" height="60"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -68,7 +70,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -100,7 +103,6 @@
             <div class="row">
             	<div class="inner-wrapper">
   <!-- CONTENT CONTENT -->
-
 
 <div class="col-12">
 
@@ -349,6 +351,12 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <li><a href="supplyrequest.html">SupplyRequest</a>: When the request was made</li>
 </ul>
 </td><td>AllergyIntolerance.​recordedDate | CarePlan.​period | CareTeam.​period | ClinicalImpression.​date | Composition.​date | Consent.​dateTime | DiagnosticReport.​effective | Encounter.​period | EpisodeOfCare.​period | FamilyMemberHistory.​date | Flag.​period | Immunization.​occurrence | List.​date | Observation.​effective | Procedure.​occurrence | (RiskAssessment.​occurrence as dateTime) | SupplyRequest.​authoredOn</td></tr>
+<tr><td>date<a name="medications-date"> </a> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#date">date</a></td><td>medications-date</td><td><p>Multiple Resources:</p>
+<ul>
+<li><a href="medicationadministration.html">MedicationAdministration</a>: Date administration happened (or did not happen)</li>
+<li><a href="medicationrequest.html">MedicationRequest</a>: Returns medication request to be administered on a specific date</li>
+</ul>
+</td><td>MedicationAdministration.​occurence | MedicationRequest.​dosageInstruction.​timing.​event</td></tr>
 <tr><td>description<a name="conformance-description"> </a> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#string">string</a></td><td>conformance-description</td><td><p>Multiple Resources:</p>
 <ul>
 <li><a href="capabilitystatement.html">CapabilityStatement</a>: The description of the capability statement</li>
@@ -1040,7 +1048,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>CarePlan.​activity.​detail.​performer</td></tr>
 <tr><td>replaces</td><td><a href="search.html#reference">reference</a></td><td>CarePlan-replaces</td><td><p>CarePlan replaced by this CarePlan</p>
 </td><td>CarePlan.​replaces</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>CarePlan-status</td><td><p>draft | active | suspended | completed | entered-in-error | cancelled | unknown</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>CarePlan-status</td><td><p>draft | active | on-hold | revoked | completed | entered-in-error | unknown</p>
 </td><td>CarePlan.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>CarePlan-subject</td><td><p>Who the care plan is for</p>
 </td><td>CarePlan.​subject</td></tr>
@@ -1219,7 +1227,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>ClinicalImpression.​previous</td></tr>
 <tr><td>problem</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-problem</td><td><p>Relevant impressions of patient state</p>
 </td><td>ClinicalImpression.​problem</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>ClinicalImpression-status</td><td><p>draft | completed | entered-in-error</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>ClinicalImpression-status</td><td><p>in-progress | completed | entered-in-error</p>
 </td><td>ClinicalImpression.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-subject</td><td><p>Patient or group assessed</p>
 </td><td>ClinicalImpression.​subject</td></tr>
@@ -1290,13 +1298,13 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Communication.​subject.​where(resolve() is Patient)</td></tr>
 <tr><td>received</td><td><a href="search.html#date">date</a></td><td>Communication-received</td><td><p>When received</p>
 </td><td>Communication.​received</td></tr>
-<tr><td>recipient</td><td><a href="search.html#reference">reference</a></td><td>Communication-recipient</td><td><p>Message recipient</p>
+<tr><td>recipient</td><td><a href="search.html#reference">reference</a></td><td>Communication-recipient</td><td><p>Who the information is shared with</p>
 </td><td>Communication.​recipient</td></tr>
-<tr><td>sender</td><td><a href="search.html#reference">reference</a></td><td>Communication-sender</td><td><p>Message sender</p>
+<tr><td>sender</td><td><a href="search.html#reference">reference</a></td><td>Communication-sender</td><td><p>Who shares the information</p>
 </td><td>Communication.​sender</td></tr>
 <tr><td>sent</td><td><a href="search.html#date">date</a></td><td>Communication-sent</td><td><p>When sent</p>
 </td><td>Communication.​sent</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Communication-status</td><td><p>preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Communication-status</td><td><p>preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown</p>
 </td><td>Communication.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>Communication-subject</td><td><p>Focus of message</p>
 </td><td>Communication.​subject</td></tr>
@@ -1313,23 +1321,23 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>CommunicationRequest.​groupIdentifier</td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-identifier</td><td><p>Unique identifier</p>
 </td><td>CommunicationRequest.​identifier</td></tr>
+<tr><td>information-provider</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-information-provider</td><td><p>Who should share the information</p>
+</td><td>CommunicationRequest.​informationProvider</td></tr>
 <tr><td>medium</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-medium</td><td><p>A channel of communication</p>
 </td><td>CommunicationRequest.​medium</td></tr>
 <tr><td>occurrence</td><td><a href="search.html#date">date</a></td><td>CommunicationRequest-occurrence</td><td><p>When scheduled</p>
 </td><td>CommunicationRequest.​occurrence.​as(dateTime) | CommunicationRequest.​occurrence.​as(Period)</td></tr>
 <tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-patient</td><td><p>Focus of message</p>
 </td><td>CommunicationRequest.​subject.​where(resolve() is Patient)</td></tr>
-<tr><td>priority</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-priority</td><td><p>Message urgency</p>
+<tr><td>priority</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-priority</td><td><p>routine | urgent | asap | stat</p>
 </td><td>CommunicationRequest.​priority</td></tr>
-<tr><td>recipient</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-recipient</td><td><p>Message recipient</p>
+<tr><td>recipient</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-recipient</td><td><p>Who to share the information with</p>
 </td><td>CommunicationRequest.​recipient</td></tr>
 <tr><td>replaces</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-replaces</td><td><p>Request(s) replaced by this request</p>
 </td><td>CommunicationRequest.​replaces</td></tr>
-<tr><td>requester</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-requester</td><td><p>Who/what is requesting service</p>
+<tr><td>requester</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-requester</td><td><p>Who asks for the information to be shared</p>
 </td><td>CommunicationRequest.​requester</td></tr>
-<tr><td>sender</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-sender</td><td><p>Message sender</p>
-</td><td>CommunicationRequest.​sender</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-status</td><td><p>draft | active | suspended | cancelled | completed | entered-in-error | unknown</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>CommunicationRequest-status</td><td><p>draft | active | on-hold | revoked | completed | entered-in-error | unknown</p>
 </td><td>CommunicationRequest.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>CommunicationRequest-subject</td><td><p>Focus of message</p>
 </td><td>CommunicationRequest.​subject</td></tr>
@@ -1459,7 +1467,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Condition.​abatement.​as(dateTime) | Condition.​abatement.​as(Period)</td></tr>
 <tr><td>abatement-string</td><td><a href="search.html#string">string</a></td><td>Condition-abatement-string</td><td><p>Abatement as a string</p>
 </td><td>Condition.​abatement.​as(string)</td></tr>
-<tr><td>asserter</td><td><a href="search.html#reference">reference</a></td><td>Condition-asserter</td><td><p>Person who asserts this condition</p>
+<tr><td>asserter</td><td><a href="search.html#reference">reference</a></td><td>Condition-asserter</td><td><p>Person or device that asserts this condition</p>
 </td><td>Condition.​asserter</td></tr>
 <tr><td>body-site</td><td><a href="search.html#token">token</a></td><td>Condition-body-site</td><td><p>Anatomical location, if relevant</p>
 </td><td>Condition.​bodySite</td></tr>
@@ -2048,6 +2056,31 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Evidence.​url</td></tr>
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>Evidence-version</td><td><p>The business version of the evidence</p>
 </td><td>Evidence.​version</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="evidenceset.html">EvidenceSet</a><a name="evidenceset"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>context</td><td><a href="search.html#token">token</a></td><td>EvidenceSet-context</td><td><p>A use context assigned to the evidence set</p>
+</td><td>(EvidenceSet.​useContext.​value as CodeableConcept)</td></tr>
+<tr><td>context-quantity</td><td><a href="search.html#quantity">quantity</a></td><td>EvidenceSet-context-quantity</td><td><p>A quantity- or range-valued use context assigned to the evidence set</p>
+</td><td>(EvidenceSet.​useContext.​value as Quantity) | (EvidenceSet.​useContext.​value as Range)</td></tr>
+<tr><td>context-type</td><td><a href="search.html#token">token</a></td><td>EvidenceSet-context-type</td><td><p>A type of use context assigned to the evidence set</p>
+</td><td>EvidenceSet.​useContext.​code</td></tr>
+<tr><td>context-type-quantity</td><td><a href="search.html#composite">composite</a></td><td>EvidenceSet-context-type-quantity</td><td><p>A use context type and quantity- or range-based value assigned to the evidence set</p>
+</td><td>EvidenceSet.​useContext</td></tr>
+<tr><td>context-type-value</td><td><a href="search.html#composite">composite</a></td><td>EvidenceSet-context-type-value</td><td><p>A use context type and value assigned to the evidence set</p>
+</td><td>EvidenceSet.​useContext</td></tr>
+<tr><td>date</td><td><a href="search.html#date">date</a></td><td>EvidenceSet-date</td><td><p>The evidence set publication date</p>
+</td><td>EvidenceSet.​date</td></tr>
+<tr><td>description</td><td><a href="search.html#string">string</a></td><td>EvidenceSet-description</td><td><p>The description of the evidence set</p>
+</td><td>EvidenceSet.​description</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>EvidenceSet-identifier</td><td><p>External identifier for the evidence set</p>
+</td><td>EvidenceSet.​identifier</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>EvidenceSet-status</td><td><p>The current status of the evidence set</p>
+</td><td>EvidenceSet.​status</td></tr>
+<tr><td>title</td><td><a href="search.html#string">string</a></td><td>EvidenceSet-title</td><td><p>The human-friendly name of the evidence set</p>
+</td><td>EvidenceSet.​title</td></tr>
+<tr><td>url</td><td><a href="search.html#uri">uri</a></td><td>EvidenceSet-url</td><td><p>The uri that identifies the evidence set</p>
+</td><td>EvidenceSet.​url</td></tr>
+<tr><td>version</td><td><a href="search.html#token">token</a></td><td>EvidenceSet-version</td><td><p>The business version of the evidence set</p>
+</td><td>EvidenceSet.​version</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="evidencevariable.html">EvidenceVariable</a><a name="evidencevariable"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>composed-of</td><td><a href="search.html#reference">reference</a></td><td>EvidenceVariable-composed-of</td><td><p>What resource is being referenced</p>
 </td><td>EvidenceVariable.​relatedArtifact.​where(type='composed-of').​resource</td></tr>
@@ -2679,7 +2712,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>Media.​subject.​where(resolve() is Patient)</td></tr>
 <tr><td>site</td><td><a href="search.html#token">token</a></td><td>Media-site</td><td><p>Observed body part</p>
 </td><td>Media.​bodySite</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Media-status</td><td><p>preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Media-status</td><td><p>preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown</p>
 </td><td>Media.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>Media-subject</td><td><p>Who/What this Media is a record of</p>
 </td><td>Media.​subject</td></tr>
@@ -2709,10 +2742,10 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="medicationadministration.html">MedicationAdministration</a><a name="medicationadministration"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>code</td><td><a href="search.html#token">token</a></td><td>clinical-code</td><td><p>Return administrations of this medication code</p>
 </td><td>(MedicationAdministration.​medication as CodeableConcept)</td></tr>
+<tr><td>date</td><td><a href="search.html#date">date</a></td><td>medications-date</td><td><p>Date administration happened (or did not happen)</p>
+</td><td>MedicationAdministration.​occurence</td></tr>
 <tr><td>device</td><td><a href="search.html#reference">reference</a></td><td>MedicationAdministration-device</td><td><p>Return administrations with this administration device identity</p>
 </td><td>MedicationAdministration.​device</td></tr>
-<tr><td>effective-time</td><td><a href="search.html#date">date</a></td><td>MedicationAdministration-effective-time</td><td><p>Date administration happened (or did not happen)</p>
-</td><td>MedicationAdministration.​effective</td></tr>
 <tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>medications-encounter</td><td><p>Return administrations that share this encounter</p>
 </td><td>MedicationAdministration.​encounter</td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>clinical-identifier</td><td><p>Return administrations with this external identifier</p>
@@ -2792,6 +2825,8 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>MedicationKnowledge.​monograph.​source</td></tr>
 <tr><td>monograph-type</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-monograph-type</td><td><p>The category of medication document</p>
 </td><td>MedicationKnowledge.​monograph.​type</td></tr>
+<tr><td>product-type</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-product-type</td><td><p>Category of the medication or product</p>
+</td><td>MedicationKnowledge.​productType</td></tr>
 <tr><td>source-cost</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-source-cost</td><td><p>The source or owner for the price information</p>
 </td><td>MedicationKnowledge.​cost.​source</td></tr>
 <tr><td>status</td><td><a href="search.html#token">token</a></td><td>MedicationKnowledge-status</td><td><p>active | inactive | entered-in-error</p>
@@ -2803,10 +2838,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>MedicationRequest.​category</td></tr>
 <tr><td>code</td><td><a href="search.html#token">token</a></td><td>clinical-code</td><td><p>Return prescriptions of this medication code</p>
 </td><td>(MedicationRequest.​medication as CodeableConcept)</td></tr>
-<tr><td>date</td><td><a href="search.html#date">date</a></td><td>medications-date</td><td><p>Multiple Resources:</p>
-<ul>
-<li><a href="medicationrequest.html">MedicationRequest</a>: Returns medication request to be administered on a specific date</li>
-</ul>
+<tr><td>date</td><td><a href="search.html#date">date</a></td><td>medications-date</td><td><p>Returns medication request to be administered on a specific date</p>
 </td><td>MedicationRequest.​dosageInstruction.​timing.​event</td></tr>
 <tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>medications-encounter</td><td><p>Return prescriptions with this encounter identifier</p>
 </td><td>MedicationRequest.​encounter</td></tr>
@@ -3093,6 +3125,21 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>(Observation.​value as Quantity) | (Observation.​value as SampledData)</td></tr>
 <tr><td>value-string <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#string">string</a></td><td>Observation-value-string</td><td><p>The value of the observation, if the value is a string, and also searches in CodeableConcept.text</p>
 </td><td>(Observation.​value as string) | (Observation.​value as CodeableConcept).​text</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="observationdefinition.html">ObservationDefinition</a><a name="observationdefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>category</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-category</td><td><p>Category (class) of observation</p>
+</td><td>ObservationDefinition.​category</td></tr>
+<tr><td>code</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-code</td><td><p>Observation code</p>
+</td><td>ObservationDefinition.​code</td></tr>
+<tr><td>experimental</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-experimental</td><td><p>Not for genuine usage (true)</p>
+</td><td>ObservationDefinition.​experimental</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-identifier</td><td><p>The unique identifier associated with the specimen definition</p>
+</td><td>ObservationDefinition.​identifier</td></tr>
+<tr><td>method</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-method</td><td><p>Method of observation</p>
+</td><td>ObservationDefinition.​method</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>ObservationDefinition-status</td><td><p>Publication status of the ObservationDefinition: draft, active, retired, unknown</p>
+</td><td>ObservationDefinition.​status</td></tr>
+<tr><td>title</td><td><a href="search.html#string">string</a></td><td>ObservationDefinition-title</td><td><p>Human-friendly name of the ObservationDefinition</p>
+</td><td>ObservationDefinition.​title</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="operationdefinition.html">OperationDefinition</a><a name="operationdefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process" title="Normative Content">N</a></td></tr>
 <tr><td>base <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#reference">reference</a></td><td>OperationDefinition-base</td><td><p>Marks this as a profile of the base</p>
 </td><td>OperationDefinition.​base</td></tr>
@@ -3446,7 +3493,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>Procedure.​partOf</td></tr>
 <tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>clinical-patient</td><td><p>Search by subject - a patient</p>
 </td><td>Procedure.​subject.​where(resolve() is Patient)</td></tr>
-<tr><td>performer</td><td><a href="search.html#reference">reference</a></td><td>Procedure-performer</td><td><p>The reference to the practitioner</p>
+<tr><td>performer</td><td><a href="search.html#reference">reference</a></td><td>Procedure-performer</td><td><p>Who performed the procedure</p>
 </td><td>Procedure.​performer.​actor</td></tr>
 <tr><td>reason-code</td><td><a href="search.html#token">token</a></td><td>Procedure-reason-code</td><td><p>Coded reason procedure performed</p>
 </td><td>Procedure.​reasonCode</td></tr>
@@ -3892,7 +3939,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>ServiceRequest.​instantiatesCanonical</td></tr>
 <tr><td>instantiates-uri</td><td><a href="search.html#uri">uri</a></td><td>ServiceRequest-instantiates-uri</td><td><p>Instantiates external protocol or definition</p>
 </td><td>ServiceRequest.​instantiatesUri</td></tr>
-<tr><td>intent</td><td><a href="search.html#token">token</a></td><td>ServiceRequest-intent</td><td><p>proposal | plan | order +</p>
+<tr><td>intent</td><td><a href="search.html#token">token</a></td><td>ServiceRequest-intent</td><td><p>proposal | plan | directive | order +</p>
 </td><td>ServiceRequest.​intent</td></tr>
 <tr><td>occurrence</td><td><a href="search.html#date">date</a></td><td>ServiceRequest-occurrence</td><td><p>When service should occur</p>
 </td><td>ServiceRequest.​occurrence</td></tr>
@@ -3912,7 +3959,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>ServiceRequest.​requisition</td></tr>
 <tr><td>specimen</td><td><a href="search.html#reference">reference</a></td><td>ServiceRequest-specimen</td><td><p>Specimen to be tested</p>
 </td><td>ServiceRequest.​specimen</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>ServiceRequest-status</td><td><p>draft | active | suspended | completed | entered-in-error | cancelled</p>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>ServiceRequest-status</td><td><p>draft | active | on-hold | revoked | completed | entered-in-error | unknown</p>
 </td><td>ServiceRequest.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>ServiceRequest-subject</td><td><p>Search by subject</p>
 </td><td>ServiceRequest.​subject</td></tr>
@@ -3961,10 +4008,20 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="specimendefinition.html">SpecimenDefinition</a><a name="specimendefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>container</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-container</td><td><p>The type of specimen conditioned in container expected by the lab</p>
 </td><td>SpecimenDefinition.​typeTested.​container.​type</td></tr>
-<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-identifier</td><td><p>The unique identifier associated with the specimen</p>
+<tr><td>experimental</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-experimental</td><td><p>Not for genuine usage (true)</p>
+</td><td>SpecimenDefinition.​experimental</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-identifier</td><td><p>The unique identifier associated with the SpecimenDefinition</p>
 </td><td>SpecimenDefinition.​identifier</td></tr>
+<tr><td>is-derived</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-is-derived</td><td><p>Primary specimen (false) or derived specimen (true)</p>
+</td><td>SpecimenDefinition.​typeTested.​isDerived</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-status</td><td><p>Publication status of the SpecimenDefinition: draft, active, retired, unknown</p>
+</td><td>SpecimenDefinition.​status</td></tr>
+<tr><td>title</td><td><a href="search.html#string">string</a></td><td>SpecimenDefinition-title</td><td><p>Human-friendly name of the SpecimenDefinition</p>
+</td><td>SpecimenDefinition.​title</td></tr>
 <tr><td>type</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-type</td><td><p>The type of collected specimen</p>
 </td><td>SpecimenDefinition.​typeCollected</td></tr>
+<tr><td>type-tested</td><td><a href="search.html#token">token</a></td><td>SpecimenDefinition-type-tested</td><td><p>The type of specimen conditioned for testing</p>
+</td><td>SpecimenDefinition.​typeTested.​type</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="structuredefinition.html">StructureDefinition</a><a name="structuredefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process" title="Normative Content">N</a></td></tr>
 <tr><td>abstract <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#token">token</a></td><td>StructureDefinition-abstract</td><td><p>Whether the structure is abstract</p>
 </td><td>StructureDefinition.​abstract</td></tr>
@@ -4222,6 +4279,25 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>TestScript.​url</td></tr>
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>TestScript-version</td><td><p>The business version of the test script</p>
 </td><td>TestScript.​version</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="topic.html">Topic</a><a name="topic"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>date</td><td><a href="search.html#date">date</a></td><td>Topic-date</td><td><p>Date status first applied</p>
+</td><td>Topic.​date</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>Topic-identifier</td><td><p>Business Identifier for Topic</p>
+</td><td>Topic.​identifier</td></tr>
+<tr><td>publisher</td><td><a href="search.html#reference">reference</a></td><td>Topic-publisher</td><td><p>The name of the individual or organization that published the Topic</p>
+</td><td>Topic.​publisher</td></tr>
+<tr><td>resource-type</td><td><a href="search.html#token">token</a></td><td>Topic-resource-type</td><td><p>Candidate types for this topic</p>
+</td><td>Topic.​resourceTrigger.​resourceType</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Topic-status</td><td><p>draft | active | retired | unknown</p>
+</td><td>Topic.​status</td></tr>
+<tr><td>title</td><td><a href="search.html#string">string</a></td><td>Topic-title</td><td><p>Name for this Topic (Human friendly)</p>
+</td><td>Topic.​title</td></tr>
+<tr><td>trigger-description</td><td><a href="search.html#string">string</a></td><td>Topic-trigger-description</td><td><p>Text representation of the trigger</p>
+</td><td>Topic.​resourceTrigger.​description</td></tr>
+<tr><td>url</td><td><a href="search.html#uri">uri</a></td><td>Topic-url</td><td><p>Logical canonical URL to reference this Topic (globally unique)</p>
+</td><td>Topic.​url</td></tr>
+<tr><td>version</td><td><a href="search.html#token">token</a></td><td>Topic-version</td><td><p>Business version of the Topic</p>
+</td><td>Topic.​version</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="valueset.html">ValueSet</a><a name="valueset"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process" title="Normative Content">N</a></td></tr>
 <tr><td>code <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#token">token</a></td><td>ValueSet-code</td><td><p>This special parameter searches for codes in the value set. See additional notes on the ValueSet resource</p>
 </td><td>ValueSet.​expansion.​contains.​code | ValueSet.​compose.​include.​concept.​code</td></tr>
@@ -4294,7 +4370,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:26-0500. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:03-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 

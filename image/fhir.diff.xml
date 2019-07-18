@@ -823,6 +823,7 @@
       <element path="CatalogEntry.relatedEntry.target" status="new"/>
       <element path="CatalogEntry.updatedBy" status="new"/>
       <element path="CatalogEntry.note" status="new"/>
+      <element path="CatalogEntry.estimatedDuration" status="new"/>
       <element path="CatalogEntry.billingCode" status="new"/>
       <element path="CatalogEntry.billingSummary" status="new"/>
       <element path="CatalogEntry.scheduleSummary" status="new"/>
@@ -1025,10 +1026,12 @@
          <removed-type name="string"/>
          <added-type name="CodeableConcept"/>
       </element>
+      <element path="CommunicationRequest.informationProvider" status="new"/>
       <element path="CommunicationRequest.reasonReference">
          <removed-type name="Reference(Condition | Observation | DiagnosticReport | DocumentReference)"/>
          <added-type name="Reference(Resource)"/>
       </element>
+      <element path="CommunicationRequest.sender" status="deleted"/>
    </type>
    <type name="CompartmentDefinition" status="changed">
       <element binding-status="changed"
@@ -1140,6 +1143,10 @@
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/condition-ver-status|4.1.0"
                       strength="required"/>
+      </element>
+      <element path="Condition.asserter">
+         <removed-type name="Reference(Practitioner | PractitionerRole | Patient | RelatedPerson)"/>
+         <added-type name="Reference(Practitioner | PractitionerRole | Patient | RelatedPerson | Device)"/>
       </element>
    </type>
    <type name="ConditionDefinition" status="new"/>
@@ -1552,7 +1559,6 @@
       </element>
    </type>
    <type name="Evidence" status="changed">
-      <element path="Evidence.subTitle" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="Evidence.status">
@@ -1561,74 +1567,42 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/publication-status|4.1.0"
                       strength="required"/>
       </element>
-      <element path="Evidence.summaryPublisher" status="new"/>
-      <element path="Evidence.summaryPublisher.name" status="new"/>
-      <element path="Evidence.summaryPublisher.contact" status="new"/>
       <element path="Evidence.contributor" status="new"/>
+      <element path="Evidence.assertion" status="new"/>
+      <element path="Evidence.referentGroup" status="new"/>
+      <element path="Evidence.referentGroup.description" status="new"/>
+      <element path="Evidence.referentGroup.note" status="new"/>
+      <element path="Evidence.referentGroup.evidenceSource" status="new"/>
+      <element path="Evidence.referentGroup.intendedGroup" status="new"/>
+      <element path="Evidence.referentGroup.directnessMatch" status="new"/>
+      <element path="Evidence.variableDefinition" status="new"/>
+      <element path="Evidence.variableDefinition.description" status="new"/>
+      <element path="Evidence.variableDefinition.note" status="new"/>
+      <element path="Evidence.variableDefinition.variableRole" status="new"/>
+      <element path="Evidence.variableDefinition.actualDefinition" status="new"/>
+      <element path="Evidence.variableDefinition.intendedDefinition" status="new"/>
+      <element path="Evidence.variableDefinition.directnessMatch" status="new"/>
       <element path="Evidence.synthesisType" status="new"/>
       <element path="Evidence.studyType" status="new"/>
-      <element path="Evidence.population" status="new"/>
-      <element path="Evidence.population.description" status="new"/>
-      <element path="Evidence.population.note" status="new"/>
-      <element path="Evidence.population.intendedCohort" status="new"/>
-      <element path="Evidence.population.sampleCohort" status="new"/>
-      <element path="Evidence.population.actualCohort" status="new"/>
-      <element path="Evidence.population.sampleSize" status="new"/>
-      <element path="Evidence.population.sampleSize.description" status="new"/>
-      <element path="Evidence.population.sampleSize.note" status="new"/>
-      <element path="Evidence.population.sampleSize.numberOfStudies" status="new"/>
-      <element path="Evidence.population.sampleSize.numberOfParticipants" status="new"/>
-      <element path="Evidence.population.evidenceVariable" status="new"/>
-      <element path="Evidence.population.evidenceVariable.description" status="new"/>
-      <element path="Evidence.population.evidenceVariable.note" status="new"/>
-      <element path="Evidence.population.evidenceVariable.variableRole" status="new"/>
-      <element path="Evidence.population.evidenceVariable.variableDefinition"
+      <element path="Evidence.statistic" status="new"/>
+      <element path="Evidence.distribution" status="new"/>
+      <element path="Evidence.certainty" status="new"/>
+      <element path="Evidence.certainty.description" status="new"/>
+      <element path="Evidence.certainty.note" status="new"/>
+      <element path="Evidence.certainty.rating" status="new"/>
+      <element path="Evidence.certainty.certaintySubcomponent" status="new"/>
+      <element path="Evidence.certainty.certaintySubcomponent.description"
                status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection.description"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection.note"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection.synthesisType"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection.studyType"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.statisticCollection.statistic"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.distribution" status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable" status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.description"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.note"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.variableRole"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.variableDefinition"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition"
-               status="new"/>
-      <element path="Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic"
-               status="new"/>
+      <element path="Evidence.certainty.certaintySubcomponent.note" status="new"/>
+      <element path="Evidence.certainty.certaintySubcomponent.type" status="new"/>
+      <element path="Evidence.certainty.certaintySubcomponent.rating" status="new"/>
       <element path="Evidence.name" status="deleted"/>
+      <element path="Evidence.shortTitle" status="deleted"/>
       <element path="Evidence.subtitle" status="deleted"/>
       <element path="Evidence.publisher" status="deleted"/>
       <element path="Evidence.contact" status="deleted"/>
       <element path="Evidence.jurisdiction" status="deleted"/>
+      <element path="Evidence.copyright" status="deleted"/>
       <element path="Evidence.effectivePeriod" status="deleted"/>
       <element path="Evidence.topic" status="deleted"/>
       <element path="Evidence.author" status="deleted"/>
@@ -1639,6 +1613,7 @@
       <element path="Evidence.exposureVariant" status="deleted"/>
       <element path="Evidence.outcome" status="deleted"/>
    </type>
+   <type name="EvidenceSet" status="new"/>
    <type name="EvidenceVariable" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -1656,6 +1631,8 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/variable-type|4.1.0"
                       strength="required"/>
       </element>
+      <element path="EvidenceVariable.characteristic.method" status="new"/>
+      <element path="EvidenceVariable.characteristic.device" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="EvidenceVariable.characteristic.groupMeasure">
@@ -1829,6 +1806,7 @@
       </element>
    </type>
    <type name="Group" status="changed">
+      <element path="Group.url" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="Group.type">
@@ -2134,12 +2112,15 @@
       </element>
       <element new-max="*" old-max="1" path="MedicationAdministration.category"/>
       <element path="MedicationAdministration.encounter" status="new"/>
+      <element path="MedicationAdministration.occurence[x]" status="new"/>
+      <element path="MedicationAdministration.recorded" status="new"/>
       <element path="MedicationAdministration.dosage.rate[x]">
          <removed-type name="Quantity()"/>
          <added-type name="Quantity()"/>
       </element>
       <element path="MedicationAdministration.instantiates" status="deleted"/>
       <element path="MedicationAdministration.context" status="deleted"/>
+      <element path="MedicationAdministration.effective[x]" status="deleted"/>
    </type>
    <type name="MedicationDispense" status="changed">
       <element binding-status="changed"
@@ -2403,6 +2384,27 @@
       </element>
    </type>
    <type name="ObservationDefinition" status="changed">
+      <element path="ObservationDefinition.url" status="new"/>
+      <element new-max="1" old-max="*" path="ObservationDefinition.identifier"/>
+      <element path="ObservationDefinition.version" status="new"/>
+      <element path="ObservationDefinition.title" status="new"/>
+      <element path="ObservationDefinition.derivedFromCanonical" status="new"/>
+      <element path="ObservationDefinition.derivedFromUri" status="new"/>
+      <element path="ObservationDefinition.status" status="new"/>
+      <element path="ObservationDefinition.experimental" status="new"/>
+      <element path="ObservationDefinition.subject[x]" status="new"/>
+      <element path="ObservationDefinition.date" status="new"/>
+      <element path="ObservationDefinition.publisher" status="new"/>
+      <element path="ObservationDefinition.contact" status="new"/>
+      <element path="ObservationDefinition.description" status="new"/>
+      <element path="ObservationDefinition.useContext" status="new"/>
+      <element path="ObservationDefinition.jurisdiction" status="new"/>
+      <element path="ObservationDefinition.purpose" status="new"/>
+      <element path="ObservationDefinition.copyright" status="new"/>
+      <element path="ObservationDefinition.approvalDate" status="new"/>
+      <element path="ObservationDefinition.lastReviewDate" status="new"/>
+      <element path="ObservationDefinition.effectivePeriod" status="new"/>
+      <element path="ObservationDefinition.performerType" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="ObservationDefinition.permittedDataType">
@@ -2411,6 +2413,9 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/permitted-data-type|4.1.0"
                       strength="required"/>
       </element>
+      <element path="ObservationDefinition.bodySite" status="new"/>
+      <element path="ObservationDefinition.specimen" status="new"/>
+      <element path="ObservationDefinition.device" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="ObservationDefinition.qualifiedInterval.category">
@@ -2427,6 +2432,12 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/administrative-gender|4.1.0"
                       strength="required"/>
       </element>
+      <element path="ObservationDefinition.hasMember" status="new"/>
+      <element path="ObservationDefinition.component" status="new"/>
+      <element path="ObservationDefinition.component.code" status="new"/>
+      <element path="ObservationDefinition.component.permittedDataType" status="new"/>
+      <element path="ObservationDefinition.component.quantitativeDetails" status="new"/>
+      <element path="ObservationDefinition.component.qualifiedInterval" status="new"/>
    </type>
    <type name="OperationDefinition" status="changed">
       <element binding-status="changed"
@@ -2702,6 +2713,10 @@
       <element path="Procedure.occurrence[x]" status="new"/>
       <element path="Procedure.recorded" status="new"/>
       <element path="Procedure.reported[x]" status="new"/>
+      <element path="Procedure.performer.actor">
+         <removed-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device)"/>
+         <added-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device | CareTeam | HealthcareService)"/>
+      </element>
       <element path="Procedure.performed[x]" status="deleted"/>
       <element path="Procedure.asserter" status="deleted"/>
    </type>
@@ -3087,6 +3102,25 @@
       </element>
    </type>
    <type name="SpecimenDefinition" status="changed">
+      <element path="SpecimenDefinition.url" status="new"/>
+      <element path="SpecimenDefinition.version" status="new"/>
+      <element path="SpecimenDefinition.title" status="new"/>
+      <element path="SpecimenDefinition.derivedFromCanonical" status="new"/>
+      <element path="SpecimenDefinition.derivedFromUri" status="new"/>
+      <element path="SpecimenDefinition.status" status="new"/>
+      <element path="SpecimenDefinition.experimental" status="new"/>
+      <element path="SpecimenDefinition.subject[x]" status="new"/>
+      <element path="SpecimenDefinition.date" status="new"/>
+      <element path="SpecimenDefinition.publisher" status="new"/>
+      <element path="SpecimenDefinition.contact" status="new"/>
+      <element path="SpecimenDefinition.description" status="new"/>
+      <element path="SpecimenDefinition.useContext" status="new"/>
+      <element path="SpecimenDefinition.jurisdiction" status="new"/>
+      <element path="SpecimenDefinition.purpose" status="new"/>
+      <element path="SpecimenDefinition.copyright" status="new"/>
+      <element path="SpecimenDefinition.approvalDate" status="new"/>
+      <element path="SpecimenDefinition.lastReviewDate" status="new"/>
+      <element path="SpecimenDefinition.effectivePeriod" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="SpecimenDefinition.typeTested.preference">
@@ -3099,6 +3133,8 @@
          <removed-type name="Quantity()"/>
          <added-type name="Quantity()"/>
       </element>
+      <element path="SpecimenDefinition.typeTested.singleUse" status="new"/>
+      <element path="SpecimenDefinition.typeTested.testingDestination" status="new"/>
    </type>
    <type name="StructureDefinition" status="changed">
       <element binding-status="changed"
@@ -3470,6 +3506,7 @@
                       strength="required"/>
       </element>
    </type>
+   <type name="Topic" status="new"/>
    <type name="ValueSet" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"

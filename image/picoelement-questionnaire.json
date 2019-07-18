@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.definition[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:b4622da6-659e-49e6-b556-5f578c8597fe",
-      "timestamp" : "2019-05-31T13:24:37-05:00",
+      "identifier" : "urn:uuid:d5213ae2-9e49-4a93-9cd1-4ae2608872de",
+      "timestamp" : "2019-07-18T12:00:54-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "Group",
@@ -49,8 +49,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.subject[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:b492199f-bfbd-403c-9042-da1953a9ecff",
-      "timestamp" : "2019-05-31T13:24:37-05:00",
+      "identifier" : "urn:uuid:0bf4a080-befc-4495-b243-330e45e15c51",
+      "timestamp" : "2019-07-18T12:00:54-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -70,8 +70,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.dateFilter.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:fef70fea-32ef-4af9-976c-759811a249f5",
-      "timestamp" : "2019-05-31T13:24:37-05:00",
+      "identifier" : "urn:uuid:b575f3d5-e43e-41e5-93b5-2f6814e8d6df",
+      "timestamp" : "2019-07-18T12:00:54-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -96,8 +96,8 @@
     "status" : "active",
     "description" : "Type options for TriggerDefinition.timing[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:1b95237f-df65-495a-98ed-7ec3083cac2b",
-      "timestamp" : "2019-05-31T13:24:37-05:00",
+      "identifier" : "urn:uuid:4b9b8657-b1ea-45c0-a350-f42f6c9963c8",
+      "timestamp" : "2019-07-18T12:00:54-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Timing",
@@ -127,8 +127,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.participantEffective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:3d7e1dc5-374f-4354-a07e-0443af02ff9f",
-      "timestamp" : "2019-05-31T13:24:37-05:00",
+      "identifier" : "urn:uuid:af59eade-d7a7-4a2d-b852-e2617e051c09",
+      "timestamp" : "2019-07-18T12:00:54-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -156,7 +156,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2018-10-31T00:00:00-05:00",
+  "date" : "2018-10-31T00:00:00-04:00",
   "publisher" : "Health Level Seven, Inc. - Clinical Decision Support Workgroup",
   "item" : [{
     "linkId" : "EvidenceVariable",
@@ -2988,6 +2988,92 @@
               }]
             }]
           }]
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "CodeableConcept"
+        }],
+        "linkId" : "EvidenceVariable.characteristic.method",
+        "text" : "Method used for describing characteristic",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Method used for describing characteristic.",
+          "type" : "display"
+        },
+        {
+          "linkId" : "EvidenceVariable.characteristic.method.coding",
+          "text" : "code:",
+          "type" : "open-choice",
+          "required" : false,
+          "repeats" : false
+        },
+        {
+          "linkId" : "EvidenceVariable.characteristic.method.text",
+          "text" : "text:",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "Reference"
+        }],
+        "linkId" : "EvidenceVariable.characteristic.device",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Device used for determining characteristic.",
+          "type" : "display"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+            "valueCode" : "Device, DeviceMetric"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+            "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+          }],
+          "linkId" : "EvidenceVariable.characteristic.device.value",
+          "text" : "Device used for determining characteristic",
+          "type" : "reference",
+          "required" : false,
+          "repeats" : false
         }]
       },
       {

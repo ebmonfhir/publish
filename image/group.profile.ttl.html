@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Group.profile.ttl</h1>
@@ -123,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Group&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-31T13:21:05.565-05:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-07-18T11:53:20.879-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -139,7 +141,7 @@
   ], [
      fhir:index 2;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot; ];
-     fhir:Extension.value [ fhir:value &quot;1&quot; ]
+     fhir:Extension.value [ fhir:value &quot;0&quot; ]
   ], [
      fhir:index 3;
      fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot; ];
@@ -153,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Group&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-31T13:21:05-05:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-07-18T11:53:20-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (FHIR Infrastructure)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -519,6 +521,32 @@
        ]
      ], [
        fhir:index 9;
+       fhir:Element.id [ fhir:value &quot;Group.url&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Group.url&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Canonical identifier for this evidence, represented as a globally unique URI&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Can be a urn:uuid: or a urn:oid: but real http: addresses are preferred. Multiple instances may share the same URL if they have a distinct version.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Allows the evidence to be referenced by a single globally unique identifier.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Group.url&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ]
+     ], [
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;Group.identifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.identifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Unique id&quot; ];
@@ -551,7 +579,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.identifier&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Group.active&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.active&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether this group's record is in active use&quot; ];
@@ -585,7 +613,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.active&quot; ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;Group.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;person | animal | practitioner | device | medication | substance&quot; ];
@@ -625,7 +653,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;person: ./classCode=\&quot;PSN\&quot;  animal: ./classCode=\&quot;ANM\&quot;  device: ./classCode=\&quot;DEV\&quot;  medication: ./classCode=\&quot;MMAT\&quot; and ./playedRole[isNormalRole() and classCode=\&quot;THER\&quot;]  food: ./classCode=\&quot;FOOD\&quot;&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;Group.actual&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.actual&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Descriptive or actual&quot; ];
@@ -658,7 +686,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;true: ./determinerCode=\&quot;GRP\&quot;  false: ./determinerCode=\&quot;GRP_KIND\&quot;&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Group.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of Group members&quot; ];
@@ -696,7 +724,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./code&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Group.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Label for Group&quot; ];
@@ -725,7 +753,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.name&quot; ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Group.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of members&quot; ];
@@ -751,7 +779,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./quantity&quot; ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Group.managingEntity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.managingEntity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Entity that is the custodian of the Group's definition&quot; ];
@@ -784,7 +812,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Group.characteristic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Include / Exclude group members by Trait&quot; ];
@@ -819,7 +847,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./playedRole[isNormalRole()]/participation[isNormalParticipation() and typeCode=\&quot;SBJ\&quot;]/act[isNormalAct and classCode=\&quot;OBS\&quot; and moodCode=\&quot;EVN\&quot;]&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -847,7 +875,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -879,7 +907,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -916,7 +944,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of characteristic&quot; ];
@@ -950,7 +978,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./code&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value held by characteristic&quot; ];
@@ -997,7 +1025,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./value&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.exclude&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.exclude&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Group includes or excludes&quot; ];
@@ -1023,7 +1051,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./valueNegationInd&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Period over which characteristic is tested&quot; ];
@@ -1042,7 +1070,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 25;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Group.member&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who or what is in group&quot; ];
@@ -1080,7 +1108,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./scopedRole[isNormalRole() and classCode=\&quot;MBR\&quot;]/player&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Group.member.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1108,7 +1136,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Group.member.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1140,7 +1168,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Group.member.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1177,7 +1205,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Group.member.entity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.entity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reference to the group member&quot; ];
@@ -1218,7 +1246,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 30;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;Group.member.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Period member belonged to the group&quot; ];
@@ -1239,7 +1267,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 31;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Group.member.inactive&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.inactive&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;If member is no longer in group&quot; ];
@@ -1290,6 +1318,25 @@
        ]
      ], [
        fhir:index 1;
+       fhir:Element.id [ fhir:value &quot;Group.url&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Group.url&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Canonical identifier for this evidence, represented as a globally unique URI&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;An absolute URI that is used to identify this evidence when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this summary is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the summary is stored on different servers.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;Can be a urn:uuid: or a urn:oid: but real http: addresses are preferred. Multiple instances may share the same URL if they have a distinct version.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Allows the evidence to be referenced by a single globally unique identifier.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;w5&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;FiveWs.identifier&quot; ]
+       ]
+     ], [
+       fhir:index 2;
        fhir:Element.id [ fhir:value &quot;Group.identifier&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.identifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Unique id&quot; ];
@@ -1316,7 +1363,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.identifier&quot; ]
        ]
      ], [
-       fhir:index 2;
+       fhir:index 3;
        fhir:Element.id [ fhir:value &quot;Group.active&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.active&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Whether this group's record is in active use&quot; ];
@@ -1344,7 +1391,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.active&quot; ]
        ]
      ], [
-       fhir:index 3;
+       fhir:index 4;
        fhir:Element.id [ fhir:value &quot;Group.type&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.type&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;person | animal | practitioner | device | medication | substance&quot; ];
@@ -1378,7 +1425,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;person: ./classCode=\&quot;PSN\&quot;  animal: ./classCode=\&quot;ANM\&quot;  device: ./classCode=\&quot;DEV\&quot;  medication: ./classCode=\&quot;MMAT\&quot; and ./playedRole[isNormalRole() and classCode=\&quot;THER\&quot;]  food: ./classCode=\&quot;FOOD\&quot;&quot; ]
        ]
      ], [
-       fhir:index 4;
+       fhir:index 5;
        fhir:Element.id [ fhir:value &quot;Group.actual&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.actual&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Descriptive or actual&quot; ];
@@ -1405,7 +1452,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;true: ./determinerCode=\&quot;GRP\&quot;  false: ./determinerCode=\&quot;GRP_KIND\&quot;&quot; ]
        ]
      ], [
-       fhir:index 5;
+       fhir:index 6;
        fhir:Element.id [ fhir:value &quot;Group.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of Group members&quot; ];
@@ -1437,7 +1484,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./code&quot; ]
        ]
      ], [
-       fhir:index 6;
+       fhir:index 7;
        fhir:Element.id [ fhir:value &quot;Group.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Label for Group&quot; ];
@@ -1460,7 +1507,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;Participant.name&quot; ]
        ]
      ], [
-       fhir:index 7;
+       fhir:index 8;
        fhir:Element.id [ fhir:value &quot;Group.quantity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.quantity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Number of members&quot; ];
@@ -1480,7 +1527,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./quantity&quot; ]
        ]
      ], [
-       fhir:index 8;
+       fhir:index 9;
        fhir:Element.id [ fhir:value &quot;Group.managingEntity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.managingEntity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Entity that is the custodian of the Group's definition&quot; ];
@@ -1507,7 +1554,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 9;
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;Group.characteristic&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Include / Exclude group members by Trait&quot; ];
@@ -1526,7 +1573,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./playedRole[isNormalRole()]/participation[isNormalParticipation() and typeCode=\&quot;SBJ\&quot;]/act[isNormalAct and classCode=\&quot;OBS\&quot; and moodCode=\&quot;EVN\&quot;]&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.code&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.code&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Kind of characteristic&quot; ];
@@ -1553,7 +1600,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./code&quot; ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value held by characteristic&quot; ];
@@ -1593,7 +1640,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./value&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.exclude&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.exclude&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Group includes or excludes&quot; ];
@@ -1612,7 +1659,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./valueNegationInd&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Group.characteristic.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.characteristic.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Period over which characteristic is tested&quot; ];
@@ -1624,7 +1671,7 @@
          fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Group.member&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Who or what is in group&quot; ];
@@ -1646,7 +1693,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;./scopedRole[isNormalRole() and classCode=\&quot;MBR\&quot;]/player&quot; ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Group.member.entity&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.entity&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reference to the group member&quot; ];
@@ -1680,7 +1727,7 @@
          ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Group.member.period&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.period&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Period member belonged to the group&quot; ];
@@ -1694,7 +1741,7 @@
        ];
        fhir:ElementDefinition.meaningWhenMissing [ fhir:value &quot;The member is in the group at this time&quot; ]
      ], [
-       fhir:index 17;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Group.member.inactive&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Group.member.inactive&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;If member is no longer in group&quot; ];
@@ -1737,7 +1784,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:01-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

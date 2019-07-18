@@ -64,12 +64,6 @@
     <sch:rule context="f:Evidence/f:useContext/f:valueReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:summaryPublisher/f:contact/f:telecom">
-      <sch:assert test="not(exists(f:value)) or exists(f:system)">cpt-2: A system is required if a value is provided.</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:summaryPublisher/f:contact/f:telecom/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
     <sch:rule context="f:Evidence/f:contributor/f:contact/f:telecom">
       <sch:assert test="not(exists(f:value)) or exists(f:system)">cpt-2: A system is required if a value is provided.</sch:assert>
     </sch:rule>
@@ -88,536 +82,186 @@
     <sch:rule context="f:Evidence/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:referentGroup/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:referentGroup/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:referentGroup/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:intendedCohort">
+    <sch:rule context="f:Evidence/f:referentGroup/f:evidenceSource">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:intendedCohort/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:referentGroup/f:evidenceSource/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:intendedCohort/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:referentGroup/f:evidenceSource/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleCohort">
+    <sch:rule context="f:Evidence/f:referentGroup/f:intendedGroup">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleCohort/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:referentGroup/f:intendedGroup/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleCohort/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:referentGroup/f:intendedGroup/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:actualCohort">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:actualCohort/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:actualCohort/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleSize/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:actualDefinition">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:actualDefinition/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:actualDefinition/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:intendedDefinition">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:intendedDefinition/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:variableDefinition/f:intendedDefinition/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:variableDefinition">
+    <sch:rule context="f:Evidence/f:statistic/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:variableDefinition/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:statistic/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:variableDefinition/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:statistic/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:quantity">
+    <sch:rule context="f:Evidence/f:statistic/f:quantity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:statistic/f:sampleSize/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:quantity">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:quantity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:range">
       <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range/f:low">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:range/f:low">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range/f:high">
+    <sch:rule context="f:Evidence/f:statistic/f:attributeEstimate/f:range/f:high">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution">
+    <sch:rule context="f:Evidence/f:distribution">
       <sch:assert test="minimum">odd-4: The cardinality of interval SHALL equal the value of numberOfIntervals</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:distribution/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:distribution/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:distribution/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:minimum">
+    <sch:rule context="f:Evidence/f:distribution/f:bottomOfFirstInterval">
       <sch:assert test="minimum">odd-1: If minimum is not empty, all instances of interval.maximum  must either be absent or &gt; minimum..</sch:assert>
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval">
+    <sch:rule context="f:Evidence/f:distribution/f:interval">
       <sch:assert test="minimum">odd-2: For every interval n, if n.maximum is not empty then, for every interval k, if k.rankOrder &lt; n.rankOrder then k.maximum must be &lt; n.maximum or empty.</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:rankOrder">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:rankOrder">
       <sch:assert test="minimum">odd-5: The rankOrder value SHALL be an integer from 1 to k where k is the value of numberOfIntervals</sch:assert>
       <sch:assert test="minimum">odd-3: Now two intervals in the same OrderedDistribution can have the same rankOrder</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:maximum">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:quantity">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:quantity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:quantity">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:quantity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:range">
       <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range/f:low">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:range/f:low">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range/f:high">
+    <sch:rule context="f:Evidence/f:distribution/f:interval/f:intervalStatistic/f:attributeEstimate/f:range/f:high">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:distribution/f:topOfInterval">
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
+    </sch:rule>
+    <sch:rule context="f:Evidence/f:certainty/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:certainty/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:certainty/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference">
+    <sch:rule context="f:Evidence/f:certainty/f:certaintySubcomponent/f:note/f:authorReference">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
+    <sch:rule context="f:Evidence/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:period">
       <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
     </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:variableDefinition">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:variableDefinition/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:variableDefinition/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:additionalVariable/f:variableDefinition">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:additionalVariable/f:variableDefinition/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:additionalVariable/f:variableDefinition/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:statistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution">
-      <sch:assert test="minimum">odd-4: The cardinality of interval SHALL equal the value of numberOfIntervals</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:minimum">
-      <sch:assert test="minimum">odd-1: If minimum is not empty, all instances of interval.maximum  must either be absent or &gt; minimum..</sch:assert>
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval">
-      <sch:assert test="minimum">odd-2: For every interval n, if n.maximum is not empty then, for every interval k, if k.rankOrder &lt; n.rankOrder then k.maximum must be &lt; n.maximum or empty.</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:rankOrder">
-      <sch:assert test="minimum">odd-5: The rankOrder value SHALL be an integer from 1 to k where k is the value of numberOfIntervals</sch:assert>
-      <sch:assert test="minimum">odd-3: Now two intervals in the same OrderedDistribution can have the same rankOrder</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:maximum">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:sampleSize/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:quantity">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range">
-      <sch:assert test="not(exists(f:low/f:value/@value)) or not(exists(f:high/f:value/@value)) or (number(f:low/f:value/@value) &lt;= number(f:high/f:value/@value))">rng-2: If present, low SHALL have a lower value than high</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:low">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:consistencyEstimate/f:precisionEstimate/f:range/f:high">
-      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:note/f:authorReference/f:identifier/f:assigner">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference">
-      <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:period">
-      <sch:assert test="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))">per-1: If present, start SHALL have a lower value than end</sch:assert>
-    </sch:rule>
-    <sch:rule context="f:Evidence/f:population/f:evidenceVariable/f:nestedVariable/f:statisticCollection/f:distribution/f:interval/f:intervalStatistic/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:assigner">
+    <sch:rule context="f:Evidence/f:certainty/f:certaintySubcomponent/f:note/f:authorReference/f:identifier/f:assigner">
       <sch:assert test="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])">ref-1: SHALL have a contained resource if a local reference is provided</sch:assert>
     </sch:rule>
   </sch:pattern>

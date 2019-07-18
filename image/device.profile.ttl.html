@@ -36,11 +36,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment"><!-- segment-header -->	
+	<div id="segment-header" class="segment"><!-- segment-header -->
 		<div class="container"><!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" style="align:bottom"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a id="logo" href="http://hl7.org/fhir" no-external="true"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" height="60" width="249"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a id="hl7-logo" href="http://www.hl7.org" no-external="true">
 					<img src="./assets/images/hl7-logo.png" width="42" height="50" alt="visit the hl7 website"/>
@@ -70,7 +72,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -101,7 +104,6 @@
             	<div class="inner-wrapper">
 <!-- CONTENT CONTENT -->
 
-
 <div class="col-12">
 
 <h1>Device.profile.ttl</h1>
@@ -123,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Device&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-05-31T13:21:05.565-05:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-07-18T11:53:20.879-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -153,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Device&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-05-31T13:21:05-05:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-07-18T11:53:20-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Orders and Observations)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -550,7 +552,7 @@
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO”(Serial Number) and the system left empty.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to â€œSNOâ€�(Serial Number) and the system left empty.&quot; ]
        ]
      ], [
        fhir:index 10;
@@ -988,7 +990,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;Device.distinctIdentifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The distinct identification string&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The distinct identification string as required by regulation for a human cell, tissue, or cellular and tissue-based product.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;For example, this applies to devices in the United States regulated under *Code of Federal Regulation 21CFR§1271.290(c)*.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;For example, this applies to devices in the United States regulated under *Code of Federal Regulation 21CFRÂ§1271.290(c)*.&quot; ];
        fhir:ElementDefinition.alias [
          fhir:value &quot;Distinct Identification Code (DIC)&quot;;
          fhir:index 0
@@ -1081,7 +1083,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;The date a specific device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;The date a specific device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to â€œ00â€�.&quot; ]
        ]
      ], [
        fhir:index 26;
@@ -1113,7 +1115,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;the expiration date of a specific device -  which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;the expiration date of a specific device -  which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to â€œ00â€�.&quot; ]
        ]
      ], [
        fhir:index 27;
@@ -1313,7 +1315,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the device&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The name of the device.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -1585,7 +1587,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The standard that is used to operate and communicate&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The standard that is used to operate and communicate.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -1757,7 +1759,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The type of the device version&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The type of the device version.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -2277,7 +2279,7 @@
        ], [
          fhir:index 3;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO”(Serial Number) and the system left empty.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;The serial number which is a component of the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to â€œSNOâ€�(Serial Number) and the system left empty.&quot; ]
        ]
      ], [
        fhir:index 2;
@@ -2545,7 +2547,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;Device.distinctIdentifier&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The distinct identification string&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The distinct identification string as required by regulation for a human cell, tissue, or cellular and tissue-based product.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;For example, this applies to devices in the United States regulated under *Code of Federal Regulation 21CFR§1271.290(c)*.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;For example, this applies to devices in the United States regulated under *Code of Federal Regulation 21CFRÂ§1271.290(c)*.&quot; ];
        fhir:ElementDefinition.alias [
          fhir:value &quot;Distinct Identification Code (DIC)&quot;;
          fhir:index 0
@@ -2617,7 +2619,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;The date a specific device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;The date a specific device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to â€œ00â€�.&quot; ]
        ]
      ], [
        fhir:index 15;
@@ -2642,7 +2644,7 @@
        ], [
          fhir:index 2;
          fhir:ElementDefinition.identity [ fhir:value &quot;udi&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;the expiration date of a specific device -  which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.&quot; ]
+         fhir:ElementDefinition.map [ fhir:value &quot;the expiration date of a specific device -  which is a component of the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to â€œ00â€�.&quot; ]
        ]
      ], [
        fhir:index 16;
@@ -2715,7 +2717,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the device&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The name of the device.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2839,7 +2841,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The standard that is used to operate and communicate&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The standard that is used to operate and communicate.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
@@ -2884,7 +2886,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;The type of the device version&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The type of the device version.&quot; ];
        fhir:ElementDefinition.alias [
-         fhir:value &quot;Σ&quot;;
+         fhir:value &quot;Î£&quot;;
          fhir:index 0
        ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -3176,7 +3178,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:24-0500. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:00-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 

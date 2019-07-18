@@ -1,5 +1,7 @@
 # FHIR GraphQL Schema. Version 4.1.0
 
+# import the types from 'types.graphql'
+
 type Group {
   id: ID
   meta: Meta
@@ -9,6 +11,7 @@ type Group {
   contained: [Resource]
   extension: [Extension]
   modifierExtension: [Extension]
+  url: uri  _url: ElementBase
   identifier: [Identifier]
   active: Boolean  _active: ElementBase
   type: code  _type: ElementBase
@@ -53,6 +56,7 @@ input GroupInput {
   contained: [ResourceInput]
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
+  url: uri  _url: ElementBase
   identifier: [IdentifierInput]
   active: Boolean  _active: ElementBase
   type: code  _type: ElementBase

@@ -34,11 +34,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment">  <!-- segment-header -->	
+	<div id="segment-header" class="segment">  <!-- segment-header -->
 		<div class="container">  <!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" style="align:bottom" height="60"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -68,7 +70,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -99,7 +102,6 @@
             <div class="row">
             	<div class="inner-wrapper">
   <!-- CONTENT CONTENT -->
-
 
 
 <div class="col-12">
@@ -488,6 +490,29 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
 </tr>
 <tr>
+ <td>EvidenceSet (0)</td>
+ <td>url<br/>identifier*</td>
+ <td>version</td>
+ <td>status</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>date</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+</tr>
+<tr>
  <td>EvidenceVariable (0)</td>
  <td>url<br/>identifier*</td>
  <td>version</td>
@@ -798,8 +823,8 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>encounter<br/>supportingInformation*</td>
  <td></td>
  <td></td>
- <td>effective[x]</td>
- <td></td>
+ <td>occurence[x]</td>
+ <td>recorded</td>
  <td></td>
  <td></td>
  <td>performer*</td>
@@ -1616,8 +1641,8 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
 </tr>
 <tr>
- <td>Group (1)</td>
- <td>identifier*</td>
+ <td>Group (0)</td>
+ <td>url<br/>identifier*</td>
  <td></td>
  <td>active</td>
  <td>type<br/>actual</td>
@@ -2000,7 +2025,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>authoredOn</td>
  <td>requester</td>
  <td></td>
- <td>recipient*<br/>sender</td>
+ <td>recipient*<br/>informationProvider</td>
  <td></td>
  <td></td>
  <td></td>
@@ -2676,7 +2701,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
 </tr>
 <tr>
- <td>Subscription (3)</td>
+ <td>Subscription (0)</td>
  <td></td>
  <td></td>
  <td>status</td>
@@ -2697,6 +2722,29 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td></td>
  <td>reason</td>
+</tr>
+<tr>
+ <td>Topic (0)</td>
+ <td>url<br/>identifier*</td>
+ <td>version</td>
+ <td>status</td>
+ <td>experimental</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>date</td>
+ <td>publisher</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>purpose</td>
 </tr>
 <tr><td colspan="21"><b>Conformance Resources</b></td></tr>
 <tr>
@@ -3667,7 +3715,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>abatement[x] : dateTime|Age|Period|Range|string</td>
  <td>recordedDate : dateTime</td>
  <td>recorder : Practitioner|PractitionerRole|Patient|RelatedPerson</td>
- <td>asserter : Practitioner|PractitionerRole|Patient|RelatedPerson</td>
+ <td>asserter : Practitioner|PractitionerRole|Patient|RelatedPerson|Device</td>
  <td></td>
  <td></td>
  <td></td>
@@ -3792,6 +3840,29 @@ the <a href="fivews.html">FiveWs pattern</a>.
 </tr>
 <tr>
  <td>Evidence (0)</td>
+ <td>url : uri<br/>identifier* : Identifier</td>
+ <td>version : string</td>
+ <td>status : code</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>date : dateTime</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+</tr>
+<tr>
+ <td>EvidenceSet (0)</td>
  <td>url : uri<br/>identifier* : Identifier</td>
  <td>version : string</td>
  <td>status : code</td>
@@ -4124,8 +4195,8 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>encounter : Encounter<br/>supportingInformation* : Any</td>
  <td></td>
  <td></td>
- <td>effective[x] : dateTime|Period</td>
- <td></td>
+ <td>occurence[x] : dateTime|Period</td>
+ <td>recorded : dateTime</td>
  <td></td>
  <td></td>
  <td>performer* : </td>
@@ -4358,7 +4429,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>recorded : dateTime</td>
  <td>recorder : Patient|RelatedPerson|Practitioner|PractitionerRole</td>
  <td>reported[x] : boolean|Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)</td>
- <td>actor : Practitioner|PractitionerRole|Organization|Patient|RelatedPerson|Device</td>
+ <td>actor : Practitioner|PractitionerRole|Organization|Patient|RelatedPerson|Device|CareTeam|HealthcareService</td>
  <td></td>
  <td></td>
  <td></td>
@@ -4942,8 +5013,8 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
 </tr>
 <tr>
- <td>Group (1)</td>
- <td>identifier* : Identifier</td>
+ <td>Group (0)</td>
+ <td>url : uri<br/>identifier* : Identifier</td>
  <td></td>
  <td>active : boolean</td>
  <td>type : code<br/>actual : boolean</td>
@@ -5326,7 +5397,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td>authoredOn : dateTime</td>
  <td>requester : Practitioner|PractitionerRole|Organization|Patient|RelatedPerson|Device</td>
  <td></td>
- <td>recipient* : Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson|Group|CareTeam|HealthcareService<br/>sender : Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson|HealthcareService</td>
+ <td>recipient* : Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson|Group|CareTeam|HealthcareService<br/>informationProvider : Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson|HealthcareService</td>
  <td></td>
  <td></td>
  <td></td>
@@ -6002,7 +6073,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
 </tr>
 <tr>
- <td>Subscription (3)</td>
+ <td>Subscription (0)</td>
  <td></td>
  <td></td>
  <td>status : code</td>
@@ -6023,6 +6094,29 @@ the <a href="fivews.html">FiveWs pattern</a>.
  <td></td>
  <td></td>
  <td>reason : string</td>
+</tr>
+<tr>
+ <td>Topic (0)</td>
+ <td>url : uri<br/>identifier* : Identifier</td>
+ <td>version : string</td>
+ <td>status : code</td>
+ <td>experimental : boolean</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>date : dateTime</td>
+ <td>publisher : Practitioner|PractitionerRole|Organization</td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td>purpose : markdown</td>
 </tr>
 <tr><td colspan="21"><b>Conformance Resources</b></td></tr>
 <tr>
@@ -6779,7 +6873,7 @@ the <a href="fivews.html">FiveWs pattern</a>.
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:26-0500. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:03-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 

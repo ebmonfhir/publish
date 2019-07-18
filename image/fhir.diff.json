@@ -119,6 +119,7 @@
     "EpisodeOfCare",
     "EventDefinition",
     "Evidence",
+    "EvidenceSet",
     "EvidenceVariable",
     "ExampleScenario",
     "ExplanationOfBenefit",
@@ -210,6 +211,7 @@
     "TerminologyCapabilities",
     "TestReport",
     "TestScript",
+    "Topic",
     "ValueSet",
     "VerificationResult",
     "VisionPrescription",
@@ -1645,6 +1647,9 @@
       "CatalogEntry.note": {
         "status": "new"
       },
+      "CatalogEntry.estimatedDuration": {
+        "status": "new"
+      },
       "CatalogEntry.billingCode": {
         "status": "new"
       },
@@ -1999,6 +2004,9 @@
           "CodeableConcept"
         ]
       },
+      "CommunicationRequest.informationProvider": {
+        "status": "new"
+      },
       "CommunicationRequest.reasonReference": {
         "removed-types": [
           "Reference(Condition | Observation | DiagnosticReport | DocumentReference)"
@@ -2006,6 +2014,9 @@
         "added-types": [
           "Reference(Resource)"
         ]
+      },
+      "CommunicationRequest.sender": {
+        "status": "deleted"
       }
     },
     "status": "changed"
@@ -2182,6 +2193,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/condition-ver-status|4.1.0",
           "strength": "required"
         }
+      },
+      "Condition.asserter": {
+        "removed-types": [
+          "Reference(Practitioner | PractitionerRole | Patient | RelatedPerson)"
+        ],
+        "added-types": [
+          "Reference(Practitioner | PractitionerRole | Patient | RelatedPerson | Device)"
+        ]
       }
     },
     "status": "changed"
@@ -2850,9 +2869,6 @@
   },
   "Evidence": {
     "elements": {
-      "Evidence.subTitle": {
-        "status": "new"
-      },
       "Evidence.status": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -2865,16 +2881,49 @@
           "strength": "required"
         }
       },
-      "Evidence.summaryPublisher": {
-        "status": "new"
-      },
-      "Evidence.summaryPublisher.name": {
-        "status": "new"
-      },
-      "Evidence.summaryPublisher.contact": {
-        "status": "new"
-      },
       "Evidence.contributor": {
+        "status": "new"
+      },
+      "Evidence.assertion": {
+        "status": "new"
+      },
+      "Evidence.referentGroup": {
+        "status": "new"
+      },
+      "Evidence.referentGroup.description": {
+        "status": "new"
+      },
+      "Evidence.referentGroup.note": {
+        "status": "new"
+      },
+      "Evidence.referentGroup.evidenceSource": {
+        "status": "new"
+      },
+      "Evidence.referentGroup.intendedGroup": {
+        "status": "new"
+      },
+      "Evidence.referentGroup.directnessMatch": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.description": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.note": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.variableRole": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.actualDefinition": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.intendedDefinition": {
+        "status": "new"
+      },
+      "Evidence.variableDefinition.directnessMatch": {
         "status": "new"
       },
       "Evidence.synthesisType": {
@@ -2883,118 +2932,43 @@
       "Evidence.studyType": {
         "status": "new"
       },
-      "Evidence.population": {
+      "Evidence.statistic": {
         "status": "new"
       },
-      "Evidence.population.description": {
+      "Evidence.distribution": {
         "status": "new"
       },
-      "Evidence.population.note": {
+      "Evidence.certainty": {
         "status": "new"
       },
-      "Evidence.population.intendedCohort": {
+      "Evidence.certainty.description": {
         "status": "new"
       },
-      "Evidence.population.sampleCohort": {
+      "Evidence.certainty.note": {
         "status": "new"
       },
-      "Evidence.population.actualCohort": {
+      "Evidence.certainty.rating": {
         "status": "new"
       },
-      "Evidence.population.sampleSize": {
+      "Evidence.certainty.certaintySubcomponent": {
         "status": "new"
       },
-      "Evidence.population.sampleSize.description": {
+      "Evidence.certainty.certaintySubcomponent.description": {
         "status": "new"
       },
-      "Evidence.population.sampleSize.note": {
+      "Evidence.certainty.certaintySubcomponent.note": {
         "status": "new"
       },
-      "Evidence.population.sampleSize.numberOfStudies": {
+      "Evidence.certainty.certaintySubcomponent.type": {
         "status": "new"
       },
-      "Evidence.population.sampleSize.numberOfParticipants": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.description": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.note": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.variableRole": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.variableDefinition": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection.description": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection.note": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection.synthesisType": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection.studyType": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.statisticCollection.statistic": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.distribution": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.description": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.note": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.variableRole": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.variableDefinition": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.description": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.note": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.synthesisType": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.studyType": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableRole": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.additionalVariable.variableDefinition": {
-        "status": "new"
-      },
-      "Evidence.population.evidenceVariable.nestedVariable.statisticCollection.statistic": {
+      "Evidence.certainty.certaintySubcomponent.rating": {
         "status": "new"
       },
       "Evidence.name": {
+        "status": "deleted"
+      },
+      "Evidence.shortTitle": {
         "status": "deleted"
       },
       "Evidence.subtitle": {
@@ -3007,6 +2981,9 @@
         "status": "deleted"
       },
       "Evidence.jurisdiction": {
+        "status": "deleted"
+      },
+      "Evidence.copyright": {
         "status": "deleted"
       },
       "Evidence.effectivePeriod": {
@@ -3039,6 +3016,9 @@
     },
     "status": "changed"
   },
+  "EvidenceSet": {
+    "status": "new"
+  },
   "EvidenceVariable": {
     "elements": {
       "EvidenceVariable.status": {
@@ -3064,6 +3044,12 @@
           "reference": "http://hl7.org/fhir/ValueSet/variable-type|4.1.0",
           "strength": "required"
         }
+      },
+      "EvidenceVariable.characteristic.method": {
+        "status": "new"
+      },
+      "EvidenceVariable.characteristic.device": {
+        "status": "new"
       },
       "EvidenceVariable.characteristic.groupMeasure": {
         "binding-valueset-changed": true,
@@ -3353,6 +3339,9 @@
   },
   "Group": {
     "elements": {
+      "Group.url": {
+        "status": "new"
+      },
       "Group.type": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -3866,6 +3855,12 @@
       "MedicationAdministration.encounter": {
         "status": "new"
       },
+      "MedicationAdministration.occurence[x]": {
+        "status": "new"
+      },
+      "MedicationAdministration.recorded": {
+        "status": "new"
+      },
       "MedicationAdministration.dosage.rate[x]": {
         "removed-types": [
           "Quantity()"
@@ -3878,6 +3873,9 @@
         "status": "deleted"
       },
       "MedicationAdministration.context": {
+        "status": "deleted"
+      },
+      "MedicationAdministration.effective[x]": {
         "status": "deleted"
       }
     },
@@ -4343,6 +4341,70 @@
   },
   "ObservationDefinition": {
     "elements": {
+      "ObservationDefinition.url": {
+        "status": "new"
+      },
+      "ObservationDefinition.identifier": {
+        "old-max": "*",
+        "new-max": "1"
+      },
+      "ObservationDefinition.version": {
+        "status": "new"
+      },
+      "ObservationDefinition.title": {
+        "status": "new"
+      },
+      "ObservationDefinition.derivedFromCanonical": {
+        "status": "new"
+      },
+      "ObservationDefinition.derivedFromUri": {
+        "status": "new"
+      },
+      "ObservationDefinition.status": {
+        "status": "new"
+      },
+      "ObservationDefinition.experimental": {
+        "status": "new"
+      },
+      "ObservationDefinition.subject[x]": {
+        "status": "new"
+      },
+      "ObservationDefinition.date": {
+        "status": "new"
+      },
+      "ObservationDefinition.publisher": {
+        "status": "new"
+      },
+      "ObservationDefinition.contact": {
+        "status": "new"
+      },
+      "ObservationDefinition.description": {
+        "status": "new"
+      },
+      "ObservationDefinition.useContext": {
+        "status": "new"
+      },
+      "ObservationDefinition.jurisdiction": {
+        "status": "new"
+      },
+      "ObservationDefinition.purpose": {
+        "status": "new"
+      },
+      "ObservationDefinition.copyright": {
+        "status": "new"
+      },
+      "ObservationDefinition.approvalDate": {
+        "status": "new"
+      },
+      "ObservationDefinition.lastReviewDate": {
+        "status": "new"
+      },
+      "ObservationDefinition.effectivePeriod": {
+        "status": "new"
+      },
+      "ObservationDefinition.performerType": {
+        "status": "new"
+      },
       "ObservationDefinition.permittedDataType": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -4354,6 +4416,15 @@
           "reference": "http://hl7.org/fhir/ValueSet/permitted-data-type|4.1.0",
           "strength": "required"
         }
+      },
+      "ObservationDefinition.bodySite": {
+        "status": "new"
+      },
+      "ObservationDefinition.specimen": {
+        "status": "new"
+      },
+      "ObservationDefinition.device": {
+        "status": "new"
       },
       "ObservationDefinition.qualifiedInterval.category": {
         "binding-valueset-changed": true,
@@ -4378,6 +4449,24 @@
           "reference": "http://hl7.org/fhir/ValueSet/administrative-gender|4.1.0",
           "strength": "required"
         }
+      },
+      "ObservationDefinition.hasMember": {
+        "status": "new"
+      },
+      "ObservationDefinition.component": {
+        "status": "new"
+      },
+      "ObservationDefinition.component.code": {
+        "status": "new"
+      },
+      "ObservationDefinition.component.permittedDataType": {
+        "status": "new"
+      },
+      "ObservationDefinition.component.quantitativeDetails": {
+        "status": "new"
+      },
+      "ObservationDefinition.component.qualifiedInterval": {
+        "status": "new"
       }
     },
     "status": "changed"
@@ -4822,6 +4911,14 @@
       },
       "Procedure.reported[x]": {
         "status": "new"
+      },
+      "Procedure.performer.actor": {
+        "removed-types": [
+          "Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device)"
+        ],
+        "added-types": [
+          "Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device | CareTeam | HealthcareService)"
+        ]
       },
       "Procedure.performed[x]": {
         "status": "deleted"
@@ -5446,6 +5543,63 @@
   },
   "SpecimenDefinition": {
     "elements": {
+      "SpecimenDefinition.url": {
+        "status": "new"
+      },
+      "SpecimenDefinition.version": {
+        "status": "new"
+      },
+      "SpecimenDefinition.title": {
+        "status": "new"
+      },
+      "SpecimenDefinition.derivedFromCanonical": {
+        "status": "new"
+      },
+      "SpecimenDefinition.derivedFromUri": {
+        "status": "new"
+      },
+      "SpecimenDefinition.status": {
+        "status": "new"
+      },
+      "SpecimenDefinition.experimental": {
+        "status": "new"
+      },
+      "SpecimenDefinition.subject[x]": {
+        "status": "new"
+      },
+      "SpecimenDefinition.date": {
+        "status": "new"
+      },
+      "SpecimenDefinition.publisher": {
+        "status": "new"
+      },
+      "SpecimenDefinition.contact": {
+        "status": "new"
+      },
+      "SpecimenDefinition.description": {
+        "status": "new"
+      },
+      "SpecimenDefinition.useContext": {
+        "status": "new"
+      },
+      "SpecimenDefinition.jurisdiction": {
+        "status": "new"
+      },
+      "SpecimenDefinition.purpose": {
+        "status": "new"
+      },
+      "SpecimenDefinition.copyright": {
+        "status": "new"
+      },
+      "SpecimenDefinition.approvalDate": {
+        "status": "new"
+      },
+      "SpecimenDefinition.lastReviewDate": {
+        "status": "new"
+      },
+      "SpecimenDefinition.effectivePeriod": {
+        "status": "new"
+      },
       "SpecimenDefinition.typeTested.preference": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -5465,6 +5619,12 @@
         "added-types": [
           "Quantity()"
         ]
+      },
+      "SpecimenDefinition.typeTested.singleUse": {
+        "status": "new"
+      },
+      "SpecimenDefinition.typeTested.testingDestination": {
+        "status": "new"
       }
     },
     "status": "changed"
@@ -6052,6 +6212,9 @@
       }
     },
     "status": "changed"
+  },
+  "Topic": {
+    "status": "new"
   },
   "ValueSet": {
     "elements": {

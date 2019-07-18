@@ -34,11 +34,13 @@
 
 </head>
 <body>
-	<div id="segment-header" class="segment">  <!-- segment-header -->	
+	<div id="segment-header" class="segment">  <!-- segment-header -->
 		<div class="container">  <!-- container -->
-                        <a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" style="align:bottom" height="60"/> </a>
-                        <b><font size="+2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EBMOnFHIR Statistic Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
-                        <a no-external="true" id="ncats" href="https://ncats.nih.gov"><img src="https://ncats.nih.gov/sites/all/themes/ncats-2014/images/assets/ncats-logo.png" style="align:top" height="30"/></a>
+			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
+			<div id="hl7-status">
+				<b>Current Build</b>
+			</div>       	
+			
 			<div id="hl7-nav">
 				 <a no-external="true" id="hl7-logo" href="http://www.hl7.org">
 					<img src="./assets/images/hl7-logo.png" width="42" alt="visit the hl7 website" height="50"/>
@@ -68,7 +70,8 @@
               <li><a href="./index.html">Home</a></li>
               <li><a href="./modules.html">Getting Started</a></li>
               <li><a href="./documentation.html">Documentation</a></li>
-              <li><a href="./resourcelist.html">Resources</a></li>
+              <li><a href="./patterns.html">Patterns</a></li>
+              <li><a href="./resourcelist.html"><span style="color: yellow">Resource Types</span></a></li>
               <li><a href="./profilelist.html">Profiles</a></li>
               <li><a href="./extensibility-registry.html">Extensions</a></li>
               <li><a href="./operationslist.html">Operations</a></li>
@@ -98,7 +101,6 @@
             <div class="row">
             	<div class="inner-wrapper">
   <!-- CONTENT CONTENT -->
-
 
 <div class="col-12">
 
@@ -253,18 +255,26 @@ This is a representation of the json schema for MedicationAdministration, which 
           },
           "type": "array"
         },
-        "effectiveDateTime": {
-          "description": "A specific date/time or interval of time during which the administration took place (or did not take place, when the \u0027notGiven\u0027 attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
+        "occurenceDateTime": {
+          "description": "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
           "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
           "type": "string"
         },
-        "_effectiveDateTime": {
-          "description": "Extensions for effectiveDateTime",
+        "_occurenceDateTime": {
+          "description": "Extensions for occurenceDateTime",
           "$ref": "Element.schema.json#/definitions/Element"
         },
-        "effectivePeriod": {
-          "description": "A specific date/time or interval of time during which the administration took place (or did not take place, when the \u0027notGiven\u0027 attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
+        "occurencePeriod": {
+          "description": "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
           "$ref": "Period.schema.json#/definitions/Period"
+        },
+        "recorded": {
+          "description": "The date the occurrence of the  MedicationAdministration was first captured in the record - potentially significantly after the occurrence of the event.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_recorded": {
+          "description": "Extensions for recorded",
+          "$ref": "Element.schema.json#/definitions/Element"
         },
         "performer": {
           "description": "Indicates who or what performed the medication administration and how they were involved.",
@@ -433,7 +443,7 @@ This is a representation of the json schema for MedicationAdministration, which 
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub ea847258e0) generated on Fri, May 31, 2019 13:25-0500. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 7aed73b353) generated on Thu, Jul 18, 2019 12:01-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 

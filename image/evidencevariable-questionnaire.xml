@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for EvidenceVariable.characteristic.definition[x]"/>
       <expansion>
-        <identifier value="urn:uuid:39badb61-14e3-4767-b0c9-6039530c8faa"/>
-        <timestamp value="2019-05-31T13:24:37-05:00"/>
+        <identifier value="urn:uuid:5651c6d6-70bb-4fb9-8a34-31b9e547d4f7"/>
+        <timestamp value="2019-07-18T12:00:53-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
           <code value="Group"/>
@@ -51,8 +51,8 @@
       <status value="active"/>
       <description value="Type options for DataRequirement.subject[x]"/>
       <expansion>
-        <identifier value="urn:uuid:9609453b-d940-4608-9d7e-32ca89317743"/>
-        <timestamp value="2019-05-31T13:24:37-05:00"/>
+        <identifier value="urn:uuid:1248c7f3-f82a-40af-bb05-1f0496f5caea"/>
+        <timestamp value="2019-07-18T12:00:53-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -73,8 +73,8 @@
       <status value="active"/>
       <description value="Type options for DataRequirement.dateFilter.value[x]"/>
       <expansion>
-        <identifier value="urn:uuid:5c1c3953-517e-4633-8220-08a88627aea7"/>
-        <timestamp value="2019-05-31T13:24:37-05:00"/>
+        <identifier value="urn:uuid:1a4ad211-2643-4529-a1ca-0d6abf49643f"/>
+        <timestamp value="2019-07-18T12:00:53-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -100,8 +100,8 @@
       <status value="active"/>
       <description value="Type options for TriggerDefinition.timing[x]"/>
       <expansion>
-        <identifier value="urn:uuid:1579bdb5-732f-4cd3-9b4c-3a30a27a360d"/>
-        <timestamp value="2019-05-31T13:24:37-05:00"/>
+        <identifier value="urn:uuid:5419d564-ea72-42f3-9bc8-d2c7c572948a"/>
+        <timestamp value="2019-07-18T12:00:53-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Timing"/>
@@ -132,8 +132,8 @@
       <status value="active"/>
       <description value="Type options for EvidenceVariable.characteristic.participantEffective[x]"/>
       <expansion>
-        <identifier value="urn:uuid:2edd8f53-7f35-459b-8ce6-5bd025b71c4f"/>
-        <timestamp value="2019-05-31T13:24:37-05:00"/>
+        <identifier value="urn:uuid:60d7fa1c-01c0-403f-a7a0-13d046bdbb2a"/>
+        <timestamp value="2019-07-18T12:00:53-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -162,7 +162,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-05-31T13:21:05-05:00"/>
+  <date value="2019-07-18T11:53:20-04:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <item>
     <linkId value="EvidenceVariable"/>
@@ -2784,6 +2784,84 @@
               </item>
             </item>
           </item>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="EvidenceVariable.characteristic.method"/>
+        <text value="Method used for describing characteristic"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Method used for describing characteristic."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="EvidenceVariable.characteristic.method.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+        <item>
+          <linkId value="EvidenceVariable.characteristic.method.text"/>
+          <text value="text:"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="Reference"/>
+        </extension>
+        <linkId value="EvidenceVariable.characteristic.device"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Device used for determining characteristic."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+            <valueCode value="Device, DeviceMetric"/>
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+            <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+          </extension>
+          <linkId value="EvidenceVariable.characteristic.device.value"/>
+          <text value="Device used for determining characteristic"/>
+          <type value="reference"/>
+          <required value="false"/>
+          <repeats value="false"/>
         </item>
       </item>
       <item>

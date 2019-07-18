@@ -808,6 +808,20 @@
           <td>y</td>
         </tr>
         <tr>
+          <td>EvidenceSet</td>
+          <td>
+            <a href="http://hl7.org/fhir/StructureDefinition/EvidenceSet">http://hl7.org/fhir/StructureDefinition/EvidenceSet</a>
+          </td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
           <td>EvidenceVariable</td>
           <td>
             <a href="http://hl7.org/fhir/StructureDefinition/EvidenceVariable">http://hl7.org/fhir/StructureDefinition/EvidenceVariable</a>
@@ -2040,6 +2054,20 @@
           <td>y</td>
         </tr>
         <tr>
+          <td>Topic</td>
+          <td>
+            <a href="http://hl7.org/fhir/StructureDefinition/Topic">http://hl7.org/fhir/StructureDefinition/Topic</a>
+          </td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
           <td>ValueSet</td>
           <td>
             <a href="http://hl7.org/fhir/StructureDefinition/ValueSet">http://hl7.org/fhir/StructureDefinition/ValueSet</a>
@@ -2089,7 +2117,7 @@
   <name value="Base FHIR Capability Statement (Full)"/>
   <status value="draft"/>
   <experimental value="true"/>
-  <date value="2019-05-31T13:21:05-05:00"/>
+  <date value="2019-07-18T11:53:20-04:00"/>
   <publisher value="FHIR Project Team"/>
   <contact>
     <telecom>
@@ -3906,7 +3934,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CarePlan-status"/>
         <type value="token"/>
-        <documentation value="draft | active | suspended | completed | entered-in-error | cancelled | unknown"/>
+        <documentation value="draft | active | on-hold | revoked | completed | entered-in-error | unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -3967,6 +3995,7 @@
       <searchRevInclude value="Media.operator"/>
       <searchRevInclude value="MedicationRequest.intended-performer"/>
       <searchRevInclude value="Observation.performer"/>
+      <searchRevInclude value="Procedure.performer"/>
       <searchRevInclude value="ServiceRequest.performer"/>
       <searchRevInclude value="Task.owner"/>
       <searchParam>
@@ -4775,7 +4804,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/ClinicalImpression-status"/>
         <type value="token"/>
-        <documentation value="draft | completed | entered-in-error"/>
+        <documentation value="in-progress | completed | entered-in-error"/>
       </searchParam>
     </resource>
     <resource>
@@ -5095,7 +5124,7 @@
         <name value="sender"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Communication-sender"/>
         <type value="reference"/>
-        <documentation value="Message sender"/>
+        <documentation value="Who shares the information"/>
       </searchParam>
       <searchParam>
         <name value="patient"/>
@@ -5107,7 +5136,7 @@
         <name value="recipient"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Communication-recipient"/>
         <type value="reference"/>
-        <documentation value="Message recipient"/>
+        <documentation value="Who the information is shared with"/>
       </searchParam>
       <searchParam>
         <name value="instantiates-uri"/>
@@ -5125,7 +5154,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Communication-status"/>
         <type value="token"/>
-        <documentation value="preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error"/>
+        <documentation value="preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -5173,16 +5202,16 @@
       <searchInclude value="CommunicationRequest.replaces"/>
       <searchInclude value="CommunicationRequest.encounter"/>
       <searchInclude value="CommunicationRequest.based-on"/>
-      <searchInclude value="CommunicationRequest.sender"/>
       <searchInclude value="CommunicationRequest.patient"/>
       <searchInclude value="CommunicationRequest.recipient"/>
+      <searchInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="CarePlan.activity-reference"/>
       <searchRevInclude value="CommunicationRequest.replaces"/>
       <searchParam>
         <name value="requester"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-requester"/>
         <type value="reference"/>
-        <documentation value="Who/what is requesting service"/>
+        <documentation value="Who asks for the information to be shared"/>
       </searchParam>
       <searchParam>
         <name value="authored"/>
@@ -5230,7 +5259,7 @@
         <name value="priority"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-priority"/>
         <type value="token"/>
-        <documentation value="Message urgency"/>
+        <documentation value="routine | urgent | asap | stat"/>
       </searchParam>
       <searchParam>
         <name value="group-identifier"/>
@@ -5245,12 +5274,6 @@
         <documentation value="Fulfills plan or proposal"/>
       </searchParam>
       <searchParam>
-        <name value="sender"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-sender"/>
-        <type value="reference"/>
-        <documentation value="Message sender"/>
-      </searchParam>
-      <searchParam>
         <name value="patient"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-patient"/>
         <type value="reference"/>
@@ -5260,7 +5283,13 @@
         <name value="recipient"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-recipient"/>
         <type value="reference"/>
-        <documentation value="Message recipient"/>
+        <documentation value="Who to share the information with"/>
+      </searchParam>
+      <searchParam>
+        <name value="information-provider"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-information-provider"/>
+        <type value="reference"/>
+        <documentation value="Who should share the information"/>
       </searchParam>
       <searchParam>
         <name value="category"/>
@@ -5272,7 +5301,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/CommunicationRequest-status"/>
         <type value="token"/>
-        <documentation value="draft | active | suspended | cancelled | completed | entered-in-error | unknown"/>
+        <documentation value="draft | active | on-hold | revoked | completed | entered-in-error | unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -5898,7 +5927,7 @@
         <name value="asserter"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Condition-asserter"/>
         <type value="reference"/>
-        <documentation value="Person who asserts this condition"/>
+        <documentation value="Person or device that asserts this condition"/>
       </searchParam>
       <searchParam>
         <name value="stage"/>
@@ -6768,9 +6797,10 @@
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
+      <searchRevInclude value="Condition.asserter"/>
       <searchRevInclude value="Consent.actor"/>
       <searchRevInclude value="DetectedIssue.author"/>
       <searchRevInclude value="DeviceMetric.parent"/>
@@ -8725,6 +8755,119 @@
       </searchParam>
     </resource>
     <resource>
+      <type value="EvidenceSet"/>
+      <profile value="http://hl7.org/fhir/StructureDefinition/EvidenceSet"/>
+      <interaction>
+        <code value="read"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="vread"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="update"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="delete"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-instance"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="create"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <conditionalCreate value="true"/>
+      <conditionalUpdate value="true"/>
+      <conditionalDelete value="multiple"/>
+      <referencePolicy value="literal"/>
+      <referencePolicy value="logical"/>
+      <searchParam>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-date"/>
+        <type value="date"/>
+        <documentation value="The evidence set publication date"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-identifier"/>
+        <type value="token"/>
+        <documentation value="External identifier for the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-context-quantity"/>
+        <type value="quantity"/>
+        <documentation value="A quantity- or range-valued use context assigned to the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-value"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-context-type-value"/>
+        <type value="composite"/>
+        <documentation value="A use context type and value assigned to the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="context"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-context"/>
+        <type value="token"/>
+        <documentation value="A use context assigned to the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="description"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-description"/>
+        <type value="string"/>
+        <documentation value="The description of the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-context-type"/>
+        <type value="token"/>
+        <documentation value="A type of use context assigned to the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-title"/>
+        <type value="string"/>
+        <documentation value="The human-friendly name of the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="version"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-version"/>
+        <type value="token"/>
+        <documentation value="The business version of the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-url"/>
+        <type value="uri"/>
+        <documentation value="The uri that identifies the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="context-type-quantity"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-context-type-quantity"/>
+        <type value="composite"/>
+        <documentation value="A use context type and quantity- or range-based value assigned to the evidence set"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/EvidenceSet-status"/>
+        <type value="token"/>
+        <documentation value="The current status of the evidence set"/>
+      </searchParam>
+    </resource>
+    <resource>
       <type value="EvidenceVariable"/>
       <profile value="http://hl7.org/fhir/StructureDefinition/EvidenceVariable"/>
       <interaction>
@@ -9867,11 +10010,12 @@
       <searchRevInclude value="CatalogEntry.referenced-item"/>
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="DeviceRequest.performer"/>
       <searchRevInclude value="OrganizationAffiliation.service"/>
       <searchRevInclude value="PractitionerRole.service"/>
+      <searchRevInclude value="Procedure.performer"/>
       <searchRevInclude value="Schedule.actor"/>
       <searchRevInclude value="ServiceRequest.performer"/>
       <searchRevInclude value="SupplyRequest.supplier"/>
@@ -11853,7 +11997,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Media-status"/>
         <type value="token"/>
-        <documentation value="preparation | in-progress | not-done | suspended | aborted | completed | entered-in-error | unknown"/>
+        <documentation value="preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -12016,6 +12160,12 @@
       <searchRevInclude value="Observation.part-of"/>
       <searchRevInclude value="Procedure.part-of"/>
       <searchParam>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/medications-date"/>
+        <type value="date"/>
+        <documentation value="Date administration happened (or did not happen)"/>
+      </searchParam>
+      <searchParam>
         <name value="identifier"/>
         <definition value="http://hl7.org/fhir/SearchParameter/clinical-identifier"/>
         <type value="token"/>
@@ -12068,12 +12218,6 @@
         <definition value="http://hl7.org/fhir/SearchParameter/clinical-patient"/>
         <type value="reference"/>
         <documentation value="The identity of a patient to list administrations  for"/>
-      </searchParam>
-      <searchParam>
-        <name value="effective-time"/>
-        <definition value="http://hl7.org/fhir/SearchParameter/MedicationAdministration-effective-time"/>
-        <type value="date"/>
-        <documentation value="Date administration happened (or did not happen)"/>
       </searchParam>
       <searchParam>
         <name value="reason-not-given"/>
@@ -12281,6 +12425,12 @@
       <searchInclude value="MedicationKnowledge.manufacturer"/>
       <searchInclude value="MedicationKnowledge.monograph"/>
       <searchRevInclude value="CatalogEntry.referenced-item"/>
+      <searchParam>
+        <name value="product-type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/MedicationKnowledge-product-type"/>
+        <type value="token"/>
+        <documentation value="Category of the medication or product"/>
+      </searchParam>
       <searchParam>
         <name value="identifier"/>
         <definition value="http://hl7.org/fhir/SearchParameter/MedicationKnowledge-identifier"/>
@@ -13657,6 +13807,48 @@
       <referencePolicy value="literal"/>
       <referencePolicy value="logical"/>
       <searchRevInclude value="CatalogEntry.referenced-item"/>
+      <searchParam>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-identifier"/>
+        <type value="token"/>
+        <documentation value="The unique identifier associated with the specimen definition"/>
+      </searchParam>
+      <searchParam>
+        <name value="code"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-code"/>
+        <type value="token"/>
+        <documentation value="Observation code"/>
+      </searchParam>
+      <searchParam>
+        <name value="method"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-method"/>
+        <type value="token"/>
+        <documentation value="Method of observation"/>
+      </searchParam>
+      <searchParam>
+        <name value="experimental"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-experimental"/>
+        <type value="token"/>
+        <documentation value="Not for genuine usage (true)"/>
+      </searchParam>
+      <searchParam>
+        <name value="category"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-category"/>
+        <type value="token"/>
+        <documentation value="Category (class) of observation"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-title"/>
+        <type value="string"/>
+        <documentation value="Human-friendly name of the ObservationDefinition"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/ObservationDefinition-status"/>
+        <type value="token"/>
+        <documentation value="Publication status of the ObservationDefinition: draft, active, retired, unknown"/>
+      </searchParam>
     </resource>
     <resource>
       <type value="OperationDefinition"/>
@@ -13945,8 +14137,8 @@
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
       <searchRevInclude value="Composition.attester"/>
       <searchRevInclude value="Consent.actor"/>
@@ -14030,6 +14222,7 @@
       <searchRevInclude value="SupplyRequest.supplier"/>
       <searchRevInclude value="Task.owner"/>
       <searchRevInclude value="Task.requester"/>
+      <searchRevInclude value="Topic.publisher"/>
       <searchParam>
         <name value="identifier"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Organization-identifier"/>
@@ -14324,9 +14517,9 @@
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
       <searchRevInclude value="CommunicationRequest.subject"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.patient"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
       <searchRevInclude value="Composition.attester"/>
       <searchRevInclude value="Condition.subject"/>
@@ -15202,8 +15395,8 @@
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
       <searchRevInclude value="Composition.attester"/>
       <searchRevInclude value="Condition.asserter"/>
@@ -15290,6 +15483,7 @@
       <searchRevInclude value="SupplyRequest.requester"/>
       <searchRevInclude value="Task.owner"/>
       <searchRevInclude value="Task.requester"/>
+      <searchRevInclude value="Topic.publisher"/>
       <searchRevInclude value="VisionPrescription.prescriber"/>
       <searchParam>
         <name value="identifier"/>
@@ -15470,8 +15664,8 @@
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
       <searchRevInclude value="Composition.attester"/>
       <searchRevInclude value="Condition.asserter"/>
@@ -15548,6 +15742,7 @@
       <searchRevInclude value="SupplyRequest.requester"/>
       <searchRevInclude value="Task.owner"/>
       <searchRevInclude value="Task.requester"/>
+      <searchRevInclude value="Topic.publisher"/>
       <searchRevInclude value="VisionPrescription.prescriber"/>
       <searchParam>
         <name value="date"/>
@@ -15711,7 +15906,7 @@
         <name value="performer"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Procedure-performer"/>
         <type value="reference"/>
-        <documentation value="The reference to the practitioner"/>
+        <documentation value="Who performed the procedure"/>
       </searchParam>
       <searchParam>
         <name value="subject"/>
@@ -16534,8 +16729,8 @@
       <searchRevInclude value="Communication.sender"/>
       <searchRevInclude value="Communication.recipient"/>
       <searchRevInclude value="CommunicationRequest.requester"/>
-      <searchRevInclude value="CommunicationRequest.sender"/>
       <searchRevInclude value="CommunicationRequest.recipient"/>
+      <searchRevInclude value="CommunicationRequest.information-provider"/>
       <searchRevInclude value="Composition.author"/>
       <searchRevInclude value="Composition.attester"/>
       <searchRevInclude value="Condition.asserter"/>
@@ -18004,7 +18199,7 @@
         <name value="intent"/>
         <definition value="http://hl7.org/fhir/SearchParameter/ServiceRequest-intent"/>
         <type value="token"/>
-        <documentation value="proposal | plan | order +"/>
+        <documentation value="proposal | plan | directive | order +"/>
       </searchParam>
       <searchParam>
         <name value="performer-type"/>
@@ -18052,7 +18247,7 @@
         <name value="status"/>
         <definition value="http://hl7.org/fhir/SearchParameter/ServiceRequest-status"/>
         <type value="token"/>
-        <documentation value="draft | active | suspended | completed | entered-in-error | cancelled"/>
+        <documentation value="draft | active | on-hold | revoked | completed | entered-in-error | unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -18320,13 +18515,43 @@
         <name value="identifier"/>
         <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-identifier"/>
         <type value="token"/>
-        <documentation value="The unique identifier associated with the specimen"/>
+        <documentation value="The unique identifier associated with the SpecimenDefinition"/>
+      </searchParam>
+      <searchParam>
+        <name value="is-derived"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-is-derived"/>
+        <type value="token"/>
+        <documentation value="Primary specimen (false) or derived specimen (true)"/>
+      </searchParam>
+      <searchParam>
+        <name value="type-tested"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-type-tested"/>
+        <type value="token"/>
+        <documentation value="The type of specimen conditioned for testing"/>
+      </searchParam>
+      <searchParam>
+        <name value="experimental"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-experimental"/>
+        <type value="token"/>
+        <documentation value="Not for genuine usage (true)"/>
       </searchParam>
       <searchParam>
         <name value="type"/>
         <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-type"/>
         <type value="token"/>
         <documentation value="The type of collected specimen"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-title"/>
+        <type value="string"/>
+        <documentation value="Human-friendly name of the SpecimenDefinition"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/SpecimenDefinition-status"/>
+        <type value="token"/>
+        <documentation value="Publication status of the SpecimenDefinition: draft, active, retired, unknown"/>
       </searchParam>
     </resource>
     <resource>
@@ -19761,6 +19986,102 @@
         <definition value="http://hl7.org/fhir/SearchParameter/TestScript-status"/>
         <type value="token"/>
         <documentation value="The current status of the test script"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Topic"/>
+      <profile value="http://hl7.org/fhir/StructureDefinition/Topic"/>
+      <interaction>
+        <code value="read"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="vread"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="update"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="delete"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-instance"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="history-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="create"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+        <documentation value="Implemented per the specification (or Insert other doco here)"/>
+      </interaction>
+      <conditionalCreate value="true"/>
+      <conditionalUpdate value="true"/>
+      <conditionalDelete value="multiple"/>
+      <referencePolicy value="literal"/>
+      <referencePolicy value="logical"/>
+      <searchInclude value="Topic.publisher"/>
+      <searchParam>
+        <name value="date"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-date"/>
+        <type value="date"/>
+        <documentation value="Date status first applied"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-identifier"/>
+        <type value="token"/>
+        <documentation value="Business Identifier for Topic"/>
+      </searchParam>
+      <searchParam>
+        <name value="publisher"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-publisher"/>
+        <type value="reference"/>
+        <documentation value="The name of the individual or organization that published the Topic"/>
+      </searchParam>
+      <searchParam>
+        <name value="resource-type"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-resource-type"/>
+        <type value="token"/>
+        <documentation value="Candidate types for this topic"/>
+      </searchParam>
+      <searchParam>
+        <name value="title"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-title"/>
+        <type value="string"/>
+        <documentation value="Name for this Topic (Human friendly)"/>
+      </searchParam>
+      <searchParam>
+        <name value="version"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-version"/>
+        <type value="token"/>
+        <documentation value="Business version of the Topic"/>
+      </searchParam>
+      <searchParam>
+        <name value="url"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-url"/>
+        <type value="uri"/>
+        <documentation value="Logical canonical URL to reference this Topic (globally unique)"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-status"/>
+        <type value="token"/>
+        <documentation value="draft | active | retired | unknown"/>
+      </searchParam>
+      <searchParam>
+        <name value="trigger-description"/>
+        <definition value="http://hl7.org/fhir/SearchParameter/Topic-trigger-description"/>
+        <type value="string"/>
+        <documentation value="Text representation of the trigger"/>
       </searchParam>
     </resource>
     <resource>
