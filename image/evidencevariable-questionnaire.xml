@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for EvidenceVariable.characteristic.definition[x]"/>
       <expansion>
-        <identifier value="urn:uuid:bb893055-9e9e-49a7-9dbd-ae1e5efabf50"/>
-        <timestamp value="2019-07-19T16:03:19-04:00"/>
+        <identifier value="urn:uuid:2e173721-e41a-4c59-b74f-5216ad859aec"/>
+        <timestamp value="2019-07-24T13:43:15-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
           <code value="Group"/>
@@ -51,8 +51,8 @@
       <status value="active"/>
       <description value="Type options for DataRequirement.subject[x]"/>
       <expansion>
-        <identifier value="urn:uuid:b40be3b7-ebb1-4e8f-b42e-1fe99b32b145"/>
-        <timestamp value="2019-07-19T16:03:19-04:00"/>
+        <identifier value="urn:uuid:a3bf6e66-7ecb-4a84-83b5-95fa23a75dfc"/>
+        <timestamp value="2019-07-24T13:43:15-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -73,8 +73,8 @@
       <status value="active"/>
       <description value="Type options for DataRequirement.dateFilter.value[x]"/>
       <expansion>
-        <identifier value="urn:uuid:93d51be6-dc5a-4dae-a7e7-122c00c9e5af"/>
-        <timestamp value="2019-07-19T16:03:19-04:00"/>
+        <identifier value="urn:uuid:c3601908-9028-47af-ba46-1aab86675d5d"/>
+        <timestamp value="2019-07-24T13:43:15-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -100,8 +100,8 @@
       <status value="active"/>
       <description value="Type options for TriggerDefinition.timing[x]"/>
       <expansion>
-        <identifier value="urn:uuid:69084835-5af4-4c43-9eaa-0dcf1d0579ad"/>
-        <timestamp value="2019-07-19T16:03:19-04:00"/>
+        <identifier value="urn:uuid:a4fb7546-54fb-47ce-87b3-9f88b2cb003d"/>
+        <timestamp value="2019-07-24T13:43:15-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Timing"/>
@@ -132,8 +132,8 @@
       <status value="active"/>
       <description value="Type options for EvidenceVariable.characteristic.participantEffective[x]"/>
       <expansion>
-        <identifier value="urn:uuid:b2fc2312-6151-416d-b4d8-efaf31138239"/>
-        <timestamp value="2019-07-19T16:03:19-04:00"/>
+        <identifier value="urn:uuid:3e05210e-7376-44e4-b830-a278e44e35c6"/>
+        <timestamp value="2019-07-24T13:43:15-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -162,7 +162,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-07-19T15:55:02-04:00"/>
+  <date value="2019-07-24T13:34:31-04:00"/>
   <publisher value="Health Level Seven International (Clinical Decision Support)"/>
   <item>
     <linkId value="EvidenceVariable"/>
@@ -1169,6 +1169,38 @@
         <linkId value="EvidenceVariable.type.value"/>
         <text value="type"/>
         <type value="choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="boolean"/>
+      </extension>
+      <linkId value="EvidenceVariable.actual"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="True if the actual variable measured, false if a conceptual representation of the intended variable."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="EvidenceVariable.actual.value"/>
+        <text value="Actual or conceptual"/>
+        <type value="boolean"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>

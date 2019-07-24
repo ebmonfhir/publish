@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.definition[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:bb893055-9e9e-49a7-9dbd-ae1e5efabf50",
-      "timestamp" : "2019-07-19T16:03:19-04:00",
+      "identifier" : "urn:uuid:2e173721-e41a-4c59-b74f-5216ad859aec",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "Group",
@@ -49,8 +49,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.subject[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:b40be3b7-ebb1-4e8f-b42e-1fe99b32b145",
-      "timestamp" : "2019-07-19T16:03:19-04:00",
+      "identifier" : "urn:uuid:a3bf6e66-7ecb-4a84-83b5-95fa23a75dfc",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -70,8 +70,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.dateFilter.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:93d51be6-dc5a-4dae-a7e7-122c00c9e5af",
-      "timestamp" : "2019-07-19T16:03:19-04:00",
+      "identifier" : "urn:uuid:c3601908-9028-47af-ba46-1aab86675d5d",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -96,8 +96,8 @@
     "status" : "active",
     "description" : "Type options for TriggerDefinition.timing[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:69084835-5af4-4c43-9eaa-0dcf1d0579ad",
-      "timestamp" : "2019-07-19T16:03:19-04:00",
+      "identifier" : "urn:uuid:a4fb7546-54fb-47ce-87b3-9f88b2cb003d",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Timing",
@@ -127,8 +127,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.participantEffective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:b2fc2312-6151-416d-b4d8-efaf31138239",
-      "timestamp" : "2019-07-19T16:03:19-04:00",
+      "identifier" : "urn:uuid:3e05210e-7376-44e4-b830-a278e44e35c6",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -156,7 +156,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-07-19T15:55:02-04:00",
+  "date" : "2019-07-24T13:34:31-04:00",
   "publisher" : "Health Level Seven International (Clinical Decision Support)",
   "item" : [{
     "linkId" : "EvidenceVariable",
@@ -1241,6 +1241,41 @@
         "linkId" : "EvidenceVariable.type.value",
         "text" : "type",
         "type" : "choice",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "boolean"
+      }],
+      "linkId" : "EvidenceVariable.actual",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "True if the actual variable measured, false if a conceptual representation of the intended variable.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "EvidenceVariable.actual.value",
+        "text" : "Actual or conceptual",
+        "type" : "boolean",
         "required" : false,
         "repeats" : false
       }]
