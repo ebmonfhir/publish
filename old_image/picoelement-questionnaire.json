@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.definition[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:d5213ae2-9e49-4a93-9cd1-4ae2608872de",
-      "timestamp" : "2019-07-18T12:00:54-04:00",
+      "identifier" : "urn:uuid:95912f31-c52f-467e-b4c6-2175752f509f",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "Group",
@@ -49,8 +49,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.subject[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:0bf4a080-befc-4495-b243-330e45e15c51",
-      "timestamp" : "2019-07-18T12:00:54-04:00",
+      "identifier" : "urn:uuid:d1d21df9-be40-43e8-94db-521225c05fb7",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -70,8 +70,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.dateFilter.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:b575f3d5-e43e-41e5-93b5-2f6814e8d6df",
-      "timestamp" : "2019-07-18T12:00:54-04:00",
+      "identifier" : "urn:uuid:dfdb4ad7-cfe7-4273-98a8-8a6ec3de1910",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -96,8 +96,8 @@
     "status" : "active",
     "description" : "Type options for TriggerDefinition.timing[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:4b9b8657-b1ea-45c0-a350-f42f6c9963c8",
-      "timestamp" : "2019-07-18T12:00:54-04:00",
+      "identifier" : "urn:uuid:12f83024-6c59-4d54-8b0f-bd541db6229a",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Timing",
@@ -127,8 +127,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.participantEffective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:af59eade-d7a7-4a2d-b852-e2617e051c09",
-      "timestamp" : "2019-07-18T12:00:54-04:00",
+      "identifier" : "urn:uuid:7814c547-f908-4393-84b5-a5e81bcf3e9d",
+      "timestamp" : "2019-07-24T13:43:15-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -1241,6 +1241,41 @@
         "linkId" : "EvidenceVariable.type.value",
         "text" : "type",
         "type" : "choice",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "boolean"
+      }],
+      "linkId" : "EvidenceVariable.actual",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "True if the actual variable measured, false if a conceptual representation of the intended variable.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "EvidenceVariable.actual.value",
+        "text" : "Actual or conceptual",
+        "type" : "boolean",
         "required" : false,
         "repeats" : false
       }]

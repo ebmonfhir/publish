@@ -3050,6 +3050,9 @@
       "EvidenceVariable.characteristic.device": {
         "status": "new"
       },
+      "EvidenceVariable.characteristic.booleanSet": {
+        "status": "new"
+      },
       "EvidenceVariable.characteristic.groupMeasure": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -3061,6 +3064,9 @@
           "reference": "http://hl7.org/fhir/ValueSet/group-measure|4.1.0",
           "strength": "required"
         }
+      },
+      "EvidenceVariable.characteristic.usageContext": {
+        "status": "deleted"
       }
     },
     "status": "changed"
@@ -3352,6 +3358,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/group-type|4.1.0",
           "strength": "required"
         }
+      },
+      "Group.member.entity": {
+        "removed-types": [
+          "Reference(Patient | Practitioner | PractitionerRole | Device | Medication | Substance | Group)"
+        ],
+        "added-types": [
+          "Reference(Patient | Practitioner | PractitionerRole | Device | Medication | Substance | Group | Evidence)"
+        ]
       }
     },
     "status": "changed"
