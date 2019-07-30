@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for Group.characteristic.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:140649e3-3a0a-43f2-b121-e41e252e1e67",
-      "timestamp" : "2019-07-29T15:58:24-04:00",
+      "identifier" : "urn:uuid:d01d805b-d37f-47e9-8837-3f5a29bc5c50",
+      "timestamp" : "2019-07-30T11:22:57-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -37,7 +37,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-07-29T15:49:30-04:00",
+  "date" : "2019-07-30T11:07:12-04:00",
   "publisher" : "Health Level Seven International (FHIR Infrastructure)",
   "item" : [{
     "linkId" : "Group",
@@ -1020,6 +1020,37 @@
           "linkId" : "Group.characteristic.period.end",
           "text" : "end:",
           "type" : "dateTime",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "string"
+        }],
+        "linkId" : "Group.characteristic.booleanSet",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "What code/value pairs define members?",
+          "type" : "display"
+        },
+        {
+          "linkId" : "Group.characteristic.booleanSet.value",
+          "text" : "Use booleanSet to define the members of the population, such as Age Ranges, Genders, Settings",
+          "type" : "string",
           "required" : false,
           "repeats" : false
         }]
