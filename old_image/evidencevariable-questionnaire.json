@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.definition[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:2e173721-e41a-4c59-b74f-5216ad859aec",
-      "timestamp" : "2019-07-24T13:43:15-04:00",
+      "identifier" : "urn:uuid:627a73e9-f237-4031-acb2-8be6862d6a47",
+      "timestamp" : "2019-07-29T15:58:11-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
         "code" : "Group",
@@ -49,8 +49,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.subject[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:a3bf6e66-7ecb-4a84-83b5-95fa23a75dfc",
-      "timestamp" : "2019-07-24T13:43:15-04:00",
+      "identifier" : "urn:uuid:1a546078-b308-40c0-8d71-7b1783c58b83",
+      "timestamp" : "2019-07-29T15:58:11-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -70,8 +70,8 @@
     "status" : "active",
     "description" : "Type options for DataRequirement.dateFilter.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:c3601908-9028-47af-ba46-1aab86675d5d",
-      "timestamp" : "2019-07-24T13:43:15-04:00",
+      "identifier" : "urn:uuid:7c42403d-f9b1-49d3-95a0-3ee6c1b9f514",
+      "timestamp" : "2019-07-29T15:58:11-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -96,8 +96,8 @@
     "status" : "active",
     "description" : "Type options for TriggerDefinition.timing[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:a4fb7546-54fb-47ce-87b3-9f88b2cb003d",
-      "timestamp" : "2019-07-24T13:43:15-04:00",
+      "identifier" : "urn:uuid:6773c8a6-4251-4892-81ce-faf48385f157",
+      "timestamp" : "2019-07-29T15:58:11-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Timing",
@@ -127,8 +127,8 @@
     "status" : "active",
     "description" : "Type options for EvidenceVariable.characteristic.participantEffective[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:3e05210e-7376-44e4-b830-a278e44e35c6",
-      "timestamp" : "2019-07-24T13:43:15-04:00",
+      "identifier" : "urn:uuid:60acbcd3-f71a-4890-b2f9-58b5a21617e4",
+      "timestamp" : "2019-07-29T15:58:11-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "dateTime",
@@ -156,7 +156,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-07-24T13:34:31-04:00",
+  "date" : "2019-07-29T15:49:30-04:00",
   "publisher" : "Health Level Seven International (Clinical Decision Support)",
   "item" : [{
     "linkId" : "EvidenceVariable",
@@ -3112,8 +3112,11 @@
         }]
       },
       {
-        "linkId" : "EvidenceVariable.characteristic.usageContext",
-        "text" : "What code/value pairs define members?",
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "string"
+        }],
+        "linkId" : "EvidenceVariable.characteristic.booleanSet",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -3128,8 +3131,15 @@
               }]
             }
           }],
-          "text" : "Use UsageContext to define the members of the population, such as Age Ranges, Genders, Settings.",
+          "text" : "Use booleanSet to define the members of the population, such as Age Ranges, Genders, Settings.",
           "type" : "display"
+        },
+        {
+          "linkId" : "EvidenceVariable.characteristic.booleanSet.value",
+          "text" : "What code/value pairs define members?",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
         }]
       },
       {

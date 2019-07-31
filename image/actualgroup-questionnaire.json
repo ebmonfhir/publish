@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for Group.characteristic.value[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:d85f02f5-e512-4d7c-b558-64e3191b772b",
-      "timestamp" : "2019-07-29T15:58:25-04:00",
+      "identifier" : "urn:uuid:d78cb75d-b60f-4061-81df-a54041675970",
+      "timestamp" : "2019-07-31T16:07:57-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -37,7 +37,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-07-29T15:49:30-04:00",
+  "date" : "2019-07-31T16:00:13-04:00",
   "publisher" : "HL7",
   "item" : [{
     "extension" : [{
@@ -1032,6 +1032,37 @@
           "linkId" : "Group.characteristic.period.end",
           "text" : "end:",
           "type" : "dateTime",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "string"
+        }],
+        "linkId" : "Group.characteristic.booleanSet",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "What code/value pairs define members?",
+          "type" : "display"
+        },
+        {
+          "linkId" : "Group.characteristic.booleanSet.value",
+          "text" : "Use booleanSet to define the members of the population, such as Age Ranges, Genders, Settings",
+          "type" : "string",
           "required" : false,
           "repeats" : false
         }]

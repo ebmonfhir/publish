@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for Group.characteristic.value[x]"/>
       <expansion>
-        <identifier value="urn:uuid:0275e128-d73b-42fd-b527-53e92c418d74"/>
-        <timestamp value="2019-07-24T13:43:32-04:00"/>
+        <identifier value="urn:uuid:03cf89a5-9765-447e-82dd-9f43c1149ac1"/>
+        <timestamp value="2019-07-30T11:22:59-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -39,7 +39,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-07-24T13:34:31-04:00"/>
+  <date value="2019-07-30T11:07:12-04:00"/>
   <publisher value="HL7"/>
   <item>
     <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
@@ -959,6 +959,35 @@
           <repeats value="false"/>
         </item>
       </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="string"/>
+        </extension>
+        <linkId value="Group.characteristic.booleanSet"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="What code/value pairs define members?"/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="Group.characteristic.booleanSet.value"/>
+          <text value="Use booleanSet to define the members of the population, such as Age Ranges, Genders, Settings"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
     </item>
     <item>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
@@ -1083,7 +1112,7 @@
         </item>
         <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-            <valueCode value="Patient, Practitioner, PractitionerRole, Device, Medication, Substance, Group"/>
+            <valueCode value="Patient, Practitioner, PractitionerRole, Device, Medication, Substance, Group, Evidence"/>
           </extension>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
             <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
