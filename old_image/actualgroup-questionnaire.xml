@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for Group.characteristic.value[x]"/>
       <expansion>
-        <identifier value="urn:uuid:d85f02f5-e512-4d7c-b558-64e3191b772b"/>
-        <timestamp value="2019-07-29T15:58:25-04:00"/>
+        <identifier value="urn:uuid:d78cb75d-b60f-4061-81df-a54041675970"/>
+        <timestamp value="2019-07-31T16:07:57-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -39,7 +39,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-07-29T15:49:30-04:00"/>
+  <date value="2019-07-31T16:00:13-04:00"/>
   <publisher value="HL7"/>
   <item>
     <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
@@ -958,6 +958,35 @@
           <linkId value="Group.characteristic.period.end"/>
           <text value="end:"/>
           <type value="dateTime"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="string"/>
+        </extension>
+        <linkId value="Group.characteristic.booleanSet"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="What code/value pairs define members?"/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="Group.characteristic.booleanSet.value"/>
+          <text value="Use booleanSet to define the members of the population, such as Age Ranges, Genders, Settings"/>
+          <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>

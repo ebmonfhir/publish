@@ -33,7 +33,7 @@
   <link rel="shortcut icon" href="./assets/ico/favicon.png"/>
 
 </head>
-<body> 
+<body>
 	<div id="segment-header" class="segment">  <!-- segment-header -->
 		<div class="container">  <!-- container -->
 			<a no-external="true" id="logo" href="http://hl7.org/fhir"><img src="./assets/images/fhir-logo-www.png" alt="logo fhir" width="249" height="60"/> </a>
@@ -192,6 +192,22 @@
 &lt;/ActivityDefinition&gt;
 </code></pre>
 
+<p>The <a href="evidencevariable.html">EvidenceVariable</a> resource supports the description of definitional resources for variables to be referenced from an Evidence resource:</p>
+
+<table class="grid">
+	<tbody>
+		<tr><td>Who</td><td>topic</td><td>Specifies the category of evidence variable (eg condition, exposure)</td></tr>
+		<tr><td>What</td><td>characteristic.definition[x]</td><td>Specifies a component of the definition of the evidence variable</td></tr>
+		<tr><td>When</td><td>participantEffective[x] and timeFromStart</td><td>Subelements of characteristic to specify when the definitional component was or will be determined</td></tr>
+		<tr><td>Where</td><td>type</td><td>Specifies the type of variable (eg dichotomous. Categorical, continuous, descriptive)</td></tr>
+		<tr><td>Why</td><td>Characteristic.method</td><td>Specifies how the definitional component was or will be determined</td></tr>
+	</tbody>
+</table>
+
+<p>For example, the following fragment illustrates a definition of chlorpromazine as an exposure in an evidence summary. In this example, only the What (characteristic.definitionCodeableConcept) is shown:</p>
+
+<p>*enter example here*</p>
+
 <p>Note to implementers: Although there is currently only one <i>definitional</i> resource defined (ActivityDefinition), the concept is general, and this was a deliberate design decision to avoid the overhead of defining and maintaining a different definitional resource for every category of request. We anticipate that as the use cases of ActivityDefinition require more specialized elements to be added, the resource may be split.</p>
 
 </div>
@@ -207,7 +223,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 67c0b20852) generated on Mon, Jul 29, 2019 16:01-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 832eded37f) generated on Wed, Jul 31, 2019 16:10-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
