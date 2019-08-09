@@ -1614,6 +1614,18 @@ type StatisticAttributeEstimate {
   quantity: Quantity
   level: decimal  _level: ElementBase
   range: Range
+  estimateQualifier: [StatisticAttributeEstimateEstimateQualifier]
+}
+
+type StatisticAttributeEstimateEstimateQualifier {
+  id: String
+  extension: [Extension]
+  description: String  _description: ElementBase
+  note: Annotation
+  type: CodeableConcept
+  quantity: Quantity
+  level: decimal  _level: ElementBase
+  range: Range
 }
 
 input StatisticInput {
@@ -1640,6 +1652,18 @@ input StatisticSampleSizeInput {
 }
 
 input StatisticAttributeEstimateInput {
+  id: String
+  extension: [ExtensionInput]
+  description: String  _description: ElementBase
+  note: AnnotationInput
+  type: CodeableConceptInput
+  quantity: QuantityInput
+  level: decimal  _level: ElementBase
+  range: RangeInput
+  estimateQualifier: [StatisticAttributeEstimateEstimateQualifierInput]
+}
+
+input StatisticAttributeEstimateEstimateQualifierInput {
   id: String
   extension: [ExtensionInput]
   description: String  _description: ElementBase

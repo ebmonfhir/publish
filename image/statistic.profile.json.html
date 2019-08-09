@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Statistic&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-08T14:37:33.369-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -134,7 +134,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Statistic&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-08T14:37:33-04:00&quot;,
+  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
   &quot;publisher&quot; : &quot;HL7 FHIR Standard&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -731,6 +731,206 @@
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier&quot;,
+      &quot;short&quot; : &quot;An estimate of the precision of the estimate&quot;,
+      &quot;definition&quot; : &quot;An estimate of the precision of the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Element&quot;
+      }],
+      &quot;constraint&quot; : [{
+        &quot;key&quot; : &quot;ele-1&quot;,
+        &quot;severity&quot; : &quot;error&quot;,
+        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
+        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
+        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
+        &quot;source&quot; : &quot;Element&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.id&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.id&quot;,
+      &quot;representation&quot; : [&quot;xmlAttr&quot;],
+      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
+      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.extension&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.extension&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;value&quot;,
+          &quot;path&quot; : &quot;url&quot;
+        }],
+        &quot;description&quot; : &quot;Extensions are always sliced by (at least) url&quot;,
+        &quot;rules&quot; : &quot;open&quot;
+      },
+      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.extension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.description&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.description&quot;,
+      &quot;short&quot; : &quot;Textual description of the precision estimate&quot;,
+      &quot;definition&quot; : &quot;Human-readable summary of the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.description&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.note&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.note&quot;,
+      &quot;short&quot; : &quot;Footnote or explanatory note about the estimate&quot;,
+      &quot;definition&quot; : &quot;Footnote or explanatory note about the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.note&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.type&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.type&quot;,
+      &quot;short&quot; : &quot;The estimateType of attribute estimate, eg confidence interval or p value type&quot;,
+      &quot;definition&quot; : &quot;The estimateType of attribute estimate, eg confidence interval or p value type.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.type&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;StatisticAttributeEstimateType&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;Method of reporting variability of estimates, such as confidence intervals, interquartile range or standard deviation.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/attribute-estimate-type&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.quantity&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.quantity&quot;,
+      &quot;short&quot; : &quot;The singular quantity of the attribute estimate, for attribute estimates represented as single values; also used to report unit of measure&quot;,
+      &quot;definition&quot; : &quot;The singular quantity of the attribute estimate, for attribute estimates represented as single values; also used to report unit of measure.&quot;,
+      &quot;comment&quot; : &quot;Often the pvalue.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.quantity&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Quantity&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.level&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.level&quot;,
+      &quot;short&quot; : &quot;Level of confidence interval, eg 0.95 for 95% confidence interval&quot;,
+      &quot;definition&quot; : &quot;Use 95 for a 95% confidence interval.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.level&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;decimal&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.range&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.range&quot;,
+      &quot;short&quot; : &quot;Lower and upper bound values of the precision estimate&quot;,
+      &quot;definition&quot; : &quot;Lower bound of confidence interval.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.range&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Range&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
     }]
   },
   &quot;differential&quot; : {
@@ -980,6 +1180,100 @@
         &quot;code&quot; : &quot;Range&quot;
       }],
       &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier&quot;,
+      &quot;short&quot; : &quot;An estimate of the precision of the estimate&quot;,
+      &quot;definition&quot; : &quot;An estimate of the precision of the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Element&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.description&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.description&quot;,
+      &quot;short&quot; : &quot;Textual description of the precision estimate&quot;,
+      &quot;definition&quot; : &quot;Human-readable summary of the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.note&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.note&quot;,
+      &quot;short&quot; : &quot;Footnote or explanatory note about the estimate&quot;,
+      &quot;definition&quot; : &quot;Footnote or explanatory note about the estimate.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Annotation&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.type&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.type&quot;,
+      &quot;short&quot; : &quot;The estimateType of attribute estimate, eg confidence interval or p value type&quot;,
+      &quot;definition&quot; : &quot;The estimateType of attribute estimate, eg confidence interval or p value type.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;StatisticAttributeEstimateType&quot;
+        }],
+        &quot;strength&quot; : &quot;extensible&quot;,
+        &quot;description&quot; : &quot;Method of reporting variability of estimates, such as confidence intervals, interquartile range or standard deviation.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/attribute-estimate-type&quot;
+      }
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.quantity&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.quantity&quot;,
+      &quot;short&quot; : &quot;The singular quantity of the attribute estimate, for attribute estimates represented as single values; also used to report unit of measure&quot;,
+      &quot;definition&quot; : &quot;The singular quantity of the attribute estimate, for attribute estimates represented as single values; also used to report unit of measure.&quot;,
+      &quot;comment&quot; : &quot;Often the pvalue.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Quantity&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.level&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.level&quot;,
+      &quot;short&quot; : &quot;Level of confidence interval, eg 0.95 for 95% confidence interval&quot;,
+      &quot;definition&quot; : &quot;Use 95 for a 95% confidence interval.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;decimal&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.range&quot;,
+      &quot;path&quot; : &quot;Statistic.attributeEstimate.estimateQualifier.range&quot;,
+      &quot;short&quot; : &quot;Lower and upper bound values of the precision estimate&quot;,
+      &quot;definition&quot; : &quot;Lower bound of confidence interval.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Range&quot;
+      }],
+      &quot;isSummary&quot; : true
     }]
   }
 }
@@ -1007,7 +1301,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 265d696433) generated on Thu, Aug 8, 2019 14:46-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:42-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
