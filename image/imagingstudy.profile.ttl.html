@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;ImagingStudy&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-08-09T09:30:10.376-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-09-15T10:41:41.207-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -155,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;ImagingStudy&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Imaging Integration)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -304,7 +304,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;id&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
@@ -956,7 +961,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Study access endpoint&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.connectionType.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Typical endpoint types include DICOM WADO-RS, which is used to retrieve DICOM instances in native or rendered (e.g., JPG, PNG), formats using a RESTful API; DICOM WADO-URI, which can similarly retrieve native or rendered instances, except using an HTTP query-based approach; DICOM QIDO-RS, which allows RESTful query for DICOM information without retrieving the actual instances; or IHE Invoke Image Display (IID), which provides standard invocation of an imaging web viewer.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for viewing (e.g., IHEâ€™s IID profile) or retrieving (e.g., DICOMâ€™s WADO-URI and WADO-RS) the study or the studyâ€™s series or instances. The study-level baseLocation applies to each series in the study, unless overridden in series by a series-level baseLocation of the same type.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for viewing (e.g., IHE’s IID profile) or retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the study or the study’s series or instances. The study-level baseLocation applies to each series in the study, unless overridden in series by a series-level baseLocation of the same type.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1239,14 +1244,11 @@
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;;
            fhir:index 1
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Media&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
            fhir:index 2
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
-           fhir:index 3
-         ], [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;;
-           fhir:index 4
+           fhir:index 3
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1380,7 +1382,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1652,7 +1659,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Series access endpoint&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.connectionType.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Typical endpoint types include DICOM WADO-RS, which is used to retrieve DICOM instances in native or rendered (e.g., JPG, PNG) formats using a RESTful API; DICOM WADO-URI, which can similarly retrieve native or rendered instances, except using an HTTP query-based approach; and DICOM QIDO-RS, which allows RESTful query for DICOM information without retrieving the actual instances.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for retrieving (e.g., DICOMâ€™s WADO-URI and WADO-RS) the series or the seriesâ€™ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the series or the series’ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
@@ -1884,7 +1891,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -2103,7 +2115,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -2730,7 +2747,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Study access endpoint&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The network service providing access (e.g., query, view, or retrieval) for the study. See implementation notes for information about using DICOM endpoints. A study-level endpoint applies to each series in the study, unless overridden by a series-level endpoint with the same Endpoint.connectionType.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Typical endpoint types include DICOM WADO-RS, which is used to retrieve DICOM instances in native or rendered (e.g., JPG, PNG), formats using a RESTful API; DICOM WADO-URI, which can similarly retrieve native or rendered instances, except using an HTTP query-based approach; DICOM QIDO-RS, which allows RESTful query for DICOM information without retrieving the actual instances; or IHE Invoke Image Display (IID), which provides standard invocation of an imaging web viewer.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for viewing (e.g., IHEâ€™s IID profile) or retrieving (e.g., DICOMâ€™s WADO-URI and WADO-RS) the study or the studyâ€™s series or instances. The study-level baseLocation applies to each series in the study, unless overridden in series by a series-level baseLocation of the same type.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for viewing (e.g., IHE’s IID profile) or retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the study or the study’s series or instances. The study-level baseLocation applies to each series in the study, unless overridden in series by a series-level baseLocation of the same type.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -2966,14 +2983,11 @@
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;;
            fhir:index 1
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Media&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
            fhir:index 2
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;;
-           fhir:index 3
-         ], [
            fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;;
-           fhir:index 4
+           fhir:index 3
          ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
@@ -3224,7 +3238,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Series access endpoint&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.connectionType.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;Typical endpoint types include DICOM WADO-RS, which is used to retrieve DICOM instances in native or rendered (e.g., JPG, PNG) formats using a RESTful API; DICOM WADO-URI, which can similarly retrieve native or rendered instances, except using an HTTP query-based approach; and DICOM QIDO-RS, which allows RESTful query for DICOM information without retrieving the actual instances.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for retrieving (e.g., DICOMâ€™s WADO-URI and WADO-RS) the series or the seriesâ€™ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.&quot; ];
+       fhir:ElementDefinition.requirements [ fhir:value &quot;Access methods for retrieving (e.g., DICOM’s WADO-URI and WADO-RS) the series or the series’ instances. A baseLocation specified at the series level has precedence over a baseLocation of the same type specified at the study level.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -3635,7 +3649,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:46-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:45-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -3643,7 +3657,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fimagingstudy.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fimagingstudy.profile.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fimagingstudy.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fimagingstudy.profile.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for ClinicalUseIssue.contraindication.otherTherapy.medication[x]"/>
       <expansion>
-        <identifier value="urn:uuid:442d95e2-815a-4bfa-8e38-52f93f559e9d"/>
-        <timestamp value="2019-08-09T09:44:25-04:00"/>
+        <identifier value="urn:uuid:ae3d5113-6e98-4d2a-8f7b-5c029148a55a"/>
+        <timestamp value="2019-09-15T10:44:29-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="CodeableConcept"/>
@@ -18,8 +18,8 @@
         </contains>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
-          <code value="RegulatedMedicinalProduct"/>
-          <display value="RegulatedMedicinalProduct"/>
+          <code value="MedicinalProductDefinition"/>
+          <display value="MedicinalProductDefinition"/>
         </contains>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
@@ -46,12 +46,12 @@
       <status value="active"/>
       <description value="Type options for ClinicalUseIssue.interaction.interactant.item[x]"/>
       <expansion>
-        <identifier value="urn:uuid:aa3c00d0-c4d6-4d0b-84f3-813b11bacd6a"/>
-        <timestamp value="2019-08-09T09:44:25-04:00"/>
+        <identifier value="urn:uuid:1afe944c-4401-4d05-9d6a-20bfe0f73a43"/>
+        <timestamp value="2019-09-15T10:44:29-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
-          <code value="RegulatedMedicinalProduct"/>
-          <display value="RegulatedMedicinalProduct"/>
+          <code value="MedicinalProductDefinition"/>
+          <display value="MedicinalProductDefinition"/>
         </contains>
         <contains>
           <system value="http://hl7.org/fhir/resource-types"/>
@@ -81,11 +81,11 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (Biomedical Research and Regulation)"/>
   <item>
     <linkId value="ClinicalUseIssue"/>
-    <text value="ClinicalUseIssue"/>
+    <text value="A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product"/>
     <type value="group"/>
     <required value="false"/>
     <repeats value="true"/>
@@ -305,6 +305,50 @@
       </item>
     </item>
     <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Identifier"/>
+      </extension>
+      <linkId value="ClinicalUseIssue.identifier"/>
+      <text value="Business identifier for this issue"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="Business identifier for this issue."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="ClinicalUseIssue.identifier.label"/>
+        <text value="label:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+      <item>
+        <linkId value="ClinicalUseIssue.identifier.system"/>
+        <text value="system:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+      <item>
+        <linkId value="ClinicalUseIssue.identifier.value"/>
+        <text value="value:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
         <valueInteger value="1"/>
       </extension>
@@ -362,7 +406,7 @@
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="RegulatedMedicinalProduct, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance"/>
+          <valueCode value="MedicinalProductDefinition, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -370,6 +414,46 @@
         <linkId value="ClinicalUseIssue.subject.value"/>
         <text value="The medication or procedure for which this is an indication"/>
         <type value="reference"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="CodeableConcept"/>
+      </extension>
+      <linkId value="ClinicalUseIssue.status"/>
+      <text value="General description"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="General description."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="ClinicalUseIssue.status.coding"/>
+        <text value="code:"/>
+        <type value="open-choice"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+      <item>
+        <linkId value="ClinicalUseIssue.status.text"/>
+        <text value="text:"/>
+        <type value="string"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
@@ -508,7 +592,7 @@
           <valueString value="CodeableConcept"/>
         </extension>
         <linkId value="ClinicalUseIssue.contraindication.diseaseSymptomProcedure"/>
-        <text value="The disease, symptom or procedure for the contraindication"/>
+        <text value="The situation that is being documented as contraindicating against this item"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -522,7 +606,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The disease, symptom or procedure for the contraindication."/>
+          <text value="The situation that is being documented as contraindicating against this item."/>
           <type value="display"/>
         </item>
         <item>
@@ -847,7 +931,7 @@
               <type value="group"/>
               <item>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-                  <valueCode value="RegulatedMedicinalProduct, Medication, Substance, SubstanceDefinition"/>
+                  <valueCode value="MedicinalProductDefinition, Medication, Substance, SubstanceDefinition"/>
                 </extension>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
                   <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -964,7 +1048,7 @@
           <valueString value="CodeableConcept"/>
         </extension>
         <linkId value="ClinicalUseIssue.indication.diseaseSymptomProcedure"/>
-        <text value="The disease, symptom or procedure for the indication"/>
+        <text value="The situation that is being documented as an indicaton for this item"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -978,7 +1062,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The disease, symptom or procedure for the indication."/>
+          <text value="The situation that is being documented as an indicaton for this item."/>
           <type value="display"/>
         </item>
         <item>
@@ -1455,7 +1539,7 @@
               <type value="group"/>
               <item>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-                  <valueCode value="RegulatedMedicinalProduct, Medication, Substance, ObservationDefinition"/>
+                  <valueCode value="MedicinalProductDefinition, Medication, Substance, ObservationDefinition"/>
                 </extension>
                 <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
                   <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
@@ -1676,7 +1760,7 @@
         <valueInteger value="1"/>
       </extension>
       <linkId value="ClinicalUseIssue.undesirableEffect"/>
-      <text value="UndesirableEffect"/>
+      <text value="A possible negative outcome from the use of this treatment"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="false"/>
@@ -1773,7 +1857,7 @@
           <valueString value="CodeableConcept"/>
         </extension>
         <linkId value="ClinicalUseIssue.undesirableEffect.symptomConditionEffect"/>
-        <text value="The symptom, condition or undesirable effect"/>
+        <text value="The situation in which the undesirable effect may manifest"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1787,7 +1871,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The symptom, condition or undesirable effect."/>
+          <text value="The situation in which the undesirable effect may manifest."/>
           <type value="display"/>
         </item>
         <item>
@@ -1813,7 +1897,7 @@
           <valueString value="CodeableConcept"/>
         </extension>
         <linkId value="ClinicalUseIssue.undesirableEffect.classification"/>
-        <text value="Classification of the effect"/>
+        <text value="High level classification of the effect"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1827,7 +1911,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Classification of the effect."/>
+          <text value="High level classification of the effect."/>
           <type value="display"/>
         </item>
         <item>
@@ -1853,7 +1937,7 @@
           <valueString value="CodeableConcept"/>
         </extension>
         <linkId value="ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence"/>
-        <text value="The frequency of occurrence of the effect"/>
+        <text value="How often the effect is seen"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1867,7 +1951,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The frequency of occurrence of the effect."/>
+          <text value="How often the effect is seen."/>
           <type value="display"/>
         </item>
         <item>

@@ -7,7 +7,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (FHIR Infrastructure)"/>
   <item>
     <linkId value="Topic"/>
@@ -423,35 +423,6 @@
       <item>
         <linkId value="Topic.derivedFromUri.value"/>
         <text value="Based on external protocol or definition"/>
-        <type value="string"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="uri"/>
-      </extension>
-      <linkId value="Topic.replaces"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Completed or terminated request(s) whose function is taken by this new request."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="Topic.replaces.value"/>
-        <text value="Topics replaced by this Topic"/>
         <type value="string"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -1406,6 +1377,35 @@
           <linkId value="Topic.canFilterBy.name.value"/>
           <text value="Search parameter that serves as filter key"/>
           <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="code"/>
+        </extension>
+        <linkId value="Topic.canFilterBy.matchType"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Allowable operators to apply when determining matches (Search Modifiers)."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="Topic.canFilterBy.matchType.value"/>
+          <text value="match type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>

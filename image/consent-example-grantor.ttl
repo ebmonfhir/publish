@@ -10,7 +10,7 @@
   fhir:Resource.id [ fhir:value "consent-example-grantor"];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on a question asked on John Moehrke's blog in the \n	<a href=\"http://healthcaresecprivacy.blogspot.com/2016/04/consent-given-to-authorized.html\">Consent given to authorized representative</a>\n    <p>\nThis is a case where a Patient is giving a limited (read-only) access to an individual.\n	</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to provide XXX with read-only access to the data at Good Health Psychiatric Hospital \n   available for patient requested access use.\n   </p>\n   </div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Consent given to authorized representative</p>\n      <p>This is a case where a Patient is giving a limited (read-only) access to an individual.</p>\n      <p>Patient &quot;Donald D DUCK&quot; wishes to provide Dr. Simone Heps with read-only access to the data at Blijdorp Medisch Centrum available for patient requested access use.</p>\n    </div>"
   ];
   fhir:Consent.status [ fhir:value "active"];
   fhir:Consent.scope [
@@ -29,70 +29,76 @@
      ]
   ];
   fhir:Consent.patient [
-     fhir:link <http://hl7.org/fhir/Patient/f001>;
-     fhir:Reference.reference [ fhir:value "Patient/f001" ];
-     fhir:Reference.display [ fhir:value "P. van de Heuvel" ]
+     fhir:link <http://hl7.org/fhir/Patient/f002>;
+     fhir:Reference.reference [ fhir:value "Patient/f002" ];
+     fhir:Reference.display [ fhir:value "Donald D DUCK" ]
   ];
-  fhir:Consent.dateTime [ fhir:value "2015-11-18"^^xsd:date];
+  fhir:Consent.dateTime [ fhir:value "2018-12-24"^^xsd:date];
   fhir:Consent.organization [
      fhir:index 0;
-     fhir:link <http://hl7.org/fhir/Organization/f001>;
-     fhir:Reference.reference [ fhir:value "Organization/f001" ]
+     fhir:link <http://hl7.org/fhir/Organization/f203>;
+     fhir:Reference.reference [ fhir:value "Organization/f203" ]
   ];
   fhir:Consent.sourceAttachment [
+     fhir:index 0;
      fhir:Attachment.title [ fhir:value "The terms of the consent in lawyer speak." ]
   ];
   fhir:Consent.policyRule [
      fhir:CodeableConcept.coding [
        fhir:index 0;
        fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
-       fhir:Coding.code [ fhir:value "OPTOUT" ]
+       fhir:Coding.code [ fhir:value "INFAO" ]
      ]
   ];
   fhir:Consent.provision [
-     fhir:Consent.provision.actor [
+     fhir:Consent.provision.type [ fhir:value "deny" ];
+     fhir:Consent.provision.provision [
        fhir:index 0;
-       fhir:Consent.provision.actor.role [
-         fhir:CodeableConcept.coding [
-           fhir:index 0;
-           fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ParticipationType" ];
-           fhir:Coding.code [ fhir:value "CST" ]
-         ]
-       ];
-       fhir:Consent.provision.actor.reference [
-         fhir:link <http://hl7.org/fhir/Organization/f001>;
-         fhir:Reference.reference [ fhir:value "Organization/f001" ]
-       ]
-     ], [
-       fhir:index 1;
-       fhir:Consent.provision.actor.role [
-         fhir:CodeableConcept.coding [
-           fhir:index 0;
-           fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ParticipationType" ];
-           fhir:Coding.code [ fhir:value "PRCP" ]
-         ]
-       ];
-       fhir:Consent.provision.actor.reference [
-         fhir:link <http://hl7.org/fhir/Patient/example>;
-         fhir:Reference.reference [ fhir:value "Patient/example" ];
-         fhir:Reference.display [ fhir:value "Good Health Clinic" ]
-       ]
-     ];
-     fhir:Consent.provision.action [
-       fhir:index 0;
-       fhir:CodeableConcept.coding [
+       fhir:Consent.provision.type [ fhir:value "permit" ];
+       fhir:Consent.provision.actor [
          fhir:index 0;
-         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/consentaction" ];
-         fhir:Coding.code [ fhir:value "access" ]
+         fhir:Consent.provision.actor.role [
+           fhir:CodeableConcept.coding [
+             fhir:index 0;
+             fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ParticipationType" ];
+             fhir:Coding.code [ fhir:value "CST" ]
+           ]
+         ];
+         fhir:Consent.provision.actor.reference [
+           fhir:link <http://hl7.org/fhir/Organization/f203>;
+           fhir:Reference.reference [ fhir:value "Organization/f203" ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:Consent.provision.actor.role [
+           fhir:CodeableConcept.coding [
+             fhir:index 0;
+             fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ParticipationType" ];
+             fhir:Coding.code [ fhir:value "PRCP" ]
+           ]
+         ];
+         fhir:Consent.provision.actor.reference [
+           fhir:link <http://hl7.org/fhir/Practitioner/f007>;
+           fhir:Reference.reference [ fhir:value "Practitioner/f007" ];
+           fhir:Reference.display [ fhir:value "Simone Heps" ]
+         ]
+       ];
+       fhir:Consent.provision.action [
+         fhir:index 0;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/consentaction" ];
+           fhir:Coding.code [ fhir:value "access" ]
+         ]
        ]
      ]
   ] .
 
-<http://hl7.org/fhir/Patient/f001> a fhir:Patient .
+<http://hl7.org/fhir/Patient/f002> a fhir:Patient .
 
-<http://hl7.org/fhir/Organization/f001> a fhir:Organization .
+<http://hl7.org/fhir/Organization/f203> a fhir:Organization .
 
-<http://hl7.org/fhir/Patient/example> a fhir:Patient .
+<http://hl7.org/fhir/Practitioner/f007> a fhir:Practitioner .
 
 # - ontology header ------------------------------------------------------------
 

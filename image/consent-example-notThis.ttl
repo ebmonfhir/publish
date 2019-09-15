@@ -11,7 +11,7 @@
   fhir:Resource.id [ fhir:value "consent-example-notThis"];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n	The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n	In other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n	than &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n	specific to use-case 2. Withhold or withdraw consent for disclosure of a specific record (e.g. Lab Order/Result) \n	</p><p>\n    Patient &quot;P. van de Heuvel&quot; Primary Care Provider, Dr. Philip Primary, has ordered a set of lab test which Adam \n   wishes to keep as private as possible.  At the sample collection facility, he indicates that he would \n   like withhold consent to disclose the order and all results associated with that specific order from \n   all other providers  \n   </p>\n   </div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n	      The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n	       Withhold or withdraw consent for disclosure of a specific record (e.g. Lab Order/Result) \n	    </p>\n      <p>\n    Patient &quot;Donal D DUCK&quot;'s Primary Care Provider, Dr. Philip Primary, has ordered a set of lab test which Adam \n   wishes to keep as private as possible.  At the sample collection facility, he indicates that he would \n   like withhold consent to disclose the order and all results associated with that specific order from \n   all other providers  \n   </p>\n    </div>"
   ];
   fhir:Consent.status [ fhir:value "active"];
   fhir:Consent.scope [
@@ -35,29 +35,35 @@
      fhir:Reference.reference [ fhir:value "Patient/f001" ];
      fhir:Reference.display [ fhir:value "P. van de Heuvel" ]
   ];
-  fhir:Consent.dateTime [ fhir:value "2015-11-18"^^xsd:date];
+  fhir:Consent.dateTime [ fhir:value "2018-12-28"^^xsd:date];
   fhir:Consent.organization [
      fhir:index 0;
      fhir:link <http://hl7.org/fhir/Organization/f001>;
      fhir:Reference.reference [ fhir:value "Organization/f001" ]
   ];
   fhir:Consent.sourceAttachment [
+     fhir:index 0;
      fhir:Attachment.title [ fhir:value "The terms of the consent in lawyer speak." ]
   ];
   fhir:Consent.policyRule [
      fhir:CodeableConcept.coding [
        fhir:index 0;
        fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
-       fhir:Coding.code [ fhir:value "OPTIN" ]
+       fhir:Coding.code [ fhir:value "INFA" ]
      ]
   ];
   fhir:Consent.provision [
-     fhir:Consent.provision.data [
+     fhir:Consent.provision.type [ fhir:value "permit" ];
+     fhir:Consent.provision.provision [
        fhir:index 0;
-       fhir:Consent.provision.data.meaning [ fhir:value "related" ];
-       fhir:Consent.provision.data.reference [
-         fhir:link <http://hl7.org/fhir/Task/example3>;
-         fhir:Reference.reference [ fhir:value "Task/example3" ]
+       fhir:Consent.provision.type [ fhir:value "deny" ];
+       fhir:Consent.provision.data [
+         fhir:index 0;
+         fhir:Consent.provision.data.meaning [ fhir:value "related" ];
+         fhir:Consent.provision.data.reference [
+           fhir:link <http://hl7.org/fhir/MedicationRequest/medrx0305>;
+           fhir:Reference.reference [ fhir:value "MedicationRequest/medrx0305" ]
+         ]
        ]
      ]
   ] .
@@ -66,7 +72,7 @@
 
 <http://hl7.org/fhir/Organization/f001> a fhir:Organization .
 
-<http://hl7.org/fhir/Task/example3> a fhir:Task .
+<http://hl7.org/fhir/MedicationRequest/medrx0305> a fhir:MedicationRequest .
 
 # - ontology header ------------------------------------------------------------
 

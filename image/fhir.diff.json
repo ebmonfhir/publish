@@ -67,6 +67,7 @@
     "xhtml",
     "Account",
     "ActivityDefinition",
+    "AdministrableProductDefinition",
     "AdverseEvent",
     "AllergyIntolerance",
     "Appointment",
@@ -140,20 +141,22 @@
     "Linkage",
     "List",
     "Location",
+    "ManufacturedItemDefinition",
     "Measure",
     "MeasureReport",
-    "Media",
     "Medication",
     "MedicationAdministration",
     "MedicationDispense",
     "MedicationKnowledge",
     "MedicationRequest",
     "MedicationUsage",
+    "MedicinalProductDefinition",
     "MessageDefinition",
     "MessageHeader",
     "MetadataResource",
     "MolecularSequence",
     "NamingSystem",
+    "NutritionIntake",
     "NutritionOrder",
     "Observation",
     "ObservationDefinition",
@@ -161,6 +164,7 @@
     "OperationOutcome",
     "Organization",
     "OrganizationAffiliation",
+    "PackagedProductDefinition",
     "Parameters",
     "Patient",
     "PaymentNotice",
@@ -173,11 +177,7 @@
     "Provenance",
     "Questionnaire",
     "QuestionnaireResponse",
-    "RegulatedAdministrableProduct",
     "RegulatedAuthorization",
-    "RegulatedManufacturedItem",
-    "RegulatedMedicinalProduct",
-    "RegulatedPackagedProduct",
     "RelatedPerson",
     "RequestGroup",
     "ResearchStudy",
@@ -211,6 +211,7 @@
     "VerificationResult",
     "VisionPrescription",
     "EffectEvidenceSynthesis",
+    "Media",
     "MedicationStatement",
     "MedicinalProduct",
     "MedicinalProductAuthorization",
@@ -275,6 +276,21 @@
           "reference": "http://hl7.org/fhir/ValueSet/mimetypes|4.1.0",
           "strength": "required"
         }
+      },
+      "Attachment.height": {
+        "status": "new"
+      },
+      "Attachment.width": {
+        "status": "new"
+      },
+      "Attachment.frames": {
+        "status": "new"
+      },
+      "Attachment.duration": {
+        "status": "new"
+      },
+      "Attachment.pages": {
+        "status": "new"
       }
     },
     "status": "changed"
@@ -461,6 +477,26 @@
           "strength": "required"
         }
       },
+      "ElementDefinition.defaultValue[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
+      "ElementDefinition.fixed[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
+      "ElementDefinition.pattern[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
+      "ElementDefinition.example.value[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
       "ElementDefinition.constraint.severity": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -504,7 +540,22 @@
     "status": "no-change"
   },
   "Extension": {
-    "status": "no-change"
+    "elements": {
+      "Extension.url": {
+        "removed-types": [
+          "string"
+        ],
+        "added-types": [
+          "url"
+        ]
+      },
+      "Extension.value[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      }
+    },
+    "status": "changed"
   },
   "HumanName": {
     "elements": {
@@ -926,6 +977,9 @@
     },
     "status": "changed"
   },
+  "AdministrableProductDefinition": {
+    "status": "new"
+  },
   "AdverseEvent": {
     "elements": {
       "AdverseEvent.identifier": {
@@ -944,35 +998,34 @@
           "strength": "required"
         }
       },
-      "AdverseEvent.severity": {
-        "binding-valueset-changed": true,
-        "binding-status": "changed",
-        "old-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/adverse-event-severity|4.0.0",
-          "strength": "required"
-        },
-        "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0",
-          "strength": "required"
-        }
+      "AdverseEvent.code": {
+        "status": "new"
       },
       "AdverseEvent.outcome": {
-        "binding-valueset-changed": true,
-        "binding-status": "changed",
+        "binding-status": "removed",
         "old-binding": {
           "reference": "http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.0.0",
           "strength": "required"
-        },
-        "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0",
-          "strength": "required"
         }
+      },
+      "AdverseEvent.participant": {
+        "status": "new"
+      },
+      "AdverseEvent.participant.function": {
+        "status": "new"
+      },
+      "AdverseEvent.participant.actor": {
+        "status": "new"
       },
       "AdverseEvent.detector": {
         "status": "new"
       },
       "AdverseEvent.suspectEntity.instance[x]": {
         "status": "new"
+      },
+      "AdverseEvent.suspectEntity.causality": {
+        "old-max": "*",
+        "new-max": "1"
       },
       "AdverseEvent.suspectEntity.causality.assessmentMethod": {
         "status": "new"
@@ -996,6 +1049,15 @@
       },
       "AdverseEvent.supportingInfo.contributingFactor": {
         "status": "new"
+      },
+      "AdverseEvent.event": {
+        "status": "deleted"
+      },
+      "AdverseEvent.severity": {
+        "status": "deleted"
+      },
+      "AdverseEvent.contributor": {
+        "status": "deleted"
       },
       "AdverseEvent.suspectEntity.instance": {
         "status": "deleted"
@@ -1585,6 +1647,16 @@
           "reference": "http://hl7.org/fhir/ValueSet/care-team-status|4.1.0",
           "strength": "required"
         }
+      },
+      "CareTeam.participant.role": {
+        "old-max": "*",
+        "new-max": "1"
+      },
+      "CareTeam.participant.coverage[x]": {
+        "status": "new"
+      },
+      "CareTeam.participant.period": {
+        "status": "deleted"
       }
     },
     "status": "changed"
@@ -1838,6 +1910,14 @@
       },
       "ClinicalImpression.performer": {
         "status": "new"
+      },
+      "ClinicalImpression.finding.itemReference": {
+        "removed-types": [
+          "Reference(Condition | Observation | Media)"
+        ],
+        "added-types": [
+          "Reference(Condition | Observation | DocumentReference)"
+        ]
       },
       "ClinicalImpression.assessor": {
         "status": "deleted"
@@ -2221,6 +2301,12 @@
           "strength": "required"
         }
       },
+      "Consent.sourceAttachment": {
+        "status": "new"
+      },
+      "Consent.sourceReference": {
+        "status": "new"
+      },
       "Consent.provision.type": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -2244,6 +2330,9 @@
           "reference": "http://hl7.org/fhir/ValueSet/consent-data-meaning|4.1.0",
           "strength": "required"
         }
+      },
+      "Consent.source[x]": {
+        "status": "deleted"
       }
     },
     "status": "changed"
@@ -2578,6 +2667,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/device-statement-status|4.1.0",
           "strength": "required"
         }
+      },
+      "DeviceUseStatement.reasonReference": {
+        "removed-types": [
+          "Reference(Condition | Observation | DiagnosticReport | DocumentReference | Media)"
+        ],
+        "added-types": [
+          "Reference(Condition | Observation | DiagnosticReport | DocumentReference)"
+        ]
       }
     },
     "status": "changed"
@@ -2595,6 +2692,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/diagnostic-report-status|4.1.0",
           "strength": "required"
         }
+      },
+      "DiagnosticReport.media.link": {
+        "removed-types": [
+          "Reference(Media)"
+        ],
+        "added-types": [
+          "Reference(DocumentReference)"
+        ]
       }
     },
     "status": "changed"
@@ -2653,6 +2758,9 @@
           "reference": "http://hl7.org/fhir/ValueSet/document-relationship-type|4.1.0",
           "strength": "required"
         }
+      },
+      "DocumentReference.context.basedOn": {
+        "status": "new"
       }
     },
     "status": "changed"
@@ -3002,6 +3110,10 @@
       },
       "EvidenceVariable.actual": {
         "status": "new"
+      },
+      "EvidenceVariable.characteristic": {
+        "old-min": 1,
+        "new-min": 0
       },
       "EvidenceVariable.characteristic.method": {
         "status": "new"
@@ -3379,6 +3491,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/imagingstudy-status|4.1.0",
           "strength": "required"
         }
+      },
+      "ImagingStudy.reasonReference": {
+        "removed-types": [
+          "Reference(Condition | Observation | Media | DiagnosticReport | DocumentReference)"
+        ],
+        "added-types": [
+          "Reference(Condition | Observation | DiagnosticReport | DocumentReference)"
+        ]
       }
     },
     "status": "changed"
@@ -3687,6 +3807,9 @@
     },
     "status": "changed"
   },
+  "ManufacturedItemDefinition": {
+    "status": "new"
+  },
   "Measure": {
     "elements": {
       "Measure.status": {
@@ -3751,23 +3874,6 @@
         },
         "new-binding": {
           "reference": "http://hl7.org/fhir/ValueSet/measure-improvement-notation|4.1.0",
-          "strength": "required"
-        }
-      }
-    },
-    "status": "changed"
-  },
-  "Media": {
-    "elements": {
-      "Media.status": {
-        "binding-valueset-changed": true,
-        "binding-status": "changed",
-        "old-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/event-status|4.0.0",
-          "strength": "required"
-        },
-        "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/event-status|4.1.0",
           "strength": "required"
         }
       }
@@ -3882,7 +3988,7 @@
           "Reference(Patient | Practitioner)"
         ],
         "added-types": [
-          "Reference(Patient | Practitioner | RelatedPerson | Location)"
+          "Reference(Patient | Practitioner | RelatedPerson | Location | PractitionerRole)"
         ]
       },
       "MedicationDispense.substitution.responsibleParty": {
@@ -3917,6 +4023,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0",
           "strength": "required"
         }
+      },
+      "MedicationKnowledge.monograph.source": {
+        "removed-types": [
+          "Reference(DocumentReference | Media)"
+        ],
+        "added-types": [
+          "Reference(DocumentReference)"
+        ]
       },
       "MedicationKnowledge.device": {
         "status": "new"
@@ -3959,7 +4073,8 @@
           "Quantity()"
         ],
         "added-types": [
-          "Quantity()"
+          "Quantity()",
+          "Attachment"
         ]
       },
       "MedicationKnowledge.clinicalUseIssue": {
@@ -4030,6 +4145,14 @@
       "MedicationRequest.informationSource": {
         "status": "new"
       },
+      "MedicationRequest.performer": {
+        "removed-types": [
+          "Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson | CareTeam)"
+        ],
+        "added-types": [
+          "Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson | CareTeam | HealthcareService)"
+        ]
+      },
       "MedicationRequest.instantiatesCanonical": {
         "removed-types": [
           "canonical"
@@ -4045,6 +4168,9 @@
     "status": "changed"
   },
   "MedicationUsage": {
+    "status": "new"
+  },
+  "MedicinalProductDefinition": {
     "status": "new"
   },
   "MessageDefinition": {
@@ -4252,6 +4378,9 @@
     },
     "status": "changed"
   },
+  "NutritionIntake": {
+    "status": "new"
+  },
   "NutritionOrder": {
     "elements": {
       "NutritionOrder.status": {
@@ -4310,6 +4439,14 @@
           "reference": "http://hl7.org/fhir/ValueSet/observation-status|4.1.0",
           "strength": "required"
         }
+      },
+      "Observation.derivedFrom": {
+        "removed-types": [
+          "Reference(DocumentReference | ImagingStudy | Media | QuestionnaireResponse | Observation | MolecularSequence)"
+        ],
+        "added-types": [
+          "Reference(DocumentReference | ImagingStudy | QuestionnaireResponse | Observation | MolecularSequence)"
+        ]
       }
     },
     "status": "changed"
@@ -4570,8 +4707,18 @@
   "OrganizationAffiliation": {
     "status": "no-change"
   },
+  "PackagedProductDefinition": {
+    "status": "new"
+  },
   "Parameters": {
-    "status": "no-change"
+    "elements": {
+      "Parameters.parameter.value[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      }
+    },
+    "status": "changed"
   },
   "Patient": {
     "elements": {
@@ -4895,6 +5042,14 @@
           "Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device | CareTeam | HealthcareService)"
         ]
       },
+      "Procedure.usedReference": {
+        "removed-types": [
+          "Reference(Device | Medication | Substance)"
+        ],
+        "added-types": [
+          "Reference(Device | Medication | Substance | BiologicallyDerivedProduct)"
+        ]
+      },
       "Procedure.performed[x]": {
         "status": "deleted"
       },
@@ -5003,19 +5158,7 @@
     },
     "status": "changed"
   },
-  "RegulatedAdministrableProduct": {
-    "status": "new"
-  },
   "RegulatedAuthorization": {
-    "status": "new"
-  },
-  "RegulatedManufacturedItem": {
-    "status": "new"
-  },
-  "RegulatedMedicinalProduct": {
-    "status": "new"
-  },
-  "RegulatedPackagedProduct": {
     "status": "new"
   },
   "RelatedPerson": {
@@ -5207,7 +5350,17 @@
     "status": "changed"
   },
   "Resource": {
-    "status": "no-change"
+    "elements": {
+      "Resource.id": {
+        "removed-types": [
+          "id"
+        ],
+        "added-types": [
+          "string"
+        ]
+      }
+    },
+    "status": "changed"
   },
   "RiskAssessment": {
     "elements": {
@@ -5596,6 +5749,11 @@
           "strength": "required"
         }
       },
+      "StructureMap.group.rule.source.defaultValue[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
       "StructureMap.group.rule.source.listMode": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -5649,6 +5807,12 @@
   },
   "Subscription": {
     "elements": {
+      "Subscription.identifier": {
+        "status": "new"
+      },
+      "Subscription.name": {
+        "status": "new"
+      },
       "Subscription.status": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -5661,7 +5825,42 @@
           "strength": "required"
         }
       },
+      "Subscription.topic": {
+        "status": "new"
+      },
+      "Subscription.filterBy": {
+        "status": "new"
+      },
+      "Subscription.filterBy.name": {
+        "status": "new"
+      },
+      "Subscription.filterBy.matchType": {
+        "status": "new"
+      },
+      "Subscription.filterBy.value": {
+        "status": "new"
+      },
+      "Subscription.error": {
+        "old-max": "1",
+        "new-max": "*",
+        "removed-types": [
+          "string"
+        ],
+        "added-types": [
+          "CodeableConcept"
+        ]
+      },
+      "Subscription.eventCount": {
+        "status": "new"
+      },
       "Subscription.channel.type": {
+        "removed-types": [
+          "code"
+        ],
+        "added-types": [
+          "CodeableConcept"
+        ],
+        "binding-strength-changed": true,
         "binding-valueset-changed": true,
         "binding-status": "changed",
         "old-binding": {
@@ -5669,21 +5868,34 @@
           "strength": "required"
         },
         "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/subscription-channel-type|4.1.0",
-          "strength": "required"
+          "reference": "http://hl7.org/fhir/ValueSet/subscription-channel-type",
+          "strength": "extensible"
         }
       },
+      "Subscription.channel.heartbeatPeriod": {
+        "status": "new"
+      },
       "Subscription.channel.payload": {
-        "binding-valueset-changed": true,
-        "binding-status": "changed",
+        "removed-types": [
+          "code"
+        ],
+        "added-types": [
+          "BackboneElement"
+        ],
+        "binding-status": "removed",
         "old-binding": {
           "reference": "http://hl7.org/fhir/ValueSet/mimetypes|4.0.0",
           "strength": "required"
-        },
-        "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/mimetypes|4.1.0",
-          "strength": "required"
         }
+      },
+      "Subscription.channel.payload.contentType": {
+        "status": "new"
+      },
+      "Subscription.channel.payload.content": {
+        "status": "new"
+      },
+      "Subscription.criteria": {
+        "status": "deleted"
       }
     },
     "status": "changed"
@@ -5818,6 +6030,16 @@
           "reference": "http://hl7.org/fhir/ValueSet/request-priority|4.1.0",
           "strength": "required"
         }
+      },
+      "Task.input.value[x]": {
+        "added-types": [
+          "Meta"
+        ]
+      },
+      "Task.output.value[x]": {
+        "added-types": [
+          "Meta"
+        ]
       }
     },
     "status": "changed"
@@ -6156,6 +6378,9 @@
     "status": "changed"
   },
   "EffectEvidenceSynthesis": {
+    "status": "deleted"
+  },
+  "Media": {
     "status": "deleted"
   },
   "MedicationStatement": {

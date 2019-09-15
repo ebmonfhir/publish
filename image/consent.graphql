@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type Consent {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -19,8 +19,8 @@ type Consent {
   dateTime: dateTime  _dateTime: ElementBase
   performer: [Reference]
   organization: [Reference]
-  sourceAttachment: Attachment
-  sourceReference: Reference
+  sourceAttachment: [Attachment]
+  sourceReference: [Reference]
   policy: [ConsentPolicy]
   policyRule: CodeableConcept
   verification: [ConsentVerification]
@@ -78,7 +78,7 @@ type ConsentProvisionData {
 }
 
 input ConsentInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -94,8 +94,8 @@ input ConsentInput {
   dateTime: dateTime  _dateTime: ElementBase
   performer: [ReferenceInput]
   organization: [ReferenceInput]
-  sourceAttachment: AttachmentInput
-  sourceReference: ReferenceInput
+  sourceAttachment: [AttachmentInput]
+  sourceReference: [ReferenceInput]
   policy: [ConsentPolicyInput]
   policyRule: CodeableConceptInput
   verification: [ConsentVerificationInput]

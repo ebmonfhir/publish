@@ -91,7 +91,7 @@
 	<div id="segment-breadcrumb" class="segment"><!-- segment-breadcrumb -->
 		<div class="container"><!-- container -->	
 			<ul class="breadcrumb">
-        <li><a href="foundation-module.html"><img src="foundation.png"/> Foundation</a></li>          <li><a href="documentreference.html">DocumentReference</a></li>        <li><b>Profile Instance</b></li>        <!-- documentreference.profile.json.html / profile-instance:resource:DocumentReference / Profile-->
+        <li><a href="diagnostics-module.html"><img src="diagnostics.jpg"/> Diagnostics</a></li>          <li><a href="documentreference.html">DocumentReference</a></li>        <li><b>Profile Instance</b></li>        <!-- documentreference.profile.json.html / profile-instance:resource:DocumentReference / Profile-->
 
 			</ul>	
 		</div><!-- /container -->
@@ -107,7 +107,7 @@
 <div class="col-12">
 
 <h1>Documentreference.profile.json</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/structure/index.cfm">Structured Documents</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/orders/index.cfm">Orders and Observations</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 <p>
 <a href="documentreference.profile.json">Raw JSON</a> (<a href="documentreference.profile.canonical.json">canonical form</a> + also see <a href="json.html">JSON Format Specification</a>)
@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;DocumentReference&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -128,7 +128,7 @@
   },
   &quot;extension&quot; : [{
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-category&quot;,
-    &quot;valueString&quot; : &quot;Foundation.Documents&quot;
+    &quot;valueString&quot; : &quot;Clinical.Diagnostics&quot;
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
@@ -144,14 +144,14 @@
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-wg&quot;,
-    &quot;valueCode&quot; : &quot;sd&quot;
+    &quot;valueCode&quot; : &quot;oo&quot;
   }],
   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;,
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;DocumentReference&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
-  &quot;publisher&quot; : &quot;Health Level Seven International (Structured Documents)&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
+  &quot;publisher&quot; : &quot;Health Level Seven International (Orders and Observations)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
       &quot;system&quot; : &quot;url&quot;,
@@ -161,10 +161,10 @@
   {
     &quot;telecom&quot; : [{
       &quot;system&quot; : &quot;url&quot;,
-      &quot;value&quot; : &quot;http://www.hl7.org/Special/committees/structure/index.cfm&quot;
+      &quot;value&quot; : &quot;http://www.hl7.org/Special/committees/orders/index.cfm&quot;
     }]
   }],
-  &quot;description&quot; : &quot;A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.&quot;,
+  &quot;description&quot; : &quot;A reference to a document of any kind for any purpose. While the term “document” implies a more narrow focus, for this resource this \&quot;document\&quot; encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference.&quot;,
   &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
     &quot;identity&quot; : &quot;workflow&quot;,
@@ -211,7 +211,7 @@
       &quot;id&quot; : &quot;DocumentReference&quot;,
       &quot;path&quot; : &quot;DocumentReference&quot;,
       &quot;short&quot; : &quot;A reference to a document&quot;,
-      &quot;definition&quot; : &quot;A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.&quot;,
+      &quot;definition&quot; : &quot;A reference to a document of any kind for any purpose. While the term “document” implies a more narrow focus, for this resource this \&quot;document\&quot; encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference.&quot;,
       &quot;comment&quot; : &quot;Usually, this is used for documents other than those defined by FHIR.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -305,7 +305,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -1051,7 +1055,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1317,7 +1325,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1506,7 +1518,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1836,6 +1852,36 @@
         &quot;identity&quot; : &quot;cda&quot;,
         &quot;map&quot; : &quot;ClinicalDocument/relatedDocument&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;DocumentReference.context.basedOn&quot;,
+      &quot;path&quot; : &quot;DocumentReference.context.basedOn&quot;,
+      &quot;short&quot; : &quot;Procedure that caused this media to be created&quot;,
+      &quot;definition&quot; : &quot;A procedure that is fulfilled in whole or in part by the creation of this media.&quot;,
+      &quot;requirements&quot; : &quot;Allows tracing of authorization for the event and tracking whether proposals/recommendations were acted upon.&quot;,
+      &quot;alias&quot; : [&quot;fulfills&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;DocumentReference.context.basedOn&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/ServiceRequest&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/CarePlan&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=FLFS].target&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;xds&quot;,
+        &quot;map&quot; : &quot;DocumentEntry.referenceIdList&quot;
+      }]
     }]
   },
   &quot;differential&quot; : {
@@ -1843,7 +1889,7 @@
       &quot;id&quot; : &quot;DocumentReference&quot;,
       &quot;path&quot; : &quot;DocumentReference&quot;,
       &quot;short&quot; : &quot;A reference to a document&quot;,
-      &quot;definition&quot; : &quot;A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.&quot;,
+      &quot;definition&quot; : &quot;A reference to a document of any kind for any purpose. While the term “document” implies a more narrow focus, for this resource this \&quot;document\&quot; encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference.&quot;,
       &quot;comment&quot; : &quot;Usually, this is used for documents other than those defined by FHIR.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -2790,6 +2836,29 @@
         &quot;identity&quot; : &quot;cda&quot;,
         &quot;map&quot; : &quot;ClinicalDocument/relatedDocument&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;DocumentReference.context.basedOn&quot;,
+      &quot;path&quot; : &quot;DocumentReference.context.basedOn&quot;,
+      &quot;short&quot; : &quot;Procedure that caused this media to be created&quot;,
+      &quot;definition&quot; : &quot;A procedure that is fulfilled in whole or in part by the creation of this media.&quot;,
+      &quot;requirements&quot; : &quot;Allows tracing of authorization for the event and tracking whether proposals/recommendations were acted upon.&quot;,
+      &quot;alias&quot; : [&quot;fulfills&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/ServiceRequest&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/CarePlan&quot;]
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=FLFS].target&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;xds&quot;,
+        &quot;map&quot; : &quot;DocumentEntry.referenceIdList&quot;
+      }]
     }]
   }
 }
@@ -2817,7 +2886,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:45-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2825,7 +2894,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdocumentreference.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fdocumentreference.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

@@ -45,14 +45,6 @@
   "snapshot" : {
     "element" : [{
       "id" : "Extension",
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-        "valueCode" : "normative"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
-        "valueCode" : "4.0.0"
-      }],
       "path" : "Extension",
       "short" : "Portion of family name derived from mother",
       "definition" : "The portion of the family name that is derived from the person's mother.",
@@ -104,7 +96,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -154,7 +150,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family",
       "isModifier" : false,
@@ -165,8 +165,39 @@
       }]
     },
     {
-      "id" : "Extension.valueString",
-      "path" : "Extension.valueString",
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "closed"
+      },
+      "short" : "Value of extension",
+      "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Extension.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "N/A"
+      }]
+    },
+    {
+      "id" : "Extension.value[x]:valueString",
+      "path" : "Extension.value[x]",
+      "sliceName" : "valueString",
       "short" : "Value of extension",
       "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
       "min" : 0,
@@ -212,9 +243,6 @@
     {
       "id" : "Extension.url",
       "path" : "Extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/humanname-mothers-family"
     },
     {

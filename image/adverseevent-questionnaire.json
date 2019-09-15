@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for AdverseEvent.suspectEntity.instance[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:d9c93083-1a2a-4b68-96fd-20fe2fcb55f7",
-      "timestamp" : "2019-08-09T09:43:04-04:00",
+      "identifier" : "urn:uuid:30e84387-18f3-49b4-a5d8-3d8c8cf10efe",
+      "timestamp" : "2019-09-15T10:44:07-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -57,7 +57,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
+  "date" : "2019-09-15T10:41:41-04:00",
   "publisher" : "Health Level Seven International (Patient Care)",
   "item" : [{
     "linkId" : "AdverseEvent",
@@ -430,8 +430,8 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "CodeableConcept"
       }],
-      "linkId" : "AdverseEvent.event",
-      "text" : "Type of the event itself in relation to the subject",
+      "linkId" : "AdverseEvent.code",
+      "text" : "Event or incident that occurred or was averted",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -446,18 +446,18 @@
             }]
           }
         }],
-        "text" : "This element defines the specific type of event that occurred or that was prevented from occurring.",
+        "text" : "Specific event that occurred or that was averted, such as patient fall, wrong organ removed, or wrong blood transfused.",
         "type" : "display"
       },
       {
-        "linkId" : "AdverseEvent.event.coding",
+        "linkId" : "AdverseEvent.code.coding",
         "text" : "code:",
         "type" : "open-choice",
         "required" : false,
         "repeats" : false
       },
       {
-        "linkId" : "AdverseEvent.event.text",
+        "linkId" : "AdverseEvent.code.text",
         "text" : "text:",
         "type" : "string",
         "required" : false,
@@ -751,7 +751,7 @@
         "valueString" : "CodeableConcept"
       }],
       "linkId" : "AdverseEvent.seriousness",
-      "text" : "Seriousness of the event",
+      "text" : "Seriousness or gravity of the event",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -766,7 +766,7 @@
             }]
           }
         }],
-        "text" : "Assessment whether this event was of real importance.",
+        "text" : "Assessment whether this event, or averted event, was of clinical importance. Using an example, a rash can have an AdverseEvent.resultingCondition.severity = severe, yet an AdverseEvent.seriousness = non-serious.  Alternatively, a medication given with the wrong dose (chemotherapy given with too low of a dose) can have an AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.  Another example would be a beta blocker clinical trial where patients with asthma should be excluded, yet a patient with asthma was included and had an asthmatic episode where  AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.",
         "type" : "display"
       },
       {
@@ -793,51 +793,8 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "CodeableConcept"
       }],
-      "linkId" : "AdverseEvent.severity",
-      "text" : "mild | moderate | severe",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem is.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "AdverseEvent.severity.coding",
-        "text" : "code:",
-        "type" : "choice",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "AdverseEvent.severity.text",
-        "text" : "text:",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "CodeableConcept"
-      }],
       "linkId" : "AdverseEvent.outcome",
-      "text" : "resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown",
+      "text" : "Type of outcome from the adverse event",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -852,13 +809,13 @@
             }]
           }
         }],
-        "text" : "Describes the type of outcome from the adverse event.",
+        "text" : "Describes the type of outcome from the adverse event, such as resolved, recovering, ongoing, resolved-with-sequelae, or fatal.",
         "type" : "display"
       },
       {
         "linkId" : "AdverseEvent.outcome.coding",
         "text" : "code:",
-        "type" : "choice",
+        "type" : "open-choice",
         "required" : false,
         "repeats" : false
       },
@@ -914,11 +871,8 @@
       }]
     },
     {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Reference"
-      }],
-      "linkId" : "AdverseEvent.contributor",
+      "linkId" : "AdverseEvent.participant",
+      "text" : "Who was involved in the adverse event or the potential adverse event and what they did",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -933,23 +887,175 @@
             }]
           }
         }],
-        "text" : "Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).",
+        "text" : "Indicates who or what participated in the adverse event and how they were involved.",
         "type" : "display"
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "Practitioner, PractitionerRole, Device"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
         },
         {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "string"
         }],
-        "linkId" : "AdverseEvent.contributor.value",
-        "text" : "Who  was involved in the adverse event or the potential adverse event",
-        "type" : "reference",
+        "linkId" : "AdverseEvent.participant.id",
+        "type" : "group",
         "required" : false,
-        "repeats" : false
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type" : "display"
+        },
+        {
+          "linkId" : "AdverseEvent.participant.id.value",
+          "text" : "Unique id for inter-element referencing",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "linkId" : "AdverseEvent.participant.extension",
+        "text" : "Additional content defined by implementations",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+          "type" : "display"
+        }]
+      },
+      {
+        "linkId" : "AdverseEvent.participant.modifierExtension",
+        "text" : "Extensions that cannot be ignored even if unrecognized",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself). There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+          "type" : "display"
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "CodeableConcept"
+        }],
+        "linkId" : "AdverseEvent.participant.function",
+        "text" : "Type of involvement",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Distinguishes the type of involvement of the actor in the adverse event, such as contributor or informant.",
+          "type" : "display"
+        },
+        {
+          "linkId" : "AdverseEvent.participant.function.coding",
+          "text" : "code:",
+          "type" : "open-choice",
+          "required" : false,
+          "repeats" : false
+        },
+        {
+          "linkId" : "AdverseEvent.participant.function.text",
+          "text" : "text:",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "Reference"
+        }],
+        "linkId" : "AdverseEvent.participant.actor",
+        "type" : "group",
+        "required" : true,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Indicates who or what participated in the event. For example, the physician prescribing a drug, a nurse administering the drug, a device that administered the drug, a witness to the event, or an informant of clinical history.",
+          "type" : "display"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+            "valueCode" : "Practitioner, PractitionerRole, Organization, CareTeam, Patient, Device, RelatedPerson"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+            "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+          }],
+          "linkId" : "AdverseEvent.participant.actor.value",
+          "text" : "Who was involved in the adverse event or the potential adverse event",
+          "type" : "reference",
+          "required" : false,
+          "repeats" : false
+        }]
       }]
     },
     {
@@ -1170,11 +1276,15 @@
         }]
       },
       {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        }],
         "linkId" : "AdverseEvent.suspectEntity.causality",
         "text" : "Information on the possible cause of the event",
         "type" : "group",
         "required" : false,
-        "repeats" : true,
+        "repeats" : false,
         "item" : [{
           "extension" : [{
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -1528,7 +1638,7 @@
         {
           "extension" : [{
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-            "valueCode" : "Condition, Observation, AllergyIntolerance, FamilyMemberHistory, Immunization, Procedure, Media, DocumentReference"
+            "valueCode" : "Condition, Observation, AllergyIntolerance, FamilyMemberHistory, Immunization, Procedure, DocumentReference"
           },
           {
             "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",

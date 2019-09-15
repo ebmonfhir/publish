@@ -41,14 +41,6 @@
   "snapshot" : {
     "element" : [{
       "id" : "Extension",
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-        "valueCode" : "normative"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
-        "valueCode" : "4.0.0"
-      }],
       "path" : "Extension",
       "short" : "When (or if) the family member's condition resolved",
       "definition" : "The approximate date, age, or flag indicating that the condition of the family member resolved. The abatement should only be specified if the condition is stated in the positive sense, i.e., the didNotHave flag is false.",
@@ -92,7 +84,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -142,7 +138,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/familymemberhistory-abatement",
       "isModifier" : false,
@@ -198,9 +198,6 @@
     {
       "id" : "Extension.url",
       "path" : "Extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/familymemberhistory-abatement"
     },
     {

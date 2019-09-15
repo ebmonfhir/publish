@@ -132,7 +132,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;activityStatusDate&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;HL7&quot;,
   &quot;description&quot; : &quot;The date when the associated Value Set Definition Version activity status is in effect.&quot;,
   &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
@@ -153,18 +153,10 @@
   &quot;snapshot&quot; : {
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Extension&quot;,
-      &quot;extension&quot; : [{
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
-        &quot;valueCode&quot; : &quot;normative&quot;
-      },
-      {
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version&quot;,
-        &quot;valueCode&quot; : &quot;4.0.0&quot;
-      }],
       &quot;path&quot; : &quot;Extension&quot;,
       &quot;short&quot; : &quot;Date when the activity status is in effect&quot;,
       &quot;definition&quot; : &quot;The date when the associated Value Set Definition Version activity status is in effect.&quot;,
-      &quot;comment&quot; : &quot;When the Activity Status is set to â€œActiveâ€�, the Activity Status Date defines the Effective Date which is the date-time the Value Set Definition Version becomes active. When the Activity Status is set to â€œInactiveâ€�, the Activity Status Date is the date-time when the Value Set Definition version becomes Inactive. This cycle may happen multiple times. The specified time is expected to be one second after midnight UTC of the Activity Status Date. The date may be in the future. \n\nIt is strongly encouraged that the Activity Status be set such that no more than one Value Set Definition Version for a single Value Set Identifier can have an Activity Status of ACTIVE at the same time within a single realm. In cases where this is not true, evaluation of the alignment of a Value Set Expansion Code Set to a specific Value Set Definition, as referenced in a CD, will be problematic.\n\nChanges to this element should never result in a new Value Set Definition Version.&quot;,
+      &quot;comment&quot; : &quot;When the Activity Status is set to “Active”, the Activity Status Date defines the Effective Date which is the date-time the Value Set Definition Version becomes active. When the Activity Status is set to “Inactive”, the Activity Status Date is the date-time when the Value Set Definition version becomes Inactive. This cycle may happen multiple times. The specified time is expected to be one second after midnight UTC of the Activity Status Date. The date may be in the future. \n\nIt is strongly encouraged that the Activity Status be set such that no more than one Value Set Definition Version for a single Value Set Identifier can have an Activity Status of ACTIVE at the same time within a single realm. In cases where this is not true, evaluation of the alignment of a Value Set Expansion Code Set to a specific Value Set Definition, as referenced in a CD, will be problematic.\n\nChanges to this element should never result in a new Value Set Definition Version.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -205,7 +197,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -255,7 +251,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/valueset-activityStatusDate&quot;,
       &quot;isModifier&quot; : false,
@@ -266,8 +266,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.valueDate&quot;,
-      &quot;path&quot; : &quot;Extension.valueDate&quot;,
+      &quot;id&quot; : &quot;Extension.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;date&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.value[x]:valueDate&quot;,
+      &quot;path&quot; : &quot;Extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueDate&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -294,7 +325,7 @@
       &quot;path&quot; : &quot;Extension&quot;,
       &quot;short&quot; : &quot;Date when the activity status is in effect&quot;,
       &quot;definition&quot; : &quot;The date when the associated Value Set Definition Version activity status is in effect.&quot;,
-      &quot;comment&quot; : &quot;When the Activity Status is set to â€œActiveâ€�, the Activity Status Date defines the Effective Date which is the date-time the Value Set Definition Version becomes active. When the Activity Status is set to â€œInactiveâ€�, the Activity Status Date is the date-time when the Value Set Definition version becomes Inactive. This cycle may happen multiple times. The specified time is expected to be one second after midnight UTC of the Activity Status Date. The date may be in the future. \n\nIt is strongly encouraged that the Activity Status be set such that no more than one Value Set Definition Version for a single Value Set Identifier can have an Activity Status of ACTIVE at the same time within a single realm. In cases where this is not true, evaluation of the alignment of a Value Set Expansion Code Set to a specific Value Set Definition, as referenced in a CD, will be problematic.\n\nChanges to this element should never result in a new Value Set Definition Version.&quot;,
+      &quot;comment&quot; : &quot;When the Activity Status is set to “Active”, the Activity Status Date defines the Effective Date which is the date-time the Value Set Definition Version becomes active. When the Activity Status is set to “Inactive”, the Activity Status Date is the date-time when the Value Set Definition version becomes Inactive. This cycle may happen multiple times. The specified time is expected to be one second after midnight UTC of the Activity Status Date. The date may be in the future. \n\nIt is strongly encouraged that the Activity Status be set such that no more than one Value Set Definition Version for a single Value Set Identifier can have an Activity Status of ACTIVE at the same time within a single realm. In cases where this is not true, evaluation of the alignment of a Value Set Expansion Code Set to a specific Value Set Definition, as referenced in a CD, will be problematic.\n\nChanges to this element should never result in a new Value Set Definition Version.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;
     },
@@ -306,9 +337,6 @@
     {
       &quot;id&quot; : &quot;Extension.url&quot;,
       &quot;path&quot; : &quot;Extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/valueset-activityStatusDate&quot;
     },
     {
@@ -344,7 +372,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:41-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:43-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -352,7 +380,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fextension-valueset-activitystatusdate.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-valueset-activitystatusdate.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fextension-valueset-activitystatusdate.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-valueset-activitystatusdate.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

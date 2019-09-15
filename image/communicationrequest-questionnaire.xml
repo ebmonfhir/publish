@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for CommunicationRequest.payload.content[x]"/>
       <expansion>
-        <identifier value="urn:uuid:7f9827e9-9031-4343-9e64-72285753db9d"/>
-        <timestamp value="2019-08-09T09:44:30-04:00"/>
+        <identifier value="urn:uuid:638eb0fd-3957-4402-9e95-18748d5befbe"/>
+        <timestamp value="2019-09-15T10:44:31-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Attachment"/>
@@ -36,8 +36,8 @@
       <status value="active"/>
       <description value="Type options for CommunicationRequest.occurrence[x]"/>
       <expansion>
-        <identifier value="urn:uuid:419666af-6489-4123-889a-4d11d3bc8e52"/>
-        <timestamp value="2019-08-09T09:44:30-04:00"/>
+        <identifier value="urn:uuid:0a0a5a13-ef73-4a98-9ce6-09765b55e3cc"/>
+        <timestamp value="2019-09-15T10:44:31-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -56,7 +56,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="CommunicationRequest"/>
@@ -497,7 +497,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Captures the reason for the current state of the CommunicationRequest. This is generally only used for &quot;exception&quot; statuses such as &quot;suspended&quot; or &quot;cancelled&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings]."/>
+        <text value="Captures the reason for the current state of the CommunicationRequest. This is generally only used for &quot;exception&quot; statuses such as &quot;on-hold&quot; or &quot;revoked&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here."/>
         <type value="display"/>
       </item>
       <item>
@@ -877,7 +877,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The communicated content (or for multi-part communications, one portion of the communication). When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content."/>
+          <text value="The communicated content (or for multi-part communications, one portion of the communication). The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn&#39;t appropriate.&#xA;&#xA;If the content isn&#39;t codified, contentCodeableConcept.text can be used.  &#xA;&#xA;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content."/>
           <type value="display"/>
         </item>
         <item>
@@ -1108,9 +1108,6 @@
       </item>
     </item>
     <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="Reference"/>
       </extension>

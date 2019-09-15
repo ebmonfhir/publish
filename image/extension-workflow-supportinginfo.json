@@ -49,14 +49,6 @@
   "snapshot" : {
     "element" : [{
       "id" : "Extension",
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-        "valueCode" : "normative"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
-        "valueCode" : "4.0.0"
-      }],
       "path" : "Extension",
       "short" : "Other information that may be relevant to this event.",
       "definition" : "Other resources *from the patient record* that may be relevant to the event.  The information from these resources was either used to create the instance or is provided to help with its interpretation.  This extension **should not** be used if more specific  inline elements  or extensions are available.  For example, use `Observation.hasMember`  instead of supportingInformation for  representing the members of an Observation panel.",
@@ -100,7 +92,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -150,7 +146,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo",
       "isModifier" : false,
@@ -161,8 +161,39 @@
       }]
     },
     {
-      "id" : "Extension.valueReference",
-      "path" : "Extension.valueReference",
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "closed"
+      },
+      "short" : "Value of extension",
+      "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Extension.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Reference"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "N/A"
+      }]
+    },
+    {
+      "id" : "Extension.value[x]:valueReference",
+      "path" : "Extension.value[x]",
+      "sliceName" : "valueReference",
       "short" : "Value of extension",
       "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
       "min" : 0,
@@ -201,9 +232,6 @@
     {
       "id" : "Extension.url",
       "path" : "Extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
     },
     {

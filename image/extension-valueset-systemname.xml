@@ -12,7 +12,7 @@
   <version value="4.1.0"/>
   <name value="systemName"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="HL7"/>
   <description value="The human-readable name for the code system."/>
   <fhirVersion value="4.1.0"/>
@@ -32,12 +32,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="Extension">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="Extension"/>
       <short value="Code system name"/>
       <definition value="The human-readable name for the code system."/>
@@ -80,7 +74,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -128,7 +125,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/valueset-systemName"/>
       <isModifier value="false"/>
@@ -138,8 +138,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.valueString">
-      <path value="Extension.valueString"/>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x]:valueString">
+      <path value="Extension.value[x]"/>
+      <sliceName value="valueString"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -175,9 +205,6 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/valueset-systemName"/>
     </element>
     <element id="Extension.valueString">

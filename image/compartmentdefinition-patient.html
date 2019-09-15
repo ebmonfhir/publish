@@ -173,12 +173,12 @@ The following resources may be in this compartment:
  <tr><td><a href="invoice.html">Invoice</a></td><td>subject or patient or recipient</td></tr>
  <tr><td><a href="list.html">List</a></td><td>subject or source</td></tr>
  <tr><td><a href="measurereport.html">MeasureReport</a></td><td>patient</td></tr>
- <tr><td><a href="media.html">Media</a></td><td>subject</td></tr>
  <tr><td><a href="medicationadministration.html">MedicationAdministration</a></td><td>patient or performer or subject</td></tr>
  <tr><td><a href="medicationdispense.html">MedicationDispense</a></td><td>subject or patient or receiver</td></tr>
  <tr><td><a href="medicationrequest.html">MedicationRequest</a></td><td>subject</td></tr>
  <tr><td><a href="medicationusage.html">MedicationUsage</a></td><td>subject</td></tr>
  <tr><td><a href="molecularsequence.html">MolecularSequence</a></td><td>patient</td></tr>
+ <tr><td><a href="nutritionintake.html">NutritionIntake</a></td><td>subject or source</td></tr>
  <tr><td><a href="nutritionorder.html">NutritionOrder</a></td><td>patient</td></tr>
  <tr><td><a href="observation.html">Observation</a></td><td>subject or performer</td></tr>
  <tr><td><a href="patient.html">Patient</a></td><td>link</td></tr>
@@ -208,6 +208,7 @@ The following resources are never in this compartment:
 </p>
 <ul>
  <li><a href="activitydefinition.html">ActivityDefinition</a></li>
+ <li><a href="administrableproductdefinition.html">AdministrableProductDefinition</a></li>
  <li><a href="binary.html">Binary</a></li>
  <li><a href="biologicallyderivedproduct.html">BiologicallyDerivedProduct</a></li>
  <li><a href="bundle.html">Bundle</a></li>
@@ -239,9 +240,11 @@ The following resources are never in this compartment:
  <li><a href="library.html">Library</a></li>
  <li><a href="linkage.html">Linkage</a></li>
  <li><a href="location.html">Location</a></li>
+ <li><a href="manufactureditemdefinition.html">ManufacturedItemDefinition</a></li>
  <li><a href="measure.html">Measure</a></li>
  <li><a href="medication.html">Medication</a></li>
  <li><a href="medicationknowledge.html">MedicationKnowledge</a></li>
+ <li><a href="medicinalproductdefinition.html">MedicinalProductDefinition</a></li>
  <li><a href="messagedefinition.html">MessageDefinition</a></li>
  <li><a href="messageheader.html">MessageHeader</a></li>
  <li><a href="namingsystem.html">NamingSystem</a></li>
@@ -250,17 +253,14 @@ The following resources are never in this compartment:
  <li><a href="operationoutcome.html">OperationOutcome</a></li>
  <li><a href="organization.html">Organization</a></li>
  <li><a href="organizationaffiliation.html">OrganizationAffiliation</a></li>
+ <li><a href="packagedproductdefinition.html">PackagedProductDefinition</a></li>
  <li><a href="paymentnotice.html">PaymentNotice</a></li>
  <li><a href="paymentreconciliation.html">PaymentReconciliation</a></li>
  <li><a href="plandefinition.html">PlanDefinition</a></li>
  <li><a href="practitioner.html">Practitioner</a></li>
  <li><a href="practitionerrole.html">PractitionerRole</a></li>
  <li><a href="questionnaire.html">Questionnaire</a></li>
- <li><a href="regulatedadministrableproduct.html">RegulatedAdministrableProduct</a></li>
  <li><a href="regulatedauthorization.html">RegulatedAuthorization</a></li>
- <li><a href="regulatedmanufactureditem.html">RegulatedManufacturedItem</a></li>
- <li><a href="regulatedmedicinalproduct.html">RegulatedMedicinalProduct</a></li>
- <li><a href="regulatedpackagedproduct.html">RegulatedPackagedProduct</a></li>
  <li><a href="researchstudy.html">ResearchStudy</a></li>
  <li><a href="searchparameter.html">SearchParameter</a></li>
  <li><a href="slot.html">Slot</a></li>
@@ -304,7 +304,7 @@ See <a href="compartmentdefinition.html"> information about compartments</a>.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:50-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -312,7 +312,7 @@ See <a href="compartmentdefinition.html"> information about compartments</a>.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcompartmentdefinition-patient.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcompartmentdefinition-patient.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcompartmentdefinition-patient.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcompartmentdefinition-patient.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

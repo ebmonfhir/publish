@@ -46,14 +46,6 @@
   "snapshot" : {
     "element" : [{
       "id" : "Extension",
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
-        "valueCode" : "normative"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version",
-        "valueCode" : "4.0.0"
-      }],
       "path" : "Extension",
       "short" : "An allowable parameter combination",
       "definition" : "This extension defines a possible search parameter combination,  by listing a set of search parameters and indicating whether they are required or optional. If a search combination is specified, clients should expect that they must submit a search that meets one of the required combinations or the search will be unsuccessful. If multiple search parameter combinations are specified, a client may pick between them, and supply the minimal required parameters for any of the combinations.",
@@ -106,7 +98,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -189,7 +185,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -239,7 +239,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "required",
       "isModifier" : false,
@@ -250,8 +254,39 @@
       }]
     },
     {
-      "id" : "Extension.extension:required.valueString",
-      "path" : "Extension.extension.valueString",
+      "id" : "Extension.extension:required.value[x]",
+      "path" : "Extension.extension.value[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "closed"
+      },
+      "short" : "Value of extension",
+      "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Extension.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "N/A"
+      }]
+    },
+    {
+      "id" : "Extension.extension:required.value[x]:valueString",
+      "path" : "Extension.extension.value[x]",
+      "sliceName" : "valueString",
       "short" : "Value of extension",
       "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
       "min" : 0,
@@ -313,7 +348,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "string"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "string"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -363,7 +402,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "optional",
       "isModifier" : false,
@@ -374,8 +417,39 @@
       }]
     },
     {
-      "id" : "Extension.extension:optional.valueString",
-      "path" : "Extension.extension.valueString",
+      "id" : "Extension.extension:optional.value[x]",
+      "path" : "Extension.extension.value[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "closed"
+      },
+      "short" : "Value of extension",
+      "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Extension.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "isModifier" : false,
+      "isSummary" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "N/A"
+      }]
+    },
+    {
+      "id" : "Extension.extension:optional.value[x]:valueString",
+      "path" : "Extension.extension.value[x]",
+      "sliceName" : "valueString",
       "short" : "Value of extension",
       "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
       "min" : 0,
@@ -410,7 +484,11 @@
         "max" : "1"
       },
       "type" : [{
-        "code" : "uri"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+          "valueCode" : "url"
+        }],
+        "code" : "http://hl7.org/fhirpath/System.String"
       }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-search-parameter-combination",
       "isModifier" : false,
@@ -578,6 +656,9 @@
       },
       {
         "code" : "Dosage"
+      },
+      {
+        "code" : "Meta"
       }],
       "isModifier" : false,
       "isSummary" : false,
@@ -635,9 +716,6 @@
     {
       "id" : "Extension.extension:required.url",
       "path" : "Extension.extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "required"
     },
     {
@@ -677,9 +755,6 @@
     {
       "id" : "Extension.extension:optional.url",
       "path" : "Extension.extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "optional"
     },
     {
@@ -692,9 +767,6 @@
     {
       "id" : "Extension.url",
       "path" : "Extension.url",
-      "type" : [{
-        "code" : "uri"
-      }],
       "fixedUri" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement2-search-parameter-combination"
     },
     {

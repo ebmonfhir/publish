@@ -6,7 +6,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
+  "date" : "2019-09-15T10:41:41-04:00",
   "publisher" : "Health Level Seven International (FHIR Infrastructure)",
   "item" : [{
     "linkId" : "Topic",
@@ -454,37 +454,6 @@
       {
         "linkId" : "Topic.derivedFromUri.value",
         "text" : "Based on external protocol or definition",
-        "type" : "string",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "uri"
-      }],
-      "linkId" : "Topic.replaces",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Completed or terminated request(s) whose function is taken by this new request.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "Topic.replaces.value",
-        "text" : "Topics replaced by this Topic",
         "type" : "string",
         "required" : false,
         "repeats" : false
@@ -1518,6 +1487,37 @@
           "linkId" : "Topic.canFilterBy.name.value",
           "text" : "Search parameter that serves as filter key",
           "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "code"
+        }],
+        "linkId" : "Topic.canFilterBy.matchType",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "Allowable operators to apply when determining matches (Search Modifiers).",
+          "type" : "display"
+        },
+        {
+          "linkId" : "Topic.canFilterBy.matchType.value",
+          "text" : "match type",
+          "type" : "choice",
           "required" : false,
           "repeats" : false
         }]

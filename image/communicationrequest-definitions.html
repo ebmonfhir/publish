@@ -110,6 +110,7 @@
 <table class="colstu"><tr><td><a href="http://www.hl7.org/Special/committees/patientcare/index.cfm">Patient Care <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 2</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Patient</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 
+
 <p>Detailed Descriptions for the elements in the CommunicationRequest resource.</p>
 
 <table class="dict">
@@ -177,10 +178,10 @@
   <tr><td>Definition</td><td><p>Captures the reason for the current state of the CommunicationRequest.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="terminologies.html#unbound">CommunicationRequestStatusReason</a>: </td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-communication-request-status-reason.html">CommunicationRequest Status Reason</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>Suspended Reason; Cancelled Reason</td></tr>
-  <tr><td>Comments</td><td><p>This is generally only used for "exception" statuses such as "suspended" or "cancelled".  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings].</p>
+  <tr><td>Comments</td><td><p>This is generally only used for "exception" statuses such as "on-hold" or "revoked".  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CommunicationRequest.category"> </a><b>CommunicationRequest.category</b></td></tr>
   <tr><td>Element Id</td><td>CommunicationRequest.category</td></tr>
@@ -256,7 +257,9 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Attachment">Attachment</a>|<a href="references.html#Reference">Reference</a>(<a href="resourcelist.html#Any">Any</a>)|<a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
-  <tr><td>Comments</td><td><p>When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.</p>
+  <tr><td>Comments</td><td><p>The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn't appropriate.</p>
+<p>If the content isn't codified, contentCodeableConcept.text can be used.</p>
+<p>When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CommunicationRequest.occurrence_x_"> </a><b>CommunicationRequest.occurrence[x]</b></td></tr>
   <tr><td>Element Id</td><td>CommunicationRequest.occurrence[x]</td></tr>
@@ -295,7 +298,7 @@
   <tr><td>Element Id</td><td>CommunicationRequest.informationProvider</td></tr>
   <tr><td>Definition</td><td><p>The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.</p>
 </td></tr>
-  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="device.html">Device</a> | <a href="organization.html">Organization</a> | <a href="patient.html">Patient</a> | <a href="practitioner.html">Practitioner</a> | <a href="practitionerrole.html">PractitionerRole</a> | <a href="relatedperson.html">RelatedPerson</a> | <a href="healthcareservice.html">HealthcareService</a>)</td></tr>
   <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Device,Organization,Patient,Practitioner,PractitionerRole,RelatedPerson,HealthcareService): Common patterns = <a href="participant.html#Participant">Participant</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
@@ -340,7 +343,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -348,7 +351,7 @@
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcommunicationrequest-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest-definitions.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcommunicationrequest-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest-definitions.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

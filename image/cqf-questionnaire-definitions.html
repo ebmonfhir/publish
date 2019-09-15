@@ -130,7 +130,7 @@
   <tr><td>Definition</td><td><p>The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#id">id</a></td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td>Comments</td><td><p>The only time that a resource does not have an id is when it is being submitted to the server using a create operation.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="cqf-questionnaire.Questionnaire.meta"> </a><b>Questionnaire.meta</b></td></tr>
@@ -201,7 +201,7 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="extensibility.html#Extension">Extension</a></td></tr>
   <tr><td><a href="conformance-rules.html#ismodifier">Is Modifier</a></td><td>true (Reason: Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them)</td></tr>
-  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="extensibility.html#modifierExtension">definition of modifier extensions</a>.</p>
+  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="http://hl7.org/fhir/extensibility.html#modifierExtension">definition of modifier extensions <img src="external.png" style="vertical-align: baseline"/></a>.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>extensions, user content</td></tr>
   <tr><td>Comments</td><td><p>There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.</p>
@@ -212,7 +212,7 @@
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#uri">uri</a></td></tr>
-  <tr><td>Requirements</td><td><p>â€¦  This is the id that will be used to link a QuestionnaireResponse to the Questionnaire the response is for.</p>
+  <tr><td>Requirements</td><td><p>…  This is the id that will be used to link a QuestionnaireResponse to the Questionnaire the response is for.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>The name of the referenced questionnaire can be conveyed using the http://hl7.org/fhir/StructureDefinition/display extension.</p>
 </td></tr>
@@ -432,7 +432,7 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="extensibility.html#Extension">Extension</a></td></tr>
   <tr><td><a href="conformance-rules.html#ismodifier">Is Modifier</a></td><td>true (Reason: Modifier extensions are expected to modify the meaning or interpretation of the element that contains them)</td></tr>
-  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="extensibility.html#modifierExtension">definition of modifier extensions</a>.</p>
+  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="http://hl7.org/fhir/extensibility.html#modifierExtension">definition of modifier extensions <img src="external.png" style="vertical-align: baseline"/></a>.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>extensions, user content, modifiers</td></tr>
   <tr><td>Comments</td><td><p>There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.</p>
@@ -443,13 +443,13 @@
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
-  <tr><td>Requirements</td><td><p><a href="questionnaireresponse.html#">QuestionnaireResponse</a> does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient.</p>
+  <tr><td>Requirements</td><td><p><a href="http://hl7.org/fhir/questionnaireresponse.html#">QuestionnaireResponse <img src="external.png" style="vertical-align: baseline"/></a> does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient.</p>
 </td></tr>
   <tr><td>Comments</td><td><p>This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="cqf-questionnaire.Questionnaire.item.definition"> </a><b>Questionnaire.item.definition</b></td></tr>
   <tr><td>Element Id</td><td>Questionnaire.item.definition</td></tr>
-  <tr><td>Definition</td><td><p>This element is a URI that refers to an <a href="elementdefinition.html">ElementDefinition</a> that provides information about this item, including information that might otherwise be included in the instance of the Questionnaire resource. A detailed description of the construction of the URI is shown in Comments, below. If this element is present then the following element values MAY be derived from the Element Definition if the corresponding elements of this Questionnaire resource instance have no value:</p>
+  <tr><td>Definition</td><td><p>This element is a URI that refers to an <a href="http://hl7.org/fhir/elementdefinition.html">ElementDefinition <img src="external.png" style="vertical-align: baseline"/></a> that provides information about this item, including information that might otherwise be included in the instance of the Questionnaire resource. A detailed description of the construction of the URI is shown in Comments, below. If this element is present then the following element values MAY be derived from the Element Definition if the corresponding elements of this Questionnaire resource instance have no value:</p>
 <ul>
 <li>code (ElementDefinition.code)</li>
 <li>type (ElementDefinition.type)</li>
@@ -464,7 +464,7 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#uri">uri</a></td></tr>
   <tr><td>Requirements</td><td><p>A common pattern is to define a set of data elements and then build multiple questionnaires for different circumstances to gather the data. This element provides traceability to the common definition and allows the content for the question to come from the underlying definition.</p>
 </td></tr>
-  <tr><td>Comments</td><td><p>The uri refers to an ElementDefinition in a <a href="structuredefinition.html#">StructureDefinition</a> and always starts with the <a href="references.html#canonical">canonical URL</a> for the target resource. When referring to a StructureDefinition, a fragment identifier is used to specify the element definition by its id <a href="element-definitions.html#Element.id">Element.id</a>. E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]. In the absence of a fragment identifier, the first/root element definition in the target is the matching element definition.</p>
+  <tr><td>Comments</td><td><p>The uri refers to an ElementDefinition in a <a href="http://hl7.org/fhir/structuredefinition.html#">StructureDefinition <img src="external.png" style="vertical-align: baseline"/></a> and always starts with the <a href="http://hl7.org/fhir/references.html#canonical">canonical URL <img src="external.png" style="vertical-align: baseline"/></a> for the target resource. When referring to a StructureDefinition, a fragment identifier is used to specify the element definition by its id <a href="http://hl7.org/fhir/element-definitions.html#Element.id">Element.id <img src="external.png" style="vertical-align: baseline"/></a>. E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]. In the absence of a fragment identifier, the first/root element definition in the target is the matching element definition.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="cqf-questionnaire.Questionnaire.item.code"> </a><b>Questionnaire.item.code</b></td></tr>
   <tr><td>Element Id</td><td>Questionnaire.item.code</td></tr>
@@ -545,7 +545,7 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="extensibility.html#Extension">Extension</a></td></tr>
   <tr><td><a href="conformance-rules.html#ismodifier">Is Modifier</a></td><td>true (Reason: Modifier extensions are expected to modify the meaning or interpretation of the element that contains them)</td></tr>
-  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="extensibility.html#modifierExtension">definition of modifier extensions</a>.</p>
+  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="http://hl7.org/fhir/extensibility.html#modifierExtension">definition of modifier extensions <img src="external.png" style="vertical-align: baseline"/></a>.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>extensions, user content, modifiers</td></tr>
   <tr><td>Comments</td><td><p>There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.</p>
@@ -628,7 +628,7 @@
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1 This element is affected by the following invariants: que-4, que-5</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#canonical">canonical</a>(<a href="valueset.html" title="http://hl7.org/fhir/StructureDefinition/ValueSet">ValueSet</a>)</td></tr>
-  <tr><td>Comments</td><td><p>LOINC defines many useful value sets for questionnaire responses. See <a href="loinc.html#alist">LOINC Answer Lists</a>. The value may come from the ElementDefinition referred to by .definition.</p>
+  <tr><td>Comments</td><td><p>LOINC defines many useful value sets for questionnaire responses. See <a href="http://hl7.org/fhir/loinc.html#alist">LOINC Answer Lists <img src="external.png" style="vertical-align: baseline"/></a>. The value may come from the ElementDefinition referred to by .definition.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="cqf-questionnaire.Questionnaire.item.answerOption"> </a><b>Questionnaire.item.answerOption</b></td></tr>
   <tr><td>Element Id</td><td>Questionnaire.item.answerOption</td></tr>
@@ -665,7 +665,7 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="extensibility.html#Extension">Extension</a></td></tr>
   <tr><td><a href="conformance-rules.html#ismodifier">Is Modifier</a></td><td>true (Reason: Modifier extensions are expected to modify the meaning or interpretation of the element that contains them)</td></tr>
-  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="extensibility.html#modifierExtension">definition of modifier extensions</a>.</p>
+  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="http://hl7.org/fhir/extensibility.html#modifierExtension">definition of modifier extensions <img src="external.png" style="vertical-align: baseline"/></a>.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>extensions, user content, modifiers</td></tr>
   <tr><td>Comments</td><td><p>There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.</p>
@@ -726,7 +726,7 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="extensibility.html#Extension">Extension</a></td></tr>
   <tr><td><a href="conformance-rules.html#ismodifier">Is Modifier</a></td><td>true (Reason: Modifier extensions are expected to modify the meaning or interpretation of the element that contains them)</td></tr>
-  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="extensibility.html#modifierExtension">definition of modifier extensions</a>.</p>
+  <tr><td>Requirements</td><td><p>Modifier extensions allow for extensions that <em>cannot</em> be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the <a href="http://hl7.org/fhir/extensibility.html#modifierExtension">definition of modifier extensions <img src="external.png" style="vertical-align: baseline"/></a>.</p>
 </td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>extensions, user content, modifiers</td></tr>
   <tr><td>Comments</td><td><p>There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.</p>
@@ -768,7 +768,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -776,7 +776,7 @@
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcqf-questionnaire&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcqf-questionnaire">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcqf-questionnaire&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcqf-questionnaire">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

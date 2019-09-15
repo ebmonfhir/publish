@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;CareTeam&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;CareTeam&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -281,7 +281,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -719,7 +723,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -786,13 +794,13 @@
       &quot;path&quot; : &quot;CareTeam.participant.role&quot;,
       &quot;short&quot; : &quot;Type of involvement&quot;,
       &quot;definition&quot; : &quot;Indicates specific responsibility of an individual within the care team, such as \&quot;Primary care physician\&quot;, \&quot;Trained social worker counselor\&quot;, \&quot;Caregiver\&quot;, etc.&quot;,
-      &quot;comment&quot; : &quot;Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.&quot;,
+      &quot;comment&quot; : &quot;Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.  If a participant has multiple roles within the team, then there should be multiple participants.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
         &quot;path&quot; : &quot;CareTeam.participant.role&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -875,19 +883,24 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;CareTeam.participant.period&quot;,
-      &quot;path&quot; : &quot;CareTeam.participant.period&quot;,
-      &quot;short&quot; : &quot;Time period of participant&quot;,
-      &quot;definition&quot; : &quot;Indicates when the specific member or organization did (or is intended to) come into effect and end.&quot;,
+      &quot;id&quot; : &quot;CareTeam.participant.coverage[x]&quot;,
+      &quot;path&quot; : &quot;CareTeam.participant.coverage[x]&quot;,
+      &quot;short&quot; : &quot;When the member is generally available within this care team&quot;,
+      &quot;definition&quot; : &quot;When the member is generally available within this care team.&quot;,
+      &quot;comment&quot; : &quot;This is populated while creating / managing the CareTeam to ensure there is coverage when servicing CarePlan activities from the Schedule.&quot;,
+      &quot;requirements&quot; : &quot;To manage members who share the same role, but with different timing.  For example, two physical therapists where one is available Monday through Friday whereas the other is available on the weekend.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;CareTeam.participant.period&quot;,
+        &quot;path&quot; : &quot;CareTeam.participant.coverage[x]&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Period&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Timing&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false
@@ -1210,9 +1223,9 @@
       &quot;path&quot; : &quot;CareTeam.participant.role&quot;,
       &quot;short&quot; : &quot;Type of involvement&quot;,
       &quot;definition&quot; : &quot;Indicates specific responsibility of an individual within the care team, such as \&quot;Primary care physician\&quot;, \&quot;Trained social worker counselor\&quot;, \&quot;Caregiver\&quot;, etc.&quot;,
-      &quot;comment&quot; : &quot;Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.&quot;,
+      &quot;comment&quot; : &quot;Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.  If a participant has multiple roles within the team, then there should be multiple participants.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
@@ -1281,14 +1294,19 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;CareTeam.participant.period&quot;,
-      &quot;path&quot; : &quot;CareTeam.participant.period&quot;,
-      &quot;short&quot; : &quot;Time period of participant&quot;,
-      &quot;definition&quot; : &quot;Indicates when the specific member or organization did (or is intended to) come into effect and end.&quot;,
+      &quot;id&quot; : &quot;CareTeam.participant.coverage[x]&quot;,
+      &quot;path&quot; : &quot;CareTeam.participant.coverage[x]&quot;,
+      &quot;short&quot; : &quot;When the member is generally available within this care team&quot;,
+      &quot;definition&quot; : &quot;When the member is generally available within this care team.&quot;,
+      &quot;comment&quot; : &quot;This is populated while creating / managing the CareTeam to ensure there is coverage when servicing CarePlan activities from the Schedule.&quot;,
+      &quot;requirements&quot; : &quot;To manage members who share the same role, but with different timing.  For example, two physical therapists where one is available Monday through Friday whereas the other is available on the weekend.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Period&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Timing&quot;
       }]
     },
     {
@@ -1394,7 +1412,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:43-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1402,7 +1420,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcareteam.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcareteam.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcareteam.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcareteam.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

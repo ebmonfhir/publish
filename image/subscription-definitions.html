@@ -106,8 +106,9 @@
 
 <ul class="nav nav-tabs"><li><a href="subscription.html">Content</a></li><li><a href="subscription-examples.html">Examples</a></li><li class="active"><a href="#">Detailed Descriptions</a></li><li><a href="subscription-mappings.html">Mappings</a></li><li><a href="subscription-profiles.html">Profiles &amp; Extensions</a></li><li><a href="subscription-version-maps.html">R3 Conversions</a></li></ul>
 
-<h2 class="self-link-parent"><span class="sectioncount">2.46.11<a name="2.46.11"> </a></span> Resource Subscription - Detailed Descriptions <a href="subscription-definitions.html#2.46.11" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">2.46.12<a name="2.46.12"> </a></span> Resource Subscription - Detailed Descriptions <a href="subscription-definitions.html#2.46.12" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <table class="colsd"><tr><td><a href="http://www.hl7.org/Special/committees/fiwg/index.cfm">FHIR Infrastructure <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 0</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Business</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
+
 
 
 <p>Detailed Descriptions for the elements in the Subscription resource.</p>
@@ -115,11 +116,25 @@
 <table class="dict">
   <tr><td colspan="2" class="structure"><a name="Subscription"> </a><b>Subscription</b></td></tr>
   <tr><td>Element Id</td><td>Subscription</td></tr>
-  <tr><td>Definition</td><td><p>The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined "channel" so that another system can take an appropriate action.</p>
+  <tr><td>Definition</td><td><p>The subscription resource describes a particular client's request to be notified about a Topic.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="domainresource.html">DomainResource</a></td></tr>
   <tr><td title="Other names by which this resource/element may be known">Alternate Names</td><td>WebHook; Hook; Routing Rule</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.identifier"> </a><b>Subscription.identifier</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.identifier</td></tr>
+  <tr><td>Definition</td><td><p>A formal identifier that is used to identify this code system when it is represented in other formats, or referenced in a specification, model, design or an instance.</p>
+</td></tr>
+  <tr><td>Note</td><td>This is a business identifier, not a resource identifier (see <a href="resource.html#identifiers">discussion</a>)</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Identifier">Identifier</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.name"> </a><b>Subscription.name</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.name</td></tr>
+  <tr><td>Definition</td><td><p>A natural language name identifying the subscription.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.status"> </a><b>Subscription.status</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.status</td></tr>
@@ -133,6 +148,13 @@
   <tr><td>Comments</td><td><p>A client can only submit subscription resources in the requested or off state. Only the server can  move a subscription from requested to active, and then to error. Either the server or the client can turn a subscription off.</p>
 <p>This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.</p>
 </td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.topic"> </a><b>Subscription.topic</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.topic</td></tr>
+  <tr><td>Definition</td><td><p>The reference to the topic to be notified about.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="topic.html">Topic</a>)</td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.contact"> </a><b>Subscription.contact</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.contact</td></tr>
   <tr><td>Definition</td><td><p>Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.</p>
@@ -156,21 +178,50 @@
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="Subscription.criteria"> </a><b>Subscription.criteria</b></td></tr>
-  <tr><td>Element Id</td><td>Subscription.criteria</td></tr>
-  <tr><td>Definition</td><td><p>The rules that the server should use to determine when to generate notifications for this subscription.</p>
+  <tr><td colspan="2" class="structure"><a name="Subscription.filterBy"> </a><b>Subscription.filterBy</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.filterBy</td></tr>
+  <tr><td>Definition</td><td><p>The filter properties to be applied to narrow the topic stream.  When multiple filters are applied, evaluates to true if all the conditions are met; otherwise it returns false.   (i.e., logical AND).</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.filterBy.name"> </a><b>Subscription.filterBy.name</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.filterBy.name</td></tr>
+  <tr><td>Definition</td><td><p>The filter label (=key) as defined in the <code>Topic.canFilterBy.name</code>  element.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td>Comments</td><td><p>The rules are search criteria (without the [base] part). Like Bundle.entry.request.url, it has no leading "/".</p>
+  <tr><td colspan="2" class="structure"><a name="Subscription.filterBy.matchType"> </a><b>Subscription.filterBy.matchType</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.filterBy.matchType</td></tr>
+  <tr><td>Definition</td><td><p>The operator to apply to the filter value when determining matches (Search modifiers).</p>
 </td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-subscription-operator.html">SubscriptionFilterByMatchType</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.filterBy.value"> </a><b>Subscription.filterBy.value</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.filterBy.value</td></tr>
+  <tr><td>Definition</td><td><p>The literal value or resource path as is legal in search - for example, "Patient/123" or "le1950".</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.error"> </a><b>Subscription.error</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.error</td></tr>
   <tr><td>Definition</td><td><p>A record of the last error that occurred when the server processed a notification.</p>
 </td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-subscription-error.html">Subscription Error Codes</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td>Comments</td><td><p>Recommended practice: If available, convey the HTTP error in an adjacent Coding or in text.</p>
+</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.eventCount"> </a><b>Subscription.eventCount</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.eventCount</td></tr>
+  <tr><td>Definition</td><td><p>A record of  the number of events for which the server has attempted delivery on this subscription (i.e., the number of events that occurred while the subscription is in an "active" or "error" state -- not "requested" or "off").   Server Initializes to 0 for a new subscription.  Repeated attempts at delivery of the <em>same</em> event notification do not increment this counter.</p>
+</td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#unsignedInt">unsignedInt</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.channel"> </a><b>Subscription.channel</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.channel</td></tr>
@@ -183,8 +234,8 @@
   <tr><td>Definition</td><td><p>The type of channel to send notifications on.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-subscription-channel-type.html">SubscriptionChannelType</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-subscription-channel-type.html">SubscriptionChannel Type Codes</a> (<a href="terminologies.html#extensible">Extensible</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.channel.endpoint"> </a><b>Subscription.channel.endpoint</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.channel.endpoint</td></tr>
@@ -195,16 +246,6 @@
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td>Comments</td><td><p>For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since there may be more than one, clients should avoid using relative URIs).</p>
 </td></tr>
-  <tr><td colspan="2" class="structure"><a name="Subscription.channel.payload"> </a><b>Subscription.channel.payload</b></td></tr>
-  <tr><td>Element Id</td><td>Subscription.channel.payload</td></tr>
-  <tr><td>Definition</td><td><p>The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. If the payload is not present, then there is no payload in the notification, just a notification. The mime type "text/plain" may also be used for Email and SMS subscriptions.</p>
-</td></tr>
-  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-mimetypes.html">MimeType</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
-  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td>Comments</td><td><p>Sending the payload has obvious security implications. The server is responsible for ensuring that the content is appropriately secured.</p>
-</td></tr>
   <tr><td colspan="2" class="structure"><a name="Subscription.channel.header"> </a><b>Subscription.channel.header</b></td></tr>
   <tr><td>Element Id</td><td>Subscription.channel.header</td></tr>
   <tr><td>Definition</td><td><p>Additional headers / information to send as part of the notification.</p>
@@ -213,6 +254,37 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#string">string</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td>Comments</td><td><p>Exactly what these mean depend on the channel type. They can convey additional information to the recipient and/or meet security requirements; for example, support of multiple headers in the outgoing notifications for rest-hook type subscriptions.</p>
+</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.channel.heartbeatPeriod"> </a><b>Subscription.channel.heartbeatPeriod</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.channel.heartbeatPeriod</td></tr>
+  <tr><td>Definition</td><td><p>If present,  a 'hearbeat" notification (keepalive) is sent via this channel with an the interval period equal to this elements integer value in seconds.    If not present, a heartbeat notification is not sent.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#unsignedInt">unsignedInt</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.channel.payload"> </a><b>Subscription.channel.payload</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.channel.payload</td></tr>
+  <tr><td>Definition</td><td><p>The payload mimetype and content.  If the payload is not present, then there is no payload in the notification, just a notification.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.channel.payload.contentType"> </a><b>Subscription.channel.payload.contentType</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.channel.payload.contentType</td></tr>
+  <tr><td>Definition</td><td><p>The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. The mime type "text/plain" may also be used for Email and SMS subscriptions.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-mimetypes.html">MimeType</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="Subscription.channel.payload.content"> </a><b>Subscription.channel.payload.content</b></td></tr>
+  <tr><td>Element Id</td><td>Subscription.channel.payload.content</td></tr>
+  <tr><td>Definition</td><td><p>How much of the resource content to deliver in the notification payload. The choices are an empty payload, only the resource id, or the full resource content.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-subscription-payload-content.html">SubscriptionPayloadContent</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#code">code</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td>Comments</td><td><p>Sending the payload has obvious security implications. The server is responsible for ensuring that the content is appropriately secured.</p>
 </td></tr>
 </table>
 
@@ -232,7 +304,7 @@
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -240,7 +312,7 @@
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fsubscription-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubscription-definitions.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fsubscription-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubscription-definitions.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

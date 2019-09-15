@@ -92,7 +92,7 @@
 	<div id="segment-breadcrumb" class="segment"><!-- segment-breadcrumb -->
 		<div class="container"><!-- container -->	
 			<ul class="breadcrumb">
-        <li><a href="foundation-module.html"><img src="foundation.png"/> Foundation</a></li>        <li><a href="documentreference.html">DocumentReference</a></li>        <li><b>Generated Questionnaire</b></li>        <!-- documentreference-questionnaire.xml.html / resource-questionnaire:DocumentReference / Questionnaire-->
+        <li><a href="diagnostics-module.html"><img src="diagnostics.jpg"/> Diagnostics</a></li>        <li><a href="documentreference.html">DocumentReference</a></li>        <li><b>Generated Questionnaire</b></li>        <!-- documentreference-questionnaire.xml.html / resource-questionnaire:DocumentReference / Questionnaire-->
 
 			</ul>	
 		</div><!-- /container -->
@@ -108,7 +108,7 @@
 <div class="col-12">
 
 <h1>Documentreference-questionnaire.xml</h1>
-<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/structure/index.cfm">Structured Documents</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
+<table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/orders/index.cfm">Orders and Observations</a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><!--!ns!--><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-device.html">Device</a>, <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 <p>
 <a href="documentreference-questionnaire.xml">Raw XML</a> (<a href="documentreference-questionnaire.canonical.xml">canonical form</a> + also see <a href="xml.html">XML Format Specification</a>)
@@ -127,8 +127,8 @@
   &lt;/identifier&gt;
   &lt;version value=&quot;4.1.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-08-09T09:30:10-04:00&quot;/&gt;
-  &lt;publisher value=&quot;Health Level Seven International (Structured Documents)&quot;/&gt;
+  &lt;date value=&quot;2019-09-15T10:41:41-04:00&quot;/&gt;
+  &lt;publisher value=&quot;Health Level Seven International (Orders and Observations)&quot;/&gt;
   &lt;item&gt;
     &lt;linkId value=&quot;DocumentReference&quot;/&gt;
     &lt;text value=&quot;A reference to a document&quot;/&gt;
@@ -149,7 +149,7 @@
           &lt;/coding&gt;
         &lt;/valueCodeableConcept&gt;
       &lt;/extension&gt;
-      &lt;text value=&quot;A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.&quot;/&gt;
+      &lt;text value=&quot;A reference to a document of any kind for any purpose. While the term &amp;#x201C;document&amp;#x201D; implies a more narrow focus, for this resource this &amp;quot;document&amp;quot; encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference.&quot;/&gt;
       &lt;type value=&quot;display&quot;/&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -1530,6 +1530,41 @@
           &lt;repeats value=&quot;false&quot;/&gt;
         &lt;/item&gt;
       &lt;/item&gt;
+      &lt;item&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+          &lt;valueString value=&quot;Reference&quot;/&gt;
+        &lt;/extension&gt;
+        &lt;linkId value=&quot;DocumentReference.context.basedOn&quot;/&gt;
+        &lt;type value=&quot;group&quot;/&gt;
+        &lt;required value=&quot;false&quot;/&gt;
+        &lt;repeats value=&quot;true&quot;/&gt;
+        &lt;item&gt;
+          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
+            &lt;valueCodeableConcept&gt;
+              &lt;coding&gt;
+                &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
+                &lt;code value=&quot;flyover&quot;/&gt;
+                &lt;display value=&quot;Fly-over&quot;/&gt;
+              &lt;/coding&gt;
+            &lt;/valueCodeableConcept&gt;
+          &lt;/extension&gt;
+          &lt;text value=&quot;A procedure that is fulfilled in whole or in part by the creation of this media.&quot;/&gt;
+          &lt;type value=&quot;display&quot;/&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
+            &lt;valueCode value=&quot;ServiceRequest, CarePlan&quot;/&gt;
+          &lt;/extension&gt;
+          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
+            &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
+          &lt;/extension&gt;
+          &lt;linkId value=&quot;DocumentReference.context.basedOn.value&quot;/&gt;
+          &lt;text value=&quot;Procedure that caused this media to be created&quot;/&gt;
+          &lt;type value=&quot;reference&quot;/&gt;
+          &lt;required value=&quot;false&quot;/&gt;
+          &lt;repeats value=&quot;false&quot;/&gt;
+        &lt;/item&gt;
+      &lt;/item&gt;
     &lt;/item&gt;
   &lt;/item&gt;
 &lt;/Questionnaire&gt;
@@ -1557,7 +1592,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:45-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1565,7 +1600,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fdocumentreference-questionnaire.xml.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference-questionnaire.xml.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fdocumentreference-questionnaire.xml.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fdocumentreference-questionnaire.xml.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

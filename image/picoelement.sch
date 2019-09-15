@@ -10,6 +10,12 @@
     single schematron that validates contained resources (if you have any) 
   -->
   <sch:pattern>
+    <sch:title>f:EvidenceVariable</sch:title>
+    <sch:rule context="f:EvidenceVariable">
+      <sch:assert test="count(f:characteristic) &gt;= 1">characteristic: minimum cardinality of 'characteristic' is 1</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>EvidenceVariable</sch:title>
     <sch:rule context="f:EvidenceVariable">
       <sch:assert test="not(parent::f:contained and f:contained)">If the resource is contained in another resource, it SHALL NOT contain nested Resources (inherited)</sch:assert>

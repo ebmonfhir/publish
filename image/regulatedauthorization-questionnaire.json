@@ -4,12 +4,33 @@
   "contained" : [{
     "resourceType" : "ValueSet",
     "id" : "vs2",
-    "name" : "Type options for RegulatedAuthorization.procedure.date[x]",
+    "name" : "Type options for RegulatedAuthorization.relatedDate.date[x]",
     "status" : "active",
-    "description" : "Type options for RegulatedAuthorization.procedure.date[x]",
+    "description" : "Type options for RegulatedAuthorization.relatedDate.date[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:50eba9fd-65c4-4a7a-84b5-d6d980008740",
-      "timestamp" : "2019-08-09T09:49:23-04:00",
+      "identifier" : "urn:uuid:b451328a-9913-4d89-bfb1-5262236b2a0f",
+      "timestamp" : "2019-09-15T10:46:03-04:00",
+      "contains" : [{
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "Period",
+        "display" : "Period"
+      },
+      {
+        "system" : "http://hl7.org/fhir/data-types",
+        "code" : "dateTime",
+        "display" : "dateTime"
+      }]
+    }
+  },
+  {
+    "resourceType" : "ValueSet",
+    "id" : "vs3",
+    "name" : "Type options for RegulatedAuthorization.case.date[x]",
+    "status" : "active",
+    "description" : "Type options for RegulatedAuthorization.case.date[x]",
+    "expansion" : {
+      "identifier" : "urn:uuid:9fe12f83-e66e-4dcb-97d4-dd148c28c14b",
+      "timestamp" : "2019-09-15T10:46:03-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "Period",
@@ -27,7 +48,7 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
+  "date" : "2019-09-15T10:41:41-04:00",
   "publisher" : "Health Level Seven International (Biomedical Research and Regulation)",
   "item" : [{
     "linkId" : "RegulatedAuthorization",
@@ -337,20 +358,20 @@
             }]
           }
         }],
-        "text" : "The medicinal product that is being authorized.",
+        "text" : "The product that is being authorized.",
         "type" : "display"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "RegulatedMedicinalProduct, RegulatedPackagedProduct"
+          "valueCode" : "MedicinalProductDefinition, PackagedProductDefinition, DeviceDefinition, ResearchStudy, ActivityDefinition, PlanDefinition"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
           "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
         "linkId" : "RegulatedAuthorization.subject.value",
-        "text" : "The medicinal product that is being authorized",
+        "text" : "The product that is being authorized",
         "type" : "reference",
         "required" : false,
         "repeats" : false
@@ -358,11 +379,15 @@
     },
     {
       "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "CodeableConcept"
       }],
-      "linkId" : "RegulatedAuthorization.country",
-      "text" : "The country in which the marketing authorization has been granted",
+      "linkId" : "RegulatedAuthorization.type",
+      "text" : "Type of this authorization, for example drug marketing approval, orphan drug designation",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -377,19 +402,54 @@
             }]
           }
         }],
-        "text" : "The country in which the marketing authorization has been granted.",
+        "text" : "Type of this authorization, for example drug marketing approval, orphan drug designation.",
         "type" : "display"
       },
       {
-        "linkId" : "RegulatedAuthorization.country.coding",
+        "linkId" : "RegulatedAuthorization.type.coding",
         "text" : "code:",
         "type" : "open-choice",
         "required" : false,
         "repeats" : false
       },
       {
-        "linkId" : "RegulatedAuthorization.country.text",
+        "linkId" : "RegulatedAuthorization.type.text",
         "text" : "text:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "string"
+      }],
+      "linkId" : "RegulatedAuthorization.description",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "General textual supporting information.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "RegulatedAuthorization.description.value",
+        "text" : "General textual supporting information",
         "type" : "string",
         "required" : false,
         "repeats" : false
@@ -400,8 +460,8 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "CodeableConcept"
       }],
-      "linkId" : "RegulatedAuthorization.jurisdiction",
-      "text" : "Jurisdiction within a country",
+      "linkId" : "RegulatedAuthorization.region",
+      "text" : "The region (country, jurisdiction etc.) in which the marketing authorization has been granted",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -416,18 +476,18 @@
             }]
           }
         }],
-        "text" : "Jurisdiction within a country.",
+        "text" : "The region (country, jurisdiction etc.) in which the marketing authorization has been granted.",
         "type" : "display"
       },
       {
-        "linkId" : "RegulatedAuthorization.jurisdiction.coding",
+        "linkId" : "RegulatedAuthorization.region.coding",
         "text" : "code:",
         "type" : "open-choice",
         "required" : false,
         "repeats" : false
       },
       {
-        "linkId" : "RegulatedAuthorization.jurisdiction.text",
+        "linkId" : "RegulatedAuthorization.region.text",
         "text" : "text:",
         "type" : "string",
         "required" : false,
@@ -519,41 +579,6 @@
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "datetime"
-      }],
-      "linkId" : "RegulatedAuthorization.restoreDate",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "RegulatedAuthorization.restoreDate.value",
-        "text" : "The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "Period"
       }],
       "linkId" : "RegulatedAuthorization.validityPeriod",
@@ -592,128 +617,11 @@
     },
     {
       "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "Period"
-      }],
-      "linkId" : "RegulatedAuthorization.dataExclusivityPeriod",
-      "text" : "A period of time after authorization before generic product applicatiosn can be submitted",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "A period of time after authorization before generic product applicatiosn can be submitted.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "RegulatedAuthorization.dataExclusivityPeriod.low",
-        "text" : "start:",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      },
-      {
-        "linkId" : "RegulatedAuthorization.dataExclusivityPeriod.end",
-        "text" : "end:",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "datetime"
-      }],
-      "linkId" : "RegulatedAuthorization.dateOfFirstAuthorization",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "The date when the first authorization was granted by a Medicines Regulatory Agency.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "RegulatedAuthorization.dateOfFirstAuthorization.value",
-        "text" : "The date when the first authorization was granted by a Medicines Regulatory Agency",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-        "valueString" : "datetime"
-      }],
-      "linkId" : "RegulatedAuthorization.internationalBirthDate",
-      "type" : "group",
-      "required" : false,
-      "repeats" : true,
-      "item" : [{
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept" : {
-            "coding" : [{
-              "system" : "http://hl7.org/fhir/questionnaire-item-control",
-              "code" : "flyover",
-              "display" : "Fly-over"
-            }]
-          }
-        }],
-        "text" : "Date of first marketing authorization for a company's new medicinal product in any country in the World.",
-        "type" : "display"
-      },
-      {
-        "linkId" : "RegulatedAuthorization.internationalBirthDate.value",
-        "text" : "Date of first marketing authorization for a company's new medicinal product in any country in the World",
-        "type" : "dateTime",
-        "required" : false,
-        "repeats" : false
-      }]
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
-      },
-      {
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
         "valueString" : "CodeableConcept"
       }],
-      "linkId" : "RegulatedAuthorization.legalBasis",
-      "text" : "The legal framework against which this authorization is granted",
+      "linkId" : "RegulatedAuthorization.basis",
+      "text" : "The legal framework against which this authorization is granted, or other reasons for it",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -728,18 +636,18 @@
             }]
           }
         }],
-        "text" : "The legal framework against which this authorization is granted.",
+        "text" : "The legal framework against which this authorization is granted, or other reasons for it.",
         "type" : "display"
       },
       {
-        "linkId" : "RegulatedAuthorization.legalBasis.coding",
+        "linkId" : "RegulatedAuthorization.basis.coding",
         "text" : "code:",
         "type" : "open-choice",
         "required" : false,
         "repeats" : false
       },
       {
-        "linkId" : "RegulatedAuthorization.legalBasis.text",
+        "linkId" : "RegulatedAuthorization.basis.text",
         "text" : "text:",
         "type" : "string",
         "required" : false,
@@ -747,8 +655,8 @@
       }]
     },
     {
-      "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization",
-      "text" : "Authorization in areas within a country",
+      "linkId" : "RegulatedAuthorization.relatedDate",
+      "text" : "Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on",
       "type" : "group",
       "required" : false,
       "repeats" : true,
@@ -763,7 +671,7 @@
             }]
           }
         }],
-        "text" : "Authorization in areas within a country.",
+        "text" : "Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on.",
         "type" : "display"
       },
       {
@@ -775,7 +683,7 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "string"
         }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.id",
+        "linkId" : "RegulatedAuthorization.relatedDate.id",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -794,7 +702,7 @@
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.id.value",
+          "linkId" : "RegulatedAuthorization.relatedDate.id.value",
           "text" : "Unique id for inter-element referencing",
           "type" : "string",
           "required" : false,
@@ -802,7 +710,7 @@
         }]
       },
       {
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.extension",
+        "linkId" : "RegulatedAuthorization.relatedDate.extension",
         "text" : "Additional content defined by implementations",
         "type" : "group",
         "required" : false,
@@ -823,7 +731,7 @@
         }]
       },
       {
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension",
+        "linkId" : "RegulatedAuthorization.relatedDate.modifierExtension",
         "text" : "Extensions that cannot be ignored even if unrecognized",
         "type" : "group",
         "required" : false,
@@ -845,13 +753,17 @@
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Identifier"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
         }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.identifier",
-        "text" : "The assigned number for the marketing authorization",
+        "linkId" : "RegulatedAuthorization.relatedDate.date[x]",
+        "text" : "Another date associated with the authorization",
         "type" : "group",
-        "required" : false,
+        "required" : true,
         "repeats" : true,
         "item" : [{
           "extension" : [{
@@ -864,33 +776,60 @@
               }]
             }
           }],
-          "text" : "The assigned number for the marketing authorization.",
+          "text" : "Another date associated with the authorization.",
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.identifier.label",
-          "text" : "label:",
-          "type" : "string",
+          "linkId" : "RegulatedAuthorization.relatedDate.date[x]._type",
+          "text" : "type",
+          "type" : "choice",
           "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.identifier.system",
-          "text" : "system:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.identifier.value",
-          "text" : "value:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
+          "repeats" : false,
+          "answerValueSet" : "#vs2",
+          "item" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "Period"
+            }],
+            "linkId" : "RegulatedAuthorization.relatedDate.date[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "RegulatedAuthorization.relatedDate.date[x]._null.low",
+              "text" : "start:",
+              "type" : "dateTime",
+              "required" : false,
+              "repeats" : false
+            },
+            {
+              "linkId" : "RegulatedAuthorization.relatedDate.date[x]._null.end",
+              "text" : "end:",
+              "type" : "dateTime",
+              "required" : false,
+              "repeats" : false
+            }]
+          },
+          {
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+              "valueString" : "datetime"
+            }],
+            "linkId" : "RegulatedAuthorization.relatedDate.date[x]._null",
+            "type" : "group",
+            "item" : [{
+              "linkId" : "RegulatedAuthorization.relatedDate.date[x]._null.value",
+              "type" : "dateTime",
+              "required" : false,
+              "repeats" : false
+            }]
+          }]
         }]
       },
       {
         "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
+          "valueInteger" : 1
+        },
+        {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
           "valueInteger" : 1
         },
@@ -898,10 +837,10 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "CodeableConcept"
         }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.country",
-        "text" : "Country of authorization",
+        "linkId" : "RegulatedAuthorization.relatedDate.type",
+        "text" : "Type of this date, for example the data exclusitity period for a medicinal product",
         "type" : "group",
-        "required" : false,
+        "required" : true,
         "repeats" : true,
         "item" : [{
           "extension" : [{
@@ -914,148 +853,62 @@
               }]
             }
           }],
-          "text" : "Country of authorization.",
+          "text" : "Type of this date, for example the data exclusitity period for a medicinal product.",
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.country.coding",
+          "linkId" : "RegulatedAuthorization.relatedDate.type.coding",
           "text" : "code:",
           "type" : "open-choice",
           "required" : false,
           "repeats" : false
         },
         {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.country.text",
+          "linkId" : "RegulatedAuthorization.relatedDate.type.text",
           "text" : "text:",
           "type" : "string",
           "required" : false,
           "repeats" : false
         }]
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Authorization in areas within a country.",
+        "type" : "display"
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "CodeableConcept"
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "RegulatedAuthorization"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
         }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction",
-        "text" : "Jurisdiction within a country",
-        "type" : "group",
+        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.value",
+        "text" : "Authorization in areas within a country",
+        "type" : "reference",
         "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "Jurisdiction within a country.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction.coding",
-          "text" : "code:",
-          "type" : "open-choice",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction.text",
-          "text" : "text:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        }]
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "CodeableConcept"
-        }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply",
-        "text" : "The legal status of supply in a jurisdiction or region",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "The legal status of supply in a jurisdiction or region.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply.coding",
-          "text" : "code:",
-          "type" : "open-choice",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply.text",
-          "text" : "text:",
-          "type" : "string",
-          "required" : false,
-          "repeats" : false
-        }]
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-          "valueInteger" : 1
-        },
-        {
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-          "valueString" : "Period"
-        }],
-        "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod",
-        "text" : "The start and expected end date of the authorization",
-        "type" : "group",
-        "required" : false,
-        "repeats" : true,
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-            "valueCodeableConcept" : {
-              "coding" : [{
-                "system" : "http://hl7.org/fhir/questionnaire-item-control",
-                "code" : "flyover",
-                "display" : "Fly-over"
-              }]
-            }
-          }],
-          "text" : "The start and expected end date of the authorization.",
-          "type" : "display"
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod.low",
-          "text" : "start:",
-          "type" : "dateTime",
-          "required" : false,
-          "repeats" : false
-        },
-        {
-          "linkId" : "RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod.end",
-          "text" : "end:",
-          "type" : "dateTime",
-          "required" : false,
-          "repeats" : false
-        }]
+        "repeats" : false
       }]
     },
     {
@@ -1149,8 +1002,8 @@
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
         "valueInteger" : 1
       }],
-      "linkId" : "RegulatedAuthorization.procedure",
-      "text" : "The regulatory procedure for granting or amending a marketing authorization",
+      "linkId" : "RegulatedAuthorization.case",
+      "text" : "The case or regulatory procedure for granting or amending a marketing authorization",
       "type" : "group",
       "required" : false,
       "repeats" : false,
@@ -1165,7 +1018,7 @@
             }]
           }
         }],
-        "text" : "The regulatory procedure for granting or amending a marketing authorization.",
+        "text" : "The case or regulatory procedure for granting or amending a marketing authorization.",
         "type" : "display"
       },
       {
@@ -1177,7 +1030,7 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "string"
         }],
-        "linkId" : "RegulatedAuthorization.procedure.id",
+        "linkId" : "RegulatedAuthorization.case.id",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1196,7 +1049,7 @@
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.id.value",
+          "linkId" : "RegulatedAuthorization.case.id.value",
           "text" : "Unique id for inter-element referencing",
           "type" : "string",
           "required" : false,
@@ -1204,7 +1057,7 @@
         }]
       },
       {
-        "linkId" : "RegulatedAuthorization.procedure.extension",
+        "linkId" : "RegulatedAuthorization.case.extension",
         "text" : "Additional content defined by implementations",
         "type" : "group",
         "required" : false,
@@ -1225,7 +1078,7 @@
         }]
       },
       {
-        "linkId" : "RegulatedAuthorization.procedure.modifierExtension",
+        "linkId" : "RegulatedAuthorization.case.modifierExtension",
         "text" : "Extensions that cannot be ignored even if unrecognized",
         "type" : "group",
         "required" : false,
@@ -1254,8 +1107,8 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "Identifier"
         }],
-        "linkId" : "RegulatedAuthorization.procedure.identifier",
-        "text" : "Identifier for this procedure",
+        "linkId" : "RegulatedAuthorization.case.identifier",
+        "text" : "Identifier for this case",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1270,25 +1123,25 @@
               }]
             }
           }],
-          "text" : "Identifier for this procedure.",
+          "text" : "Identifier for this case.",
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.identifier.label",
+          "linkId" : "RegulatedAuthorization.case.identifier.label",
           "text" : "label:",
           "type" : "string",
           "required" : false,
           "repeats" : false
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.identifier.system",
+          "linkId" : "RegulatedAuthorization.case.identifier.system",
           "text" : "system:",
           "type" : "string",
           "required" : false,
           "repeats" : false
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.identifier.value",
+          "linkId" : "RegulatedAuthorization.case.identifier.value",
           "text" : "value:",
           "type" : "string",
           "required" : false,
@@ -1297,10 +1150,6 @@
       },
       {
         "extension" : [{
-          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
-          "valueInteger" : 1
-        },
-        {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
           "valueInteger" : 1
         },
@@ -1308,10 +1157,10 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
           "valueString" : "CodeableConcept"
         }],
-        "linkId" : "RegulatedAuthorization.procedure.type",
-        "text" : "Type of procedure",
+        "linkId" : "RegulatedAuthorization.case.type",
+        "text" : "Type of case",
         "type" : "group",
-        "required" : true,
+        "required" : false,
         "repeats" : true,
         "item" : [{
           "extension" : [{
@@ -1324,18 +1173,61 @@
               }]
             }
           }],
-          "text" : "Type of procedure.",
+          "text" : "Type of case.",
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.type.coding",
+          "linkId" : "RegulatedAuthorization.case.type.coding",
           "text" : "code:",
           "type" : "open-choice",
           "required" : false,
           "repeats" : false
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.type.text",
+          "linkId" : "RegulatedAuthorization.case.type.text",
+          "text" : "text:",
+          "type" : "string",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+          "valueInteger" : 1
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "CodeableConcept"
+        }],
+        "linkId" : "RegulatedAuthorization.case.status",
+        "text" : "The status of the case",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "The status of the case.",
+          "type" : "display"
+        },
+        {
+          "linkId" : "RegulatedAuthorization.case.status.coding",
+          "text" : "code:",
+          "type" : "open-choice",
+          "required" : false,
+          "repeats" : false
+        },
+        {
+          "linkId" : "RegulatedAuthorization.case.status.text",
           "text" : "text:",
           "type" : "string",
           "required" : false,
@@ -1347,8 +1239,8 @@
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
           "valueInteger" : 1
         }],
-        "linkId" : "RegulatedAuthorization.procedure.date[x]",
-        "text" : "Date of procedure",
+        "linkId" : "RegulatedAuthorization.case.date[x]",
+        "text" : "Date of case",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1363,32 +1255,32 @@
               }]
             }
           }],
-          "text" : "Date of procedure.",
+          "text" : "Date of case.",
           "type" : "display"
         },
         {
-          "linkId" : "RegulatedAuthorization.procedure.date[x]._type",
+          "linkId" : "RegulatedAuthorization.case.date[x]._type",
           "text" : "type",
           "type" : "choice",
           "required" : false,
           "repeats" : false,
-          "answerValueSet" : "#vs2",
+          "answerValueSet" : "#vs3",
           "item" : [{
             "extension" : [{
               "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
               "valueString" : "Period"
             }],
-            "linkId" : "RegulatedAuthorization.procedure.date[x]._null",
+            "linkId" : "RegulatedAuthorization.case.date[x]._null",
             "type" : "group",
             "item" : [{
-              "linkId" : "RegulatedAuthorization.procedure.date[x]._null.low",
+              "linkId" : "RegulatedAuthorization.case.date[x]._null.low",
               "text" : "start:",
               "type" : "dateTime",
               "required" : false,
               "repeats" : false
             },
             {
-              "linkId" : "RegulatedAuthorization.procedure.date[x]._null.end",
+              "linkId" : "RegulatedAuthorization.case.date[x]._null.end",
               "text" : "end:",
               "type" : "dateTime",
               "required" : false,
@@ -1400,10 +1292,10 @@
               "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
               "valueString" : "datetime"
             }],
-            "linkId" : "RegulatedAuthorization.procedure.date[x]._null",
+            "linkId" : "RegulatedAuthorization.case.date[x]._null",
             "type" : "group",
             "item" : [{
-              "linkId" : "RegulatedAuthorization.procedure.date[x]._null.value",
+              "linkId" : "RegulatedAuthorization.case.date[x]._null.value",
               "type" : "dateTime",
               "required" : false,
               "repeats" : false
@@ -1412,8 +1304,8 @@
         }]
       },
       {
-        "linkId" : "RegulatedAuthorization.procedure.application",
-        "text" : "Applcations submitted to obtain a marketing authorization",
+        "linkId" : "RegulatedAuthorization.case.application",
+        "text" : "Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1428,7 +1320,7 @@
               }]
             }
           }],
-          "text" : "Applcations submitted to obtain a marketing authorization.",
+          "text" : "Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure.",
           "type" : "display"
         }]
       }]

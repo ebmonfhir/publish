@@ -5,12 +5,34 @@
   <contained>
     <ValueSet>
       <id value="vs2"/>
-      <name value="Type options for RegulatedAuthorization.procedure.date[x]"/>
+      <name value="Type options for RegulatedAuthorization.relatedDate.date[x]"/>
       <status value="active"/>
-      <description value="Type options for RegulatedAuthorization.procedure.date[x]"/>
+      <description value="Type options for RegulatedAuthorization.relatedDate.date[x]"/>
       <expansion>
-        <identifier value="urn:uuid:50eba9fd-65c4-4a7a-84b5-d6d980008740"/>
-        <timestamp value="2019-08-09T09:49:23-04:00"/>
+        <identifier value="urn:uuid:b451328a-9913-4d89-bfb1-5262236b2a0f"/>
+        <timestamp value="2019-09-15T10:46:03-04:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Period"/>
+          <display value="Period"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="dateTime"/>
+          <display value="dateTime"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs3"/>
+      <name value="Type options for RegulatedAuthorization.case.date[x]"/>
+      <status value="active"/>
+      <description value="Type options for RegulatedAuthorization.case.date[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:9fe12f83-e66e-4dcb-97d4-dd148c28c14b"/>
+        <timestamp value="2019-09-15T10:46:03-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Period"/>
@@ -29,7 +51,7 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (Biomedical Research and Regulation)"/>
   <item>
     <linkId value="RegulatedAuthorization"/>
@@ -317,29 +339,32 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The medicinal product that is being authorized."/>
+        <text value="The product that is being authorized."/>
         <type value="display"/>
       </item>
       <item>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
-          <valueCode value="RegulatedMedicinalProduct, RegulatedPackagedProduct"/>
+          <valueCode value="MedicinalProductDefinition, PackagedProductDefinition, DeviceDefinition, ResearchStudy, ActivityDefinition, PlanDefinition"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="RegulatedAuthorization.subject.value"/>
-        <text value="The medicinal product that is being authorized"/>
+        <text value="The product that is being authorized"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
     </item>
     <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="CodeableConcept"/>
       </extension>
-      <linkId value="RegulatedAuthorization.country"/>
-      <text value="The country in which the marketing authorization has been granted"/>
+      <linkId value="RegulatedAuthorization.type"/>
+      <text value="Type of this authorization, for example drug marketing approval, orphan drug designation"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -353,19 +378,51 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The country in which the marketing authorization has been granted."/>
+        <text value="Type of this authorization, for example drug marketing approval, orphan drug designation."/>
         <type value="display"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.country.coding"/>
+        <linkId value="RegulatedAuthorization.type.coding"/>
         <text value="code:"/>
         <type value="open-choice"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.country.text"/>
+        <linkId value="RegulatedAuthorization.type.text"/>
         <text value="text:"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="string"/>
+      </extension>
+      <linkId value="RegulatedAuthorization.description"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="General textual supporting information."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="RegulatedAuthorization.description.value"/>
+        <text value="General textual supporting information"/>
         <type value="string"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -375,8 +432,8 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="CodeableConcept"/>
       </extension>
-      <linkId value="RegulatedAuthorization.jurisdiction"/>
-      <text value="Jurisdiction within a country"/>
+      <linkId value="RegulatedAuthorization.region"/>
+      <text value="The region (country, jurisdiction etc.) in which the marketing authorization has been granted"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -390,18 +447,18 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Jurisdiction within a country."/>
+        <text value="The region (country, jurisdiction etc.) in which the marketing authorization has been granted."/>
         <type value="display"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.jurisdiction.coding"/>
+        <linkId value="RegulatedAuthorization.region.coding"/>
         <text value="code:"/>
         <type value="open-choice"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.jurisdiction.text"/>
+        <linkId value="RegulatedAuthorization.region.text"/>
         <text value="text:"/>
         <type value="string"/>
         <required value="false"/>
@@ -485,38 +542,6 @@
         <valueInteger value="1"/>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="datetime"/>
-      </extension>
-      <linkId value="RegulatedAuthorization.restoreDate"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="RegulatedAuthorization.restoreDate.value"/>
-        <text value="The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="Period"/>
       </extension>
       <linkId value="RegulatedAuthorization.validityPeriod"/>
@@ -553,118 +578,11 @@
       </item>
     </item>
     <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="Period"/>
-      </extension>
-      <linkId value="RegulatedAuthorization.dataExclusivityPeriod"/>
-      <text value="A period of time after authorization before generic product applicatiosn can be submitted"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="A period of time after authorization before generic product applicatiosn can be submitted."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="RegulatedAuthorization.dataExclusivityPeriod.low"/>
-        <text value="start:"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-      <item>
-        <linkId value="RegulatedAuthorization.dataExclusivityPeriod.end"/>
-        <text value="end:"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="datetime"/>
-      </extension>
-      <linkId value="RegulatedAuthorization.dateOfFirstAuthorization"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="The date when the first authorization was granted by a Medicines Regulatory Agency."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="RegulatedAuthorization.dateOfFirstAuthorization.value"/>
-        <text value="The date when the first authorization was granted by a Medicines Regulatory Agency"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-        <valueString value="datetime"/>
-      </extension>
-      <linkId value="RegulatedAuthorization.internationalBirthDate"/>
-      <type value="group"/>
-      <required value="false"/>
-      <repeats value="true"/>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-              <code value="flyover"/>
-              <display value="Fly-over"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <text value="Date of first marketing authorization for a company&#39;s new medicinal product in any country in the World."/>
-        <type value="display"/>
-      </item>
-      <item>
-        <linkId value="RegulatedAuthorization.internationalBirthDate.value"/>
-        <text value="Date of first marketing authorization for a company&#39;s new medicinal product in any country in the World"/>
-        <type value="dateTime"/>
-        <required value="false"/>
-        <repeats value="false"/>
-      </item>
-    </item>
-    <item>
-      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-        <valueInteger value="1"/>
-      </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
         <valueString value="CodeableConcept"/>
       </extension>
-      <linkId value="RegulatedAuthorization.legalBasis"/>
-      <text value="The legal framework against which this authorization is granted"/>
+      <linkId value="RegulatedAuthorization.basis"/>
+      <text value="The legal framework against which this authorization is granted, or other reasons for it"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -678,18 +596,18 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The legal framework against which this authorization is granted."/>
+        <text value="The legal framework against which this authorization is granted, or other reasons for it."/>
         <type value="display"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.legalBasis.coding"/>
+        <linkId value="RegulatedAuthorization.basis.coding"/>
         <text value="code:"/>
         <type value="open-choice"/>
         <required value="false"/>
         <repeats value="false"/>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.legalBasis.text"/>
+        <linkId value="RegulatedAuthorization.basis.text"/>
         <text value="text:"/>
         <type value="string"/>
         <required value="false"/>
@@ -697,8 +615,8 @@
       </item>
     </item>
     <item>
-      <linkId value="RegulatedAuthorization.jurisdictionalAuthorization"/>
-      <text value="Authorization in areas within a country"/>
+      <linkId value="RegulatedAuthorization.relatedDate"/>
+      <text value="Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -712,7 +630,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Authorization in areas within a country."/>
+        <text value="Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on."/>
         <type value="display"/>
       </item>
       <item>
@@ -722,7 +640,7 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="string"/>
         </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.id"/>
+        <linkId value="RegulatedAuthorization.relatedDate.id"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -740,7 +658,7 @@
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.id.value"/>
+          <linkId value="RegulatedAuthorization.relatedDate.id.value"/>
           <text value="Unique id for inter-element referencing"/>
           <type value="string"/>
           <required value="false"/>
@@ -748,7 +666,7 @@
         </item>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.extension"/>
+        <linkId value="RegulatedAuthorization.relatedDate.extension"/>
         <text value="Additional content defined by implementations"/>
         <type value="group"/>
         <required value="false"/>
@@ -768,7 +686,7 @@
         </item>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension"/>
+        <linkId value="RegulatedAuthorization.relatedDate.modifierExtension"/>
         <text value="Extensions that cannot be ignored even if unrecognized"/>
         <type value="group"/>
         <required value="false"/>
@@ -788,13 +706,16 @@
         </item>
       </item>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Identifier"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+          <valueInteger value="1"/>
         </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.identifier"/>
-        <text value="The assigned number for the marketing authorization"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <linkId value="RegulatedAuthorization.relatedDate.date[x]"/>
+        <text value="Another date associated with the authorization"/>
         <type value="group"/>
-        <required value="false"/>
+        <required value="true"/>
         <repeats value="true"/>
         <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
@@ -806,42 +727,66 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The assigned number for the marketing authorization."/>
+          <text value="Another date associated with the authorization."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.identifier.label"/>
-          <text value="label:"/>
-          <type value="string"/>
+          <linkId value="RegulatedAuthorization.relatedDate.date[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.identifier.system"/>
-          <text value="system:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.identifier.value"/>
-          <text value="value:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
+          <answerValueSet value="#vs2"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Period"/>
+            </extension>
+            <linkId value="RegulatedAuthorization.relatedDate.date[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="RegulatedAuthorization.relatedDate.date[x]._null.low"/>
+              <text value="start:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="RegulatedAuthorization.relatedDate.date[x]._null.end"/>
+              <text value="end:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="datetime"/>
+            </extension>
+            <linkId value="RegulatedAuthorization.relatedDate.date[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="RegulatedAuthorization.relatedDate.date[x]._null.value"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
       <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+          <valueInteger value="1"/>
+        </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="CodeableConcept"/>
         </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.country"/>
-        <text value="Country of authorization"/>
+        <linkId value="RegulatedAuthorization.relatedDate.type"/>
+        <text value="Type of this date, for example the data exclusitity period for a medicinal product"/>
         <type value="group"/>
-        <required value="false"/>
+        <required value="true"/>
         <repeats value="true"/>
         <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
@@ -853,140 +798,58 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Country of authorization."/>
+          <text value="Type of this date, for example the data exclusitity period for a medicinal product."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.country.coding"/>
+          <linkId value="RegulatedAuthorization.relatedDate.type.coding"/>
           <text value="code:"/>
           <type value="open-choice"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.country.text"/>
+          <linkId value="RegulatedAuthorization.relatedDate.type.text"/>
           <text value="text:"/>
           <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
       </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="Reference"/>
+      </extension>
+      <linkId value="RegulatedAuthorization.jurisdictionalAuthorization"/>
+      <type value="group"/>
+      <required value="false"/>
+      <repeats value="true"/>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="CodeableConcept"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
         </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction"/>
-        <text value="Jurisdiction within a country"/>
-        <type value="group"/>
-        <required value="false"/>
-        <repeats value="true"/>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-            <valueCodeableConcept>
-              <coding>
-                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-                <code value="flyover"/>
-                <display value="Fly-over"/>
-              </coding>
-            </valueCodeableConcept>
-          </extension>
-          <text value="Jurisdiction within a country."/>
-          <type value="display"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction.coding"/>
-          <text value="code:"/>
-          <type value="open-choice"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction.text"/>
-          <text value="text:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
+        <text value="Authorization in areas within a country."/>
+        <type value="display"/>
       </item>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-          <valueInteger value="1"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+          <valueCode value="RegulatedAuthorization"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="CodeableConcept"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+          <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply"/>
-        <text value="The legal status of supply in a jurisdiction or region"/>
-        <type value="group"/>
+        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.value"/>
+        <text value="Authorization in areas within a country"/>
+        <type value="reference"/>
         <required value="false"/>
-        <repeats value="true"/>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-            <valueCodeableConcept>
-              <coding>
-                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-                <code value="flyover"/>
-                <display value="Fly-over"/>
-              </coding>
-            </valueCodeableConcept>
-          </extension>
-          <text value="The legal status of supply in a jurisdiction or region."/>
-          <type value="display"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply.coding"/>
-          <text value="code:"/>
-          <type value="open-choice"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply.text"/>
-          <text value="text:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-      </item>
-      <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
-          <valueInteger value="1"/>
-        </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Period"/>
-        </extension>
-        <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod"/>
-        <text value="The start and expected end date of the authorization"/>
-        <type value="group"/>
-        <required value="false"/>
-        <repeats value="true"/>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
-            <valueCodeableConcept>
-              <coding>
-                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
-                <code value="flyover"/>
-                <display value="Fly-over"/>
-              </coding>
-            </valueCodeableConcept>
-          </extension>
-          <text value="The start and expected end date of the authorization."/>
-          <type value="display"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod.low"/>
-          <text value="start:"/>
-          <type value="dateTime"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod.end"/>
-          <text value="end:"/>
-          <type value="dateTime"/>
-          <required value="false"/>
-          <repeats value="false"/>
-        </item>
+        <repeats value="false"/>
       </item>
     </item>
     <item>
@@ -1069,8 +932,8 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
         <valueInteger value="1"/>
       </extension>
-      <linkId value="RegulatedAuthorization.procedure"/>
-      <text value="The regulatory procedure for granting or amending a marketing authorization"/>
+      <linkId value="RegulatedAuthorization.case"/>
+      <text value="The case or regulatory procedure for granting or amending a marketing authorization"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="false"/>
@@ -1084,7 +947,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The regulatory procedure for granting or amending a marketing authorization."/>
+        <text value="The case or regulatory procedure for granting or amending a marketing authorization."/>
         <type value="display"/>
       </item>
       <item>
@@ -1094,7 +957,7 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="string"/>
         </extension>
-        <linkId value="RegulatedAuthorization.procedure.id"/>
+        <linkId value="RegulatedAuthorization.case.id"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1112,7 +975,7 @@
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.id.value"/>
+          <linkId value="RegulatedAuthorization.case.id.value"/>
           <text value="Unique id for inter-element referencing"/>
           <type value="string"/>
           <required value="false"/>
@@ -1120,7 +983,7 @@
         </item>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.procedure.extension"/>
+        <linkId value="RegulatedAuthorization.case.extension"/>
         <text value="Additional content defined by implementations"/>
         <type value="group"/>
         <required value="false"/>
@@ -1140,7 +1003,7 @@
         </item>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.procedure.modifierExtension"/>
+        <linkId value="RegulatedAuthorization.case.modifierExtension"/>
         <text value="Extensions that cannot be ignored even if unrecognized"/>
         <type value="group"/>
         <required value="false"/>
@@ -1166,8 +1029,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="Identifier"/>
         </extension>
-        <linkId value="RegulatedAuthorization.procedure.identifier"/>
-        <text value="Identifier for this procedure"/>
+        <linkId value="RegulatedAuthorization.case.identifier"/>
+        <text value="Identifier for this case"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1181,25 +1044,25 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Identifier for this procedure."/>
+          <text value="Identifier for this case."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.identifier.label"/>
+          <linkId value="RegulatedAuthorization.case.identifier.label"/>
           <text value="label:"/>
           <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.identifier.system"/>
+          <linkId value="RegulatedAuthorization.case.identifier.system"/>
           <text value="system:"/>
           <type value="string"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.identifier.value"/>
+          <linkId value="RegulatedAuthorization.case.identifier.value"/>
           <text value="value:"/>
           <type value="string"/>
           <required value="false"/>
@@ -1207,19 +1070,16 @@
         </item>
       </item>
       <item>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
-          <valueInteger value="1"/>
-        </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="CodeableConcept"/>
         </extension>
-        <linkId value="RegulatedAuthorization.procedure.type"/>
-        <text value="Type of procedure"/>
+        <linkId value="RegulatedAuthorization.case.type"/>
+        <text value="Type of case"/>
         <type value="group"/>
-        <required value="true"/>
+        <required value="false"/>
         <repeats value="true"/>
         <item>
           <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
@@ -1231,18 +1091,18 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Type of procedure."/>
+          <text value="Type of case."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.type.coding"/>
+          <linkId value="RegulatedAuthorization.case.type.coding"/>
           <text value="code:"/>
           <type value="open-choice"/>
           <required value="false"/>
           <repeats value="false"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.type.text"/>
+          <linkId value="RegulatedAuthorization.case.type.text"/>
           <text value="text:"/>
           <type value="string"/>
           <required value="false"/>
@@ -1253,8 +1113,11 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <linkId value="RegulatedAuthorization.procedure.date[x]"/>
-        <text value="Date of procedure"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="CodeableConcept"/>
+        </extension>
+        <linkId value="RegulatedAuthorization.case.status"/>
+        <text value="The status of the case"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1268,31 +1131,68 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Date of procedure."/>
+          <text value="The status of the case."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="RegulatedAuthorization.procedure.date[x]._type"/>
+          <linkId value="RegulatedAuthorization.case.status.coding"/>
+          <text value="code:"/>
+          <type value="open-choice"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+        <item>
+          <linkId value="RegulatedAuthorization.case.status.text"/>
+          <text value="text:"/>
+          <type value="string"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
+        <linkId value="RegulatedAuthorization.case.date[x]"/>
+        <text value="Date of case"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="Date of case."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <linkId value="RegulatedAuthorization.case.date[x]._type"/>
           <text value="type"/>
           <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-          <answerValueSet value="#vs2"/>
+          <answerValueSet value="#vs3"/>
           <item>
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
               <valueString value="Period"/>
             </extension>
-            <linkId value="RegulatedAuthorization.procedure.date[x]._null"/>
+            <linkId value="RegulatedAuthorization.case.date[x]._null"/>
             <type value="group"/>
             <item>
-              <linkId value="RegulatedAuthorization.procedure.date[x]._null.low"/>
+              <linkId value="RegulatedAuthorization.case.date[x]._null.low"/>
               <text value="start:"/>
               <type value="dateTime"/>
               <required value="false"/>
               <repeats value="false"/>
             </item>
             <item>
-              <linkId value="RegulatedAuthorization.procedure.date[x]._null.end"/>
+              <linkId value="RegulatedAuthorization.case.date[x]._null.end"/>
               <text value="end:"/>
               <type value="dateTime"/>
               <required value="false"/>
@@ -1303,10 +1203,10 @@
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
               <valueString value="datetime"/>
             </extension>
-            <linkId value="RegulatedAuthorization.procedure.date[x]._null"/>
+            <linkId value="RegulatedAuthorization.case.date[x]._null"/>
             <type value="group"/>
             <item>
-              <linkId value="RegulatedAuthorization.procedure.date[x]._null.value"/>
+              <linkId value="RegulatedAuthorization.case.date[x]._null.value"/>
               <type value="dateTime"/>
               <required value="false"/>
               <repeats value="false"/>
@@ -1315,8 +1215,8 @@
         </item>
       </item>
       <item>
-        <linkId value="RegulatedAuthorization.procedure.application"/>
-        <text value="Applcations submitted to obtain a marketing authorization"/>
+        <linkId value="RegulatedAuthorization.case.application"/>
+        <text value="Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -1330,7 +1230,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Applcations submitted to obtain a marketing authorization."/>
+          <text value="Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure."/>
           <type value="display"/>
         </item>
       </item>

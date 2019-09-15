@@ -10,7 +10,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
 <VerificationResult> CLOSED {
     a [fhir:VerificationResult];
     fhir:nodeRole [fhir:treeRoot]?;
-    fhir:Resource.id @<id>?;                # Logical id of this artifact
+    fhir:Resource.id @<string>?;            # Logical id of this artifact
     fhir:Resource.meta @<Meta>?;            # Metadata about the resource
     fhir:Resource.implicitRules @<uri>?;    # A set of rules under which this 
                                             # content was created 
@@ -50,22 +50,6 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # attesting to information 
     fhir:VerificationResult.validator @<VerificationResult.validator>*;  # Information about the entity 
                                             # validating information 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Information about the entity validating information
-<VerificationResult.validator> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
-                                            # even if unrecognized 
-    fhir:VerificationResult.validator.organization @<Reference>;  # Reference to the organization 
-                                            # validating information 
-    fhir:VerificationResult.validator.identityCertificate @<string>?;  # A digital identity certificate 
-                                            # associated with the validator 
-    fhir:VerificationResult.validator.attestationSignature @<Signature>?;  # Validator signature
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -125,6 +109,22 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Information about the entity validating information
+<VerificationResult.validator> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:BackboneElement.modifierExtension @<Extension>*;  # Extensions that cannot be ignored 
+                                            # even if unrecognized 
+    fhir:VerificationResult.validator.organization @<Reference>;  # Reference to the organization 
+                                            # validating information 
+    fhir:VerificationResult.validator.identityCertificate @<string>?;  # A digital identity certificate 
+                                            # associated with the validator 
+    fhir:VerificationResult.validator.attestationSignature @<Signature>?;  # Validator signature
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 #---------------------- Data Types -------------------
 
 # Primitive Type dateTime
@@ -132,7 +132,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:gYear OR xsd:gYearMonth OR xsd:date OR xsd:dateTime?;  # Primitive value for dateTime
+    fhir:value @<dateTime>?;                # Primitive value for dateTime
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -141,7 +141,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:gYear OR xsd:gYearMonth OR xsd:date?;  # Primitive value for date
+    fhir:value @<date>?;                    # Primitive value for date
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -169,7 +169,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for code
+    fhir:value @<string>?;                  # Primitive value for code
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -178,7 +178,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string MAXLENGTH 1048576?;  # Primitive value for string
+    fhir:value @<string>?;                  # Primitive value for string
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -201,7 +201,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
 
 # Base Resource
 <Resource> {a .+;
-    fhir:Resource.id @<id>?;                # Logical id of this artifact
+    fhir:Resource.id @<string>?;            # Logical id of this artifact
     fhir:Resource.meta @<Meta>?;            # Metadata about the resource
     fhir:Resource.implicitRules @<uri>?;    # A set of rules under which this 
                                             # content was created 
@@ -214,7 +214,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for uri
+    fhir:value @<uri>?;                     # Primitive value for uri
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -222,7 +222,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
 <Extension> CLOSED {
     fhir:Element.id @<string>?; 
     fhir:Element.extension @<Extension>*; 
-    fhir:Extension.url xsd:string; 
+    fhir:Extension.url @<url>; 
     ( 
         fhir:Extension.valueBase64Binary @<base64Binary>  |
         fhir:Extension.valueBoolean @<boolean>  |
@@ -272,7 +272,8 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
         fhir:Extension.valueRelatedArtifact @<RelatedArtifact>  |
         fhir:Extension.valueTriggerDefinition @<TriggerDefinition>  |
         fhir:Extension.valueUsageContext @<UsageContext>  |
-        fhir:Extension.valueDosage @<Dosage> 
+        fhir:Extension.valueDosage @<Dosage>  |
+        fhir:Extension.valueMeta @<Meta> 
     )?;
     fhir:index xsd:integer?                 # Relative position in a list
 }
@@ -309,15 +310,6 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # signature 
     fhir:Signature.data @<base64Binary>?;   # The actual signature content (XML 
                                             # DigSig. JWS, picture, etc.) 
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# Primitive Type id
-<id> CLOSED {
-    fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:value xsd:string?;                 # Primitive value for id
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -395,6 +387,13 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Attachment.title @<string>?;       # Label to display in place of the 
                                             # data 
     fhir:Attachment.creation @<dateTime>?;  # Date attachment was first created
+    fhir:Attachment.height @<positiveInt>?;  # Height of the image in pixels 
+                                            # (photo/video) 
+    fhir:Attachment.width @<positiveInt>?;  # Width of the image in pixels 
+                                            # (photo/video) 
+    fhir:Attachment.frames @<positiveInt>?;  # Number of frames if > 1 (photo)
+    fhir:Attachment.duration @<decimal>?;   # Length in seconds (audio / video)
+    fhir:Attachment.pages @<positiveInt>?;  # Number of printed pages
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -403,7 +402,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:integer MININCLUSIVE -2147483648 MAXINCLUSIVE 2147483647?;  # Primitive value for integer
+    fhir:value @<integer>?;                 # Primitive value for integer
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -492,7 +491,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for uuid
+    fhir:value @<string>?;                  # Primitive value for uuid
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -554,12 +553,21 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# Primitive Type id
+<id> CLOSED {
+    fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:value @<string>?;                  # Primitive value for id
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 # Primitive Type positiveInt
 <positiveInt> CLOSED {
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:positiveInteger?;        # Primitive value for positiveInt
+    fhir:value @<string>?;                  # Primitive value for positiveInt
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -615,7 +623,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for canonical
+    fhir:value @<string>?;                  # Primitive value for canonical
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -657,7 +665,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:base64Binary?;           # Primitive value for base64Binary
+    fhir:value @<base64Binary>?;            # Primitive value for base64Binary
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -682,7 +690,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:decimal OR xsd:double?;  # Primitive value for decimal
+    fhir:value @<decimal>?;                 # Primitive value for decimal
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -726,7 +734,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for oid
+    fhir:value @<string>?;                  # Primitive value for oid
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -735,7 +743,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:dateTime?;               # Primitive value for instant
+    fhir:value @<instant>?;                 # Primitive value for instant
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -798,7 +806,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for markdown
+    fhir:value @<string>?;                  # Primitive value for markdown
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -878,7 +886,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:string?;                 # Primitive value for url
+    fhir:value @<string>?;                  # Primitive value for url
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -916,7 +924,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:boolean?;                # Primitive value for boolean
+    fhir:value @<boolean>?;                 # Primitive value for boolean
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -942,7 +950,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:nonNegativeInteger?;     # Primitive value for unsignedInt
+    fhir:value @<string>?;                  # Primitive value for unsignedInt
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -951,7 +959,7 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:Element.id @<string>?;             # xml:id (or equivalent in JSON)
     fhir:Element.extension @<Extension>*;   # Additional content defined by 
                                             # implementations 
-    fhir:value xsd:time?;                   # Primitive value for time
+    fhir:value @<time>?;                    # Primitive value for time
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1001,26 +1009,6 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
                                             # search on 
     fhir:DataRequirement.codeFilter.valueSet @<canonical>?;  # Valueset for the filter
     fhir:DataRequirement.codeFilter.code @<Coding>*;  # What code is expected
-    fhir:index xsd:integer?                 # Relative position in a list
-}
-
-# What dates/date ranges are expected
-<DataRequirement.dateFilter> CLOSED {
-    fhir:Element.id @<string>?;             # Unique id for inter-element 
-                                            # referencing 
-    fhir:Element.extension @<Extension>*;   # Additional content defined by 
-                                            # implementations 
-    fhir:DataRequirement.dateFilter.path @<string>?;  # A date-valued attribute to filter 
-                                            # on 
-    fhir:DataRequirement.dateFilter.searchParam @<string>?;  # A date valued parameter to search 
-                                            # on 
-    (                                       # The value of the filter, as a 
-                                            # Period, DateTime, or Duration 
-                                            # value 
-        fhir:DataRequirement.dateFilter.valueDateTime @<dateTime>  |
-        fhir:DataRequirement.dateFilter.valuePeriod @<Period>  |
-        fhir:DataRequirement.dateFilter.valueDuration @<Duration> 
-    )?;
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
@@ -1077,45 +1065,38 @@ start=@<VerificationResult> AND {fhir:nodeRole [fhir:treeRoot]}
     fhir:index xsd:integer?                 # Relative position in a list
 }
 
+# What dates/date ranges are expected
+<DataRequirement.dateFilter> CLOSED {
+    fhir:Element.id @<string>?;             # Unique id for inter-element 
+                                            # referencing 
+    fhir:Element.extension @<Extension>*;   # Additional content defined by 
+                                            # implementations 
+    fhir:DataRequirement.dateFilter.path @<string>?;  # A date-valued attribute to filter 
+                                            # on 
+    fhir:DataRequirement.dateFilter.searchParam @<string>?;  # A date valued parameter to search 
+                                            # on 
+    (                                       # The value of the filter, as a 
+                                            # Period, DateTime, or Duration 
+                                            # value 
+        fhir:DataRequirement.dateFilter.valueDateTime @<dateTime>  |
+        fhir:DataRequirement.dateFilter.valuePeriod @<Period>  |
+        fhir:DataRequirement.dateFilter.valueDuration @<Duration> 
+    )?;
+    fhir:index xsd:integer?                 # Relative position in a list
+}
+
 #---------------------- Reference Types -------------------
 
 #---------------------- Value Sets ------------------------
 
+# Whether an operation parameter is an input or an output parameter.
+fhirvs:operation-parameter-use ["in" "out"]
+
 # The type of an address (physical / postal).
 fhirvs:address-type ["postal" "physical" "both"]
 
-# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
-fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
-
-# Use of contact point.
-fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
-
-# The type of contributor.
-fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]
-
-# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
-fhirvs:mimetypes EXTERNAL
-
 # A unit of time (units from UCUM).
 fhirvs:units-of-time ["s" "min" "h" "d" "wk" "mo" "a"]
-
-# Telecommunications form for contact point.
-fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
-
-# The days of the week.
-fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
-
-# Identifies the purpose for this identifier, if known .
-fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
-
-# The type of trigger.
-fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
-
-# The use of an address.
-fhirvs:address-use ["home" "work" "temp" "old" "billing"]
-
-# The validation status of the target
-fhirvs:verificationresult-status ["attested" "validated" "in-process" "req-revalid" "val-fail" "reval-fail"]
 
 # The status of a resource narrative.
 fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
@@ -1123,20 +1104,47 @@ fhirvs:narrative-status ["generated" "extensions" "additional" "empty"]
 # How the Quantity should be understood and represented.
 fhirvs:quantity-comparator ["<" "<=" ">=" ">"]
 
-# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
-fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "Evidence" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "Measure" "MeasureReport" "Media" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAdministrableProduct" "RegulatedAuthorization" "RegulatedManufacturedItem" "RegulatedMedicinalProduct" "RegulatedPackagedProduct" "RelatedPerson" "RequestGroup" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
+# Identifies the purpose for this identifier, if known .
+fhirvs:identifier-use ["usual" "official" "temp" "secondary" "old"]
 
-# The type of relationship to the related artifact.
-fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
+# Real world event relating to the schedule.
+fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
 
-# The possible sort directions, ascending or descending.
-fhirvs:sort-direction ["ascending" "descending"]
+# This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)
+fhirvs:mimetypes EXTERNAL
+
+# Telecommunications form for contact point.
+fhirvs:contact-point-system ["phone" "fax" "email" "pager" "url" "sms" "other"]
+
+# Use of contact point.
+fhirvs:contact-point-use ["home" "work" "temp" "old" "mobile"]
+
+# The use of an address.
+fhirvs:address-use ["home" "work" "temp" "old" "billing"]
+
+# Currency codes from ISO 4217 (see https://www.iso.org/iso-4217-currency-codes.html)
+fhirvs:currencies ["AED" "AFN" "ALL" "AMD" "ANG" "AOA" "ARS" "AUD" "AWG" "AZN" "BAM" "BBD" "BDT" "BGN" "BHD" "BIF" "BMD" "BND" "BOB" "BOV" "BRL" "BSD" "BTN" "BWP" "BYN" "BZD" "CAD" "CDF" "CHE" "CHF" "CHW" "CLF" "CLP" "CNY" "COP" "COU" "CRC" "CUC" "CUP" "CVE" "CZK" "DJF" "DKK" "DOP" "DZD" "EGP" "ERN" "ETB" "EUR" "FJD" "FKP" "GBP" "GEL" "GGP" "GHS" "GIP" "GMD" "GNF" "GTQ" "GYD" "HKD" "HNL" "HRK" "HTG" "HUF" "IDR" "ILS" "IMP" "INR" "IQD" "IRR" "ISK" "JEP" "JMD" "JOD" "JPY" "KES" "KGS" "KHR" "KMF" "KPW" "KRW" "KWD" "KYD" "KZT" "LAK" "LBP" "LKR" "LRD" "LSL" "LYD" "MAD" "MDL" "MGA" "MKD" "MMK" "MNT" "MOP" "MRU" "MUR" "MVR" "MWK" "MXN" "MXV" "MYR" "MZN" "NAD" "NGN" "NIO" "NOK" "NPR" "NZD" "OMR" "PAB" "PEN" "PGK" "PHP" "PKR" "PLN" "PYG" "QAR" "RON" "RSD" "RUB" "RWF" "SAR" "SBD" "SCR" "SDG" "SEK" "SGD" "SHP" "SLL" "SOS" "SRD" "SSP" "STN" "SVC" "SYP" "SZL" "THB" "TJS" "TMT" "TND" "TOP" "TRY" "TTD" "TVD" "TWD" "TZS" "UAH" "UGX" "USD" "USN" "UYI" "UYU" "UZS" "VEF" "VND" "VUV" "WST" "XAF" "XAG" "XAU" "XBA" "XBB" "XBC" "XBD" "XCD" "XDR" "XOF" "XPD" "XPF" "XPT" "XSU" "XTS" "XUA" "XXX" "YER" "ZAR" "ZMW" "ZWL"]
+
+# The type of trigger.
+fhirvs:trigger-type ["named-event" "periodic" "data-changed" "data-added" "data-modified" "data-removed" "data-accessed" "data-access-ended"]
 
 # The use of a human name.
 fhirvs:name-use ["usual" "official" "temp" "nickname" "anonymous" "old" "maiden"]
 
-# Whether an operation parameter is an input or an output parameter.
-fhirvs:operation-parameter-use ["in" "out"]
+# The days of the week.
+fhirvs:days-of-week ["mon" "tue" "wed" "thu" "fri" "sat" "sun"]
 
-# Real world event relating to the schedule.
-fhirvs:event-timing ["MORN" "MORN.early" "MORN.late" "NOON" "AFT" "AFT.early" "AFT.late" "EVE" "EVE.early" "EVE.late" "NIGHT" "PHS" "HS" "WAKE" "C" "CM" "CD" "CV" "AC" "ACM" "ACD" "ACV" "PC" "PCM" "PCD" "PCV"]
+# A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.
+fhirvs:all-types ["Address" "Age" "Annotation" "Attachment" "BackboneElement" "CodeableConcept" "Coding" "ContactDetail" "ContactPoint" "Contributor" "Count" "DataRequirement" "Distance" "Dosage" "Duration" "Element" "ElementDefinition" "Expression" "Extension" "HumanName" "Identifier" "MarketingStatus" "Meta" "Money" "MoneyQuantity" "Narrative" "OrderedDistribution" "ParameterDefinition" "Period" "Population" "ProdCharacteristic" "ProductShelfLife" "Quantity" "Range" "Ratio" "Reference" "RelatedArtifact" "SampledData" "Signature" "SimpleQuantity" "Statistic" "SubstanceAmount" "Timing" "TriggerDefinition" "UsageContext" "base64Binary" "boolean" "canonical" "code" "date" "dateTime" "decimal" "id" "instant" "integer" "markdown" "oid" "positiveInt" "string" "time" "unsignedInt" "uri" "url" "uuid" "xhtml" "Account" "ActivityDefinition" "AdministrableProductDefinition" "AdverseEvent" "AllergyIntolerance" "Appointment" "AppointmentResponse" "AuditEvent" "Basic" "Binary" "BiologicallyDerivedProduct" "BodyStructure" "Bundle" "CapabilityStatement" "CapabilityStatement2" "CarePlan" "CareTeam" "CatalogEntry" "ChargeItem" "ChargeItemDefinition" "Claim" "ClaimResponse" "ClinicalImpression" "ClinicalUseIssue" "CodeSystem" "Communication" "CommunicationRequest" "CompartmentDefinition" "Composition" "ConceptMap" "Condition" "ConditionDefinition" "Consent" "Contract" "Coverage" "CoverageEligibilityRequest" "CoverageEligibilityResponse" "DetectedIssue" "Device" "DeviceDefinition" "DeviceMetric" "DeviceRequest" "DeviceUseStatement" "DiagnosticReport" "DocumentManifest" "DocumentReference" "DomainResource" "Encounter" "Endpoint" "EnrollmentRequest" "EnrollmentResponse" "EpisodeOfCare" "EventDefinition" "Evidence" "EvidenceVariable" "ExampleScenario" "ExplanationOfBenefit" "FamilyMemberHistory" "Flag" "Goal" "GraphDefinition" "Group" "GuidanceResponse" "HealthcareService" "ImagingStudy" "Immunization" "ImmunizationEvaluation" "ImmunizationRecommendation" "ImplementationGuide" "Ingredient" "InsurancePlan" "Invoice" "Library" "Linkage" "List" "Location" "ManufacturedItemDefinition" "Measure" "MeasureReport" "Medication" "MedicationAdministration" "MedicationDispense" "MedicationKnowledge" "MedicationRequest" "MedicationUsage" "MedicinalProductDefinition" "MessageDefinition" "MessageHeader" "MolecularSequence" "NamingSystem" "NutritionIntake" "NutritionOrder" "Observation" "ObservationDefinition" "OperationDefinition" "OperationOutcome" "Organization" "OrganizationAffiliation" "PackagedProductDefinition" "Parameters" "Patient" "PaymentNotice" "PaymentReconciliation" "Person" "PlanDefinition" "Practitioner" "PractitionerRole" "Procedure" "Provenance" "Questionnaire" "QuestionnaireResponse" "RegulatedAuthorization" "RelatedPerson" "RequestGroup" "ResearchStudy" "ResearchSubject" "Resource" "RiskAssessment" "Schedule" "SearchParameter" "ServiceRequest" "Slot" "Specimen" "SpecimenDefinition" "StructureDefinition" "StructureMap" "Subscription" "Substance" "SubstanceDefinition" "SubstanceNucleicAcid" "SubstancePolymer" "SubstanceProtein" "SubstanceReferenceInformation" "SubstanceSourceMaterial" "SupplyDelivery" "SupplyRequest" "Task" "TerminologyCapabilities" "TestReport" "TestScript" "Topic" "ValueSet" "VerificationResult" "VisionPrescription" "Type" "Any"]
+
+# The validation status of the target
+fhirvs:verificationresult-status ["attested" "validated" "in-process" "req-revalid" "val-fail" "reval-fail"]
+
+# The possible sort directions, ascending or descending.
+fhirvs:sort-direction ["ascending" "descending"]
+
+# The type of relationship to the related artifact.
+fhirvs:related-artifact-type ["documentation" "justification" "citation" "predecessor" "successor" "derived-from" "depends-on" "composed-of"]
+
+# The type of contributor.
+fhirvs:contributor-type ["author" "editor" "reviewer" "endorser"]

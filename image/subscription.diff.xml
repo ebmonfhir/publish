@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <difference>
    <type name="Subscription" status="changed">
+      <element path="Subscription.identifier" status="new"/>
+      <element path="Subscription.name" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="Subscription.status">
@@ -9,21 +11,36 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-status|4.1.0"
                       strength="required"/>
       </element>
+      <element path="Subscription.topic" status="new"/>
+      <element path="Subscription.filterBy" status="new"/>
+      <element path="Subscription.filterBy.name" status="new"/>
+      <element path="Subscription.filterBy.matchType" status="new"/>
+      <element path="Subscription.filterBy.value" status="new"/>
+      <element new-max="*" old-max="1" path="Subscription.error">
+         <removed-type name="string"/>
+         <added-type name="CodeableConcept"/>
+      </element>
+      <element path="Subscription.eventCount" status="new"/>
       <element binding-status="changed"
+               binding-strength-changed="true"
                binding-valueset-changed="true"
                path="Subscription.channel.type">
+         <removed-type name="code"/>
+         <added-type name="CodeableConcept"/>
          <old-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type|4.0.0"
                       strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type|4.1.0"
-                      strength="required"/>
+         <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type"
+                      strength="extensible"/>
       </element>
-      <element binding-status="changed"
-               binding-valueset-changed="true"
-               path="Subscription.channel.payload">
+      <element path="Subscription.channel.heartbeatPeriod" status="new"/>
+      <element binding-status="removed" path="Subscription.channel.payload">
+         <removed-type name="code"/>
+         <added-type name="BackboneElement"/>
          <old-binding reference="http://hl7.org/fhir/ValueSet/mimetypes|4.0.0"
                       strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/mimetypes|4.1.0"
-                      strength="required"/>
       </element>
+      <element path="Subscription.channel.payload.contentType" status="new"/>
+      <element path="Subscription.channel.payload.content" status="new"/>
+      <element path="Subscription.criteria" status="deleted"/>
    </type>
 </difference>

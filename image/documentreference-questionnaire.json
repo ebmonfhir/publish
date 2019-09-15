@@ -6,8 +6,8 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
-  "publisher" : "Health Level Seven International (Structured Documents)",
+  "date" : "2019-09-15T10:41:41-04:00",
+  "publisher" : "Health Level Seven International (Orders and Observations)",
   "item" : [{
     "linkId" : "DocumentReference",
     "text" : "A reference to a document",
@@ -29,7 +29,7 @@
           }]
         }
       }],
-      "text" : "A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.",
+      "text" : "A reference to a document of any kind for any purpose. While the term “document” implies a more narrow focus, for this resource this \"document\" encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference.",
       "type" : "display"
     },
     {
@@ -1526,6 +1526,45 @@
           }],
           "linkId" : "DocumentReference.context.related.value",
           "text" : "Related identifiers or resources",
+          "type" : "reference",
+          "required" : false,
+          "repeats" : false
+        }]
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+          "valueString" : "Reference"
+        }],
+        "linkId" : "DocumentReference.context.basedOn",
+        "type" : "group",
+        "required" : false,
+        "repeats" : true,
+        "item" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+            "valueCodeableConcept" : {
+              "coding" : [{
+                "system" : "http://hl7.org/fhir/questionnaire-item-control",
+                "code" : "flyover",
+                "display" : "Fly-over"
+              }]
+            }
+          }],
+          "text" : "A procedure that is fulfilled in whole or in part by the creation of this media.",
+          "type" : "display"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+            "valueCode" : "ServiceRequest, CarePlan"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+            "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+          }],
+          "linkId" : "DocumentReference.context.basedOn.value",
+          "text" : "Procedure that caused this media to be created",
           "type" : "reference",
           "required" : false,
           "repeats" : false

@@ -126,8 +126,8 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for ClinicalUseIssue.contraindication.otherTherapy.medication[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:442d95e2-815a-4bfa-8e38-52f93f559e9d&quot;,
-      &quot;timestamp&quot; : &quot;2019-08-09T09:44:25-04:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:ae3d5113-6e98-4d2a-8f7b-5c029148a55a&quot;,
+      &quot;timestamp&quot; : &quot;2019-09-15T10:44:29-04:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/data-types&quot;,
         &quot;code&quot; : &quot;CodeableConcept&quot;,
@@ -135,8 +135,8 @@
       },
       {
         &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
-        &quot;code&quot; : &quot;RegulatedMedicinalProduct&quot;,
-        &quot;display&quot; : &quot;RegulatedMedicinalProduct&quot;
+        &quot;code&quot; : &quot;MedicinalProductDefinition&quot;,
+        &quot;display&quot; : &quot;MedicinalProductDefinition&quot;
       },
       {
         &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
@@ -162,12 +162,12 @@
     &quot;status&quot; : &quot;active&quot;,
     &quot;description&quot; : &quot;Type options for ClinicalUseIssue.interaction.interactant.item[x]&quot;,
     &quot;expansion&quot; : {
-      &quot;identifier&quot; : &quot;urn:uuid:aa3c00d0-c4d6-4d0b-84f3-813b11bacd6a&quot;,
-      &quot;timestamp&quot; : &quot;2019-08-09T09:44:25-04:00&quot;,
+      &quot;identifier&quot; : &quot;urn:uuid:1afe944c-4401-4d05-9d6a-20bfe0f73a43&quot;,
+      &quot;timestamp&quot; : &quot;2019-09-15T10:44:29-04:00&quot;,
       &quot;contains&quot; : [{
         &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
-        &quot;code&quot; : &quot;RegulatedMedicinalProduct&quot;,
-        &quot;display&quot; : &quot;RegulatedMedicinalProduct&quot;
+        &quot;code&quot; : &quot;MedicinalProductDefinition&quot;,
+        &quot;display&quot; : &quot;MedicinalProductDefinition&quot;
       },
       {
         &quot;system&quot; : &quot;http://hl7.org/fhir/resource-types&quot;,
@@ -196,11 +196,11 @@
   }],
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Biomedical Research and Regulation)&quot;,
   &quot;item&quot; : [{
     &quot;linkId&quot; : &quot;ClinicalUseIssue&quot;,
-    &quot;text&quot; : &quot;ClinicalUseIssue&quot;,
+    &quot;text&quot; : &quot;A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product&quot;,
     &quot;type&quot; : &quot;group&quot;,
     &quot;required&quot; : false,
     &quot;repeats&quot; : true,
@@ -438,6 +438,52 @@
     },
     {
       &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+        &quot;valueString&quot; : &quot;Identifier&quot;
+      }],
+      &quot;linkId&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+      &quot;text&quot; : &quot;Business identifier for this issue&quot;,
+      &quot;type&quot; : &quot;group&quot;,
+      &quot;required&quot; : false,
+      &quot;repeats&quot; : true,
+      &quot;item&quot; : [{
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+          &quot;valueCodeableConcept&quot; : {
+            &quot;coding&quot; : [{
+              &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+              &quot;code&quot; : &quot;flyover&quot;,
+              &quot;display&quot; : &quot;Fly-over&quot;
+            }]
+          }
+        }],
+        &quot;text&quot; : &quot;Business identifier for this issue.&quot;,
+        &quot;type&quot; : &quot;display&quot;
+      },
+      {
+        &quot;linkId&quot; : &quot;ClinicalUseIssue.identifier.label&quot;,
+        &quot;text&quot; : &quot;label:&quot;,
+        &quot;type&quot; : &quot;string&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      },
+      {
+        &quot;linkId&quot; : &quot;ClinicalUseIssue.identifier.system&quot;,
+        &quot;text&quot; : &quot;system:&quot;,
+        &quot;type&quot; : &quot;string&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      },
+      {
+        &quot;linkId&quot; : &quot;ClinicalUseIssue.identifier.value&quot;,
+        &quot;text&quot; : &quot;value:&quot;,
+        &quot;type&quot; : &quot;string&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      }]
+    },
+    {
+      &quot;extension&quot; : [{
         &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs&quot;,
         &quot;valueInteger&quot; : 1
       },
@@ -501,7 +547,7 @@
       {
         &quot;extension&quot; : [{
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-          &quot;valueCode&quot; : &quot;RegulatedMedicinalProduct, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance&quot;
+          &quot;valueCode&quot; : &quot;MedicinalProductDefinition, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance&quot;
         },
         {
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
@@ -510,6 +556,49 @@
         &quot;linkId&quot; : &quot;ClinicalUseIssue.subject.value&quot;,
         &quot;text&quot; : &quot;The medication or procedure for which this is an indication&quot;,
         &quot;type&quot; : &quot;reference&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      }]
+    },
+    {
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;,
+        &quot;valueInteger&quot; : 1
+      },
+      {
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;,
+        &quot;valueString&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;linkId&quot; : &quot;ClinicalUseIssue.status&quot;,
+      &quot;text&quot; : &quot;General description&quot;,
+      &quot;type&quot; : &quot;group&quot;,
+      &quot;required&quot; : false,
+      &quot;repeats&quot; : true,
+      &quot;item&quot; : [{
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;,
+          &quot;valueCodeableConcept&quot; : {
+            &quot;coding&quot; : [{
+              &quot;system&quot; : &quot;http://hl7.org/fhir/questionnaire-item-control&quot;,
+              &quot;code&quot; : &quot;flyover&quot;,
+              &quot;display&quot; : &quot;Fly-over&quot;
+            }]
+          }
+        }],
+        &quot;text&quot; : &quot;General description.&quot;,
+        &quot;type&quot; : &quot;display&quot;
+      },
+      {
+        &quot;linkId&quot; : &quot;ClinicalUseIssue.status.coding&quot;,
+        &quot;text&quot; : &quot;code:&quot;,
+        &quot;type&quot; : &quot;open-choice&quot;,
+        &quot;required&quot; : false,
+        &quot;repeats&quot; : false
+      },
+      {
+        &quot;linkId&quot; : &quot;ClinicalUseIssue.status.text&quot;,
+        &quot;text&quot; : &quot;text:&quot;,
+        &quot;type&quot; : &quot;string&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : false
       }]
@@ -660,7 +749,7 @@
           &quot;valueString&quot; : &quot;CodeableConcept&quot;
         }],
         &quot;linkId&quot; : &quot;ClinicalUseIssue.contraindication.diseaseSymptomProcedure&quot;,
-        &quot;text&quot; : &quot;The disease, symptom or procedure for the contraindication&quot;,
+        &quot;text&quot; : &quot;The situation that is being documented as contraindicating against this item&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -675,7 +764,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The disease, symptom or procedure for the contraindication.&quot;,
+          &quot;text&quot; : &quot;The situation that is being documented as contraindicating against this item.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1025,7 +1114,7 @@
               &quot;item&quot; : [{
                 &quot;extension&quot; : [{
                   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-                  &quot;valueCode&quot; : &quot;RegulatedMedicinalProduct, Medication, Substance, SubstanceDefinition&quot;
+                  &quot;valueCode&quot; : &quot;MedicinalProductDefinition, Medication, Substance, SubstanceDefinition&quot;
                 },
                 {
                   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
@@ -1152,7 +1241,7 @@
           &quot;valueString&quot; : &quot;CodeableConcept&quot;
         }],
         &quot;linkId&quot; : &quot;ClinicalUseIssue.indication.diseaseSymptomProcedure&quot;,
-        &quot;text&quot; : &quot;The disease, symptom or procedure for the indication&quot;,
+        &quot;text&quot; : &quot;The situation that is being documented as an indicaton for this item&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -1167,7 +1256,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The disease, symptom or procedure for the indication.&quot;,
+          &quot;text&quot; : &quot;The situation that is being documented as an indicaton for this item.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -1678,7 +1767,7 @@
               &quot;item&quot; : [{
                 &quot;extension&quot; : [{
                   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;,
-                  &quot;valueCode&quot; : &quot;RegulatedMedicinalProduct, Medication, Substance, ObservationDefinition&quot;
+                  &quot;valueCode&quot; : &quot;MedicinalProductDefinition, Medication, Substance, ObservationDefinition&quot;
                 },
                 {
                   &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;,
@@ -1915,7 +2004,7 @@
         &quot;valueInteger&quot; : 1
       }],
       &quot;linkId&quot; : &quot;ClinicalUseIssue.undesirableEffect&quot;,
-      &quot;text&quot; : &quot;UndesirableEffect&quot;,
+      &quot;text&quot; : &quot;A possible negative outcome from the use of this treatment&quot;,
       &quot;type&quot; : &quot;group&quot;,
       &quot;required&quot; : false,
       &quot;repeats&quot; : false,
@@ -2020,7 +2109,7 @@
           &quot;valueString&quot; : &quot;CodeableConcept&quot;
         }],
         &quot;linkId&quot; : &quot;ClinicalUseIssue.undesirableEffect.symptomConditionEffect&quot;,
-        &quot;text&quot; : &quot;The symptom, condition or undesirable effect&quot;,
+        &quot;text&quot; : &quot;The situation in which the undesirable effect may manifest&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -2035,7 +2124,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The symptom, condition or undesirable effect.&quot;,
+          &quot;text&quot; : &quot;The situation in which the undesirable effect may manifest.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -2063,7 +2152,7 @@
           &quot;valueString&quot; : &quot;CodeableConcept&quot;
         }],
         &quot;linkId&quot; : &quot;ClinicalUseIssue.undesirableEffect.classification&quot;,
-        &quot;text&quot; : &quot;Classification of the effect&quot;,
+        &quot;text&quot; : &quot;High level classification of the effect&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -2078,7 +2167,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;Classification of the effect.&quot;,
+          &quot;text&quot; : &quot;High level classification of the effect.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -2106,7 +2195,7 @@
           &quot;valueString&quot; : &quot;CodeableConcept&quot;
         }],
         &quot;linkId&quot; : &quot;ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence&quot;,
-        &quot;text&quot; : &quot;The frequency of occurrence of the effect&quot;,
+        &quot;text&quot; : &quot;How often the effect is seen&quot;,
         &quot;type&quot; : &quot;group&quot;,
         &quot;required&quot; : false,
         &quot;repeats&quot; : true,
@@ -2121,7 +2210,7 @@
               }]
             }
           }],
-          &quot;text&quot; : &quot;The frequency of occurrence of the effect.&quot;,
+          &quot;text&quot; : &quot;How often the effect is seen.&quot;,
           &quot;type&quot; : &quot;display&quot;
         },
         {
@@ -2166,7 +2255,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2174,7 +2263,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fclinicaluseissue-questionnaire.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fclinicaluseissue-questionnaire.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fclinicaluseissue-questionnaire.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fclinicaluseissue-questionnaire.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

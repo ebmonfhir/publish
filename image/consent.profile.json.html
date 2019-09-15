@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Consent&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Consent&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Community Based Collaborative Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -164,7 +164,7 @@
       &quot;value&quot; : &quot;http://www.hl7.org/Special/committees/homehealth/index.cfm&quot;
     }]
   }],
-  &quot;description&quot; : &quot;A record of a healthcare consumerâ€™s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
+  &quot;description&quot; : &quot;A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
   &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
     &quot;identity&quot; : &quot;workflow&quot;,
@@ -177,14 +177,14 @@
     &quot;name&quot; : &quot;HL7 v2 Mapping&quot;
   },
   {
-    &quot;identity&quot; : &quot;rim&quot;,
-    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
-    &quot;name&quot; : &quot;RIM Mapping&quot;
-  },
-  {
     &quot;identity&quot; : &quot;w5&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/fhir/fivews&quot;,
     &quot;name&quot; : &quot;FiveWs Pattern Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;rim&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
+    &quot;name&quot; : &quot;RIM Mapping&quot;
   }],
   &quot;kind&quot; : &quot;resource&quot;,
   &quot;abstract&quot; : false,
@@ -195,8 +195,8 @@
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Consent&quot;,
       &quot;path&quot; : &quot;Consent&quot;,
-      &quot;short&quot; : &quot;A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;,
-      &quot;definition&quot; : &quot;A record of a healthcare consumerâ€™s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
+      &quot;short&quot; : &quot;A healthcare consumer's  or third party's choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;,
+      &quot;definition&quot; : &quot;A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
       &quot;comment&quot; : &quot;Broadly, there are 3 key areas of consent for patients: Consent around sharing information (aka Privacy Consent Directive - Authorization to Collect, Use, or Disclose information), consent for specific treatment, or kinds of treatment, and general advance care directives.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -301,10 +301,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;CON&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;FinancialConsent&quot;
       }]
     },
     {
@@ -321,7 +317,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -537,10 +537,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.id&quot;
       }]
     },
     {
@@ -583,10 +579,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;HL7 Table 0498 - Consent Status&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.statusCode&quot;
       }]
     },
     {
@@ -654,10 +646,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;HL7 Table 0497 - Consent Type&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;CNTRCT&quot;
       }]
     },
     {
@@ -686,10 +674,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Role&quot;
       },
       {
         &quot;identity&quot; : &quot;w5&quot;,
@@ -725,10 +709,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;Field 13/ Consent Decision Date&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;FinancialConsent effectiveTime&quot;
       }]
     },
     {
@@ -797,22 +777,42 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Consent.source[x]&quot;,
-      &quot;path&quot; : &quot;Consent.source[x]&quot;,
+      &quot;id&quot; : &quot;Consent.sourceAttachment&quot;,
+      &quot;path&quot; : &quot;Consent.sourceAttachment&quot;,
       &quot;short&quot; : &quot;Source from which this consent is taken&quot;,
-      &quot;definition&quot; : &quot;The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.&quot;,
+      &quot;definition&quot; : &quot;The source on which this consent statement is based. The source might be a scanned original paper form.&quot;,
       &quot;comment&quot; : &quot;The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;Consent.source[x]&quot;,
+        &quot;path&quot; : &quot;Consent.sourceAttachment&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Attachment&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;Field 19 Informational Material Supplied Indicator&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Consent.sourceReference&quot;,
+      &quot;path&quot; : &quot;Consent.sourceReference&quot;,
+      &quot;short&quot; : &quot;Source from which this consent is taken&quot;,
+      &quot;definition&quot; : &quot;A reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.&quot;,
+      &quot;comment&quot; : &quot;The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Consent.sourceReference&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
       },
-      {
+      &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Consent&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;,
@@ -820,7 +820,7 @@
         &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot;]
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
+      &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;Field 19 Informational Material Supplied Indicator&quot;
@@ -866,7 +866,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1037,7 +1041,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1199,7 +1207,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1351,7 +1363,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1659,11 +1675,7 @@
         &quot;source&quot; : &quot;Element&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Role&quot;
-      }]
+      &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;Consent.provision.data.id&quot;,
@@ -1679,7 +1691,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1808,8 +1824,8 @@
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Consent&quot;,
       &quot;path&quot; : &quot;Consent&quot;,
-      &quot;short&quot; : &quot;A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;,
-      &quot;definition&quot; : &quot;A record of a healthcare consumerâ€™s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
+      &quot;short&quot; : &quot;A healthcare consumer's  or third party's choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;,
+      &quot;definition&quot; : &quot;A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;,
       &quot;comment&quot; : &quot;Broadly, there are 3 key areas of consent for patients: Consent around sharing information (aka Privacy Consent Directive - Authorization to Collect, Use, or Disclose information), consent for specific treatment, or kinds of treatment, and general advance care directives.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -1855,10 +1871,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;CON&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;FinancialConsent&quot;
       }]
     },
     {
@@ -1887,10 +1899,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.identifier&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.id&quot;
       }]
     },
     {
@@ -1928,10 +1936,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;HL7 Table 0498 - Consent Status&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.statusCode&quot;
       }]
     },
     {
@@ -1988,10 +1992,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;HL7 Table 0497 - Consent Type&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;CNTRCT&quot;
       }]
     },
     {
@@ -2014,10 +2014,6 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Role&quot;
       },
       {
         &quot;identity&quot; : &quot;w5&quot;,
@@ -2047,10 +2043,6 @@
       {
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;Field 13/ Consent Decision Date&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;FinancialConsent effectiveTime&quot;
       }]
     },
     {
@@ -2107,24 +2099,36 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Consent.source[x]&quot;,
-      &quot;path&quot; : &quot;Consent.source[x]&quot;,
+      &quot;id&quot; : &quot;Consent.sourceAttachment&quot;,
+      &quot;path&quot; : &quot;Consent.sourceAttachment&quot;,
       &quot;short&quot; : &quot;Source from which this consent is taken&quot;,
-      &quot;definition&quot; : &quot;The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.&quot;,
+      &quot;definition&quot; : &quot;The source on which this consent statement is based. The source might be a scanned original paper form.&quot;,
       &quot;comment&quot; : &quot;The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Attachment&quot;
-      },
-      {
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;Field 19 Informational Material Supplied Indicator&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Consent.sourceReference&quot;,
+      &quot;path&quot; : &quot;Consent.sourceReference&quot;,
+      &quot;short&quot; : &quot;Source from which this consent is taken&quot;,
+      &quot;definition&quot; : &quot;A reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.&quot;,
+      &quot;comment&quot; : &quot;The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Consent&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Contract&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot;]
       }],
-      &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;v2&quot;,
         &quot;map&quot; : &quot;Field 19 Informational Material Supplied Indicator&quot;
@@ -2485,11 +2489,7 @@
         &quot;code&quot; : &quot;BackboneElement&quot;
       }],
       &quot;meaningWhenMissing&quot; : &quot;all data&quot;,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;Role&quot;
-      }]
+      &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;Consent.provision.data.meaning&quot;,
@@ -2560,7 +2560,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2568,7 +2568,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fconsent.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fconsent.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

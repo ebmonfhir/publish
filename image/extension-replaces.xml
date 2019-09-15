@@ -142,12 +142,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="Extension">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="Extension"/>
       <short value="References a resource that this resource replaces"/>
       <definition value="Indicates a resource that this resource is replacing."/>
@@ -191,7 +185,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -239,7 +236,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/replaces"/>
       <isModifier value="false"/>
@@ -249,8 +249,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.valueCanonical">
-      <path value="Extension.valueCanonical"/>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="canonical"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x]:valueCanonical">
+      <path value="Extension.value[x]"/>
+      <sliceName value="valueCanonical"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -287,9 +317,6 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/replaces"/>
     </element>
     <element id="Extension.valueCanonical">

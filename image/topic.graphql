@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type Topic {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -17,7 +17,6 @@ type Topic {
   title: String  _title: ElementBase
   derivedFromCanonical: canonical  _derivedFromCanonical: [ElementBase]
   derivedFromUri: uri  _derivedFromUri: [ElementBase]
-  replaces: canonical  _replaces: [ElementBase]
   status: code  _status: ElementBase
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
@@ -60,11 +59,12 @@ type TopicCanFilterBy {
   extension: [Extension]
   modifierExtension: [Extension]
   name: String  _name: ElementBase
+  matchType: code  _matchType: [ElementBase]
   documentation: markdown  _documentation: ElementBase
 }
 
 input TopicInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -78,7 +78,6 @@ input TopicInput {
   title: String  _title: ElementBase
   derivedFromCanonical: canonical  _derivedFromCanonical: [ElementBase]
   derivedFromUri: uri  _derivedFromUri: [ElementBase]
-  replaces: canonical  _replaces: [ElementBase]
   status: code  _status: ElementBase
   experimental: Boolean  _experimental: ElementBase
   date: dateTime  _date: ElementBase
@@ -121,6 +120,7 @@ input TopicCanFilterByInput {
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   name: String  _name: ElementBase
+  matchType: code  _matchType: [ElementBase]
   documentation: markdown  _documentation: ElementBase
 }
 

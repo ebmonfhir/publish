@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;CommunicationRequest&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;CommunicationRequest&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -272,7 +272,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -613,7 +617,7 @@
       &quot;path&quot; : &quot;CommunicationRequest.statusReason&quot;,
       &quot;short&quot; : &quot;Reason for current status&quot;,
       &quot;definition&quot; : &quot;Captures the reason for the current state of the CommunicationRequest.&quot;,
-      &quot;comment&quot; : &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;suspended\&quot; or \&quot;cancelled\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings].&quot;,
+      &quot;comment&quot; : &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;on-hold\&quot; or \&quot;revoked\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.&quot;,
       &quot;alias&quot; : [&quot;Suspended Reason&quot;,
       &quot;Cancelled Reason&quot;],
       &quot;min&quot; : 0,
@@ -634,7 +638,8 @@
           &quot;valueString&quot; : &quot;CommunicationRequestStatusReason&quot;
         }],
         &quot;strength&quot; : &quot;example&quot;,
-        &quot;description&quot; : &quot;Codes identifying the reason for the current state of a request.&quot;
+        &quot;description&quot; : &quot;Codes identifying the reason for the current state of a request.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/communication-request-status-reason&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
@@ -895,7 +900,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -962,7 +971,7 @@
       &quot;path&quot; : &quot;CommunicationRequest.payload.content[x]&quot;,
       &quot;short&quot; : &quot;Message part content&quot;,
       &quot;definition&quot; : &quot;The communicated content (or for multi-part communications, one portion of the communication).&quot;,
-      &quot;comment&quot; : &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot;,
+      &quot;comment&quot; : &quot;The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn't appropriate.\n\nIf the content isn't codified, contentCodeableConcept.text can be used.  \n\nWhen using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1122,11 +1131,11 @@
       &quot;short&quot; : &quot;Who should share the information&quot;,
       &quot;definition&quot; : &quot;The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
         &quot;path&quot; : &quot;CommunicationRequest.informationProvider&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
@@ -1388,7 +1397,7 @@
       &quot;path&quot; : &quot;CommunicationRequest.statusReason&quot;,
       &quot;short&quot; : &quot;Reason for current status&quot;,
       &quot;definition&quot; : &quot;Captures the reason for the current state of the CommunicationRequest.&quot;,
-      &quot;comment&quot; : &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;suspended\&quot; or \&quot;cancelled\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings].&quot;,
+      &quot;comment&quot; : &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;on-hold\&quot; or \&quot;revoked\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.&quot;,
       &quot;alias&quot; : [&quot;Suspended Reason&quot;,
       &quot;Cancelled Reason&quot;],
       &quot;min&quot; : 0,
@@ -1402,7 +1411,8 @@
           &quot;valueString&quot; : &quot;CommunicationRequestStatusReason&quot;
         }],
         &quot;strength&quot; : &quot;example&quot;,
-        &quot;description&quot; : &quot;Codes identifying the reason for the current state of a request.&quot;
+        &quot;description&quot; : &quot;Codes identifying the reason for the current state of a request.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/communication-request-status-reason&quot;
       },
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
@@ -1594,7 +1604,7 @@
       &quot;path&quot; : &quot;CommunicationRequest.payload.content[x]&quot;,
       &quot;short&quot; : &quot;Message part content&quot;,
       &quot;definition&quot; : &quot;The communicated content (or for multi-part communications, one portion of the communication).&quot;,
-      &quot;comment&quot; : &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot;,
+      &quot;comment&quot; : &quot;The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn't appropriate.\n\nIf the content isn't codified, contentCodeableConcept.text can be used.  \n\nWhen using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.&quot;,
       &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1722,7 +1732,7 @@
       &quot;short&quot; : &quot;Who should share the information&quot;,
       &quot;definition&quot; : &quot;The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
@@ -1847,7 +1857,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1855,7 +1865,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcommunicationrequest.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcommunicationrequest.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

@@ -29,6 +29,11 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/mimetypes|4.1.0"
                       strength="required"/>
       </element>
+      <element path="Attachment.height" status="new"/>
+      <element path="Attachment.width" status="new"/>
+      <element path="Attachment.frames" status="new"/>
+      <element path="Attachment.duration" status="new"/>
+      <element path="Attachment.pages" status="new"/>
    </type>
    <type name="BackboneElement" status="no-change"/>
    <type name="CodeableConcept" status="no-change"/>
@@ -135,6 +140,18 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/reference-version-rules|4.1.0"
                       strength="required"/>
       </element>
+      <element path="ElementDefinition.defaultValue[x]">
+         <added-type name="Meta"/>
+      </element>
+      <element path="ElementDefinition.fixed[x]">
+         <added-type name="Meta"/>
+      </element>
+      <element path="ElementDefinition.pattern[x]">
+         <added-type name="Meta"/>
+      </element>
+      <element path="ElementDefinition.example.value[x]">
+         <added-type name="Meta"/>
+      </element>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="ElementDefinition.constraint.severity">
@@ -161,7 +178,15 @@
       </element>
    </type>
    <type name="Expression" status="no-change"/>
-   <type name="Extension" status="no-change"/>
+   <type name="Extension" status="changed">
+      <element path="Extension.url">
+         <removed-type name="string"/>
+         <added-type name="url"/>
+      </element>
+      <element path="Extension.value[x]">
+         <added-type name="Meta"/>
+      </element>
+   </type>
    <type name="HumanName" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -390,6 +415,7 @@
                       strength="required"/>
       </element>
    </type>
+   <type name="AdministrableProductDefinition" status="new"/>
    <type name="AdverseEvent" status="changed">
       <element new-max="*" old-max="1" path="AdverseEvent.identifier"/>
       <element binding-status="changed"
@@ -400,24 +426,17 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/adverse-event-actuality|4.1.0"
                       strength="required"/>
       </element>
-      <element binding-status="changed"
-               binding-valueset-changed="true"
-               path="AdverseEvent.severity">
-         <old-binding reference="http://hl7.org/fhir/ValueSet/adverse-event-severity|4.0.0"
-                      strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0"
-                      strength="required"/>
-      </element>
-      <element binding-status="changed"
-               binding-valueset-changed="true"
-               path="AdverseEvent.outcome">
+      <element path="AdverseEvent.code" status="new"/>
+      <element binding-status="removed" path="AdverseEvent.outcome">
          <old-binding reference="http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.0.0"
                       strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0"
-                      strength="required"/>
       </element>
+      <element path="AdverseEvent.participant" status="new"/>
+      <element path="AdverseEvent.participant.function" status="new"/>
+      <element path="AdverseEvent.participant.actor" status="new"/>
       <element path="AdverseEvent.detector" status="new"/>
       <element path="AdverseEvent.suspectEntity.instance[x]" status="new"/>
+      <element new-max="1" old-max="*" path="AdverseEvent.suspectEntity.causality"/>
       <element path="AdverseEvent.suspectEntity.causality.assessmentMethod"
                status="new"/>
       <element path="AdverseEvent.suspectEntity.causality.entityRelatedness"
@@ -429,6 +448,9 @@
       <element path="AdverseEvent.supportingInfo" status="new"/>
       <element path="AdverseEvent.supportingInfo.item" status="new"/>
       <element path="AdverseEvent.supportingInfo.contributingFactor" status="new"/>
+      <element path="AdverseEvent.event" status="deleted"/>
+      <element path="AdverseEvent.severity" status="deleted"/>
+      <element path="AdverseEvent.contributor" status="deleted"/>
       <element path="AdverseEvent.suspectEntity.instance" status="deleted"/>
       <element path="AdverseEvent.suspectEntity.causality.assessment" status="deleted"/>
       <element path="AdverseEvent.suspectEntity.causality.productRelatedness"
@@ -795,6 +817,9 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/care-team-status|4.1.0"
                       strength="required"/>
       </element>
+      <element new-max="1" old-max="*" path="CareTeam.participant.role"/>
+      <element path="CareTeam.participant.coverage[x]" status="new"/>
+      <element path="CareTeam.participant.period" status="deleted"/>
    </type>
    <type name="CatalogEntry" status="changed">
       <element path="CatalogEntry.name" status="new"/>
@@ -929,6 +954,10 @@
                       strength="required"/>
       </element>
       <element path="ClinicalImpression.performer" status="new"/>
+      <element path="ClinicalImpression.finding.itemReference">
+         <removed-type name="Reference(Condition | Observation | Media)"/>
+         <added-type name="Reference(Condition | Observation | DocumentReference)"/>
+      </element>
       <element path="ClinicalImpression.assessor" status="deleted"/>
       <element path="ClinicalImpression.investigation" status="deleted"/>
    </type>
@@ -1159,6 +1188,8 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/consent-state-codes|4.1.0"
                       strength="required"/>
       </element>
+      <element path="Consent.sourceAttachment" status="new"/>
+      <element path="Consent.sourceReference" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="Consent.provision.type">
@@ -1175,6 +1206,7 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/consent-data-meaning|4.1.0"
                       strength="required"/>
       </element>
+      <element path="Consent.source[x]" status="deleted"/>
    </type>
    <type name="Contract" status="changed">
       <element binding-status="changed"
@@ -1383,6 +1415,10 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/device-statement-status|4.1.0"
                       strength="required"/>
       </element>
+      <element path="DeviceUseStatement.reasonReference">
+         <removed-type name="Reference(Condition | Observation | DiagnosticReport | DocumentReference | Media)"/>
+         <added-type name="Reference(Condition | Observation | DiagnosticReport | DocumentReference)"/>
+      </element>
    </type>
    <type name="DiagnosticReport" status="changed">
       <element binding-status="changed"
@@ -1392,6 +1428,10 @@
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/diagnostic-report-status|4.1.0"
                       strength="required"/>
+      </element>
+      <element path="DiagnosticReport.media.link">
+         <removed-type name="Reference(Media)"/>
+         <added-type name="Reference(DocumentReference)"/>
       </element>
    </type>
    <type name="DocumentManifest" status="changed">
@@ -1429,6 +1469,7 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/document-relationship-type|4.1.0"
                       strength="required"/>
       </element>
+      <element path="DocumentReference.context.basedOn" status="new"/>
    </type>
    <type name="DomainResource" status="no-change"/>
    <type name="Encounter" status="changed">
@@ -1605,6 +1646,7 @@
                       strength="required"/>
       </element>
       <element path="EvidenceVariable.actual" status="new"/>
+      <element new-min="0" old-min="1" path="EvidenceVariable.characteristic"/>
       <element path="EvidenceVariable.characteristic.method" status="new"/>
       <element path="EvidenceVariable.characteristic.device" status="new"/>
       <element path="EvidenceVariable.characteristic.booleanSet" status="new"/>
@@ -1826,6 +1868,10 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/imagingstudy-status|4.1.0"
                       strength="required"/>
       </element>
+      <element path="ImagingStudy.reasonReference">
+         <removed-type name="Reference(Condition | Observation | Media | DiagnosticReport | DocumentReference)"/>
+         <added-type name="Reference(Condition | Observation | DiagnosticReport | DocumentReference)"/>
+      </element>
    </type>
    <type name="Immunization" status="changed">
       <element binding-status="changed"
@@ -2012,6 +2058,7 @@
                       strength="required"/>
       </element>
    </type>
+   <type name="ManufacturedItemDefinition" status="new"/>
    <type name="Measure" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -2053,16 +2100,6 @@
          <old-binding reference="http://hl7.org/fhir/ValueSet/measure-improvement-notation|4.0.0"
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/measure-improvement-notation|4.1.0"
-                      strength="required"/>
-      </element>
-   </type>
-   <type name="Media" status="changed">
-      <element binding-status="changed"
-               binding-valueset-changed="true"
-               path="Media.status">
-         <old-binding reference="http://hl7.org/fhir/ValueSet/event-status|4.0.0"
-                      strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/event-status|4.1.0"
                       strength="required"/>
       </element>
    </type>
@@ -2116,7 +2153,7 @@
       <element path="MedicationDispense.encounter" status="new"/>
       <element path="MedicationDispense.receiver">
          <removed-type name="Reference(Patient | Practitioner)"/>
-         <added-type name="Reference(Patient | Practitioner | RelatedPerson | Location)"/>
+         <added-type name="Reference(Patient | Practitioner | RelatedPerson | Location | PractitionerRole)"/>
       </element>
       <element new-max="1"
                old-max="*"
@@ -2135,6 +2172,10 @@
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/medicationknowledge-status|4.1.0"
                       strength="required"/>
+      </element>
+      <element path="MedicationKnowledge.monograph.source">
+         <removed-type name="Reference(DocumentReference | Media)"/>
+         <added-type name="Reference(DocumentReference)"/>
       </element>
       <element path="MedicationKnowledge.device" status="new"/>
       <element path="MedicationKnowledge.administrationGuideline" status="new"/>
@@ -2157,6 +2198,7 @@
       <element path="MedicationKnowledge.drugCharacteristic.value[x]">
          <removed-type name="Quantity()"/>
          <added-type name="Quantity()"/>
+         <added-type name="Attachment"/>
       </element>
       <element path="MedicationKnowledge.clinicalUseIssue" status="new"/>
       <element path="MedicationKnowledge.kineticCharacteristic" status="new"/>
@@ -2193,6 +2235,10 @@
       </element>
       <element path="MedicationRequest.reported" status="new"/>
       <element path="MedicationRequest.informationSource" status="new"/>
+      <element path="MedicationRequest.performer">
+         <removed-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson | CareTeam)"/>
+         <added-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | Device | RelatedPerson | CareTeam | HealthcareService)"/>
+      </element>
       <element path="MedicationRequest.instantiatesCanonical">
          <removed-type name="canonical"/>
          <added-type name="canonical(PlanDefinition | ActivityDefinition)"/>
@@ -2200,6 +2246,7 @@
       <element path="MedicationRequest.reported[x]" status="deleted"/>
    </type>
    <type name="MedicationUsage" status="new"/>
+   <type name="MedicinalProductDefinition" status="new"/>
    <type name="MessageDefinition" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -2328,6 +2375,7 @@
                       strength="required"/>
       </element>
    </type>
+   <type name="NutritionIntake" status="new"/>
    <type name="NutritionOrder" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -2362,6 +2410,10 @@
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/observation-status|4.1.0"
                       strength="required"/>
+      </element>
+      <element path="Observation.derivedFrom">
+         <removed-type name="Reference(DocumentReference | ImagingStudy | Media | QuestionnaireResponse | Observation | MolecularSequence)"/>
+         <added-type name="Reference(DocumentReference | ImagingStudy | QuestionnaireResponse | Observation | MolecularSequence)"/>
       </element>
    </type>
    <type name="ObservationDefinition" status="changed">
@@ -2498,7 +2550,12 @@
    </type>
    <type name="Organization" status="no-change"/>
    <type name="OrganizationAffiliation" status="no-change"/>
-   <type name="Parameters" status="no-change"/>
+   <type name="PackagedProductDefinition" status="new"/>
+   <type name="Parameters" status="changed">
+      <element path="Parameters.parameter.value[x]">
+         <added-type name="Meta"/>
+      </element>
+   </type>
    <type name="Patient" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -2698,6 +2755,10 @@
          <removed-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device)"/>
          <added-type name="Reference(Practitioner | PractitionerRole | Organization | Patient | RelatedPerson | Device | CareTeam | HealthcareService)"/>
       </element>
+      <element path="Procedure.usedReference">
+         <removed-type name="Reference(Device | Medication | Substance)"/>
+         <added-type name="Reference(Device | Medication | Substance | BiologicallyDerivedProduct)"/>
+      </element>
       <element path="Procedure.performed[x]" status="deleted"/>
       <element path="Procedure.asserter" status="deleted"/>
    </type>
@@ -2763,11 +2824,7 @@
                       strength="required"/>
       </element>
    </type>
-   <type name="RegulatedAdministrableProduct" status="new"/>
    <type name="RegulatedAuthorization" status="new"/>
-   <type name="RegulatedManufacturedItem" status="new"/>
-   <type name="RegulatedMedicinalProduct" status="new"/>
-   <type name="RegulatedPackagedProduct" status="new"/>
    <type name="RelatedPerson" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -2888,7 +2945,12 @@
                       strength="required"/>
       </element>
    </type>
-   <type name="Resource" status="no-change"/>
+   <type name="Resource" status="changed">
+      <element path="Resource.id">
+         <removed-type name="id"/>
+         <added-type name="string"/>
+      </element>
+   </type>
    <type name="RiskAssessment" status="changed">
       <element binding-status="changed"
                binding-valueset-changed="true"
@@ -3114,6 +3176,9 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/map-input-mode|4.1.0"
                       strength="required"/>
       </element>
+      <element path="StructureMap.group.rule.source.defaultValue[x]">
+         <added-type name="Meta"/>
+      </element>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="StructureMap.group.rule.source.listMode">
@@ -3148,6 +3213,8 @@
       </element>
    </type>
    <type name="Subscription" status="changed">
+      <element path="Subscription.identifier" status="new"/>
+      <element path="Subscription.name" status="new"/>
       <element binding-status="changed"
                binding-valueset-changed="true"
                path="Subscription.status">
@@ -3156,22 +3223,37 @@
          <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-status|4.1.0"
                       strength="required"/>
       </element>
+      <element path="Subscription.topic" status="new"/>
+      <element path="Subscription.filterBy" status="new"/>
+      <element path="Subscription.filterBy.name" status="new"/>
+      <element path="Subscription.filterBy.matchType" status="new"/>
+      <element path="Subscription.filterBy.value" status="new"/>
+      <element new-max="*" old-max="1" path="Subscription.error">
+         <removed-type name="string"/>
+         <added-type name="CodeableConcept"/>
+      </element>
+      <element path="Subscription.eventCount" status="new"/>
       <element binding-status="changed"
+               binding-strength-changed="true"
                binding-valueset-changed="true"
                path="Subscription.channel.type">
+         <removed-type name="code"/>
+         <added-type name="CodeableConcept"/>
          <old-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type|4.0.0"
                       strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type|4.1.0"
-                      strength="required"/>
+         <new-binding reference="http://hl7.org/fhir/ValueSet/subscription-channel-type"
+                      strength="extensible"/>
       </element>
-      <element binding-status="changed"
-               binding-valueset-changed="true"
-               path="Subscription.channel.payload">
+      <element path="Subscription.channel.heartbeatPeriod" status="new"/>
+      <element binding-status="removed" path="Subscription.channel.payload">
+         <removed-type name="code"/>
+         <added-type name="BackboneElement"/>
          <old-binding reference="http://hl7.org/fhir/ValueSet/mimetypes|4.0.0"
                       strength="required"/>
-         <new-binding reference="http://hl7.org/fhir/ValueSet/mimetypes|4.1.0"
-                      strength="required"/>
       </element>
+      <element path="Subscription.channel.payload.contentType" status="new"/>
+      <element path="Subscription.channel.payload.content" status="new"/>
+      <element path="Subscription.criteria" status="deleted"/>
    </type>
    <type name="Substance" status="changed">
       <element binding-status="changed"
@@ -3249,6 +3331,12 @@
                       strength="required"/>
          <new-binding reference="http://hl7.org/fhir/ValueSet/request-priority|4.1.0"
                       strength="required"/>
+      </element>
+      <element path="Task.input.value[x]">
+         <added-type name="Meta"/>
+      </element>
+      <element path="Task.output.value[x]">
+         <added-type name="Meta"/>
       </element>
    </type>
    <type name="TerminologyCapabilities" status="changed">
@@ -3465,6 +3553,7 @@
       </element>
    </type>
    <type name="EffectEvidenceSynthesis" status="deleted"/>
+   <type name="Media" status="deleted"/>
    <type name="MedicationStatement" status="deleted"/>
    <type name="MedicinalProduct" status="deleted"/>
    <type name="MedicinalProductAuthorization" status="deleted"/>

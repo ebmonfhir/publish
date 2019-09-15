@@ -47,12 +47,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="Extension">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="Extension"/>
       <short value="Language Translation (Localization)"/>
       <definition value="Language translation from base language of resource to another language."/>
@@ -99,7 +93,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -171,7 +168,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -219,7 +219,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="lang"/>
       <isModifier value="false"/>
@@ -229,8 +232,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:lang.valueCode">
-      <path value="Extension.extension.valueCode"/>
+    <element id="Extension.extension:lang.value[x]">
+      <path value="Extension.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension:lang.value[x]:valueCode">
+      <path value="Extension.extension.value[x]"/>
+      <sliceName value="valueCode"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -296,7 +329,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -344,7 +380,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="content"/>
       <isModifier value="false"/>
@@ -392,7 +431,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/translation"/>
       <isModifier value="false"/>
@@ -560,6 +602,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
@@ -597,9 +642,6 @@
     </element>
     <element id="Extension.extension:lang.url">
       <path value="Extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="lang"/>
     </element>
     <element id="Extension.extension:lang.valueCode">
@@ -640,9 +682,6 @@
     </element>
     <element id="Extension.extension:content.url">
       <path value="Extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="content"/>
     </element>
     <element id="Extension.extension:content.value[x]">
@@ -657,9 +696,6 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/translation"/>
     </element>
     <element id="Extension.value[x]">

@@ -1,0 +1,204 @@
+# FHIR GraphQL Schema. Version 4.1.0
+
+# import the types from 'types.graphql'
+
+type NutritionIntake {
+  id: String
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  basedOn: [Reference]
+  partOf: [Reference]
+  status: code  _status: ElementBase
+  statusReason: [CodeableConcept]
+  category: [CodeableConcept]
+  consumedItem: [NutritionIntakeConsumedItem]!
+  ingredientLabel: [NutritionIntakeIngredientLabel]
+  subject: Reference!
+  encounter: Reference
+  effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
+  effectivePeriod: Period
+  dateAsserted: dateTime  _dateAsserted: ElementBase
+  informationSource: Reference
+  derivedFrom: [Reference]
+  reasonCode: [CodeableConcept]
+  reasonReference: [Reference]
+  note: [Annotation]
+}
+
+type NutritionIntakeConsumedItem {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  type: CodeableConcept!
+  nutritionProduct: CodeableConcept!
+  schedule: Timing
+  amount: Quantity
+  rate: Quantity
+  notConsumed: Boolean  _notConsumed: ElementBase
+  notConsumedReason: CodeableConcept
+}
+
+type NutritionIntakeIngredientLabel {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  nutrient: CodeableConcept!
+  amount: Quantity!
+}
+
+input NutritionIntakeInput {
+  id: String
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  basedOn: [ReferenceInput]
+  partOf: [ReferenceInput]
+  status: code  _status: ElementBase
+  statusReason: [CodeableConceptInput]
+  category: [CodeableConceptInput]
+  consumedItem: [NutritionIntakeConsumedItemInput]!
+  ingredientLabel: [NutritionIntakeIngredientLabelInput]
+  subject: ReferenceInput!
+  encounter: ReferenceInput
+  effectiveDateTime: dateTime  _effectiveDateTime: ElementBase
+  effectivePeriod: PeriodInput
+  dateAsserted: dateTime  _dateAsserted: ElementBase
+  informationSource: ReferenceInput
+  derivedFrom: [ReferenceInput]
+  reasonCode: [CodeableConceptInput]
+  reasonReference: [ReferenceInput]
+  note: [AnnotationInput]
+}
+
+input NutritionIntakeConsumedItemInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  type: CodeableConceptInput!
+  nutritionProduct: CodeableConceptInput!
+  schedule: TimingInput
+  amount: QuantityInput
+  rate: QuantityInput
+  notConsumed: Boolean  _notConsumed: ElementBase
+  notConsumedReason: CodeableConceptInput
+}
+
+input NutritionIntakeIngredientLabelInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  nutrient: CodeableConceptInput!
+  amount: QuantityInput!
+}
+
+type NutritionIntakeReadType {
+  NutritionIntake(id: ID!): NutritionIntake
+}
+
+type NutritionIntakeListType {
+  NutritionIntakeList(_filter: String
+    category: [token]
+    effective: [date]
+    encounter: [reference]
+    identifier: [token]
+    nutrition: [token]
+    part_of: [reference]
+    patient: [reference]
+    source: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [NutritionIntake]
+}
+
+type NutritionIntakeConnectionType {
+  NutritionIntakeConection(_filter: String
+    category: [token]
+    effective: [date]
+    encounter: [reference]
+    identifier: [token]
+    nutrition: [token]
+    part_of: [reference]
+    patient: [reference]
+    source: [reference]
+    status: [token]
+    subject: [reference]
+    _text: [String]
+    _content: [String]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [reference]
+    _query: [token]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): NutritionIntakeConnection
+}
+
+type NutritionIntakeConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [NutritionIntakeEdge]
+}
+
+type NutritionIntakeEdge {
+  mode: String
+  score: Float
+  resource: NutritionIntake
+}
+
+type NutritionIntakeCreateType {
+  NutritionIntakeCreate(resource: NutritionIntakeInput): NutritionIntakeCreation
+}
+
+type NutritionIntakeCreation {
+  location: String
+  resource: NutritionIntake
+  information: OperationOutcome
+}
+
+type NutritionIntakeUpdateType {
+  NutritionIntakeUpdate(id: ID, resource: NutritionIntakeInput): NutritionIntakeUpdate
+}
+
+type NutritionIntakeUpdate {
+  resource: NutritionIntake
+  information: OperationOutcome
+}
+
+type NutritionIntakeDeleteType {
+  NutritionIntakeDelete(id: ID): NutritionIntakeDelete
+}
+
+type NutritionIntakeDelete {
+  information: OperationOutcome
+}
+

@@ -59,12 +59,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="ElementDefinition">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="ElementDefinition"/>
       <short value="Definition of an element in a resource or extension"/>
       <definition value="Captures constraints on each element within the resource, profile, or extension."/>
@@ -222,7 +216,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -300,7 +297,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -348,7 +348,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/elementdefinition-question"/>
       <isModifier value="false"/>
@@ -358,10 +361,40 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="ElementDefinition.extension:Question.valueString">
-      <path value="ElementDefinition.extension.valueString"/>
+    <element id="ElementDefinition.extension:Question.value[x]">
+      <path value="ElementDefinition.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
       <short value="Value of extension"/>
-      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="ElementDefinition.extension:Question.value[x]:valueString">
+      <path value="ElementDefinition.extension.value[x]"/>
+      <sliceName value="valueString"/>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/extensibility.html) for a list)."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -420,7 +453,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -468,7 +504,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/elementdefinition-allowedUnits"/>
       <isModifier value="false"/>
@@ -481,7 +520,7 @@
     <element id="ElementDefinition.extension:AllowedUnits.value[x]">
       <path value="ElementDefinition.extension.value[x]"/>
       <short value="Value of extension"/>
-      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/extensibility.html) for a list)."/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -516,7 +555,7 @@
       <short value="Extensions that cannot be ignored even if unrecognized"/>
       <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element&#39;s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."/>
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
-      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension)."/>
+      <requirements value="Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/extensibility.html#modifierExtension)."/>
       <alias value="extensions"/>
       <alias value="user content"/>
       <alias value="modifiers"/>
@@ -797,7 +836,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -885,7 +927,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -958,7 +1003,7 @@
     <element id="ElementDefinition.slicing.discriminator.path">
       <path value="ElementDefinition.slicing.discriminator.path"/>
       <short value="Path to element value"/>
-      <definition value="A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based."/>
+      <definition value="A FHIRPath expression, using [the simple subset of FHIRPath](http://hl7.org/fhir/fhirpath.html#simple), that is used to identify the element on which discrimination is based."/>
       <comment value="The only FHIRPath functions that are allowed are as(type), resolve(), and extension(url)."/>
       <min value="1"/>
       <max value="1"/>
@@ -1352,7 +1397,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1396,7 +1444,7 @@
     <element id="ElementDefinition.base.path">
       <path value="ElementDefinition.base.path"/>
       <short value="Path that identifies the base element"/>
-      <definition value="The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [StructureDefinition](structuredefinition.html#) without a StructureDefinition.base."/>
+      <definition value="The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [StructureDefinition](http://hl7.org/fhir/structuredefinition.html#) without a StructureDefinition.base."/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -1572,7 +1620,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1659,7 +1710,7 @@
       <path value="ElementDefinition.type.profile"/>
       <short value="Profiles (StructureDefinition or IG) - one must apply"/>
       <definition value="Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide."/>
-      <comment value="It is possible to profile  backbone element (e.g. part of a resource), using the [profile-element](extension-elementdefinition-profile-element.html) extension."/>
+      <comment value="It is possible to profile  backbone element (e.g. part of a resource), using the [profile-element](http://hl7.org/fhir/extension-elementdefinition-profile-element.html) extension."/>
       <min value="0"/>
       <max value="0"/>
       <base>
@@ -1714,7 +1765,7 @@
       <path value="ElementDefinition.type.aggregation"/>
       <short value="contained | referenced | bundled - how aggregated"/>
       <definition value="If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle."/>
-      <comment value="See [Aggregation Rules](elementdefinition.html#aggregation) for further clarification."/>
+      <comment value="See [Aggregation Rules](http://hl7.org/fhir/elementdefinition.html#aggregation) for further clarification."/>
       <min value="0"/>
       <max value="0"/>
       <base>
@@ -1749,7 +1800,7 @@
       <path value="ElementDefinition.type.versioning"/>
       <short value="either | independent | specific"/>
       <definition value="Whether this reference needs to be version specific or version independent, or whether either can be used."/>
-      <comment value="The base specification never makes a rule as to which form is allowed, but implementation guides may do this. See [Aggregation Rules](elementdefinition.html#aggregation) for further clarification."/>
+      <comment value="The base specification never makes a rule as to which form is allowed, but implementation guides may do this. See [Aggregation Rules](http://hl7.org/fhir/elementdefinition.html#aggregation) for further clarification."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -1933,6 +1984,9 @@
       </type>
       <type>
         <code value="Dosage"/>
+      </type>
+      <type>
+        <code value="Meta"/>
       </type>
       <condition value="eld-15"/>
       <isModifier value="false"/>
@@ -2149,6 +2203,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <condition value="eld-5"/>
       <condition value="eld-6"/>
       <condition value="eld-8"/>
@@ -2322,6 +2379,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <condition value="eld-5"/>
       <condition value="eld-7"/>
       <condition value="eld-8"/>
@@ -2375,7 +2435,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2598,6 +2661,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
@@ -2617,7 +2683,7 @@
       <path value="ElementDefinition.minValue[x]"/>
       <short value="Minimum Allowed Value (for some types)"/>
       <definition value="The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."/>
-      <comment value="Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g."/>
+      <comment value="Except for date/date/instant, the type of the minValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of minValue[x] SHALL be either the same, or a [Duration](http://hl7.org/fhir/datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is subtracted from the current clock to determine the minimum allowable value.   A minimum value for a Quantity is interpreted as an canonical minimum - e.g. you cannot provide 100mg if the minimum value is 10g."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2663,7 +2729,7 @@
       <path value="ElementDefinition.maxValue[x]"/>
       <short value="Maximum Allowed Value (for some types)"/>
       <definition value="The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."/>
-      <comment value="Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg."/>
+      <comment value="Except for date/date/instant, the type of the maxValue[x] SHALL be the same as the specified type of the element. For the date/dateTime/instant values, the type of maxValue[x] SHALL be either the same, or a [Duration](http://hl7.org/fhir/datatypes.html#Duration) which specifies a relative time limit to the current time. The duration value is positive, and is added to the current clock to determine the maximum allowable value.   A maximum value for a Quantity is interpreted as an canonical maximum - e.g. you cannot provide 10g if the maximum value is 50mg."/>
       <min value="0"/>
       <max value="1"/>
       <base>
@@ -2810,7 +2876,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2953,7 +3022,7 @@
     <element id="ElementDefinition.constraint.expression">
       <path value="ElementDefinition.constraint.expression"/>
       <short value="FHIRPath expression of constraint"/>
-      <definition value="A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met."/>
+      <definition value="A [FHIRPath](http://hl7.org/fhir/fhirpath.html) expression of constraint that can be executed to see if this constraint is met."/>
       <comment value="In the absense of an expression, the expression is likely not enforceable by validators, and might be missed by many systems."/>
       <requirements value="Used by validation tooling tests of the validity of the resource."/>
       <min value="0"/>
@@ -3026,7 +3095,7 @@
       <path value="ElementDefinition.mustSupport"/>
       <short value="If the element must be supported"/>
       <definition value="If true, implementations that produce or consume resources SHALL provide &quot;support&quot; for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation."/>
-      <comment value="&quot;Something useful&quot; is context dependent and impossible to describe in the base FHIR specification. For this reason, tue mustSupport flag is never set to true by the FHIR specification itself - it is only set to true in profiles.  A profile on a type can always make musSupport = true if it is false in the base type but cannot make mustSupport = false if it is true in the base type.   This is done in [Resource Profiles](profiling.html#mustsupport), where the profile labels an element as mustSupport=true. When a profile does this, it SHALL also make clear exactly what kind of &quot;support&quot; is required, as this can mean many things.    Note that an element that has the property IsModifier is not necessarily a &quot;key&quot; element (e.g. one of the important elements to make use of the resource), nor is it automatically mustSupport - however both of these things are more likely to be true for IsModifier elements than for other elements."/>
+      <comment value="&quot;Something useful&quot; is context dependent and impossible to describe in the base FHIR specification. For this reason, tue mustSupport flag is never set to true by the FHIR specification itself - it is only set to true in profiles.  A profile on a type can always make musSupport = true if it is false in the base type but cannot make mustSupport = false if it is true in the base type.   This is done in [Resource Profiles](http://hl7.org/fhir/profiling.html#mustsupport), where the profile labels an element as mustSupport=true. When a profile does this, it SHALL also make clear exactly what kind of &quot;support&quot; is required, as this can mean many things.    Note that an element that has the property IsModifier is not necessarily a &quot;key&quot; element (e.g. one of the important elements to make use of the resource), nor is it automatically mustSupport - however both of these things are more likely to be true for IsModifier elements than for other elements."/>
       <requirements value="Allows a profile to set expectations for system capabilities beyond merely respecting cardinality constraints."/>
       <min value="0"/>
       <max value="1"/>
@@ -3193,7 +3262,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3238,7 +3310,7 @@
       <path value="ElementDefinition.binding.strength"/>
       <short value="required | extensible | preferred | example"/>
       <definition value="Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances."/>
-      <comment value="For further discussion, see [Using Terminologies](terminologies.html)."/>
+      <comment value="For further discussion, see [Using Terminologies](http://hl7.org/fhir/terminologies.html)."/>
       <alias value="conformance"/>
       <alias value="extensibility"/>
       <min value="1"/>
@@ -3393,7 +3465,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>

@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Attachment&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-08-09T09:30:10.376-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-09-15T10:41:41.207-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -143,7 +143,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Attachment&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;active&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;HL7 FHIR Standard&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -249,7 +249,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -572,6 +577,148 @@
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (needs data type R3 proposal)&quot; ]
        ]
+     ], [
+       fhir:index 11;
+       fhir:Element.id [ fhir:value &quot;Attachment.height&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.height&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Height of the image in pixels (photo/video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Height of the image in pixels (photo/video).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Attachment.height&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.id [ fhir:value &quot;Attachment.width&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.width&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Width of the image in pixels (photo/video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Width of the image in pixels (photo/video).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Attachment.width&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;Attachment.frames&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.frames&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Number of frames if &gt; 1 (photo)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;if the number of frames is not supplied, the value may be unknown. Applications should not assume that there is only one frame unless it is explicitly stated.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Attachment.frames&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 14;
+       fhir:Element.id [ fhir:value &quot;Attachment.duration&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.duration&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Length in seconds (audio / video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The duration of the recording in seconds - for audio and video.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The duration might differ from occurrencePeriod if recording was paused.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Attachment.duration&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;decimal&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 15;
+       fhir:Element.id [ fhir:value &quot;Attachment.pages&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.pages&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Number of printed pages&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The number of pages when printed.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Attachment.pages&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ]
   ];
   fhir:StructureDefinition.differential [
@@ -834,6 +981,113 @@
          fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (needs data type R3 proposal)&quot; ]
        ]
+     ], [
+       fhir:index 9;
+       fhir:Element.id [ fhir:value &quot;Attachment.height&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.height&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Height of the image in pixels (photo/video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Height of the image in pixels (photo/video).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 10;
+       fhir:Element.id [ fhir:value &quot;Attachment.width&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.width&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Width of the image in pixels (photo/video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Width of the image in pixels (photo/video).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 11;
+       fhir:Element.id [ fhir:value &quot;Attachment.frames&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.frames&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Number of frames if &gt; 1 (photo)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;if the number of frames is not supplied, the value may be unknown. Applications should not assume that there is only one frame unless it is explicitly stated.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.id [ fhir:value &quot;Attachment.duration&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.duration&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Length in seconds (audio / video)&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The duration of the recording in seconds - for audio and video.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The duration might differ from occurrencePeriod if recording was paused.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;decimal&quot; ]
+       ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot; ]
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;Attachment.pages&quot; ];
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
+         fhir:Extension.value [ fhir:value &quot;trial-use&quot; ]
+       ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Attachment.pages&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Number of printed pages&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The number of pages when printed.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;positiveInt&quot; ]
+       ]
      ]
   ] .
 
@@ -864,7 +1118,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:42-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -872,7 +1126,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fattachment.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fattachment.profile.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fattachment.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fattachment.profile.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

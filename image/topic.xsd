@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Aug 9, 2019 09:30-0400 for FHIR v4.1.0 
+  Generated on Sun, Sep 15, 2019 10:41-0400 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -77,11 +77,6 @@
           <xs:element name="derivedFromUri" minOccurs="0" maxOccurs="unbounded" type="uri">
             <xs:annotation>
               <xs:documentation xml:lang="en">The URL pointing to an externally-defined subscription topic or other definition that is adhered to in whole or in part by this definition.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="replaces" minOccurs="0" maxOccurs="unbounded" type="canonical">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Completed or terminated request(s) whose function is taken by this new request.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
@@ -237,6 +232,11 @@
               <xs:documentation xml:lang="en">A search parameter (like &quot;patient&quot;) which is a label for the filter.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="matchType" minOccurs="0" maxOccurs="unbounded" type="TopicFilterByMatchType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Allowable operators to apply when determining matches (Search Modifiers).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="documentation" minOccurs="0" maxOccurs="1" type="markdown">
             <xs:annotation>
               <xs:documentation xml:lang="en">Description of how this filter parameter is intended to be used.</xs:documentation>
@@ -273,6 +273,46 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="InteractionTrigger-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TopicFilterByMatchType-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="=">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">=</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">in</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="not-in">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">not-in</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="above">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">above</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="below">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">below</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TopicFilterByMatchType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Operator to apply to filter label.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="TopicFilterByMatchType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

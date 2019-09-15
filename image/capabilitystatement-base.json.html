@@ -128,7 +128,7 @@
   &quot;name&quot; : &quot;Base FHIR Capability Statement (Full)&quot;,
   &quot;status&quot; : &quot;draft&quot;,
   &quot;experimental&quot; : true,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;FHIR Project Team&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -309,6 +309,7 @@
       &quot;NutritionOrder.instantiates-canonical&quot;,
       &quot;PlanDefinition.definition&quot;,
       &quot;Procedure.instantiates-canonical&quot;,
+      &quot;RegulatedAuthorization.subject&quot;,
       &quot;ServiceRequest.instantiates-canonical&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;date&quot;,
@@ -444,6 +445,72 @@
       }]
     },
     {
+      &quot;type&quot; : &quot;AdministrableProductDefinition&quot;,
+      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/AdministrableProductDefinition&quot;,
+      &quot;interaction&quot; : [{
+        &quot;code&quot; : &quot;read&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;vread&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;update&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;delete&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-instance&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;create&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;search-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      }],
+      &quot;conditionalCreate&quot; : true,
+      &quot;conditionalUpdate&quot; : true,
+      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
+      &quot;referencePolicy&quot; : [&quot;literal&quot;,
+      &quot;logical&quot;],
+      &quot;searchInclude&quot; : [&quot;AdministrableProductDefinition.subject&quot;],
+      &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdministrableProductDefinition-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;An identifier for the pharmaceutical medicinal product&quot;
+      },
+      {
+        &quot;name&quot; : &quot;route&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdministrableProductDefinition-route&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Coded expression for the route&quot;
+      },
+      {
+        &quot;name&quot; : &quot;subject&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdministrableProductDefinition-subject&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;The product that this is a pharmaceutical product of&quot;
+      },
+      {
+        &quot;name&quot; : &quot;target-species&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdministrableProductDefinition-target-species&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Coded expression for the species&quot;
+      }]
+    },
+    {
       &quot;type&quot; : &quot;AdverseEvent&quot;,
       &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/AdverseEvent&quot;,
       &quot;interaction&quot; : [{
@@ -488,6 +555,7 @@
       &quot;AdverseEvent.subject&quot;,
       &quot;AdverseEvent.resultingcondition&quot;,
       &quot;AdverseEvent.substance&quot;,
+      &quot;AdverseEvent.patient&quot;,
       &quot;AdverseEvent.location&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;date&quot;,
@@ -496,10 +564,10 @@
         &quot;documentation&quot; : &quot;When the event occurred&quot;
       },
       {
-        &quot;name&quot; : &quot;severity&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-severity&quot;,
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-identifier&quot;,
         &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;mild | moderate | severe&quot;
+        &quot;documentation&quot; : &quot;Business identifier for the event&quot;
       },
       {
         &quot;name&quot; : &quot;recorder&quot;,
@@ -514,16 +582,16 @@
         &quot;documentation&quot; : &quot;Research study that the subject is enrolled in&quot;
       },
       {
+        &quot;name&quot; : &quot;code&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-code&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Event or incident that occurred or was averted&quot;
+      },
+      {
         &quot;name&quot; : &quot;actuality&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-actuality&quot;,
         &quot;type&quot; : &quot;token&quot;,
         &quot;documentation&quot; : &quot;actual | potential&quot;
-      },
-      {
-        &quot;name&quot; : &quot;seriousness&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-seriousness&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Seriousness of the event&quot;
       },
       {
         &quot;name&quot; : &quot;subject&quot;,
@@ -544,6 +612,18 @@
         &quot;documentation&quot; : &quot;Refers to the specific entity that caused the adverse event&quot;
       },
       {
+        &quot;name&quot; : &quot;seriousness&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-seriousness&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Seriousness or gravity of the event&quot;
+      },
+      {
+        &quot;name&quot; : &quot;patient&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-patient&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Subject impacted by event&quot;
+      },
+      {
         &quot;name&quot; : &quot;location&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-location&quot;,
         &quot;type&quot; : &quot;reference&quot;,
@@ -554,12 +634,6 @@
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-category&quot;,
         &quot;type&quot; : &quot;token&quot;,
         &quot;documentation&quot; : &quot;product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment&quot;
-      },
-      {
-        &quot;name&quot; : &quot;event&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/AdverseEvent-event&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Type of the event itself in relation to the subject&quot;
       }]
     },
     {
@@ -1821,8 +1895,8 @@
       &quot;CarePlan.part-of&quot;,
       &quot;CarePlan.based-on&quot;,
       &quot;DiagnosticReport.based-on&quot;,
+      &quot;DocumentReference.based-on&quot;,
       &quot;ImagingStudy.basedon&quot;,
-      &quot;Media.based-on&quot;,
       &quot;Observation.based-on&quot;,
       &quot;Procedure.based-on&quot;,
       &quot;QuestionnaireResponse.based-on&quot;,
@@ -2003,7 +2077,6 @@
       &quot;DiagnosticReport.performer&quot;,
       &quot;DiagnosticReport.results-interpreter&quot;,
       &quot;ImagingStudy.performer&quot;,
-      &quot;Media.operator&quot;,
       &quot;MedicationRequest.intended-performer&quot;,
       &quot;Observation.performer&quot;,
       &quot;Procedure.performer&quot;,
@@ -2013,7 +2086,7 @@
         &quot;name&quot; : &quot;date&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/clinical-date&quot;,
         &quot;type&quot; : &quot;date&quot;,
-        &quot;documentation&quot; : &quot;Time period team covers&quot;
+        &quot;documentation&quot; : &quot;A date within the coverage time period.&quot;
       },
       {
         &quot;name&quot; : &quot;identifier&quot;,
@@ -2860,6 +2933,12 @@
       &quot;logical&quot;],
       &quot;searchInclude&quot; : [&quot;ClinicalUseIssue.subject&quot;],
       &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/ClinicalUseIssue-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Business identifier for this issue&quot;
+      },
+      {
         &quot;name&quot; : &quot;subject&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/ClinicalUseIssue-subject&quot;,
         &quot;type&quot; : &quot;reference&quot;,
@@ -3148,6 +3227,12 @@
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Communication-recipient&quot;,
         &quot;type&quot; : &quot;reference&quot;,
         &quot;documentation&quot; : &quot;Who the information is shared with&quot;
+      },
+      {
+        &quot;name&quot; : &quot;topic&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Communication-topic&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Description of the purpose/content&quot;
       },
       {
         &quot;name&quot; : &quot;instantiates-uri&quot;,
@@ -4160,7 +4245,6 @@
       &quot;Consent.patient&quot;,
       &quot;Consent.organization&quot;,
       &quot;Consent.consentor&quot;],
-      &quot;searchRevInclude&quot; : [&quot;Consent.source-reference&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;date&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/clinical-date&quot;,
@@ -4297,7 +4381,6 @@
       &quot;Contract.authority&quot;,
       &quot;Contract.domain&quot;,
       &quot;Contract.signer&quot;],
-      &quot;searchRevInclude&quot; : [&quot;Consent.source-reference&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;identifier&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Contract-identifier&quot;,
@@ -4845,10 +4928,6 @@
       &quot;List.source&quot;,
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.operator&quot;,
-      &quot;Media.patient&quot;,
-      &quot;Media.device&quot;,
       &quot;MedicationAdministration.performer&quot;,
       &quot;MedicationAdministration.device&quot;,
       &quot;MedicationDispense.performer&quot;,
@@ -4990,7 +5069,8 @@
       &quot;searchInclude&quot; : [&quot;DeviceDefinition.parent&quot;],
       &quot;searchRevInclude&quot; : [&quot;CatalogEntry.referenced-item&quot;,
       &quot;ClinicalUseIssue.subject&quot;,
-      &quot;DeviceDefinition.parent&quot;],
+      &quot;DeviceDefinition.parent&quot;,
+      &quot;RegulatedAuthorization.subject&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;parent&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/DeviceDefinition-parent&quot;,
@@ -5052,8 +5132,7 @@
       &quot;logical&quot;],
       &quot;searchInclude&quot; : [&quot;DeviceMetric.parent&quot;,
       &quot;DeviceMetric.source&quot;],
-      &quot;searchRevInclude&quot; : [&quot;Media.device&quot;,
-      &quot;Observation.device&quot;],
+      &quot;searchRevInclude&quot; : [&quot;Observation.device&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;parent&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/DeviceMetric-parent&quot;,
@@ -5629,6 +5708,7 @@
       &quot;referencePolicy&quot; : [&quot;literal&quot;,
       &quot;logical&quot;],
       &quot;searchInclude&quot; : [&quot;DocumentReference.subject&quot;,
+      &quot;DocumentReference.based-on&quot;,
       &quot;DocumentReference.related&quot;,
       &quot;DocumentReference.patient&quot;,
       &quot;DocumentReference.authenticator&quot;,
@@ -5636,7 +5716,8 @@
       &quot;DocumentReference.author&quot;,
       &quot;DocumentReference.encounter&quot;,
       &quot;DocumentReference.relatesto&quot;],
-      &quot;searchRevInclude&quot; : [&quot;Consent.source-reference&quot;,
+      &quot;searchRevInclude&quot; : [&quot;ClinicalImpression.finding-ref&quot;,
+      &quot;DiagnosticReport.media&quot;,
       &quot;DocumentReference.relatesto&quot;,
       &quot;MedicationKnowledge.monograph&quot;,
       &quot;Observation.derived-from&quot;,
@@ -5682,6 +5763,12 @@
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/DocumentReference-setting&quot;,
         &quot;type&quot; : &quot;token&quot;,
         &quot;documentation&quot; : &quot;Additional details about where the content was created (e.g. clinical specialty)&quot;
+      },
+      {
+        &quot;name&quot; : &quot;based-on&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/DocumentReference-based-on&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Procedure that caused this media to be created&quot;
       },
       {
         &quot;name&quot; : &quot;related&quot;,
@@ -5862,11 +5949,11 @@
       &quot;Flag.encounter&quot;,
       &quot;ImagingStudy.encounter&quot;,
       &quot;List.encounter&quot;,
-      &quot;Media.encounter&quot;,
       &quot;MedicationAdministration.encounter&quot;,
       &quot;MedicationDispense.encounter&quot;,
       &quot;MedicationRequest.encounter&quot;,
       &quot;MedicationUsage.encounter&quot;,
+      &quot;NutritionIntake.encounter&quot;,
       &quot;NutritionOrder.encounter&quot;,
       &quot;Observation.encounter&quot;,
       &quot;Procedure.encounter&quot;,
@@ -7258,6 +7345,12 @@
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/clinical-encounter&quot;,
         &quot;type&quot; : &quot;reference&quot;,
         &quot;documentation&quot; : &quot;Alert relevant during encounter&quot;
+      },
+      {
+        &quot;name&quot; : &quot;status&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Flag-status&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;active | inactive | entered-in-error&quot;
       }]
     },
     {
@@ -7520,6 +7613,7 @@
       &quot;searchInclude&quot; : [&quot;Group.managing-entity&quot;,
       &quot;Group.member&quot;],
       &quot;searchRevInclude&quot; : [&quot;AdverseEvent.subject&quot;,
+      &quot;AdverseEvent.patient&quot;,
       &quot;CarePlan.subject&quot;,
       &quot;CarePlan.patient&quot;,
       &quot;CareTeam.patient&quot;,
@@ -7564,8 +7658,6 @@
       &quot;List.patient&quot;,
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.patient&quot;,
       &quot;MedicationAdministration.subject&quot;,
       &quot;MedicationAdministration.patient&quot;,
       &quot;MedicationDispense.subject&quot;,
@@ -7574,6 +7666,8 @@
       &quot;MedicationRequest.patient&quot;,
       &quot;MedicationUsage.subject&quot;,
       &quot;MedicationUsage.patient&quot;,
+      &quot;NutritionIntake.subject&quot;,
+      &quot;NutritionIntake.patient&quot;,
       &quot;Observation.subject&quot;,
       &quot;Observation.patient&quot;,
       &quot;Procedure.subject&quot;,
@@ -7775,6 +7869,7 @@
       &quot;CommunicationRequest.recipient&quot;,
       &quot;CommunicationRequest.information-provider&quot;,
       &quot;DeviceRequest.performer&quot;,
+      &quot;MedicationRequest.intended-performer&quot;,
       &quot;OrganizationAffiliation.service&quot;,
       &quot;PractitionerRole.service&quot;,
       &quot;Procedure.performer&quot;,
@@ -8535,7 +8630,13 @@
       &quot;conditionalDelete&quot; : &quot;multiple&quot;,
       &quot;referencePolicy&quot; : [&quot;literal&quot;,
       &quot;logical&quot;],
-      &quot;searchRevInclude&quot; : [&quot;MedicationKnowledge.ingredient&quot;]
+      &quot;searchRevInclude&quot; : [&quot;MedicationKnowledge.ingredient&quot;],
+      &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Ingredient-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;An identifier or code by which the ingredient can be referenced&quot;
+      }]
     },
     {
       &quot;type&quot; : &quot;InsurancePlan&quot;,
@@ -9240,8 +9341,6 @@
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
       &quot;MeasureReport.reporter&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.patient&quot;,
       &quot;MedicationDispense.receiver&quot;,
       &quot;MedicationDispense.destination&quot;,
       &quot;Observation.subject&quot;,
@@ -9347,6 +9446,47 @@
         &quot;type&quot; : &quot;token&quot;,
         &quot;documentation&quot; : &quot;Searches for locations with a specific kind of status&quot;
       }]
+    },
+    {
+      &quot;type&quot; : &quot;ManufacturedItemDefinition&quot;,
+      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/ManufacturedItemDefinition&quot;,
+      &quot;interaction&quot; : [{
+        &quot;code&quot; : &quot;read&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;vread&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;update&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;delete&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-instance&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;create&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;search-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      }],
+      &quot;conditionalCreate&quot; : true,
+      &quot;conditionalUpdate&quot; : true,
+      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
+      &quot;referencePolicy&quot; : [&quot;literal&quot;,
+      &quot;logical&quot;]
     },
     {
       &quot;type&quot; : &quot;Measure&quot;,
@@ -9629,135 +9769,6 @@
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/MeasureReport-evaluated-resource&quot;,
         &quot;type&quot; : &quot;reference&quot;,
         &quot;documentation&quot; : &quot;An evaluated resource referenced by the measure report&quot;
-      }]
-    },
-    {
-      &quot;type&quot; : &quot;Media&quot;,
-      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/Media&quot;,
-      &quot;interaction&quot; : [{
-        &quot;code&quot; : &quot;read&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;vread&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;update&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;delete&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-instance&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;create&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;search-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      }],
-      &quot;conditionalCreate&quot; : true,
-      &quot;conditionalUpdate&quot; : true,
-      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
-      &quot;referencePolicy&quot; : [&quot;literal&quot;,
-      &quot;logical&quot;],
-      &quot;searchInclude&quot; : [&quot;Media.subject&quot;,
-      &quot;Media.encounter&quot;,
-      &quot;Media.operator&quot;,
-      &quot;Media.based-on&quot;,
-      &quot;Media.patient&quot;,
-      &quot;Media.device&quot;],
-      &quot;searchRevInclude&quot; : [&quot;ClinicalImpression.finding-ref&quot;,
-      &quot;DiagnosticReport.media&quot;,
-      &quot;MedicationKnowledge.monograph&quot;,
-      &quot;Observation.derived-from&quot;],
-      &quot;searchParam&quot; : [{
-        &quot;name&quot; : &quot;identifier&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-identifier&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Identifier(s) for the image&quot;
-      },
-      {
-        &quot;name&quot; : &quot;modality&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-modality&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;The type of acquisition equipment/process&quot;
-      },
-      {
-        &quot;name&quot; : &quot;subject&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-subject&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;Who/What this Media is a record of&quot;
-      },
-      {
-        &quot;name&quot; : &quot;created&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-created&quot;,
-        &quot;type&quot; : &quot;date&quot;,
-        &quot;documentation&quot; : &quot;When Media was collected&quot;
-      },
-      {
-        &quot;name&quot; : &quot;encounter&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-encounter&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;Encounter associated with media&quot;
-      },
-      {
-        &quot;name&quot; : &quot;type&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-type&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Classification of media as image, video, or audio&quot;
-      },
-      {
-        &quot;name&quot; : &quot;operator&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-operator&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;The person who generated the image&quot;
-      },
-      {
-        &quot;name&quot; : &quot;view&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-view&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Imaging view, e.g. Lateral or Antero-posterior&quot;
-      },
-      {
-        &quot;name&quot; : &quot;site&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-site&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Observed body part&quot;
-      },
-      {
-        &quot;name&quot; : &quot;based-on&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-based-on&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;Procedure that caused this media to be created&quot;
-      },
-      {
-        &quot;name&quot; : &quot;patient&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-patient&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;Who/What this Media is a record of&quot;
-      },
-      {
-        &quot;name&quot; : &quot;device&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-device&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;Observing Device&quot;
-      },
-      {
-        &quot;name&quot; : &quot;status&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Media-status&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown&quot;
       }]
     },
     {
@@ -10549,6 +10560,69 @@
       }]
     },
     {
+      &quot;type&quot; : &quot;MedicinalProductDefinition&quot;,
+      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
+      &quot;interaction&quot; : [{
+        &quot;code&quot; : &quot;read&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;vread&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;update&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;delete&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-instance&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;create&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;search-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      }],
+      &quot;conditionalCreate&quot; : true,
+      &quot;conditionalUpdate&quot; : true,
+      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
+      &quot;referencePolicy&quot; : [&quot;literal&quot;,
+      &quot;logical&quot;],
+      &quot;searchRevInclude&quot; : [&quot;AdministrableProductDefinition.subject&quot;,
+      &quot;ClinicalUseIssue.subject&quot;,
+      &quot;PackagedProductDefinition.subject&quot;,
+      &quot;RegulatedAuthorization.subject&quot;],
+      &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/MedicinalProductDefinition-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Business identifier for this product. Could be an MPID&quot;
+      },
+      {
+        &quot;name&quot; : &quot;name&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/MedicinalProductDefinition-name&quot;,
+        &quot;type&quot; : &quot;string&quot;,
+        &quot;documentation&quot; : &quot;The full product name&quot;
+      },
+      {
+        &quot;name&quot; : &quot;name-language&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/MedicinalProductDefinition-name-language&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Language code for this name&quot;
+      }]
+    },
+    {
       &quot;type&quot; : &quot;MessageDefinition&quot;,
       &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/MessageDefinition&quot;,
       &quot;interaction&quot; : [{
@@ -11114,6 +11188,113 @@
       }]
     },
     {
+      &quot;type&quot; : &quot;NutritionIntake&quot;,
+      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/NutritionIntake&quot;,
+      &quot;interaction&quot; : [{
+        &quot;code&quot; : &quot;read&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;vread&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;update&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;delete&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-instance&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;create&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;search-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      }],
+      &quot;conditionalCreate&quot; : true,
+      &quot;conditionalUpdate&quot; : true,
+      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
+      &quot;referencePolicy&quot; : [&quot;literal&quot;,
+      &quot;logical&quot;],
+      &quot;searchInclude&quot; : [&quot;NutritionIntake.subject&quot;,
+      &quot;NutritionIntake.patient&quot;,
+      &quot;NutritionIntake.part-of&quot;,
+      &quot;NutritionIntake.source&quot;,
+      &quot;NutritionIntake.encounter&quot;],
+      &quot;searchRevInclude&quot; : [&quot;NutritionIntake.part-of&quot;],
+      &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Return statements with this external identifier&quot;
+      },
+      {
+        &quot;name&quot; : &quot;effective&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-effective&quot;,
+        &quot;type&quot; : &quot;date&quot;,
+        &quot;documentation&quot; : &quot;Date when patient was taking (or not taking) the medication&quot;
+      },
+      {
+        &quot;name&quot; : &quot;nutrition&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-nutrition&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Return statements of this medication reference&quot;
+      },
+      {
+        &quot;name&quot; : &quot;subject&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-subject&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;The identity of a patient, animal or group to list statements for&quot;
+      },
+      {
+        &quot;name&quot; : &quot;patient&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-patient&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Returns statements for a specific patient.&quot;
+      },
+      {
+        &quot;name&quot; : &quot;part-of&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-part-of&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Returns statements that are part of another event.&quot;
+      },
+      {
+        &quot;name&quot; : &quot;source&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-source&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Who or where the information in the statement came from&quot;
+      },
+      {
+        &quot;name&quot; : &quot;encounter&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-encounter&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;Returns statements for a specific encounter&quot;
+      },
+      {
+        &quot;name&quot; : &quot;category&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-category&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Returns statements of this category of NutritionIntake&quot;
+      },
+      {
+        &quot;name&quot; : &quot;status&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/NutritionIntake-status&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Return statements that match the given status&quot;
+      }]
+    },
+    {
       &quot;type&quot; : &quot;NutritionOrder&quot;,
       &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/NutritionOrder&quot;,
       &quot;interaction&quot; : [{
@@ -11292,6 +11473,7 @@
       &quot;Immunization.reaction&quot;,
       &quot;Immunization.reason-reference&quot;,
       &quot;MedicationUsage.part-of&quot;,
+      &quot;NutritionIntake.part-of&quot;,
       &quot;Observation.derived-from&quot;,
       &quot;Observation.has-member&quot;,
       &quot;Procedure.part-of&quot;,
@@ -11945,7 +12127,6 @@
       &quot;Linkage.author&quot;,
       &quot;Location.organization&quot;,
       &quot;MeasureReport.reporter&quot;,
-      &quot;Media.operator&quot;,
       &quot;Medication.manufacturer&quot;,
       &quot;MedicationDispense.performer&quot;,
       &quot;MedicationDispense.responsibleparty&quot;,
@@ -11957,6 +12138,7 @@
       &quot;MessageHeader.receiver&quot;,
       &quot;MessageHeader.sender&quot;,
       &quot;MessageHeader.responsible&quot;,
+      &quot;NutritionIntake.source&quot;,
       &quot;Observation.performer&quot;,
       &quot;Organization.partof&quot;,
       &quot;OrganizationAffiliation.primary-organization&quot;,
@@ -12194,6 +12376,61 @@
       }]
     },
     {
+      &quot;type&quot; : &quot;PackagedProductDefinition&quot;,
+      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/PackagedProductDefinition&quot;,
+      &quot;interaction&quot; : [{
+        &quot;code&quot; : &quot;read&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;vread&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;update&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;delete&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-instance&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;history-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;create&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      },
+      {
+        &quot;code&quot; : &quot;search-type&quot;,
+        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
+      }],
+      &quot;conditionalCreate&quot; : true,
+      &quot;conditionalUpdate&quot; : true,
+      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
+      &quot;referencePolicy&quot; : [&quot;literal&quot;,
+      &quot;logical&quot;],
+      &quot;searchInclude&quot; : [&quot;PackagedProductDefinition.subject&quot;],
+      &quot;searchRevInclude&quot; : [&quot;RegulatedAuthorization.subject&quot;],
+      &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/PackagedProductDefinition-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Unique identifier&quot;
+      },
+      {
+        &quot;name&quot; : &quot;subject&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/PackagedProductDefinition-subject&quot;,
+        &quot;type&quot; : &quot;reference&quot;,
+        &quot;documentation&quot; : &quot;The product that this is a pack for&quot;
+      }]
+    },
+    {
       &quot;type&quot; : &quot;Patient&quot;,
       &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
       &quot;interaction&quot; : [{
@@ -12240,6 +12477,7 @@
       &quot;Account.patient&quot;,
       &quot;AdverseEvent.recorder&quot;,
       &quot;AdverseEvent.subject&quot;,
+      &quot;AdverseEvent.patient&quot;,
       &quot;AllergyIntolerance.recorder&quot;,
       &quot;AllergyIntolerance.asserter&quot;,
       &quot;AllergyIntolerance.patient&quot;,
@@ -12343,9 +12581,6 @@
       &quot;List.source&quot;,
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.operator&quot;,
-      &quot;Media.patient&quot;,
       &quot;MedicationAdministration.performer&quot;,
       &quot;MedicationAdministration.subject&quot;,
       &quot;MedicationAdministration.patient&quot;,
@@ -12361,6 +12596,9 @@
       &quot;MedicationUsage.patient&quot;,
       &quot;MedicationUsage.source&quot;,
       &quot;MolecularSequence.patient&quot;,
+      &quot;NutritionIntake.subject&quot;,
+      &quot;NutritionIntake.patient&quot;,
+      &quot;NutritionIntake.source&quot;,
       &quot;NutritionOrder.patient&quot;,
       &quot;Observation.subject&quot;,
       &quot;Observation.patient&quot;,
@@ -12936,6 +13174,7 @@
       &quot;NutritionOrder.instantiates-canonical&quot;,
       &quot;PlanDefinition.definition&quot;,
       &quot;Procedure.instantiates-canonical&quot;,
+      &quot;RegulatedAuthorization.subject&quot;,
       &quot;ResearchStudy.protocol&quot;,
       &quot;ServiceRequest.instantiates-canonical&quot;],
       &quot;searchParam&quot; : [{
@@ -13127,6 +13366,7 @@
       &quot;Account.patient&quot;,
       &quot;AdverseEvent.recorder&quot;,
       &quot;AdverseEvent.subject&quot;,
+      &quot;AdverseEvent.patient&quot;,
       &quot;AllergyIntolerance.recorder&quot;,
       &quot;AllergyIntolerance.asserter&quot;,
       &quot;Appointment.practitioner&quot;,
@@ -13201,9 +13441,6 @@
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
       &quot;MeasureReport.reporter&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.operator&quot;,
-      &quot;Media.patient&quot;,
       &quot;MedicationAdministration.performer&quot;,
       &quot;MedicationDispense.performer&quot;,
       &quot;MedicationDispense.receiver&quot;,
@@ -13216,6 +13453,7 @@
       &quot;MessageHeader.sender&quot;,
       &quot;MessageHeader.responsible&quot;,
       &quot;MessageHeader.enterer&quot;,
+      &quot;NutritionIntake.source&quot;,
       &quot;NutritionOrder.provider&quot;,
       &quot;Observation.performer&quot;,
       &quot;Patient.general-practitioner&quot;,
@@ -13466,11 +13704,9 @@
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
       &quot;MeasureReport.reporter&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.operator&quot;,
-      &quot;Media.patient&quot;,
       &quot;MedicationAdministration.performer&quot;,
       &quot;MedicationDispense.performer&quot;,
+      &quot;MedicationDispense.receiver&quot;,
       &quot;MedicationDispense.responsibleparty&quot;,
       &quot;MedicationRequest.requester&quot;,
       &quot;MedicationRequest.intended-performer&quot;,
@@ -13480,6 +13716,7 @@
       &quot;MessageHeader.sender&quot;,
       &quot;MessageHeader.responsible&quot;,
       &quot;MessageHeader.enterer&quot;,
+      &quot;NutritionIntake.source&quot;,
       &quot;NutritionOrder.provider&quot;,
       &quot;Observation.performer&quot;,
       &quot;Patient.general-practitioner&quot;,
@@ -13640,6 +13877,7 @@
       &quot;Flag.subject&quot;,
       &quot;Flag.patient&quot;,
       &quot;MedicationUsage.part-of&quot;,
+      &quot;NutritionIntake.part-of&quot;,
       &quot;Observation.part-of&quot;,
       &quot;Procedure.part-of&quot;,
       &quot;Procedure.reason-reference&quot;,
@@ -14056,8 +14294,7 @@
       &quot;QuestionnaireResponse.part-of&quot;,
       &quot;QuestionnaireResponse.encounter&quot;,
       &quot;QuestionnaireResponse.source&quot;],
-      &quot;searchRevInclude&quot; : [&quot;Consent.source-reference&quot;,
-      &quot;Observation.derived-from&quot;,
+      &quot;searchRevInclude&quot; : [&quot;Observation.derived-from&quot;,
       &quot;Observation.has-member&quot;],
       &quot;searchParam&quot; : [{
         &quot;name&quot; : &quot;authored&quot;,
@@ -14127,72 +14364,6 @@
       }]
     },
     {
-      &quot;type&quot; : &quot;RegulatedAdministrableProduct&quot;,
-      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/RegulatedAdministrableProduct&quot;,
-      &quot;interaction&quot; : [{
-        &quot;code&quot; : &quot;read&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;vread&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;update&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;delete&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-instance&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;create&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;search-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      }],
-      &quot;conditionalCreate&quot; : true,
-      &quot;conditionalUpdate&quot; : true,
-      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
-      &quot;referencePolicy&quot; : [&quot;literal&quot;,
-      &quot;logical&quot;],
-      &quot;searchInclude&quot; : [&quot;RegulatedAdministrableProduct.subject&quot;],
-      &quot;searchParam&quot; : [{
-        &quot;name&quot; : &quot;identifier&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAdministrableProduct-identifier&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;An identifier for the pharmaceutical medicinal product&quot;
-      },
-      {
-        &quot;name&quot; : &quot;route&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAdministrableProduct-route&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Coded expression for the route&quot;
-      },
-      {
-        &quot;name&quot; : &quot;subject&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAdministrableProduct-subject&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;The product that this is a pharmaceutical product of&quot;
-      },
-      {
-        &quot;name&quot; : &quot;target-species&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAdministrableProduct-target-species&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Coded expression for the species&quot;
-      }]
-    },
-    {
       &quot;type&quot; : &quot;RegulatedAuthorization&quot;,
       &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization&quot;,
       &quot;interaction&quot; : [{
@@ -14241,16 +14412,10 @@
         &quot;documentation&quot; : &quot;Business identifier for the marketing authorization, as assigned by a regulator&quot;
       },
       {
-        &quot;name&quot; : &quot;country&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAuthorization-country&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;The country in which the marketing authorization has been granted&quot;
-      },
-      {
         &quot;name&quot; : &quot;subject&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAuthorization-subject&quot;,
         &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;The medicinal product that is being authorized&quot;
+        &quot;documentation&quot; : &quot;The product that is being authorized&quot;
       },
       {
         &quot;name&quot; : &quot;holder&quot;,
@@ -14259,169 +14424,22 @@
         &quot;documentation&quot; : &quot;Marketing Authorization Holder&quot;
       },
       {
+        &quot;name&quot; : &quot;region&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAuthorization-region&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted&quot;
+      },
+      {
+        &quot;name&quot; : &quot;case&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAuthorization-case&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;The case or procedure number&quot;
+      },
+      {
         &quot;name&quot; : &quot;status&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedAuthorization-status&quot;,
         &quot;type&quot; : &quot;token&quot;,
         &quot;documentation&quot; : &quot;The status of the marketing authorization&quot;
-      }]
-    },
-    {
-      &quot;type&quot; : &quot;RegulatedManufacturedItem&quot;,
-      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/RegulatedManufacturedItem&quot;,
-      &quot;interaction&quot; : [{
-        &quot;code&quot; : &quot;read&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;vread&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;update&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;delete&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-instance&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;create&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;search-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      }],
-      &quot;conditionalCreate&quot; : true,
-      &quot;conditionalUpdate&quot; : true,
-      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
-      &quot;referencePolicy&quot; : [&quot;literal&quot;,
-      &quot;logical&quot;]
-    },
-    {
-      &quot;type&quot; : &quot;RegulatedMedicinalProduct&quot;,
-      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
-      &quot;interaction&quot; : [{
-        &quot;code&quot; : &quot;read&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;vread&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;update&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;delete&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-instance&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;create&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;search-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      }],
-      &quot;conditionalCreate&quot; : true,
-      &quot;conditionalUpdate&quot; : true,
-      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
-      &quot;referencePolicy&quot; : [&quot;literal&quot;,
-      &quot;logical&quot;],
-      &quot;searchRevInclude&quot; : [&quot;ClinicalUseIssue.subject&quot;,
-      &quot;RegulatedAdministrableProduct.subject&quot;,
-      &quot;RegulatedAuthorization.subject&quot;,
-      &quot;RegulatedPackagedProduct.subject&quot;],
-      &quot;searchParam&quot; : [{
-        &quot;name&quot; : &quot;identifier&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedMedicinalProduct-identifier&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Business identifier for this product. Could be an MPID&quot;
-      },
-      {
-        &quot;name&quot; : &quot;name&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedMedicinalProduct-name&quot;,
-        &quot;type&quot; : &quot;string&quot;,
-        &quot;documentation&quot; : &quot;The full product name&quot;
-      },
-      {
-        &quot;name&quot; : &quot;name-language&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedMedicinalProduct-name-language&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Language code for this name&quot;
-      }]
-    },
-    {
-      &quot;type&quot; : &quot;RegulatedPackagedProduct&quot;,
-      &quot;profile&quot; : &quot;http://hl7.org/fhir/StructureDefinition/RegulatedPackagedProduct&quot;,
-      &quot;interaction&quot; : [{
-        &quot;code&quot; : &quot;read&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;vread&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;update&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;delete&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-instance&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;history-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;create&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      },
-      {
-        &quot;code&quot; : &quot;search-type&quot;,
-        &quot;documentation&quot; : &quot;Implemented per the specification (or Insert other doco here)&quot;
-      }],
-      &quot;conditionalCreate&quot; : true,
-      &quot;conditionalUpdate&quot; : true,
-      &quot;conditionalDelete&quot; : &quot;multiple&quot;,
-      &quot;referencePolicy&quot; : [&quot;literal&quot;,
-      &quot;logical&quot;],
-      &quot;searchInclude&quot; : [&quot;RegulatedPackagedProduct.subject&quot;],
-      &quot;searchRevInclude&quot; : [&quot;RegulatedAuthorization.subject&quot;],
-      &quot;searchParam&quot; : [{
-        &quot;name&quot; : &quot;identifier&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedPackagedProduct-identifier&quot;,
-        &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Unique identifier&quot;
-      },
-      {
-        &quot;name&quot; : &quot;subject&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/RegulatedPackagedProduct-subject&quot;,
-        &quot;type&quot; : &quot;reference&quot;,
-        &quot;documentation&quot; : &quot;The product that this is a pack for&quot;
       }]
     },
     {
@@ -14467,6 +14485,7 @@
       &quot;searchInclude&quot; : [&quot;RelatedPerson.patient&quot;],
       &quot;searchRevInclude&quot; : [&quot;AdverseEvent.recorder&quot;,
       &quot;AdverseEvent.subject&quot;,
+      &quot;AdverseEvent.patient&quot;,
       &quot;AllergyIntolerance.recorder&quot;,
       &quot;AllergyIntolerance.asserter&quot;,
       &quot;Appointment.practitioner&quot;,
@@ -14513,13 +14532,13 @@
       &quot;Invoice.recipient&quot;,
       &quot;MeasureReport.patient&quot;,
       &quot;MeasureReport.subject&quot;,
-      &quot;Media.operator&quot;,
       &quot;MedicationAdministration.performer&quot;,
       &quot;MedicationDispense.performer&quot;,
       &quot;MedicationDispense.receiver&quot;,
       &quot;MedicationRequest.requester&quot;,
       &quot;MedicationRequest.intended-performer&quot;,
       &quot;MedicationUsage.source&quot;,
+      &quot;NutritionIntake.source&quot;,
       &quot;Observation.performer&quot;,
       &quot;Patient.link&quot;,
       &quot;Person.practitioner&quot;,
@@ -14818,6 +14837,7 @@
       &quot;ResearchStudy.protocol&quot;,
       &quot;ResearchStudy.site&quot;],
       &quot;searchRevInclude&quot; : [&quot;AdverseEvent.study&quot;,
+      &quot;RegulatedAuthorization.subject&quot;,
       &quot;ResearchStudy.partof&quot;,
       &quot;ResearchSubject.study&quot;],
       &quot;searchParam&quot; : [{
@@ -15381,10 +15401,10 @@
       &quot;searchRevInclude&quot; : [&quot;Appointment.based-on&quot;,
       &quot;CarePlan.activity-reference&quot;,
       &quot;DiagnosticReport.based-on&quot;,
+      &quot;DocumentReference.based-on&quot;,
       &quot;Encounter.based-on&quot;,
       &quot;EpisodeOfCare.incoming-referral&quot;,
       &quot;ImagingStudy.basedon&quot;,
-      &quot;Media.based-on&quot;,
       &quot;Observation.based-on&quot;,
       &quot;Procedure.based-on&quot;,
       &quot;QuestionnaireResponse.based-on&quot;,
@@ -15653,8 +15673,6 @@
       &quot;Specimen.patient&quot;,
       &quot;Specimen.collector&quot;],
       &quot;searchRevInclude&quot; : [&quot;DiagnosticReport.specimen&quot;,
-      &quot;Media.subject&quot;,
-      &quot;Media.patient&quot;,
       &quot;Observation.specimen&quot;,
       &quot;ServiceRequest.specimen&quot;,
       &quot;Specimen.parent&quot;],
@@ -16206,12 +16224,6 @@
         &quot;documentation&quot; : &quot;The mime-type of the notification payload&quot;
       },
       {
-        &quot;name&quot; : &quot;criteria&quot;,
-        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Subscription-criteria&quot;,
-        &quot;type&quot; : &quot;string&quot;,
-        &quot;documentation&quot; : &quot;The search rules used to determine when to send a notification&quot;
-      },
-      {
         &quot;name&quot; : &quot;contact&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/Subscription-contact&quot;,
         &quot;type&quot; : &quot;token&quot;,
@@ -16375,10 +16387,16 @@
       &quot;referencePolicy&quot; : [&quot;literal&quot;,
       &quot;logical&quot;],
       &quot;searchParam&quot; : [{
+        &quot;name&quot; : &quot;identifier&quot;,
+        &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/SubstanceDefinition-identifier&quot;,
+        &quot;type&quot; : &quot;token&quot;,
+        &quot;documentation&quot; : &quot;Identifier by which this substance is known&quot;
+      },
+      {
         &quot;name&quot; : &quot;code&quot;,
         &quot;definition&quot; : &quot;http://hl7.org/fhir/SearchParameter/SubstanceDefinition-code&quot;,
         &quot;type&quot; : &quot;token&quot;,
-        &quot;documentation&quot; : &quot;Codes associated with the substance&quot;
+        &quot;documentation&quot; : &quot;The specific code&quot;
       }]
     },
     {
@@ -18065,6 +18083,10 @@
       &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/measure-care-gaps&quot;
     },
     {
+      &quot;name&quot; : &quot;everything&quot;,
+      &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/medicinalproductdefinition-everything&quot;
+    },
+    {
       &quot;name&quot; : &quot;process-message&quot;,
       &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/messageheader-process-message&quot;
     },
@@ -18097,8 +18119,8 @@
       &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/plandefinition-data-requirements&quot;
     },
     {
-      &quot;name&quot; : &quot;everything&quot;,
-      &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/regulatedmedicinalproduct-everything&quot;
+      &quot;name&quot; : &quot;apply&quot;,
+      &quot;definition&quot; : &quot;http://hl7.org/fhir/OperationDefinition/specimendefinition-apply&quot;
     },
     {
       &quot;name&quot; : &quot;questionnaire&quot;,
@@ -18146,7 +18168,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:39-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:43-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -18154,7 +18176,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcapabilitystatement-base.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcapabilitystatement-base.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcapabilitystatement-base.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcapabilitystatement-base.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

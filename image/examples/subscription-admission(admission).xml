@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><Subscription xmlns="http://hl7.org/fhir">
+	<id value="admission"/>
+	<meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+      <display value="test health data"/>
+    </security>
+  </meta>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: admission</p><p><b>name</b>: AdmissionExample</p><p><b>status</b>: active</p><p><b>topic</b>: <a>Topic/admission</a></p><p><b>end</b>: Aug 7, 2019, 11:15:18 AM</p><p><b>reason</b>: subscription for beginning of a clinical encounter for patient 123</p><h3>FilterBies</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Value</b></td></tr><tr><td>*</td><td>patient</td><td>Patient/123</td></tr></table><blockquote><p><b>channel</b></p><p><b>type</b>: Rest Hook <span>(Details : {http://terminology.hl7.org/CodeSystem/subscription-channel-type code 'rest-hook' = 'Rest Hook', given as 'Rest Hook'})</span></p><p><b>endpoint</b>: <a>https://example.org/Endpoints/P123</a></p><p><b>header</b>: Authorization: Bearer secret-token-abc-123</p><p><b>heartbeatPeriod</b>: 60</p><h3>Payloads</h3><table><tr><td>-</td><td><b>ContentType</b></td><td><b>Content</b></td></tr><tr><td>*</td><td>application/fhir+json</td><td>id-only</td></tr></table></blockquote></div></text><name value="AdmissionExample"/>
+	<status value="active"/>
+	<topic>
+		<reference value="Topic/admission"/>
+	</topic>
+	<end value="2019-08-07T11:15:18Z"/>
+	<reason value="subscription for beginning of a clinical encounter for patient 123"/>
+	<filterBy>
+		<name value="patient"/>
+		<value value="Patient/123"/>
+	</filterBy>
+	<channel>
+		<type>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/subscription-channel-type"/>
+				<!--   0..1 Identity of the terminology system   -->
+				<code value="rest-hook"/>
+				<!--   0..1 Symbol in syntax defined by the system   -->
+				<display value="Rest Hook"/>
+				<!--   0..1 Representation defined by the system   -->
+			</coding>
+			<text value="Rest Hook"/>
+			<!--   0..1 Plain text representation of the concept   -->
+		</type>
+		<endpoint value="https://example.org/Endpoints/P123"/>
+		<header value="Authorization: Bearer secret-token-abc-123"/>
+		<heartbeatPeriod value="60"/>
+		<payload>
+			<contentType value="application/fhir+json"/>
+			<content value="id-only"/>
+	</payload>
+	</channel>
+</Subscription>

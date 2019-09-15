@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type CommunicationRequest {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -30,7 +30,7 @@ type CommunicationRequest {
   authoredOn: dateTime  _authoredOn: ElementBase
   requester: Reference
   recipient: [Reference]
-  informationProvider: Reference
+  informationProvider: [Reference]
   reasonCode: [CodeableConcept]
   reasonReference: [Reference]
   note: [Annotation]
@@ -46,7 +46,7 @@ type CommunicationRequestPayload {
 }
 
 input CommunicationRequestInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -73,7 +73,7 @@ input CommunicationRequestInput {
   authoredOn: dateTime  _authoredOn: ElementBase
   requester: ReferenceInput
   recipient: [ReferenceInput]
-  informationProvider: ReferenceInput
+  informationProvider: [ReferenceInput]
   reasonCode: [CodeableConceptInput]
   reasonReference: [ReferenceInput]
   note: [AnnotationInput]

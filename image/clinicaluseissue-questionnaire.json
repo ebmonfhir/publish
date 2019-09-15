@@ -8,8 +8,8 @@
     "status" : "active",
     "description" : "Type options for ClinicalUseIssue.contraindication.otherTherapy.medication[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:442d95e2-815a-4bfa-8e38-52f93f559e9d",
-      "timestamp" : "2019-08-09T09:44:25-04:00",
+      "identifier" : "urn:uuid:ae3d5113-6e98-4d2a-8f7b-5c029148a55a",
+      "timestamp" : "2019-09-15T10:44:29-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/data-types",
         "code" : "CodeableConcept",
@@ -17,8 +17,8 @@
       },
       {
         "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "RegulatedMedicinalProduct",
-        "display" : "RegulatedMedicinalProduct"
+        "code" : "MedicinalProductDefinition",
+        "display" : "MedicinalProductDefinition"
       },
       {
         "system" : "http://hl7.org/fhir/resource-types",
@@ -44,12 +44,12 @@
     "status" : "active",
     "description" : "Type options for ClinicalUseIssue.interaction.interactant.item[x]",
     "expansion" : {
-      "identifier" : "urn:uuid:aa3c00d0-c4d6-4d0b-84f3-813b11bacd6a",
-      "timestamp" : "2019-08-09T09:44:25-04:00",
+      "identifier" : "urn:uuid:1afe944c-4401-4d05-9d6a-20bfe0f73a43",
+      "timestamp" : "2019-09-15T10:44:29-04:00",
       "contains" : [{
         "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "RegulatedMedicinalProduct",
-        "display" : "RegulatedMedicinalProduct"
+        "code" : "MedicinalProductDefinition",
+        "display" : "MedicinalProductDefinition"
       },
       {
         "system" : "http://hl7.org/fhir/resource-types",
@@ -78,11 +78,11 @@
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
+  "date" : "2019-09-15T10:41:41-04:00",
   "publisher" : "Health Level Seven International (Biomedical Research and Regulation)",
   "item" : [{
     "linkId" : "ClinicalUseIssue",
-    "text" : "ClinicalUseIssue",
+    "text" : "A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product",
     "type" : "group",
     "required" : false,
     "repeats" : true,
@@ -320,6 +320,52 @@
     },
     {
       "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Identifier"
+      }],
+      "linkId" : "ClinicalUseIssue.identifier",
+      "text" : "Business identifier for this issue",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "Business identifier for this issue.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "ClinicalUseIssue.identifier.label",
+        "text" : "label:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "ClinicalUseIssue.identifier.system",
+        "text" : "system:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "ClinicalUseIssue.identifier.value",
+        "text" : "value:",
+        "type" : "string",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs",
         "valueInteger" : 1
       },
@@ -383,7 +429,7 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-          "valueCode" : "RegulatedMedicinalProduct, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance"
+          "valueCode" : "MedicinalProductDefinition, Medication, ActivityDefinition, PlanDefinition, Device, DeviceDefinition, Substance"
         },
         {
           "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -392,6 +438,49 @@
         "linkId" : "ClinicalUseIssue.subject.value",
         "text" : "The medication or procedure for which this is an indication",
         "type" : "reference",
+        "required" : false,
+        "repeats" : false
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
+        "valueInteger" : 1
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "CodeableConcept"
+      }],
+      "linkId" : "ClinicalUseIssue.status",
+      "text" : "General description",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "General description.",
+        "type" : "display"
+      },
+      {
+        "linkId" : "ClinicalUseIssue.status.coding",
+        "text" : "code:",
+        "type" : "open-choice",
+        "required" : false,
+        "repeats" : false
+      },
+      {
+        "linkId" : "ClinicalUseIssue.status.text",
+        "text" : "text:",
+        "type" : "string",
         "required" : false,
         "repeats" : false
       }]
@@ -542,7 +631,7 @@
           "valueString" : "CodeableConcept"
         }],
         "linkId" : "ClinicalUseIssue.contraindication.diseaseSymptomProcedure",
-        "text" : "The disease, symptom or procedure for the contraindication",
+        "text" : "The situation that is being documented as contraindicating against this item",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -557,7 +646,7 @@
               }]
             }
           }],
-          "text" : "The disease, symptom or procedure for the contraindication.",
+          "text" : "The situation that is being documented as contraindicating against this item.",
           "type" : "display"
         },
         {
@@ -907,7 +996,7 @@
               "item" : [{
                 "extension" : [{
                   "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                  "valueCode" : "RegulatedMedicinalProduct, Medication, Substance, SubstanceDefinition"
+                  "valueCode" : "MedicinalProductDefinition, Medication, Substance, SubstanceDefinition"
                 },
                 {
                   "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -1034,7 +1123,7 @@
           "valueString" : "CodeableConcept"
         }],
         "linkId" : "ClinicalUseIssue.indication.diseaseSymptomProcedure",
-        "text" : "The disease, symptom or procedure for the indication",
+        "text" : "The situation that is being documented as an indicaton for this item",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1049,7 +1138,7 @@
               }]
             }
           }],
-          "text" : "The disease, symptom or procedure for the indication.",
+          "text" : "The situation that is being documented as an indicaton for this item.",
           "type" : "display"
         },
         {
@@ -1560,7 +1649,7 @@
               "item" : [{
                 "extension" : [{
                   "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-                  "valueCode" : "RegulatedMedicinalProduct, Medication, Substance, ObservationDefinition"
+                  "valueCode" : "MedicinalProductDefinition, Medication, Substance, ObservationDefinition"
                 },
                 {
                   "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
@@ -1797,7 +1886,7 @@
         "valueInteger" : 1
       }],
       "linkId" : "ClinicalUseIssue.undesirableEffect",
-      "text" : "UndesirableEffect",
+      "text" : "A possible negative outcome from the use of this treatment",
       "type" : "group",
       "required" : false,
       "repeats" : false,
@@ -1902,7 +1991,7 @@
           "valueString" : "CodeableConcept"
         }],
         "linkId" : "ClinicalUseIssue.undesirableEffect.symptomConditionEffect",
-        "text" : "The symptom, condition or undesirable effect",
+        "text" : "The situation in which the undesirable effect may manifest",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1917,7 +2006,7 @@
               }]
             }
           }],
-          "text" : "The symptom, condition or undesirable effect.",
+          "text" : "The situation in which the undesirable effect may manifest.",
           "type" : "display"
         },
         {
@@ -1945,7 +2034,7 @@
           "valueString" : "CodeableConcept"
         }],
         "linkId" : "ClinicalUseIssue.undesirableEffect.classification",
-        "text" : "Classification of the effect",
+        "text" : "High level classification of the effect",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -1960,7 +2049,7 @@
               }]
             }
           }],
-          "text" : "Classification of the effect.",
+          "text" : "High level classification of the effect.",
           "type" : "display"
         },
         {
@@ -1988,7 +2077,7 @@
           "valueString" : "CodeableConcept"
         }],
         "linkId" : "ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence",
-        "text" : "The frequency of occurrence of the effect",
+        "text" : "How often the effect is seen",
         "type" : "group",
         "required" : false,
         "repeats" : true,
@@ -2003,7 +2092,7 @@
               }]
             }
           }],
-          "text" : "The frequency of occurrence of the effect.",
+          "text" : "How often the effect is seen.",
           "type" : "display"
         },
         {

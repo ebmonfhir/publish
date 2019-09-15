@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;CommunicationRequest&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-08-09T09:30:10.376-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-09-15T10:41:41.207-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -155,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;CommunicationRequest&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Patient Care)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -286,7 +286,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;id&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
@@ -693,7 +698,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;CommunicationRequest.statusReason&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reason for current status&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Captures the reason for the current state of the CommunicationRequest.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;suspended\&quot; or \&quot;cancelled\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings].&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;on-hold\&quot; or \&quot;revoked\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.&quot; ];
        fhir:ElementDefinition.alias [
          fhir:value &quot;Suspended Reason&quot;;
          fhir:index 0
@@ -721,7 +726,8 @@
            fhir:Extension.value [ fhir:value &quot;CommunicationRequestStatusReason&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;Codes identifying the reason for the current state of a request.&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Codes identifying the reason for the current state of a request.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/communication-request-status-reason&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1022,7 +1028,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1106,7 +1117,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;CommunicationRequest.payload.content[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Message part content&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The communicated content (or for multi-part communications, one portion of the communication).&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn't appropriate.\n\nIf the content isn't codified, contentCodeableConcept.text can be used.  \n\nWhen using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -1320,11 +1331,11 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Who should share the information&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
          fhir:ElementDefinition.path [ fhir:value &quot;CommunicationRequest.informationProvider&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -1643,7 +1654,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;CommunicationRequest.statusReason&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Reason for current status&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Captures the reason for the current state of the CommunicationRequest.&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;suspended\&quot; or \&quot;cancelled\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.  [distinct reason codes for different statuses can be enforced using invariants if they are universal bindings].&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;This is generally only used for \&quot;exception\&quot; statuses such as \&quot;on-hold\&quot; or \&quot;revoked\&quot;.  The reason why the CommunicationRequest was created at all is captured in reasonCode, not here.&quot; ];
        fhir:ElementDefinition.alias [
          fhir:value &quot;Suspended Reason&quot;;
          fhir:index 0
@@ -1664,7 +1675,8 @@
            fhir:Extension.value [ fhir:value &quot;CommunicationRequestStatusReason&quot; ]
          ];
          fhir:ElementDefinition.strength [ fhir:value &quot;example&quot; ];
-         fhir:ElementDefinition.description [ fhir:value &quot;Codes identifying the reason for the current state of a request.&quot; ]
+         fhir:ElementDefinition.description [ fhir:value &quot;Codes identifying the reason for the current state of a request.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/communication-request-status-reason&quot; ]
        ];
        fhir:ElementDefinition.mapping [
          fhir:index 0;
@@ -1891,7 +1903,7 @@
        fhir:ElementDefinition.path [ fhir:value &quot;CommunicationRequest.payload.content[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Message part content&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The communicated content (or for multi-part communications, one portion of the communication).&quot; ];
-       fhir:ElementDefinition.comment [ fhir:value &quot;When using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.  If no code is available, contentCodeableConcept.text can be used for non-codified content.&quot; ];
+       fhir:ElementDefinition.comment [ fhir:value &quot;The content can be codified or textual.  As an example of codified content, when working with machine generated communications, the payload may be drawn from a finite, terminology defined set of communications, especially for short, status update kinds of communications where more of a natural language approach isn't appropriate.\n\nIf the content isn't codified, contentCodeableConcept.text can be used.  \n\nWhen using contentCodeableConcept, the CodeableConcept is what is being communicated and is not a categorization of the content.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -2073,7 +2085,7 @@
        fhir:ElementDefinition.short [ fhir:value &quot;Who should share the information&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
@@ -2228,7 +2240,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2236,7 +2248,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcommunicationrequest.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest.profile.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcommunicationrequest.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcommunicationrequest.profile.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

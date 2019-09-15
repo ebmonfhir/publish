@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type Subscription {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -11,27 +11,49 @@ type Subscription {
   contained: [Resource]
   extension: [Extension]
   modifierExtension: [Extension]
+  identifier: [Identifier]
+  name: String  _name: ElementBase
   status: code  _status: ElementBase
+  topic: Reference!
   contact: [ContactPoint]
   end: instant  _end: ElementBase
   reason: String  _reason: ElementBase
-  criteria: String  _criteria: ElementBase
-  error: String  _error: ElementBase
+  filterBy: [SubscriptionFilterBy]
+  error: [CodeableConcept]
+  eventCount: unsignedInt  _eventCount: ElementBase
   channel: SubscriptionChannel!
+}
+
+type SubscriptionFilterBy {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  name: String  _name: ElementBase
+  matchType: code  _matchType: ElementBase
+  value: String  _value: ElementBase
 }
 
 type SubscriptionChannel {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  type: code  _type: ElementBase
+  type: CodeableConcept!
   endpoint: url  _endpoint: ElementBase
-  payload: code  _payload: ElementBase
   header: String  _header: [ElementBase]
+  heartbeatPeriod: unsignedInt  _heartbeatPeriod: ElementBase
+  payload: SubscriptionChannelPayload
+}
+
+type SubscriptionChannelPayload {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  contentType: code  _contentType: ElementBase
+  content: code  _content: ElementBase
 }
 
 input SubscriptionInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -39,23 +61,45 @@ input SubscriptionInput {
   contained: [ResourceInput]
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  name: String  _name: ElementBase
   status: code  _status: ElementBase
+  topic: ReferenceInput!
   contact: [ContactPointInput]
   end: instant  _end: ElementBase
   reason: String  _reason: ElementBase
-  criteria: String  _criteria: ElementBase
-  error: String  _error: ElementBase
+  filterBy: [SubscriptionFilterByInput]
+  error: [CodeableConceptInput]
+  eventCount: unsignedInt  _eventCount: ElementBase
   channel: SubscriptionChannelInput!
+}
+
+input SubscriptionFilterByInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  name: String  _name: ElementBase
+  matchType: code  _matchType: ElementBase
+  value: String  _value: ElementBase
 }
 
 input SubscriptionChannelInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  type: code  _type: ElementBase
+  type: CodeableConceptInput!
   endpoint: url  _endpoint: ElementBase
-  payload: code  _payload: ElementBase
   header: String  _header: [ElementBase]
+  heartbeatPeriod: unsignedInt  _heartbeatPeriod: ElementBase
+  payload: SubscriptionChannelPayloadInput
+}
+
+input SubscriptionChannelPayloadInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  contentType: code  _contentType: ElementBase
+  content: code  _content: ElementBase
 }
 
 type SubscriptionReadType {
@@ -65,7 +109,6 @@ type SubscriptionReadType {
 type SubscriptionListType {
   SubscriptionList(_filter: String
     contact: [token]
-    criteria: [String]
     payload: [token]
     status: [token]
     type: [token]
@@ -87,7 +130,6 @@ type SubscriptionListType {
 type SubscriptionConnectionType {
   SubscriptionConection(_filter: String
     contact: [token]
-    criteria: [String]
     payload: [token]
     status: [token]
     type: [token]

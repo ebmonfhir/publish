@@ -32,8 +32,8 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:title>f:Observation/f:valueQuantity</sch:title>
-    <sch:rule context="f:Observation/f:valueQuantity">
+    <sch:title>f:Observation/f:value[x] 1</sch:title>
+    <sch:rule context="f:Observation/f:value[x]">
       <sch:assert test="count(f:comparator) &lt;= 0">comparator: maximum cardinality of 'comparator' is 0</sch:assert>
       <sch:assert test="count(f:unit) &gt;= 1">unit: minimum cardinality of 'unit' is 1</sch:assert>
       <sch:assert test="count(f:system) &gt;= 1">system: minimum cardinality of 'system' is 1</sch:assert>

@@ -121,7 +121,7 @@
   &quot;id&quot;: &quot;consent-example-notOrg&quot;,
   &quot;text&quot;: {
     &quot;status&quot;: &quot;generated&quot;,
-    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &amp;quot;consent to&amp;quot; rather \n\tthan &amp;quot;withhold&amp;quot; or &amp;quot;withdraw&amp;quot; consent for.\n    &lt;p&gt;\n\tspecific to use-case 3) Withhold or withdraw consent for disclosure to a specific provider organization  \n\t&lt;/p&gt;&lt;p&gt;\n    Patient &amp;quot;P. van de Heuvel&amp;quot; ex-spouse is a Physician that is employed by Good Health Clinic.  P. decides\n   that he would like to withdraw/withhold consent to disclose any instance of his health information \n   to Good Health Clinic.\n   &lt;/p&gt;\n   &lt;/div&gt;&quot;
+    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n      &lt;p&gt;The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\t      The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\t      Withhold or withdraw consent for disclosure to a specific provider organization &lt;/p&gt;\n      &lt;p&gt;Patient &amp;quot;P. van de Heuvel&amp;quot; ex-spouse is a Physician that is employed by Burgers University Medical Center.  \n        P. decides that he would like to withdraw/withhold consent to disclose any instance of his health information to Burgers University Medical Center.&lt;/p&gt;\n    &lt;/div&gt;&quot;
   },
   &quot;status&quot;: &quot;active&quot;,
   &quot;scope&quot;: {
@@ -146,54 +146,61 @@
     &quot;reference&quot;: &quot;Patient/f001&quot;,
     &quot;display&quot;: &quot;P. van de Heuvel&quot;
   },
-  &quot;dateTime&quot;: &quot;2015-11-18&quot;,
+  &quot;dateTime&quot;: &quot;2018-12-24&quot;,
   &quot;organization&quot;: [
     {
-      &quot;reference&quot;: &quot;Organization/f001&quot;
+      &quot;reference&quot;: &quot;Organization/2.16.840.1.113883.19.5&quot;
     }
   ],
-  &quot;sourceAttachment&quot;: {
-    &quot;title&quot;: &quot;The terms of the consent in lawyer speak.&quot;
-  },
+  &quot;sourceAttachment&quot;: [
+    {
+      &quot;title&quot;: &quot;The terms of the consent in lawyer speak.&quot;
+    }
+  ],
   &quot;policyRule&quot;: {
     &quot;coding&quot;: [
       {
         &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ActCode&quot;,
-        &quot;code&quot;: &quot;OPTIN&quot;
+        &quot;code&quot;: &quot;INFA&quot;
       }
     ]
   },
   &quot;provision&quot;: {
-    &quot;type&quot;: &quot;deny&quot;,
-    &quot;actor&quot;: [
+    &quot;type&quot;: &quot;permit&quot;,
+    &quot;provision&quot;: [
       {
-        &quot;role&quot;: {
-          &quot;coding&quot;: [
-            {
-              &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
-              &quot;code&quot;: &quot;PRCP&quot;
+        &quot;type&quot;: &quot;deny&quot;,
+        &quot;actor&quot;: [
+          {
+            &quot;role&quot;: {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
+                  &quot;code&quot;: &quot;PRCP&quot;
+                }
+              ]
+            },
+            &quot;reference&quot;: {
+              &quot;reference&quot;: &quot;Organization/f001&quot;
             }
-          ]
-        },
-        &quot;reference&quot;: {
-          &quot;reference&quot;: &quot;Organization/f001&quot;
-        }
-      }
-    ],
-    &quot;action&quot;: [
-      {
-        &quot;coding&quot;: [
-          {
-            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
-            &quot;code&quot;: &quot;access&quot;
           }
-        ]
-      },
-      {
-        &quot;coding&quot;: [
+        ],
+        &quot;action&quot;: [
           {
-            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
-            &quot;code&quot;: &quot;correct&quot;
+            &quot;coding&quot;: [
+              {
+                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
+                &quot;code&quot;: &quot;access&quot;
+              }
+            ]
+          },
+          {
+            &quot;coding&quot;: [
+              {
+                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
+                &quot;code&quot;: &quot;correct&quot;
+              }
+            ]
           }
         ]
       }
@@ -224,7 +231,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -232,7 +239,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fconsent-example-notOrg.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-notOrg.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fconsent-example-notOrg.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-notOrg.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

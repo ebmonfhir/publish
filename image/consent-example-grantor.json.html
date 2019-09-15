@@ -121,7 +121,7 @@
   &quot;id&quot;: &quot;consent-example-grantor&quot;,
   &quot;text&quot;: {
     &quot;status&quot;: &quot;generated&quot;,
-    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The following scenario is based on a question asked on John Moehrke's blog in the \n\t&lt;a href=\&quot;http://healthcaresecprivacy.blogspot.com/2016/04/consent-given-to-authorized.html\&quot;&gt;Consent given to authorized representative&lt;/a&gt;\n    &lt;p&gt;\nThis is a case where a Patient is giving a limited (read-only) access to an individual.\n\t&lt;/p&gt;&lt;p&gt;\n    Patient &amp;quot;P. van de Heuvel&amp;quot; wishes to provide XXX with read-only access to the data at Good Health Psychiatric Hospital \n   available for patient requested access use.\n   &lt;/p&gt;\n   &lt;/div&gt;&quot;
+    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n      &lt;p&gt;Consent given to authorized representative&lt;/p&gt;\n      &lt;p&gt;This is a case where a Patient is giving a limited (read-only) access to an individual.&lt;/p&gt;\n      &lt;p&gt;Patient &amp;quot;Donald D DUCK&amp;quot; wishes to provide Dr. Simone Heps with read-only access to the data at Blijdorp Medisch Centrum available for patient requested access use.&lt;/p&gt;\n    &lt;/div&gt;&quot;
   },
   &quot;status&quot;: &quot;active&quot;,
   &quot;scope&quot;: {
@@ -143,62 +143,70 @@
     }
   ],
   &quot;patient&quot;: {
-    &quot;reference&quot;: &quot;Patient/f001&quot;,
-    &quot;display&quot;: &quot;P. van de Heuvel&quot;
+    &quot;reference&quot;: &quot;Patient/f002&quot;,
+    &quot;display&quot;: &quot;Donald D DUCK&quot;
   },
-  &quot;dateTime&quot;: &quot;2015-11-18&quot;,
+  &quot;dateTime&quot;: &quot;2018-12-24&quot;,
   &quot;organization&quot;: [
     {
-      &quot;reference&quot;: &quot;Organization/f001&quot;
+      &quot;reference&quot;: &quot;Organization/f203&quot;
     }
   ],
-  &quot;sourceAttachment&quot;: {
-    &quot;title&quot;: &quot;The terms of the consent in lawyer speak.&quot;
-  },
+  &quot;sourceAttachment&quot;: [
+    {
+      &quot;title&quot;: &quot;The terms of the consent in lawyer speak.&quot;
+    }
+  ],
   &quot;policyRule&quot;: {
     &quot;coding&quot;: [
       {
         &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ActCode&quot;,
-        &quot;code&quot;: &quot;OPTOUT&quot;
+        &quot;code&quot;: &quot;INFAO&quot;
       }
     ]
   },
   &quot;provision&quot;: {
-    &quot;actor&quot;: [
+    &quot;type&quot;: &quot;deny&quot;,
+    &quot;provision&quot;: [
       {
-        &quot;role&quot;: {
-          &quot;coding&quot;: [
-            {
-              &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
-              &quot;code&quot;: &quot;CST&quot;
-            }
-          ]
-        },
-        &quot;reference&quot;: {
-          &quot;reference&quot;: &quot;Organization/f001&quot;
-        }
-      },
-      {
-        &quot;role&quot;: {
-          &quot;coding&quot;: [
-            {
-              &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
-              &quot;code&quot;: &quot;PRCP&quot;
-            }
-          ]
-        },
-        &quot;reference&quot;: {
-          &quot;reference&quot;: &quot;Patient/example&quot;,
-          &quot;display&quot;: &quot;Good Health Clinic&quot;
-        }
-      }
-    ],
-    &quot;action&quot;: [
-      {
-        &quot;coding&quot;: [
+        &quot;type&quot;: &quot;permit&quot;,
+        &quot;actor&quot;: [
           {
-            &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
-            &quot;code&quot;: &quot;access&quot;
+            &quot;role&quot;: {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
+                  &quot;code&quot;: &quot;CST&quot;
+                }
+              ]
+            },
+            &quot;reference&quot;: {
+              &quot;reference&quot;: &quot;Organization/f203&quot;
+            }
+          },
+          {
+            &quot;role&quot;: {
+              &quot;coding&quot;: [
+                {
+                  &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;,
+                  &quot;code&quot;: &quot;PRCP&quot;
+                }
+              ]
+            },
+            &quot;reference&quot;: {
+              &quot;reference&quot;: &quot;Practitioner/f007&quot;,
+              &quot;display&quot;: &quot;Simone Heps&quot;
+            }
+          }
+        ],
+        &quot;action&quot;: [
+          {
+            &quot;coding&quot;: [
+              {
+                &quot;system&quot;: &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot;,
+                &quot;code&quot;: &quot;access&quot;
+              }
+            ]
           }
         ]
       }
@@ -229,7 +237,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -237,7 +245,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fconsent-example-grantor.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-grantor.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fconsent-example-grantor.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-grantor.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

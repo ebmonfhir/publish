@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;MedicationDispense&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;MedicationDispense&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Pharmacy)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -293,7 +293,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -850,7 +854,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1125,7 +1133,7 @@
       &quot;isSummary&quot; : false,
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;TQ1.6 Timing/Quantity Segment Service Duration.\rPrior to v2.5, ORC.7.3 Common Order Segment / Quantity/Timing / Duration component.  This is a formatted string, first character for the time unit (e.g., D=days), followed by the value.  For example, â€œD14â€� represents â€œ14 days supplyâ€�\rFrom v2.5 on, TQ1.6 Timing/Quantity Segment / Service Duration.  This is a CQ data type (&lt;Quantity (NM)&gt; ^ &lt;Units (CWE)&gt;), thus for days supply, assuming the unit of measure is â€œdaysâ€�, the numeric value is TQ1.6.1 (â€¦|14^\rFor backwards compatibility, ORC.7 was permitted through v2.6.  Both forms (field and segment) may be present in v2.5, v2.5.1, and v2.6&quot;
+        &quot;map&quot; : &quot;TQ1.6 Timing/Quantity Segment Service Duration.\rPrior to v2.5, ORC.7.3 Common Order Segment / Quantity/Timing / Duration component.  This is a formatted string, first character for the time unit (e.g., D=days), followed by the value.  For example, “D14” represents “14 days supply”\rFrom v2.5 on, TQ1.6 Timing/Quantity Segment / Service Duration.  This is a CQ data type (&lt;Quantity (NM)&gt; ^ &lt;Units (CWE)&gt;), thus for days supply, assuming the unit of measure is “days”, the numeric value is TQ1.6.1 (…|14^\rFor backwards compatibility, ORC.7 was permitted through v2.6.  Both forms (field and segment) may be present in v2.5, v2.5.1, and v2.6&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1244,7 +1252,8 @@
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;]
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1358,7 +1367,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1577,7 +1590,7 @@
       &quot;path&quot; : &quot;MedicationDispense.eventHistory&quot;,
       &quot;short&quot; : &quot;A list of relevant lifecycle events&quot;,
       &quot;definition&quot; : &quot;A summary of the events of interest that have occurred, such as when the dispense was verified.&quot;,
-      &quot;comment&quot; : &quot;This might not include provenances for all versions of the request â€“ only those deemed â€œrelevantâ€� or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a â€œrelevantâ€� change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.).&quot;,
+      &quot;comment&quot; : &quot;This might not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.).&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -2070,7 +2083,7 @@
       }],
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;TQ1.6 Timing/Quantity Segment Service Duration.\rPrior to v2.5, ORC.7.3 Common Order Segment / Quantity/Timing / Duration component.  This is a formatted string, first character for the time unit (e.g., D=days), followed by the value.  For example, â€œD14â€� represents â€œ14 days supplyâ€�\rFrom v2.5 on, TQ1.6 Timing/Quantity Segment / Service Duration.  This is a CQ data type (&lt;Quantity (NM)&gt; ^ &lt;Units (CWE)&gt;), thus for days supply, assuming the unit of measure is â€œdaysâ€�, the numeric value is TQ1.6.1 (â€¦|14^\rFor backwards compatibility, ORC.7 was permitted through v2.6.  Both forms (field and segment) may be present in v2.5, v2.5.1, and v2.6&quot;
+        &quot;map&quot; : &quot;TQ1.6 Timing/Quantity Segment Service Duration.\rPrior to v2.5, ORC.7.3 Common Order Segment / Quantity/Timing / Duration component.  This is a formatted string, first character for the time unit (e.g., D=days), followed by the value.  For example, “D14” represents “14 days supply”\rFrom v2.5 on, TQ1.6 Timing/Quantity Segment / Service Duration.  This is a CQ data type (&lt;Quantity (NM)&gt; ^ &lt;Units (CWE)&gt;), thus for days supply, assuming the unit of measure is “days”, the numeric value is TQ1.6.1 (…|14^\rFor backwards compatibility, ORC.7 was permitted through v2.6.  Both forms (field and segment) may be present in v2.5, v2.5.1, and v2.6&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2164,7 +2177,8 @@
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Location&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;]
       }],
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2355,7 +2369,7 @@
       &quot;path&quot; : &quot;MedicationDispense.eventHistory&quot;,
       &quot;short&quot; : &quot;A list of relevant lifecycle events&quot;,
       &quot;definition&quot; : &quot;A summary of the events of interest that have occurred, such as when the dispense was verified.&quot;,
-      &quot;comment&quot; : &quot;This might not include provenances for all versions of the request â€“ only those deemed â€œrelevantâ€� or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a â€œrelevantâ€� change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.).&quot;,
+      &quot;comment&quot; : &quot;This might not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.).&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -2393,7 +2407,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:48-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:45-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2401,7 +2415,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fmedicationdispense.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fmedicationdispense.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fmedicationdispense.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fmedicationdispense.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

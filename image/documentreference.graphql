@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type DocumentReference {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -56,10 +56,11 @@ type DocumentReferenceContext {
   practiceSetting: CodeableConcept
   sourcePatientInfo: Reference
   related: [Reference]
+  basedOn: [Reference]
 }
 
 input DocumentReferenceInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -112,6 +113,7 @@ input DocumentReferenceContextInput {
   practiceSetting: CodeableConceptInput
   sourcePatientInfo: ReferenceInput
   related: [ReferenceInput]
+  basedOn: [ReferenceInput]
 }
 
 type DocumentReferenceReadType {
@@ -122,6 +124,7 @@ type DocumentReferenceListType {
   DocumentReferenceList(_filter: String
     authenticator: [reference]
     author: [reference]
+    based_on: [reference]
     category: [token]
     contenttype: [token]
     custodian: [reference]
@@ -163,6 +166,7 @@ type DocumentReferenceConnectionType {
   DocumentReferenceConection(_filter: String
     authenticator: [reference]
     author: [reference]
+    based_on: [reference]
     category: [token]
     contenttype: [token]
     custodian: [reference]

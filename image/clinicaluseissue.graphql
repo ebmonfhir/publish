@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type ClinicalUseIssue {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -11,8 +11,10 @@ type ClinicalUseIssue {
   contained: [Resource]
   extension: [Extension]
   modifierExtension: [Extension]
+  identifier: [Identifier]
   type: code  _type: ElementBase
   subject: [Reference]
+  status: CodeableConcept
   description: String  _description: ElementBase
   contraindication: ClinicalUseIssueContraindication
   indication: ClinicalUseIssueIndication
@@ -83,7 +85,7 @@ type ClinicalUseIssueUndesirableEffect {
 }
 
 input ClinicalUseIssueInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -91,8 +93,10 @@ input ClinicalUseIssueInput {
   contained: [ResourceInput]
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
   type: code  _type: ElementBase
   subject: [ReferenceInput]
+  status: CodeableConceptInput
   description: String  _description: ElementBase
   contraindication: ClinicalUseIssueContraindicationInput
   indication: ClinicalUseIssueIndicationInput
@@ -168,6 +172,7 @@ type ClinicalUseIssueReadType {
 
 type ClinicalUseIssueListType {
   ClinicalUseIssueList(_filter: String
+    identifier: [token]
     subject: [reference]
     _text: [String]
     _content: [String]
@@ -185,6 +190,7 @@ type ClinicalUseIssueListType {
 
 type ClinicalUseIssueConnectionType {
   ClinicalUseIssueConection(_filter: String
+    identifier: [token]
     subject: [reference]
     _text: [String]
     _content: [String]

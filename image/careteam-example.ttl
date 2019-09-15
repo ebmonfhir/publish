@@ -57,7 +57,6 @@
   fhir:CareTeam.participant [
      fhir:index 0;
      fhir:CareTeam.participant.role [
-       fhir:index 0;
        fhir:CodeableConcept.text [ fhir:value "responsiblePerson" ]
      ];
      fhir:CareTeam.participant.member [
@@ -68,7 +67,6 @@
   ], [
      fhir:index 1;
      fhir:CareTeam.participant.role [
-       fhir:index 0;
        fhir:CodeableConcept.text [ fhir:value "adviser" ]
      ];
      fhir:CareTeam.participant.member [
@@ -79,8 +77,24 @@
        fhir:link <http://hl7.org/fhir/Organization/f001>;
        fhir:Reference.reference [ fhir:value "Organization/f001" ]
      ];
-     fhir:CareTeam.participant.period [
-       fhir:Period.end [ fhir:value "2013-01-01"^^xsd:date ]
+     fhir:CareTeam.participant.coverageTiming [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2010-12-23"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2013-01-01"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.frequency [ fhir:value "1"^^xsd:positiveInteger ];
+         fhir:Timing.repeat.period [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.periodUnit [ fhir:value "d" ];
+         fhir:Timing.repeat.dayOfWeek [
+           fhir:value "mon";
+           fhir:index 0
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "MORN";
+           fhir:index 0
+         ]
+       ]
      ]
   ];
   fhir:CareTeam.managingOrganization [

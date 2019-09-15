@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type Parameters {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -63,12 +63,13 @@ type ParametersParameter {
   valueTriggerDefinition: TriggerDefinition
   valueUsageContext: UsageContext
   valueDosage: Dosage
+  valueMeta: Meta
   resource: Resource
   part: [ParametersParameter]
 }
 
 input ParametersInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -128,6 +129,7 @@ input ParametersParameterInput {
   valueTriggerDefinition: TriggerDefinitionInput
   valueUsageContext: UsageContextInput
   valueDosage: DosageInput
+  valueMeta: MetaInput
   resource: ResourceInput
   part: [ParametersParameter]
 }

@@ -4,6 +4,12 @@
   ],
   "Subscription": {
     "elements": {
+      "Subscription.identifier": {
+        "status": "new"
+      },
+      "Subscription.name": {
+        "status": "new"
+      },
       "Subscription.status": {
         "binding-valueset-changed": true,
         "binding-status": "changed",
@@ -16,7 +22,42 @@
           "strength": "required"
         }
       },
+      "Subscription.topic": {
+        "status": "new"
+      },
+      "Subscription.filterBy": {
+        "status": "new"
+      },
+      "Subscription.filterBy.name": {
+        "status": "new"
+      },
+      "Subscription.filterBy.matchType": {
+        "status": "new"
+      },
+      "Subscription.filterBy.value": {
+        "status": "new"
+      },
+      "Subscription.error": {
+        "old-max": "1",
+        "new-max": "*",
+        "removed-types": [
+          "string"
+        ],
+        "added-types": [
+          "CodeableConcept"
+        ]
+      },
+      "Subscription.eventCount": {
+        "status": "new"
+      },
       "Subscription.channel.type": {
+        "removed-types": [
+          "code"
+        ],
+        "added-types": [
+          "CodeableConcept"
+        ],
+        "binding-strength-changed": true,
         "binding-valueset-changed": true,
         "binding-status": "changed",
         "old-binding": {
@@ -24,21 +65,34 @@
           "strength": "required"
         },
         "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/subscription-channel-type|4.1.0",
-          "strength": "required"
+          "reference": "http://hl7.org/fhir/ValueSet/subscription-channel-type",
+          "strength": "extensible"
         }
       },
+      "Subscription.channel.heartbeatPeriod": {
+        "status": "new"
+      },
       "Subscription.channel.payload": {
-        "binding-valueset-changed": true,
-        "binding-status": "changed",
+        "removed-types": [
+          "code"
+        ],
+        "added-types": [
+          "BackboneElement"
+        ],
+        "binding-status": "removed",
         "old-binding": {
           "reference": "http://hl7.org/fhir/ValueSet/mimetypes|4.0.0",
           "strength": "required"
-        },
-        "new-binding": {
-          "reference": "http://hl7.org/fhir/ValueSet/mimetypes|4.1.0",
-          "strength": "required"
         }
+      },
+      "Subscription.channel.payload.contentType": {
+        "status": "new"
+      },
+      "Subscription.channel.payload.content": {
+        "status": "new"
+      },
+      "Subscription.criteria": {
+        "status": "deleted"
       }
     },
     "status": "changed"

@@ -334,7 +334,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <ul>
 <li><a href="allergyintolerance.html">AllergyIntolerance</a>: Date first version of the resource instance was recorded</li>
 <li><a href="careplan.html">CarePlan</a>: Time period plan covers</li>
-<li><a href="careteam.html">CareTeam</a>: Time period team covers</li>
+<li><a href="careteam.html">CareTeam</a>: A date within the coverage time period.</li>
 <li><a href="clinicalimpression.html">ClinicalImpression</a>: When the assessment was documented</li>
 <li><a href="composition.html">Composition</a>: Composition editing time</li>
 <li><a href="consent.html">Consent</a>: When this Consent was created or indexed</li>
@@ -350,7 +350,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <li><a href="riskassessment.html">RiskAssessment</a>: When was assessment made?</li>
 <li><a href="supplyrequest.html">SupplyRequest</a>: When the request was made</li>
 </ul>
-</td><td>AllergyIntolerance.​recordedDate | CarePlan.​period | CareTeam.​period | ClinicalImpression.​date | Composition.​date | Consent.​dateTime | DiagnosticReport.​effective | Encounter.​period | EpisodeOfCare.​period | FamilyMemberHistory.​date | Flag.​period | Immunization.​occurrence | List.​date | Observation.​effective | Procedure.​occurrence | (RiskAssessment.​occurrence as dateTime) | SupplyRequest.​authoredOn</td></tr>
+</td><td>AllergyIntolerance.​recordedDate | CarePlan.​period | ClinicalImpression.​date | Composition.​date | Consent.​dateTime | DiagnosticReport.​effective | Encounter.​period | EpisodeOfCare.​period | FamilyMemberHistory.​date | Flag.​period | Immunization.​occurrence | List.​date | Observation.​effective | Procedure.​occurrence | (RiskAssessment.​occurrence as dateTime) | SupplyRequest.​authoredOn</td></tr>
 <tr><td>date<a name="medications-date"> </a> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#date">date</a></td><td>medications-date</td><td><p>Multiple Resources:</p>
 <ul>
 <li><a href="medicationadministration.html">MedicationAdministration</a>: Date administration happened (or did not happen)</li>
@@ -739,25 +739,36 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>ActivityDefinition.​url</td></tr>
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>ActivityDefinition-version</td><td><p>The business version of the activity definition</p>
 </td><td>ActivityDefinition.​version</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="administrableproductdefinition.html">AdministrableProductDefinition</a><a name="administrableproductdefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>AdministrableProductDefinition-identifier</td><td><p>An identifier for the pharmaceutical medicinal product</p>
+</td><td>AdministrableProductDefinition.​identifier</td></tr>
+<tr><td>route</td><td><a href="search.html#token">token</a></td><td>AdministrableProductDefinition-route</td><td><p>Coded expression for the route</p>
+</td><td>AdministrableProductDefinition.​routeOfAdministration.​code</td></tr>
+<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>AdministrableProductDefinition-subject</td><td><p>The product that this is a pharmaceutical product of</p>
+</td><td>AdministrableProductDefinition.​subject</td></tr>
+<tr><td>target-species</td><td><a href="search.html#token">token</a></td><td>AdministrableProductDefinition-target-species</td><td><p>Coded expression for the species</p>
+</td><td>AdministrableProductDefinition.​routeOfAdministration.​targetSpecies.​code</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="adverseevent.html">AdverseEvent</a><a name="adverseevent"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>actuality</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-actuality</td><td><p>actual | potential</p>
 </td><td>AdverseEvent.​actuality</td></tr>
 <tr><td>category</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-category</td><td><p>product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment</p>
 </td><td>AdverseEvent.​category</td></tr>
+<tr><td>code</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-code</td><td><p>Event or incident that occurred or was averted</p>
+</td><td>AdverseEvent.​code</td></tr>
 <tr><td>date</td><td><a href="search.html#date">date</a></td><td>AdverseEvent-date</td><td><p>When the event occurred</p>
 </td><td>AdverseEvent.​date</td></tr>
-<tr><td>event</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-event</td><td><p>Type of the event itself in relation to the subject</p>
-</td><td>AdverseEvent.​event</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-identifier</td><td><p>Business identifier for the event</p>
+</td><td>AdverseEvent.​identifier</td></tr>
 <tr><td>location</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-location</td><td><p>Location where adverse event occurred</p>
 </td><td>AdverseEvent.​location</td></tr>
+<tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-patient</td><td><p>Subject impacted by event</p>
+</td><td>AdverseEvent.​subject</td></tr>
 <tr><td>recorder</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-recorder</td><td><p>Who recorded the adverse event</p>
 </td><td>AdverseEvent.​recorder</td></tr>
 <tr><td>resultingcondition</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-resultingcondition</td><td><p>Effect on the subject due to this event</p>
 </td><td>AdverseEvent.​resultingCondition</td></tr>
-<tr><td>seriousness</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-seriousness</td><td><p>Seriousness of the event</p>
+<tr><td>seriousness</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-seriousness</td><td><p>Seriousness or gravity of the event</p>
 </td><td>AdverseEvent.​seriousness</td></tr>
-<tr><td>severity</td><td><a href="search.html#token">token</a></td><td>AdverseEvent-severity</td><td><p>mild | moderate | severe</p>
-</td><td>AdverseEvent.​severity</td></tr>
 <tr><td>study</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-study</td><td><p>Research study that the subject is enrolled in</p>
 </td><td>AdverseEvent.​study</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>AdverseEvent-subject</td><td><p>Subject impacted by event</p>
@@ -1055,8 +1066,8 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="careteam.html">CareTeam</a><a name="careteam"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>category</td><td><a href="search.html#token">token</a></td><td>CareTeam-category</td><td><p>Type of team</p>
 </td><td>CareTeam.​category</td></tr>
-<tr><td>date</td><td><a href="search.html#date">date</a></td><td>clinical-date</td><td><p>Time period team covers</p>
-</td><td>CareTeam.​period</td></tr>
+<tr><td>date</td><td><a href="search.html#date">date</a></td><td>clinical-date</td><td><p>A date within the coverage time period.</p>
+</td><td></td></tr>
 <tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>CareTeam-encounter</td><td><p>The Encounter during which this CareTeam was created</p>
 </td><td>CareTeam.​encounter</td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>clinical-identifier</td><td><p>External Ids for this team</p>
@@ -1234,6 +1245,8 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>supporting-info</td><td><a href="search.html#reference">reference</a></td><td>ClinicalImpression-supporting-info</td><td><p>Information supporting the clinical impression</p>
 </td><td>ClinicalImpression.​supportingInfo</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="clinicaluseissue.html">ClinicalUseIssue</a><a name="clinicaluseissue"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>ClinicalUseIssue-identifier</td><td><p>Business identifier for this issue</p>
+</td><td>ClinicalUseIssue.​identifier</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>ClinicalUseIssue-subject</td><td><p>The medication for which this is a clinical particular</p>
 </td><td>ClinicalUseIssue.​subject</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="codesystem.html">CodeSystem</a><a name="codesystem"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process" title="Normative Content">N</a></td></tr>
@@ -1308,6 +1321,8 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Communication.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>Communication-subject</td><td><p>Focus of message</p>
 </td><td>Communication.​subject</td></tr>
+<tr><td>topic</td><td><a href="search.html#token">token</a></td><td>Communication-topic</td><td><p>Description of the purpose/content</p>
+</td><td>Communication.​topic</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="communicationrequest.html">CommunicationRequest</a><a name="communicationrequest"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>authored</td><td><a href="search.html#date">date</a></td><td>CommunicationRequest-authored</td><td><p>When request transitioned to being actionable</p>
 </td><td>CommunicationRequest.​authoredOn</td></tr>
@@ -1562,7 +1577,7 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 <tr><td>security-label</td><td><a href="search.html#token">token</a></td><td>Consent-security-label</td><td><p>Security Labels that define affected resources</p>
 </td><td>Consent.​provision.​securityLabel</td></tr>
 <tr><td>source-reference</td><td><a href="search.html#reference">reference</a></td><td>Consent-source-reference</td><td><p>Search by reference to a Consent, DocumentReference, Contract  or QuestionnaireResponse</p>
-</td><td>Consent.​source</td></tr>
+</td><td></td></tr>
 <tr><td>status</td><td><a href="search.html#token">token</a></td><td>Consent-status</td><td><p>draft | proposed | active | rejected | inactive | entered-in-error</p>
 </td><td>Consent.​status</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="contract.html">Contract</a><a name="contract"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
@@ -1810,6 +1825,8 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>DocumentReference.​authenticator</td></tr>
 <tr><td>author</td><td><a href="search.html#reference">reference</a></td><td>DocumentReference-author</td><td><p>Who and/or what authored the document</p>
 </td><td>DocumentReference.​author</td></tr>
+<tr><td>based-on</td><td><a href="search.html#reference">reference</a></td><td>DocumentReference-based-on</td><td><p>Procedure that caused this media to be created</p>
+</td><td>DocumentReference.​context.​basedOn</td></tr>
 <tr><td>category</td><td><a href="search.html#token">token</a></td><td>DocumentReference-category</td><td><p>Categorization of document</p>
 </td><td>DocumentReference.​category</td></tr>
 <tr><td>contenttype</td><td><a href="search.html#token">token</a></td><td>DocumentReference-contenttype</td><td><p>Mime type of the content, with charset etc.</p>
@@ -2160,6 +2177,8 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>Flag.​identifier</td></tr>
 <tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>clinical-patient</td><td><p>The identity of a subject to list flags for</p>
 </td><td>Flag.​subject.​where(resolve() is Patient)</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Flag-status</td><td><p>active | inactive | entered-in-error</p>
+</td><td>Flag.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>Flag-subject</td><td><p>The identity of a subject to list flags for</p>
 </td><td>Flag.​subject</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="goal.html">Goal</a><a name="goal"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
@@ -2400,6 +2419,9 @@ and <a href="search-parameters.json">JSON</a> source for this page.
 </td><td>ImplementationGuide.​url</td></tr>
 <tr><td>version</td><td><a href="search.html#token">token</a></td><td>conformance-version</td><td><p>The business version of the implementation guide</p>
 </td><td>ImplementationGuide.​version</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="ingredient.html">Ingredient</a><a name="ingredient"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>Ingredient-identifier</td><td><p>An identifier or code by which the ingredient can be referenced</p>
+</td><td>Ingredient.​identifier</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="insuranceplan.html">InsurancePlan</a><a name="insuranceplan"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>address</td><td><a href="search.html#string">string</a></td><td>InsurancePlan-address</td><td><p>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</p>
 </td><td>InsurancePlan.​contact.​address</td></tr>
@@ -2635,33 +2657,6 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>MeasureReport.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>MeasureReport-subject</td><td><p>The identity of a subject to search for individual measure report results for</p>
 </td><td>MeasureReport.​subject</td></tr>
-<tr><td colspan="5" style="background-color: #dddddd"><b><a href="media.html">Media</a><a name="media"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>based-on</td><td><a href="search.html#reference">reference</a></td><td>Media-based-on</td><td><p>Procedure that caused this media to be created</p>
-</td><td>Media.​basedOn</td></tr>
-<tr><td>created</td><td><a href="search.html#date">date</a></td><td>Media-created</td><td><p>When Media was collected</p>
-</td><td>Media.​created</td></tr>
-<tr><td>device</td><td><a href="search.html#reference">reference</a></td><td>Media-device</td><td><p>Observing Device</p>
-</td><td>Media.​device</td></tr>
-<tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>Media-encounter</td><td><p>Encounter associated with media</p>
-</td><td>Media.​encounter</td></tr>
-<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>Media-identifier</td><td><p>Identifier(s) for the image</p>
-</td><td>Media.​identifier</td></tr>
-<tr><td>modality</td><td><a href="search.html#token">token</a></td><td>Media-modality</td><td><p>The type of acquisition equipment/process</p>
-</td><td>Media.​modality</td></tr>
-<tr><td>operator</td><td><a href="search.html#reference">reference</a></td><td>Media-operator</td><td><p>The person who generated the image</p>
-</td><td>Media.​operator</td></tr>
-<tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>Media-patient</td><td><p>Who/What this Media is a record of</p>
-</td><td>Media.​subject.​where(resolve() is Patient)</td></tr>
-<tr><td>site</td><td><a href="search.html#token">token</a></td><td>Media-site</td><td><p>Observed body part</p>
-</td><td>Media.​bodySite</td></tr>
-<tr><td>status</td><td><a href="search.html#token">token</a></td><td>Media-status</td><td><p>preparation | in-progress | not-done | on-hold | stopped | completed | entered-in-error | unknown</p>
-</td><td>Media.​status</td></tr>
-<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>Media-subject</td><td><p>Who/What this Media is a record of</p>
-</td><td>Media.​subject</td></tr>
-<tr><td>type</td><td><a href="search.html#token">token</a></td><td>Media-type</td><td><p>Classification of media as image, video, or audio</p>
-</td><td>Media.​type</td></tr>
-<tr><td>view</td><td><a href="search.html#token">token</a></td><td>Media-view</td><td><p>Imaging view, e.g. Lateral or Antero-posterior</p>
-</td><td>Media.​view</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="medication.html">Medication</a><a name="medication"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>code</td><td><a href="search.html#token">token</a></td><td>clinical-code</td><td><p>Returns medications for a specific code</p>
 </td><td>Medication.​code</td></tr>
@@ -2831,6 +2826,13 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>MedicationUsage.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>MedicationUsage-subject</td><td><p>The identity of a patient, animal or group to list statements for</p>
 </td><td>MedicationUsage.​subject</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="medicinalproductdefinition.html">MedicinalProductDefinition</a><a name="medicinalproductdefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>MedicinalProductDefinition-identifier</td><td><p>Business identifier for this product. Could be an MPID</p>
+</td><td>MedicinalProductDefinition.​identifier</td></tr>
+<tr><td>name</td><td><a href="search.html#string">string</a></td><td>MedicinalProductDefinition-name</td><td><p>The full product name</p>
+</td><td>MedicinalProductDefinition.​name.​productName</td></tr>
+<tr><td>name-language</td><td><a href="search.html#token">token</a></td><td>MedicinalProductDefinition-name-language</td><td><p>Language code for this name</p>
+</td><td>MedicinalProductDefinition.​name.​countryLanguage.​language</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="messagedefinition.html">MessageDefinition</a><a name="messagedefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>category</td><td><a href="search.html#token">token</a></td><td>MessageDefinition-category</td><td><p>The behavior associated with the message</p>
 </td><td>MessageDefinition.​category</td></tr>
@@ -2965,6 +2967,27 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>NamingSystem.​type</td></tr>
 <tr><td>value</td><td><a href="search.html#string">string</a></td><td>NamingSystem-value</td><td><p>The unique identifier</p>
 </td><td>NamingSystem.​uniqueId.​value</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="nutritionintake.html">NutritionIntake</a><a name="nutritionintake"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>category</td><td><a href="search.html#token">token</a></td><td>NutritionIntake-category</td><td><p>Returns statements of this category of NutritionIntake</p>
+</td><td>NutritionIntake.​category</td></tr>
+<tr><td>effective</td><td><a href="search.html#date">date</a></td><td>NutritionIntake-effective</td><td><p>Date when patient was taking (or not taking) the medication</p>
+</td><td>NutritionIntake.​effective</td></tr>
+<tr><td>encounter</td><td><a href="search.html#reference">reference</a></td><td>NutritionIntake-encounter</td><td><p>Returns statements for a specific encounter</p>
+</td><td>NutritionIntake.​encounter</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>NutritionIntake-identifier</td><td><p>Return statements with this external identifier</p>
+</td><td>NutritionIntake.​identifier</td></tr>
+<tr><td>nutrition</td><td><a href="search.html#token">token</a></td><td>NutritionIntake-nutrition</td><td><p>Return statements of this medication reference</p>
+</td><td>NutritionIntake.​consumedItem.​nutritionProduct</td></tr>
+<tr><td>part-of</td><td><a href="search.html#reference">reference</a></td><td>NutritionIntake-part-of</td><td><p>Returns statements that are part of another event.</p>
+</td><td>NutritionIntake.​partOf</td></tr>
+<tr><td>patient</td><td><a href="search.html#reference">reference</a></td><td>NutritionIntake-patient</td><td><p>Returns statements for a specific patient.</p>
+</td><td>NutritionIntake.​subject.​where(resolve() is Patient)</td></tr>
+<tr><td>source</td><td><a href="search.html#reference">reference</a></td><td>NutritionIntake-source</td><td><p>Who or where the information in the statement came from</p>
+</td><td>NutritionIntake.​informationSource</td></tr>
+<tr><td>status</td><td><a href="search.html#token">token</a></td><td>NutritionIntake-status</td><td><p>Return statements that match the given status</p>
+</td><td>NutritionIntake.​status</td></tr>
+<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>NutritionIntake-subject</td><td><p>The identity of a patient, animal or group to list statements for</p>
+</td><td>NutritionIntake.​subject</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="nutritionorder.html">NutritionOrder</a><a name="nutritionorder"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>additive</td><td><a href="search.html#token">token</a></td><td>NutritionOrder-additive</td><td><p>Type of module component to add to the feeding</p>
 </td><td>NutritionOrder.​enteralFormula.​additiveType</td></tr>
@@ -3183,6 +3206,11 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>OrganizationAffiliation.​specialty</td></tr>
 <tr><td>telecom</td><td><a href="search.html#token">token</a></td><td>OrganizationAffiliation-telecom</td><td><p>The value in any kind of contact</p>
 </td><td>OrganizationAffiliation.​telecom</td></tr>
+<tr><td colspan="5" style="background-color: #dddddd"><b><a href="packagedproductdefinition.html">PackagedProductDefinition</a><a name="packagedproductdefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>PackagedProductDefinition-identifier</td><td><p>Unique identifier</p>
+</td><td>PackagedProductDefinition.​identifier</td></tr>
+<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>PackagedProductDefinition-subject</td><td><p>The product that this is a pack for</p>
+</td><td>PackagedProductDefinition.​subject</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="patient.html">Patient</a><a name="patient"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process" title="Normative Content">N</a></td></tr>
 <tr><td>active <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td><td><a href="search.html#token">token</a></td><td>Patient-active</td><td><p>Whether the patient record is active</p>
 </td><td>Patient.​active</td></tr>
@@ -3528,38 +3556,19 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 </td><td>QuestionnaireResponse.​status</td></tr>
 <tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>QuestionnaireResponse-subject</td><td><p>The subject of the questionnaire response</p>
 </td><td>QuestionnaireResponse.​subject</td></tr>
-<tr><td colspan="5" style="background-color: #dddddd"><b><a href="regulatedadministrableproduct.html">RegulatedAdministrableProduct</a><a name="regulatedadministrableproduct"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>RegulatedAdministrableProduct-identifier</td><td><p>An identifier for the pharmaceutical medicinal product</p>
-</td><td>RegulatedAdministrableProduct.​identifier</td></tr>
-<tr><td>route</td><td><a href="search.html#token">token</a></td><td>RegulatedAdministrableProduct-route</td><td><p>Coded expression for the route</p>
-</td><td>RegulatedAdministrableProduct.​routeOfAdministration.​code</td></tr>
-<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>RegulatedAdministrableProduct-subject</td><td><p>The product that this is a pharmaceutical product of</p>
-</td><td>RegulatedAdministrableProduct.​subject</td></tr>
-<tr><td>target-species</td><td><a href="search.html#token">token</a></td><td>RegulatedAdministrableProduct-target-species</td><td><p>Coded expression for the species</p>
-</td><td>RegulatedAdministrableProduct.​routeOfAdministration.​targetSpecies.​code</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="regulatedauthorization.html">RegulatedAuthorization</a><a name="regulatedauthorization"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>country</td><td><a href="search.html#token">token</a></td><td>RegulatedAuthorization-country</td><td><p>The country in which the marketing authorization has been granted</p>
-</td><td>RegulatedAuthorization.​country</td></tr>
+<tr><td>case</td><td><a href="search.html#token">token</a></td><td>RegulatedAuthorization-case</td><td><p>The case or procedure number</p>
+</td><td>RegulatedAuthorization.​case.​identifier</td></tr>
 <tr><td>holder</td><td><a href="search.html#reference">reference</a></td><td>RegulatedAuthorization-holder</td><td><p>Marketing Authorization Holder</p>
 </td><td>RegulatedAuthorization.​holder</td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>RegulatedAuthorization-identifier</td><td><p>Business identifier for the marketing authorization, as assigned by a regulator</p>
 </td><td>RegulatedAuthorization.​identifier</td></tr>
+<tr><td>region</td><td><a href="search.html#token">token</a></td><td>RegulatedAuthorization-region</td><td><p>The region (country, jurisdiction etc.) in which the marketing authorization has been granted</p>
+</td><td>RegulatedAuthorization.​region</td></tr>
 <tr><td>status</td><td><a href="search.html#token">token</a></td><td>RegulatedAuthorization-status</td><td><p>The status of the marketing authorization</p>
 </td><td>RegulatedAuthorization.​status</td></tr>
-<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>RegulatedAuthorization-subject</td><td><p>The medicinal product that is being authorized</p>
+<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>RegulatedAuthorization-subject</td><td><p>The product that is being authorized</p>
 </td><td>RegulatedAuthorization.​subject</td></tr>
-<tr><td colspan="5" style="background-color: #dddddd"><b><a href="regulatedmedicinalproduct.html">RegulatedMedicinalProduct</a><a name="regulatedmedicinalproduct"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>RegulatedMedicinalProduct-identifier</td><td><p>Business identifier for this product. Could be an MPID</p>
-</td><td>RegulatedMedicinalProduct.​identifier</td></tr>
-<tr><td>name</td><td><a href="search.html#string">string</a></td><td>RegulatedMedicinalProduct-name</td><td><p>The full product name</p>
-</td><td>RegulatedMedicinalProduct.​name.​productName</td></tr>
-<tr><td>name-language</td><td><a href="search.html#token">token</a></td><td>RegulatedMedicinalProduct-name-language</td><td><p>Language code for this name</p>
-</td><td>RegulatedMedicinalProduct.​name.​countryLanguage.​language</td></tr>
-<tr><td colspan="5" style="background-color: #dddddd"><b><a href="regulatedpackagedproduct.html">RegulatedPackagedProduct</a><a name="regulatedpackagedproduct"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>RegulatedPackagedProduct-identifier</td><td><p>Unique identifier</p>
-</td><td>RegulatedPackagedProduct.​identifier</td></tr>
-<tr><td>subject</td><td><a href="search.html#reference">reference</a></td><td>RegulatedPackagedProduct-subject</td><td><p>The product that this is a pack for</p>
-</td><td>RegulatedPackagedProduct.​subject</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="relatedperson.html">RelatedPerson</a><a name="relatedperson"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>active</td><td><a href="search.html#token">token</a></td><td>RelatedPerson-active</td><td><p>Indicates if the related person record is active</p>
 </td><td>RelatedPerson.​active</td></tr>
@@ -3928,10 +3937,8 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="subscription.html">Subscription</a><a name="subscription"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>contact</td><td><a href="search.html#token">token</a></td><td>Subscription-contact</td><td><p>Contact details for the subscription</p>
 </td><td>Subscription.​contact</td></tr>
-<tr><td>criteria</td><td><a href="search.html#string">string</a></td><td>Subscription-criteria</td><td><p>The search rules used to determine when to send a notification</p>
-</td><td>Subscription.​criteria</td></tr>
 <tr><td>payload</td><td><a href="search.html#token">token</a></td><td>Subscription-payload</td><td><p>The mime-type of the notification payload</p>
-</td><td>Subscription.​channel.​payload</td></tr>
+</td><td>Subscription.​channel.​payload.​contentType</td></tr>
 <tr><td>status</td><td><a href="search.html#token">token</a></td><td>Subscription-status</td><td><p>The current state of the subscription</p>
 </td><td>Subscription.​status</td></tr>
 <tr><td>type</td><td><a href="search.html#token">token</a></td><td>Subscription-type</td><td><p>The type of channel for the sent notifications</p>
@@ -3956,8 +3963,10 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 <tr><td>substance-reference</td><td><a href="search.html#reference">reference</a></td><td>Substance-substance-reference</td><td><p>A component of the substance</p>
 </td><td>(Substance.​ingredient.​substance as Reference)</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="substancedefinition.html">SubstanceDefinition</a><a name="substancedefinition"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
-<tr><td>code</td><td><a href="search.html#token">token</a></td><td>SubstanceDefinition-code</td><td><p>Codes associated with the substance</p>
-</td><td>SubstanceDefinition.​code</td></tr>
+<tr><td>code</td><td><a href="search.html#token">token</a></td><td>SubstanceDefinition-code</td><td><p>The specific code</p>
+</td><td>SubstanceDefinition.​code.​code</td></tr>
+<tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>SubstanceDefinition-identifier</td><td><p>Identifier by which this substance is known</p>
+</td><td>SubstanceDefinition.​identifier</td></tr>
 <tr><td colspan="5" style="background-color: #dddddd"><b><a href="supplydelivery.html">SupplyDelivery</a><a name="supplydelivery"> </a></b> <a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #fff5e6" href="versions.html#std-process" title="Trial Use Content">TU</a></td></tr>
 <tr><td>identifier</td><td><a href="search.html#token">token</a></td><td>clinical-identifier</td><td><p>External identifier</p>
 </td><td>SupplyDelivery.​identifier</td></tr>
@@ -4189,7 +4198,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:50-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -4197,7 +4206,7 @@ If the units are omitted, then kms should be assumed. If the distance is omitted
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fsearchparameter-registry.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsearchparameter-registry.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fsearchparameter-registry.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsearchparameter-registry.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

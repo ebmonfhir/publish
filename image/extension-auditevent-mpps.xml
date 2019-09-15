@@ -12,7 +12,7 @@
   <version value="4.1.0"/>
   <name value="MPPS"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven, Inc. - Security WG"/>
   <contact>
     <telecom>
@@ -43,12 +43,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="Extension">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="Extension"/>
       <short value="MPPS instance UID"/>
       <definition value="An MPPS Instance UID associated with this entity."/>
@@ -95,7 +89,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -143,7 +140,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/auditevent-MPPS"/>
       <isModifier value="false"/>
@@ -153,8 +153,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.valueIdentifier">
-      <path value="Extension.valueIdentifier"/>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Identifier"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.value[x]:valueIdentifier">
+      <path value="Extension.value[x]"/>
+      <sliceName value="valueIdentifier"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -193,9 +223,6 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/auditevent-MPPS"/>
     </element>
     <element id="Extension.valueIdentifier">

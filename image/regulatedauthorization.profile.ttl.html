@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;RegulatedAuthorization&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-08-09T09:30:10.376-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-09-15T10:41:41.207-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -155,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;RegulatedAuthorization&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (Biomedical Research and Regulation)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -272,7 +272,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;id&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
@@ -516,8 +521,8 @@
        fhir:index 10;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.subject&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.subject&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The medicinal product that is being authorized&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The medicinal product that is being authorized.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The product that is being authorized&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The product that is being authorized.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
@@ -529,27 +534,39 @@
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;;
            fhir:index 0
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedPackagedProduct&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PackagedProductDefinition&quot;;
            fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ResearchStudy&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 4
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 5
          ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 11;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.country&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.country&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The country in which the marketing authorization has been granted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The country in which the marketing authorization has been granted.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of this authorization, for example drug marketing approval, orphan drug designation&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of this authorization, for example drug marketing approval, orphan drug designation.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.country&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.type&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -559,14 +576,33 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Jurisdiction within a country&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Jurisdiction within a country.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.description&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.description&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;General textual supporting information&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;General textual supporting information.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.description&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 13;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.region&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.region&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdiction&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.region&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
@@ -577,7 +613,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The status of the marketing authorization&quot; ];
@@ -596,7 +632,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.statusDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.statusDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The date at which the given status has become applicable&quot; ];
@@ -605,25 +641,6 @@
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
          fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.statusDate&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 15;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.restoreDate&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.restoreDate&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.restoreDate&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -654,73 +671,16 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 17;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.dataExclusivityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dataExclusivityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;A period of time after authorization before generic product applicatiosn can be submitted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;A period of time after authorization before generic product applicatiosn can be submitted.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.basis&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.basis&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The legal framework against which this authorization is granted, or other reasons for it&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The legal framework against which this authorization is granted, or other reasons for it.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dataExclusivityPeriod&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.basis&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 18;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date when the first authorization was granted by a Medicines Regulatory Agency&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date when the first authorization was granted by a Medicines Regulatory Agency.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 19;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.internationalBirthDate&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.internationalBirthDate&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.internationalBirthDate&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 20;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.legalBasis&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.legalBasis&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The legal framework against which this authorization is granted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The legal framework against which this authorization is granted.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.legalBasis&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -729,15 +689,15 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 21;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Authorization in areas within a country&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Authorization in areas within a country.&quot; ];
+       fhir:index 18;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
@@ -757,9 +717,9 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 22;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.id&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.id&quot; ];
+       fhir:index 19;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.id&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.id&quot; ];
        fhir:ElementDefinition.representation [
          fhir:value &quot;xmlAttr&quot;;
          fhir:index 0
@@ -775,7 +735,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -785,9 +750,9 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 23;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.extension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.extension&quot; ];
+       fhir:index 20;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.extension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -817,9 +782,9 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 24;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension&quot; ];
+       fhir:index 21;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.modifierExtension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -854,102 +819,71 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 25;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The assigned number for the marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The assigned number for the marketing authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 26;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Country of authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Country of authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:index 22;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.date[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.date[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Another date associated with the authorization&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Another date associated with the authorization.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 27;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Jurisdiction within a country&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Jurisdiction within a country.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 28;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The legal status of supply in a jurisdiction or region&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The legal status of supply in a jurisdiction or region.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 29;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The start and expected end date of the authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The start and expected end date of the authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.date[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
+       ], [
+         fhir:index 1;
+         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 30;
+       fhir:index 23;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of this date, for example the data exclusitity period for a medicinal product&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of this date, for example the data exclusitity period for a medicinal product.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.type&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 24;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Authorization in areas within a country&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Authorization in areas within a country.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization&quot;;
+           fhir:index 0
+         ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.holder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.holder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Marketing Authorization Holder&quot; ];
@@ -972,7 +906,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 31;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.regulator&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.regulator&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medicines Regulatory Agency&quot; ];
@@ -995,15 +929,15 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 32;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The regulatory procedure for granting or amending a marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The regulatory procedure for granting or amending a marketing authorization.&quot; ];
+       fhir:index 27;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The case or regulatory procedure for granting or amending a marketing authorization&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The case or regulatory procedure for granting or amending a marketing authorization.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -1023,9 +957,9 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 33;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.id&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.id&quot; ];
+       fhir:index 28;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.id&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.id&quot; ];
        fhir:ElementDefinition.representation [
          fhir:value &quot;xmlAttr&quot;;
          fhir:index 0
@@ -1041,7 +975,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1051,9 +990,9 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 34;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.extension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.extension&quot; ];
+       fhir:index 29;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.extension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -1083,9 +1022,9 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 35;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.modifierExtension&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.modifierExtension&quot; ];
+       fhir:index 30;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.modifierExtension&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot; ];
        fhir:ElementDefinition.comment [ fhir:value &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot; ];
@@ -1120,15 +1059,15 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 36;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.identifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Identifier for this procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Identifier for this procedure.&quot; ];
+       fhir:index 31;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.identifier&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.identifier&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Identifier for this case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Identifier for this case.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.identifier&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.identifier&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -1139,16 +1078,16 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 37;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.type&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.type&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Type of procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Type of procedure.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
+       fhir:index 32;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of case.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.type&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.type&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
        fhir:ElementDefinition.type [
@@ -1158,15 +1097,34 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 38;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.date[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.date[x]&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Date of procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Date of procedure.&quot; ];
+       fhir:index 33;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.status&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.status&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The status of the case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The status of the case.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.date[x]&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.status&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 34;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.date[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.date[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Date of case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Date of case.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.date[x]&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
        ];
@@ -1180,19 +1138,19 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 39;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.application&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.application&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Applcations submitted to obtain a marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Applcations submitted to obtain a marketing authorization.&quot; ];
+       fhir:index 35;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.application&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.application&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.application&quot; ];
+         fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.application&quot; ];
          fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
          fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
        ];
-       fhir:ElementDefinition.contentReference [ fhir:value &quot;#RegulatedAuthorization.procedure&quot; ];
+       fhir:ElementDefinition.contentReference [ fhir:value &quot;#RegulatedAuthorization.case&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ]
@@ -1223,30 +1181,42 @@
        fhir:index 2;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.subject&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.subject&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The medicinal product that is being authorized&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The medicinal product that is being authorized.&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The product that is being authorized&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The product that is being authorized.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
          fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;;
            fhir:index 0
          ], [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedPackagedProduct&quot;;
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PackagedProductDefinition&quot;;
            fhir:index 1
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;;
+           fhir:index 2
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ResearchStudy&quot;;
+           fhir:index 3
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;;
+           fhir:index 4
+         ], [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;;
+           fhir:index 5
          ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 3;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.country&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.country&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The country in which the marketing authorization has been granted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The country in which the marketing authorization has been granted.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of this authorization, for example drug marketing approval, orphan drug designation&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of this authorization, for example drug marketing approval, orphan drug designation.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
          fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
@@ -1254,10 +1224,23 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 4;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Jurisdiction within a country&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Jurisdiction within a country.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.description&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.description&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;General textual supporting information&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;General textual supporting information.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 5;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.region&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.region&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
@@ -1266,7 +1249,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 5;
+       fhir:index 6;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The status of the marketing authorization&quot; ];
@@ -1279,24 +1262,11 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 6;
+       fhir:index 7;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.statusDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.statusDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The date at which the given status has become applicable&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;The date at which the given status has become applicable.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 7;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.restoreDate&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.restoreDate&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1319,50 +1289,53 @@
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 9;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.dataExclusivityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dataExclusivityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;A period of time after authorization before generic product applicatiosn can be submitted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;A period of time after authorization before generic product applicatiosn can be submitted.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.basis&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.basis&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The legal framework against which this authorization is granted, or other reasons for it&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The legal framework against which this authorization is granted, or other reasons for it.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 10;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The date when the first authorization was granted by a Medicines Regulatory Agency&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The date when the first authorization was granted by a Medicines Regulatory Agency.&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 11;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.internationalBirthDate&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.internationalBirthDate&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.date[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.date[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Another date associated with the authorization&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Another date associated with the authorization.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
+       ], [
+         fhir:index 1;
          fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 12;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.legalBasis&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.legalBasis&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The legal framework against which this authorization is granted&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The legal framework against which this authorization is granted.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.relatedDate.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.relatedDate.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of this date, for example the data exclusitity period for a medicinal product&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of this date, for example the data exclusitity period for a medicinal product.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -1379,76 +1352,15 @@
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;BackboneElement&quot; ]
+         fhir:ElementDefinition.code [ fhir:value &quot;Reference&quot; ];
+         fhir:ElementDefinition.targetProfile [
+           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization&quot;;
+           fhir:index 0
+         ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
        fhir:index 14;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The assigned number for the marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The assigned number for the marketing authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Identifier&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 15;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Country of authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Country of authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 16;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Jurisdiction within a country&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Jurisdiction within a country.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 17;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The legal status of supply in a jurisdiction or region&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The legal status of supply in a jurisdiction or region.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 18;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The start and expected end date of the authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The start and expected end date of the authorization.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;Period&quot; ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
-     ], [
-       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.holder&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.holder&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Marketing Authorization Holder&quot; ];
@@ -1465,7 +1377,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 20;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.regulator&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.regulator&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Medicines Regulatory Agency&quot; ];
@@ -1482,11 +1394,11 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 21;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;The regulatory procedure for granting or amending a marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;The regulatory procedure for granting or amending a marketing authorization.&quot; ];
+       fhir:index 16;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The case or regulatory procedure for granting or amending a marketing authorization&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The case or regulatory procedure for granting or amending a marketing authorization.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1495,11 +1407,11 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 22;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.identifier&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.identifier&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Identifier for this procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Identifier for this procedure.&quot; ];
+       fhir:index 17;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.identifier&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.identifier&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Identifier for this case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Identifier for this case.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1508,12 +1420,12 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 23;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.type&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.type&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Type of procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Type of procedure.&quot; ];
-       fhir:ElementDefinition.min [ fhir:value &quot;1&quot; ];
+       fhir:index 18;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.type&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.type&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Type of case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Type of case.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
          fhir:index 0;
@@ -1521,11 +1433,24 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 24;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.date[x]&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.date[x]&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Date of procedure&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Date of procedure.&quot; ];
+       fhir:index 19;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.status&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.status&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;The status of the case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;The status of the case.&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;CodeableConcept&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 20;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.date[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.date[x]&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Date of case&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Date of case.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
        fhir:ElementDefinition.type [
@@ -1537,14 +1462,14 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 25;
-       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.procedure.application&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.procedure.application&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Applcations submitted to obtain a marketing authorization&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Applcations submitted to obtain a marketing authorization.&quot; ];
+       fhir:index 21;
+       fhir:Element.id [ fhir:value &quot;RegulatedAuthorization.case.application&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;RegulatedAuthorization.case.application&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure.&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
        fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.contentReference [ fhir:value &quot;#RegulatedAuthorization.procedure&quot; ];
+       fhir:ElementDefinition.contentReference [ fhir:value &quot;#RegulatedAuthorization.case&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ]
   ] .
@@ -1576,7 +1501,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1584,7 +1509,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fregulatedauthorization.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fregulatedauthorization.profile.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fregulatedauthorization.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fregulatedauthorization.profile.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

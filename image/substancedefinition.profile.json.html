@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;SubstanceDefinition&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -136,7 +136,7 @@
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot;,
-    &quot;valueInteger&quot; : 0
+    &quot;valueInteger&quot; : 1
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;SubstanceDefinition&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Biomedical Research and Regulation)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -258,7 +258,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -461,14 +465,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.type&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.type&quot;,
-      &quot;short&quot; : &quot;High level categorization, e.g. polymer or nucleic acid&quot;,
-      &quot;definition&quot; : &quot;High level categorization, e.g. polymer or nucleic acid.&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.status&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
+      &quot;short&quot; : &quot;Status of substance within the catalogue e.g. approved&quot;,
+      &quot;definition&quot; : &quot;Status of substance within the catalogue e.g. approved.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;SubstanceDefinition.type&quot;,
+        &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -479,14 +483,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.status&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
-      &quot;short&quot; : &quot;Status of substance within the catalogue e.g. approved&quot;,
-      &quot;definition&quot; : &quot;Status of substance within the catalogue e.g. approved.&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.category&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.category&quot;,
+      &quot;short&quot; : &quot;High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological&quot;,
+      &quot;definition&quot; : &quot;High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
+        &quot;path&quot; : &quot;SubstanceDefinition.category&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -552,19 +556,19 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.comment&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.comment&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.note&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.note&quot;,
       &quot;short&quot; : &quot;Textual comment about this record of a substance&quot;,
       &quot;definition&quot; : &quot;Textual comment about this record of a substance.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;SubstanceDefinition.comment&quot;,
+        &quot;path&quot; : &quot;SubstanceDefinition.note&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;code&quot; : &quot;Annotation&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -609,7 +613,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -764,8 +772,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.moiety.molecularFormula&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.moiety.molecularFormula&quot;,
-      &quot;short&quot; : &quot;Molecular formula&quot;,
-      &quot;definition&quot; : &quot;Molecular formula.&quot;,
+      &quot;short&quot; : &quot;Molecular formula for this moiety of this substance, typically using the Hill system&quot;,
+      &quot;definition&quot; : &quot;Molecular formula for this moiety of this substance, typically using the Hill system.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -796,6 +804,24 @@
       },
       {
         &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;SubstanceDefinition.moiety.amountType&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.moiety.amountType&quot;,
+      &quot;short&quot; : &quot;The measurement type of the quantitative value&quot;,
+      &quot;definition&quot; : &quot;The measurement type of the quantitative value.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;SubstanceDefinition.moiety.amountType&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -840,7 +866,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1001,6 +1031,43 @@
       &quot;isSummary&quot; : true
     },
     {
+      &quot;id&quot; : &quot;SubstanceDefinition.property.referenceRange&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.property.referenceRange&quot;,
+      &quot;short&quot; : &quot;Range of typical values&quot;,
+      &quot;definition&quot; : &quot;Range of typical values.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;SubstanceDefinition.property.referenceRange&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Range&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;SubstanceDefinition.property.source&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.property.source&quot;,
+      &quot;short&quot; : &quot;Supporting literature&quot;,
+      &quot;definition&quot; : &quot;Supporting literature.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;SubstanceDefinition.property.source&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
       &quot;id&quot; : &quot;SubstanceDefinition.referenceInformation&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.referenceInformation&quot;,
       &quot;short&quot; : &quot;General information detailing this substance&quot;,
@@ -1059,7 +1126,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1160,8 +1231,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.structure.molecularFormula&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.structure.molecularFormula&quot;,
-      &quot;short&quot; : &quot;Molecular formula&quot;,
-      &quot;definition&quot; : &quot;Molecular formula.&quot;,
+      &quot;short&quot; : &quot;Molecular formula of this substance, typically using the Hill system&quot;,
+      &quot;definition&quot; : &quot;Molecular formula of this substance, typically using the Hill system.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1233,7 +1304,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1407,7 +1482,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1598,7 +1677,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1754,7 +1837,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1837,8 +1924,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.code.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.code.status&quot;,
-      &quot;short&quot; : &quot;Status of the code assignment&quot;,
-      &quot;definition&quot; : &quot;Status of the code assignment.&quot;,
+      &quot;short&quot; : &quot;Status of the code assignment, for example 'provisional', 'approved'&quot;,
+      &quot;definition&quot; : &quot;Status of the code assignment, for example 'provisional', 'approved'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1871,19 +1958,19 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.code.comment&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.code.comment&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.code.note&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.code.note&quot;,
       &quot;short&quot; : &quot;Any comment can be provided in this field, if necessary&quot;,
       &quot;definition&quot; : &quot;Any comment can be provided in this field, if necessary.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;SubstanceDefinition.code.comment&quot;,
+        &quot;path&quot; : &quot;SubstanceDefinition.code.note&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;code&quot; : &quot;Annotation&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -1947,7 +2034,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -2030,8 +2121,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.type&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.type&quot;,
-      &quot;short&quot; : &quot;Name type&quot;,
-      &quot;definition&quot; : &quot;Name type.&quot;,
+      &quot;short&quot; : &quot;Name type, for example 'systematic',  'scientific, 'brand'&quot;,
+      &quot;definition&quot; : &quot;Name type, for example 'systematic',  'scientific, 'brand'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -2048,8 +2139,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.status&quot;,
-      &quot;short&quot; : &quot;The status of the name&quot;,
-      &quot;definition&quot; : &quot;The status of the name.&quot;,
+      &quot;short&quot; : &quot;The status of the name, for example 'current', 'proposed'&quot;,
+      &quot;definition&quot; : &quot;The status of the name, for example 'current', 'proposed'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -2084,8 +2175,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.language&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.language&quot;,
-      &quot;short&quot; : &quot;Language of the name&quot;,
-      &quot;definition&quot; : &quot;Language of the name.&quot;,
+      &quot;short&quot; : &quot;Human language that the name is written in&quot;,
+      &quot;definition&quot; : &quot;Human language that the name is written in.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -2138,8 +2229,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.synonym&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.synonym&quot;,
-      &quot;short&quot; : &quot;A synonym of this name&quot;,
-      &quot;definition&quot; : &quot;A synonym of this name.&quot;,
+      &quot;short&quot; : &quot;A synonym of this particular name, by which the substance is also known&quot;,
+      &quot;definition&quot; : &quot;A synonym of this particular name, by which the substance is also known.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -2154,8 +2245,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.translation&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.translation&quot;,
-      &quot;short&quot; : &quot;A translation for this name&quot;,
-      &quot;definition&quot; : &quot;A translation for this name.&quot;,
+      &quot;short&quot; : &quot;A translation for this name into another human language&quot;,
+      &quot;definition&quot; : &quot;A translation for this name into another human language.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
@@ -2207,7 +2298,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -2290,8 +2385,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.official.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.official.status&quot;,
-      &quot;short&quot; : &quot;The status of the official name&quot;,
-      &quot;definition&quot; : &quot;The status of the official name.&quot;,
+      &quot;short&quot; : &quot;The status of the official name, for example 'provisional', 'approved'&quot;,
+      &quot;definition&quot; : &quot;The status of the official name, for example 'provisional', 'approved'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -2398,7 +2493,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -2461,14 +2560,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.relationship.substance[x]&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.relationship.substance[x]&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.relationship.substanceDefinition[x]&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.relationship.substanceDefinition[x]&quot;,
       &quot;short&quot; : &quot;A pointer to another substance, as a resource or just a representational code&quot;,
       &quot;definition&quot; : &quot;A pointer to another substance, as a resource or just a representational code.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;SubstanceDefinition.relationship.substance[x]&quot;,
+        &quot;path&quot; : &quot;SubstanceDefinition.relationship.substanceDefinition[x]&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -2699,10 +2798,10 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.type&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.type&quot;,
-      &quot;short&quot; : &quot;High level categorization, e.g. polymer or nucleic acid&quot;,
-      &quot;definition&quot; : &quot;High level categorization, e.g. polymer or nucleic acid.&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.status&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
+      &quot;short&quot; : &quot;Status of substance within the catalogue e.g. approved&quot;,
+      &quot;definition&quot; : &quot;Status of substance within the catalogue e.g. approved.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -2711,10 +2810,10 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.status&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.status&quot;,
-      &quot;short&quot; : &quot;Status of substance within the catalogue e.g. approved&quot;,
-      &quot;definition&quot; : &quot;Status of substance within the catalogue e.g. approved.&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.category&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.category&quot;,
+      &quot;short&quot; : &quot;High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological&quot;,
+      &quot;definition&quot; : &quot;High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -2760,14 +2859,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.comment&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.comment&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.note&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.note&quot;,
       &quot;short&quot; : &quot;Textual comment about this record of a substance&quot;,
       &quot;definition&quot; : &quot;Textual comment about this record of a substance.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;code&quot; : &quot;Annotation&quot;
       }],
       &quot;isSummary&quot; : true
     },
@@ -2846,8 +2945,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.moiety.molecularFormula&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.moiety.molecularFormula&quot;,
-      &quot;short&quot; : &quot;Molecular formula&quot;,
-      &quot;definition&quot; : &quot;Molecular formula.&quot;,
+      &quot;short&quot; : &quot;Molecular formula for this moiety of this substance, typically using the Hill system&quot;,
+      &quot;definition&quot; : &quot;Molecular formula for this moiety of this substance, typically using the Hill system.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -2867,6 +2966,18 @@
       },
       {
         &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;SubstanceDefinition.moiety.amountType&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.moiety.amountType&quot;,
+      &quot;short&quot; : &quot;The measurement type of the quantitative value&quot;,
+      &quot;definition&quot; : &quot;The measurement type of the quantitative value.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isSummary&quot; : true
     },
@@ -2951,6 +3062,31 @@
       &quot;isSummary&quot; : true
     },
     {
+      &quot;id&quot; : &quot;SubstanceDefinition.property.referenceRange&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.property.referenceRange&quot;,
+      &quot;short&quot; : &quot;Range of typical values&quot;,
+      &quot;definition&quot; : &quot;Range of typical values.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Range&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;SubstanceDefinition.property.source&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.property.source&quot;,
+      &quot;short&quot; : &quot;Supporting literature&quot;,
+      &quot;definition&quot; : &quot;Supporting literature.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
       &quot;id&quot; : &quot;SubstanceDefinition.referenceInformation&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.referenceInformation&quot;,
       &quot;short&quot; : &quot;General information detailing this substance&quot;,
@@ -3002,8 +3138,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.structure.molecularFormula&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.structure.molecularFormula&quot;,
-      &quot;short&quot; : &quot;Molecular formula&quot;,
-      &quot;definition&quot; : &quot;Molecular formula.&quot;,
+      &quot;short&quot; : &quot;Molecular formula of this substance, typically using the Hill system&quot;,
+      &quot;definition&quot; : &quot;Molecular formula of this substance, typically using the Hill system.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -3229,8 +3365,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.code.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.code.status&quot;,
-      &quot;short&quot; : &quot;Status of the code assignment&quot;,
-      &quot;definition&quot; : &quot;Status of the code assignment.&quot;,
+      &quot;short&quot; : &quot;Status of the code assignment, for example 'provisional', 'approved'&quot;,
+      &quot;definition&quot; : &quot;Status of the code assignment, for example 'provisional', 'approved'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -3251,14 +3387,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.code.comment&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.code.comment&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.code.note&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.code.note&quot;,
       &quot;short&quot; : &quot;Any comment can be provided in this field, if necessary&quot;,
       &quot;definition&quot; : &quot;Any comment can be provided in this field, if necessary.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;code&quot; : &quot;Annotation&quot;
       }],
       &quot;isSummary&quot; : true
     },
@@ -3302,8 +3438,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.type&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.type&quot;,
-      &quot;short&quot; : &quot;Name type&quot;,
-      &quot;definition&quot; : &quot;Name type.&quot;,
+      &quot;short&quot; : &quot;Name type, for example 'systematic',  'scientific, 'brand'&quot;,
+      &quot;definition&quot; : &quot;Name type, for example 'systematic',  'scientific, 'brand'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -3314,8 +3450,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.status&quot;,
-      &quot;short&quot; : &quot;The status of the name&quot;,
-      &quot;definition&quot; : &quot;The status of the name.&quot;,
+      &quot;short&quot; : &quot;The status of the name, for example 'current', 'proposed'&quot;,
+      &quot;definition&quot; : &quot;The status of the name, for example 'current', 'proposed'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -3338,8 +3474,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.language&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.language&quot;,
-      &quot;short&quot; : &quot;Language of the name&quot;,
-      &quot;definition&quot; : &quot;Language of the name.&quot;,
+      &quot;short&quot; : &quot;Human language that the name is written in&quot;,
+      &quot;definition&quot; : &quot;Human language that the name is written in.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -3374,8 +3510,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.synonym&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.synonym&quot;,
-      &quot;short&quot; : &quot;A synonym of this name&quot;,
-      &quot;definition&quot; : &quot;A synonym of this name.&quot;,
+      &quot;short&quot; : &quot;A synonym of this particular name, by which the substance is also known&quot;,
+      &quot;definition&quot; : &quot;A synonym of this particular name, by which the substance is also known.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;contentReference&quot; : &quot;#SubstanceDefinition.name&quot;,
@@ -3384,8 +3520,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.translation&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.translation&quot;,
-      &quot;short&quot; : &quot;A translation for this name&quot;,
-      &quot;definition&quot; : &quot;A translation for this name.&quot;,
+      &quot;short&quot; : &quot;A translation for this name into another human language&quot;,
+      &quot;definition&quot; : &quot;A translation for this name into another human language.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;contentReference&quot; : &quot;#SubstanceDefinition.name&quot;,
@@ -3418,8 +3554,8 @@
     {
       &quot;id&quot; : &quot;SubstanceDefinition.name.official.status&quot;,
       &quot;path&quot; : &quot;SubstanceDefinition.name.official.status&quot;,
-      &quot;short&quot; : &quot;The status of the official name&quot;,
-      &quot;definition&quot; : &quot;The status of the official name.&quot;,
+      &quot;short&quot; : &quot;The status of the official name, for example 'provisional', 'approved'&quot;,
+      &quot;definition&quot; : &quot;The status of the official name, for example 'provisional', 'approved'.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -3475,8 +3611,8 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;SubstanceDefinition.relationship.substance[x]&quot;,
-      &quot;path&quot; : &quot;SubstanceDefinition.relationship.substance[x]&quot;,
+      &quot;id&quot; : &quot;SubstanceDefinition.relationship.substanceDefinition[x]&quot;,
+      &quot;path&quot; : &quot;SubstanceDefinition.relationship.substanceDefinition[x]&quot;,
       &quot;short&quot; : &quot;A pointer to another substance, as a resource or just a representational code&quot;,
       &quot;definition&quot; : &quot;A pointer to another substance, as a resource or just a representational code.&quot;,
       &quot;min&quot; : 0,
@@ -3650,7 +3786,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -3658,7 +3794,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fsubstancedefinition.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubstancedefinition.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fsubstancedefinition.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubstancedefinition.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

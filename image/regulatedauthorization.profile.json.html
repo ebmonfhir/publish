@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;RegulatedAuthorization&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;RegulatedAuthorization&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Biomedical Research and Regulation)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -258,7 +258,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -463,8 +467,8 @@
     {
       &quot;id&quot; : &quot;RegulatedAuthorization.subject&quot;,
       &quot;path&quot; : &quot;RegulatedAuthorization.subject&quot;,
-      &quot;short&quot; : &quot;The medicinal product that is being authorized&quot;,
-      &quot;definition&quot; : &quot;The medicinal product that is being authorized.&quot;,
+      &quot;short&quot; : &quot;The product that is being authorized&quot;,
+      &quot;definition&quot; : &quot;The product that is being authorized.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -474,23 +478,27 @@
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/RegulatedPackagedProduct&quot;]
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PackagedProductDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ResearchStudy&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;]
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.country&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.country&quot;,
-      &quot;short&quot; : &quot;The country in which the marketing authorization has been granted&quot;,
-      &quot;definition&quot; : &quot;The country in which the marketing authorization has been granted.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.type&quot;,
+      &quot;short&quot; : &quot;Type of this authorization, for example drug marketing approval, orphan drug designation&quot;,
+      &quot;definition&quot; : &quot;Type of this authorization, for example drug marketing approval, orphan drug designation.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.country&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.type&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -499,14 +507,32 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdiction&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdiction&quot;,
-      &quot;short&quot; : &quot;Jurisdiction within a country&quot;,
-      &quot;definition&quot; : &quot;Jurisdiction within a country.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.description&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.description&quot;,
+      &quot;short&quot; : &quot;General textual supporting information&quot;,
+      &quot;definition&quot; : &quot;General textual supporting information.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;RegulatedAuthorization.description&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.region&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.region&quot;,
+      &quot;short&quot; : &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted&quot;,
+      &quot;definition&quot; : &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdiction&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.region&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -553,24 +579,6 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.restoreDate&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.restoreDate&quot;,
-      &quot;short&quot; : &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored&quot;,
-      &quot;definition&quot; : &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.restoreDate&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
       &quot;id&quot; : &quot;RegulatedAuthorization.validityPeriod&quot;,
       &quot;path&quot; : &quot;RegulatedAuthorization.validityPeriod&quot;,
       &quot;short&quot; : &quot;The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format&quot;,
@@ -589,70 +597,16 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.dataExclusivityPeriod&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.dataExclusivityPeriod&quot;,
-      &quot;short&quot; : &quot;A period of time after authorization before generic product applicatiosn can be submitted&quot;,
-      &quot;definition&quot; : &quot;A period of time after authorization before generic product applicatiosn can be submitted.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.basis&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.basis&quot;,
+      &quot;short&quot; : &quot;The legal framework against which this authorization is granted, or other reasons for it&quot;,
+      &quot;definition&quot; : &quot;The legal framework against which this authorization is granted, or other reasons for it.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
+      &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.dataExclusivityPeriod&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.basis&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Period&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot;,
-      &quot;short&quot; : &quot;The date when the first authorization was granted by a Medicines Regulatory Agency&quot;,
-      &quot;definition&quot; : &quot;The date when the first authorization was granted by a Medicines Regulatory Agency.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.internationalBirthDate&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.internationalBirthDate&quot;,
-      &quot;short&quot; : &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World&quot;,
-      &quot;definition&quot; : &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.internationalBirthDate&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.legalBasis&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.legalBasis&quot;,
-      &quot;short&quot; : &quot;The legal framework against which this authorization is granted&quot;,
-      &quot;definition&quot; : &quot;The legal framework against which this authorization is granted.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.legalBasis&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
+        &quot;max&quot; : &quot;*&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -661,14 +615,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
-      &quot;short&quot; : &quot;Authorization in areas within a country&quot;,
-      &quot;definition&quot; : &quot;Authorization in areas within a country.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate&quot;,
+      &quot;short&quot; : &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on&quot;,
+      &quot;definition&quot; : &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
@@ -687,8 +641,8 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.id&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.id&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.id&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.id&quot;,
       &quot;representation&quot; : [&quot;xmlAttr&quot;],
       &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
       &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
@@ -700,7 +654,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -710,8 +668,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.extension&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.extension&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.extension&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.extension&quot;,
       &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -735,8 +693,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.modifierExtension&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.modifierExtension&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.modifierExtension&quot;,
       &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -763,91 +721,59 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot;,
-      &quot;short&quot; : &quot;The assigned number for the marketing authorization&quot;,
-      &quot;definition&quot; : &quot;The assigned number for the marketing authorization.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Identifier&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot;,
-      &quot;short&quot; : &quot;Country of authorization&quot;,
-      &quot;definition&quot; : &quot;Country of authorization.&quot;,
-      &quot;min&quot; : 0,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.date[x]&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.date[x]&quot;,
+      &quot;short&quot; : &quot;Another date associated with the authorization&quot;,
+      &quot;definition&quot; : &quot;Another date associated with the authorization.&quot;,
+      &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot;,
-      &quot;short&quot; : &quot;Jurisdiction within a country&quot;,
-      &quot;definition&quot; : &quot;Jurisdiction within a country.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot;,
-      &quot;short&quot; : &quot;The legal status of supply in a jurisdiction or region&quot;,
-      &quot;definition&quot; : &quot;The legal status of supply in a jurisdiction or region.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot;,
-      &quot;short&quot; : &quot;The start and expected end date of the authorization&quot;,
-      &quot;definition&quot; : &quot;The start and expected end date of the authorization.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot;,
-        &quot;min&quot; : 0,
+        &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.date[x]&quot;,
+        &quot;min&quot; : 1,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Period&quot;
+      },
+      {
+        &quot;code&quot; : &quot;dateTime&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.type&quot;,
+      &quot;short&quot; : &quot;Type of this date, for example the data exclusitity period for a medicinal product&quot;,
+      &quot;definition&quot; : &quot;Type of this date, for example the data exclusitity period for a medicinal product.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.type&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
+      &quot;short&quot; : &quot;Authorization in areas within a country&quot;,
+      &quot;definition&quot; : &quot;Authorization in areas within a country.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization&quot;]
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -891,14 +817,14 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure&quot;,
-      &quot;short&quot; : &quot;The regulatory procedure for granting or amending a marketing authorization&quot;,
-      &quot;definition&quot; : &quot;The regulatory procedure for granting or amending a marketing authorization.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case&quot;,
+      &quot;short&quot; : &quot;The case or regulatory procedure for granting or amending a marketing authorization&quot;,
+      &quot;definition&quot; : &quot;The case or regulatory procedure for granting or amending a marketing authorization.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.procedure&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.case&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -917,8 +843,8 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.id&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.id&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.id&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.id&quot;,
       &quot;representation&quot; : [&quot;xmlAttr&quot;],
       &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
       &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
@@ -930,7 +856,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -940,8 +870,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.extension&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.extension&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.extension&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.extension&quot;,
       &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -965,8 +895,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.modifierExtension&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.modifierExtension&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.modifierExtension&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.modifierExtension&quot;,
       &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
       &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
       &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
@@ -993,14 +923,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.identifier&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.identifier&quot;,
-      &quot;short&quot; : &quot;Identifier for this procedure&quot;,
-      &quot;definition&quot; : &quot;Identifier for this procedure.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.identifier&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.identifier&quot;,
+      &quot;short&quot; : &quot;Identifier for this case&quot;,
+      &quot;definition&quot; : &quot;Identifier for this case.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.procedure.identifier&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.case.identifier&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -1011,15 +941,15 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.type&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.type&quot;,
-      &quot;short&quot; : &quot;Type of procedure&quot;,
-      &quot;definition&quot; : &quot;Type of procedure.&quot;,
-      &quot;min&quot; : 1,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.type&quot;,
+      &quot;short&quot; : &quot;Type of case&quot;,
+      &quot;definition&quot; : &quot;Type of case.&quot;,
+      &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.procedure.type&quot;,
-        &quot;min&quot; : 1,
+        &quot;path&quot; : &quot;RegulatedAuthorization.case.type&quot;,
+        &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
@@ -1029,14 +959,32 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.date[x]&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.date[x]&quot;,
-      &quot;short&quot; : &quot;Date of procedure&quot;,
-      &quot;definition&quot; : &quot;Date of procedure.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.status&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.status&quot;,
+      &quot;short&quot; : &quot;The status of the case&quot;,
+      &quot;definition&quot; : &quot;The status of the case.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.procedure.date[x]&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.case.status&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.date[x]&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.date[x]&quot;,
+      &quot;short&quot; : &quot;Date of case&quot;,
+      &quot;definition&quot; : &quot;Date of case.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;RegulatedAuthorization.case.date[x]&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -1050,18 +998,18 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.application&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.application&quot;,
-      &quot;short&quot; : &quot;Applcations submitted to obtain a marketing authorization&quot;,
-      &quot;definition&quot; : &quot;Applcations submitted to obtain a marketing authorization.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.application&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.application&quot;,
+      &quot;short&quot; : &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure&quot;,
+      &quot;definition&quot; : &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;RegulatedAuthorization.procedure.application&quot;,
+        &quot;path&quot; : &quot;RegulatedAuthorization.case.application&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
       },
-      &quot;contentReference&quot; : &quot;#RegulatedAuthorization.procedure&quot;,
+      &quot;contentReference&quot; : &quot;#RegulatedAuthorization.case&quot;,
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
     }]
@@ -1090,34 +1038,50 @@
     {
       &quot;id&quot; : &quot;RegulatedAuthorization.subject&quot;,
       &quot;path&quot; : &quot;RegulatedAuthorization.subject&quot;,
-      &quot;short&quot; : &quot;The medicinal product that is being authorized&quot;,
-      &quot;definition&quot; : &quot;The medicinal product that is being authorized.&quot;,
+      &quot;short&quot; : &quot;The product that is being authorized&quot;,
+      &quot;definition&quot; : &quot;The product that is being authorized.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/RegulatedPackagedProduct&quot;]
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PackagedProductDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ResearchStudy&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;]
       }],
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.country&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.country&quot;,
-      &quot;short&quot; : &quot;The country in which the marketing authorization has been granted&quot;,
-      &quot;definition&quot; : &quot;The country in which the marketing authorization has been granted.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.type&quot;,
+      &quot;short&quot; : &quot;Type of this authorization, for example drug marketing approval, orphan drug designation&quot;,
+      &quot;definition&quot; : &quot;Type of this authorization, for example drug marketing approval, orphan drug designation.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdiction&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdiction&quot;,
-      &quot;short&quot; : &quot;Jurisdiction within a country&quot;,
-      &quot;definition&quot; : &quot;Jurisdiction within a country.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.description&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.description&quot;,
+      &quot;short&quot; : &quot;General textual supporting information&quot;,
+      &quot;definition&quot; : &quot;General textual supporting information.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.region&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.region&quot;,
+      &quot;short&quot; : &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted&quot;,
+      &quot;definition&quot; : &quot;The region (country, jurisdiction etc.) in which the marketing authorization has been granted.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
@@ -1150,18 +1114,6 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.restoreDate&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.restoreDate&quot;,
-      &quot;short&quot; : &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored&quot;,
-      &quot;definition&quot; : &quot;The date when a suspended the marketing or the marketing authorization of the product is anticipated to be restored.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
       &quot;id&quot; : &quot;RegulatedAuthorization.validityPeriod&quot;,
       &quot;path&quot; : &quot;RegulatedAuthorization.validityPeriod&quot;,
       &quot;short&quot; : &quot;The beginning of the time period in which the marketing authorization is in the specific status shall be specified A complete date consisting of day, month and year shall be specified using the ISO 8601 date format&quot;,
@@ -1174,47 +1126,50 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.dataExclusivityPeriod&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.dataExclusivityPeriod&quot;,
-      &quot;short&quot; : &quot;A period of time after authorization before generic product applicatiosn can be submitted&quot;,
-      &quot;definition&quot; : &quot;A period of time after authorization before generic product applicatiosn can be submitted.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.basis&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.basis&quot;,
+      &quot;short&quot; : &quot;The legal framework against which this authorization is granted, or other reasons for it&quot;,
+      &quot;definition&quot; : &quot;The legal framework against which this authorization is granted, or other reasons for it.&quot;,
       &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate&quot;,
+      &quot;short&quot; : &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on&quot;,
+      &quot;definition&quot; : &quot;Other dates associated with the authorization. It is common for an authorization to have renewal dates, initial time limited phases and so on.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.date[x]&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.date[x]&quot;,
+      &quot;short&quot; : &quot;Another date associated with the authorization&quot;,
+      &quot;definition&quot; : &quot;Another date associated with the authorization.&quot;,
+      &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Period&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.dateOfFirstAuthorization&quot;,
-      &quot;short&quot; : &quot;The date when the first authorization was granted by a Medicines Regulatory Agency&quot;,
-      &quot;definition&quot; : &quot;The date when the first authorization was granted by a Medicines Regulatory Agency.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
+      },
+      {
         &quot;code&quot; : &quot;dateTime&quot;
       }],
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.internationalBirthDate&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.internationalBirthDate&quot;,
-      &quot;short&quot; : &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World&quot;,
-      &quot;definition&quot; : &quot;Date of first marketing authorization for a company's new medicinal product in any country in the World.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;dateTime&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.legalBasis&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.legalBasis&quot;,
-      &quot;short&quot; : &quot;The legal framework against which this authorization is granted&quot;,
-      &quot;definition&quot; : &quot;The legal framework against which this authorization is granted.&quot;,
-      &quot;min&quot; : 0,
+      &quot;id&quot; : &quot;RegulatedAuthorization.relatedDate.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.relatedDate.type&quot;,
+      &quot;short&quot; : &quot;Type of this date, for example the data exclusitity period for a medicinal product&quot;,
+      &quot;definition&quot; : &quot;Type of this date, for example the data exclusitity period for a medicinal product.&quot;,
+      &quot;min&quot; : 1,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -1229,67 +1184,8 @@
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;BackboneElement&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.identifier&quot;,
-      &quot;short&quot; : &quot;The assigned number for the marketing authorization&quot;,
-      &quot;definition&quot; : &quot;The assigned number for the marketing authorization.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Identifier&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.country&quot;,
-      &quot;short&quot; : &quot;Country of authorization&quot;,
-      &quot;definition&quot; : &quot;Country of authorization.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.jurisdiction&quot;,
-      &quot;short&quot; : &quot;Jurisdiction within a country&quot;,
-      &quot;definition&quot; : &quot;Jurisdiction within a country.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.legalStatusOfSupply&quot;,
-      &quot;short&quot; : &quot;The legal status of supply in a jurisdiction or region&quot;,
-      &quot;definition&quot; : &quot;The legal status of supply in a jurisdiction or region.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true
-    },
-    {
-      &quot;id&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.jurisdictionalAuthorization.validityPeriod&quot;,
-      &quot;short&quot; : &quot;The start and expected end date of the authorization&quot;,
-      &quot;definition&quot; : &quot;The start and expected end date of the authorization.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;Period&quot;
+        &quot;code&quot; : &quot;Reference&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedAuthorization&quot;]
       }],
       &quot;isSummary&quot; : true
     },
@@ -1320,10 +1216,10 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure&quot;,
-      &quot;short&quot; : &quot;The regulatory procedure for granting or amending a marketing authorization&quot;,
-      &quot;definition&quot; : &quot;The regulatory procedure for granting or amending a marketing authorization.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case&quot;,
+      &quot;short&quot; : &quot;The case or regulatory procedure for granting or amending a marketing authorization&quot;,
+      &quot;definition&quot; : &quot;The case or regulatory procedure for granting or amending a marketing authorization.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1332,10 +1228,10 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.identifier&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.identifier&quot;,
-      &quot;short&quot; : &quot;Identifier for this procedure&quot;,
-      &quot;definition&quot; : &quot;Identifier for this procedure.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.identifier&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.identifier&quot;,
+      &quot;short&quot; : &quot;Identifier for this case&quot;,
+      &quot;definition&quot; : &quot;Identifier for this case.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1344,11 +1240,11 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.type&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.type&quot;,
-      &quot;short&quot; : &quot;Type of procedure&quot;,
-      &quot;definition&quot; : &quot;Type of procedure.&quot;,
-      &quot;min&quot; : 1,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.type&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.type&quot;,
+      &quot;short&quot; : &quot;Type of case&quot;,
+      &quot;definition&quot; : &quot;Type of case.&quot;,
+      &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;CodeableConcept&quot;
@@ -1356,10 +1252,22 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.date[x]&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.date[x]&quot;,
-      &quot;short&quot; : &quot;Date of procedure&quot;,
-      &quot;definition&quot; : &quot;Date of procedure.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.status&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.status&quot;,
+      &quot;short&quot; : &quot;The status of the case&quot;,
+      &quot;definition&quot; : &quot;The status of the case.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.date[x]&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.date[x]&quot;,
+      &quot;short&quot; : &quot;Date of case&quot;,
+      &quot;definition&quot; : &quot;Date of case.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1371,13 +1279,13 @@
       &quot;isSummary&quot; : true
     },
     {
-      &quot;id&quot; : &quot;RegulatedAuthorization.procedure.application&quot;,
-      &quot;path&quot; : &quot;RegulatedAuthorization.procedure.application&quot;,
-      &quot;short&quot; : &quot;Applcations submitted to obtain a marketing authorization&quot;,
-      &quot;definition&quot; : &quot;Applcations submitted to obtain a marketing authorization.&quot;,
+      &quot;id&quot; : &quot;RegulatedAuthorization.case.application&quot;,
+      &quot;path&quot; : &quot;RegulatedAuthorization.case.application&quot;,
+      &quot;short&quot; : &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure&quot;,
+      &quot;definition&quot; : &quot;Applcations submitted to obtain a marketing authorization. Steps within the longer running case or procedure.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
-      &quot;contentReference&quot; : &quot;#RegulatedAuthorization.procedure&quot;,
+      &quot;contentReference&quot; : &quot;#RegulatedAuthorization.case&quot;,
       &quot;isSummary&quot; : true
     }]
   }
@@ -1406,7 +1314,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1414,7 +1322,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fregulatedauthorization.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fregulatedauthorization.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fregulatedauthorization.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fregulatedauthorization.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

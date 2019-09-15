@@ -1,0 +1,159 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.org/fhir/NutritionIntake/example> a fhir:NutritionIntake;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "example"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>status</b>: completed</p><p><b>category</b>: Inpatient <span>(Details )</span></p><blockquote><p><b>consumedItem</b></p><p><b>type</b>: food <span>(Details )</span></p><p><b>nutritionProduct</b>: Grill Sandwich <span>(Details )</span></p><p><b>amount</b>: 100 percent<span> (Details: UCUM code % = '%')</span></p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: food <span>(Details )</span></p><p><b>nutritionProduct</b>: French Fries Spiral Battered <span>(Details )</span></p><p><b>amount</b>: 100 percent<span> (Details: UCUM code % = '%')</span></p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: food <span>(Details )</span></p><p><b>nutritionProduct</b>: Tomato Soup Healthy Request <span>(Details )</span></p><p><b>amount</b>: 50 percent<span> (Details: UCUM code % = '%')</span></p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: food <span>(Details )</span></p><p><b>nutritionProduct</b>: Side Garden Salad <span>(Details )</span></p><p><b>amount</b>: 50 percent<span> (Details: UCUM code % = '%')</span></p></blockquote><blockquote><p><b>consumedItem</b></p><p><b>type</b>: fluid <span>(Details )</span></p><p><b>nutritionProduct</b>: Ice Tea Unsweetened <span>(Details )</span></p><p><b>amount</b>: 100 percent<span> (Details: UCUM code % = '%')</span></p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: Total Calories <span>(Details )</span></p><p><b>amount</b>: 313 kilocalorie<span> (Details: UCUM code kcal = 'kcal')</span></p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: Protein <span>(Details )</span></p><p><b>amount</b>: 10.4 grams<span> (Details: UCUM code g = 'g')</span></p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: Fat (Total) <span>(Details )</span></p><p><b>amount</b>: 18.00 grams<span> (Details: UCUM code g = 'g')</span></p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: Carbohydrate <span>(Details )</span></p><p><b>amount</b>: 26.47 grams<span> (Details: UCUM code g = 'g')</span></p></blockquote><blockquote><p><b>ingredientLabel</b></p><p><b>nutrient</b>: Sodium <span>(Details )</span></p><p><b>amount</b>: 770 Milligrams<span> (Details: UCUM code mg = 'mg')</span></p></blockquote><p><b>subject</b>: Paula Patient Chalmers</p><p><b>effective</b>: Aug 2, 2019, 12:45:18 PM</p></div>"
+  ];
+  fhir:NutritionIntake.status [ fhir:value "completed"];
+  fhir:NutritionIntake.category [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Inpatient" ]
+  ];
+  fhir:NutritionIntake.consumedItem [
+     fhir:index 0;
+     fhir:NutritionIntake.consumedItem.type [
+       fhir:CodeableConcept.text [ fhir:value "food" ]
+     ];
+     fhir:NutritionIntake.consumedItem.nutritionProduct [
+       fhir:CodeableConcept.text [ fhir:value "Grill Sandwich" ]
+     ];
+     fhir:NutritionIntake.consumedItem.amount [
+       fhir:Quantity.value [ fhir:value "100"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "percent" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "%" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:NutritionIntake.consumedItem.type [
+       fhir:CodeableConcept.text [ fhir:value "food" ]
+     ];
+     fhir:NutritionIntake.consumedItem.nutritionProduct [
+       fhir:CodeableConcept.text [ fhir:value "French Fries Spiral Battered" ]
+     ];
+     fhir:NutritionIntake.consumedItem.amount [
+       fhir:Quantity.value [ fhir:value "100"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "percent" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "%" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:NutritionIntake.consumedItem.type [
+       fhir:CodeableConcept.text [ fhir:value "food" ]
+     ];
+     fhir:NutritionIntake.consumedItem.nutritionProduct [
+       fhir:CodeableConcept.text [ fhir:value "Tomato Soup Healthy Request" ]
+     ];
+     fhir:NutritionIntake.consumedItem.amount [
+       fhir:Quantity.value [ fhir:value "50"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "percent" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "%" ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:NutritionIntake.consumedItem.type [
+       fhir:CodeableConcept.text [ fhir:value "food" ]
+     ];
+     fhir:NutritionIntake.consumedItem.nutritionProduct [
+       fhir:CodeableConcept.text [ fhir:value "Side Garden Salad" ]
+     ];
+     fhir:NutritionIntake.consumedItem.amount [
+       fhir:Quantity.value [ fhir:value "50"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "percent" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "%" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:NutritionIntake.consumedItem.type [
+       fhir:CodeableConcept.text [ fhir:value "fluid" ]
+     ];
+     fhir:NutritionIntake.consumedItem.nutritionProduct [
+       fhir:CodeableConcept.text [ fhir:value "Ice Tea Unsweetened" ]
+     ];
+     fhir:NutritionIntake.consumedItem.amount [
+       fhir:Quantity.value [ fhir:value "100"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "percent" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "%" ]
+     ]
+  ];
+  fhir:NutritionIntake.ingredientLabel [
+     fhir:index 0;
+     fhir:NutritionIntake.ingredientLabel.nutrient [
+       fhir:CodeableConcept.text [ fhir:value "Total Calories" ]
+     ];
+     fhir:NutritionIntake.ingredientLabel.amount [
+       fhir:Quantity.value [ fhir:value "313"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "kilocalorie" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "kcal" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:NutritionIntake.ingredientLabel.nutrient [
+       fhir:CodeableConcept.text [ fhir:value "Protein" ]
+     ];
+     fhir:NutritionIntake.ingredientLabel.amount [
+       fhir:Quantity.value [ fhir:value "10.4"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "grams" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "g" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:NutritionIntake.ingredientLabel.nutrient [
+       fhir:CodeableConcept.text [ fhir:value "Fat (Total)" ]
+     ];
+     fhir:NutritionIntake.ingredientLabel.amount [
+       fhir:Quantity.value [ fhir:value "18.00"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "grams" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "g" ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:NutritionIntake.ingredientLabel.nutrient [
+       fhir:CodeableConcept.text [ fhir:value "Carbohydrate" ]
+     ];
+     fhir:NutritionIntake.ingredientLabel.amount [
+       fhir:Quantity.value [ fhir:value "26.47"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "grams" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "g" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:NutritionIntake.ingredientLabel.nutrient [
+       fhir:CodeableConcept.text [ fhir:value "Sodium" ]
+     ];
+     fhir:NutritionIntake.ingredientLabel.amount [
+       fhir:Quantity.value [ fhir:value "770"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "Milligrams" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "mg" ]
+     ]
+  ];
+  fhir:NutritionIntake.subject [
+     fhir:Reference.display [ fhir:value "Paula Patient Chalmers" ]
+  ];
+  fhir:NutritionIntake.effectiveDateTime [ fhir:value "2019-08-02T12:45:18+04:00"^^xsd:dateTime] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.org/fhir/NutritionIntake/example.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl;
+  owl:versionIRI <http://build.fhir.org/NutritionIntake/example.ttl> .
+
+# -------------------------------------------------------------------------------------
+

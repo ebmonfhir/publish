@@ -141,7 +141,7 @@
       &quot;value&quot; : &quot;HL7&quot;
     }]
   }],
-  &quot;description&quot; : &quot;Simple concise instructions to be read by the patient.  For example  â€œtwice a dayâ€� rather than â€œBID.â€�.&quot;,
+  &quot;description&quot; : &quot;Simple concise instructions to be read by the patient.  For example  “twice a day” rather than “BID.”.&quot;,
   &quot;fhirVersion&quot; : &quot;4.1.0&quot;,
   &quot;mapping&quot; : [{
     &quot;identity&quot; : &quot;rim&quot;,
@@ -160,17 +160,9 @@
   &quot;snapshot&quot; : {
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Extension&quot;,
-      &quot;extension&quot; : [{
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
-        &quot;valueCode&quot; : &quot;normative&quot;
-      },
-      {
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version&quot;,
-        &quot;valueCode&quot; : &quot;4.0.0&quot;
-      }],
       &quot;path&quot; : &quot;Extension&quot;,
       &quot;short&quot; : &quot;Patient Friendly Insructions&quot;,
-      &quot;definition&quot; : &quot;Simple concise instructions to be read by the patient.  For example  â€œtwice a dayâ€� rather than â€œBID.â€�.&quot;,
+      &quot;definition&quot; : &quot;Simple concise instructions to be read by the patient.  For example  “twice a day” rather than “BID.”.&quot;,
       &quot;comment&quot; : &quot;Should use only common terms and sentences.  Use of unfamiliar words and jargon should be avoided.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -212,7 +204,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -287,7 +283,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -337,7 +337,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;lang&quot;,
       &quot;isModifier&quot; : false,
@@ -348,8 +352,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:lang.valueCode&quot;,
-      &quot;path&quot; : &quot;Extension.extension.valueCode&quot;,
+      &quot;id&quot; : &quot;Extension.extension:lang.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:lang.value[x]:valueCode&quot;,
+      &quot;path&quot; : &quot;Extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueCode&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -419,7 +454,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -469,7 +508,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;content&quot;,
       &quot;isModifier&quot; : false,
@@ -480,8 +523,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:content.valueString&quot;,
-      &quot;path&quot; : &quot;Extension.extension.valueString&quot;,
+      &quot;id&quot; : &quot;Extension.extension:content.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;string&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:content.value[x]:valueString&quot;,
+      &quot;path&quot; : &quot;Extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueString&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -516,7 +590,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/devicerequest-patientInstruction&quot;,
       &quot;isModifier&quot; : false,
@@ -684,6 +762,9 @@
       },
       {
         &quot;code&quot; : &quot;Dosage&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Meta&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -698,7 +779,7 @@
       &quot;id&quot; : &quot;Extension&quot;,
       &quot;path&quot; : &quot;Extension&quot;,
       &quot;short&quot; : &quot;Patient Friendly Insructions&quot;,
-      &quot;definition&quot; : &quot;Simple concise instructions to be read by the patient.  For example  â€œtwice a dayâ€� rather than â€œBID.â€�.&quot;,
+      &quot;definition&quot; : &quot;Simple concise instructions to be read by the patient.  For example  “twice a day” rather than “BID.”.&quot;,
       &quot;comment&quot; : &quot;Should use only common terms and sentences.  Use of unfamiliar words and jargon should be avoided.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;
@@ -723,9 +804,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:lang.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;lang&quot;
     },
     {
@@ -772,9 +850,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:content.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;content&quot;
     },
     {
@@ -787,9 +862,6 @@
     {
       &quot;id&quot; : &quot;Extension.url&quot;,
       &quot;path&quot; : &quot;Extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/devicerequest-patientInstruction&quot;
     },
     {
@@ -824,7 +896,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:39-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:43-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -832,7 +904,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fextension-devicerequest-patientinstruction.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-devicerequest-patientinstruction.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fextension-devicerequest-patientinstruction.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-devicerequest-patientinstruction.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

@@ -125,7 +125,7 @@
 [] a fhir:StructureDefinition;
   fhir:Resource.id [ fhir:value &quot;Topic&quot;];
   fhir:Resource.meta [
-     fhir:Meta.lastUpdated [ fhir:value &quot;2019-08-09T09:30:10.376-04:00&quot; ]
+     fhir:Meta.lastUpdated [ fhir:value &quot;2019-09-15T10:41:41.207-04:00&quot; ]
   ];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ]
@@ -155,7 +155,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;Topic&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;Health Level Seven International (FHIR Infrastructure)&quot;];
   fhir:StructureDefinition.contact [
      fhir:index 0;
@@ -295,7 +295,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;id&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
@@ -725,49 +730,6 @@
        ]
      ], [
        fhir:index 15;
-       fhir:Element.id [ fhir:value &quot;Topic.replaces&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Topic.replaces&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Topics replaced by this Topic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Completed or terminated request(s) whose function is taken by this new request.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;As new versions of a protocol or guideline are defined, allows identification of what versions are replaced by a new instance.&quot; ];
-       fhir:ElementDefinition.alias [
-         fhir:value &quot;supersedes&quot;;
-         fhir:index 0
-       ], [
-         fhir:value &quot;prior&quot;;
-         fhir:index 1
-       ], [
-         fhir:value &quot;renewed order&quot;;
-         fhir:index 2
-       ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.base [
-         fhir:ElementDefinition.path [ fhir:value &quot;Topic.replaces&quot; ];
-         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
-       ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ];
-         fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Topic&quot;;
-           fhir:index 0
-         ]
-       ];
-       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
-       fhir:ElementDefinition.mapping [
-         fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;!Definition.replaces&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=RPLC].target&quot; ]
-       ]
-     ], [
-       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Topic.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired | unknown&quot; ];
@@ -815,7 +777,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.status&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Topic.experimental&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.experimental&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;If for testing purposes, not real usage&quot; ];
@@ -850,7 +812,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Topic.date&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.date&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Date status first applied&quot; ];
@@ -886,7 +848,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Topic.publisher&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.publisher&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the individual or organization that published the Topic&quot; ];
@@ -933,7 +895,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Topic.contact&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.contact&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Contact details for the publisher&quot; ];
@@ -962,7 +924,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=CALLBCK].role&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;Topic.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.description&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Natural language description of the Topic&quot; ];
@@ -991,7 +953,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.text&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Topic.useContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.useContext&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Content intends to support these contexts&quot; ];
@@ -1021,7 +983,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;Topic.jurisdiction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.jurisdiction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended jurisdiction for Topic (if applicable)&quot; ];
@@ -1063,7 +1025,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Topic.purpose&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.purpose&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why this Topic is defined&quot; ];
@@ -1096,7 +1058,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode.text&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Topic.copyright&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.copyright&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Use and/or publishing restrictions&quot; ];
@@ -1132,7 +1094,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Topic.approvalDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.approvalDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;When Topic approved by publisher&quot; ];
@@ -1161,7 +1123,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;SUBJ\&quot;].act[classCode=CACT;moodCode=EVN;code=\&quot;approval\&quot;].effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 27;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Topic.lastReviewDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.lastReviewDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Last review date for the Topic&quot; ];
@@ -1190,7 +1152,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;SUBJ\&quot;; subsetCode=\&quot;RECENT\&quot;].act[classCode=CACT;moodCode=EVN;code=\&quot;review\&quot;].effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Topic.effectivePeriod&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.effectivePeriod&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The effective date range for the Topic&quot; ];
@@ -1219,7 +1181,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 29;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Criteria for including a resource update in the topic&quot; ];
@@ -1259,7 +1221,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 30;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1277,7 +1239,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1287,7 +1254,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1319,7 +1286,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1356,7 +1323,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.description&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Text representation of the trigger&quot; ];
@@ -1376,7 +1343,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 34;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.resourceType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.resourceType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Candidate types for this topic&quot; ];
@@ -1405,7 +1372,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/resource-types|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 35;
+       fhir:index 34;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.methodCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.methodCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;create | update | delete&quot; ];
@@ -1434,7 +1401,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/interaction-trigger|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 36;
+       fhir:index 35;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Query based trigger rule&quot; ];
@@ -1462,7 +1429,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 37;
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1480,7 +1447,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1490,7 +1462,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 38;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1522,7 +1494,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 39;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1559,7 +1531,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 40;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.previous&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.previous&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Rule applied to previous resource state&quot; ];
@@ -1579,7 +1551,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 41;
+       fhir:index 40;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.current&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.current&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Rule applied to current resource state&quot; ];
@@ -1599,7 +1571,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 42;
+       fhir:index 41;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.requireBoth&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.requireBoth&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Both must be true flag&quot; ];
@@ -1618,7 +1590,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 43;
+       fhir:index 42;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.fhirPathCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.fhirPathCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;FHIRPath based trigger rule&quot; ];
@@ -1638,7 +1610,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 44;
+       fhir:index 43;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Properties by which the topic can be filtered&quot; ];
@@ -1666,7 +1638,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 45;
+       fhir:index 44;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -1684,7 +1656,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1694,7 +1671,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 46;
+       fhir:index 45;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Additional content defined by implementations&quot; ];
@@ -1726,7 +1703,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 47;
+       fhir:index 46;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.modifierExtension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.modifierExtension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Extensions that cannot be ignored even if unrecognized&quot; ];
@@ -1763,7 +1740,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 48;
+       fhir:index 47;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Search parameter that serves as filter key&quot; ];
@@ -1782,6 +1759,35 @@
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 48;
+       fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.matchType&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.matchType&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;= | in | not-in | above | below&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Allowable operators to apply when determining matches (Search Modifiers).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.matchType&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;TopicFilterByMatchType&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Operator to apply to filter label.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/topic-match-operator|4.1.0&quot; ]
+       ]
      ], [
        fhir:index 49;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.documentation&quot; ];
@@ -1994,43 +2000,6 @@
        ]
      ], [
        fhir:index 7;
-       fhir:Element.id [ fhir:value &quot;Topic.replaces&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Topic.replaces&quot; ];
-       fhir:ElementDefinition.short [ fhir:value &quot;Topics replaced by this Topic&quot; ];
-       fhir:ElementDefinition.definition [ fhir:value &quot;Completed or terminated request(s) whose function is taken by this new request.&quot; ];
-       fhir:ElementDefinition.requirements [ fhir:value &quot;As new versions of a protocol or guideline are defined, allows identification of what versions are replaced by a new instance.&quot; ];
-       fhir:ElementDefinition.alias [
-         fhir:value &quot;supersedes&quot;;
-         fhir:index 0
-       ], [
-         fhir:value &quot;prior&quot;;
-         fhir:index 1
-       ], [
-         fhir:value &quot;renewed order&quot;;
-         fhir:index 2
-       ];
-       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
-       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;canonical&quot; ];
-         fhir:ElementDefinition.targetProfile [
-           fhir:value &quot;http://hl7.org/fhir/StructureDefinition/Topic&quot;;
-           fhir:index 0
-         ]
-       ];
-       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
-       fhir:ElementDefinition.mapping [
-         fhir:index 0;
-         fhir:ElementDefinition.identity [ fhir:value &quot;workflow&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;!Definition.replaces&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
-         fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=RPLC].target&quot; ]
-       ]
-     ], [
-       fhir:index 8;
        fhir:Element.id [ fhir:value &quot;Topic.status&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.status&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;draft | active | retired | unknown&quot; ];
@@ -2073,7 +2042,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.status&quot; ]
        ]
      ], [
-       fhir:index 9;
+       fhir:index 8;
        fhir:Element.id [ fhir:value &quot;Topic.experimental&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.experimental&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;If for testing purposes, not real usage&quot; ];
@@ -2103,7 +2072,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 9;
        fhir:Element.id [ fhir:value &quot;Topic.date&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.date&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Date status first applied&quot; ];
@@ -2133,7 +2102,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].time&quot; ]
        ]
      ], [
-       fhir:index 11;
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;Topic.publisher&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.publisher&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The name of the individual or organization that published the Topic&quot; ];
@@ -2174,7 +2143,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=AUT].role&quot; ]
        ]
      ], [
-       fhir:index 12;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Topic.contact&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.contact&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Contact details for the publisher&quot; ];
@@ -2197,7 +2166,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.participation[typeCode=CALLBCK].role&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;Topic.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.description&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Natural language description of the Topic&quot; ];
@@ -2219,7 +2188,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.text&quot; ]
        ]
      ], [
-       fhir:index 14;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;Topic.useContext&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.useContext&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Content intends to support these contexts&quot; ];
@@ -2243,7 +2212,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 15;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Topic.jurisdiction&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.jurisdiction&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Intended jurisdiction for Topic (if applicable)&quot; ];
@@ -2279,7 +2248,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Topic.purpose&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.purpose&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Why this Topic is defined&quot; ];
@@ -2305,7 +2274,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.reasonCode.text&quot; ]
        ]
      ], [
-       fhir:index 17;
+       fhir:index 16;
        fhir:Element.id [ fhir:value &quot;Topic.copyright&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.copyright&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Use and/or publishing restrictions&quot; ];
@@ -2334,7 +2303,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Topic.approvalDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.approvalDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;When Topic approved by publisher&quot; ];
@@ -2356,7 +2325,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;SUBJ\&quot;].act[classCode=CACT;moodCode=EVN;code=\&quot;approval\&quot;].effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 19;
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Topic.lastReviewDate&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.lastReviewDate&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Last review date for the Topic&quot; ];
@@ -2378,7 +2347,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;.outboundRelationship[typeCode=\&quot;SUBJ\&quot;; subsetCode=\&quot;RECENT\&quot;].act[classCode=CACT;moodCode=EVN;code=\&quot;review\&quot;].effectiveTime&quot; ]
        ]
      ], [
-       fhir:index 20;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Topic.effectivePeriod&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.effectivePeriod&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;The effective date range for the Topic&quot; ];
@@ -2401,7 +2370,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Criteria for including a resource update in the topic&quot; ];
@@ -2426,7 +2395,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A (to add?)&quot; ]
        ]
      ], [
-       fhir:index 22;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.description&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.description&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Text representation of the trigger&quot; ];
@@ -2440,7 +2409,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 23;
+       fhir:index 22;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.resourceType&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.resourceType&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Candidate types for this topic&quot; ];
@@ -2463,7 +2432,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/resource-types|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 24;
+       fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.methodCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.methodCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;create | update | delete&quot; ];
@@ -2486,7 +2455,7 @@
          fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/interaction-trigger|4.1.0&quot; ]
        ]
      ], [
-       fhir:index 25;
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Query based trigger rule&quot; ];
@@ -2499,7 +2468,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 26;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.previous&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.previous&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Rule applied to previous resource state&quot; ];
@@ -2513,7 +2482,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 27;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.current&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.current&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Rule applied to current resource state&quot; ];
@@ -2527,7 +2496,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 28;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.requireBoth&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.queryCriteria.requireBoth&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Both must be true flag&quot; ];
@@ -2540,7 +2509,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 29;
+       fhir:index 28;
        fhir:Element.id [ fhir:value &quot;Topic.resourceTrigger.fhirPathCriteria&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.resourceTrigger.fhirPathCriteria&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;FHIRPath based trigger rule&quot; ];
@@ -2554,7 +2523,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 30;
+       fhir:index 29;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Properties by which the topic can be filtered&quot; ];
@@ -2567,7 +2536,7 @@
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
      ], [
-       fhir:index 31;
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.name&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.name&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Search parameter that serves as filter key&quot; ];
@@ -2580,6 +2549,29 @@
          fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
        ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ]
+     ], [
+       fhir:index 31;
+       fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.matchType&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Topic.canFilterBy.matchType&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;= | in | not-in | above | below&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Allowable operators to apply when determining matches (Search Modifiers).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;*&quot; ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;code&quot; ]
+       ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;true&quot; ];
+       fhir:ElementDefinition.binding [
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot; ];
+           fhir:Extension.value [ fhir:value &quot;TopicFilterByMatchType&quot; ]
+         ];
+         fhir:ElementDefinition.strength [ fhir:value &quot;required&quot; ];
+         fhir:ElementDefinition.description [ fhir:value &quot;Operator to apply to filter label.&quot; ];
+         fhir:ElementDefinition.valueSet [ fhir:value &quot;http://hl7.org/fhir/ValueSet/topic-match-operator|4.1.0&quot; ]
+       ]
      ], [
        fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Topic.canFilterBy.documentation&quot; ];
@@ -2623,7 +2615,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:50-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2631,7 +2623,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Ftopic.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Ftopic.profile.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Ftopic.profile.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Ftopic.profile.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

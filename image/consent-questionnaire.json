@@ -1,52 +1,16 @@
 {
   "resourceType" : "Questionnaire",
   "id" : "qs1",
-  "contained" : [{
-    "resourceType" : "ValueSet",
-    "id" : "vs2",
-    "name" : "Type options for Consent.source[x]",
-    "status" : "active",
-    "description" : "Type options for Consent.source[x]",
-    "expansion" : {
-      "identifier" : "urn:uuid:843a0223-477d-40d1-a6c3-1bf2c9a6d8f6",
-      "timestamp" : "2019-08-09T09:44:52-04:00",
-      "contains" : [{
-        "system" : "http://hl7.org/fhir/data-types",
-        "code" : "Attachment",
-        "display" : "Attachment"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Consent",
-        "display" : "Consent"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "DocumentReference",
-        "display" : "DocumentReference"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "Contract",
-        "display" : "Contract"
-      },
-      {
-        "system" : "http://hl7.org/fhir/resource-types",
-        "code" : "QuestionnaireResponse",
-        "display" : "QuestionnaireResponse"
-      }]
-    }
-  }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986"
   }],
   "version" : "4.1.0",
   "status" : "draft",
-  "date" : "2019-08-09T09:30:10-04:00",
+  "date" : "2019-09-15T10:41:41-04:00",
   "publisher" : "Health Level Seven International (Community Based Collaborative Care)",
   "item" : [{
     "linkId" : "Consent",
-    "text" : "A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time",
+    "text" : "A healthcare consumer's  or third party's choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time",
     "type" : "group",
     "required" : false,
     "repeats" : true,
@@ -65,7 +29,7 @@
           }]
         }
       }],
-      "text" : "A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.",
+      "text" : "A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.",
       "type" : "display"
     },
     {
@@ -619,10 +583,10 @@
     },
     {
       "extension" : [{
-        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs",
-        "valueInteger" : 1
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Attachment"
       }],
-      "linkId" : "Consent.source[x]",
+      "linkId" : "Consent.sourceAttachment",
       "text" : "Source from which this consent is taken",
       "type" : "group",
       "required" : false,
@@ -638,46 +602,47 @@
             }]
           }
         }],
-        "text" : "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.",
+        "text" : "The source on which this consent statement is based. The source might be a scanned original paper form. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.",
+        "type" : "display"
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
+        "valueString" : "Reference"
+      }],
+      "linkId" : "Consent.sourceReference",
+      "type" : "group",
+      "required" : false,
+      "repeats" : true,
+      "item" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://hl7.org/fhir/questionnaire-item-control",
+              "code" : "flyover",
+              "display" : "Fly-over"
+            }]
+          }
+        }],
+        "text" : "A reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.",
         "type" : "display"
       },
       {
-        "linkId" : "Consent.source[x]._type",
-        "text" : "type",
-        "type" : "choice",
-        "required" : false,
-        "repeats" : false,
-        "answerValueSet" : "#vs2",
-        "item" : [{
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "Attachment"
-          }],
-          "linkId" : "Consent.source[x]._null",
-          "type" : "group"
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
+          "valueCode" : "Consent, DocumentReference, Contract, QuestionnaireResponse"
         },
         {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType",
-            "valueString" : "Reference"
-          }],
-          "linkId" : "Consent.source[x]._null",
-          "type" : "group",
-          "item" : [{
-            "extension" : [{
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource",
-              "valueCode" : "Consent, DocumentReference, Contract, QuestionnaireResponse"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
-              "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
-            }],
-            "linkId" : "Consent.source[x]._null.value",
-            "type" : "reference",
-            "required" : false,
-            "repeats" : false
-          }]
-        }]
+          "url" : "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter",
+          "valueString" : "subject=$subj&patient=$subj&encounter=$encounter"
+        }],
+        "linkId" : "Consent.sourceReference.value",
+        "text" : "Source from which this consent is taken",
+        "type" : "reference",
+        "required" : false,
+        "repeats" : false
       }]
     },
     {

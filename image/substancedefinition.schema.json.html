@@ -104,7 +104,7 @@
 
 <div class="col-12">
 
-<h2 class="self-link-parent"><span class="sectioncount">11.18.9<a name="11.18.9"> </a></span> JSON Schema for SubstanceDefinition <a href="substancedefinition.schema.json.html#11.18.9" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">11.19.9<a name="11.19.9"> </a></span> JSON Schema for SubstanceDefinition <a href="substancedefinition.schema.json.html#11.19.9" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/rcrim/index.cfm">Biomedical Research and Regulation <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
 
 <p>
@@ -179,12 +179,12 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "description": "Identifier by which this substance is known.",
           "$ref": "Identifier.schema.json#/definitions/Identifier"
         },
-        "type": {
-          "description": "High level categorization, e.g. polymer or nucleic acid.",
-          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-        },
         "status": {
           "description": "Status of substance within the catalogue e.g. approved.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "category": {
+          "description": "High level categorization, e.g. polymer or nucleic acid, or food, chemical, biological.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "domain": {
@@ -206,13 +206,12 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           },
           "type": "array"
         },
-        "comment": {
+        "note": {
           "description": "Textual comment about this record of a substance.",
-          "$ref": "#/definitions/string"
-        },
-        "_comment": {
-          "description": "Extensions for comment",
-          "$ref": "Element.schema.json#/definitions/Element"
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
         },
         "moiety": {
           "description": "Moiety, for structural modifications.",
@@ -332,7 +331,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "molecularFormula": {
-          "description": "Molecular formula.",
+          "description": "Molecular formula for this moiety of this substance, typically using the Hill system.",
           "$ref": "#/definitions/string"
         },
         "_molecularFormula": {
@@ -351,6 +350,10 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
         "_amountString": {
           "description": "Extensions for amountString",
           "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "amountType": {
+          "description": "The measurement type of the quantitative value.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         }
       },
       "additionalProperties": false
@@ -412,6 +415,17 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
         "_amountString": {
           "description": "Extensions for amountString",
           "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "referenceRange": {
+          "description": "Range of typical values.",
+          "$ref": "Range.schema.json#/definitions/Range"
+        },
+        "source": {
+          "description": "Supporting literature.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
         }
       },
       "additionalProperties": false
@@ -446,7 +460,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "molecularFormula": {
-          "description": "Molecular formula.",
+          "description": "Molecular formula of this substance, typically using the Hill system.",
           "$ref": "#/definitions/string"
         },
         "_molecularFormula": {
@@ -635,7 +649,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "status": {
-          "description": "Status of the code assignment.",
+          "description": "Status of the code assignment, for example \u0027provisional\u0027, \u0027approved\u0027.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "statusDate": {
@@ -646,13 +660,12 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "description": "Extensions for statusDate",
           "$ref": "Element.schema.json#/definitions/Element"
         },
-        "comment": {
+        "note": {
           "description": "Any comment can be provided in this field, if necessary.",
-          "$ref": "#/definitions/string"
-        },
-        "_comment": {
-          "description": "Extensions for comment",
-          "$ref": "Element.schema.json#/definitions/Element"
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
         },
         "source": {
           "description": "Supporting literature.",
@@ -694,11 +707,11 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "type": {
-          "description": "Name type.",
+          "description": "Name type, for example \u0027systematic\u0027,  \u0027scientific, \u0027brand\u0027.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "status": {
-          "description": "The status of the name.",
+          "description": "The status of the name, for example \u0027current\u0027, \u0027proposed\u0027.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "preferred": {
@@ -710,7 +723,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "language": {
-          "description": "Language of the name.",
+          "description": "Human language that the name is written in.",
           "items": {
             "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
@@ -731,14 +744,14 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "type": "array"
         },
         "synonym": {
-          "description": "A synonym of this name.",
+          "description": "A synonym of this particular name, by which the substance is also known.",
           "items": {
             "$ref": "#/definitions/SubstanceDefinition_Name"
           },
           "type": "array"
         },
         "translation": {
-          "description": "A translation for this name.",
+          "description": "A translation for this name into another human language.",
           "items": {
             "$ref": "#/definitions/SubstanceDefinition_Name"
           },
@@ -787,7 +800,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "status": {
-          "description": "The status of the official name.",
+          "description": "The status of the official name, for example \u0027provisional\u0027, \u0027approved\u0027.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "date": {
@@ -822,11 +835,11 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
           },
           "type": "array"
         },
-        "substanceReference": {
+        "substanceDefinitionReference": {
           "description": "A pointer to another substance, as a resource or just a representational code.",
           "$ref": "Reference.schema.json#/definitions/Reference"
         },
-        "substanceCodeableConcept": {
+        "substanceDefinitionCodeableConcept": {
           "description": "A pointer to another substance, as a resource or just a representational code.",
           "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
@@ -900,7 +913,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -908,7 +921,7 @@ This is a representation of the json schema for SubstanceDefinition, which is ju
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fsubstancedefinition.schema.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubstancedefinition.schema.json.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fsubstancedefinition.schema.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubstancedefinition.schema.json.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

@@ -9,8 +9,8 @@
       <status value="active"/>
       <description value="Type options for ServiceRequest.quantity[x]"/>
       <expansion>
-        <identifier value="urn:uuid:07d535c1-7222-42b2-8ed1-a706a0157522"/>
-        <timestamp value="2019-08-09T09:49:40-04:00"/>
+        <identifier value="urn:uuid:4402159d-2341-4271-acf9-da4219a12231"/>
+        <timestamp value="2019-09-15T10:46:10-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="Quantity"/>
@@ -36,8 +36,8 @@
       <status value="active"/>
       <description value="Type options for ServiceRequest.occurrence[x]"/>
       <expansion>
-        <identifier value="urn:uuid:229c94d7-c5c5-4423-a058-229554de3bdb"/>
-        <timestamp value="2019-08-09T09:49:40-04:00"/>
+        <identifier value="urn:uuid:fc3cf949-8e9b-4e36-a275-974b5f14f6f1"/>
+        <timestamp value="2019-09-15T10:46:10-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="dateTime"/>
@@ -63,8 +63,8 @@
       <status value="active"/>
       <description value="Type options for ServiceRequest.asNeeded[x]"/>
       <expansion>
-        <identifier value="urn:uuid:498806f9-b7df-4901-bc14-6bc8da6e9da5"/>
-        <timestamp value="2019-08-09T09:49:40-04:00"/>
+        <identifier value="urn:uuid:27f21288-2c4c-4798-81b2-bae2b6d8b9f1"/>
+        <timestamp value="2019-09-15T10:46:10-04:00"/>
         <contains>
           <system value="http://hl7.org/fhir/data-types"/>
           <code value="boolean"/>
@@ -368,7 +368,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest. Note: This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number."/>
+        <text value="The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest. Note: This is a business identifier, not a resource identifier (see [discussion](http://hl7.org/fhir/resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number."/>
         <type value="display"/>
       </item>
       <item>
@@ -549,7 +549,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The status of the order. The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource."/>
+        <text value="The status of the order. The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](http://hl7.org/fhir/event.html) for general discussion) or using the [Task](http://hl7.org/fhir/task.html) resource."/>
         <type value="display"/>
       </item>
       <item>
@@ -1276,7 +1276,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc. If multiple performers are present, it is interpreted as a list of *alternative* performers without any preference regardless of order.  If order of preference is needed use the [request-performerOrder extension](extension-request-performerorder.html).  Use CareTeam to represent a group of performers (for example, Practitioner A *and* Practitioner B)."/>
+        <text value="The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc. If multiple performers are present, it is interpreted as a list of *alternative* performers without any preference regardless of order.  If order of preference is needed use the [request-performerOrder extension](http://hl7.org/fhir/extension-request-performerorder.html).  Use CareTeam to represent a group of performers (for example, Practitioner A *and* Practitioner B)."/>
         <type value="display"/>
       </item>
       <item>
@@ -1384,7 +1384,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`. This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.   Use `CodeableConcept.text` element if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html)."/>
+        <text value="An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`. This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.   Use `CodeableConcept.text` element if the data is free (uncoded) text as shown in the [CT Scan example](http://hl7.org/fhir/servicerequest-example-di.html)."/>
         <type value="display"/>
       </item>
       <item>
@@ -1420,7 +1420,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in `supportingInfo`. This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.    To be as specific as possible,  a reference to  *Observation* or *Condition* should be used if available.  Otherwise when referencing  *DiagnosticReport*  it should contain a finding  in `DiagnosticReport.conclusion` and/or `DiagnosticReport.conclusionCode`.   When using a reference to *DocumentReference*, the target document should contain clear findings language providing the relevant reason for this service request.  Use  the CodeableConcept text element in `ServiceRequest.reasonCode` if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html)."/>
+        <text value="Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in `supportingInfo`. This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.    To be as specific as possible,  a reference to  *Observation* or *Condition* should be used if available.  Otherwise when referencing  *DiagnosticReport*  it should contain a finding  in `DiagnosticReport.conclusion` and/or `DiagnosticReport.conclusionCode`.   When using a reference to *DocumentReference*, the target document should contain clear findings language providing the relevant reason for this service request.  Use  the CodeableConcept text element in `ServiceRequest.reasonCode` if the data is free (uncoded) text as shown in the [CT Scan example](http://hl7.org/fhir/servicerequest-example-di.html)."/>
         <type value="display"/>
       </item>
       <item>
@@ -1525,7 +1525,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="One or more specimens that the laboratory procedure will use. Many diagnostic procedures need a specimen, but the request itself is not actually about the specimen. This element is for when the diagnostic is requested on already existing specimens and the request points to the specimen it applies to.    Conversely, if the request is entered first with an unknown specimen, then the [Specimen](specimen.html) resource points to the ServiceRequest."/>
+        <text value="One or more specimens that the laboratory procedure will use. Many diagnostic procedures need a specimen, but the request itself is not actually about the specimen. This element is for when the diagnostic is requested on already existing specimens and the request points to the specimen it applies to.    Conversely, if the request is entered first with an unknown specimen, then the [Specimen](http://hl7.org/fhir/specimen.html) resource points to the ServiceRequest."/>
         <type value="display"/>
       </item>
       <item>
@@ -1561,7 +1561,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Anatomic location where the procedure should be performed. This is the target site. Only used if not implicit in the code found in ServiceRequest.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [procedure-targetBodyStructure](extension-procedure-targetbodystructure.html)."/>
+        <text value="Anatomic location where the procedure should be performed. This is the target site. Only used if not implicit in the code found in ServiceRequest.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [procedure-targetBodyStructure](http://hl7.org/fhir/extension-procedure-targetbodystructure.html)."/>
         <type value="display"/>
       </item>
       <item>

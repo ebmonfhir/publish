@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type AdverseEvent {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -14,7 +14,7 @@ type AdverseEvent {
   identifier: [Identifier]
   actuality: code  _actuality: ElementBase
   category: [CodeableConcept]
-  event: CodeableConcept
+  code: CodeableConcept
   subject: Reference!
   encounter: Reference
   date: dateTime  _date: ElementBase
@@ -23,14 +23,21 @@ type AdverseEvent {
   resultingCondition: [Reference]
   location: Reference
   seriousness: CodeableConcept
-  severity: CodeableConcept
   outcome: CodeableConcept
   recorder: Reference
-  contributor: [Reference]
+  participant: [AdverseEventParticipant]
   detector: [Reference]
   suspectEntity: [AdverseEventSuspectEntity]
   supportingInfo: [AdverseEventSupportingInfo]
   study: [Reference]
+}
+
+type AdverseEventParticipant {
+  id: String
+  extension: [Extension]
+  modifierExtension: [Extension]
+  function: CodeableConcept
+  actor: Reference!
 }
 
 type AdverseEventSuspectEntity {
@@ -39,7 +46,7 @@ type AdverseEventSuspectEntity {
   modifierExtension: [Extension]
   instanceCodeableConcept: CodeableConcept
   instanceReference: Reference
-  causality: [AdverseEventSuspectEntityCausality]
+  causality: AdverseEventSuspectEntityCausality
 }
 
 type AdverseEventSuspectEntityCausality {
@@ -60,7 +67,7 @@ type AdverseEventSupportingInfo {
 }
 
 input AdverseEventInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -71,7 +78,7 @@ input AdverseEventInput {
   identifier: [IdentifierInput]
   actuality: code  _actuality: ElementBase
   category: [CodeableConceptInput]
-  event: CodeableConceptInput
+  code: CodeableConceptInput
   subject: ReferenceInput!
   encounter: ReferenceInput
   date: dateTime  _date: ElementBase
@@ -80,14 +87,21 @@ input AdverseEventInput {
   resultingCondition: [ReferenceInput]
   location: ReferenceInput
   seriousness: CodeableConceptInput
-  severity: CodeableConceptInput
   outcome: CodeableConceptInput
   recorder: ReferenceInput
-  contributor: [ReferenceInput]
+  participant: [AdverseEventParticipantInput]
   detector: [ReferenceInput]
   suspectEntity: [AdverseEventSuspectEntityInput]
   supportingInfo: [AdverseEventSupportingInfoInput]
   study: [ReferenceInput]
+}
+
+input AdverseEventParticipantInput {
+  id: String
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  function: CodeableConceptInput
+  actor: ReferenceInput!
 }
 
 input AdverseEventSuspectEntityInput {
@@ -96,7 +110,7 @@ input AdverseEventSuspectEntityInput {
   modifierExtension: [ExtensionInput]
   instanceCodeableConcept: CodeableConceptInput
   instanceReference: ReferenceInput
-  causality: [AdverseEventSuspectEntityCausalityInput]
+  causality: AdverseEventSuspectEntityCausalityInput
 }
 
 input AdverseEventSuspectEntityCausalityInput {
@@ -124,13 +138,14 @@ type AdverseEventListType {
   AdverseEventList(_filter: String
     actuality: [token]
     category: [token]
+    code: [token]
     date: [date]
-    event: [token]
+    identifier: [token]
     location: [reference]
+    patient: [reference]
     recorder: [reference]
     resultingcondition: [reference]
     seriousness: [token]
-    severity: [token]
     study: [reference]
     subject: [reference]
     substance: [reference]
@@ -152,13 +167,14 @@ type AdverseEventConnectionType {
   AdverseEventConection(_filter: String
     actuality: [token]
     category: [token]
+    code: [token]
     date: [date]
-    event: [token]
+    identifier: [token]
     location: [reference]
+    patient: [reference]
     recorder: [reference]
     resultingcondition: [reference]
     seriousness: [token]
-    severity: [token]
     study: [reference]
     subject: [reference]
     substance: [reference]

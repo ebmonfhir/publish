@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type Ingredient {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -23,7 +23,8 @@ type IngredientSpecifiedSubstance {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  code: CodeableConcept!
+  codeCodeableConcept: CodeableConcept
+  codeReference: Reference
   group: CodeableConcept!
   confidentiality: CodeableConcept
   strength: [IngredientSpecifiedSubstanceStrength]
@@ -46,7 +47,8 @@ type IngredientSpecifiedSubstanceStrengthReferenceStrength {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  substance: CodeableConcept
+  substanceCodeableConcept: CodeableConcept
+  substanceReference: Reference
   strength: Ratio!
   strengthLowLimit: Ratio
   measurementPoint: String  _measurementPoint: ElementBase
@@ -57,12 +59,13 @@ type IngredientSubstance {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  code: CodeableConcept!
+  codeCodeableConcept: CodeableConcept
+  codeReference: Reference
   strength: [IngredientSpecifiedSubstanceStrength]
 }
 
 input IngredientInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -82,7 +85,8 @@ input IngredientSpecifiedSubstanceInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  code: CodeableConceptInput!
+  codeCodeableConcept: CodeableConceptInput
+  codeReference: ReferenceInput
   group: CodeableConceptInput!
   confidentiality: CodeableConceptInput
   strength: [IngredientSpecifiedSubstanceStrengthInput]
@@ -105,7 +109,8 @@ input IngredientSpecifiedSubstanceStrengthReferenceStrengthInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  substance: CodeableConceptInput
+  substanceCodeableConcept: CodeableConceptInput
+  substanceReference: ReferenceInput
   strength: RatioInput!
   strengthLowLimit: RatioInput
   measurementPoint: String  _measurementPoint: ElementBase
@@ -116,7 +121,8 @@ input IngredientSubstanceInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  code: CodeableConceptInput!
+  codeCodeableConcept: CodeableConceptInput
+  codeReference: ReferenceInput
   strength: [IngredientSpecifiedSubstanceStrength]
 }
 
@@ -126,6 +132,7 @@ type IngredientReadType {
 
 type IngredientListType {
   IngredientList(_filter: String
+    identifier: [token]
     _text: [String]
     _content: [String]
     _id: [token]
@@ -142,6 +149,7 @@ type IngredientListType {
 
 type IngredientConnectionType {
   IngredientConection(_filter: String
+    identifier: [token]
     _text: [String]
     _content: [String]
     _id: [token]

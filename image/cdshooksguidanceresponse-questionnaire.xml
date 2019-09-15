@@ -2,34 +2,12 @@
 
 <Questionnaire xmlns="http://hl7.org/fhir">
   <id value="qs1"/>
-  <contained>
-    <ValueSet>
-      <id value="vs2"/>
-      <name value="Type options for GuidanceResponse.module[x]"/>
-      <status value="active"/>
-      <description value="Type options for GuidanceResponse.module[x]"/>
-      <expansion>
-        <identifier value="urn:uuid:fcf99244-4f30-425b-9628-ae728e7e5b3d"/>
-        <timestamp value="2019-08-09T09:46:33-04:00"/>
-        <contains>
-          <system value="http://hl7.org/fhir/data-types"/>
-          <code value="uri"/>
-          <display value="uri"/>
-        </contains>
-        <contains>
-          <system value="http://hl7.org/fhir/data-types"/>
-          <code value="CodeableConcept"/>
-          <display value="CodeableConcept"/>
-        </contains>
-      </expansion>
-    </ValueSet>
-  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="HL7"/>
   <item>
     <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
@@ -365,8 +343,10 @@
       <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
         <valueInteger value="1"/>
       </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="uri"/>
+      </extension>
       <linkId value="GuidanceResponse.module[x]"/>
-      <text value="What guidance was requested"/>
       <type value="group"/>
       <required value="true"/>
       <repeats value="true"/>
@@ -384,59 +364,46 @@
         <type value="display"/>
       </item>
       <item>
-        <linkId value="GuidanceResponse.module[x]._type"/>
-        <text value="type"/>
-        <type value="choice"/>
+        <linkId value="GuidanceResponse.module[x].value"/>
+        <text value="What guidance was requested"/>
+        <type value="string"/>
         <required value="false"/>
         <repeats value="false"/>
-        <answerValueSet value="#vs2"/>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-            <valueString value="uri"/>
-          </extension>
-          <linkId value="GuidanceResponse.module[x]._null"/>
-          <type value="group"/>
-          <item>
-            <linkId value="GuidanceResponse.module[x]._null.value"/>
-            <type value="string"/>
-            <required value="false"/>
-            <repeats value="false"/>
-          </item>
-        </item>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-            <valueString value="uri"/>
-          </extension>
-          <linkId value="GuidanceResponse.module[x]._null"/>
-          <type value="group"/>
-          <item>
-            <linkId value="GuidanceResponse.module[x]._null.value"/>
-            <type value="string"/>
-            <required value="false"/>
-            <repeats value="false"/>
-          </item>
-        </item>
-        <item>
-          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-            <valueString value="CodeableConcept"/>
-          </extension>
-          <linkId value="GuidanceResponse.module[x]._null"/>
-          <type value="group"/>
-          <item>
-            <linkId value="GuidanceResponse.module[x]._null.coding"/>
-            <text value="code:"/>
-            <type value="open-choice"/>
-            <required value="false"/>
-            <repeats value="false"/>
-          </item>
-          <item>
-            <linkId value="GuidanceResponse.module[x]._null.text"/>
-            <text value="text:"/>
-            <type value="string"/>
-            <required value="false"/>
-            <repeats value="false"/>
-          </item>
-        </item>
+      </item>
+    </item>
+    <item>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-minOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+        <valueInteger value="1"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+        <valueString value="uri"/>
+      </extension>
+      <linkId value="GuidanceResponse.module[x]"/>
+      <type value="group"/>
+      <required value="true"/>
+      <repeats value="true"/>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+          <valueCodeableConcept>
+            <coding>
+              <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+              <code value="flyover"/>
+              <display value="Fly-over"/>
+            </coding>
+          </valueCodeableConcept>
+        </extension>
+        <text value="An identifier, CodeableConcept or canonical reference to the guidance that was requested."/>
+        <type value="display"/>
+      </item>
+      <item>
+        <linkId value="GuidanceResponse.module[x].value"/>
+        <text value="What guidance was requested"/>
+        <type value="string"/>
+        <required value="false"/>
+        <repeats value="false"/>
       </item>
     </item>
     <item>

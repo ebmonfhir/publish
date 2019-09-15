@@ -122,53 +122,16 @@
 
 &lt;Questionnaire xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;id value=&quot;qs1&quot;/&gt;
-  &lt;contained&gt;
-    &lt;ValueSet&gt;
-      &lt;id value=&quot;vs2&quot;/&gt;
-      &lt;name value=&quot;Type options for Consent.source[x]&quot;/&gt;
-      &lt;status value=&quot;active&quot;/&gt;
-      &lt;description value=&quot;Type options for Consent.source[x]&quot;/&gt;
-      &lt;expansion&gt;
-        &lt;identifier value=&quot;urn:uuid:843a0223-477d-40d1-a6c3-1bf2c9a6d8f6&quot;/&gt;
-        &lt;timestamp value=&quot;2019-08-09T09:44:52-04:00&quot;/&gt;
-        &lt;contains&gt;
-          &lt;system value=&quot;http://hl7.org/fhir/data-types&quot;/&gt;
-          &lt;code value=&quot;Attachment&quot;/&gt;
-          &lt;display value=&quot;Attachment&quot;/&gt;
-        &lt;/contains&gt;
-        &lt;contains&gt;
-          &lt;system value=&quot;http://hl7.org/fhir/resource-types&quot;/&gt;
-          &lt;code value=&quot;Consent&quot;/&gt;
-          &lt;display value=&quot;Consent&quot;/&gt;
-        &lt;/contains&gt;
-        &lt;contains&gt;
-          &lt;system value=&quot;http://hl7.org/fhir/resource-types&quot;/&gt;
-          &lt;code value=&quot;DocumentReference&quot;/&gt;
-          &lt;display value=&quot;DocumentReference&quot;/&gt;
-        &lt;/contains&gt;
-        &lt;contains&gt;
-          &lt;system value=&quot;http://hl7.org/fhir/resource-types&quot;/&gt;
-          &lt;code value=&quot;Contract&quot;/&gt;
-          &lt;display value=&quot;Contract&quot;/&gt;
-        &lt;/contains&gt;
-        &lt;contains&gt;
-          &lt;system value=&quot;http://hl7.org/fhir/resource-types&quot;/&gt;
-          &lt;code value=&quot;QuestionnaireResponse&quot;/&gt;
-          &lt;display value=&quot;QuestionnaireResponse&quot;/&gt;
-        &lt;/contains&gt;
-      &lt;/expansion&gt;
-    &lt;/ValueSet&gt;
-  &lt;/contained&gt;
   &lt;identifier&gt;
     &lt;system value=&quot;urn:ietf:rfc:3986&quot;/&gt;
   &lt;/identifier&gt;
   &lt;version value=&quot;4.1.0&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;
-  &lt;date value=&quot;2019-08-09T09:30:10-04:00&quot;/&gt;
+  &lt;date value=&quot;2019-09-15T10:41:41-04:00&quot;/&gt;
   &lt;publisher value=&quot;Health Level Seven International (Community Based Collaborative Care)&quot;/&gt;
   &lt;item&gt;
     &lt;linkId value=&quot;Consent&quot;/&gt;
-    &lt;text value=&quot;A healthcare consumer&amp;#39;s  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;/&gt;
+    &lt;text value=&quot;A healthcare consumer&amp;#39;s  or third party&amp;#39;s choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time&quot;/&gt;
     &lt;type value=&quot;group&quot;/&gt;
     &lt;required value=&quot;false&quot;/&gt;
     &lt;repeats value=&quot;true&quot;/&gt;
@@ -186,7 +149,7 @@
           &lt;/coding&gt;
         &lt;/valueCodeableConcept&gt;
       &lt;/extension&gt;
-      &lt;text value=&quot;A record of a healthcare consumer&amp;#x2019;s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;/&gt;
+      &lt;text value=&quot;A record of a healthcare consumer&amp;#x2019;s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.&quot;/&gt;
       &lt;type value=&quot;display&quot;/&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -694,10 +657,10 @@
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
-      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs&quot;&gt;
-        &lt;valueInteger value=&quot;1&quot;/&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+        &lt;valueString value=&quot;Attachment&quot;/&gt;
       &lt;/extension&gt;
-      &lt;linkId value=&quot;Consent.source[x]&quot;/&gt;
+      &lt;linkId value=&quot;Consent.sourceAttachment&quot;/&gt;
       &lt;text value=&quot;Source from which this consent is taken&quot;/&gt;
       &lt;type value=&quot;group&quot;/&gt;
       &lt;required value=&quot;false&quot;/&gt;
@@ -712,42 +675,43 @@
             &lt;/coding&gt;
           &lt;/valueCodeableConcept&gt;
         &lt;/extension&gt;
-        &lt;text value=&quot;The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;/&gt;
+        &lt;text value=&quot;The source on which this consent statement is based. The source might be a scanned original paper form. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;/&gt;
+        &lt;type value=&quot;display&quot;/&gt;
+      &lt;/item&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
+        &lt;valueString value=&quot;Reference&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;linkId value=&quot;Consent.sourceReference&quot;/&gt;
+      &lt;type value=&quot;group&quot;/&gt;
+      &lt;required value=&quot;false&quot;/&gt;
+      &lt;repeats value=&quot;true&quot;/&gt;
+      &lt;item&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;&gt;
+          &lt;valueCodeableConcept&gt;
+            &lt;coding&gt;
+              &lt;system value=&quot;http://hl7.org/fhir/questionnaire-item-control&quot;/&gt;
+              &lt;code value=&quot;flyover&quot;/&gt;
+              &lt;display value=&quot;Fly-over&quot;/&gt;
+            &lt;/coding&gt;
+          &lt;/valueCodeableConcept&gt;
+        &lt;/extension&gt;
+        &lt;text value=&quot;A reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document. The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id.&quot;/&gt;
         &lt;type value=&quot;display&quot;/&gt;
       &lt;/item&gt;
       &lt;item&gt;
-        &lt;linkId value=&quot;Consent.source[x]._type&quot;/&gt;
-        &lt;text value=&quot;type&quot;/&gt;
-        &lt;type value=&quot;choice&quot;/&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
+          &lt;valueCode value=&quot;Consent, DocumentReference, Contract, QuestionnaireResponse&quot;/&gt;
+        &lt;/extension&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
+          &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
+        &lt;/extension&gt;
+        &lt;linkId value=&quot;Consent.sourceReference.value&quot;/&gt;
+        &lt;text value=&quot;Source from which this consent is taken&quot;/&gt;
+        &lt;type value=&quot;reference&quot;/&gt;
         &lt;required value=&quot;false&quot;/&gt;
         &lt;repeats value=&quot;false&quot;/&gt;
-        &lt;answerValueSet value=&quot;#vs2&quot;/&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
-            &lt;valueString value=&quot;Attachment&quot;/&gt;
-          &lt;/extension&gt;
-          &lt;linkId value=&quot;Consent.source[x]._null&quot;/&gt;
-          &lt;type value=&quot;group&quot;/&gt;
-        &lt;/item&gt;
-        &lt;item&gt;
-          &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType&quot;&gt;
-            &lt;valueString value=&quot;Reference&quot;/&gt;
-          &lt;/extension&gt;
-          &lt;linkId value=&quot;Consent.source[x]._null&quot;/&gt;
-          &lt;type value=&quot;group&quot;/&gt;
-          &lt;item&gt;
-            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource&quot;&gt;
-              &lt;valueCode value=&quot;Consent, DocumentReference, Contract, QuestionnaireResponse&quot;/&gt;
-            &lt;/extension&gt;
-            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter&quot;&gt;
-              &lt;valueString value=&quot;subject=$subj&amp;amp;patient=$subj&amp;amp;encounter=$encounter&quot;/&gt;
-            &lt;/extension&gt;
-            &lt;linkId value=&quot;Consent.source[x]._null.value&quot;/&gt;
-            &lt;type value=&quot;reference&quot;/&gt;
-            &lt;required value=&quot;false&quot;/&gt;
-            &lt;repeats value=&quot;false&quot;/&gt;
-          &lt;/item&gt;
-        &lt;/item&gt;
       &lt;/item&gt;
     &lt;/item&gt;
     &lt;item&gt;
@@ -1901,7 +1865,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1909,7 +1873,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fconsent-questionnaire.xml.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-questionnaire.xml.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fconsent-questionnaire.xml.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-questionnaire.xml.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

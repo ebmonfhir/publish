@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type RegulatedAuthorization {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -13,46 +13,43 @@ type RegulatedAuthorization {
   modifierExtension: [Extension]
   identifier: [Identifier]
   subject: Reference
-  country: [CodeableConcept]
-  jurisdiction: [CodeableConcept]
+  type: CodeableConcept
+  description: String  _description: ElementBase
+  region: [CodeableConcept]
   status: CodeableConcept
   statusDate: dateTime  _statusDate: ElementBase
-  restoreDate: dateTime  _restoreDate: ElementBase
   validityPeriod: Period
-  dataExclusivityPeriod: Period
-  dateOfFirstAuthorization: dateTime  _dateOfFirstAuthorization: ElementBase
-  internationalBirthDate: dateTime  _internationalBirthDate: ElementBase
-  legalBasis: CodeableConcept
-  jurisdictionalAuthorization: [RegulatedAuthorizationJurisdictionalAuthorization]
+  basis: [CodeableConcept]
+  relatedDate: [RegulatedAuthorizationRelatedDate]
+  jurisdictionalAuthorization: [Reference]
   holder: Reference
   regulator: Reference
-  procedure: RegulatedAuthorizationProcedure
+  case: RegulatedAuthorizationCase
 }
 
-type RegulatedAuthorizationJurisdictionalAuthorization {
+type RegulatedAuthorizationRelatedDate {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  identifier: [Identifier]
-  country: CodeableConcept
-  jurisdiction: [CodeableConcept]
-  legalStatusOfSupply: CodeableConcept
-  validityPeriod: Period
+  datePeriod: Period
+  dateDateTime: dateTime  _dateDateTime: ElementBase
+  type: CodeableConcept!
 }
 
-type RegulatedAuthorizationProcedure {
+type RegulatedAuthorizationCase {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
   identifier: Identifier
-  type: CodeableConcept!
+  type: CodeableConcept
+  status: CodeableConcept
   datePeriod: Period
   dateDateTime: dateTime  _dateDateTime: ElementBase
-  application: [RegulatedAuthorizationProcedure]
+  application: [RegulatedAuthorizationCase]
 }
 
 input RegulatedAuthorizationInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -62,42 +59,39 @@ input RegulatedAuthorizationInput {
   modifierExtension: [ExtensionInput]
   identifier: [IdentifierInput]
   subject: ReferenceInput
-  country: [CodeableConceptInput]
-  jurisdiction: [CodeableConceptInput]
+  type: CodeableConceptInput
+  description: String  _description: ElementBase
+  region: [CodeableConceptInput]
   status: CodeableConceptInput
   statusDate: dateTime  _statusDate: ElementBase
-  restoreDate: dateTime  _restoreDate: ElementBase
   validityPeriod: PeriodInput
-  dataExclusivityPeriod: PeriodInput
-  dateOfFirstAuthorization: dateTime  _dateOfFirstAuthorization: ElementBase
-  internationalBirthDate: dateTime  _internationalBirthDate: ElementBase
-  legalBasis: CodeableConceptInput
-  jurisdictionalAuthorization: [RegulatedAuthorizationJurisdictionalAuthorizationInput]
+  basis: [CodeableConceptInput]
+  relatedDate: [RegulatedAuthorizationRelatedDateInput]
+  jurisdictionalAuthorization: [ReferenceInput]
   holder: ReferenceInput
   regulator: ReferenceInput
-  procedure: RegulatedAuthorizationProcedureInput
+  case: RegulatedAuthorizationCaseInput
 }
 
-input RegulatedAuthorizationJurisdictionalAuthorizationInput {
+input RegulatedAuthorizationRelatedDateInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  identifier: [IdentifierInput]
-  country: CodeableConceptInput
-  jurisdiction: [CodeableConceptInput]
-  legalStatusOfSupply: CodeableConceptInput
-  validityPeriod: PeriodInput
+  datePeriod: PeriodInput
+  dateDateTime: dateTime  _dateDateTime: ElementBase
+  type: CodeableConceptInput!
 }
 
-input RegulatedAuthorizationProcedureInput {
+input RegulatedAuthorizationCaseInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   identifier: IdentifierInput
-  type: CodeableConceptInput!
+  type: CodeableConceptInput
+  status: CodeableConceptInput
   datePeriod: PeriodInput
   dateDateTime: dateTime  _dateDateTime: ElementBase
-  application: [RegulatedAuthorizationProcedure]
+  application: [RegulatedAuthorizationCase]
 }
 
 type RegulatedAuthorizationReadType {
@@ -106,9 +100,10 @@ type RegulatedAuthorizationReadType {
 
 type RegulatedAuthorizationListType {
   RegulatedAuthorizationList(_filter: String
-    country: [token]
+    case: [token]
     holder: [reference]
     identifier: [token]
+    region: [token]
     status: [token]
     subject: [reference]
     _text: [String]
@@ -127,9 +122,10 @@ type RegulatedAuthorizationListType {
 
 type RegulatedAuthorizationConnectionType {
   RegulatedAuthorizationConection(_filter: String
-    country: [token]
+    case: [token]
     holder: [reference]
     identifier: [token]
+    region: [token]
     status: [token]
     subject: [reference]
     _text: [String]

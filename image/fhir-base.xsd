@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Aug 9, 2019 09:30-0400 for FHIR v4.1.0 
+  Generated on Sun, Sep 15, 2019 10:41-0400 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -371,6 +371,7 @@
     <xs:choice>
       <xs:element ref="Account"/>
       <xs:element ref="ActivityDefinition"/>
+      <xs:element ref="AdministrableProductDefinition"/>
       <xs:element ref="AdverseEvent"/>
       <xs:element ref="AllergyIntolerance"/>
       <xs:element ref="Appointment"/>
@@ -443,19 +444,21 @@
       <xs:element ref="Linkage"/>
       <xs:element ref="List"/>
       <xs:element ref="Location"/>
+      <xs:element ref="ManufacturedItemDefinition"/>
       <xs:element ref="Measure"/>
       <xs:element ref="MeasureReport"/>
-      <xs:element ref="Media"/>
       <xs:element ref="Medication"/>
       <xs:element ref="MedicationAdministration"/>
       <xs:element ref="MedicationDispense"/>
       <xs:element ref="MedicationKnowledge"/>
       <xs:element ref="MedicationRequest"/>
       <xs:element ref="MedicationUsage"/>
+      <xs:element ref="MedicinalProductDefinition"/>
       <xs:element ref="MessageDefinition"/>
       <xs:element ref="MessageHeader"/>
       <xs:element ref="MolecularSequence"/>
       <xs:element ref="NamingSystem"/>
+      <xs:element ref="NutritionIntake"/>
       <xs:element ref="NutritionOrder"/>
       <xs:element ref="Observation"/>
       <xs:element ref="ObservationDefinition"/>
@@ -463,6 +466,7 @@
       <xs:element ref="OperationOutcome"/>
       <xs:element ref="Organization"/>
       <xs:element ref="OrganizationAffiliation"/>
+      <xs:element ref="PackagedProductDefinition"/>
       <xs:element ref="Patient"/>
       <xs:element ref="PaymentNotice"/>
       <xs:element ref="PaymentReconciliation"/>
@@ -474,11 +478,7 @@
       <xs:element ref="Provenance"/>
       <xs:element ref="Questionnaire"/>
       <xs:element ref="QuestionnaireResponse"/>
-      <xs:element ref="RegulatedAdministrableProduct"/>
       <xs:element ref="RegulatedAuthorization"/>
-      <xs:element ref="RegulatedManufacturedItem"/>
-      <xs:element ref="RegulatedMedicinalProduct"/>
-      <xs:element ref="RegulatedPackagedProduct"/>
       <xs:element ref="RelatedPerson"/>
       <xs:element ref="RequestGroup"/>
       <xs:element ref="ResearchStudy"/>
@@ -574,6 +574,7 @@
            <xs:element name="valueTriggerDefinition" type="TriggerDefinition"/>
            <xs:element name="valueUsageContext" type="UsageContext"/>
            <xs:element name="valueDosage" type="Dosage"/>
+           <xs:element name="valueMeta" type="Meta"/>
          </xs:choice>
         </xs:sequence>
         <xs:attribute name="url" type="uri-primitive" use="required"/>
@@ -952,6 +953,31 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
           <xs:element name="creation" type="dateTime" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">The date that the attachment was first created.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="height" type="positiveInt" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Height of the image in pixels (photo/video).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="width" type="positiveInt" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Width of the image in pixels (photo/video).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="frames" type="positiveInt" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="duration" type="decimal" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The duration of the recording in seconds - for audio and video.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="pages" type="positiveInt" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The number of pages when printed.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1698,7 +1724,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
           </xs:element>
           <xs:element name="sampleSize" type="Statistic.SampleSize" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Sample size for the statistic.</xs:documentation>
+              <xs:documentation xml:lang="en">Number of samples in the statistic.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="attributeEstimate" type="Statistic.AttributeEstimate" minOccurs="0" maxOccurs="unbounded">
@@ -1765,7 +1791,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
               <xs:documentation xml:lang="en">Human-readable summary of the estimate.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="1">
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Footnote or explanatory note about the estimate.</xs:documentation>
             </xs:annotation>
@@ -1812,7 +1838,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
               <xs:documentation xml:lang="en">Human-readable summary of the estimate.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="1">
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Footnote or explanatory note about the estimate.</xs:documentation>
             </xs:annotation>
@@ -2007,7 +2033,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
               <xs:documentation xml:lang="en">A description of the content and value of the statistic.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="1">
+          <xs:element name="note" type="Annotation" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Footnotes and/or explanatory notes.</xs:documentation>
             </xs:annotation>
@@ -3259,6 +3285,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
            <xs:element name="defaultValueTriggerDefinition" type="TriggerDefinition"/>
            <xs:element name="defaultValueUsageContext" type="UsageContext"/>
            <xs:element name="defaultValueDosage" type="Dosage"/>
+           <xs:element name="defaultValueMeta" type="Meta"/>
          </xs:choice>
           <xs:element name="meaningWhenMissing" type="markdown" minOccurs="0" maxOccurs="1">
             <xs:annotation>
@@ -3323,6 +3350,7 @@ The type is the Canonical URL of Resource Definition that is the type this refer
            <xs:element name="fixedTriggerDefinition" type="TriggerDefinition"/>
            <xs:element name="fixedUsageContext" type="UsageContext"/>
            <xs:element name="fixedDosage" type="Dosage"/>
+           <xs:element name="fixedMeta" type="Meta"/>
          </xs:choice>
         <xs:choice minOccurs="0" maxOccurs="1">
            <xs:annotation>
@@ -3387,6 +3415,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
            <xs:element name="patternTriggerDefinition" type="TriggerDefinition"/>
            <xs:element name="patternUsageContext" type="UsageContext"/>
            <xs:element name="patternDosage" type="Dosage"/>
+           <xs:element name="patternMeta" type="Meta"/>
          </xs:choice>
           <xs:element name="example" type="ElementDefinition.Example" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
@@ -3679,6 +3708,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
            <xs:element name="valueTriggerDefinition" type="TriggerDefinition"/>
            <xs:element name="valueUsageContext" type="UsageContext"/>
            <xs:element name="valueDosage" type="Dosage"/>
+           <xs:element name="valueMeta" type="Meta"/>
          </xs:choice>
         </xs:sequence>
       </xs:extension>

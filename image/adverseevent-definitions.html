@@ -110,6 +110,7 @@
 <table class="colsd"><tr><td><a href="http://www.hl7.org/Special/committees/patientcare/index.cfm">Patient Care <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 0</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Patient</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 
+
 <p>Detailed Descriptions for the elements in the AdverseEvent resource.</p>
 
 <table class="dict">
@@ -150,12 +151,12 @@
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-category.html">AdverseEventCategory</a> (<a href="terminologies.html#extensible">Extensible</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="AdverseEvent.event"> </a><b>AdverseEvent.event</b></td></tr>
-  <tr><td>Element Id</td><td>AdverseEvent.event</td></tr>
-  <tr><td>Definition</td><td><p>This element defines the specific type of event that occurred or that was prevented from occurring.</p>
+  <tr><td colspan="2" class="structure"><a name="AdverseEvent.code"> </a><b>AdverseEvent.code</b></td></tr>
+  <tr><td>Element Id</td><td>AdverseEvent.code</td></tr>
+  <tr><td>Definition</td><td><p>Specific event that occurred or that was averted, such as patient fall, wrong organ removed, or wrong blood transfused.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-type.html">SNOMED CT Clinical Findings</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-type.html">AdverseEvent Type</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.subject"> </a><b>AdverseEvent.subject</b></td></tr>
@@ -219,26 +220,20 @@
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.seriousness"> </a><b>AdverseEvent.seriousness</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.seriousness</td></tr>
-  <tr><td>Definition</td><td><p>Assessment whether this event was of real importance.</p>
+  <tr><td>Definition</td><td><p>Assessment whether this event, or averted event, was of clinical importance.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-seriousness.html">AdverseEventSeriousness</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="AdverseEvent.severity"> </a><b>AdverseEvent.severity</b></td></tr>
-  <tr><td>Element Id</td><td>AdverseEvent.severity</td></tr>
-  <tr><td>Definition</td><td><p>Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem is.</p>
+  <tr><td>Comments</td><td><p>Using an example, a rash can have an AdverseEvent.resultingCondition.severity = severe, yet an AdverseEvent.seriousness = non-serious.  Alternatively, a medication given with the wrong dose (chemotherapy given with too low of a dose) can have an AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.  Another example would be a beta blocker clinical trial where patients with asthma should be excluded, yet a patient with asthma was included and had an asthmatic episode where  AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.</p>
 </td></tr>
-  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-severity.html">AdverseEventSeverity</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
-  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.outcome"> </a><b>AdverseEvent.outcome</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.outcome</td></tr>
-  <tr><td>Definition</td><td><p>Describes the type of outcome from the adverse event.</p>
+  <tr><td>Definition</td><td><p>Describes the type of outcome from the adverse event, such as resolved, recovering, ongoing, resolved-with-sequelae, or fatal.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-outcome.html">AdverseEventOutcome</a> (<a href="terminologies.html#required">Required</a>)</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-outcome.html">AdverseEvent Outcome</a> (<a href="terminologies.html#preferred">Preferred</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.recorder"> </a><b>AdverseEvent.recorder</b></td></tr>
@@ -249,14 +244,30 @@
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="patient.html">Patient</a> | <a href="practitioner.html">Practitioner</a> | <a href="practitionerrole.html">PractitionerRole</a> | <a href="relatedperson.html">RelatedPerson</a>)</td></tr>
   <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Patient,Practitioner,PractitionerRole,RelatedPerson): Common patterns = <a href="participant.html#Participant">Participant</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="AdverseEvent.contributor"> </a><b>AdverseEvent.contributor</b></td></tr>
-  <tr><td>Element Id</td><td>AdverseEvent.contributor</td></tr>
-  <tr><td>Definition</td><td><p>Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).</p>
+  <tr><td colspan="2" class="structure"><a name="AdverseEvent.participant"> </a><b>AdverseEvent.participant</b></td></tr>
+  <tr><td>Element Id</td><td>AdverseEvent.participant</td></tr>
+  <tr><td>Definition</td><td><p>Indicates who or what participated in the adverse event and how they were involved.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="practitioner.html">Practitioner</a> | <a href="practitionerrole.html">PractitionerRole</a> | <a href="device.html">Device</a>)</td></tr>
-  <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Practitioner,PractitionerRole,Device): Common patterns = <a href="participant.html#Participant">Participant</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="AdverseEvent.participant.function"> </a><b>AdverseEvent.participant.function</b></td></tr>
+  <tr><td>Element Id</td><td>AdverseEvent.participant.function</td></tr>
+  <tr><td>Definition</td><td><p>Distinguishes the type of involvement of the actor in the adverse event, such as contributor or informant.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
+  <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-participant-function.html">AdverseEvent Participant Function</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td colspan="2" class="structure"><a name="AdverseEvent.participant.actor"> </a><b>AdverseEvent.participant.actor</b></td></tr>
+  <tr><td>Element Id</td><td>AdverseEvent.participant.actor</td></tr>
+  <tr><td>Definition</td><td><p>Indicates who or what participated in the event.</p>
+</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="practitioner.html">Practitioner</a> | <a href="practitionerrole.html">PractitionerRole</a> | <a href="organization.html">Organization</a> | <a href="careteam.html">CareTeam</a> | <a href="patient.html">Patient</a> | <a href="device.html">Device</a> | <a href="relatedperson.html">RelatedPerson</a>)</td></tr>
+  <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Practitioner,PractitionerRole,Organization,CareTeam,Patient,Device,RelatedPerson): Common patterns = <a href="participant.html#Participant">Participant</a></td></tr>
+  <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
+  <tr><td>Comments</td><td><p>For example, the physician prescribing a drug, a nurse administering the drug, a device that administered the drug, a witness to the event, or an informant of clinical history.</p>
+</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.detector"> </a><b>AdverseEvent.detector</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.detector</td></tr>
   <tr><td>Definition</td><td><p>Who or what identified a change in physiological state or condition.</p>
@@ -285,9 +296,8 @@
   <tr><td>Element Id</td><td>AdverseEvent.suspectEntity.causality</td></tr>
   <tr><td>Definition</td><td><p>Information on the possible cause of the event.</p>
 </td></tr>
-  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td>To Do</td><td>is this meant to be a backbone element?</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.suspectEntity.causality.assessmentMethod"> </a><b>AdverseEvent.suspectEntity.causality.assessmentMethod</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.suspectEntity.causality.assessmentMethod</td></tr>
   <tr><td>Definition</td><td><p>The method of evaluating the relatedness of the suspected entity to the event.</p>
@@ -296,7 +306,6 @@
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-adverse-event-causality-method.html">AdverseEventCausalityMethod</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td>To Do</td><td>what is difference between assessment and result?</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.suspectEntity.causality.entityRelatedness"> </a><b>AdverseEvent.suspectEntity.causality.entityRelatedness</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.suspectEntity.causality.entityRelatedness</td></tr>
   <tr><td>Definition</td><td><p>The result of the assessment regarding the relatedness of the suspected entity to the event.</p>
@@ -325,8 +334,8 @@
 Additionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history.  For example, a clinical note, staff list, or material safety data sheet (MSDS).</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>1..1</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="condition.html">Condition</a> | <a href="observation.html">Observation</a> | <a href="allergyintolerance.html">AllergyIntolerance</a> | <a href="familymemberhistory.html">FamilyMemberHistory</a> | <a href="immunization.html">Immunization</a> | <a href="procedure.html">Procedure</a> | <a href="media.html">Media</a> | <a href="documentreference.html">DocumentReference</a>)</td></tr>
-  <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Condition,Observation,AllergyIntolerance,FamilyMemberHistory,Immunization,Procedure,Media,DocumentReference): No common pattern</td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="references.html#Reference">Reference</a>(<a href="condition.html">Condition</a> | <a href="observation.html">Observation</a> | <a href="allergyintolerance.html">AllergyIntolerance</a> | <a href="familymemberhistory.html">FamilyMemberHistory</a> | <a href="immunization.html">Immunization</a> | <a href="procedure.html">Procedure</a> | <a href="documentreference.html">DocumentReference</a>)</td></tr>
+  <tr><td><a href="patterns.html">Patterns</a></td><td>Reference(Condition,Observation,AllergyIntolerance,FamilyMemberHistory,Immunization,Procedure,DocumentReference): No common pattern</td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
   <tr><td colspan="2" class="structure"><a name="AdverseEvent.supportingInfo.contributingFactor"> </a><b>AdverseEvent.supportingInfo.contributingFactor</b></td></tr>
   <tr><td>Element Id</td><td>AdverseEvent.supportingInfo.contributingFactor</td></tr>
@@ -360,7 +369,7 @@ Additionally, the supporting item can be a document that is relevant to this ins
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:43-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -368,7 +377,7 @@ Additionally, the supporting item can be a document that is relevant to this ins
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fadverseevent-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fadverseevent-definitions.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fadverseevent-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fadverseevent-definitions.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

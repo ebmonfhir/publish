@@ -7,8 +7,8 @@
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
-  <publisher value="Health Level Seven International (Structured Documents)"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
+  <publisher value="Health Level Seven International (Orders and Observations)"/>
   <item>
     <linkId value="DocumentReference"/>
     <text value="A reference to a document"/>
@@ -29,7 +29,7 @@
           </coding>
         </valueCodeableConcept>
       </extension>
-      <text value="A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text."/>
+      <text value="A reference to a document of any kind for any purpose. While the term &#x201C;document&#x201D; implies a more narrow focus, for this resource this &quot;document&quot; encompasses *any* seralized object with a mime-type, so includes formal patient centric documents (CDA), clniical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference."/>
       <type value="display"/>
     </item>
     <item>
@@ -1405,6 +1405,41 @@
           </extension>
           <linkId value="DocumentReference.context.related.value"/>
           <text value="Related identifiers or resources"/>
+          <type value="reference"/>
+          <required value="false"/>
+          <repeats value="false"/>
+        </item>
+      </item>
+      <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+          <valueString value="Reference"/>
+        </extension>
+        <linkId value="DocumentReference.context.basedOn"/>
+        <type value="group"/>
+        <required value="false"/>
+        <repeats value="true"/>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl">
+            <valueCodeableConcept>
+              <coding>
+                <system value="http://hl7.org/fhir/questionnaire-item-control"/>
+                <code value="flyover"/>
+                <display value="Fly-over"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <text value="A procedure that is fulfilled in whole or in part by the creation of this media."/>
+          <type value="display"/>
+        </item>
+        <item>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+            <valueCode value="ServiceRequest, CarePlan"/>
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+            <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+          </extension>
+          <linkId value="DocumentReference.context.basedOn.value"/>
+          <text value="Procedure that caused this media to be created"/>
           <type value="reference"/>
           <required value="false"/>
           <repeats value="false"/>

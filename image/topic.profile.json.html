@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Topic&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Topic&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (FHIR Infrastructure)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -281,7 +281,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -650,37 +654,6 @@
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.outboundRelationship[typeCode=DEFN].target&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Topic.replaces&quot;,
-      &quot;path&quot; : &quot;Topic.replaces&quot;,
-      &quot;short&quot; : &quot;Topics replaced by this Topic&quot;,
-      &quot;definition&quot; : &quot;Completed or terminated request(s) whose function is taken by this new request.&quot;,
-      &quot;requirements&quot; : &quot;As new versions of a protocol or guideline are defined, allows identification of what versions are replaced by a new instance.&quot;,
-      &quot;alias&quot; : [&quot;supersedes&quot;,
-      &quot;prior&quot;,
-      &quot;renewed order&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;Topic.replaces&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;canonical&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Topic&quot;]
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;!Definition.replaces&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=RPLC].target&quot;
       }]
     },
     {
@@ -1135,7 +1108,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1310,7 +1287,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1487,7 +1468,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1567,6 +1552,33 @@
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;Topic.canFilterBy.matchType&quot;,
+      &quot;path&quot; : &quot;Topic.canFilterBy.matchType&quot;,
+      &quot;short&quot; : &quot;= | in | not-in | above | below&quot;,
+      &quot;definition&quot; : &quot;Allowable operators to apply when determining matches (Search Modifiers).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Topic.canFilterBy.matchType&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;TopicFilterByMatchType&quot;
+        }],
+        &quot;strength&quot; : &quot;required&quot;,
+        &quot;description&quot; : &quot;Operator to apply to filter label.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/topic-match-operator|4.1.0&quot;
+      }
     },
     {
       &quot;id&quot; : &quot;Topic.canFilterBy.documentation&quot;,
@@ -1753,31 +1765,6 @@
       {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.outboundRelationship[typeCode=DEFN].target&quot;
-      }]
-    },
-    {
-      &quot;id&quot; : &quot;Topic.replaces&quot;,
-      &quot;path&quot; : &quot;Topic.replaces&quot;,
-      &quot;short&quot; : &quot;Topics replaced by this Topic&quot;,
-      &quot;definition&quot; : &quot;Completed or terminated request(s) whose function is taken by this new request.&quot;,
-      &quot;requirements&quot; : &quot;As new versions of a protocol or guideline are defined, allows identification of what versions are replaced by a new instance.&quot;,
-      &quot;alias&quot; : [&quot;supersedes&quot;,
-      &quot;prior&quot;,
-      &quot;renewed order&quot;],
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;canonical&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Topic&quot;]
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;mapping&quot; : [{
-        &quot;identity&quot; : &quot;workflow&quot;,
-        &quot;map&quot; : &quot;!Definition.replaces&quot;
-      },
-      {
-        &quot;identity&quot; : &quot;rim&quot;,
-        &quot;map&quot; : &quot;.outboundRelationship[typeCode=RPLC].target&quot;
       }]
     },
     {
@@ -2267,6 +2254,27 @@
       &quot;isSummary&quot; : true
     },
     {
+      &quot;id&quot; : &quot;Topic.canFilterBy.matchType&quot;,
+      &quot;path&quot; : &quot;Topic.canFilterBy.matchType&quot;,
+      &quot;short&quot; : &quot;= | in | not-in | above | below&quot;,
+      &quot;definition&quot; : &quot;Allowable operators to apply when determining matches (Search Modifiers).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;code&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;TopicFilterByMatchType&quot;
+        }],
+        &quot;strength&quot; : &quot;required&quot;,
+        &quot;description&quot; : &quot;Operator to apply to filter label.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/topic-match-operator|4.1.0&quot;
+      }
+    },
+    {
       &quot;id&quot; : &quot;Topic.canFilterBy.documentation&quot;,
       &quot;path&quot; : &quot;Topic.canFilterBy.documentation&quot;,
       &quot;short&quot; : &quot;Description of this filter parameter&quot;,
@@ -2304,7 +2312,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:50-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2312,7 +2320,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Ftopic.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Ftopic.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Ftopic.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Ftopic.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

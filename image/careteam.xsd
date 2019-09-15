@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Aug 9, 2019 09:30-0400 for FHIR v4.1.0 
+  Generated on Sun, Sep 15, 2019 10:41-0400 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -125,7 +125,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Indicates specific responsibility of an individual within the care team, such as &quot;Primary care physician&quot;, &quot;Trained social worker counselor&quot;, &quot;Caregiver&quot;, etc.</xs:documentation>
            </xs:annotation>
@@ -140,11 +140,13 @@
               <xs:documentation xml:lang="en">The organization of the practitioner.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
+          <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates when the specific member or organization did (or is intended to) come into effect and end.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
+              <xs:documentation xml:lang="en">When the member is generally available within this care team.</xs:documentation>
+            </xs:annotation>
+            <xs:element name="coveragePeriod" type="Period"/>
+            <xs:element name="coverageTiming" type="Timing"/>
+          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

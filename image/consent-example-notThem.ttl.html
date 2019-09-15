@@ -130,7 +130,7 @@
   fhir:Resource.id [ fhir:value &quot;consent-example-notThem&quot;];
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value &quot;generated&quot; ];
-     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n	The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n	In other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &amp;quot;consent to&amp;quot; rather \n	than &amp;quot;withhold&amp;quot; or &amp;quot;withdraw&amp;quot; consent for.\n    &lt;p&gt;\n	specific to use-case 4) Withhold or withdraw consent for disclosure to a specific provider agent (an individual within an organization) \n	&lt;/p&gt;&lt;p&gt;\n    Patient &amp;quot;P. van de Heuvel&amp;quot; ex-spouse, Bill T Lookafter is a Nurse that is employed by Good Health Hospital.\n   P. realizes that she may receive treatment at GHH, however she does not want her ex-spouse to have any \n   access to her IIHI.  She indicates that she would like to withdraw/withhold consent to disclose any instance \n   of her health information to her ex-spouse as a result of his employment at Good Health Clinic.\n   &lt;/p&gt;\n   &lt;/div&gt;&quot;
+     fhir:Narrative.div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n	  The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. &lt;p&gt;\n	  specific to use-case 4) Withhold or withdraw consent for disclosure to a specific provider agent (an individual within an organization) &lt;/p&gt;\n	&lt;p&gt;Patient &amp;quot;Eve Everywoman&amp;quot;'s ex-spouse, Carla Espinosa is a Nurse that is employed by Burgers University Medical Center.\n    Eve realizes that she may receive treatment at BUMC, however she does not want her ex-spouse to have any \n    access to her IIHI.  She indicates that she would like to withdraw/withhold consent to disclose any instance \n    of her health information to her ex-spouse as a result of her ex's employment at Burgers University Medical Center.\n   &lt;/p&gt;\n   &lt;/div&gt;&quot;
   ];
   fhir:Consent.status [ fhir:value &quot;active&quot;];
   fhir:Consent.scope [
@@ -150,60 +150,66 @@
      ]
   ];
   fhir:Consent.patient [
-     fhir:link &lt;http://hl7.org/fhir/Patient/f001&gt;;
-     fhir:Reference.reference [ fhir:value &quot;Patient/f001&quot; ];
-     fhir:Reference.display [ fhir:value &quot;P. van de Heuvel&quot; ]
+     fhir:link &lt;http://hl7.org/fhir/Patient/mom&gt;;
+     fhir:Reference.reference [ fhir:value &quot;Patient/mom&quot; ];
+     fhir:Reference.display [ fhir:value &quot;Eve Everywoman&quot; ]
   ];
-  fhir:Consent.dateTime [ fhir:value &quot;2015-11-18&quot;^^xsd:date];
+  fhir:Consent.dateTime [ fhir:value &quot;2018-12-24&quot;^^xsd:date];
   fhir:Consent.organization [
      fhir:index 0;
      fhir:link &lt;http://hl7.org/fhir/Organization/f001&gt;;
      fhir:Reference.reference [ fhir:value &quot;Organization/f001&quot; ]
   ];
   fhir:Consent.sourceAttachment [
+     fhir:index 0;
      fhir:Attachment.title [ fhir:value &quot;The terms of the consent in lawyer speak.&quot; ]
   ];
   fhir:Consent.policyRule [
      fhir:CodeableConcept.coding [
        fhir:index 0;
        fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/v3-ActCode&quot; ];
-       fhir:Coding.code [ fhir:value &quot;OPTIN&quot; ]
+       fhir:Coding.code [ fhir:value &quot;INFA&quot; ]
      ]
   ];
   fhir:Consent.provision [
-     fhir:Consent.provision.actor [
+     fhir:Consent.provision.type [ fhir:value &quot;permit&quot; ];
+     fhir:Consent.provision.provision [
        fhir:index 0;
-       fhir:Consent.provision.actor.role [
-         fhir:CodeableConcept.coding [
-           fhir:index 0;
-           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot; ];
-           fhir:Coding.code [ fhir:value &quot;PRCP&quot; ]
+       fhir:Consent.provision.type [ fhir:value &quot;deny&quot; ];
+       fhir:Consent.provision.actor [
+         fhir:index 0;
+         fhir:Consent.provision.actor.role [
+           fhir:CodeableConcept.coding [
+             fhir:index 0;
+             fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot; ];
+             fhir:Coding.code [ fhir:value &quot;PRCP&quot; ]
+           ]
+         ];
+         fhir:Consent.provision.actor.reference [
+           fhir:link &lt;http://hl7.org/fhir/Practitioner/f204&gt;;
+           fhir:Reference.reference [ fhir:value &quot;Practitioner/f204&quot; ];
+           fhir:Reference.display [ fhir:value &quot;Carla Espinosa&quot; ]
          ]
        ];
-       fhir:Consent.provision.actor.reference [
-         fhir:link &lt;http://hl7.org/fhir/Practitioner/f204&gt;;
-         fhir:Reference.reference [ fhir:value &quot;Practitioner/f204&quot; ];
-         fhir:Reference.display [ fhir:value &quot;Fictive Nurse&quot; ]
-       ]
-     ];
-     fhir:Consent.provision.action [
-       fhir:index 0;
-       fhir:CodeableConcept.coding [
+       fhir:Consent.provision.action [
          fhir:index 0;
-         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot; ];
-         fhir:Coding.code [ fhir:value &quot;access&quot; ]
-       ]
-     ], [
-       fhir:index 1;
-       fhir:CodeableConcept.coding [
-         fhir:index 0;
-         fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot; ];
-         fhir:Coding.code [ fhir:value &quot;correct&quot; ]
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot; ];
+           fhir:Coding.code [ fhir:value &quot;access&quot; ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value &quot;http://terminology.hl7.org/CodeSystem/consentaction&quot; ];
+           fhir:Coding.code [ fhir:value &quot;correct&quot; ]
+         ]
        ]
      ]
   ] .
 
-&lt;http://hl7.org/fhir/Patient/f001&gt; a fhir:Patient .
+&lt;http://hl7.org/fhir/Patient/mom&gt; a fhir:Patient .
 
 &lt;http://hl7.org/fhir/Organization/f001&gt; a fhir:Organization .
 
@@ -242,7 +248,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -250,7 +256,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fconsent-example-notThem.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-notThem.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fconsent-example-notThem.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fconsent-example-notThem.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

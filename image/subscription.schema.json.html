@@ -104,7 +104,7 @@
 
 <div class="col-12">
 
-<h2 class="self-link-parent"><span class="sectioncount">2.46.15<a name="2.46.15"> </a></span> JSON Schema for Subscription <a href="subscription.schema.json.html#2.46.15" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
+<h2 class="self-link-parent"><span class="sectioncount">2.46.16<a name="2.46.16"> </a></span> JSON Schema for Subscription <a href="subscription.schema.json.html#2.46.16" title="link to here" class="self-link"><svg viewBox="0 0 1792 1792" width="20" class="self-link" height="20"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z" fill="navy"></path></svg></a></h2>
 <table class="colsi"><tr><td><a href="http://www.hl7.org/Special/committees/fiwg/index.cfm">FHIR Infrastructure <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: Not linked to any defined compartments</td></tr></table>
 
 <p>
@@ -120,7 +120,7 @@ This is a representation of the json schema for Subscription, which is just a pa
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "Subscription": {
-      "description": "The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined \"channel\" so that another system can take an appropriate action.",
+      "description": "The subscription resource describes a particular client\u0027s request to be notified about a Topic.",
       "properties": {
         "resourceType": {
           "description": "This is a Subscription resource",
@@ -175,6 +175,21 @@ This is a representation of the json schema for Subscription, which is just a pa
           },
           "type": "array"
         },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this code system when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "A natural language name identifying the subscription.",
+          "$ref": "#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
         "status": {
           "description": "The status of the subscription, which marks the server state for managing the subscription.",
           "enum": [
@@ -187,6 +202,10 @@ This is a representation of the json schema for Subscription, which is just a pa
         "_status": {
           "description": "Extensions for status",
           "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "topic": {
+          "description": "The reference to the topic to be notified about.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
         },
         "contact": {
           "description": "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.",
@@ -211,20 +230,26 @@ This is a representation of the json schema for Subscription, which is just a pa
           "description": "Extensions for reason",
           "$ref": "Element.schema.json#/definitions/Element"
         },
-        "criteria": {
-          "description": "The rules that the server should use to determine when to generate notifications for this subscription.",
-          "$ref": "#/definitions/string"
-        },
-        "_criteria": {
-          "description": "Extensions for criteria",
-          "$ref": "Element.schema.json#/definitions/Element"
+        "filterBy": {
+          "description": "The filter properties to be applied to narrow the topic stream.  When multiple filters are applied, evaluates to true if all the conditions are met; otherwise it returns false.   (i.e., logical AND).",
+          "items": {
+            "$ref": "#/definitions/Subscription_FilterBy"
+          },
+          "type": "array"
         },
         "error": {
           "description": "A record of the last error that occurred when the server processed a notification.",
-          "$ref": "#/definitions/string"
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
         },
-        "_error": {
-          "description": "Extensions for error",
+        "eventCount": {
+          "description": "A record of  the number of events for which the server has attempted delivery on this subscription (i.e., the number of events that occurred while the subscription is in an \"active\" or \"error\" state -- not \"requested\" or \"off\").   Server Initializes to 0 for a new subscription.  Repeated attempts at delivery of the *same* event notification do not increment this counter.",
+          "$ref": "#/definitions/unsignedInt"
+        },
+        "_eventCount": {
+          "description": "Extensions for eventCount",
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "channel": {
@@ -235,11 +260,66 @@ This is a representation of the json schema for Subscription, which is just a pa
       "additionalProperties": false,
       "required": [
         "channel",
+        "topic",
         "resourceType"
       ]
     },
+    "Subscription_FilterBy": {
+      "description": "The subscription resource describes a particular client\u0027s request to be notified about a Topic.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The filter label (\u003dkey) as defined in the `Topic.canFilterBy.name`  element.",
+          "$ref": "#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "matchType": {
+          "description": "The operator to apply to the filter value when determining matches (Search modifiers).",
+          "enum": [
+            "\u003d",
+            "in",
+            "not-in",
+            "above",
+            "below"
+          ]
+        },
+        "_matchType": {
+          "description": "Extensions for matchType",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "value": {
+          "description": "The literal value or resource path as is legal in search - for example, \"Patient/123\" or \"le1950\".",
+          "$ref": "#/definitions/string"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "Element.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
     "Subscription_Channel": {
-      "description": "The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined \"channel\" so that another system can take an appropriate action.",
+      "description": "The subscription resource describes a particular client\u0027s request to be notified about a Topic.",
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
@@ -261,17 +341,7 @@ This is a representation of the json schema for Subscription, which is just a pa
         },
         "type": {
           "description": "The type of channel to send notifications on.",
-          "enum": [
-            "rest-hook",
-            "websocket",
-            "email",
-            "sms",
-            "message"
-          ]
-        },
-        "_type": {
-          "description": "Extensions for type",
-          "$ref": "Element.schema.json#/definitions/Element"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "endpoint": {
           "description": "The url that describes the actual end-point to send messages to.",
@@ -279,14 +349,6 @@ This is a representation of the json schema for Subscription, which is just a pa
         },
         "_endpoint": {
           "description": "Extensions for endpoint",
-          "$ref": "Element.schema.json#/definitions/Element"
-        },
-        "payload": {
-          "description": "The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. If the payload is not present, then there is no payload in the notification, just a notification. The mime type \"text/plain\" may also be used for Email and SMS subscriptions.",
-          "$ref": "#/definitions/code"
-        },
-        "_payload": {
-          "description": "Extensions for payload",
           "$ref": "Element.schema.json#/definitions/Element"
         },
         "header": {
@@ -302,6 +364,65 @@ This is a representation of the json schema for Subscription, which is just a pa
             "$ref": "Element.schema.json#/definitions/Element"
           },
           "type": "array"
+        },
+        "heartbeatPeriod": {
+          "description": "If present,  a \u0027hearbeat\" notification (keepalive) is sent via this channel with an the interval period equal to this elements integer value in seconds.    If not present, a heartbeat notification is not sent.",
+          "$ref": "#/definitions/unsignedInt"
+        },
+        "_heartbeatPeriod": {
+          "description": "Extensions for heartbeatPeriod",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "payload": {
+          "description": "The payload mimetype and content.  If the payload is not present, then there is no payload in the notification, just a notification.",
+          "$ref": "#/definitions/Subscription_Payload"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "Subscription_Payload": {
+      "description": "The subscription resource describes a particular client\u0027s request to be notified about a Topic.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "string.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "contentType": {
+          "description": "The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. The mime type \"text/plain\" may also be used for Email and SMS subscriptions.",
+          "$ref": "#/definitions/code"
+        },
+        "_contentType": {
+          "description": "Extensions for contentType",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "content": {
+          "description": "How much of the resource content to deliver in the notification payload. The choices are an empty payload, only the resource id, or the full resource content.",
+          "enum": [
+            "empty",
+            "id-only",
+            "full-resource"
+          ]
+        },
+        "_content": {
+          "description": "Extensions for content",
+          "$ref": "Element.schema.json#/definitions/Element"
         }
       },
       "additionalProperties": false
@@ -325,7 +446,7 @@ This is a representation of the json schema for Subscription, which is just a pa
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -333,7 +454,7 @@ This is a representation of the json schema for Subscription, which is just a pa
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fsubscription.schema.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubscription.schema.json.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fsubscription.schema.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fsubscription.schema.json.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

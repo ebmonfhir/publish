@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;ClinicalUseIssue&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -136,7 +136,7 @@
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm&quot;,
-    &quot;valueInteger&quot; : 0
+    &quot;valueInteger&quot; : 1
   },
   {
     &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;ClinicalUseIssue&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Biomedical Research and Regulation)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -180,7 +180,7 @@
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;ClinicalUseIssue&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue&quot;,
-      &quot;short&quot; : &quot;ClinicalUseIssue&quot;,
+      &quot;short&quot; : &quot;A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product&quot;,
       &quot;definition&quot; : &quot;A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
@@ -258,7 +258,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -443,6 +447,24 @@
       }]
     },
     {
+      &quot;id&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+      &quot;path&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+      &quot;short&quot; : &quot;Business identifier for this issue&quot;,
+      &quot;definition&quot; : &quot;Business identifier for this issue.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Identifier&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
       &quot;id&quot; : &quot;ClinicalUseIssue.type&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.type&quot;,
       &quot;short&quot; : &quot;indication | contraindication | interaction | undesirable-effect | other&quot;,
@@ -483,13 +505,31 @@
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;]
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;ClinicalUseIssue.status&quot;,
+      &quot;path&quot; : &quot;ClinicalUseIssue.status&quot;,
+      &quot;short&quot; : &quot;General description&quot;,
+      &quot;definition&quot; : &quot;General description.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;ClinicalUseIssue.status&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -552,7 +592,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -617,8 +661,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.contraindication.diseaseSymptomProcedure&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.contraindication.diseaseSymptomProcedure&quot;,
-      &quot;short&quot; : &quot;The disease, symptom or procedure for the contraindication&quot;,
-      &quot;definition&quot; : &quot;The disease, symptom or procedure for the contraindication.&quot;,
+      &quot;short&quot; : &quot;The situation that is being documented as contraindicating against this item&quot;,
+      &quot;definition&quot; : &quot;The situation that is being documented as contraindicating against this item.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -727,7 +771,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -824,7 +872,7 @@
       },
       {
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/SubstanceDefinition&quot;]
@@ -872,7 +920,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -937,8 +989,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.indication.diseaseSymptomProcedure&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.indication.diseaseSymptomProcedure&quot;,
-      &quot;short&quot; : &quot;The disease, symptom or procedure for the indication&quot;,
-      &quot;definition&quot; : &quot;The disease, symptom or procedure for the indication.&quot;,
+      &quot;short&quot; : &quot;The situation that is being documented as an indicaton for this item&quot;,
+      &quot;definition&quot; : &quot;The situation that is being documented as an indicaton for this item.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1099,7 +1151,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1201,7 +1257,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1277,7 +1337,7 @@
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;]
@@ -1381,7 +1441,7 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect&quot;,
-      &quot;short&quot; : &quot;UndesirableEffect&quot;,
+      &quot;short&quot; : &quot;A possible negative outcome from the use of this treatment&quot;,
       &quot;definition&quot; : &quot;Describe the undesirable effects of the medicinal product.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1418,7 +1478,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1483,8 +1547,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.symptomConditionEffect&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.symptomConditionEffect&quot;,
-      &quot;short&quot; : &quot;The symptom, condition or undesirable effect&quot;,
-      &quot;definition&quot; : &quot;The symptom, condition or undesirable effect.&quot;,
+      &quot;short&quot; : &quot;The situation in which the undesirable effect may manifest&quot;,
+      &quot;definition&quot; : &quot;The situation in which the undesirable effect may manifest.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1501,8 +1565,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.classification&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.classification&quot;,
-      &quot;short&quot; : &quot;Classification of the effect&quot;,
-      &quot;definition&quot; : &quot;Classification of the effect.&quot;,
+      &quot;short&quot; : &quot;High level classification of the effect&quot;,
+      &quot;definition&quot; : &quot;High level classification of the effect.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1519,8 +1583,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence&quot;,
-      &quot;short&quot; : &quot;The frequency of occurrence of the effect&quot;,
-      &quot;definition&quot; : &quot;The frequency of occurrence of the effect.&quot;,
+      &quot;short&quot; : &quot;How often the effect is seen&quot;,
+      &quot;definition&quot; : &quot;How often the effect is seen.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -1539,10 +1603,22 @@
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;ClinicalUseIssue&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue&quot;,
-      &quot;short&quot; : &quot;ClinicalUseIssue&quot;,
+      &quot;short&quot; : &quot;A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product&quot;,
       &quot;definition&quot; : &quot;A single item of clinical particulars - an indication, contraindication, interaction etc. for a medicinal product.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;
+    },
+    {
+      &quot;id&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+      &quot;path&quot; : &quot;ClinicalUseIssue.identifier&quot;,
+      &quot;short&quot; : &quot;Business identifier for this issue&quot;,
+      &quot;definition&quot; : &quot;Business identifier for this issue.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Identifier&quot;
+      }],
+      &quot;isSummary&quot; : true
     },
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.type&quot;,
@@ -1574,13 +1650,25 @@
       &quot;max&quot; : &quot;*&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/ActivityDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/PlanDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DeviceDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;]
+      }],
+      &quot;isSummary&quot; : true
+    },
+    {
+      &quot;id&quot; : &quot;ClinicalUseIssue.status&quot;,
+      &quot;path&quot; : &quot;ClinicalUseIssue.status&quot;,
+      &quot;short&quot; : &quot;General description&quot;,
+      &quot;definition&quot; : &quot;General description.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
       }],
       &quot;isSummary&quot; : true
     },
@@ -1611,8 +1699,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.contraindication.diseaseSymptomProcedure&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.contraindication.diseaseSymptomProcedure&quot;,
-      &quot;short&quot; : &quot;The disease, symptom or procedure for the contraindication&quot;,
-      &quot;definition&quot; : &quot;The disease, symptom or procedure for the contraindication.&quot;,
+      &quot;short&quot; : &quot;The situation that is being documented as contraindicating against this item&quot;,
+      &quot;definition&quot; : &quot;The situation that is being documented as contraindicating against this item.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1693,7 +1781,7 @@
       },
       {
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/SubstanceDefinition&quot;]
@@ -1715,8 +1803,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.indication.diseaseSymptomProcedure&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.indication.diseaseSymptomProcedure&quot;,
-      &quot;short&quot; : &quot;The disease, symptom or procedure for the indication&quot;,
-      &quot;definition&quot; : &quot;The disease, symptom or procedure for the indication.&quot;,
+      &quot;short&quot; : &quot;The situation that is being documented as an indicaton for this item&quot;,
+      &quot;definition&quot; : &quot;The situation that is being documented as an indicaton for this item.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1828,7 +1916,7 @@
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
-        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/RegulatedMedicinalProduct&quot;,
+        &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/MedicinalProductDefinition&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/ObservationDefinition&quot;]
@@ -1901,7 +1989,7 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect&quot;,
-      &quot;short&quot; : &quot;UndesirableEffect&quot;,
+      &quot;short&quot; : &quot;A possible negative outcome from the use of this treatment&quot;,
       &quot;definition&quot; : &quot;Describe the undesirable effects of the medicinal product.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
@@ -1913,8 +2001,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.symptomConditionEffect&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.symptomConditionEffect&quot;,
-      &quot;short&quot; : &quot;The symptom, condition or undesirable effect&quot;,
-      &quot;definition&quot; : &quot;The symptom, condition or undesirable effect.&quot;,
+      &quot;short&quot; : &quot;The situation in which the undesirable effect may manifest&quot;,
+      &quot;definition&quot; : &quot;The situation in which the undesirable effect may manifest.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1925,8 +2013,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.classification&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.classification&quot;,
-      &quot;short&quot; : &quot;Classification of the effect&quot;,
-      &quot;definition&quot; : &quot;Classification of the effect.&quot;,
+      &quot;short&quot; : &quot;High level classification of the effect&quot;,
+      &quot;definition&quot; : &quot;High level classification of the effect.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1937,8 +2025,8 @@
     {
       &quot;id&quot; : &quot;ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence&quot;,
       &quot;path&quot; : &quot;ClinicalUseIssue.undesirableEffect.frequencyOfOccurrence&quot;,
-      &quot;short&quot; : &quot;The frequency of occurrence of the effect&quot;,
-      &quot;definition&quot; : &quot;The frequency of occurrence of the effect.&quot;,
+      &quot;short&quot; : &quot;How often the effect is seen&quot;,
+      &quot;definition&quot; : &quot;How often the effect is seen.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1972,7 +2060,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:44-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1980,7 +2068,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fclinicaluseissue.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fclinicaluseissue.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fclinicaluseissue.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fclinicaluseissue.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

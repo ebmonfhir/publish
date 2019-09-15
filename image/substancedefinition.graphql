@@ -3,7 +3,7 @@
 # import the types from 'types.graphql'
 
 type SubstanceDefinition {
-  id: ID
+  id: String
   meta: Meta
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -12,12 +12,12 @@ type SubstanceDefinition {
   extension: [Extension]
   modifierExtension: [Extension]
   identifier: Identifier
-  type: CodeableConcept
   status: CodeableConcept
+  category: CodeableConcept
   domain: CodeableConcept
   description: String  _description: ElementBase
   source: [Reference]
-  comment: String  _comment: ElementBase
+  note: [Annotation]
   moiety: [SubstanceDefinitionMoiety]
   property: [SubstanceDefinitionProperty]
   referenceInformation: Reference
@@ -44,6 +44,7 @@ type SubstanceDefinitionMoiety {
   molecularFormula: String  _molecularFormula: ElementBase
   amountQuantity: Quantity
   amountString: String  _amountString: ElementBase
+  amountType: CodeableConcept
 }
 
 type SubstanceDefinitionProperty {
@@ -57,6 +58,8 @@ type SubstanceDefinitionProperty {
   definingSubstanceCodeableConcept: CodeableConcept
   amountQuantity: Quantity
   amountString: String  _amountString: ElementBase
+  referenceRange: Range
+  source: [Reference]
 }
 
 type SubstanceDefinitionStructure {
@@ -109,7 +112,7 @@ type SubstanceDefinitionCode {
   code: CodeableConcept
   status: CodeableConcept
   statusDate: dateTime  _statusDate: ElementBase
-  comment: String  _comment: ElementBase
+  note: [Annotation]
   source: [Reference]
 }
 
@@ -143,8 +146,8 @@ type SubstanceDefinitionRelationship {
   id: String
   extension: [Extension]
   modifierExtension: [Extension]
-  substanceReference: Reference
-  substanceCodeableConcept: CodeableConcept
+  substanceDefinitionReference: Reference
+  substanceDefinitionCodeableConcept: CodeableConcept
   relationship: CodeableConcept
   isDefining: Boolean  _isDefining: ElementBase
   amountQuantity: Quantity
@@ -157,7 +160,7 @@ type SubstanceDefinitionRelationship {
 }
 
 input SubstanceDefinitionInput {
-  id: ID
+  id: String
   meta: MetaInput
   implicitRules: uri  _implicitRules: ElementBase
   language: code  _language: ElementBase
@@ -166,12 +169,12 @@ input SubstanceDefinitionInput {
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
   identifier: IdentifierInput
-  type: CodeableConceptInput
   status: CodeableConceptInput
+  category: CodeableConceptInput
   domain: CodeableConceptInput
   description: String  _description: ElementBase
   source: [ReferenceInput]
-  comment: String  _comment: ElementBase
+  note: [AnnotationInput]
   moiety: [SubstanceDefinitionMoietyInput]
   property: [SubstanceDefinitionPropertyInput]
   referenceInformation: ReferenceInput
@@ -198,6 +201,7 @@ input SubstanceDefinitionMoietyInput {
   molecularFormula: String  _molecularFormula: ElementBase
   amountQuantity: QuantityInput
   amountString: String  _amountString: ElementBase
+  amountType: CodeableConceptInput
 }
 
 input SubstanceDefinitionPropertyInput {
@@ -211,6 +215,8 @@ input SubstanceDefinitionPropertyInput {
   definingSubstanceCodeableConcept: CodeableConceptInput
   amountQuantity: QuantityInput
   amountString: String  _amountString: ElementBase
+  referenceRange: RangeInput
+  source: [ReferenceInput]
 }
 
 input SubstanceDefinitionStructureInput {
@@ -263,7 +269,7 @@ input SubstanceDefinitionCodeInput {
   code: CodeableConceptInput
   status: CodeableConceptInput
   statusDate: dateTime  _statusDate: ElementBase
-  comment: String  _comment: ElementBase
+  note: [AnnotationInput]
   source: [ReferenceInput]
 }
 
@@ -297,8 +303,8 @@ input SubstanceDefinitionRelationshipInput {
   id: String
   extension: [ExtensionInput]
   modifierExtension: [ExtensionInput]
-  substanceReference: ReferenceInput
-  substanceCodeableConcept: CodeableConceptInput
+  substanceDefinitionReference: ReferenceInput
+  substanceDefinitionCodeableConcept: CodeableConceptInput
   relationship: CodeableConceptInput
   isDefining: Boolean  _isDefining: ElementBase
   amountQuantity: QuantityInput
@@ -317,6 +323,7 @@ type SubstanceDefinitionReadType {
 type SubstanceDefinitionListType {
   SubstanceDefinitionList(_filter: String
     code: [token]
+    identifier: [token]
     _text: [String]
     _content: [String]
     _id: [token]
@@ -334,6 +341,7 @@ type SubstanceDefinitionListType {
 type SubstanceDefinitionConnectionType {
   SubstanceDefinitionConection(_filter: String
     code: [token]
+    identifier: [token]
     _text: [String]
     _content: [String]
     _id: [token]

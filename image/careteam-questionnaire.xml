@@ -2,12 +2,34 @@
 
 <Questionnaire xmlns="http://hl7.org/fhir">
   <id value="qs1"/>
+  <contained>
+    <ValueSet>
+      <id value="vs2"/>
+      <name value="Type options for CareTeam.participant.coverage[x]"/>
+      <status value="active"/>
+      <description value="Type options for CareTeam.participant.coverage[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:9755b3ef-12d2-4429-9d88-8faf4c3b46b9"/>
+        <timestamp value="2019-09-15T10:44:21-04:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Period"/>
+          <display value="Period"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="Timing"/>
+          <display value="Timing"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (Patient Care)"/>
   <item>
     <linkId value="CareTeam"/>
@@ -583,6 +605,9 @@
         </item>
       </item>
       <item>
+        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
+          <valueInteger value="1"/>
+        </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
           <valueString value="CodeableConcept"/>
         </extension>
@@ -601,7 +626,7 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Indicates specific responsibility of an individual within the care team, such as &quot;Primary care physician&quot;, &quot;Trained social worker counselor&quot;, &quot;Caregiver&quot;, etc. Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly."/>
+          <text value="Indicates specific responsibility of an individual within the care team, such as &quot;Primary care physician&quot;, &quot;Trained social worker counselor&quot;, &quot;Caregiver&quot;, etc. Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.  If a participant has multiple roles within the team, then there should be multiple participants."/>
           <type value="display"/>
         </item>
         <item>
@@ -699,11 +724,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="Period"/>
-        </extension>
-        <linkId value="CareTeam.participant.period"/>
-        <text value="Time period of participant"/>
+        <linkId value="CareTeam.participant.coverage[x]"/>
+        <text value="When the member is generally available within this care team"/>
         <type value="group"/>
         <required value="false"/>
         <repeats value="true"/>
@@ -717,22 +739,74 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="Indicates when the specific member or organization did (or is intended to) come into effect and end."/>
+          <text value="When the member is generally available within this care team. This is populated while creating / managing the CareTeam to ensure there is coverage when servicing CarePlan activities from the Schedule."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="CareTeam.participant.period.low"/>
-          <text value="start:"/>
-          <type value="dateTime"/>
+          <linkId value="CareTeam.participant.coverage[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="CareTeam.participant.period.end"/>
-          <text value="end:"/>
-          <type value="dateTime"/>
-          <required value="false"/>
-          <repeats value="false"/>
+          <answerValueSet value="#vs2"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Period"/>
+            </extension>
+            <linkId value="CareTeam.participant.coverage[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="CareTeam.participant.coverage[x]._null.low"/>
+              <text value="start:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="CareTeam.participant.coverage[x]._null.end"/>
+              <text value="end:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Schedule"/>
+            </extension>
+            <linkId value="CareTeam.participant.coverage[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="CareTeam.participant.coverage[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="CareTeam.participant.coverage[x]._null.date"/>
+              <text value="date:"/>
+              <type value="dateTime"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="Patient"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="Practitioner"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="RelatedPerson"/>
+              </extension>
+              <linkId value="CareTeam.participant.coverage[x]._null.author"/>
+              <text value="author:"/>
+              <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
     </item>

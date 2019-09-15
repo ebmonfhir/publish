@@ -110,6 +110,7 @@
 <table class="colstu"><tr><td><a href="http://www.hl7.org/Special/committees/patientcare/index.cfm">Patient Care <img src="external.png" style="vertical-align: baseline"/></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: 2</td><td>&nbsp;<a href="versions.html#std-process" title="Standard Status">Trial Use</a></td><td><a href="security.html#SecPrivConsiderations">Security Category</a>: Patient</td>  <!-- !ns! --><td><a href="compartmentdefinition.html">Compartments</a>: <a href="compartmentdefinition-encounter.html">Encounter</a>, <a href="compartmentdefinition-patient.html">Patient</a>, <a href="compartmentdefinition-practitioner.html">Practitioner</a>, <a href="compartmentdefinition-relatedperson.html">RelatedPerson</a></td></tr></table>
 
 
+
 <p>Detailed Descriptions for the elements in the CareTeam resource.</p>
 
 <table class="dict">
@@ -207,11 +208,11 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td>Element Id</td><td>CareTeam.participant.role</td></tr>
   <tr><td>Definition</td><td><p>Indicates specific responsibility of an individual within the care team, such as "Primary care physician", "Trained social worker counselor", "Caregiver", etc.</p>
 </td></tr>
-  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..*</td></tr>
+  <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
   <tr><td><a href="terminologies.html">Terminology Binding</a></td><td><a href="valueset-participant-role.html">Participant Roles</a> (<a href="terminologies.html#example">Example</a>)</td></tr>
   <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td>Comments</td><td><p>Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.</p>
+  <tr><td>Comments</td><td><p>Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.  If a participant has multiple roles within the team, then there should be multiple participants.</p>
 </td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.participant.member"> </a><b>CareTeam.participant.member</b></td></tr>
   <tr><td>Element Id</td><td>CareTeam.participant.member</td></tr>
@@ -233,12 +234,17 @@ Allows for an organization to designate a team such as the PICC line team.</p>
   <tr><td>Requirements</td><td><p>Practitioners can be associated with multiple organizations.  This element indicates which organization they were acting on behalf of.</p>
 </td></tr>
   <tr><td><a href="search.html#summary">Summary</a></td><td>true</td></tr>
-  <tr><td colspan="2" class="structure"><a name="CareTeam.participant.period"> </a><b>CareTeam.participant.period</b></td></tr>
-  <tr><td>Element Id</td><td>CareTeam.participant.period</td></tr>
-  <tr><td>Definition</td><td><p>Indicates when the specific member or organization did (or is intended to) come into effect and end.</p>
+  <tr><td colspan="2" class="structure"><a name="CareTeam.participant.coverage_x_"> </a><b>CareTeam.participant.coverage[x]</b></td></tr>
+  <tr><td>Element Id</td><td>CareTeam.participant.coverage[x]</td></tr>
+  <tr><td>Definition</td><td><p>When the member is generally available within this care team.</p>
 </td></tr>
   <tr><td><a href="conformance-rules.html#cardinality">Cardinality</a></td><td>0..1</td></tr>
-  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Period">Period</a></td></tr>
+  <tr><td><a href="datatypes.html">Type</a></td><td><a href="datatypes.html#Period">Period</a>|<a href="datatypes.html#Timing">Timing</a></td></tr>
+  <tr><td>[x] Note</td><td>See <a href="formats.html#choice">Choice of Data Types</a> for further information about how to use [x]</td></tr>
+  <tr><td>Requirements</td><td><p>To manage members who share the same role, but with different timing.  For example, two physical therapists where one is available Monday through Friday whereas the other is available on the weekend.</p>
+</td></tr>
+  <tr><td>Comments</td><td><p>This is populated while creating / managing the CareTeam to ensure there is coverage when servicing CarePlan activities from the Schedule.</p>
+</td></tr>
   <tr><td colspan="2" class="structure"><a name="CareTeam.reasonCode"> </a><b>CareTeam.reasonCode</b></td></tr>
   <tr><td>Element Id</td><td>CareTeam.reasonCode</td></tr>
   <tr><td>Definition</td><td><p>Describes why the care team exists.</p>
@@ -293,7 +299,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
 		<div class="container">  <!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:43-0400. 
+        FHIR &reg;&copy; HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search <img src="external.png" style="vertical-align: baseline"/></a> | 
@@ -301,7 +307,7 @@ Allows for an organization to designate a team such as the PICC line team.</p>
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
   <!-- <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fcareteam-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcareteam-definitions.html">Compare to R3 <img src="external.png" style="vertical-align: baseline"/></a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fcareteam-definitions.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fcareteam-definitions.html">Compare to R4 <img src="external.png" style="vertical-align: baseline"/></a> |                
                <a rel="license" style="color: #b8dcf9" href="license.html"><img src="cc0.png" alt="CC0" style="border-style: none;"/></a> | 
                <a style="color: #b8dcf9" href="http://hl7.org/fhir-issues" target="_blank">Propose a change <img src="external.png" style="vertical-align: baseline"/></a>   
         </span>

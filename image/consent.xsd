@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Fri, Aug 9, 2019 09:30-0400 for FHIR v4.1.0 
+  Generated on Sun, Sep 15, 2019 10:41-0400 for FHIR v4.1.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Consent" type="Consent">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Consent">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -89,13 +89,16 @@
               <xs:documentation xml:lang="en">The organization that manages the consent, and the framework within which it is executed.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1" >
+          <xs:element name="sourceAttachment" minOccurs="0" maxOccurs="unbounded" type="Attachment">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.</xs:documentation>
-            </xs:annotation>
-            <xs:element name="sourceAttachment" type="Attachment"/>
-            <xs:element name="sourceReference" type="Reference"/>
-          </xs:choice>
+              <xs:documentation xml:lang="en">The source on which this consent statement is based. The source might be a scanned original paper form.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="sourceReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="policy" type="Consent.Policy" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law.</xs:documentation>
@@ -122,7 +125,7 @@
   </xs:complexType>
   <xs:complexType name="Consent.Policy">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -143,7 +146,7 @@
   </xs:complexType>
   <xs:complexType name="Consent.Verification">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -169,7 +172,7 @@
   </xs:complexType>
   <xs:complexType name="Consent.Provision">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -235,7 +238,7 @@
   </xs:complexType>
   <xs:complexType name="Consent.Actor">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -256,7 +259,7 @@
   </xs:complexType>
   <xs:complexType name="Consent.Data">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
+      <xs:documentation xml:lang="en">A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">

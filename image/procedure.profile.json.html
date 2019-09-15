@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Procedure&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Procedure&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -281,7 +281,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -494,7 +498,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;Some combination of ORC-2 / ORC-3 / OBR-2 / OBR-3 / IPC-1 / IPC-2 / IPC-3 / IPC-4&quot;
+        &quot;map&quot; : &quot;PR1-19&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -615,6 +619,10 @@
         &quot;map&quot; : &quot;Event.partOf&quot;
       },
       {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-25&quot;
+      },
+      {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.inboundRelationship[typeCode=COMP].source[classCode=SBADM or PROC or OBS, moodCode=EVN]&quot;
       }]
@@ -729,6 +737,10 @@
         &quot;map&quot; : &quot;FiveWs.class&quot;
       },
       {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-6&quot;
+      },
+      {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;LIST\&quot;, moodCode=\&quot;EVN\&quot;].code&quot;
       }]
@@ -771,7 +783,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;OBR-44/OBR-45&quot;
+        &quot;map&quot; : &quot;PR1-3&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -898,7 +910,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;OBR-7&quot;
+        &quot;map&quot; : &quot;PR1-5 - occurrencePeriod.end can be inferred when both PR1-5 (Procedure Date/Time) and PR1-7 (Procedure Minutes) are populated&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1053,7 +1065,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1191,7 +1207,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;ORC-19/PRT-5&quot;
+        &quot;map&quot; : &quot;PR1-8 (Anesthesiologist),  PR1-11 (Surgeon), PR1-12 (Procedure Practitioner) --&gt; Procedure.performer.actor where Procedure.performer.function is also populated&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1246,6 +1262,10 @@
         &quot;map&quot; : &quot;FiveWs.where[x]&quot;
       },
       {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-23&quot;
+      },
+      {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=LOC].role[classCode=SDLOC]&quot;
       }]
@@ -1284,6 +1304,10 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-15&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1581,7 +1605,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1715,7 +1743,8 @@
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct&quot;]
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1797,7 +1826,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;Some combination of ORC-2 / ORC-3 / OBR-2 / OBR-3 / IPC-1 / IPC-2 / IPC-3 / IPC-4&quot;
+        &quot;map&quot; : &quot;PR1-19&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1892,6 +1921,10 @@
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;workflow&quot;,
         &quot;map&quot; : &quot;Event.partOf&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-25&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -1991,6 +2024,10 @@
         &quot;map&quot; : &quot;FiveWs.class&quot;
       },
       {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-6&quot;
+      },
+      {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;LIST\&quot;, moodCode=\&quot;EVN\&quot;].code&quot;
       }]
@@ -2027,7 +2064,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;OBR-44/OBR-45&quot;
+        &quot;map&quot; : &quot;PR1-3&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2136,7 +2173,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;OBR-7&quot;
+        &quot;map&quot; : &quot;PR1-5 - occurrencePeriod.end can be inferred when both PR1-5 (Procedure Date/Time) and PR1-7 (Procedure Minutes) are populated&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2309,7 +2346,7 @@
       },
       {
         &quot;identity&quot; : &quot;v2&quot;,
-        &quot;map&quot; : &quot;ORC-19/PRT-5&quot;
+        &quot;map&quot; : &quot;PR1-8 (Anesthesiologist),  PR1-11 (Surgeon), PR1-12 (Procedure Practitioner) --&gt; Procedure.performer.actor where Procedure.performer.function is also populated&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2351,6 +2388,10 @@
         &quot;map&quot; : &quot;FiveWs.where[x]&quot;
       },
       {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-23&quot;
+      },
+      {
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;.participation[typeCode=LOC].role[classCode=SDLOC]&quot;
       }]
@@ -2383,6 +2424,10 @@
       {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.why[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;v2&quot;,
+        &quot;map&quot; : &quot;PR1-15&quot;
       },
       {
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2651,7 +2696,8 @@
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Medication&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Substance&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/BiologicallyDerivedProduct&quot;]
       }],
       &quot;mapping&quot; : [{
         &quot;identity&quot; : &quot;rim&quot;,
@@ -2709,7 +2755,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:49-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:46-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2717,7 +2763,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fprocedure.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fprocedure.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fprocedure.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fprocedure.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

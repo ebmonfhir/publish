@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;AdverseEvent&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -150,7 +150,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;AdverseEvent&quot;,
   &quot;status&quot; : &quot;draft&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;Health Level Seven International (Patient Care)&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -170,6 +170,11 @@
     &quot;identity&quot; : &quot;rim&quot;,
     &quot;uri&quot; : &quot;http://hl7.org/v3&quot;,
     &quot;name&quot; : &quot;RIM Mapping&quot;
+  },
+  {
+    &quot;identity&quot; : &quot;workflow&quot;,
+    &quot;uri&quot; : &quot;http://hl7.org/fhir/workflow&quot;,
+    &quot;name&quot; : &quot;Workflow Pattern&quot;
   },
   {
     &quot;identity&quot; : &quot;w5&quot;,
@@ -268,7 +273,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;id&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true
@@ -470,7 +479,11 @@
         &quot;code&quot; : &quot;Identifier&quot;
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.identifier&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.actuality&quot;,
@@ -536,14 +549,14 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.event&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.event&quot;,
-      &quot;short&quot; : &quot;Type of the event itself in relation to the subject&quot;,
-      &quot;definition&quot; : &quot;This element defines the specific type of event that occurred or that was prevented from occurring.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.code&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.code&quot;,
+      &quot;short&quot; : &quot;Event or incident that occurred or was averted&quot;,
+      &quot;definition&quot; : &quot;Specific event that occurred or that was averted, such as patient fall, wrong organ removed, or wrong blood transfused.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.event&quot;,
+        &quot;path&quot; : &quot;AdverseEvent.code&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;1&quot;
       },
@@ -562,6 +575,10 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-type&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.code&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
@@ -591,8 +608,16 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.subject&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.who&quot;
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject&quot;
       }]
     },
     {
@@ -615,6 +640,10 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.encounter&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
       }]
@@ -678,6 +707,10 @@
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
@@ -718,13 +751,18 @@
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.location&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.seriousness&quot;,
       &quot;path&quot; : &quot;AdverseEvent.seriousness&quot;,
-      &quot;short&quot; : &quot;Seriousness of the event&quot;,
-      &quot;definition&quot; : &quot;Assessment whether this event was of real importance.&quot;,
+      &quot;short&quot; : &quot;Seriousness or gravity of the event&quot;,
+      &quot;definition&quot; : &quot;Assessment whether this event, or averted event, was of clinical importance.&quot;,
+      &quot;comment&quot; : &quot;Using an example, a rash can have an AdverseEvent.resultingCondition.severity = severe, yet an AdverseEvent.seriousness = non-serious.  Alternatively, a medication given with the wrong dose (chemotherapy given with too low of a dose) can have an AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.  Another example would be a beta blocker clinical trial where patients with asthma should be excluded, yet a patient with asthma was included and had an asthmatic episode where  AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -748,37 +786,10 @@
       }
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.severity&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.severity&quot;,
-      &quot;short&quot; : &quot;mild | moderate | severe&quot;,
-      &quot;definition&quot; : &quot;Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem is.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.severity&quot;,
-        &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;1&quot;
-      },
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;AdverseEventSeverity&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The severity of the adverse event itself, in direct relation to the subject.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0&quot;
-      }
-    },
-    {
       &quot;id&quot; : &quot;AdverseEvent.outcome&quot;,
       &quot;path&quot; : &quot;AdverseEvent.outcome&quot;,
-      &quot;short&quot; : &quot;resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown&quot;,
-      &quot;definition&quot; : &quot;Describes the type of outcome from the adverse event.&quot;,
+      &quot;short&quot; : &quot;Type of outcome from the adverse event&quot;,
+      &quot;definition&quot; : &quot;Describes the type of outcome from the adverse event, such as resolved, recovering, ongoing, resolved-with-sequelae, or fatal.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
@@ -796,9 +807,9 @@
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
           &quot;valueString&quot; : &quot;AdverseEventOutcome&quot;
         }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;TODO (and should this be required?).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0&quot;
+        &quot;strength&quot; : &quot;preferred&quot;,
+        &quot;description&quot; : &quot;Codes describing the type of outcome from the adverse event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome&quot;
       }
     },
     {
@@ -828,25 +839,183 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.contributor&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.contributor&quot;,
-      &quot;short&quot; : &quot;Who  was involved in the adverse event or the potential adverse event&quot;,
-      &quot;definition&quot; : &quot;Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.participant&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant&quot;,
+      &quot;short&quot; : &quot;Who was involved in the adverse event or the potential adverse event and what they did&quot;,
+      &quot;definition&quot; : &quot;Indicates who or what participated in the adverse event and how they were involved.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
       &quot;base&quot; : {
-        &quot;path&quot; : &quot;AdverseEvent.contributor&quot;,
+        &quot;path&quot; : &quot;AdverseEvent.participant&quot;,
         &quot;min&quot; : 0,
         &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;constraint&quot; : [{
+        &quot;key&quot; : &quot;ele-1&quot;,
+        &quot;severity&quot; : &quot;error&quot;,
+        &quot;human&quot; : &quot;All FHIR elements must have a @value or children&quot;,
+        &quot;expression&quot; : &quot;hasValue() or (children().count() &gt; id.count())&quot;,
+        &quot;xpath&quot; : &quot;@value|f:*|h:div&quot;,
+        &quot;source&quot; : &quot;Element&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.id&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.id&quot;,
+      &quot;representation&quot; : [&quot;xmlAttr&quot;],
+      &quot;short&quot; : &quot;Unique id for inter-element referencing&quot;,
+      &quot;definition&quot; : &quot;Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.id&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.extension&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.extension&quot;,
+      &quot;short&quot; : &quot;Additional content defined by implementations&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Element.extension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;n/a&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.modifierExtension&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.modifierExtension&quot;,
+      &quot;short&quot; : &quot;Extensions that cannot be ignored even if unrecognized&quot;,
+      &quot;definition&quot; : &quot;May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).&quot;,
+      &quot;comment&quot; : &quot;There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.&quot;,
+      &quot;requirements&quot; : &quot;Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](extensibility.html#modifierExtension).&quot;,
+      &quot;alias&quot; : [&quot;extensions&quot;,
+      &quot;user content&quot;,
+      &quot;modifiers&quot;],
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;*&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;BackboneElement.modifierExtension&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;*&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Extension&quot;
+      }],
+      &quot;isModifier&quot; : true,
+      &quot;isModifierReason&quot; : &quot;Modifier extensions are expected to modify the meaning or interpretation of the element that contains them&quot;,
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.function&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.function&quot;,
+      &quot;short&quot; : &quot;Type of involvement&quot;,
+      &quot;definition&quot; : &quot;Distinguishes the type of involvement of the actor in the adverse event, such as contributor or informant.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;AdverseEvent.participant.function&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;AdverseEventParticipantFunction&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Codes describing the type of involvement of the actor in the adverse event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-participant-function&quot;
+      },
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer.function&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.actor&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.actor&quot;,
+      &quot;short&quot; : &quot;Who was involved in the adverse event or the potential adverse event&quot;,
+      &quot;definition&quot; : &quot;Indicates who or what participated in the event.&quot;,
+      &quot;comment&quot; : &quot;For example, the physician prescribing a drug, a nurse administering the drug, a device that administered the drug, a witness to the event, or an informant of clinical history.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;AdverseEvent.participant.actor&quot;,
+        &quot;min&quot; : 1,
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;]
       }],
       &quot;isModifier&quot; : false,
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.detector&quot;,
@@ -911,7 +1080,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1008,11 +1181,11 @@
       &quot;short&quot; : &quot;Information on the possible cause of the event&quot;,
       &quot;definition&quot; : &quot;Information on the possible cause of the event.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;base&quot; : {
         &quot;path&quot; : &quot;AdverseEvent.suspectEntity.causality&quot;,
         &quot;min&quot; : 0,
-        &quot;max&quot; : &quot;*&quot;
+        &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;BackboneElement&quot;
@@ -1042,7 +1215,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1220,7 +1397,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1302,7 +1483,6 @@
         &quot;http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Immunization&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Procedure&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Media&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
       }],
       &quot;isModifier&quot; : false,
@@ -1372,7 +1552,11 @@
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Identifier&quot;
       }],
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.identifier&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.actuality&quot;,
@@ -1427,10 +1611,10 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.event&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.event&quot;,
-      &quot;short&quot; : &quot;Type of the event itself in relation to the subject&quot;,
-      &quot;definition&quot; : &quot;This element defines the specific type of event that occurred or that was prevented from occurring.&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.code&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.code&quot;,
+      &quot;short&quot; : &quot;Event or incident that occurred or was averted&quot;,
+      &quot;definition&quot; : &quot;Specific event that occurred or that was averted, such as patient fall, wrong organ removed, or wrong blood transfused.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1447,6 +1631,10 @@
         &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-type&quot;
       },
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.code&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.what[x]&quot;
       }]
@@ -1470,8 +1658,16 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.subject&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
-        &quot;map&quot; : &quot;FiveWs.who&quot;
+        &quot;map&quot; : &quot;FiveWs.subject[x]&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.subject&quot;
       }]
     },
     {
@@ -1488,6 +1684,10 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.encounter&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.context&quot;
       }]
@@ -1533,6 +1733,10 @@
       }],
       &quot;isSummary&quot; : true,
       &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.recorded&quot;
+      },
+      {
         &quot;identity&quot; : &quot;w5&quot;,
         &quot;map&quot; : &quot;FiveWs.recorded&quot;
       }]
@@ -1561,13 +1765,18 @@
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Location&quot;]
       }],
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.location&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.seriousness&quot;,
       &quot;path&quot; : &quot;AdverseEvent.seriousness&quot;,
-      &quot;short&quot; : &quot;Seriousness of the event&quot;,
-      &quot;definition&quot; : &quot;Assessment whether this event was of real importance.&quot;,
+      &quot;short&quot; : &quot;Seriousness or gravity of the event&quot;,
+      &quot;definition&quot; : &quot;Assessment whether this event, or averted event, was of clinical importance.&quot;,
+      &quot;comment&quot; : &quot;Using an example, a rash can have an AdverseEvent.resultingCondition.severity = severe, yet an AdverseEvent.seriousness = non-serious.  Alternatively, a medication given with the wrong dose (chemotherapy given with too low of a dose) can have an AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.  Another example would be a beta blocker clinical trial where patients with asthma should be excluded, yet a patient with asthma was included and had an asthmatic episode where  AdverseEvent.resultingCondition.severity = mild, yet a AdverseEvent.seriousness = serious.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1585,31 +1794,10 @@
       }
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.severity&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.severity&quot;,
-      &quot;short&quot; : &quot;mild | moderate | severe&quot;,
-      &quot;definition&quot; : &quot;Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem is.&quot;,
-      &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;1&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;CodeableConcept&quot;
-      }],
-      &quot;isSummary&quot; : true,
-      &quot;binding&quot; : {
-        &quot;extension&quot; : [{
-          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
-          &quot;valueString&quot; : &quot;AdverseEventSeverity&quot;
-        }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;The severity of the adverse event itself, in direct relation to the subject.&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-severity|4.1.0&quot;
-      }
-    },
-    {
       &quot;id&quot; : &quot;AdverseEvent.outcome&quot;,
       &quot;path&quot; : &quot;AdverseEvent.outcome&quot;,
-      &quot;short&quot; : &quot;resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown&quot;,
-      &quot;definition&quot; : &quot;Describes the type of outcome from the adverse event.&quot;,
+      &quot;short&quot; : &quot;Type of outcome from the adverse event&quot;,
+      &quot;definition&quot; : &quot;Describes the type of outcome from the adverse event, such as resolved, recovering, ongoing, resolved-with-sequelae, or fatal.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
@@ -1621,9 +1809,9 @@
           &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
           &quot;valueString&quot; : &quot;AdverseEventOutcome&quot;
         }],
-        &quot;strength&quot; : &quot;required&quot;,
-        &quot;description&quot; : &quot;TODO (and should this be required?).&quot;,
-        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome|4.1.0&quot;
+        &quot;strength&quot; : &quot;preferred&quot;,
+        &quot;description&quot; : &quot;Codes describing the type of outcome from the adverse event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-outcome&quot;
       }
     },
     {
@@ -1647,19 +1835,77 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;AdverseEvent.contributor&quot;,
-      &quot;path&quot; : &quot;AdverseEvent.contributor&quot;,
-      &quot;short&quot; : &quot;Who  was involved in the adverse event or the potential adverse event&quot;,
-      &quot;definition&quot; : &quot;Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).&quot;,
+      &quot;id&quot; : &quot;AdverseEvent.participant&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant&quot;,
+      &quot;short&quot; : &quot;Who was involved in the adverse event or the potential adverse event and what they did&quot;,
+      &quot;definition&quot; : &quot;Indicates who or what participated in the adverse event and how they were involved.&quot;,
       &quot;min&quot; : 0,
       &quot;max&quot; : &quot;*&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;BackboneElement&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.function&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.function&quot;,
+      &quot;short&quot; : &quot;Type of involvement&quot;,
+      &quot;definition&quot; : &quot;Distinguishes the type of involvement of the actor in the adverse event, such as contributor or informant.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;CodeableConcept&quot;
+      }],
+      &quot;isSummary&quot; : true,
+      &quot;binding&quot; : {
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName&quot;,
+          &quot;valueString&quot; : &quot;AdverseEventParticipantFunction&quot;
+        }],
+        &quot;strength&quot; : &quot;example&quot;,
+        &quot;description&quot; : &quot;Codes describing the type of involvement of the actor in the adverse event.&quot;,
+        &quot;valueSet&quot; : &quot;http://hl7.org/fhir/ValueSet/adverse-event-participant-function&quot;
+      },
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer.function&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;AdverseEvent.participant.actor&quot;,
+      &quot;path&quot; : &quot;AdverseEvent.participant.actor&quot;,
+      &quot;short&quot; : &quot;Who was involved in the adverse event or the potential adverse event&quot;,
+      &quot;definition&quot; : &quot;Indicates who or what participated in the event.&quot;,
+      &quot;comment&quot; : &quot;For example, the physician prescribing a drug, a nurse administering the drug, a device that administered the drug, a witness to the event, or an informant of clinical history.&quot;,
+      &quot;min&quot; : 1,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;Reference&quot;,
         &quot;targetProfile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/PractitionerRole&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;]
+        &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/CareTeam&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/Device&quot;,
+        &quot;http://hl7.org/fhir/StructureDefinition/RelatedPerson&quot;]
       }],
-      &quot;isSummary&quot; : true
+      &quot;isSummary&quot; : true,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;workflow&quot;,
+        &quot;map&quot; : &quot;Event.performer.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;w5&quot;,
+        &quot;map&quot; : &quot;FiveWs.actor&quot;
+      },
+      {
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]&quot;
+      }]
     },
     {
       &quot;id&quot; : &quot;AdverseEvent.detector&quot;,
@@ -1719,7 +1965,7 @@
       &quot;short&quot; : &quot;Information on the possible cause of the event&quot;,
       &quot;definition&quot; : &quot;Information on the possible cause of the event.&quot;,
       &quot;min&quot; : 0,
-      &quot;max&quot; : &quot;*&quot;,
+      &quot;max&quot; : &quot;1&quot;,
       &quot;type&quot; : [{
         &quot;code&quot; : &quot;BackboneElement&quot;
       }],
@@ -1810,7 +2056,6 @@
         &quot;http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Immunization&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/Procedure&quot;,
-        &quot;http://hl7.org/fhir/StructureDefinition/Media&quot;,
         &quot;http://hl7.org/fhir/StructureDefinition/DocumentReference&quot;]
       }],
       &quot;isSummary&quot; : true
@@ -1866,7 +2111,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:43-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1874,7 +2119,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fadverseevent.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fadverseevent.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fadverseevent.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fadverseevent.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

@@ -11,7 +11,7 @@ DomainResource (Age): (code.exists() or value.empty()) and (system.empty() or sy
 DomainResource (Range): low.empty() or high.empty() or (low <= high)
 DomainResource (Period): start.hasValue().not() or end.hasValue().not() or (start <= end)
 DomainResource (Ratio): (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())
-DomainResource (Reference): reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))
+DomainResource (Reference): reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))
 DomainResource (ContactPoint): value.empty() or system.exists()
 DomainResource (OrderedDistribution.bottomOfFirstInterval): true
 DomainResource (OrderedDistribution.interval): true
@@ -171,7 +171,7 @@ StructureDefinition (StructureDefinition): kind!='logical'  implies snapshot.ele
 StructureDefinition (StructureDefinition): snapshot.element.all(id.exists()) and snapshot.element.id.trace('ids').isDistinct()
 StructureDefinition (StructureDefinition): differential.element.all(id.exists()) and differential.element.id.trace('ids').isDistinct()
 StructureDefinition (StructureDefinition): contextInvariant.exists() implies type = 'Extension'
-StructureDefinition (StructureDefinition): url.startsWith('http://hl7.org/fhir/StructureDefinition') implies (differential.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')) and snapshot.element.type.code.all(hasValue() implies matches('^[a-zA-Z0-9]+$')))
+StructureDefinition (StructureDefinition): url.startsWith('http://hl7.org/fhir/StructureDefinition') implies (differential | snapshot).element.type.code.all(matches('^[a-zA-Z0-9]+$') or matches('^http:\\/\\/hl7\\.org\\/fhirpath\\/System\\.[A-Z][A-Za-z]+$'))
 StructureDefinition (StructureDefinition.differential): (%resource.kind = 'logical' or element.first().path.startsWith(%resource.type)) and (element.tail().empty() or  element.tail().all(path.startsWith(%resource.differential.element.first().path.replaceMatches('\\..*','')&'.')))
 StructureDefinition (StructureDefinition.snapshot): element.all(base.exists())
 StructureDefinition (StructureDefinition): derivation = 'constraint' or snapshot.element.select(path).isDistinct()
@@ -251,18 +251,23 @@ ActivityDefinition (ActivityDefinition): ActivityDefinition.publisher
 ActivityDefinition (ActivityDefinition): ActivityDefinition.topic
 ActivityDefinition (ActivityDefinition): ActivityDefinition.useContext
 ActivityDefinition (ActivityDefinition): ActivityDefinition.status
+AdministrableProductDefinition (AdministrableProductDefinition): AdministrableProductDefinition.identifier
+AdministrableProductDefinition (AdministrableProductDefinition): AdministrableProductDefinition.routeOfAdministration.code
+AdministrableProductDefinition (AdministrableProductDefinition): AdministrableProductDefinition.subject
+AdministrableProductDefinition (AdministrableProductDefinition): AdministrableProductDefinition.routeOfAdministration.targetSpecies.code
 AdverseEvent (AdverseEvent): AdverseEvent.date
-AdverseEvent (AdverseEvent): AdverseEvent.severity
+AdverseEvent (AdverseEvent): AdverseEvent.identifier
 AdverseEvent (AdverseEvent): AdverseEvent.recorder
 AdverseEvent (AdverseEvent): AdverseEvent.study
+AdverseEvent (AdverseEvent): AdverseEvent.code
 AdverseEvent (AdverseEvent): AdverseEvent.actuality
-AdverseEvent (AdverseEvent): AdverseEvent.seriousness
 AdverseEvent (AdverseEvent): AdverseEvent.subject
 AdverseEvent (AdverseEvent): AdverseEvent.resultingCondition
 AdverseEvent (AdverseEvent): (AdverseEvent.suspectEntity.instance as Reference)
+AdverseEvent (AdverseEvent): AdverseEvent.seriousness
+AdverseEvent (AdverseEvent): AdverseEvent.subject
 AdverseEvent (AdverseEvent): AdverseEvent.location
 AdverseEvent (AdverseEvent): AdverseEvent.category
-AdverseEvent (AdverseEvent): AdverseEvent.event
 AllergyIntolerance (AllergyIntolerance): AllergyIntolerance.reaction.severity
 AllergyIntolerance (AllergyIntolerance): AllergyIntolerance.recordedDate
 AllergyIntolerance (AllergyIntolerance): AllergyIntolerance.identifier
@@ -402,7 +407,6 @@ CarePlan (CarePlan): CarePlan.instantiatesUri
 CarePlan (CarePlan): CarePlan.category
 CarePlan (CarePlan): CarePlan.activity.detail.code
 CarePlan (CarePlan): CarePlan.status
-CareTeam (CareTeam): CareTeam.period
 CareTeam (CareTeam): CareTeam.identifier
 CareTeam (CareTeam): CareTeam.subject.where(resolve() is Patient)
 CareTeam (CareTeam): CareTeam.subject
@@ -489,6 +493,7 @@ ClinicalImpression (ClinicalImpression): ClinicalImpression.supportingInfo
 ClinicalImpression (ClinicalImpression): ClinicalImpression.encounter
 ClinicalImpression (ClinicalImpression): ClinicalImpression.finding.itemReference
 ClinicalImpression (ClinicalImpression): ClinicalImpression.status
+ClinicalUseIssue (ClinicalUseIssue): ClinicalUseIssue.identifier
 ClinicalUseIssue (ClinicalUseIssue): ClinicalUseIssue.subject
 CodeSystem (CodeSystem): CodeSystem.date
 CodeSystem (CodeSystem): CodeSystem.identifier
@@ -522,6 +527,7 @@ Communication (Communication): Communication.basedOn
 Communication (Communication): Communication.sender
 Communication (Communication): Communication.subject.where(resolve() is Patient)
 Communication (Communication): Communication.recipient
+Communication (Communication): Communication.topic
 Communication (Communication): Communication.instantiatesUri
 Communication (Communication): Communication.category
 Communication (Communication): Communication.status
@@ -640,7 +646,6 @@ Consent (Consent): Consent.identifier
 Consent (Consent): Consent.provision.period
 Consent (Consent): Consent.provision.data.reference
 Consent (Consent): Consent.provision.purpose
-Consent (Consent): Consent.source
 Consent (Consent): Consent.provision.actor.reference
 Consent (Consent): Consent.provision.securityLabel
 Consent (Consent): Consent.patient
@@ -771,6 +776,7 @@ DocumentReference (DocumentReference): DocumentReference.content.attachment.lang
 DocumentReference (DocumentReference): DocumentReference.type
 DocumentReference (DocumentReference): DocumentReference.relatesTo.code
 DocumentReference (DocumentReference): DocumentReference.context.practiceSetting
+DocumentReference (DocumentReference): DocumentReference.context.basedOn
 DocumentReference (DocumentReference): DocumentReference.context.related
 DocumentReference (DocumentReference): DocumentReference.subject.where(resolve() is Patient)
 DocumentReference (DocumentReference): DocumentReference.relatesTo
@@ -936,6 +942,7 @@ Flag (Flag): Flag.subject
 Flag (Flag): Flag.subject.where(resolve() is Patient)
 Flag (Flag): Flag.author
 Flag (Flag): Flag.encounter
+Flag (Flag): Flag.status
 Goal (Goal): Goal.identifier
 Goal (Goal): Goal.lifecycleStatus
 Goal (Goal): Goal.achievementStatus
@@ -1050,6 +1057,7 @@ ImplementationGuide (ImplementationGuide): (ImplementationGuide.useContext.value
 ImplementationGuide (ImplementationGuide): ImplementationGuide.publisher
 ImplementationGuide (ImplementationGuide): ImplementationGuide.useContext
 ImplementationGuide (ImplementationGuide): ImplementationGuide.status
+Ingredient (Ingredient): Ingredient.identifier
 InsurancePlan (InsurancePlan): InsurancePlan.identifier
 InsurancePlan (InsurancePlan): InsurancePlan.contact.address
 InsurancePlan (InsurancePlan): InsurancePlan.contact.address.state
@@ -1162,19 +1170,6 @@ MeasureReport (MeasureReport): MeasureReport.subject
 MeasureReport (MeasureReport): MeasureReport.reporter
 MeasureReport (MeasureReport): MeasureReport.status
 MeasureReport (MeasureReport): MeasureReport.evaluatedResource
-Media (Media): Media.identifier
-Media (Media): Media.modality
-Media (Media): Media.subject
-Media (Media): Media.created
-Media (Media): Media.encounter
-Media (Media): Media.type
-Media (Media): Media.operator
-Media (Media): Media.view
-Media (Media): Media.bodySite
-Media (Media): Media.basedOn
-Media (Media): Media.subject.where(resolve() is Patient)
-Media (Media): Media.device
-Media (Media): Media.status
 Medication (Medication): (Medication.ingredient.item as CodeableConcept)
 Medication (Medication): Medication.identifier
 Medication (Medication): Medication.code
@@ -1254,6 +1249,9 @@ MedicationUsage (MedicationUsage): MedicationUsage.informationSource
 MedicationUsage (MedicationUsage): MedicationUsage.encounter
 MedicationUsage (MedicationUsage): MedicationUsage.category
 MedicationUsage (MedicationUsage): MedicationUsage.status
+MedicinalProductDefinition (MedicinalProductDefinition): MedicinalProductDefinition.identifier
+MedicinalProductDefinition (MedicinalProductDefinition): MedicinalProductDefinition.name.productName
+MedicinalProductDefinition (MedicinalProductDefinition): MedicinalProductDefinition.name.countryLanguage.language
 MessageDefinition (MessageDefinition): MessageDefinition.date
 MessageDefinition (MessageDefinition): MessageDefinition.identifier
 MessageDefinition (MessageDefinition): MessageDefinition.parent
@@ -1319,6 +1317,16 @@ NamingSystem (NamingSystem): NamingSystem.contact.telecom
 NamingSystem (NamingSystem): NamingSystem.uniqueId.value
 NamingSystem (NamingSystem): NamingSystem.useContext
 NamingSystem (NamingSystem): NamingSystem.status
+NutritionIntake (NutritionIntake): NutritionIntake.identifier
+NutritionIntake (NutritionIntake): NutritionIntake.effective
+NutritionIntake (NutritionIntake): NutritionIntake.consumedItem.nutritionProduct
+NutritionIntake (NutritionIntake): NutritionIntake.subject
+NutritionIntake (NutritionIntake): NutritionIntake.subject.where(resolve() is Patient)
+NutritionIntake (NutritionIntake): NutritionIntake.partOf
+NutritionIntake (NutritionIntake): NutritionIntake.informationSource
+NutritionIntake (NutritionIntake): NutritionIntake.encounter
+NutritionIntake (NutritionIntake): NutritionIntake.category
+NutritionIntake (NutritionIntake): NutritionIntake.status
 NutritionOrder (NutritionOrder): NutritionOrder.identifier
 NutritionOrder (NutritionOrder): NutritionOrder.dateTime
 NutritionOrder (NutritionOrder): NutritionOrder.orderer
@@ -1425,6 +1433,8 @@ OrganizationAffiliation (OrganizationAffiliation): OrganizationAffiliation.parti
 OrganizationAffiliation (OrganizationAffiliation): OrganizationAffiliation.telecom
 OrganizationAffiliation (OrganizationAffiliation): OrganizationAffiliation.location
 OrganizationAffiliation (OrganizationAffiliation): OrganizationAffiliation.telecom.where(system='email')
+PackagedProductDefinition (PackagedProductDefinition): PackagedProductDefinition.identifier
+PackagedProductDefinition (PackagedProductDefinition): PackagedProductDefinition.subject
 Patient (Patient): Patient.identifier
 Patient (Patient): Patient.name.given
 Patient (Patient): Patient.address
@@ -1592,20 +1602,12 @@ QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.partOf
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.encounter
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.source
 QuestionnaireResponse (QuestionnaireResponse): QuestionnaireResponse.status
-RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.identifier
-RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.routeOfAdministration.code
-RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.subject
-RegulatedAdministrableProduct (RegulatedAdministrableProduct): RegulatedAdministrableProduct.routeOfAdministration.targetSpecies.code
 RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.identifier
-RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.country
 RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.subject
 RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.holder
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.region
+RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.case.identifier
 RegulatedAuthorization (RegulatedAuthorization): RegulatedAuthorization.status
-RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.identifier
-RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.name.productName
-RegulatedMedicinalProduct (RegulatedMedicinalProduct): RegulatedMedicinalProduct.name.countryLanguage.language
-RegulatedPackagedProduct (RegulatedPackagedProduct): RegulatedPackagedProduct.identifier
-RegulatedPackagedProduct (RegulatedPackagedProduct): RegulatedPackagedProduct.subject
 RelatedPerson (RelatedPerson): RelatedPerson.identifier
 RelatedPerson (RelatedPerson): RelatedPerson.address
 RelatedPerson (RelatedPerson): RelatedPerson.birthDate
@@ -1782,8 +1784,7 @@ StructureMap (StructureMap): (StructureMap.useContext.value as CodeableConcept)
 StructureMap (StructureMap): StructureMap.publisher
 StructureMap (StructureMap): StructureMap.useContext
 StructureMap (StructureMap): StructureMap.status
-Subscription (Subscription): Subscription.channel.payload
-Subscription (Subscription): Subscription.criteria
+Subscription (Subscription): Subscription.channel.payload.contentType
 Subscription (Subscription): Subscription.contact
 Subscription (Subscription): Subscription.channel.type
 Subscription (Subscription): Subscription.channel.endpoint
@@ -1796,7 +1797,8 @@ Substance (Substance): (Substance.ingredient.substance as Reference)
 Substance (Substance): Substance.instance.expiry
 Substance (Substance): Substance.category
 Substance (Substance): Substance.status
-SubstanceDefinition (SubstanceDefinition): SubstanceDefinition.code
+SubstanceDefinition (SubstanceDefinition): SubstanceDefinition.identifier
+SubstanceDefinition (SubstanceDefinition): SubstanceDefinition.code.code
 SupplyDelivery (SupplyDelivery): SupplyDelivery.identifier
 SupplyDelivery (SupplyDelivery): SupplyDelivery.receiver
 SupplyDelivery (SupplyDelivery): SupplyDelivery.patient

@@ -2,12 +2,93 @@
 
 <Questionnaire xmlns="http://hl7.org/fhir">
   <id value="qs1"/>
+  <contained>
+    <ValueSet>
+      <id value="vs2"/>
+      <name value="Type options for Ingredient.specifiedSubstance.code[x]"/>
+      <status value="active"/>
+      <description value="Type options for Ingredient.specifiedSubstance.code[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:ea258ee9-3d6b-4b60-957c-8020d4f4cb0b"/>
+        <timestamp value="2019-09-15T10:45:13-04:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="SubstanceDefinition"/>
+          <display value="SubstanceDefinition"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Substance"/>
+          <display value="Substance"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs3"/>
+      <name value="Type options for Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]"/>
+      <status value="active"/>
+      <description value="Type options for Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:e2e76255-2773-4b53-96c8-5c41ff39bdc2"/>
+        <timestamp value="2019-09-15T10:45:13-04:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="SubstanceDefinition"/>
+          <display value="SubstanceDefinition"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Substance"/>
+          <display value="Substance"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
+  <contained>
+    <ValueSet>
+      <id value="vs4"/>
+      <name value="Type options for Ingredient.substance.code[x]"/>
+      <status value="active"/>
+      <description value="Type options for Ingredient.substance.code[x]"/>
+      <expansion>
+        <identifier value="urn:uuid:2d0e7781-cfef-4601-bdd9-7598d76547dc"/>
+        <timestamp value="2019-09-15T10:45:13-04:00"/>
+        <contains>
+          <system value="http://hl7.org/fhir/data-types"/>
+          <code value="CodeableConcept"/>
+          <display value="CodeableConcept"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="SubstanceDefinition"/>
+          <display value="SubstanceDefinition"/>
+        </contains>
+        <contains>
+          <system value="http://hl7.org/fhir/resource-types"/>
+          <code value="Substance"/>
+          <display value="Substance"/>
+        </contains>
+      </expansion>
+    </ValueSet>
+  </contained>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
   </identifier>
   <version value="4.1.0"/>
   <status value="draft"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="Health Level Seven International (Biomedical Research and Regulation)"/>
   <item>
     <linkId value="Ingredient"/>
@@ -238,7 +319,7 @@
         <valueString value="Identifier"/>
       </extension>
       <linkId value="Ingredient.identifier"/>
-      <text value="Identifier for the ingredient"/>
+      <text value="An identifier or code by which the ingredient can be referenced"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="true"/>
@@ -370,7 +451,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="Manufacturer of this Ingredient."/>
+        <text value="The organization that manufactures this ingredient."/>
         <type value="display"/>
       </item>
       <item>
@@ -381,7 +462,7 @@
           <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
         </extension>
         <linkId value="Ingredient.manufacturer.value"/>
-        <text value="Manufacturer of this Ingredient"/>
+        <text value="The organization that manufactures this ingredient"/>
         <type value="reference"/>
         <required value="false"/>
         <repeats value="false"/>
@@ -485,11 +566,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="CodeableConcept"/>
-        </extension>
-        <linkId value="Ingredient.specifiedSubstance.code"/>
-        <text value="The specified substance"/>
+        <linkId value="Ingredient.specifiedSubstance.code[x]"/>
+        <text value="Substance as a &#39;specified substance&#39;, implying extra substance related characteristics"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -503,22 +581,56 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The specified substance."/>
+          <text value="Substance as a &#39;specified substance&#39;, implying extra substance related characteristics."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="Ingredient.specifiedSubstance.code.coding"/>
-          <text value="code:"/>
-          <type value="open-choice"/>
+          <linkId value="Ingredient.specifiedSubstance.code[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="Ingredient.specifiedSubstance.code.text"/>
-          <text value="text:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
+          <answerValueSet value="#vs2"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="CodeableConcept"/>
+            </extension>
+            <linkId value="Ingredient.specifiedSubstance.code[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="Ingredient.specifiedSubstance.code[x]._null.coding"/>
+              <text value="code:"/>
+              <type value="open-choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="Ingredient.specifiedSubstance.code[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Reference"/>
+            </extension>
+            <linkId value="Ingredient.specifiedSubstance.code[x]._null"/>
+            <type value="group"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="SubstanceDefinition, Substance"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+                <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+              </extension>
+              <linkId value="Ingredient.specifiedSubstance.code[x]._null.value"/>
+              <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
       <item>
@@ -1050,10 +1162,7 @@
             <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
               <valueInteger value="1"/>
             </extension>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-              <valueString value="CodeableConcept"/>
-            </extension>
-            <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance"/>
+            <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]"/>
             <text value="Relevant reference substance"/>
             <type value="group"/>
             <required value="false"/>
@@ -1072,18 +1181,52 @@
               <type value="display"/>
             </item>
             <item>
-              <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance.coding"/>
-              <text value="code:"/>
-              <type value="open-choice"/>
+              <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._type"/>
+              <text value="type"/>
+              <type value="choice"/>
               <required value="false"/>
               <repeats value="false"/>
-            </item>
-            <item>
-              <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance.text"/>
-              <text value="text:"/>
-              <type value="string"/>
-              <required value="false"/>
-              <repeats value="false"/>
+              <answerValueSet value="#vs3"/>
+              <item>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+                  <valueString value="CodeableConcept"/>
+                </extension>
+                <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._null"/>
+                <type value="group"/>
+                <item>
+                  <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._null.coding"/>
+                  <text value="code:"/>
+                  <type value="open-choice"/>
+                  <required value="false"/>
+                  <repeats value="false"/>
+                </item>
+                <item>
+                  <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._null.text"/>
+                  <text value="text:"/>
+                  <type value="string"/>
+                  <required value="false"/>
+                  <repeats value="false"/>
+                </item>
+              </item>
+              <item>
+                <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+                  <valueString value="Reference"/>
+                </extension>
+                <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._null"/>
+                <type value="group"/>
+                <item>
+                  <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                    <valueCode value="SubstanceDefinition, Substance"/>
+                  </extension>
+                  <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+                    <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+                  </extension>
+                  <linkId value="Ingredient.specifiedSubstance.strength.referenceStrength.substance[x]._null.value"/>
+                  <type value="reference"/>
+                  <required value="false"/>
+                  <repeats value="false"/>
+                </item>
+              </item>
             </item>
           </item>
           <item>
@@ -1260,7 +1403,7 @@
         <valueInteger value="1"/>
       </extension>
       <linkId value="Ingredient.substance"/>
-      <text value="The ingredient substance"/>
+      <text value="The substance that comprises this ingredient"/>
       <type value="group"/>
       <required value="false"/>
       <repeats value="false"/>
@@ -1274,7 +1417,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <text value="The ingredient substance."/>
+        <text value="The substance that comprises this ingredient."/>
         <type value="display"/>
       </item>
       <item>
@@ -1356,11 +1499,8 @@
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs">
           <valueInteger value="1"/>
         </extension>
-        <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
-          <valueString value="CodeableConcept"/>
-        </extension>
-        <linkId value="Ingredient.substance.code"/>
-        <text value="The ingredient substance"/>
+        <linkId value="Ingredient.substance.code[x]"/>
+        <text value="A code that represents the ingredient substance"/>
         <type value="group"/>
         <required value="true"/>
         <repeats value="true"/>
@@ -1374,22 +1514,56 @@
               </coding>
             </valueCodeableConcept>
           </extension>
-          <text value="The ingredient substance."/>
+          <text value="A code that represents the ingredient substance."/>
           <type value="display"/>
         </item>
         <item>
-          <linkId value="Ingredient.substance.code.coding"/>
-          <text value="code:"/>
-          <type value="open-choice"/>
+          <linkId value="Ingredient.substance.code[x]._type"/>
+          <text value="type"/>
+          <type value="choice"/>
           <required value="false"/>
           <repeats value="false"/>
-        </item>
-        <item>
-          <linkId value="Ingredient.substance.code.text"/>
-          <text value="text:"/>
-          <type value="string"/>
-          <required value="false"/>
-          <repeats value="false"/>
+          <answerValueSet value="#vs4"/>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="CodeableConcept"/>
+            </extension>
+            <linkId value="Ingredient.substance.code[x]._null"/>
+            <type value="group"/>
+            <item>
+              <linkId value="Ingredient.substance.code[x]._null.coding"/>
+              <text value="code:"/>
+              <type value="open-choice"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+            <item>
+              <linkId value="Ingredient.substance.code[x]._null.text"/>
+              <text value="text:"/>
+              <type value="string"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-fhirType">
+              <valueString value="Reference"/>
+            </extension>
+            <linkId value="Ingredient.substance.code[x]._null"/>
+            <type value="group"/>
+            <item>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource">
+                <valueCode value="SubstanceDefinition, Substance"/>
+              </extension>
+              <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter">
+                <valueString value="subject=$subj&amp;patient=$subj&amp;encounter=$encounter"/>
+              </extension>
+              <linkId value="Ingredient.substance.code[x]._null.value"/>
+              <type value="reference"/>
+              <required value="false"/>
+              <repeats value="false"/>
+            </item>
+          </item>
         </item>
       </item>
       <item>

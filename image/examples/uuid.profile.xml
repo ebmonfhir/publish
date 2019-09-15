@@ -16,7 +16,7 @@
   <version value="4.1.0"/>
   <name value="uuid"/>
   <status value="active"/>
-  <date value="2019-08-09T09:30:10-04:00"/>
+  <date value="2019-09-15T10:41:41-04:00"/>
   <publisher value="HL7 FHIR Standard"/>
   <contact>
     <telecom>
@@ -67,8 +67,12 @@
         <min value="0"/>
         <max value="1"/>
       </base>
+    <!-- Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (h) -->
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -105,22 +109,15 @@
         <min value="0"/>
         <max value="1"/>
       </base>
-    <!-- Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension -->
+    <!-- Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (i) -->
       <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/regex">
           <valueString value="urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/>
         </extension>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string"/>
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:anyURI"/>
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string"/>
-          </extension>
-        </code>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -142,22 +139,15 @@
       <definition value="Primitive value for uuid"/>
       <min value="0"/>
       <max value="1"/>
-    <!-- Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension -->
+    <!-- Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (g) -->
       <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="uuid"/>
+        </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/regex">
           <valueString value="urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"/>
         </extension>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string"/>
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:anyURI"/>
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string"/>
-          </extension>
-        </code>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
     </element>
   </differential>

@@ -120,7 +120,7 @@
   &quot;resourceType&quot; : &quot;StructureDefinition&quot;,
   &quot;id&quot; : &quot;Attachment&quot;,
   &quot;meta&quot; : {
-    &quot;lastUpdated&quot; : &quot;2019-08-09T09:30:10.376-04:00&quot;
+    &quot;lastUpdated&quot; : &quot;2019-09-15T10:41:41.207-04:00&quot;
   },
   &quot;text&quot; : {
     &quot;status&quot; : &quot;generated&quot;,
@@ -138,7 +138,7 @@
   &quot;version&quot; : &quot;4.1.0&quot;,
   &quot;name&quot; : &quot;Attachment&quot;,
   &quot;status&quot; : &quot;active&quot;,
-  &quot;date&quot; : &quot;2019-08-09T09:30:10-04:00&quot;,
+  &quot;date&quot; : &quot;2019-09-15T10:41:41-04:00&quot;,
   &quot;publisher&quot; : &quot;HL7 FHIR Standard&quot;,
   &quot;contact&quot; : [{
     &quot;telecom&quot; : [{
@@ -230,7 +230,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -521,6 +525,134 @@
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;N/A (needs data type R3 proposal)&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.height&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.height&quot;,
+      &quot;short&quot; : &quot;Height of the image in pixels (photo/video)&quot;,
+      &quot;definition&quot; : &quot;Height of the image in pixels (photo/video).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Attachment.height&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.width&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.width&quot;,
+      &quot;short&quot; : &quot;Width of the image in pixels (photo/video)&quot;,
+      &quot;definition&quot; : &quot;Width of the image in pixels (photo/video).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Attachment.width&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.frames&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.frames&quot;,
+      &quot;short&quot; : &quot;Number of frames if &gt; 1 (photo)&quot;,
+      &quot;definition&quot; : &quot;The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.&quot;,
+      &quot;comment&quot; : &quot;if the number of frames is not supplied, the value may be unknown. Applications should not assume that there is only one frame unless it is explicitly stated.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Attachment.frames&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.duration&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.duration&quot;,
+      &quot;short&quot; : &quot;Length in seconds (audio / video)&quot;,
+      &quot;definition&quot; : &quot;The duration of the recording in seconds - for audio and video.&quot;,
+      &quot;comment&quot; : &quot;The duration might differ from occurrencePeriod if recording was paused.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Attachment.duration&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;decimal&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.pages&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.pages&quot;,
+      &quot;short&quot; : &quot;Number of printed pages&quot;,
+      &quot;definition&quot; : &quot;The number of pages when printed.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Attachment.pages&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false
     }]
   },
   &quot;differential&quot; : {
@@ -756,6 +888,99 @@
         &quot;identity&quot; : &quot;rim&quot;,
         &quot;map&quot; : &quot;N/A (needs data type R3 proposal)&quot;
       }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.height&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.height&quot;,
+      &quot;short&quot; : &quot;Height of the image in pixels (photo/video)&quot;,
+      &quot;definition&quot; : &quot;Height of the image in pixels (photo/video).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.width&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.width&quot;,
+      &quot;short&quot; : &quot;Width of the image in pixels (photo/video)&quot;,
+      &quot;definition&quot; : &quot;Width of the image in pixels (photo/video).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.frames&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.frames&quot;,
+      &quot;short&quot; : &quot;Number of frames if &gt; 1 (photo)&quot;,
+      &quot;definition&quot; : &quot;The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.&quot;,
+      &quot;comment&quot; : &quot;if the number of frames is not supplied, the value may be unknown. Applications should not assume that there is only one frame unless it is explicitly stated.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.duration&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.duration&quot;,
+      &quot;short&quot; : &quot;Length in seconds (audio / video)&quot;,
+      &quot;definition&quot; : &quot;The duration of the recording in seconds - for audio and video.&quot;,
+      &quot;comment&quot; : &quot;The duration might differ from occurrencePeriod if recording was paused.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;decimal&quot;
+      }],
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;.outboundRelationship[typeCode=\&quot;COMP].target[classCode=\&quot;OBS\&quot;, moodCode=\&quot;EVN\&quot;,code=\&quot;&lt;CODE&gt;\&quot;].value&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Attachment.pages&quot;,
+      &quot;extension&quot; : [{
+        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
+        &quot;valueCode&quot; : &quot;trial-use&quot;
+      }],
+      &quot;path&quot; : &quot;Attachment.pages&quot;,
+      &quot;short&quot; : &quot;Number of printed pages&quot;,
+      &quot;definition&quot; : &quot;The number of pages when printed.&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;positiveInt&quot;
+      }]
     }]
   }
 }
@@ -783,7 +1008,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:42-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:44-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -791,7 +1016,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fattachment.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fattachment.profile.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fattachment.profile.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fattachment.profile.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

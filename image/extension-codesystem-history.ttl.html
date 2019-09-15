@@ -138,7 +138,7 @@
   fhir:StructureDefinition.version [ fhir:value &quot;4.1.0&quot;];
   fhir:StructureDefinition.name [ fhir:value &quot;history&quot;];
   fhir:StructureDefinition.status [ fhir:value &quot;draft&quot;];
-  fhir:StructureDefinition.date [ fhir:value &quot;2019-08-09T09:30:10-04:00&quot;];
+  fhir:StructureDefinition.date [ fhir:value &quot;2019-09-15T10:41:41-04:00&quot;];
   fhir:StructureDefinition.publisher [ fhir:value &quot;HL7&quot;];
   fhir:StructureDefinition.description [ fhir:value &quot;Information on changes made to the Value Set Definition over time, and also has a contained audit trail of all such changes.&quot;];
   fhir:StructureDefinition.fhirVersion [ fhir:value &quot;4.1.0&quot;];
@@ -162,15 +162,6 @@
      fhir:StructureDefinition.element [
        fhir:index 0;
        fhir:Element.id [ fhir:value &quot;Extension&quot; ];
-       fhir:Element.extension [
-         fhir:index 0;
-         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot; ];
-         fhir:Extension.value [ fhir:value &quot;normative&quot; ]
-       ], [
-         fhir:index 1;
-         fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version&quot; ];
-         fhir:Extension.value [ fhir:value &quot;4.0.0&quot; ]
-       ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;What has happened over time&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Information on changes made to the Value Set Definition over time, and also has a contained audit trail of all such changes.&quot; ];
@@ -222,7 +213,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -312,7 +308,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -369,7 +370,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;name&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -381,8 +387,17 @@
        ]
      ], [
        fhir:index 7;
-       fhir:Element.id [ fhir:value &quot;Extension.extension:name.valueString&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.valueString&quot; ];
+       fhir:Element.id [ fhir:value &quot;Extension.extension:name.value[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.type [ fhir:value &quot;type&quot; ];
+           fhir:ElementDefinition.path [ fhir:value &quot;$this&quot; ]
+         ];
+         fhir:ElementDefinition.ordered [ fhir:value &quot;false&quot; ];
+         fhir:ElementDefinition.rules [ fhir:value &quot;closed&quot; ]
+       ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -405,6 +420,31 @@
        ]
      ], [
        fhir:index 8;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:name.value[x]:valueString&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.sliceName [ fhir:value &quot;valueString&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
+       ]
+     ], [
+       fhir:index 9;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension&quot; ];
        fhir:ElementDefinition.sliceName [ fhir:value &quot;revision&quot; ];
@@ -424,7 +464,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 9;
+       fhir:index 10;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -442,7 +482,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -452,7 +497,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 10;
+       fhir:index 11;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension&quot; ];
        fhir:ElementDefinition.slicing [
@@ -480,7 +525,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 11;
+       fhir:index 12;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension&quot; ];
        fhir:ElementDefinition.sliceName [ fhir:value &quot;date&quot; ];
@@ -500,7 +545,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 12;
+       fhir:index 13;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -518,7 +563,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -528,7 +578,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 13;
+       fhir:index 14;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.extension&quot; ];
        fhir:ElementDefinition.slicing [
@@ -556,7 +606,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 14;
+       fhir:index 15;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -575,7 +625,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;date&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -586,9 +641,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 15;
-       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.valueDateTime&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.valueDateTime&quot; ];
+       fhir:index 16;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.value[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.type [ fhir:value &quot;type&quot; ];
+           fhir:ElementDefinition.path [ fhir:value &quot;$this&quot; ]
+         ];
+         fhir:ElementDefinition.ordered [ fhir:value &quot;false&quot; ];
+         fhir:ElementDefinition.rules [ fhir:value &quot;closed&quot; ]
+       ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -610,7 +674,32 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 16;
+       fhir:index 17;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.value[x]:valueDateTime&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.sliceName [ fhir:value &quot;valueDateTime&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;dateTime&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
+       ]
+     ], [
+       fhir:index 18;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension&quot; ];
        fhir:ElementDefinition.sliceName [ fhir:value &quot;id&quot; ];
@@ -630,7 +719,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 17;
+       fhir:index 19;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -648,7 +737,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -658,7 +752,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 18;
+       fhir:index 20;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.extension&quot; ];
        fhir:ElementDefinition.slicing [
@@ -686,7 +780,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 19;
+       fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -705,7 +799,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;id&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -716,9 +815,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 20;
-       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.valueString&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.valueString&quot; ];
+       fhir:index 22;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.value[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.type [ fhir:value &quot;type&quot; ];
+           fhir:ElementDefinition.path [ fhir:value &quot;$this&quot; ]
+         ];
+         fhir:ElementDefinition.ordered [ fhir:value &quot;false&quot; ];
+         fhir:ElementDefinition.rules [ fhir:value &quot;closed&quot; ]
+       ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -740,7 +848,32 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 21;
+       fhir:index 23;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.value[x]:valueString&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.sliceName [ fhir:value &quot;valueString&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
+       ]
+     ], [
+       fhir:index 24;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension&quot; ];
        fhir:ElementDefinition.sliceName [ fhir:value &quot;author&quot; ];
@@ -760,7 +893,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 22;
+       fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -778,7 +911,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -788,7 +926,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 23;
+       fhir:index 26;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.extension&quot; ];
        fhir:ElementDefinition.slicing [
@@ -816,7 +954,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 24;
+       fhir:index 27;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -835,7 +973,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;author&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -846,9 +989,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 25;
-       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.valueString&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.valueString&quot; ];
+       fhir:index 28;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.value[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.type [ fhir:value &quot;type&quot; ];
+           fhir:ElementDefinition.path [ fhir:value &quot;$this&quot; ]
+         ];
+         fhir:ElementDefinition.ordered [ fhir:value &quot;false&quot; ];
+         fhir:ElementDefinition.rules [ fhir:value &quot;closed&quot; ]
+       ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -870,7 +1022,32 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 26;
+       fhir:index 29;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.value[x]:valueString&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.sliceName [ fhir:value &quot;valueString&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
+       ]
+     ], [
+       fhir:index 30;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension&quot; ];
        fhir:ElementDefinition.sliceName [ fhir:value &quot;notes&quot; ];
@@ -890,7 +1067,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 27;
+       fhir:index 31;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.id&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.id&quot; ];
        fhir:ElementDefinition.representation [
@@ -908,7 +1085,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;string&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -918,7 +1100,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;n/a&quot; ]
        ]
      ], [
-       fhir:index 28;
+       fhir:index 32;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.extension&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.extension&quot; ];
        fhir:ElementDefinition.slicing [
@@ -946,7 +1128,7 @@
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ]
      ], [
-       fhir:index 29;
+       fhir:index 33;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -965,7 +1147,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;notes&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -976,9 +1163,18 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 30;
-       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.valueString&quot; ];
-       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.valueString&quot; ];
+       fhir:index 34;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.value[x]&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.slicing [
+         fhir:ElementDefinition.discriminator [
+           fhir:index 0;
+           fhir:ElementDefinition.type [ fhir:value &quot;type&quot; ];
+           fhir:ElementDefinition.path [ fhir:value &quot;$this&quot; ]
+         ];
+         fhir:ElementDefinition.ordered [ fhir:value &quot;false&quot; ];
+         fhir:ElementDefinition.rules [ fhir:value &quot;closed&quot; ]
+       ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
        fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
        fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
@@ -1000,7 +1196,32 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 31;
+       fhir:index 35;
+       fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.value[x]:valueString&quot; ];
+       fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.value[x]&quot; ];
+       fhir:ElementDefinition.sliceName [ fhir:value &quot;valueString&quot; ];
+       fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
+       fhir:ElementDefinition.definition [ fhir:value &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot; ];
+       fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+       fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ];
+       fhir:ElementDefinition.base [
+         fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
+         fhir:ElementDefinition.min [ fhir:value &quot;0&quot; ];
+         fhir:ElementDefinition.max [ fhir:value &quot;1&quot; ]
+       ];
+       fhir:ElementDefinition.type [
+         fhir:index 0;
+         fhir:ElementDefinition.code [ fhir:value &quot;string&quot; ]
+       ];
+       fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
+       fhir:ElementDefinition.mapping [
+         fhir:index 0;
+         fhir:ElementDefinition.identity [ fhir:value &quot;rim&quot; ];
+         fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
+       ]
+     ], [
+       fhir:index 36;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -1019,7 +1240,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;revision&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1030,7 +1256,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 32;
+       fhir:index 37;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
@@ -1189,6 +1415,9 @@
        ], [
          fhir:index 48;
          fhir:ElementDefinition.code [ fhir:value &quot;Dosage&quot; ]
+       ], [
+         fhir:index 49;
+         fhir:ElementDefinition.code [ fhir:value &quot;Meta&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1198,7 +1427,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 33;
+       fhir:index 38;
        fhir:Element.id [ fhir:value &quot;Extension.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.url&quot; ];
        fhir:ElementDefinition.representation [
@@ -1217,7 +1446,12 @@
        ];
        fhir:ElementDefinition.type [
          fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot; ];
+           fhir:Extension.value [ fhir:value &quot;url&quot; ]
+         ];
+         fhir:ElementDefinition.code [ fhir:value &quot;http://hl7.org/fhirpath/System.String&quot; ]
        ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/codesystem-history&quot; ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
@@ -1228,7 +1462,7 @@
          fhir:ElementDefinition.map [ fhir:value &quot;N/A&quot; ]
        ]
      ], [
-       fhir:index 34;
+       fhir:index 39;
        fhir:Element.id [ fhir:value &quot;Extension.value[x]&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.value[x]&quot; ];
        fhir:ElementDefinition.short [ fhir:value &quot;Value of extension&quot; ];
@@ -1387,6 +1621,9 @@
        ], [
          fhir:index 48;
          fhir:ElementDefinition.code [ fhir:value &quot;Dosage&quot; ]
+       ], [
+         fhir:index 49;
+         fhir:ElementDefinition.code [ fhir:value &quot;Meta&quot; ]
        ];
        fhir:ElementDefinition.isModifier [ fhir:value &quot;false&quot; ];
        fhir:ElementDefinition.isSummary [ fhir:value &quot;false&quot; ];
@@ -1431,10 +1668,6 @@
        fhir:index 3;
        fhir:Element.id [ fhir:value &quot;Extension.extension:name.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;name&quot; ]
      ], [
        fhir:index 4;
@@ -1486,10 +1719,6 @@
        fhir:index 9;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:date.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;date&quot; ]
      ], [
        fhir:index 10;
@@ -1522,10 +1751,6 @@
        fhir:index 13;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:id.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;id&quot; ]
      ], [
        fhir:index 14;
@@ -1558,10 +1783,6 @@
        fhir:index 17;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:author.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;author&quot; ]
      ], [
        fhir:index 18;
@@ -1594,10 +1815,6 @@
        fhir:index 21;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.extension:notes.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;notes&quot; ]
      ], [
        fhir:index 22;
@@ -1611,10 +1828,6 @@
        fhir:index 23;
        fhir:Element.id [ fhir:value &quot;Extension.extension:revision.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;revision&quot; ]
      ], [
        fhir:index 24;
@@ -1626,10 +1839,6 @@
        fhir:index 25;
        fhir:Element.id [ fhir:value &quot;Extension.url&quot; ];
        fhir:ElementDefinition.path [ fhir:value &quot;Extension.url&quot; ];
-       fhir:ElementDefinition.type [
-         fhir:index 0;
-         fhir:ElementDefinition.code [ fhir:value &quot;uri&quot; ]
-       ];
        fhir:ElementDefinition.fixed [ fhir:value &quot;http://hl7.org/fhir/StructureDefinition/codesystem-history&quot; ]
      ], [
        fhir:index 26;
@@ -1667,7 +1876,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:41-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:43-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -1675,7 +1884,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fextension-codesystem-history.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-codesystem-history.ttl.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fextension-codesystem-history.ttl.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-codesystem-history.ttl.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>

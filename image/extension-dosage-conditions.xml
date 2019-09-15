@@ -38,12 +38,6 @@
   <derivation value="constraint"/>
   <snapshot>
     <element id="Extension">
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="normative"/>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
-        <valueCode value="4.0.0"/>
-      </extension>
       <path value="Extension"/>
       <short value="Dosage conditions"/>
       <definition value="Conditions that apply to this set of dosing instructions."/>
@@ -86,7 +80,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -158,7 +155,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -223,7 +223,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -271,7 +274,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="offset"/>
       <isModifier value="false"/>
@@ -281,8 +287,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:meetGoal.extension:offset.valueDuration">
-      <path value="Extension.extension.extension.valueDuration"/>
+    <element id="Extension.extension:meetGoal.extension:offset.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Duration"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension:meetGoal.extension:offset.value[x]:valueDuration">
+      <path value="Extension.extension.extension.value[x]"/>
+      <sliceName value="valueDuration"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -333,7 +369,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -381,7 +420,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="goal"/>
       <isModifier value="false"/>
@@ -391,8 +433,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:meetGoal.extension:goal.valueReference">
-      <path value="Extension.extension.extension.valueReference"/>
+    <element id="Extension.extension:meetGoal.extension:goal.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Reference"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension:meetGoal.extension:goal.value[x]:valueReference">
+      <path value="Extension.extension.extension.value[x]"/>
+      <sliceName value="valueReference"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -427,7 +499,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="meetGoal"/>
       <isModifier value="false"/>
@@ -595,6 +670,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
@@ -633,7 +711,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -698,7 +779,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -746,7 +830,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="offset"/>
       <isModifier value="false"/>
@@ -756,8 +843,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:whenTrigger.extension:offset.valueDuration">
-      <path value="Extension.extension.extension.valueDuration"/>
+    <element id="Extension.extension:whenTrigger.extension:offset.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Duration"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension:whenTrigger.extension:offset.value[x]:valueDuration">
+      <path value="Extension.extension.extension.value[x]"/>
+      <sliceName value="valueDuration"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -808,7 +925,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -856,7 +976,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="trigger"/>
       <isModifier value="false"/>
@@ -866,8 +989,8 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:whenTrigger.extension:trigger.valueReference">
-      <path value="Extension.extension.extension.valueReference"/>
+    <element id="Extension.extension:whenTrigger.extension:trigger.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="1"/>
@@ -904,7 +1027,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="whenTrigger"/>
       <isModifier value="false"/>
@@ -1072,6 +1198,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
@@ -1110,7 +1239,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1175,7 +1307,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1223,7 +1358,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="doesNotOccur"/>
       <isModifier value="false"/>
@@ -1233,8 +1371,38 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:precondition.extension:doesNotOccur.valueBoolean">
-      <path value="Extension.extension.extension.valueBoolean"/>
+    <element id="Extension.extension:precondition.extension:doesNotOccur.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
+      <slicing>
+        <discriminator>
+          <type value="type"/>
+          <path value="$this"/>
+        </discriminator>
+        <ordered value="false"/>
+        <rules value="closed"/>
+      </slicing>
+      <short value="Value of extension"/>
+      <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Extension.value[x]"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="boolean"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Extension.extension:precondition.extension:doesNotOccur.value[x]:valueBoolean">
+      <path value="Extension.extension.extension.value[x]"/>
+      <sliceName value="valueBoolean"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="0"/>
@@ -1285,7 +1453,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="string"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1333,7 +1504,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="condition"/>
       <isModifier value="false"/>
@@ -1343,8 +1517,8 @@
         <map value="N/A"/>
       </mapping>
     </element>
-    <element id="Extension.extension:precondition.extension:condition.valueReference">
-      <path value="Extension.extension.extension.valueReference"/>
+    <element id="Extension.extension:precondition.extension:condition.value[x]">
+      <path value="Extension.extension.extension.value[x]"/>
       <short value="Value of extension"/>
       <definition value="Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."/>
       <min value="1"/>
@@ -1381,7 +1555,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="precondition"/>
       <isModifier value="false"/>
@@ -1549,6 +1726,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
@@ -1570,7 +1750,10 @@
         <max value="1"/>
       </base>
       <type>
-        <code value="uri"/>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueCode value="url"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
       </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/dosage-conditions"/>
       <isModifier value="false"/>
@@ -1738,6 +1921,9 @@
       <type>
         <code value="Dosage"/>
       </type>
+      <type>
+        <code value="Meta"/>
+      </type>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
@@ -1784,9 +1970,6 @@
     </element>
     <element id="Extension.extension:meetGoal.extension:offset.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="offset"/>
     </element>
     <element id="Extension.extension:meetGoal.extension:offset.valueDuration">
@@ -1811,9 +1994,6 @@
     </element>
     <element id="Extension.extension:meetGoal.extension:goal.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="goal"/>
     </element>
     <element id="Extension.extension:meetGoal.extension:goal.valueReference">
@@ -1825,9 +2005,6 @@
     </element>
     <element id="Extension.extension:meetGoal.url">
       <path value="Extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="meetGoal"/>
     </element>
     <element id="Extension.extension:meetGoal.value[x]">
@@ -1865,9 +2042,6 @@
     </element>
     <element id="Extension.extension:whenTrigger.extension:offset.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="offset"/>
     </element>
     <element id="Extension.extension:whenTrigger.extension:offset.valueDuration">
@@ -1892,9 +2066,6 @@
     </element>
     <element id="Extension.extension:whenTrigger.extension:trigger.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="trigger"/>
     </element>
     <element id="Extension.extension:whenTrigger.extension:trigger.value[x]">
@@ -1909,9 +2080,6 @@
     </element>
     <element id="Extension.extension:whenTrigger.url">
       <path value="Extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="whenTrigger"/>
     </element>
     <element id="Extension.extension:whenTrigger.value[x]">
@@ -1949,9 +2117,6 @@
     </element>
     <element id="Extension.extension:precondition.extension:doesNotOccur.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="doesNotOccur"/>
     </element>
     <element id="Extension.extension:precondition.extension:doesNotOccur.valueBoolean">
@@ -1976,9 +2141,6 @@
     </element>
     <element id="Extension.extension:precondition.extension:condition.url">
       <path value="Extension.extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="condition"/>
     </element>
     <element id="Extension.extension:precondition.extension:condition.value[x]">
@@ -1993,9 +2155,6 @@
     </element>
     <element id="Extension.extension:precondition.url">
       <path value="Extension.extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="precondition"/>
     </element>
     <element id="Extension.extension:precondition.value[x]">
@@ -2005,9 +2164,6 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <type>
-        <code value="uri"/>
-      </type>
       <fixedUri value="http://hl7.org/fhir/StructureDefinition/dosage-conditions"/>
     </element>
     <element id="Extension.value[x]">

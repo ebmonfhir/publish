@@ -1,0 +1,59 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.org/fhir/Subscription/admission> a fhir:Subscription;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "admission"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: admission</p><p><b>name</b>: AdmissionExample</p><p><b>status</b>: active</p><p><b>topic</b>: <a>Topic/admission</a></p><p><b>end</b>: Aug 7, 2019, 11:15:18 AM</p><p><b>reason</b>: subscription for beginning of a clinical encounter for patient 123</p><h3>FilterBies</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Value</b></td></tr><tr><td>*</td><td>patient</td><td>Patient/123</td></tr></table><blockquote><p><b>channel</b></p><p><b>type</b>: Rest Hook <span>(Details : {http://terminology.hl7.org/CodeSystem/subscription-channel-type code 'rest-hook' = 'Rest Hook', given as 'Rest Hook'})</span></p><p><b>endpoint</b>: <a>https://example.org/Endpoints/P123</a></p><p><b>header</b>: Authorization: Bearer secret-token-abc-123</p><p><b>heartbeatPeriod</b>: 60</p><h3>Payloads</h3><table><tr><td>-</td><td><b>ContentType</b></td><td><b>Content</b></td></tr><tr><td>*</td><td>application/fhir+json</td><td>id-only</td></tr></table></blockquote></div>"
+  ];
+  fhir:Subscription.name [ fhir:value "AdmissionExample"];
+  fhir:Subscription.status [ fhir:value "active"];
+  fhir:Subscription.topic [
+     fhir:link <http://hl7.org/fhir/Topic/admission>;
+     fhir:Reference.reference [ fhir:value "Topic/admission" ]
+  ];
+  fhir:Subscription.end [ fhir:value "2019-08-07T11:15:18Z"^^xsd:dateTime];
+  fhir:Subscription.reason [ fhir:value "subscription for beginning of a clinical encounter for patient 123"];
+  fhir:Subscription.filterBy [
+     fhir:index 0;
+     fhir:Subscription.filterBy.name [ fhir:value "patient" ];
+     fhir:Subscription.filterBy.value [ fhir:value "Patient/123" ]
+  ];
+  fhir:Subscription.channel [
+     fhir:Subscription.channel.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/subscription-channel-type" ];
+         fhir:Coding.code [ fhir:value "rest-hook" ];
+         fhir:Coding.display [ fhir:value "Rest Hook" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "Rest Hook" ]
+     ];
+     fhir:Subscription.channel.endpoint [ fhir:value "https://example.org/Endpoints/P123" ];
+     fhir:Subscription.channel.header [
+       fhir:value "Authorization: Bearer secret-token-abc-123";
+       fhir:index 0
+     ];
+     fhir:Subscription.channel.heartbeatPeriod [ fhir:value "60"^^xsd:nonNegativeInteger ];
+     fhir:Subscription.channel.payload [
+       fhir:Subscription.channel.payload.contentType [ fhir:value "application/fhir+json" ];
+       fhir:Subscription.channel.payload.content [ fhir:value "id-only" ]
+     ]
+  ] .
+
+<http://hl7.org/fhir/Topic/admission> a fhir:Topic .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.org/fhir/Subscription/admission.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl;
+  owl:versionIRI <http://build.fhir.org/Subscription/admission.ttl> .
+
+# -------------------------------------------------------------------------------------
+

@@ -160,14 +160,6 @@
   &quot;snapshot&quot; : {
     &quot;element&quot; : [{
       &quot;id&quot; : &quot;Extension&quot;,
-      &quot;extension&quot; : [{
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status&quot;,
-        &quot;valueCode&quot; : &quot;normative&quot;
-      },
-      {
-        &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version&quot;,
-        &quot;valueCode&quot; : &quot;4.0.0&quot;
-      }],
       &quot;path&quot; : &quot;Extension&quot;,
       &quot;short&quot; : &quot;Dosage conditions&quot;,
       &quot;definition&quot; : &quot;Conditions that apply to this set of dosing instructions.&quot;,
@@ -211,7 +203,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -286,7 +282,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -354,7 +354,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -404,7 +408,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;offset&quot;,
       &quot;isModifier&quot; : false,
@@ -415,8 +423,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:offset.valueDuration&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueDuration&quot;,
+      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:offset.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Duration&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:offset.value[x]:valueDuration&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueDuration&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -469,7 +508,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -519,7 +562,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;goal&quot;,
       &quot;isModifier&quot; : false,
@@ -530,8 +577,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:goal.valueReference&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueReference&quot;,
+      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:goal.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Reference&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:goal.value[x]:valueReference&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueReference&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -567,7 +645,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;meetGoal&quot;,
       &quot;isModifier&quot; : false,
@@ -735,6 +817,9 @@
       },
       {
         &quot;code&quot; : &quot;Dosage&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Meta&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -776,7 +861,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -844,7 +933,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -894,7 +987,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;offset&quot;,
       &quot;isModifier&quot; : false,
@@ -905,8 +1002,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:offset.valueDuration&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueDuration&quot;,
+      &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:offset.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;Duration&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:offset.value[x]:valueDuration&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueDuration&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -959,7 +1087,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1009,7 +1141,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;trigger&quot;,
       &quot;isModifier&quot; : false,
@@ -1020,8 +1156,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:trigger.valueReference&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueReference&quot;,
+      &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:trigger.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 1,
@@ -1059,7 +1195,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;whenTrigger&quot;,
       &quot;isModifier&quot; : false,
@@ -1227,6 +1367,9 @@
       },
       {
         &quot;code&quot; : &quot;Dosage&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Meta&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1268,7 +1411,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1336,7 +1483,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1386,7 +1537,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;doesNotOccur&quot;,
       &quot;isModifier&quot; : false,
@@ -1397,8 +1552,39 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:precondition.extension:doesNotOccur.valueBoolean&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueBoolean&quot;,
+      &quot;id&quot; : &quot;Extension.extension:precondition.extension:doesNotOccur.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;slicing&quot; : {
+        &quot;discriminator&quot; : [{
+          &quot;type&quot; : &quot;type&quot;,
+          &quot;path&quot; : &quot;$this&quot;
+        }],
+        &quot;ordered&quot; : false,
+        &quot;rules&quot; : &quot;closed&quot;
+      },
+      &quot;short&quot; : &quot;Value of extension&quot;,
+      &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
+      &quot;min&quot; : 0,
+      &quot;max&quot; : &quot;1&quot;,
+      &quot;base&quot; : {
+        &quot;path&quot; : &quot;Extension.value[x]&quot;,
+        &quot;min&quot; : 0,
+        &quot;max&quot; : &quot;1&quot;
+      },
+      &quot;type&quot; : [{
+        &quot;code&quot; : &quot;boolean&quot;
+      }],
+      &quot;isModifier&quot; : false,
+      &quot;isSummary&quot; : false,
+      &quot;mapping&quot; : [{
+        &quot;identity&quot; : &quot;rim&quot;,
+        &quot;map&quot; : &quot;N/A&quot;
+      }]
+    },
+    {
+      &quot;id&quot; : &quot;Extension.extension:precondition.extension:doesNotOccur.value[x]:valueBoolean&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
+      &quot;sliceName&quot; : &quot;valueBoolean&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 0,
@@ -1451,7 +1637,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;string&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;string&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1501,7 +1691,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;condition&quot;,
       &quot;isModifier&quot; : false,
@@ -1512,8 +1706,8 @@
       }]
     },
     {
-      &quot;id&quot; : &quot;Extension.extension:precondition.extension:condition.valueReference&quot;,
-      &quot;path&quot; : &quot;Extension.extension.extension.valueReference&quot;,
+      &quot;id&quot; : &quot;Extension.extension:precondition.extension:condition.value[x]&quot;,
+      &quot;path&quot; : &quot;Extension.extension.extension.value[x]&quot;,
       &quot;short&quot; : &quot;Value of extension&quot;,
       &quot;definition&quot; : &quot;Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).&quot;,
       &quot;min&quot; : 1,
@@ -1551,7 +1745,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;precondition&quot;,
       &quot;isModifier&quot; : false,
@@ -1719,6 +1917,9 @@
       },
       {
         &quot;code&quot; : &quot;Dosage&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Meta&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1742,7 +1943,11 @@
         &quot;max&quot; : &quot;1&quot;
       },
       &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
+        &quot;extension&quot; : [{
+          &quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type&quot;,
+          &quot;valueCode&quot; : &quot;url&quot;
+        }],
+        &quot;code&quot; : &quot;http://hl7.org/fhirpath/System.String&quot;
       }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/dosage-conditions&quot;,
       &quot;isModifier&quot; : false,
@@ -1910,6 +2115,9 @@
       },
       {
         &quot;code&quot; : &quot;Dosage&quot;
+      },
+      {
+        &quot;code&quot; : &quot;Meta&quot;
       }],
       &quot;isModifier&quot; : false,
       &quot;isSummary&quot; : false,
@@ -1963,9 +2171,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:offset.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;offset&quot;
     },
     {
@@ -1994,9 +2199,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:meetGoal.extension:goal.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;goal&quot;
     },
     {
@@ -2010,9 +2212,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:meetGoal.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;meetGoal&quot;
     },
     {
@@ -2056,9 +2255,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:offset.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;offset&quot;
     },
     {
@@ -2087,9 +2283,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:whenTrigger.extension:trigger.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;trigger&quot;
     },
     {
@@ -2106,9 +2299,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:whenTrigger.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;whenTrigger&quot;
     },
     {
@@ -2152,9 +2342,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:precondition.extension:doesNotOccur.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;doesNotOccur&quot;
     },
     {
@@ -2183,9 +2370,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:precondition.extension:condition.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;condition&quot;
     },
     {
@@ -2202,9 +2386,6 @@
     {
       &quot;id&quot; : &quot;Extension.extension:precondition.url&quot;,
       &quot;path&quot; : &quot;Extension.extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;precondition&quot;
     },
     {
@@ -2216,9 +2397,6 @@
     {
       &quot;id&quot; : &quot;Extension.url&quot;,
       &quot;path&quot; : &quot;Extension.url&quot;,
-      &quot;type&quot; : [{
-        &quot;code&quot; : &quot;uri&quot;
-      }],
       &quot;fixedUri&quot; : &quot;http://hl7.org/fhir/StructureDefinition/dosage-conditions&quot;
     },
     {
@@ -2253,7 +2431,7 @@ of the specification.
 		<div class="container"><!-- container -->
 			<div class="inner-wrapper">
 				<p>
-        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub 61a80437d1) generated on Fri, Aug 9, 2019 09:40-0400. 
+        FHIR &reg;© HL7.org 2011+. FHIR CI Build hl7.fhir.core#4.1.0 (GitHub b1cb180e39) generated on Sun, Sep 15, 2019 10:43-0400. 
         <br/>
         <span style="color: #FFFF77">
         Links: <a style="color: #b8dcf9" href="http://hl7.org/fhir/search.cfm">Search</a> | 
@@ -2261,7 +2439,7 @@ of the specification.
                <a style="color: #b8dcf9" href="toc.html">Table of Contents</a> | 
                <a style="color: #ffffff" href="qa.html">QA Page</a> |
 <!--                <a style="color: #b8dcf9" href="credits.html">Credits</a> | -->
-               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FSTU3%2Fextension-dosage-conditions.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-dosage-conditions.json.html">Compare to R3</a> |                
+               <a style="color: #b8dcf9" href="http://services.w3.org/htmldiff?doc1=http%3A%2F%2Fhl7.org%2Ffhir%2FR4%2Fextension-dosage-conditions.json.html&amp;doc2=http%3A%2F%2Fbuild.fhir.org%2Fextension-dosage-conditions.json.html">Compare to R4</a> |                
                <a style="color: #b8dcf9" rel="license" href="license.html"><img src="cc0.png" style="border-style: none;" alt="CC0"/></a> | 
                <a style="color: #b8dcf9" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>   
         </span>
